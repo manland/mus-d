@@ -16,12 +16,17 @@ Installation :
 
 Utilisation :
 
-Tout dabord il vous faut vous connecter une première fois en récupérant les données, et ouais c'est bizard !! Donc pour cela :
+Tout d'abord il vous faut vous connecter une première fois en récupérant les données, et ouais c'est bizard !! Donc pour cela :
   * cliquez sur Repository 
   * Checkout
   * Entrez dans la case URL "https://mus-d.googlecode.com/svn/trunk/"
   * Dans destination directory "~/M1S2/TER"
 
-Enssuite vous êtes libre de faire un update pour importer les fichiers vers votre dossier ~/M1S2/TER (en local) et du coup de travailler à partir des fichiers nouveaux !!
+Ensuite vous êtes libre de faire un update pour importer les fichiers vers votre dossier ~/M1S2/TER (en local) et du coup de travailler à partir des fichiers nouveaux !!
 
-Une fois votre code niquel (bien commenter serais un plus) vous pouvez l'envoyer sur le serveur en fesant un commit sur les fichiers en question. Je pense qu'il y a des couleures différentes en fonction de l'état du fichier !!!
+Une fois votre code niquel (bien commenter serais un plus) vous pouvez l'envoyer sur le serveur en fesant un commit sur les fichiers en question.
+
+Indication de la couleur des feuilles (au dessus à droite) :
+  * Rouge si vous l'avez modifié mais pas encore envoyer (click droit -> commit)
+  * Blanche vous êtes à jour
+  * Point d'intérrogation vous avez ajouter un nouveau dossier ou fichier vous devez donc l'ajouter sur le serveur (click droit -> add ou add recursive pour tous les sous fichiers si c'est un dossier)
