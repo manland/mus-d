@@ -21,7 +21,7 @@ Tout d'abord il vous faut vous connecter une première fois en récupérant les 
   * Checkout
   * Entrez dans la case URL "https://mus-d.googlecode.com/svn/trunk/"
   * Dans destination directory "~/M1S2/TER"
-  * dans la nouvelle fenêtre qui souvre vous devez mettre comme pseudo votre pseudo google et le mot de passe se trouve [https://code.google.com/hosting/settings]là
+  * dans la nouvelle fenêtre qui souvre vous devez mettre comme pseudo votre pseudo google et le mot de passe se trouve là : [https://code.google.com/hosting/settings]
 
 Ensuite vous êtes libre de faire un update pour importer les fichiers vers votre dossier ~/M1S2/TER (en local) et du coup de travailler à partir des fichiers nouveaux !!
 
