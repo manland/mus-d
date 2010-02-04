@@ -1,0 +1,13 @@
+#summary Cette page permettra de discuter sur le sujet...
+#labels Phase-Requirements
+
+= Introduction =
+
+Veuillez utiliser cette page comme un forum. Donc en titre votre idée puis en sous titre votre pseudo et enfin votre idée, réflexion...
+
+
+= Random =
+
+== m@n ==
+
+Faire une classe qui randomerais un tableau, vecteur... Plutôt pour mélanie ?? Et de la même manière une classe qui tri les structure !! En fonction de quoi ?? Pourquoi pas une interface avec comme fonction PlusGrandQue qui définirais qu'est-ce qui est plus grand que quoi !!??
