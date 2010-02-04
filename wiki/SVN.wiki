@@ -1,5 +1,5 @@
 #summary Comment utiliser le serveur SVN que nous offre Google code ?
-#labels Featured,Phase-Implementation,Phase-Requirements
+#labels Phase-Implementation,Phase-Requirements
 
 = Introduction =
 
