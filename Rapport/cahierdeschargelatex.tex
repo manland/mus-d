@@ -34,24 +34,24 @@
 
 	\subsection{Jeux d'Arcades}
 		Les jeux d'arcades sont principalement des jeux à deux dimensions. La jouabilité est très simple ce qui rend ce type de jeux très populaires. Il n'y a généralement pas d'intelligence artificielle (ou très peu évoluée) et encore moins de parties réseaux (les joueurs s'affrontent sur la même machine).
-		\ident A l'origine ce type de jeux à été créé pour les salles de jeux ou certains bars, c'est pour cela que le niveau du jeux est exponentiel, afin que le joueur remette en permanence de l'argent pour faire vivre son personnage. Ceci explique aussi le fait qu'il n'y ait pas de sauvegardes des parties.
+		\ident A l'origine ce type de jeux à été créé pour les salles de jeux ou certains bars, c'est pour cela que le niveau du jeu est exponentiel, afin que le joueur remette en permanence de l'argent pour faire vivre son personnage. Ceci explique aussi le fait qu'il n'y ait pas de sauvegardes des parties.
 		\ident Quelques exemples de jeux bien connus : Pac-Man, Casse-Briques, Ping-pong...
 
 \newpage
 
 \section{Choix d'implémentation}
 	\subsection{Choix du langage}
-		Ce projet impose de pouvoir utiliser cette ligne de produits pour créer nos propres jeux d'arcades. Ces jeux doivent être jouables sur Internet. De nos jours il n'existe pas beaucoup de langages de programmation permettant cela. Les deux plus répandus sont JavaScript et Flex. Flex étant un tout nouveau langage développé par Adobe, il nous à paru mieux de le découvrir et d'exploiter sa richesse plutôt que de réutiliser un langage connus de tous : JavaScript.
+		Ce projet impose de pouvoir utiliser cette ligne de produits pour créer nos propres jeux d'arcades. Ces jeux doivent être jouables sur Internet. De nos jours il n'existe pas beaucoup de langages de programmation permettant cela. Les deux plus répandus sont JavaScript et Flex. Flex étant un tout nouveau langage développé par Adobe, il nous à paru interressant de le découvrir et d'exploiter sa richesse plutôt que de réutiliser un langage connu de tous : JavaScript.
 		\subsubsection{Flex}
-			Ce nouveau langage basé sur ActionScript permet de créer des clients internets riches avec une syntaxe à balises. Ainsi les scripts écrits en Flex sont compilés en SWF (format propriétaire d'Adobe également appelé Flash). Ainsi tout navigateur équipé de flash peut lire les applications Flex.
-			\ident Nous créerons donc notre framework en ActionScript, car c'est un langage objet, actuellement en version 3 (donc stable et évolué). De plus, cela laisse le choix aux utilisateurs de notre framework de réimplenter nos classes en ActionScript ou de dévelloper directement leurs applications en Flex.
+			Ce nouveau langage basé sur ActionScript permet de créer des clients internets riches avec une syntaxe à balises. Ainsi les scripts écrits en Flex sont compilés en SWF (format propriétaire d'Adobe également appelé Flash). Ainsi tout navigateur équipé de Flash peut lire les applications Flex.
+			\ident Nous créerons donc notre framework en ActionScript, car c'est un langage objet, actuellement en version 3 (donc stable et évolué). De plus, cela laisse le choix aux utilisateurs de notre framework de réimplenter nos classes en ActionScript ou de développer directement leurs applications en Flex.
 			\ident L'inconvénient de ce choix est que toute la technologie est propiétaire. Il faudra donc que l'utilisateur final ait tous les outils nécessaires à la programmation et surtout compilation de Flex.
 		\subsubsection{ActionScript}
 			L'ActionScript est le langage propriétaire d'Adobe, développé dans le but de contrer JavaScript. La syntaxe est très proche de JavaScript et permet de faire des applications orientées objet. Le langage Flex combine donc la facilité d'un langage à balise mais aussi et surtout la puissance d'un langage objet.
 	\subsection{IDE}
-		Adobe a fait le choix de ne pas développer d'IDE spécialisé pour son langage préférant utiliser Eclipse par le biais d'un plugin. Eclipse est un IDE très populaire car libre de droit et très performant puisqu'en version 3. Nous ne sommes donc pas perdu puisque nous avons l'habitude de développer avec cet IDE.
+		Adobe a fait le choix de ne pas développer d'IDE spécialisé pour son langage, préférant utiliser Eclipse par le biais d'un plugin. Eclipse est un IDE très populaire car libre de droit et très performant puisqu'en version 3. Nous ne sommes donc pas perdus puisque nous avons l'habitude de développer avec cet IDE.
 	\subsection{Syntaxe}
-		Nous avons fait le choix de programmer en français. Toutes nos classes et interfaces seront préfixés par un M, afin d'éviter les collisions de noms avec d'autres framework. Le M représente notre nom de groupe (MUS-D).
+		Nous avons fait le choix de programmer en français. Toutes nos classes et interfaces seront préfixées par un M, afin d'éviter les collisions de noms avec d'autres framework. Le M représente notre nom de groupe (MUS-D).
 		\ident De plus nous utiliserons la syntaxe suivante :
 		\begin{itemize}
 			\item MClasse : majuscule puis minuscule et majuscule pour séparer les mots.
@@ -69,20 +69,20 @@
 
 \section{Choix des logiciels}
 	\subsection{Eclipse}
-		La société Adobe, ayant décidé de développer un plugin Eclipse plutôt qu'un IDE à part entière, nous sommes donc obligé de l'utiliser.
+		La société Adobe, ayant décidé de développer un plugin Eclipse plutôt qu'un IDE à part entière, nous sommes donc obligés de l'utiliser.
 	\subsection{Google Code}
-		Pour pouvoir travailler en groupe nous avons besoin d'un site internet pour regrouper nos codes et nos idées. Google Code est une plate forme nous offrant un Wiki pour échanger nos idées, un serveur SVN pour partager nos sources, un espace de stockage de fichiers et enfin un contrôleur de bug afin d'être prévenu d'éventuels problèmes.
+		Pour pouvoir travailler en groupe nous avons besoin d'un site internet pour regrouper nos codes et nos idées. Google Code est une plate-forme nous offrant un Wiki pour échanger nos idées, un serveur SVN pour partager nos sources, un espace de stockage de fichiers et enfin un contrôleur de bugs afin d'être prévenu d'éventuels problèmes.
 		\ident De plus il est entièrement gratuit et est hébergé chez Google, ce qui nous assure une plus grande sérénité quand à la sauvegarde de nos données.
 	\subsection{SVN}
 		Puisque Google nous offre généreusement un serveur SVN nous l'utiliserons pour garder la même version pour chacun des développeurs. 
-		\ident Sous linux nous utiliserons le client RapidSvn pour sa simplicité (un tutorial sur son utilisation est disponible sur le site du projet).
-		\ident Sous window nous utiliserons Tortoise pour les mêmes raisons.
+		\ident Sous Linux nous utiliserons le client RapidSvn pour sa simplicité (un tutorial sur son utilisation est disponible sur le site du projet).
+		\ident Sous Windows nous utiliserons Tortoise pour les mêmes raisons.
 
 \newpage
 
 \section{Organisation}
 	\subsection{Répartition des tâches}
-		La répartition des tâches c'est éffectuée selon les préférences de chacuns.
+		La répartition des tâches s'est éffectuée selon les préférences de chacun.
 		\begin{itemize}
 			\item Maneschi Romain (chef de groupe) : Coeur du projet (partie graphique) + aide sur le créateur de jeux
 			\item Maillet Laurent : Coeur du projet (partie interne)
