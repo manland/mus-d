@@ -8,8 +8,10 @@ Chacun peut modifier cette page pour prévenir les autres des modifications effe
 Pour la syntaxe chacun mettra son pseudo devant ce qu'il dit comme je le fait dans ce premier message...
 
 
-= Ajout du rapport =
+= Modifications =
 
-== m@n ==
+== Prof ==
 
-J'ai ajouter le début de cahier des charges dans le svn !! Pour le voir veuillez le télécharger avec votre client SVN !!
+  * ajouter un outil pour l'uml (donc en trouver un)
+  * dir que notre framework doit être réutilisable
+  * La contrainte No 1 est que l'on puisse créer un nouveau jeu simplement par extension du framework.
