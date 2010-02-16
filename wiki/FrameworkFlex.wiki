@@ -28,5 +28,5 @@ Une fois votre projet Flex créer vous devez faire un click droit dessus puis pr
 
 Maintenant vous pourrez utiliser vos classes de plusieurs manières :
   * Flex sans binding : vous pouvez ouvrir une balise < et tappez le nom du package contenant la classe que vous souhaitez utiliser (je n'ai essayer qu'avec des composants : panel et canvas)
-  * Flex avec binding : dans la balise application rajouter (et non à la place de) un attribut xmlns:ter="Package.*" ainsi vous pourrez utiliser les composants de cette façon : <ter:MScene width="150" height="150"/> au lieu de <Coeur:MScene width="150" height="150"/>
+  * Flex avec binding : dans la balise application rajouter (et non à la place de) un attribut xmlns:ter="Package.*etoile*"(j'arrive pas à fair étoile car c'est gras dans ce wiki) ainsi vous pourrez utiliser les composants de cette façon : <ter:MScene width="150" height="150"/> au lieu de <Coeur:MScene width="150" height="150"/>
   * ActionScript : créer une classe puis faites un extends MScene et cela devrait importer import Coeur.MScene; sinon faites le !! Par contre ter.MScene pour l'import ne marchera pas.
