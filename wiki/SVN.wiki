@@ -32,3 +32,11 @@ Une fois votre code niquel (bien commenté serais un plus) vous pouvez l'envoyer
   * Rouge si vous l'avez modifié mais pas encore envoyer (click droit -> commit)
   * Blanche vous êtes à jour
   * Point d'intérrogation vous avez ajouter un nouveau dossier ou fichier vous devez donc l'ajouter sur le serveur (click droit -> add ou add recursive pour tous les sous fichiers si c'est un dossier)
+
+= Comment voir les fichiers depuis GoogleCode =
+
+J'ai trouvé le moyen de voir les images, et autres fichiers sans ouvrir de client SVN.
+
+Pour se faire rendez vous dans le browser de googleCode : [http://code.google.com/p/mus-d/source/browse/] puis sélectionné le fichier que vous souhaitez voir.
+
+Enfin clicker sur "View raw file" ce qui vous permettra de télécharger le fichier !!! Pratique pour voir une image par exemple !!
