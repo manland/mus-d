@@ -15,46 +15,42 @@ Il suffit de faire une interface représentant votre classe abstraite. Puis de v
 
 package Graphique
 {
-	import Coeur.MObjet;
+   import Coeur.MObjet;
 	
-	public interface MIGraphique
-	{
-		function dessiner(objet:MObjet):void;
-	}
+   public interface MIGraphique {
+      function dessiner(objet:MObjet):void;
+   }
 }
 
 == Classe abstraite ==
 
 package Graphique {
 	
-	public class MGraphique {
+   public class MGraphique {
 		
-		private var sous_classe:MIGraphique;
+      private var sous_classe:MIGraphique;
 		
-		public function MGraphique() {
-			sous_classe = MIGraphique(this);
-			if(sous_classe == null)
-			{
-				throw("Les classes qui étendent MGraphique doivent implementer MIGraphique");
-			}
-		}
-	}
+      public function MGraphique() {
+         sous_classe = MIGraphique(this);
+         if(sous_classe == null) {
+            throw("Les classes qui étendent MGraphique doivent implementer MIGraphique");
+         }
+      }
+   }
 }
 
 == Classe héritant de la classe abstraite ==
 
 package Graphique {
-	import Coeur.MObjet;
+   import Coeur.MObjet;
 	
-	public class MTexture extends MGraphique implements MIGraphique {
+   public class MTexture extends MGraphique implements MIGraphique {
 		
-		public function MTexture() {
-			
-		}
+      public function MTexture() {}
 		
-		public function dessiner(objet:MObjet):void {}
+      public function dessiner(objet:MObjet):void {}
 		
-	}
+   }
 }
 
 == Classe héritant de la classe abstraite et étant elle même abstraite ==
