@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" 
+	xmlns:TER="Coeur.*"
+	xmlns:Graphique="Graphique.*"
+	xmlns:Degrades="Graphique.MPDegrades.*"
+	creationComplete="degrade()">
+	
+	<mx:Script>
+		<![CDATA[
+			import Graphique.Degrades.MRadial;
+			import Graphique.Degrades.MObliqueDroite;
+			import Graphique.Degrades.MObliqueGauche;
+			import Graphique.Degrades.MHorizontal;
+			import Coeur.MScene;
+			import Coeur.MObjet;
+			
+			private var objet:MObjet;
+			public function degrade():void {
+				//Degrade horizontal
+				objet = new MObjet();
+				objet.dessiner(new MHorizontal());
+				ma_scene.addChild(objet);
+				objet.toolTip = "je suis mhorizontal";
+				
+				//Dégradé Oblique à gauche + position + taille
+				var gog:MObliqueGauche = new MObliqueGauche();
+				o2.x = 200;
+				o2.width = o2.height = 138;
+				o2.dessiner(gog);
+				o2.toolTip = "je suis mobliquegauche";
+				//Dégradé oblique à droite + position
+				o3.x = 100;
+				o3.width = o3.height = 50;
+				o3.dessiner(new MObliqueDroite());
+				o3.toolTip = "je suis mobliquedroite";
+				//Radial centré
+				var dr:MRadial = new MRadial();
+				o4.x = 30;
+				o4.y = 200;
+				o4.dessiner(dr);
+				o4.toolTip = "je suis radial";
+				//Radial haut (pour faire une lumière)
+				o5.x = this.width/2;
+				o5.y = 0;
+				o5.width = o5.height = 300;
+				var drh:MRadial = new MRadial();
+				drh.setFocalPtRatio(-1);//remonte le centre du cercle
+				drh.setBoxRotation(Math.PI/2);
+				drh.setCouleurs([0xFF0000, 0x000000]);
+				drh.setAlphas([255, 0]);
+//				drh.setTx(-o5.height);//la moitié
+				o5.dessiner(drh);
+				o5.toolTip = "je suis une lumière";
+			}
+		]]>
+	</mx:Script>
+	
+	<TER:MScene id="ma_scene">
+		<TER:MObjet id="o" />
+		<TER:MObjet id="o2" />
+		<TER:MObjet id="o3" />
+		<TER:MObjet id="o4" />
+		<TER:MObjet id="o5" />
+	</TER:MScene>
+	
+</mx:Application>
