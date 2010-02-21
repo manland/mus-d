@@ -13,6 +13,7 @@ Il suffit de faire une interface représentant votre classe abstraite. Puis de v
 
 == Interface ==
 
+{{{
 package Graphique
 {
    import Coeur.MObjet;
@@ -21,9 +22,11 @@ package Graphique
       function dessiner(objet:MObjet):void;
    }
 }
+}}}
 
 == Classe abstraite ==
 
+{{{
 package Graphique {
 	
    public class MGraphique {
@@ -38,9 +41,11 @@ package Graphique {
       }
    }
 }
+}}}
 
 == Classe héritant de la classe abstraite ==
 
+{{{
 package Graphique {
    import Coeur.MObjet;
 	
@@ -52,6 +57,7 @@ package Graphique {
 		
    }
 }
+}}}
 
 == Classe héritant de la classe abstraite et étant elle même abstraite ==
 
