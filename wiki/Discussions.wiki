@@ -21,3 +21,7 @@ A lire cela peut nous donner des idées pour le MVC : [http://wiki.flexx.fr/doku
 == Graphisme ==
 
 Dégradé : [http://livedocs.adobe.com/flex/3/html/help.html?content=Drawing_Vector_Graphics_1.html]
+
+== Evenement ==
+
+Exemple (sur un rebond en plus) : [http://www.adobe.com/fr/devnet/actionscript/articles/event_handling_as3_07.html]
