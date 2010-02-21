@@ -12,6 +12,10 @@ Veuillez utiliser cette page comme un forum. Donc en titre votre idée puis en s
 
 Faire une classe qui randomerais un tableau, vecteur... Plutôt pour mélanie ?? Et de la même manière une classe qui tri les structure !! En fonction de quoi ?? Pourquoi pas une interface avec comme fonction PlusGrandQue qui définirais qu'est-ce qui est plus grand que quoi !!??
 
+== melanie ==
+
+il y a déjà des fonctions de tris pour vector, donc c'est peut-être pas la peine de la refaire non? Sinon pour le mélange je suis déjà en train de m'y pencher. 
+
 = Sites intéressants =
 
 == MVC ==
