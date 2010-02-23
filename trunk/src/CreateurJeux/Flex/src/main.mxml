@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" pageTitle="Créateur de jeux" creationComplete="initialisation()">
+	<mx:Style source="style.css"/>
+		<mx:Script>
+		<![CDATA[
+			private var barre_menu:BarreMenu;			
+			private var panel_barre_outil:HboxBarreOutil;
+				
+			private function initialisation():void
+			{
+				// construction du menu
+				barre_menu= new BarreMenu();
+				addChild(barre_menu);
+				
+				// construction de la barre d'outil
+				panel_barre_outil= new HboxBarreOutil();
+				this.addChild(panel_barre_outil);
+				
+				
+			}
+		]]>
+	</mx:Script>
+</mx:Application>
