@@ -2,40 +2,35 @@
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
 	layout="absolute" 
 	xmlns:TER="Coeur.*"
-	xmlns:Graphique="Graphique.*"
-	xmlns:Degrades="Graphique.MPDegrades.*"
 	creationComplete="degrade()">
 	
 	<mx:Script>
 		<![CDATA[
-			import Graphique.Degrades.MRadial;
-			import Graphique.Degrades.MObliqueDroite;
-			import Graphique.Degrades.MObliqueGauche;
-			import Graphique.Degrades.MHorizontal;
+			import Graphique.Degrades.MDegradeRadial;
+			import Graphique.Degrades.MDegradeObliqueDroite;
+			import Graphique.Degrades.MDegradeObliqueGauche;
+			import Graphique.Degrades.MDegradeHorizontal;
+			import Coeur.MElement;
 			import Coeur.MScene;
-			import Coeur.MObjet;
 			
-			private var objet:MObjet;
+			private var objet:MElement;
 			public function degrade():void {
 				//Degrade horizontal
-				objet = new MObjet();
-				objet.dessiner(new MHorizontal());
-				ma_scene.addChild(objet);
-				objet.toolTip = "je suis mhorizontal";
+				o.dessiner(new MDegradeHorizontal());
 				
 				//Dégradé Oblique à gauche + position + taille
-				var gog:MObliqueGauche = new MObliqueGauche();
+				var gog:MDegradeObliqueGauche = new MDegradeObliqueGauche();
 				o2.x = 200;
 				o2.width = o2.height = 138;
 				o2.dessiner(gog);
-				o2.toolTip = "je suis mobliquegauche";
+				o2.toolTip = gog.toString();
 				//Dégradé oblique à droite + position
 				o3.x = 100;
 				o3.width = o3.height = 50;
-				o3.dessiner(new MObliqueDroite());
+				o3.dessiner(new MDegradeObliqueDroite());
 				o3.toolTip = "je suis mobliquedroite";
 				//Radial centré
-				var dr:MRadial = new MRadial();
+				var dr:MDegradeRadial = new MDegradeRadial();
 				o4.x = 30;
 				o4.y = 200;
 				o4.dessiner(dr);
@@ -44,7 +39,7 @@
 				o5.x = this.width/2;
 				o5.y = 0;
 				o5.width = o5.height = 300;
-				var drh:MRadial = new MRadial();
+				var drh:MDegradeRadial = new MDegradeRadial();
 				drh.setFocalPtRatio(-1);//remonte le centre du cercle
 				drh.setBoxRotation(Math.PI/2);
 				drh.setCouleurs([0xFF0000, 0x000000]);
@@ -52,16 +47,29 @@
 //				drh.setTx(-o5.height);//la moitié
 				o5.dessiner(drh);
 				o5.toolTip = "je suis une lumière";
+				
+				ma_scene.dessiner(new MDegradeRadial());
+				
+				sous_scene.width = sous_scene.height = 200;
+				sous_scene.x = 0;
+				sous_scene.y = 500;
+				sous_scene.dessiner(new MDegradeObliqueDroite());
+				sous_scene.toolTip = "Sous_scene";
+				
+				o_sous_scene.dessiner(new MDegradeObliqueGauche());
 			}
 		]]>
 	</mx:Script>
 	
 	<TER:MScene id="ma_scene">
-		<TER:MObjet id="o" />
-		<TER:MObjet id="o2" />
-		<TER:MObjet id="o3" />
-		<TER:MObjet id="o4" />
-		<TER:MObjet id="o5" />
+		<TER:MElement id="o" toolTip="Horizontal" />
+		<TER:MElement id="o2" />
+		<TER:MElement id="o3" />
+		<TER:MElement id="o4" />
+		<TER:MElement id="o5" />
+		<TER:MScene id="sous_scene">
+			<TER:MElement id="o_sous_scene" />
+		</TER:MScene>
 	</TER:MScene>
 	
 </mx:Application>
