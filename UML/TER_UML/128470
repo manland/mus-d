@@ -1,6 +1,6 @@
 format 66
 "Degrades" // Graphique::Degrades
-  revision 1
+  revision 2
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -42,7 +42,24 @@ format 66
     //activity diagram settings
     package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
     show_infonote default drawing_language default show_stereotype_properties default
-    class 130646 "MRadial"
+    class 129878 "MDegrade"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 130646 // <generalisation>
+	relation 130006 ---|>
+	  a public
+	    classrelation_ref 130646 // <generalisation>
+	  b parent class_ref 129366 // MTexture
+      end
+    end
+
+    class 130646 "MDegadeRadial"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -59,7 +76,7 @@ format 66
       end
     end
 
-    class 130518 "MObliqueGauche"
+    class 130518 "MDegradeObliqueGauche"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -76,7 +93,7 @@ format 66
       end
     end
 
-    class 130390 "MObliqueDroite"
+    class 130390 "MDegradeObliqueDroite"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -93,7 +110,7 @@ format 66
       end
     end
 
-    class 130262 "MVertical"
+    class 130262 "MDegradeVertical"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -110,7 +127,7 @@ format 66
       end
     end
 
-    class 130134 "MHorizontal"
+    class 130134 "MDegradeHorizontal"
       visibility package 
       cpp_decl ""
       java_decl ""

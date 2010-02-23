@@ -1,6 +1,6 @@
 format 66
 "Utilitaire" // Utilitaire
-  revision 1
+  revision 2
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -92,6 +92,17 @@ format 66
     end
 
     class 131286 "MMelange"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+    end
+
+    class 133462 "MTri"
       visibility package 
       cpp_decl ""
       java_decl ""
