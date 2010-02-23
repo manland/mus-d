@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties version="1">
   <includeClasses>
-    <classEntry path="Coeur.MObjet"/>
+    <classEntry path="Coeur.MElement"/>
+    <classEntry path="Coeur.MIObjet"/>
     <classEntry path="Coeur.MScene"/>
-    <classEntry path="Graphique.Degrades.MHorizontal"/>
-    <classEntry path="Graphique.Degrades.MObliqueDroite"/>
-    <classEntry path="Graphique.Degrades.MObliqueGauche"/>
-    <classEntry path="Graphique.Degrades.MRadial"/>
-    <classEntry path="Graphique.Degrades.MVertical"/>
+    <classEntry path="Graphique.Degrades.MDegrade"/>
+    <classEntry path="Graphique.Degrades.MDegradeHorizontal"/>
+    <classEntry path="Graphique.Degrades.MDegradeObliqueDroite"/>
+    <classEntry path="Graphique.Degrades.MDegradeObliqueGauche"/>
+    <classEntry path="Graphique.Degrades.MDegradeRadial"/>
+    <classEntry path="Graphique.Degrades.MDegradeVertical"/>
     <classEntry path="Graphique.MCouleur"/>
-    <classEntry path="Graphique.MDegrade"/>
     <classEntry path="Graphique.MGraphique"/>
     <classEntry path="Graphique.MGraphiqueScene"/>
     <classEntry path="Graphique.MIGraphique"/>

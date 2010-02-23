@@ -1,9 +1,10 @@
 package Graphique
 {
-	import Coeur.MObjet;
+	import flash.display.Graphics;
+	import Coeur.MIObjet;
 	
 	public interface MIGraphique
 	{
-		function dessiner(objet:MObjet):void;
+		function dessiner(objet:MIObjet):void;
 	}
 }
