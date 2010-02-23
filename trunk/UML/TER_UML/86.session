@@ -1,9 +1,9 @@
 window_sizes 1280 724 300 974 530 120
 diagrams
   classdiagram_ref 128214 // Diagramme
-    974 530 100 4 0 0
+    974 530 100 4 60 0
   classdiagram_ref 128342 // Diagramme
-    779 424 100 4 120 0
+    779 424 100 4 0 0
   active  classdiagram_ref 128470 // Diagramme
     974 530 100 4 0 0
 end
@@ -11,8 +11,8 @@ show_stereotypes
 selected classdiagram_ref 128470 // Diagramme
 open
   classview_ref 128342 // VueClasses
-  classview_ref 128470 // VueClasses
-  classview_ref 128598 // VueClasses
+  class_ref 129238 // MIGraphique
+  class_ref 129878 // MDegrade
   classview_ref 129878 // VueClasse
   
   package_ref 130006 // Effets
