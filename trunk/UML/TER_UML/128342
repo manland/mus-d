@@ -1,6 +1,6 @@
 format 66
 "Graphique" // Graphique
-  revision 1
+  revision 2
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -48,13 +48,19 @@ format 66
       size A4
     end
 
-    class 129238 "MGraphique"
-      visibility package 
+    class 129238 "MIGraphique"
+      visibility package stereotype "interface"
       cpp_decl ""
-      java_decl ""
-      php_decl ""
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}${visibility}interface ${name} {
+${members}}
+"
       python_2_2 python_decl ""
-      idl_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
       explicit_switch_type ""
       
       classrelation 129750 // <association>
@@ -72,6 +78,14 @@ format 66
       classrelation 131030 // <association>
 	relation_ref 130262 // <association>
       end
+
+      classrelation 133590 // <association>
+	relation_ref 132566 // <association>
+      end
+
+      classrelation 133846 // <association>
+	relation_ref 132694 // <association>
+      end
     end
 
     class 129366 "MTexture"
@@ -87,7 +101,7 @@ format 66
 	relation 129622 ---|>
 	  a public
 	    classrelation_ref 130134 // <generalisation>
-	  b parent class_ref 129238 // MGraphique
+	  b parent class_ref 129238 // MIGraphique
       end
     end
 
@@ -104,7 +118,7 @@ format 66
 	relation 129494 ---|>
 	  a public
 	    classrelation_ref 130006 // <generalisation>
-	  b parent class_ref 129238 // MGraphique
+	  b parent class_ref 129238 // MIGraphique
       end
 
       classrelation 130262 // <aggregation>
@@ -147,23 +161,6 @@ format 66
       end
     end
 
-    class 129878 "MDegrade"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 130646 // <generalisation>
-	relation 130006 ---|>
-	  a public
-	    classrelation_ref 130646 // <generalisation>
-	  b parent class_ref 129366 // MTexture
-      end
-    end
-
     class 130006 "MCouleur"
       visibility package 
       cpp_decl ""
@@ -183,4 +180,8 @@ format 66
   end
 
   package_ref 128470 // Degrades
+
+  package_ref 129878 // Formes
+
+  package_ref 130006 // Effets
 end
