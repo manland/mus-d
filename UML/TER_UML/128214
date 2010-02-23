@@ -1,6 +1,6 @@
 format 66
 "Coeur" // Coeur
-  revision 2
+  revision 3
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -230,17 +230,9 @@ ${members}};
 "
       explicit_switch_type ""
       
+      associated_diagram classdiagram_ref 128214 // Diagramme
       classrelation 128726 // <aggregation>
 	relation_ref 128598 // <aggregation>
-      end
-
-      attribute 128214 "nom_classe"
-	private explicit_type "string"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
       end
 
       operation 128214 "drag"
@@ -288,6 +280,66 @@ ${members}};
 	  b parent class_ref 132438 // UIComponent
       end
 
+      operation 129494 "dessiner"
+	public explicit_return_type ""
+	nparams 1
+	  param out name "graphisme" type class_ref 129238 // MIGraphique
+	
+	
+	
+	
+	
+      end
+
+      operation 129622 "getX"
+	public explicit_return_type "Number"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 129750 "getY"
+	public explicit_return_type "Number"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 129878 "getLargeur"
+	public explicit_return_type "Number"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 130006 "getHauteur"
+	public explicit_return_type "Number"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 130134 "getGraphics"
+	public explicit_return_type "Graphics"
+	nparams 0
+	
+	
+	
+	
+	
+      end
     end
 
     class 128214 "MScene"
@@ -330,7 +382,7 @@ ${members}};
       end
 
       attribute 128470 "enfants"
-	private explicit_type ""
+	private type class_ref 128342 // MIObjet
 	cpp_decl ""
 	java_decl ""
 	php_decl ""

@@ -1,6 +1,6 @@
 format 66
 "Graphique" // Graphique
-  revision 2
+  revision 3
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -85,6 +85,17 @@ ${members}};
 
       classrelation 133846 // <association>
 	relation_ref 132694 // <association>
+      end
+
+      operation 130262 "dessiner"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
       end
     end
 

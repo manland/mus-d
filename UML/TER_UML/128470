@@ -1,6 +1,6 @@
 format 66
 "Degrades" // Graphique::Degrades
-  revision 2
+  revision 3
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -57,6 +57,7 @@ format 66
 	    classrelation_ref 130646 // <generalisation>
 	  b parent class_ref 129366 // MTexture
       end
+
     end
 
     class 130646 "MDegadeRadial"
