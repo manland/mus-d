@@ -1,4 +1,4 @@
-# Cette page concerne un petit tuto sur le Drag & Drop en Flex/actionScript
+#summary Cette page concerne un petit tuto sur le Drag & Drop en Flex/actionScript
 
 = Drag & Drop =
 Tous les éléments de flex supportent le drag & drop mais il y a plusieurs façon de faire du drag & drop : 
