@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+    xmlns:mx="http://www.adobe.com/2006/mxml" 
+    width="525" 
+    height="450"
+    viewSourceURL="src/EffectsChopperGame/index.html">
+    <mx:Script>
+        <![CDATA[
+            // Easing equations have to be explicitly imported.    
+            import mx.effects.easing.Quadratic;
+
+            // Embed movie clip symbols from the library of a Flash SWF. 
+            [Embed(source="assets/library.swf", symbol="DartBoard")]
+            [Bindable]
+            public var DartBoard:Class;
+            
+            [Embed(source="assets/library.swf", symbol="Helicopter")]
+            [Bindable]
+            public var Helicopter:Class;
+
+            [Embed(source="assets/library.swf", symbol="Explosion")]
+            [Bindable]
+            public var Explosion:Class;
+
+            // Event handler for the effectEnd event.            
+            private function endEffectHandler():void 
+            {
+                helicopter.visible = false;
+                explosion.visible = true;
+                score.text = "0"; 
+                pauseButton.enabled = resumeButton.enabled = 
+                    selfDestructButton.enabled = false;
+            }
+
+            // Event handler for the "Play Again!" button.            
+            private function playAgainHandler():void 
+            {
+                // Call resume() to make sure effect is not
+                // in paused state before it ends or calling
+                // pause() on it later will not work.
+                flyChopper.resume();
+                
+                // End the effect
+                flyChopper.end();
+                
+                // Reset assets to their original states. 
+                helicopter.visible = true; 
+                explosion.visible = false;
+                startButton.enabled = pauseButton.enabled = 
+                    resumeButton.enabled = selfDestructButton.enabled = true;
+            }
+            
+            private function pauseChopperHandler():void
+            {
+                // Pause the Move effect on the helicopter.
+                   flyChopper.pause();
+                   
+                   // Calculate player's score based on the inverse of the
+                   // distance between the helicopter and the dart board.
+                   score.text = String(Math.round(1/(helicopter.x - dartBoard.x)*10000)); 
+                   
+                   pauseButton.enabled = false; 
+                   resumeButton.enabled = true;
+            }
+            
+            private function resumeChopperHandler():void
+            {
+                flyChopper.resume();
+                resumeButton.enabled = false; pauseButton.enabled = true;
+            }
+        ]]>
+    </mx:Script>
+    
+    <!-- Create a Move effect with a random duration between .5 and 1.5 seconds -->
+    <mx:Move 
+        id="flyChopper" target="{helicopter}" 
+        xBy="-290" easingFunction="mx.effects.easing.Quadratic.easeIn"
+        duration="{Math.round(Math.random()*1500+500)}" 
+        effectEnd="endEffectHandler();" 
+    />
+    
+    <mx:Panel 
+        title="Effects Chopper Game" width="100%" height="100%" 
+        paddingTop="10" paddingLeft="10" paddingRight="10" 
+        paddingBottom="10" horizontalAlign="right"
+    >
+        <!-- The game canvas -->
+        <mx:Canvas width="100%" height="100%">
+            <mx:Image 
+                id="dartBoard" width="100" height="150.2"
+                source="{DartBoard}" x="10" y="20"
+            />
+            <!-- Hide the explosion animation initially. -->
+            <mx:Image 
+                id="explosion" source="{Explosion}" 
+                y="50" x="0" added="explosion.visible = false;"
+            />      
+            <mx:Image 
+                id="helicopter" width="80" height="48.5"
+                source="{Helicopter}" right="0" y="67"
+            />
+        </mx:Canvas>
+
+        <!-- Instructions -->
+        <mx:Text 
+            width="100%" color="#ff0000" 
+            text="Pause the helicopter as close as possible to the dartboard without hitting it." 
+            textAlign="center" fontWeight="bold"
+        />
+            
+        <mx:HBox>
+            <mx:Label text="Score:" fontSize="18"/>
+            <mx:Label id="score" text="0" fontSize="18"/>        
+        </mx:HBox>
+     
+        <mx:ControlBar horizontalAlign="right">
+            <mx:Button 
+                id="startButton" label="Start" 
+                click="flyChopper.play(); startButton.enabled=false;"
+            />
+            <mx:Button id="pauseButton" label="Pause" click="pauseChopperHandler();"/>
+            <mx:Button id="resumeButton" label="Resume" click="resumeChopperHandler();"/>
+            <mx:Button 
+                id="selfDestructButton" label="Self destruct!" 
+                click="flyChopper.resume(); flyChopper.end();"
+            />
+            <mx:Button label="Play again!" click="playAgainHandler();"/>
+        </mx:ControlBar>
+       
+    </mx:Panel>    
+</mx:Application>
