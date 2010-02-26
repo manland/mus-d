@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:TER="Graphique.*" 
+	layout="horizontal" 
+	verticalAlign="top"
+    horizontalAlign="left" 
+    backgroundGradientColors="[0x000000,0x323232]" 
+    paddingTop="10" 
+    height="100%" 
+    verticalScrollPolicy="on"
+    creationComplete="init()">
+    
+    <mx:Style source="style.css"/>
+    <mx:Script>
+	<![CDATA[
+		import Model.MouvementBalle;
+		import Graphique.GuiBar;
+		import Graphique.GuiBalle;
+		import Controleur.Clavier;
+		import Graphique.GuiBrique;
+		import mx.controls.TextArea;
+		import mx.controls.Image;
+		
+		private var jeux:Jeux;
+		private function init():void {
+			panel.removeAllChildren();
+			jeux = new Jeux(sysout);
+			panel.addChild(jeux.getScene());
+		}
+		
+		private function commencer():void {
+			jeux.run();
+		}
+	]]>
+	</mx:Script>
+	
+    <mx:Panel width="300" height="100%">
+    	<mx:Text id="sysout" text="" />
+    	<mx:Button label="start" click="init();" />
+    </mx:Panel>
+
+	<mx:Panel id="panel" width="100%" height="100%" title="Tu me K-sse les....Briques">
+	    
+	    <mx:ControlBar horizontalAlign="center" >
+	    	<mx:Spacer width="100%" />
+	    	<mx:Button id="bouton_commencer" label="Commencer" click="commencer()" />
+	    	<mx:Button id="bouton_pause" label="Pause" click="" />
+	    	<mx:Button id="bouton_recommencer" label="Recommencer" click="init();commencer()" />
+	    	<mx:Spacer width="100%" />
+	    	<mx:Label text="Score :" />
+	    	<mx:Label id="label_score" text="0" />
+	    </mx:ControlBar>
+	    
+    </mx:Panel>
+	
+</mx:Application>
