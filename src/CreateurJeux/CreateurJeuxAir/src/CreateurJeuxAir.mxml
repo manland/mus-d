@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="initialisation()">
+	<mx:Style source="style.css"/>
+	<mx:Script>
+		<![CDATA[
+			import PanelOptions.PanelOption;
+			import Onglets.*;
+			import mx.containers.HBox;
+			import MenuAccordeons.*;		
+			import BarreOutils.*;
+			import BarreMenus.*;	
+		
+			private var barre_menu:BarreMenu;	
+			private var panel_barre_outil:HboxBarreOutil;
+			
+			private var hBoxCentrale:HBox;
+			private var menu_accordeon:MenuAccordeon;
+			private var tab_onglet:TabOnglet;
+			
+			private var panel_option:PanelOption;
+				
+			private function initialisation():void
+			{
+				
+				// construction de la barre de menu
+				barre_menu= new BarreMenu();
+				addChild(barre_menu);
+				
+				// construction de la barre d'outil
+				panel_barre_outil= new HboxBarreOutil();
+				this.addChild(panel_barre_outil);
+				
+				// construction du menu accordeon contenant les objets
+				menu_accordeon = new MenuAccordeon();
+				
+				// construction du panel des options:
+				panel_option=new PanelOption();
+				
+				// construction des onglets : 
+				tab_onglet = new TabOnglet(panel_option);
+				
+				
+				// creation de la barre centrale
+				hBoxCentrale = new HBox();
+				hBoxCentrale.addChild(menu_accordeon);
+				hBoxCentrale.addChild(tab_onglet);
+				hBoxCentrale.addChild(panel_option);
+				
+				hBoxCentrale.styleName="hBoxCentrale";
+				hBoxCentrale.percentWidth=100;
+				hBoxCentrale.percentHeight=100;
+				this.addChild(hBoxCentrale);
+			}
+		]]>
+	</mx:Script>
+	
+</mx:WindowedApplication>
