@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="75"
+   height="70"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docbase="/datas"
+   sodipodi:docname="red_bubble.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0"
+   inkscape:export-filename="/datas/red_bubble.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:modified="TRUE">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient5264">
+      <stop
+         id="stop5266"
+         offset="0"
+         style="stop-color:#ff7777;stop-opacity:1;" />
+      <stop
+         id="stop5268"
+         offset="1"
+         style="stop-color:#ff0808;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5254">
+      <stop
+         style="stop-color:#ff1a1a;stop-opacity:1;"
+         offset="0"
+         id="stop5256" />
+      <stop
+         style="stop-color:#8d0000;stop-opacity:1;"
+         offset="1"
+         id="stop5258" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5254"
+       id="radialGradient7343"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.5616661,-1.6142095,1.6931985,1.357138,-141.55163,39.137732)"
+       cx="46.652752"
+       cy="77.982826"
+       fx="46.652752"
+       fy="77.982826"
+       r="40.027294" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5264"
+       id="radialGradient7350"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-0.3304497,-3.3107109,3.9465239,-0.3939117,-135.73668,245.10767)"
+       cx="56.40527"
+       cy="49.697388"
+       fx="56.40527"
+       fy="49.697388"
+       r="13.828125" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5264"
+       id="radialGradient7353"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.170631,1.8227878,-2.4397871,1.5668932,95.584345,-150.32364)"
+       cx="56.39016"
+       cy="50.901066"
+       fx="56.39016"
+       fy="50.901066"
+       r="22.515625" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.4285714"
+     inkscape:cx="37.5"
+     inkscape:cy="34.81579"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="1680"
+     inkscape:window-height="1003"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     width="75px"
+     height="70px"
+     showgrid="false" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Red Bubble</dc:title>
+        <dc:date>2007-08-21</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Jean-Victor Balin</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>shape</rdf:li>
+            <rdf:li>water</rdf:li>
+            <rdf:li>sea</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>jean.victor.balin@gmail.com</dc:description>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:language>fr-FR</dc:language>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g7357">
+      <path
+         id="path2160"
+         d="M 94.449261,44.987556 C 94.449261,63.667298 76.517033,78.827667 54.421967,78.827667 C 32.3269,78.827667 14.394672,63.667298 14.394672,44.987556 C 14.394672,26.307815 32.3269,11.147446 54.421967,11.147446 C 76.517033,11.147446 94.449261,26.307815 94.449261,44.987556 z "
+         style="fill:url(#radialGradient7343);fill-opacity:1;stroke:none;stroke-width:0.35433072;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.41732287, 1.41732287;stroke-dashoffset:0;stroke-opacity:1"
+         transform="matrix(0.9305994,0,0,1.0223881,-13.145049,-10.994742)"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
+      <path
+         id="path2162"
+         d="M 57.251905,10.967709 C 62.861745,16.825407 66.283155,24.466979 66.283155,32.842709 C 66.283156,51.243648 49.871306,66.186459 29.658155,66.186459 C 28.394833,66.186459 27.138649,66.144082 25.908155,66.030209 C 28.188635,66.383806 30.535463,66.561459 32.939405,66.561459 C 53.919263,66.561459 70.939404,52.479389 70.939405,35.123959 C 70.939405,25.411889 65.624869,16.736535 57.251905,10.967709 z "
+         style="fill:url(#radialGradient7353);fill-opacity:1;stroke:none;stroke-width:0.35433072;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.41732287, 1.41732287;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         sodipodi:nodetypes="ccccccccccccccccccc"
+         id="path2167"
+         d="M 11.788375,16.217709 C 14.18723,15.821491 16.613191,15.755744 19.038375,15.780209 C 20.968267,12.558394 23.441796,9.6884056 26.350875,7.3114586 C 18.748156,7.8462816 15.539048,11.805033 11.788375,16.217709 z M 28.882125,7.5927086 C 26.03838,9.9599806 23.576671,12.782196 21.632125,15.936459 C 23.706777,16.153035 25.746434,16.597531 27.725875,17.217709 C 28.973001,13.754824 31.684672,10.240549 34.288375,7.9052086 C 31.744137,7.3072636 30.919088,7.2160796 28.882125,7.5927086 z M 10.065161,19.244495 C 8.361878,23.12491 6.86205,26.66142 6.632125,31.592709 C 9.181317,31.091109 11.386836,30.450853 14.123197,30.070388 C 14.801344,25.948388 15.778308,22.375156 17.382125,18.873959 C 14.680241,18.870825 12.712354,18.733573 10.065161,19.244495 z M 20.038375,18.905209 C 18.378654,22.321218 17.262574,26.034604 16.850875,29.967709 C 20.409617,29.509353 22.826227,29.323576 26.40891,29.150744 C 26.264638,25.443866 26.489864,23.128684 26.944625,20.123959 C 24.743745,19.425925 22.413255,19.044287 20.038375,18.905209 z "
+         style="fill:url(#radialGradient7350);fill-opacity:1;stroke:none;stroke-width:0.35433072;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.41732287, 1.41732287;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>

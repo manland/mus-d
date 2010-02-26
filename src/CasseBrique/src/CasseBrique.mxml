@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="horizontal" 
+	verticalAlign="top"
+    horizontalAlign="left" 
+    backgroundGradientColors="[0x000000,0x323232]" 
+    paddingTop="10" 
+    height="100%" 
+    verticalScrollPolicy="on"
+    creationComplete="init()">
+    
+    <mx:Script>
+	<![CDATA[
+		import Graphique.GuiBrique;
+		import mx.controls.TextArea;
+		import mx.controls.Image;
+		
+		private var collision:Boolean = false;
+		private var yTo:int = 0;
+		private var xTo:int = 0;
+		private var perdu:Boolean = false;
+		private var element_collision:DisplayObject = null;
+		private var sens_collision:int = -1; //0:
+		private var tab_element:Array = [];
+		
+		private var boule:Image;
+		private var barre:Image;
+		
+		[Embed(source="boule.svg")] [Bindable] private var svg_boule:Class;
+		[Embed(source="barre.svg")] [Bindable] private var svg_barre:Class;
+		
+		[Embed(source="brique1.svg")] [Bindable] private var svg_brique1:Class;
+		[Embed(source="brique2.svg")] [Bindable] private var svg_brique2:Class;
+		[Embed(source="brique3.svg")] [Bindable] private var svg_brique3:Class;
+		[Embed(source="brique4.svg")] [Bindable] private var svg_brique4:Class;
+		
+		private function init():void {
+			myCanvas.removeAllChildren();
+			var o:GuiBrique = new GuiBrique(sysout, myCanvas);
+			
+			
+			
+			
+			
+//			boule = new Image();
+//			boule.source = svg_boule;
+//			boule.x = 123;
+//			boule.y = myCanvas.height - 59;
+//			boule.width = 10;
+//			boule.height = 10;
+//			myCanvas.addChild(boule);
+//			
+//			barre = new Image();
+//			barre.source = svg_barre;
+//			barre.x = 100;
+//			barre.y = myCanvas.height - 50;
+//			barre.width = 100;
+//			barre.height = 10;
+//			myCanvas.addChild(barre);
+//			
+//			barre.addEventListener(KeyboardEvent.KEY_DOWN, onKey);
+//			barre.x = 100;
+//			barre.y = myCanvas.height - 50;
+//			boule.x = 123;
+//			boule.y = myCanvas.height - 59;
+//			barre.setFocus();
+//			
+//			collision = false;
+//			yTo = 0;
+//			xTo = 0;
+//			perdu = false;
+//			element_collision = null;
+//			sens_collision = -1;
+//			tab_element = [];
+//			
+//			var nb_poissons:int = Math.round(Math.random()*10)+5;
+//			for(var i:int; i<nb_poissons; i++) {
+//				var num_poisson:int = Math.ceil(Math.random()*4);
+//				var brique:Image = new Image();
+//				switch (num_poisson) {
+//					case 1:brique.source = svg_brique1; break;
+//					case 2:brique.source = svg_brique2; break;
+//					case 3:brique.source = svg_brique3; break;
+//					case 4:brique.source = svg_brique4; break;
+//					default : brique.source = svg_brique1;
+//				}
+//				brique.width = 100;
+//				brique.height = 30;
+//				brique.x = Math.round(Math.random() * 600);
+//				brique.y = Math.round(Math.random() * 300);
+//				myCanvas.addChild(brique);
+//				tab_element[i] = brique;
+//			}
+
+		}
+		
+		private function onKey(event:KeyboardEvent):void {
+//			if (event.keyCode == Keyboard.RIGHT){
+//				barre.x = barre.x + 10;
+//			}
+//			if (event.keyCode == Keyboard.LEFT){
+//				barre.x = barre.x - 10;
+//			}
+		}
+		
+		private function startMouvementBoule():void {
+//			if(collision) {
+//				sysout.text += "dans collision "+tab_element.indexOf(element_collision)+"\n";
+//				yTo = barre.y;
+//				xTo = boule.x;
+//				myCanvas.removeChild(element_collision);
+//				tab_element[tab_element.indexOf(element_collision)] = null;
+//				collision = false;
+//				verifierGagner();
+//			}
+//			else {
+//				if(boule.x >= barre.x && boule.x <= barre.x+barre.width && boule.y == barre.y) {
+//					yTo = 0;
+//					if(boule.x <= barre.x + barre.width/4) {
+//						xTo = boule.x - 60;
+//					}
+//					else if(boule.x <= barre.x + barre.width/2) {
+//						xTo = boule.x - 30;
+//					}
+//					else if(boule.x >= barre.x + barre.width/2) {
+//						xTo = boule.x + 30;
+//					}
+//					else {
+//						xTo = boule.x + 60;
+//					}
+//				}
+//				else {
+//					if(boule.y == barre.y) {
+//						sysout.text += "PERDU" + "\n";
+//						perdu = true;
+//					}
+//					else {
+//						yTo = barre.y;
+//						xTo = boule.x;
+//					}
+//				}
+//				verifierCollision();
+//				
+//			}
+//			if(!perdu) {
+//				mouvement_boule.yTo = yTo;
+//				mouvement_boule.xTo = xTo;
+//				mouvement_boule.target = boule;
+//	            mouvement_boule.play();
+//	  		}
+		}
+		
+		private function verifierCollision():void {
+//			//Si la boule descend vers la gauche
+//			for(var y:int=boule.y; y<=yTo && !collision; y++) {
+//				for(var x:int=boule.x; x<=xTo && !collision; x++) {
+//					for(var element:int=tab_element.length-1; element>=0 && !collision; element--) {
+//						if(tab_element[element] != null) {
+//							var image:Image = tab_element[element];
+//							if( x >= image.x && 
+//								x <= image.x + image.width && 
+//								y <= image.y + image.height && 
+//								y >= image.y ) {
+//									collision = true;
+//									element_collision = image;
+//									sysout.text += "Collision descend gauche" + "\n";
+//									yTo = y;
+//							}
+//						}
+//					}
+//				}
+//			}
+//			//Si la boule descend vers la droite
+//			for(var y:int=boule.y; y<=yTo && !collision; y++) {
+//				for(var x:int=xTo; x<=boule.x && !collision; x++) {
+//					for(var element:int=tab_element.length-1; element>=0 && !collision; element--) {
+//						if(tab_element[element] != null) {
+//							var image:Image = tab_element[element];
+//							if( x >= image.x && 
+//								x <= image.x + image.width && 
+//								y <= image.y + image.height && 
+//								y >= image.y ) {
+//									collision = true;
+//									element_collision = image;
+//									sysout.text += "Collision descend droite" + "\n";
+//									yTo = y;
+//							}
+//						}
+//					}
+//				}
+//			}
+//			//si la boule monte vers la gauche
+//			for(var y:int=yTo; y<=boule.y && !collision; y++) {
+//				for(var x:int=xTo; x<=boule.x && !collision; x++) {
+//					for(var element:int=0; element<tab_element.length && !collision; element++) {
+//						if(tab_element[element] != null) {
+//							var image:Image = tab_element[element];
+//							if( x >= image.x && 
+//								x <= image.x + image.width && 
+//								y <= image.y + image.height && 
+//								y >= image.y ) {
+//									collision = true;
+//									element_collision = image;
+//									sysout.text += "Collision monte gauche" + "\n";
+//									yTo = y;
+//							}
+//						}
+//					}
+//				}
+//			}
+//			//si la boule monte vers la droite
+//			for(var y:int=yTo; y<=boule.y && !collision; y++) {
+//				for(var x:int=boule.x; x<=xTo && !collision; x++) {
+//					for(var element:int=0; element<tab_element.length && !collision; element++) {
+//						if(tab_element[element] != null) {
+//							var image:Image = tab_element[element];
+//							if( x >= image.x && 
+//								x <= image.x + image.width && 
+//								y <= image.y + image.height && 
+//								y >= image.y ) {
+//									collision = true;
+//									element_collision = image;
+//									sysout.text += "Collision monte droite" + "\n";
+//									yTo = y;
+//							}
+//						}
+//					}
+//				}
+//			}
+		}
+		
+		private function verifierGagner():void {
+//			for(var i:int=0; i<tab_element.length; i++) {
+//				if(tab_element[i] != null) {
+//					return;
+//				}
+//			}
+//			sysout.text += "GAGNE\n";
+		}
+		
+		private function pauseMouvements():void {
+//			if(bouton_pause.label == "Pause") {
+//				mouvement_boule.pause();
+//				bouton_pause.label = "Reprise";
+//			}
+//			else {
+//				mouvement_boule.resume();
+//				bouton_pause.label = "Pause";
+//			}
+		}
+
+        private function startMouvementPoisson():void {
+//        	for(var i:int=0; i<tab_element.length; i++) {
+//        		if((Image)(tab_element[i]).x >= myCanvas.width-100) {
+//        			(Image)(tab_element[i]).x = 0;
+//        		}
+//        	}
+//        	mouvement_poisson.xTo = myCanvas.width;
+//			mouvement_poisson.targets = tab_element;
+//            mouvement_poisson.play();
+        }
+
+	]]>
+	</mx:Script>
+	
+    <mx:Panel width="300" height="100%">
+    	<mx:Text id="sysout" text="" />
+    	<mx:Button label="start" click="init();startMouvementBoule()" />
+    </mx:Panel>
+    
+    <mx:Move id="mouvement_boule" effectEnd="startMouvementBoule()" duration="1000"/>
+    <mx:Move id="mouvement_poisson" effectEnd="startMouvementPoisson()" duration="10000"/>
+
+	<mx:Panel id="panel" width="100%" height="100%" title="Tu me K-sse les....Briques">
+		
+	    <mx:Canvas id="myCanvas" height="100%" width="100%" borderStyle="solid" backgroundColor="white" />
+	    
+	    <mx:ControlBar horizontalAlign="center" >
+	    	<mx:Spacer width="100%" />
+	    	<mx:Button id="bouton_commencer" label="Commencer" click="startMouvementBoule()" />
+	    	<mx:Button id="bouton_pause" label="Pause" click="pauseMouvements()" />
+	    	<mx:Button id="bouton_recommencer" label="Recommencer" click="init(); startMouvementBoule()" />
+	    	<mx:Spacer width="100%" />
+	    	<mx:Label text="Score :" />
+	    	<mx:Label id="label_score" text="0" />
+	    </mx:ControlBar>
+	    
+    </mx:Panel>
+	
+</mx:Application>
