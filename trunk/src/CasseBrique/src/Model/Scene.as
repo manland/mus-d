@@ -1,14 +1,20 @@
 package Model
 {
+	import mx.controls.Text;
+	
 	public class Scene implements IModelChangeListener
 	{
+		private var sysout:Text;
+		
 		private var enfants:Array;
 		private var ecouteurs:Array;
 		private var largeur:Number;
 		private var hauteur:Number;
 		
-		public function Scene(largeur:Number=100, hauteur:Number=100)
+		public function Scene(t:Text, largeur:Number=100, hauteur:Number=100)
 		{
+			sysout = t;
+			
 			this.largeur = largeur;
 			this.hauteur = hauteur;
 			enfants = new Array();
@@ -19,7 +25,7 @@ package Model
 			e.addModelChangeListener(this);
 			enfants.push(e);
 		}
-		
+				
 		public function rmEnfant(e:IModelObjet):void {
 			enfants.splice(enfants.indexOf(e), 1);
 		}
@@ -32,7 +38,7 @@ package Model
 			for(var i:int = 0; i < enfants.length; i = i + 1) {
 				var enfant:IModelObjet = enfants[i] as IModelObjet;
 				if(enfant != o) {
-					if(enfant.getX() == o.getX()) {
+					if (o.estTouchePar(enfant.getX(), enfant.getY())) {
 						fireCollision(o, enfant);
 					}
 				}
@@ -46,7 +52,7 @@ package Model
 			for(var i:int = 0; i < enfants.length; i = i + 1) {
 				var enfant:IModelObjet = enfants[i] as IModelObjet;
 				if(enfant != o) {
-					if(enfant.getY() == o.getY()) {
+					if(o.estTouchePar(enfant.getX(), enfant.getY())) {
 						fireCollision(o, enfant);
 					}
 				}
@@ -65,6 +71,7 @@ package Model
 		}
 		
 		public function fireCollision(objet1:IModelObjet, objet2:IModelObjet):void {
+			sysout.text += "Scene:fireCollision\n";
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
 				(ecouteurs[i] as IModelSceneListener).collision(objet1, objet2);
 			}

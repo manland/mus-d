@@ -12,5 +12,7 @@ package Model
 		function getHauteur():Number;
 		function addModelChangeListener(m:IModelChangeListener):void;
 		function rmModelChangeListener(m:IModelChangeListener):void;
+		function estTouchePar(tx:Number, ty:Number):Boolean;
+		function getNom():String;
 	}
 }

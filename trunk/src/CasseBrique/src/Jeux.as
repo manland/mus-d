@@ -4,12 +4,12 @@ package
 	import Graphique.GuiBar;
 	import Graphique.GuiBrique;
 	import Graphique.GuiScene;
+	import Graphique.IGuiSceneListener;
+	import Graphique.IGuiObjet;
 	import mx.controls.Text;
-	import Model.IModelSceneListener;
-	import Model.IModelObjet;
 	import Model.MouvementBalle;
 	
-	public class Jeux implements IModelSceneListener
+	public class Jeux implements IGuiSceneListener
 	{
 		private var sysout:Text;//Pour débuggage
 		
@@ -22,8 +22,8 @@ package
 		{
 			this.sysout = sysout;
 			
-			scene = new GuiScene();
-			scene.getObjet().addModelSceneListener(this);
+			scene = new GuiScene(sysout);
+			scene.addSceneListener(this);
 			
 			balle = new GuiBalle(20, 0, 15, 15);
 			brique = new GuiBrique(36, 25);
@@ -40,11 +40,17 @@ package
 			move.avance(50, 100, 2000);
 		}
 		
-		public function collision(objet1:IModelObjet, objet2:IModelObjet):void {
-			sysout.text += "COLLISION\n";
+		public function collision(objet1:IGuiObjet, objet2:IGuiObjet):void {
+			sysout.text = "Collision entre "+objet1.getObjet().getNom()+" et "+objet2.getObjet().getNom()+"\n";
+			if(objet1.getObjet().getNom() == "Balle" && objet2.getObjet().getNom() == "Brique") {
+				scene.rmEnfant(brique);
+			}
+			else if (objet1.getObjet().getNom() == "Brique" && objet2.getObjet().getNom() == "Balle") {
+				scene.rmEnfant(brique)
+			}
 		}
 		
-		public function collisionBord(objet:IModelObjet):void {
+		public function collisionBord(objet:IGuiObjet):void {
 			
 		}
 		
