@@ -36,7 +36,7 @@
 	</mx:Script>
 	
     <mx:Panel width="300" height="100%">
-    	<mx:Text id="sysout" text="" />
+    	<mx:Text id="sysout" text=""/>
     	<mx:Button label="start" click="init();" />
     </mx:Panel>
 
