@@ -1,17 +1,28 @@
 package Controleur
 {
-	import flash.events.MouseEvent;	
+	import flash.events.MouseEvent;
+	
+	import mx.controls.Text;
 	import mx.core.Application;
 
 	public class MSouris
 	{
+		private static var sysout:Text;//Pour débuggage
+		
+		private var ancienX:Number;
+		private var ancienY:Number;
+		
 		private var ecouteurs:Array;
 		
-		public function MSouris()
+		public function MSouris(s:Text)
 		{
+			sysout = s;
+			ancienX = -1;
+			ancienY = -1;
 			ecouteurs = new Array();	
 			Application.application.addEventListener(MouseEvent.CLICK, clic);
-			Application.application.addEventListener(MouseEvent.DOUBLE_CLICK, doubleClic);		
+			//Application.application.addEventListener(MouseEvent.DOUBLE_CLICK, doubleClic);
+			Application.application.addEventListener(MouseEvent.MOUSE_MOVE, bouge);
 		}
 		
 		public function ajouterEcouteur( ecouteur:MIEcouteurSouris):void
@@ -30,12 +41,47 @@ package Controleur
 				ecouteurs[i].clic();
 			}
 		}
-		private function doubleClic(evenement : MouseEvent):void
+		private function bouge(evenement : MouseEvent):void
 		{
-			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				ecouteurs[i].doubleClic();
+			//Alert.show(evenement.stageX.toString());
+			var x:Number = evenement.stageX;
+			var y:Number = evenement.stageY;
+			//sysout.text += "bouge : "+evenement.stageX.toString()+"  "+evenement.stageY.toString()+"\n";
+			if(ancienX != -1 && ancienY != -1){
+				if(x -  ancienX < 0){
+					for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
+						ecouteurs[i].bougeGauche();
+					}
+				}
+				if(x -  ancienX > 0){
+						for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
+							ecouteurs[i].bougeDroite();
+						}
+				}
+				if(y -  ancienY < 0){
+					for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
+						ecouteurs[i].bougeHaut();
+					}
+				}
+				if(y -  ancienY > 0){
+					for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
+						ecouteurs[i].bougeBas();
+					}
+				}
+				
 			}
+			ancienX = x;
+			ancienY = y;
+			
+		
 		}
+//		private function doubleClic(evenement : MouseEvent):void
+//		{
+//			Alert.show("double clic");
+//			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
+//				ecouteurs[i].doubleClic();
+//			}
+//		}
 		
 	}
 }
