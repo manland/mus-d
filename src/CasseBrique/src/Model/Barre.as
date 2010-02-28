@@ -1,12 +1,9 @@
 package Model
 {
-	import mx.controls.Text;
 	import Controleur.Clavier;
-	import mx.core.UIComponent;
 	import Controleur.IClavierListener;
-	import Controleur.MSouris;
-	import Controleur.MIEcouteurClavier;
 	import Controleur.MIEcouteurSouris;
+	import Controleur.MSouris;
 	
 	public class Barre extends Objet implements IModelObjet, IClavierListener, MIEcouteurSouris
 	{
@@ -41,11 +38,11 @@ package Model
 		
 		public function clic():void {}
 		public function doubleClic():void {}
-		public function bougeDroite():void {
-			setX(x + 2);
+		public function bougeDroite(x:Number):void {
+			setX(x);
 		}
-		public function bougeGauche():void {
-			setX(x - 2);
+		public function bougeGauche(y:Number):void {
+			setX(y);
 		}
 	}
 }

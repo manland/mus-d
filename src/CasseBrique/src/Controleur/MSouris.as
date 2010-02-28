@@ -50,22 +50,22 @@ package Controleur
 			if(ancienX != -1 && ancienY != -1){
 				if(x -  ancienX < 0){
 					for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-						ecouteurs[i].bougeGauche();
+						ecouteurs[i].bougeGauche(x);
 					}
 				}
 				if(x -  ancienX > 0){
 						for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-							ecouteurs[i].bougeDroite();
+							ecouteurs[i].bougeDroite(x);
 						}
 				}
 				if(y -  ancienY < 0){
 					for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-						ecouteurs[i].bougeHaut();
+						ecouteurs[i].bougeHaut(y);
 					}
 				}
 				if(y -  ancienY > 0){
 					for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-						ecouteurs[i].bougeBas();
+						ecouteurs[i].bougeBas(y);
 					}
 				}
 				

@@ -4,7 +4,7 @@ package Controleur
 	{
 		function clic():void;
 		function doubleClic():void;
-		function bougeDroite():void;
-		function bougeGauche():void;
+		function bougeDroite(x:Number):void;
+		function bougeGauche(y:Number):void;
 	}
 }
