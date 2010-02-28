@@ -4,6 +4,7 @@ package Controleur
 	
 	import mx.controls.Text;
 	import mx.core.Application;
+	import mx.core.UIComponent;
 
 	public class MSouris
 	{
@@ -14,13 +15,18 @@ package Controleur
 		
 		private var ecouteurs:Array;
 		
-		public function MSouris(s:Text)
+		public function MSouris(compo_a_ecouter:UIComponent = null, s:Text)
 		{
 			sysout = s;
 			ancienX = -1;
 			ancienY = -1;
-			ecouteurs = new Array();	
-			Application.application.addEventListener(MouseEvent.CLICK, clic);
+			ecouteurs = new Array();
+			if(compo_a_ecouter != null) {
+				compo_a_ecouter.addEventListener(MouseEvent.CLICK, clic);
+			}
+			else {
+				Application.application.addEventListener(MouseEvent.CLICK, clic);
+			}
 			//Application.application.addEventListener(MouseEvent.DOUBLE_CLICK, doubleClic);
 			Application.application.addEventListener(MouseEvent.MOUSE_MOVE, bouge);
 		}
@@ -60,12 +66,12 @@ package Controleur
 				}
 				if(y -  ancienY < 0){
 					for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-						ecouteurs[i].bougeHaut(y);
+						ecouteurs[i].bougeHaut();
 					}
 				}
 				if(y -  ancienY > 0){
 					for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-						ecouteurs[i].bougeBas(y);
+						ecouteurs[i].bougeBas();
 					}
 				}
 				
