@@ -10,5 +10,10 @@ package Model
 			super(x, y, largeur, hauteur);
 			nom = "Brique";
 		}
+		
+		override public function actionCollision(objet:IModelObjet):void {
+			Jeux.getSysout().text += "Brique:actionCollision:mourir\n";
+			mourir();
+		}
 	}
 }

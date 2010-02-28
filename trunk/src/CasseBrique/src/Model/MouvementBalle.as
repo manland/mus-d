@@ -13,6 +13,8 @@ package Model
 		private var A:Number;
 		private var B:Number;
 		private var type_droite:Number;//0 = normal; 1 = horizontale; 2 = verticale
+		private var x_orgine:Number;
+		private var y_origine:Number;
 		public function MouvementBalle(objet:IModelObjet)
 		{
 			this.objet = objet;
@@ -22,6 +24,8 @@ package Model
 			if(timer != null) {
 				stop();
 			}
+			x_orgine = objet.getX();
+			y_origine= objet.getY();
 			this.tx = tx;
 			this.ty = ty;
 			calculEquationDroite();
@@ -37,7 +41,7 @@ package Model
 			timer.stop();
 		}
 		
-		public function finUnPixel(e:TimerEvent):void {
+		private function finUnPixel(e:TimerEvent):void {
 			if(type_droite == 1) {//droite horizontale
 				objet.setY(objet.getY() + 1);
 			}
@@ -73,6 +77,14 @@ package Model
 				A = (objet.getY() - ty) / (objet.getX() - tx);
 				B = objet.getY() - (A * objet.getX());
 			}
+		}
+		
+		//Getters & Setters
+		public function getXOrigine():Number {
+			return x_orgine;
+		}
+		public function getYOrigine():Number {
+			return y_origine;
 		}
 
 	}

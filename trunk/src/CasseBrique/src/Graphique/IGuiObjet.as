@@ -7,5 +7,8 @@ package Graphique
 	{
 		function getComponent():UIComponent;
 		function getObjet():IModelObjet;
+		function addGuiChangeListener(m:IGuiChangeListener):void;
+		function mourir():void;
+		function naitre():void;
 	}
 }

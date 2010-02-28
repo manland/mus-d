@@ -4,7 +4,5 @@ package Graphique
 	
 	public interface IGuiSceneListener
 	{
-		function collision(objet1:IGuiObjet, objet2:IGuiObjet):void;
-		function collisionBord(objet:IGuiObjet):void;
 	}
 }

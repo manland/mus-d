@@ -18,19 +18,19 @@ package Model
 		}
 		
 		public function toucheBas():void {
-			setY(y + 1);
+			setY(y + 2);
 		}
 		
 		public function toucheHaut():void {
-			setY(y - 1);
+			setY(y - 2);
 		}
 		
 		public function toucheDroite():void {
-			setX(x + 1);
+			setX(x + 2);
 		}
 		
 		public function toucheGauche():void {
-			setX(x - 1);
+			setX(x - 2);
 		}
 	}
 }

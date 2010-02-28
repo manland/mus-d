@@ -6,5 +6,7 @@ package Model
 		function modelChangeY(o:IModelObjet):void;
 		function modelChangeLargeur(o:IModelObjet):void;
 		function modelChangeHauteur(o:IModelObjet):void;
+		function modelMeurt(o:IModelObjet):void;
+		function modelNait(o:IModelObjet):void;
 	}
 }
