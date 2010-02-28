@@ -5,6 +5,6 @@ package Controleur
 		function clic():void;
 		function doubleClic():void;
 		function bougeDroite(x:Number):void;
-		function bougeGauche(y:Number):void;
+		function bougeGauche(x:Number):void;
 	}
 }
