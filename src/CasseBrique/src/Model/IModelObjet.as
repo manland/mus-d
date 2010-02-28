@@ -14,5 +14,9 @@ package Model
 		function rmModelChangeListener(m:IModelChangeListener):void;
 		function estTouchePar(tx:Number, ty:Number):Boolean;
 		function getNom():String;
+		function mourir():void;
+		function naitre():void;
+		function actionCollision(objet:IModelObjet):void;
+		function actionCollisionBord():void;
 	}
 }

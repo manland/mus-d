@@ -11,10 +11,8 @@ package Model
 		private var largeur:Number;
 		private var hauteur:Number;
 		
-		public function Scene(t:Text, largeur:Number=100, hauteur:Number=100)
+		public function Scene(largeur:Number=100, hauteur:Number=100)
 		{
-			sysout = t;
-			
 			this.largeur = largeur;
 			this.hauteur = hauteur;
 			enfants = new Array();
@@ -27,6 +25,7 @@ package Model
 		}
 				
 		public function rmEnfant(e:IModelObjet):void {
+			Jeux.getSysout().text += "Scene:rmEnfant:nb enfants:"+enfants.length+"\n";
 			enfants.splice(enfants.indexOf(e), 1);
 		}
 		
@@ -39,12 +38,12 @@ package Model
 				var enfant:IModelObjet = enfants[i] as IModelObjet;
 				if(enfant != o) {
 					if (o.estTouchePar(enfant.getX(), enfant.getY())) {
-						fireCollision(o, enfant);
+						collision(o, enfant);
 					}
 				}
 			}
 			if(o.getX() <= 0 || o.getX() >= largeur) {
-				fireCollisionBord(o);
+				collisionBord(o);
 			}
 		}
 		
@@ -53,12 +52,12 @@ package Model
 				var enfant:IModelObjet = enfants[i] as IModelObjet;
 				if(enfant != o) {
 					if(o.estTouchePar(enfant.getX(), enfant.getY())) {
-						fireCollision(o, enfant);
+						collision(o, enfant);
 					}
 				}
 			}
 			if(o.getY() <= 0 || o.getY() >= hauteur) {
-				fireCollisionBord(o);
+				collisionBord(o);
 			}
 		}
 		
@@ -70,17 +69,22 @@ package Model
 			
 		}
 		
-		public function fireCollision(objet1:IModelObjet, objet2:IModelObjet):void {
-			sysout.text += "Scene:fireCollision\n";
-			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				(ecouteurs[i] as IModelSceneListener).collision(objet1, objet2);
-			}
+		public function modelMeurt(o:IModelObjet):void {
+			Jeux.getSysout().text += "Scene:modelMeurt:nb enfants:"+enfants.length+"\n";
+			rmEnfant(o);
 		}
 		
-		public function fireCollisionBord(objet:IModelObjet):void {
-			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				(ecouteurs[i] as IModelSceneListener).collisionBord(objet);
-			}
+		public function modelNait(o:IModelObjet):void {
+			
+		}
+		
+		public function collision(objet1:IModelObjet, objet2:IModelObjet):void {
+			objet1.actionCollision(objet2);
+			objet2.actionCollision(objet1);
+		}
+		
+		public function collisionBord(objet:IModelObjet):void {
+			objet.actionCollisionBord();
 		}
 		
 		public function getLargeur():Number {

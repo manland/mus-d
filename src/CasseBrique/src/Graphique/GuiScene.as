@@ -7,22 +7,17 @@ package Graphique
 	import Model.IModelObjet;
 	import mx.controls.Text;
 	
-	public class GuiScene extends Canvas implements IModelSceneListener
+	public class GuiScene extends Canvas implements IGuiChangeListener
 	{
-		private var sysout:Text;
-		
 		private var scene:Scene;
 		private var enfants:Array;
 		private var ecouteurs:Array;
 		
-		public function GuiScene(t:Text)
+		public function GuiScene(largeur:Number, hauteur:Number)
 		{
-			sysout = t;
-			
-			scene = new Scene(sysout);
-			scene.addModelSceneListener(this);
-			percentWidth = 100;
-			percentHeight = 100;
+			width = largeur;
+			height = hauteur;
+			scene = new Scene(width, height);
 			enfants = new Array();
 			ecouteurs = new Array();
 		}
@@ -35,6 +30,7 @@ package Graphique
 			enfants.push(objet);
 			addChild(objet.getComponent());
 			scene.addEnfant(objet.getObjet());
+			objet.addGuiChangeListener(this);
 		}
 		public function rmEnfant(objet:IGuiObjet):void {
 			removeChild(objet.getComponent());
@@ -56,33 +52,12 @@ package Graphique
 			return scene;
 		}
 		
-		public function collision(objet1:IModelObjet, objet2:IModelObjet):void {
-			var objet_gui:IGuiObjet = null;
-			var objet_gui2:IGuiObjet = null;
-			for(var i:int = 0; i < enfants.length && objet_gui == null && objet_gui2 == null; i = i + 1) {
-				if((enfants[i] as IGuiObjet).getObjet() == objet1) {
-					objet_gui = (enfants[i] as IGuiObjet);
-				}
-				if((enfants[i] as IGuiObjet).getObjet() == objet2) {
-					objet_gui2 = (enfants[i] as IGuiObjet);
-				}
-			}
-			sysout.text += "GuiScene:Collision:taille écouteur:"+ecouteurs.length+"\n";
-			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				(ecouteurs[i] as IGuiSceneListener).collision(objet_gui, objet_gui2);
-			}
+		public function guiNait(objet:IGuiObjet):void {
+			
 		}
 		
-		public function collisionBord(objet:IModelObjet):void {
-			var objet_gui:IGuiObjet = null;
-			for(var i:int = 0; i < enfants.length && objet_gui == null; i = i + 1) {
-				if((enfants[i] as IGuiObjet).getObjet() == objet) {
-					objet_gui = (enfants[i] as IGuiObjet);
-				}
-			}
-			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				(ecouteurs[i] as IGuiSceneListener).collisionBord(objet_gui);
-			}
+		public function guiMeurt(objet:IGuiObjet):void {
+			rmEnfant(objet);
 		}
 
 	}

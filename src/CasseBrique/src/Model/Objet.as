@@ -19,6 +19,7 @@ package Model
 			nom = "Objet";
 			
 			ecouteurs = new Array();
+			naitre();
 		}
 		
 		public function addModelChangeListener(m:IModelChangeListener):void {
@@ -77,6 +78,32 @@ package Model
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
 				(ecouteurs[i] as IModelChangeListener).modelChangeHauteur(this);
 			}
+		}
+		
+		public function mourir():void {
+			fireMourir();
+		}
+		public function fireMourir():void {
+			Jeux.getSysout().text += "Objet:fireMourir:nb ecouteurs:"+ecouteurs.length+"\n";
+			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
+				(ecouteurs[i] as IModelChangeListener).modelMeurt(this);
+			}
+		}
+		
+		public function naitre():void {
+			fireNaitre();
+		}
+		public function fireNaitre():void {
+			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
+				(ecouteurs[i] as IModelChangeListener).modelNait(this);
+			}
+		}
+		
+		public function actionCollision(objet:IModelObjet):void {
+			//a réimplenté
+		}
+		public function actionCollisionBord():void {
+			//a réimplenté
 		}
 		
 		public function estTouchePar(tx:Number, ty:Number):Boolean {
