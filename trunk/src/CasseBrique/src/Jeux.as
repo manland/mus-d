@@ -9,6 +9,9 @@ package
 	import mx.controls.Text;
 	import Model.MouvementBalle;
 	import Model.Balle;
+	import flash.ui.Mouse;
+	import Controleur.MSouris;
+	import Controleur.MIEcouteurSouris;
 	
 	public class Jeux
 	{
@@ -34,6 +37,9 @@ package
 		}
 		
 		public function run():void {
+			Mouse.hide();
+			var souris:MSouris = new MSouris(scene, Jeux.getSysout());
+			souris.ajouterEcouteur(barre.getObjet() as MIEcouteurSouris);
 			(balle.getObjet() as Balle).run();
 		}
 		
