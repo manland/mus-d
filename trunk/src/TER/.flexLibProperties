@@ -1,22 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <flexLibProperties version="1">
-  <includeClasses>
-    <classEntry path="Coeur.MElement"/>
-    <classEntry path="Coeur.MIObjet"/>
-    <classEntry path="Coeur.MScene"/>
-    <classEntry path="Graphique.Degrades.MDegrade"/>
-    <classEntry path="Graphique.Degrades.MDegradeHorizontal"/>
-    <classEntry path="Graphique.Degrades.MDegradeObliqueDroite"/>
-    <classEntry path="Graphique.Degrades.MDegradeObliqueGauche"/>
-    <classEntry path="Graphique.Degrades.MDegradeRadial"/>
-    <classEntry path="Graphique.Degrades.MDegradeVertical"/>
-    <classEntry path="Graphique.MCouleur"/>
-    <classEntry path="Graphique.MGraphique"/>
-    <classEntry path="Graphique.MGraphiqueScene"/>
-    <classEntry path="Graphique.MIGraphique"/>
-    <classEntry path="Graphique.MImage"/>
-    <classEntry path="Graphique.MTexture"/>
-  </includeClasses>
-  <includeResources/>
-  <namespaceManifests/>
+<includeClasses>
+<classEntry path="Graphique.Degrades.MDegradeVertical"/>
+<classEntry path="Graphique.Degrades.MDegrade"/>
+<classEntry path="Graphique.MCouleur"/>
+<classEntry path="Graphique.Degrades.MDegradeObliqueGauche"/>
+<classEntry path="Coeur.MElement"/>
+<classEntry path="Graphique.MIGraphique"/>
+<classEntry path="Graphique.Degrades.MDegradeRadial"/>
+<classEntry path="Coeur.MScene"/>
+<classEntry path="Coeur.MControle"/>
+<classEntry path="Coeur.MBonus"/>
+<classEntry path="Coeur.MPropriete"/>
+<classEntry path="Coeur.MFormeTriangle"/>
+<classEntry path="Coeur.MStatique"/>
+<classEntry path="Graphique.Degrades.MDegradeHorizontal"/>
+<classEntry path="Graphique.MImage"/>
+<classEntry path="Coeur.MFormeEllipse"/>
+<classEntry path="Graphique.MGraphique"/>
+<classEntry path="Coeur.MDynamique"/>
+<classEntry path="Coeur.MObjet"/>
+<classEntry path="Graphique.MGraphiqueScene"/>
+<classEntry path="Graphique.MTexture"/>
+<classEntry path="Graphique.Degrades.MDegradeObliqueDroite"/>
+<classEntry path="Coeur.MFormeRond"/>
+<classEntry path="Coeur.MIObjet"/>
+</includeClasses>
+<includeResources/>
+<namespaceManifests/>
 </flexLibProperties>

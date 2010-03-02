@@ -1,41 +1,69 @@
 package Coeur
 {
-	import mx.containers.Canvas;
-	import flash.display.Graphics;
-	import Graphique.MIGraphique;
 	
-	public class MScene extends Canvas implements MIObjet
+	public class MScene extends MObjet implements MIObjet, MIObjetEcouteur
 	{
-		public function MScene()
+		protected var enfants:Array;
+		protected var propriete:MPropriete;
+		
+		public function MScene(enfants:Array = null, propriete:MPropriete = null)
 		{
-			width = 1000;
-			height = 1000;
-			
+			this.propriete = propriete;
+			this.nom_classe = "MScene";
+			if(enfants == null)
+				this.enfants = new Array();
+			else 
+				this.enfants = enfants;
 		}
 		
-		public function dessiner(graphisme:MIGraphique):void {
-			graphisme.dessiner(this);
+		public function getPropriete():MPropriete
+		{
+			return this.propriete;
+		}
+		public function setPropriete(propriete:MPropriete):void
+		{
+			this.propriete = propriete;
 		}
 		
-		public function getX():Number {
-			return x;
+		public function drop():void
+		{
 		}
 		
-		public function getY():Number {
-			return y;
+		public function collision(objet1:MIObjet, objet2:MIObjet) : void
+		{
+			objet1.actionCollision(objet2);
+			objet2.actionCollision(objet1);
 		}
 		
-		public function getHauteur():Number {
-			return height;
+		public function collisionBord(objet:MIObjet) : void
+		{
+			objet.actionCollisionBord();
 		}
 		
-		public function getLargeur():Number {
-			return width;
+		
+		public function ajoutEnfants(objet:MIObjet):void {
+			objet.ajoutObjetEcouteur(this);
+			enfants.push(objet);
+		}
+		public function supprimerEnfants(objet:MIObjet):void 
+			enfants.slice(enfants.indexOf(objet), 1);
 		}
 		
-		public function getGraphics():Graphics {
-			return graphics;
+		
+		public function deplacementObjet(objet:MIObjet):void
+		{
 		}
 		
+		public function changementTaille(objet:MIObjet):void
+		{
+		}
+		
+		public function objetMeurt(objet:MIObjet):void
+		{
+		}
+		
+		public function objetNait(objet:MIObjet):void
+		{
+		}
 	}
 }
