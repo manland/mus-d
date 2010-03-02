@@ -1,6 +1,6 @@
 format 66
 "Graphique" // Graphique
-  revision 3
+  revision 5
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -48,7 +48,7 @@ format 66
       size A4
     end
 
-    class 129238 "MIGraphique"
+    class 129238 "MIObjetGraphique"
       visibility package stereotype "interface"
       cpp_decl ""
       java_decl "${comment}${@}${visibility}interface ${name}${extends} {
@@ -83,14 +83,23 @@ ${members}};
 	relation_ref 132566 // <association>
       end
 
-      classrelation 133846 // <association>
-	relation_ref 132694 // <association>
+      classrelation 133846 // (< contient)
+	relation_ref 132694 // < contient
       end
 
-      operation 130262 "dessiner"
-	public explicit_return_type ""
-	nparams 1
-	  param in name "objet" type class_ref 128342 // MIObjet
+      operation 130262 "getObjet"
+	public return_type class_ref 128342 // MIObjet
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 135382 "getObjetGraphique"
+	public return_type class_ref 132438 // UIComponent
+	nparams 0
 	
 	
 	
@@ -112,7 +121,7 @@ ${members}};
 	relation 129622 ---|>
 	  a public
 	    classrelation_ref 130134 // <generalisation>
-	  b parent class_ref 129238 // MIGraphique
+	  b parent class_ref 129238 // MIObjetGraphique
       end
     end
 
@@ -129,7 +138,7 @@ ${members}};
 	relation 129494 ---|>
 	  a public
 	    classrelation_ref 130006 // <generalisation>
-	  b parent class_ref 129238 // MIGraphique
+	  b parent class_ref 129238 // MIObjetGraphique
       end
 
       classrelation 130262 // <aggregation>
@@ -191,8 +200,6 @@ ${members}};
   end
 
   package_ref 128470 // Degrades
-
-  package_ref 129878 // Formes
 
   package_ref 130006 // Effets
 end
