@@ -1,6 +1,6 @@
 format 66
 "Coeur" // Coeur
-  revision 3
+  revision 5
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -141,6 +141,14 @@ format 66
 	    classrelation_ref 132950 // <generalisation>
 	  b parent class_ref 128342 // MIObjet
       end
+
+      classrelation 141782 // (< s'applique sur)
+	relation 139990 ---- name "< s'applique sur"
+	  a role_name "" private
+	    classrelation_ref 141782 // (< s'applique sur)
+	  b role_name "" private
+	    classrelation_ref 141910 // (< s'applique sur)
+      end
     end
 
     class 128598 "MStatique"
@@ -192,13 +200,6 @@ format 66
 	relation_ref 133462 // <association>
       end
 
-      classrelation 135254 // <generalisation>
-	relation 133590 ---|>
-	  a public
-	    classrelation_ref 135254 // <generalisation>
-	  b parent class_ref 128342 // MIObjet
-      end
-
       classrelation 135382 // <generalisation>
 	relation 133718 ---|>
 	  a public
@@ -206,12 +207,19 @@ format 66
 	  b parent class_ref 132438 // UIComponent
       end
 
-      classrelation 135510 // <association>
-	relation 133846 ----
+      classrelation 135510 // (< est represente par)
+	relation 133846 ---- name "< est represente par"
 	  a role_name "" private
-	    classrelation_ref 135510 // <association>
+	    classrelation_ref 135510 // (< est represente par)
 	  b role_name "" private
-	    classrelation_ref 135638 // <association>
+	    classrelation_ref 135638 // (< est represente par)
+      end
+
+      classrelation 137814 // <realization>
+	relation 136022 -_-|>
+	  a public
+	    classrelation_ref 137814 // <realization>
+	  b parent class_ref 128342 // MIObjet
       end
     end
 
@@ -257,20 +265,12 @@ ${members}};
 	relation_ref 132438 // <association>
       end
 
-      classrelation 133718 // <association>
-	relation 132694 ----
+      classrelation 133718 // (< contient)
+	relation 132694 ---- name "< contient"
 	  a role_name "" private
-	    classrelation_ref 133718 // <association>
+	    classrelation_ref 133718 // (< contient)
 	  b role_name "" private
-	    classrelation_ref 133846 // <association>
-      end
-
-      classrelation 133974 // <association>
-	relation 132822 ----
-	  a role_name "" private
-	    classrelation_ref 133974 // <association>
-	  b role_name "" private
-	    classrelation_ref 134102 // <association>
+	    classrelation_ref 133846 // (< contient)
       end
 
       classrelation 134358 // <generalisation>
@@ -280,10 +280,11 @@ ${members}};
 	  b parent class_ref 132438 // UIComponent
       end
 
-      operation 129494 "dessiner"
-	public explicit_return_type ""
-	nparams 1
-	  param out name "graphisme" type class_ref 129238 // MIGraphique
+      operation 131798 "estTouchePar"
+	public explicit_return_type "bool"
+	nparams 2
+	  param in name "x" explicit_type "Number"
+	  param in name "y" explicit_type "Number"
 	
 	
 	
@@ -291,8 +292,9 @@ ${members}};
 	
       end
 
-      operation 129622 "getX"
-	public explicit_return_type "Number"
+      operation 132054 "mourir"
+	stereotype "evenement"
+	public explicit_return_type "void"
 	nparams 0
 	
 	
@@ -301,8 +303,9 @@ ${members}};
 	
       end
 
-      operation 129750 "getY"
-	public explicit_return_type "Number"
+      operation 132182 "naitre"
+	stereotype "evenement"
+	public explicit_return_type "void"
 	nparams 0
 	
 	
@@ -311,8 +314,8 @@ ${members}};
 	
       end
 
-      operation 129878 "getLargeur"
-	public explicit_return_type "Number"
+      operation 132310 "actionCollision"
+	public explicit_return_type "void"
 	nparams 0
 	
 	
@@ -321,8 +324,8 @@ ${members}};
 	
       end
 
-      operation 130006 "getHauteur"
-	public explicit_return_type "Number"
+      operation 132438 "actionCollisionBord"
+	public explicit_return_type "void"
 	nparams 0
 	
 	
@@ -331,14 +334,58 @@ ${members}};
 	
       end
 
-      operation 130134 "getGraphics"
-	public explicit_return_type "Graphics"
-	nparams 0
-	
-	
-	
-	
-	
+      attribute 129622 "x"
+	private explicit_type "Number"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129750 "y"
+	private explicit_type "Number"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 129878 "ecouteurs"
+	private explicit_type "Array"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130006 "nom_classe"
+	private explicit_type "String"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130134 "largeur"
+	private explicit_type "Number"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130262 "hauteur"
+	private explicit_type "Number"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
       end
     end
 
@@ -351,13 +398,6 @@ ${members}};
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 128342 // <generalisation>
-	relation 128342 ---|>
-	  a public
-	    classrelation_ref 128342 // <generalisation>
-	  b parent class_ref 128342 // MIObjet
-      end
-
       classrelation 128470 // <directional aggregation>
 	relation 128470 o-->
 	  a role_name "" private
@@ -368,6 +408,8 @@ ${members}};
       classrelation 128598 // <aggregation>
 	relation 128598 o---
 	  a role_name "" private
+	    comment "Enfants
+"
 	    classrelation_ref 128598 // <aggregation>
 	  b role_name "" private
 	    classrelation_ref 128726 // <aggregation>
@@ -379,15 +421,6 @@ ${members}};
 	    classrelation_ref 129494 // <association>
 	  b role_name "" private
 	    classrelation_ref 129622 // <association>
-      end
-
-      attribute 128470 "enfants"
-	private type class_ref 128342 // MIObjet
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
       end
 
       operation 128342 "drop"
@@ -414,6 +447,65 @@ ${members}};
 	    classrelation_ref 134230 // <generalisation>
 	  b parent class_ref 132566 // Canvas
       end
+
+      operation 131414 "collision"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "objet1" type class_ref 128342 // MIObjet
+	  param in name "objet2" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      operation 131542 "collisionBord"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      classrelation 137686 // <realization>
+	relation 135894 -_-|>
+	  a public
+	    classrelation_ref 137686 // <realization>
+	  b parent class_ref 128342 // MIObjet
+      end
+
+      classrelation 137942 // <realization>
+	relation 136150 -_-|>
+	  a public
+	    classrelation_ref 137942 // <realization>
+	  b parent class_ref 134614 // MIObjetEcouteur
+      end
+
+      operation 133078 "ajouterEnfant"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      operation 133206 "supprimerEnfant"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
     end
 
     class 132438 "UIComponent"
@@ -437,7 +529,236 @@ ${members}};
       explicit_switch_type ""
       
     end
+
+    class 134614 "MIObjetEcouteur"
+      visibility package stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}${visibility}interface ${name} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 132566 "deplacementModel"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      operation 132694 "changementTailleModel"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      operation 132822 "modelMeurt"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      operation 132950 "modelNait"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 134742 "MIFormePolygone"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 133462 "getPerimetre"
+	public explicit_return_type "Number"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 133590 "getSommeAngles"
+	public explicit_return_type "Number"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 138966 // <realization>
+	relation 137174 -_-|>
+	  a public
+	    classrelation_ref 138966 // <realization>
+	  b parent class_ref 132694 // MIForme
+      end
+    end
+
+    class 134870 "MFormePolygone"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 138582 // <realization>
+	relation 136790 -_-|>
+	  a public
+	    classrelation_ref 138582 // <realization>
+	  b parent class_ref 134742 // MIFormePolygone
+      end
+    end
+
+    class 134998 "MFormeTriangleIsocele"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 138070 // <generalisation>
+	relation 136278 ---|>
+	  a public
+	    classrelation_ref 138070 // <generalisation>
+	  b parent class_ref 133078 // MFormeTriangle
+      end
+    end
+
+    class 135126 "MFormeTriangleRegulier"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 138198 // <generalisation>
+	relation 136406 ---|>
+	  a public
+	    classrelation_ref 138198 // <generalisation>
+	  b parent class_ref 134998 // MFormeTriangleIsocele
+      end
+    end
+
+    class 135510 "MControleClavier"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 139478 // <generalisation>
+	relation 137686 ---|>
+	  a public
+	    classrelation_ref 139478 // <generalisation>
+	  b parent class_ref 128854 // MControle
+      end
+
+      classrelation 139990 // <realization>
+	relation 138198 -_-|>
+	  a public
+	    classrelation_ref 139990 // <realization>
+	  b parent class_ref 131030 // MIEcouteurClavier
+      end
+    end
+
+    class 135638 "MControlerSouris"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 139606 // <generalisation>
+	relation 137814 ---|>
+	  a public
+	    classrelation_ref 139606 // <generalisation>
+	  b parent class_ref 128854 // MControle
+      end
+
+      classrelation 140118 // <realization>
+	relation 138326 -_-|>
+	  a public
+	    classrelation_ref 140118 // <realization>
+	  b parent class_ref 131158 // MIEcouteurSouris
+      end
+    end
+
+    class 135766 "MControleSourisClavier"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 140374 // <generalisation>
+	relation 138582 ---|>
+	  a public
+	    classrelation_ref 140374 // <generalisation>
+	  b parent class_ref 128854 // MControle
+      end
+
+      classrelation 140502 // <realization>
+	relation 138710 -_-|>
+	  a public
+	    classrelation_ref 140502 // <realization>
+	  b parent class_ref 131158 // MIEcouteurSouris
+      end
+
+      classrelation 140630 // <realization>
+	relation 138838 -_-|>
+	  a public
+	    classrelation_ref 140630 // <realization>
+	  b parent class_ref 131030 // MIEcouteurClavier
+      end
+    end
   end
+
+  package_ref 129878 // Formes
 
   package_ref 129750 // Flex API
 end

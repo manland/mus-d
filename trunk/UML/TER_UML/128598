@@ -1,6 +1,6 @@
 format 66
 "Utilitaire" // Utilitaire
-  revision 3
+  revision 5
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -59,28 +59,6 @@ format 66
     end
 
     class 130902 "MCalculPoint"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-    end
-
-    class 131030 "MIClavier"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-    end
-
-    class 131158 "MISouris"
       visibility package 
       cpp_decl ""
       java_decl ""

@@ -1,6 +1,6 @@
 format 66
-"Formes" // Coeur::Formes
-  revision 3
+"Controleur" // Controleur
+  revision 2
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -26,7 +26,7 @@ format 66
   package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
   show_infonote default drawing_language default show_stereotype_properties default
   
-  classview 129878 "VueClasse"
+  classview 131158 "VueClasse"
     //class diagram settings
     draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
     //collaboration diagram settings
@@ -42,7 +42,358 @@ format 66
     //activity diagram settings
     package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
     show_infonote default drawing_language default show_stereotype_properties default
-    class 132694 "MIForme"
+    classdiagram 129622 "Diagramme"
+      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 137046 "MMouvement"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 142550 // <realization>
+	relation 140630 -_-|>
+	  a public
+	    classrelation_ref 142550 // <realization>
+	  b parent class_ref 135894 // MIEffet
+      end
+    end
+
+    class 137302 "MMouvementPerpetuel"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 142294 // <generalisation>
+	relation 140374 ---|>
+	  a public
+	    classrelation_ref 142294 // <generalisation>
+	  b parent class_ref 137046 // MMouvement
+      end
+    end
+
+    class 137174 "MChangementTaille"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 142422 // <realization>
+	relation 140502 -_-|>
+	  a public
+	    classrelation_ref 142422 // <realization>
+	  b parent class_ref 135894 // MIEffet
+      end
+    end
+
+    class 131158 "MIEcouteurSouris"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 136534 "click"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 136662 "doubleClick"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 136790 "bougeDroite"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 136918 "bougeGauche"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 137814 "bougeHaut"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 137942 "bougeBas"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 131030 "MIEcouteurClavier"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 134614 "flecheGauche"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 134742 "flecheDroite"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 134870 "flecheBas"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 134998 "flecheHaut"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 137046 "entree"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 137174 "espace"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 135254 "MSouris"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 131798 "ecouteurs"
+	private explicit_type "Array"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 137302 "ajouterEcouteur"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "objet" type class_ref 131158 // MIEcouteurSouris
+	
+	
+	
+	
+	
+      end
+
+      operation 137430 "supprimerEcouteur"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "objet" type class_ref 131158 // MIEcouteurSouris
+	
+	
+	
+	
+	
+      end
+
+      operation 137558 "clic"
+	private explicit_return_type "void"
+	nparams 1
+	  param in name "evenement" explicit_type "MouseEvent"
+	
+	
+	
+	
+	
+      end
+
+      operation 137686 "bouge"
+	private explicit_return_type "void"
+	nparams 1
+	  param in name "evenement" explicit_type "MouseEvent"
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 135382 "MClavier"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 130646 "ecouteurs"
+	private explicit_type "Array"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 133718 "ajouterEcouteur"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "objet" type class_ref 131030 // MIEcouteurClavier
+	
+	
+	
+	
+	
+      end
+
+      operation 133846 "supprimerEcouteur"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "objet" type class_ref 131030 // MIEcouteurClavier
+	
+	
+	
+	
+	
+      end
+
+      operation 133974 "boutonEnfonce"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "evt" explicit_type "KeyboardEvent"
+	
+	
+	
+	
+	
+      end
+
+      operation 134102 "feuToucheGauche"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 134230 "feuToucheDroite"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 134358 "feuToucheBas"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 134486 "feuToucheHaut"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 135894 "MIEffet"
       visibility package stereotype "interface"
       cpp_decl ""
       java_decl "${comment}${@}${visibility}interface ${name}${extends} {
@@ -57,16 +408,8 @@ ${members}};
 "
       explicit_switch_type ""
       
-      classrelation 134870 // <association>
-	relation_ref 133334 // <association>
-      end
-
-      classrelation 135638 // (< est represente par)
-	relation_ref 133846 // < est represente par
-      end
-
-      operation 131670 "getAire"
-	public explicit_return_type "Number"
+      operation 135126 "lancer"
+	public explicit_return_type "void"
 	nparams 0
 	
 	
@@ -75,8 +418,8 @@ ${members}};
 	
       end
 
-      operation 133334 "getNomClasse"
-	public explicit_return_type "String"
+      operation 135254 "stoper"
+	public explicit_return_type "void"
 	nparams 0
 	
 	
@@ -84,9 +427,14 @@ ${members}};
 	
 	
       end
+
+      classrelation 141910 // (< s'applique sur)
+	relation_ref 139990 // < s'applique sur
+      end
+
     end
 
-    class 133334 "MFormeEllipse"
+    class 137430 "MExplosion"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -95,97 +443,11 @@ ${members}};
       idl_decl ""
       explicit_switch_type ""
       
-      attribute 130390 "largeur"
-	private explicit_type "Number"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      attribute 130518 "hauteur"
-	private explicit_type "Number"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      classrelation 138838 // <realization>
-	relation 137046 -_-|>
+      classrelation 142678 // <generalisation>
+	relation 140758 ---|>
 	  a public
-	    classrelation_ref 138838 // <realization>
-	  b parent class_ref 132694 // MIForme
-      end
-    end
-
-    class 133206 "MFormeRond"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 137558 // <generalisation>
-	relation 135766 ---|>
-	  a public
-	    classrelation_ref 137558 // <generalisation>
-	  b parent class_ref 133334 // MFormeEllipse
-      end
-    end
-
-    class 132950 "MFormeRectangle"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 139350 // <generalisation>
-	relation 137558 ---|>
-	  a public
-	    classrelation_ref 139350 // <generalisation>
-	  b parent class_ref 134870 // MFormePolygone
-      end
-    end
-
-    class 133078 "MFormeTriangle"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 138326 // <realization>
-	relation 136534 -_-|>
-	  a public
-	    classrelation_ref 138326 // <realization>
-	  b parent class_ref 134742 // MIFormePolygone
-      end
-    end
-
-    class 132822 "MFormeCarre"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 137430 // <generalisation>
-	relation 135638 ---|>
-	  a public
-	    classrelation_ref 137430 // <generalisation>
-	  b parent class_ref 132950 // MFormeRectangle
+	    classrelation_ref 142678 // <generalisation>
+	  b parent class_ref 137174 // MChangementTaille
       end
     end
   end
