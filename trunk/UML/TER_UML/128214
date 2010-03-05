@@ -1,6 +1,6 @@
 format 66
 "Coeur" // Coeur
-  revision 5
+  revision 8
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -188,14 +188,6 @@ format 66
 	relation_ref 129110 // <association>
       end
 
-      classrelation 134742 // <association>
-	relation 133334 ----
-	  a role_name "" private
-	    classrelation_ref 134742 // <association>
-	  b role_name "" private
-	    classrelation_ref 134870 // <association>
-      end
-
       classrelation 135126 // <association>
 	relation_ref 133462 // <association>
       end
@@ -205,14 +197,6 @@ format 66
 	  a public
 	    classrelation_ref 135382 // <generalisation>
 	  b parent class_ref 132438 // UIComponent
-      end
-
-      classrelation 135510 // (< est represente par)
-	relation 133846 ---- name "< est represente par"
-	  a role_name "" private
-	    classrelation_ref 135510 // (< est represente par)
-	  b role_name "" private
-	    classrelation_ref 135638 // (< est represente par)
       end
 
       classrelation 137814 // <realization>
@@ -251,14 +235,6 @@ ${members}};
 	
 	
 	
-      end
-
-      classrelation 130902 // <association>
-	relation 130262 ----
-	  a role_name "" private
-	    classrelation_ref 130902 // <association>
-	  b role_name "" private
-	    classrelation_ref 131030 // <association>
       end
 
       classrelation 133334 // <association>
@@ -334,17 +310,8 @@ ${members}};
 	
       end
 
-      attribute 129622 "x"
-	private explicit_type "Number"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      attribute 129750 "y"
-	private explicit_type "Number"
+      attribute 129622 "coordonnee"
+	private type class_ref 140630 // MCoordonnee
 	cpp_decl ""
 	java_decl ""
 	php_decl ""
@@ -386,6 +353,10 @@ ${members}};
 	php_decl ""
 	python_decl ""
 	idl_decl ""
+      end
+
+      classrelation 146774 // < est represente par
+	relation_ref 144086 // < est represente par
       end
     end
 
@@ -461,7 +432,7 @@ ${members}};
       end
 
       operation 131542 "collisionBord"
-	public explicit_return_type ""
+	public explicit_return_type "void"
 	nparams 1
 	  param in name "objet" type class_ref 128342 // MIObjet
 	
@@ -497,7 +468,7 @@ ${members}};
       end
 
       operation 133206 "supprimerEnfant"
-	public explicit_return_type ""
+	public explicit_return_type "void"
 	nparams 1
 	  param in name "objet" type class_ref 128342 // MIObjet
 	
@@ -506,28 +477,16 @@ ${members}};
 	
 	
       end
-    end
 
-    class 132438 "UIComponent"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-    end
-
-    class 132566 "Canvas"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
+      attribute 134870 "forme"
+	private type class_ref 132694 // MIForme
+	init_value "MFormeRectangle"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
     end
 
     class 134614 "MIObjetEcouteur"
@@ -590,94 +549,6 @@ ${members}};
       end
     end
 
-    class 134742 "MIFormePolygone"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      operation 133462 "getPerimetre"
-	public explicit_return_type "Number"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      operation 133590 "getSommeAngles"
-	public explicit_return_type "Number"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      classrelation 138966 // <realization>
-	relation 137174 -_-|>
-	  a public
-	    classrelation_ref 138966 // <realization>
-	  b parent class_ref 132694 // MIForme
-      end
-    end
-
-    class 134870 "MFormePolygone"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 138582 // <realization>
-	relation 136790 -_-|>
-	  a public
-	    classrelation_ref 138582 // <realization>
-	  b parent class_ref 134742 // MIFormePolygone
-      end
-    end
-
-    class 134998 "MFormeTriangleIsocele"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 138070 // <generalisation>
-	relation 136278 ---|>
-	  a public
-	    classrelation_ref 138070 // <generalisation>
-	  b parent class_ref 133078 // MFormeTriangle
-      end
-    end
-
-    class 135126 "MFormeTriangleRegulier"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 138198 // <generalisation>
-	relation 136406 ---|>
-	  a public
-	    classrelation_ref 138198 // <generalisation>
-	  b parent class_ref 134998 // MFormeTriangleIsocele
-      end
-    end
-
     class 135510 "MControleClavier"
       visibility package 
       cpp_decl ""
@@ -699,6 +570,23 @@ ${members}};
 	  a public
 	    classrelation_ref 139990 // <realization>
 	  b parent class_ref 131030 // MIEcouteurClavier
+      end
+
+      classrelation 143830 // (>)
+	relation 141910 ---- name ">"
+	  a role_name "" private
+	    classrelation_ref 143830 // (>)
+	  b role_name "" private
+	    classrelation_ref 143958 // (>)
+      end
+
+      attribute 132950 "clavier"
+	private type class_ref 135382 // MClavier
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
       end
     end
 
@@ -723,6 +611,23 @@ ${members}};
 	  a public
 	    classrelation_ref 140118 // <realization>
 	  b parent class_ref 131158 // MIEcouteurSouris
+      end
+
+      classrelation 144086 // (>)
+	relation 142038 ---- name ">"
+	  a role_name "" private
+	    classrelation_ref 144086 // (>)
+	  b role_name "" private
+	    classrelation_ref 144214 // (>)
+      end
+
+      attribute 133334 "souris"
+	private type class_ref 135254 // MSouris
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
       end
     end
 
@@ -754,6 +659,40 @@ ${members}};
 	  a public
 	    classrelation_ref 140630 // <realization>
 	  b parent class_ref 131030 // MIEcouteurClavier
+      end
+
+      classrelation 144342 // (>)
+	relation 142166 ---- name ">"
+	  a role_name "" private
+	    classrelation_ref 144342 // (>)
+	  b role_name "" private
+	    classrelation_ref 144470 // (>)
+      end
+
+      classrelation 144598 // (>)
+	relation 142294 ---- name ">"
+	  a role_name "" private
+	    classrelation_ref 144598 // (>)
+	  b role_name "" private
+	    classrelation_ref 144726 // (>)
+      end
+
+      attribute 133078 "clavier"
+	private type class_ref 135382 // MClavier
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 133206 "souris"
+	private type class_ref 135254 // MSouris
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
       end
     end
   end

@@ -1,18 +1,22 @@
-window_sizes 1270 720 300 964 526 120
+window_sizes 1270 720 300 964 1 652
 diagrams
   classdiagram_ref 128214 // Diagramme
-    974 530 100 4 600 0
-  classdiagram_ref 128342 // Diagramme
-    779 424 100 4 0 0
+    964 526 80 4 93 0
+  active  classdiagram_ref 128342 // Diagramme
+    964 91 100 4 180 0
   classdiagram_ref 128470 // Diagramme
     974 530 100 4 0 0
-  active  classdiagram_ref 129622 // Diagramme
-    964 526 100 4 420 0
+  classdiagram_ref 129622 // Diagramme
+    964 526 100 4 360 0
 end
 show_stereotypes
-selected classdiagram_ref 129622 // Diagramme
+selected classdiagram_ref 128342 // Diagramme
 open
   classview_ref 128342 // VueClasses
+  classview_ref 129878 // VueClasse
+  classview_ref 128470 // VueClasses
+  classview_ref 128726 // VueClasses
   classview_ref 131158 // VueClasse
+  classview_ref 132438 // VueClasse
 end
 end

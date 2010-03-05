@@ -1,6 +1,6 @@
 format 66
 "Controleur" // Controleur
-  revision 2
+  revision 4
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -45,57 +45,6 @@ format 66
     classdiagram 129622 "Diagramme"
       draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
       size A4
-    end
-
-    class 137046 "MMouvement"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 142550 // <realization>
-	relation 140630 -_-|>
-	  a public
-	    classrelation_ref 142550 // <realization>
-	  b parent class_ref 135894 // MIEffet
-      end
-    end
-
-    class 137302 "MMouvementPerpetuel"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 142294 // <generalisation>
-	relation 140374 ---|>
-	  a public
-	    classrelation_ref 142294 // <generalisation>
-	  b parent class_ref 137046 // MMouvement
-      end
-    end
-
-    class 137174 "MChangementTaille"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 142422 // <realization>
-	relation 140502 -_-|>
-	  a public
-	    classrelation_ref 142422 // <realization>
-	  b parent class_ref 135894 // MIEffet
-      end
     end
 
     class 131158 "MIEcouteurSouris"
@@ -299,6 +248,14 @@ format 66
 	
 	
       end
+
+      classrelation 144214 // (>)
+	relation_ref 142038 // >
+      end
+
+      classrelation 144726 // (>)
+	relation_ref 142294 // >
+      end
     end
 
     class 135382 "MClavier"
@@ -391,64 +348,16 @@ format 66
 	
 	
       end
-    end
 
-    class 135894 "MIEffet"
-      visibility package stereotype "interface"
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
-${members}}
-"
-      php_decl "${comment}${visibility}interface ${name} {
-${members}}
-"
-      python_2_2 python_decl ""
-      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
-${members}};
-"
-      explicit_switch_type ""
-      
-      operation 135126 "lancer"
-	public explicit_return_type "void"
-	nparams 0
-	
-	
-	
-	
-	
+      classrelation 143958 // (>)
+	relation_ref 141910 // >
       end
 
-      operation 135254 "stoper"
-	public explicit_return_type "void"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      classrelation 141910 // (< s'applique sur)
-	relation_ref 139990 // < s'applique sur
-      end
-
-    end
-
-    class 137430 "MExplosion"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 142678 // <generalisation>
-	relation 140758 ---|>
-	  a public
-	    classrelation_ref 142678 // <generalisation>
-	  b parent class_ref 137174 // MChangementTaille
+      classrelation 144470 // (>)
+	relation_ref 142166 // >
       end
     end
   end
+
+  package_ref 132310 // Effets
 end
