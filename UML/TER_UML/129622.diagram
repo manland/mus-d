@@ -22,7 +22,7 @@ classcanvas 128598 class_ref 135382 // MClavier
 end
 classcanvas 128726 class_ref 135894 // MIEffet
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
-  xyz 332 479 2005
+  xyz 332 497 2005
 end
 classcanvas 128854 class_ref 137046 // MMouvement
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
@@ -39,6 +39,10 @@ end
 classcanvas 129878 class_ref 137430 // MExplosion
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
   xyz 263 716 2005
+end
+packagecanvas 130134 
+  package_ref 132310 // Effets
+    xyzwh 102 465 2005 639 304
 end
 relationcanvas 129238 relation_ref 140374 // <generalisation>
   from ref 129110 z 2012 to ref 128854

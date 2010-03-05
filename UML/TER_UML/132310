@@ -1,6 +1,6 @@
 format 66
-"Utilitaire" // Utilitaire
-  revision 7
+"Effets" // Controleur::Effets
+  revision 1
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -26,7 +26,7 @@ format 66
   package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
   show_infonote default drawing_language default show_stereotype_properties default
   
-  classview 128726 "VueClasses"
+  classview 132438 "VueClasse"
     //class diagram settings
     draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
     //collaboration diagram settings
@@ -42,12 +42,7 @@ format 66
     //activity diagram settings
     package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
     show_infonote default drawing_language default show_stereotype_properties default
-    classdiagram 128470 "Diagramme"
-      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
-      size A4
-    end
-
-    class 130774 "MTimer"
+    class 137046 "MMouvement"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -56,92 +51,82 @@ format 66
       idl_decl ""
       explicit_switch_type ""
       
-    end
-
-    class 130902 "MCalculPoint"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-    end
-
-    class 131286 "MMelange"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-    end
-
-    class 133462 "MTri"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-    end
-
-    class 140630 "MCoordonnee"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      attribute 134998 "x"
-	private explicit_type "Number"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
+      classrelation 142550 // <realization>
+	relation 140630 -_-|>
+	  a public
+	    classrelation_ref 142550 // <realization>
+	  b parent class_ref 135894 // MIEffet
       end
+    end
 
-      attribute 135126 "y"
-	private explicit_type "Number"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
+    class 137302 "MMouvementPerpetuel"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 142294 // <generalisation>
+	relation 140374 ---|>
+	  a public
+	    classrelation_ref 142294 // <generalisation>
+	  b parent class_ref 137046 // MMouvement
       end
+    end
 
-      operation 139606 "setX"
+    class 137174 "MChangementTaille"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 142422 // <realization>
+	relation 140502 -_-|>
+	  a public
+	    classrelation_ref 142422 // <realization>
+	  b parent class_ref 135894 // MIEffet
+      end
+    end
+
+    class 137430 "MExplosion"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 142678 // <generalisation>
+	relation 140758 ---|>
+	  a public
+	    classrelation_ref 142678 // <generalisation>
+	  b parent class_ref 137174 // MChangementTaille
+      end
+    end
+
+    class 135894 "MIEffet"
+      visibility package stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}${visibility}interface ${name} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 135126 "lancer"
 	public explicit_return_type "void"
-	nparams 1
-	  param in name "x" explicit_type "Number"
-	
-	
-	
-	
-	
-      end
-
-      operation 139734 "setY"
-	public explicit_return_type "void"
-	nparams 1
-	  param in name "y" explicit_type "Number"
-	
-	
-	
-	
-	
-      end
-
-      operation 139862 "getX"
-	public explicit_return_type "Number"
 	nparams 0
 	
 	
@@ -150,8 +135,8 @@ format 66
 	
       end
 
-      operation 139990 "getY"
-	public explicit_return_type "Number"
+      operation 135254 "stoper"
+	public explicit_return_type "void"
 	nparams 0
 	
 	
@@ -160,26 +145,8 @@ format 66
 	
       end
 
-      classrelation 147670 // (< est represente par)
-	relation_ref 144854 // < est represente par
-      end
-    end
-
-    class 140758 "MArete"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 147542 // (< est represente par)
-	relation 144854 ---- name "< est represente par"
-	  a role_name "" multiplicity "0..*" private
-	    classrelation_ref 147542 // (< est represente par)
-	  b role_name "" multiplicity "2" private
-	    classrelation_ref 147670 // (< est represente par)
+      classrelation 141910 // (< s'applique sur)
+	relation_ref 139990 // < s'applique sur
       end
     end
   end
