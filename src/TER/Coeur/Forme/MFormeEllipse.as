@@ -1,14 +1,16 @@
-package Coeur
+package Coeur.Forme
 {
 	public class MFormeEllipse implements MIForme
 	{
+		protected var nom_classe:String;
 		protected var largeur:Number;
 		protected var hauteur:Number;
 		
-		public function MFormeEllipse(largeur:Number = 0, hauteur:Number = 0)
+		public function MFormeEllipse()
 		{
 			this.largeur = largeur;
 			this.hauteur = hauteur;
+			this.nom_classe = "MFormeEllipse";
 		}
 		
 		public function getLargeur():Number
@@ -31,12 +33,17 @@ package Coeur
 
 		public function getAire():Number
 		{
+			return this.largeur * this.largeur * Math.PI;;
+		}
+		
+		public function getPerimetre():Number
+		{
 			return 0;
 		}
 		
 		public function getNomClasse():String
 		{
-			return null;
+			return nom_classe;
 		}
 		
 	}

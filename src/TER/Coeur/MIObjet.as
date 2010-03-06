@@ -1,6 +1,7 @@
 package Coeur
 {
 	import mx.utils.StringUtil;
+	import Coeur.Forme.*;
 	
 	public interface MIObjet
 	{	
@@ -25,8 +26,10 @@ package Coeur
 		function supprimeObjetEcouteur(m:MIObjetEcouteur):void;
 		function getNomClasse():String; 
 		function setNomClasse(nom_classe:String):void;
-		function getEcouteurs():Array
-		function setEcouteurs(ecouteurs:Array):void
+		function getEcouteurs():Array;
+		function setEcouteurs(ecouteurs:Array):void;
+		function getForme():MIForme;
+		function setForme(forme:MIForme):void;
 		
 		/**
 		 * Vrais méthodes
