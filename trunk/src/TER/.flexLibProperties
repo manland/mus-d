@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flexLibProperties version="1">
 <includeClasses>
-<classEntry path="Graphique.Degrades.MDegradeVertical"/>
-<classEntry path="Graphique.Degrades.MDegrade"/>
-<classEntry path="Graphique.MCouleur"/>
-<classEntry path="Graphique.Degrades.MDegradeObliqueGauche"/>
-<classEntry path="Coeur.MElement"/>
-<classEntry path="Graphique.MIGraphique"/>
-<classEntry path="Graphique.Degrades.MDegradeRadial"/>
-<classEntry path="Coeur.MScene"/>
-<classEntry path="Coeur.MControle"/>
+<classEntry path="Coeur.Forme.MFormeEllipse"/>
+<classEntry path="Coeur.Forme.MFormeRond"/>
+<classEntry path="Coeur.Forme.MFormeTriangle"/>
+<classEntry path="Coeur.Forme.MIForme"/>
+<classEntry path="Coeur.Forme.MIFormePolygone"/>
 <classEntry path="Coeur.MBonus"/>
-<classEntry path="Coeur.MPropriete"/>
-<classEntry path="Coeur.MFormeTriangle"/>
-<classEntry path="Coeur.MStatique"/>
-<classEntry path="Graphique.Degrades.MDegradeHorizontal"/>
-<classEntry path="Graphique.MImage"/>
-<classEntry path="Coeur.MFormeEllipse"/>
-<classEntry path="Graphique.MGraphique"/>
+<classEntry path="Coeur.MControle"/>
 <classEntry path="Coeur.MDynamique"/>
-<classEntry path="Coeur.MObjet"/>
-<classEntry path="Graphique.MGraphiqueScene"/>
-<classEntry path="Graphique.MTexture"/>
-<classEntry path="Graphique.Degrades.MDegradeObliqueDroite"/>
-<classEntry path="Coeur.MFormeRond"/>
+<classEntry path="Coeur.MElement"/>
 <classEntry path="Coeur.MIObjet"/>
+<classEntry path="Coeur.MIObjetEcouteur"/>
+<classEntry path="Coeur.MPropriete"/>
+<classEntry path="Coeur.MScene"/>
+<classEntry path="Coeur.MScore"/>
+<classEntry path="Coeur.MStatique"/>
+<classEntry path="Coeur.MUtilitaire"/>
+<classEntry path="Controleur.MClavier"/>
+<classEntry path="Controleur.MIEcouteurClavier"/>
+<classEntry path="Controleur.MIEcouteurSouris"/>
+<classEntry path="Controleur.MSouris"/>
+<classEntry path="Graphique.Degrades.MDegrade"/>
+<classEntry path="Graphique.Degrades.MDegradeHorizontal"/>
+<classEntry path="Graphique.Degrades.MDegradeObliqueDroite"/>
+<classEntry path="Graphique.Degrades.MDegradeObliqueGauche"/>
+<classEntry path="Graphique.Degrades.MDegradeRadial"/>
+<classEntry path="Graphique.Degrades.MDegradeVertical"/>
+<classEntry path="Graphique.MCouleur"/>
+<classEntry path="Graphique.MGraphique"/>
+<classEntry path="Graphique.MGraphiqueScene"/>
+<classEntry path="Graphique.MIGraphique"/>
+<classEntry path="Graphique.MImage"/>
+<classEntry path="Graphique.MTexture"/>
+<classEntry path="Utilitaires.MArete"/>
+<classEntry path="Utilitaires.MCoordonnee"/>
 </includeClasses>
 <includeResources/>
 <namespaceManifests/>
