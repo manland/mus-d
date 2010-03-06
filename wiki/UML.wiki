@@ -1,5 +1,5 @@
 #summary Présentation du logiciel pour l'uml : BOUML
-#labels Featured,Phase-Requirements
+#labels Phase-Requirements
 
 = Installation =
 
