@@ -6,5 +6,7 @@ package Controleur
 		function doubleClic():void;
 		function bougeDroite():void;
 		function bougeGauche():void;
+		function bougeHaut():void;
+		function bougeBas():void;
 	}
 }
