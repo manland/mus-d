@@ -30,3 +30,14 @@ Onglet
 	padding-right:10;
 	padding-top:80;
 }
+
+.imageGlobale
+{
+	down-skin:Embed("/home/audrey/workspace2/memory/Images/animaux/png/cartes.png");
+}
+
+TextArea
+{
+	 horizontalScrollPolicy:auto;
+	 verticalScrollPolicy:auto;
+}

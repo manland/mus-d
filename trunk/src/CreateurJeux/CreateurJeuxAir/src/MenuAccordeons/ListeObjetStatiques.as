@@ -14,8 +14,8 @@ package MenuAccordeons
 			super();
 	//		liste.push({id:"mur_h_gris", label:"", icon:mur_h_gris, toolTip:"Mur"});
 	//		liste.push({id:"mur_v_gris", label:"", icon:mur_v_gris, toolTip:"Mur"});
-			liste.push({id:"mur_h_marron",label:"",source:"Images/objets_statiques/mur-h-marron.png", icon:mur_h_marron, toolTip:"Mur"});
-			liste.push({id:"mur_v_marron", label:"",source:"Images/objets_statiques/mur-v-marron.png", icon:mur_v_marron, toolTip:"Mur"});
+			liste.push({id:"mur_h_marron",label:"",source:"Images/objets_statiques/mur-h-marron.png",type:"ObjetStatique", largeur:"64", hauteur:"64", icon:mur_h_marron, toolTip:"Mur"});
+			liste.push({id:"mur_v_marron", label:"",source:"Images/objets_statiques/mur-v-marron.png", icon:mur_v_marron,type:"ObjetStatique", largeur:"64", hauteur:"64", toolTip:"Mur"});
 		}
 		
 	}

@@ -8,7 +8,7 @@
 			import mx.containers.HBox;
 			import MenuAccordeons.*;		
 			import BarreOutils.*;
-			import BarreMenus.*;	
+			import BarreMenus.*;
 		
 			private var barre_menu:BarreMenu;	
 			private var panel_barre_outil:HboxBarreOutil;
@@ -18,20 +18,13 @@
 			private var tab_onglet:TabOnglet;
 			
 			private var panel_option:PanelOption;
+
 				
 			private function initialisation():void
 			{
-				
 				// construction de la barre de menu
 				barre_menu= new BarreMenu();
 				addChild(barre_menu);
-				
-				// construction de la barre d'outil
-				panel_barre_outil= new HboxBarreOutil();
-				this.addChild(panel_barre_outil);
-				
-				// construction du menu accordeon contenant les objets
-				menu_accordeon = new MenuAccordeon();
 				
 				// construction du panel des options:
 				panel_option=new PanelOption();
@@ -39,7 +32,13 @@
 				// construction des onglets : 
 				tab_onglet = new TabOnglet(panel_option);
 				
+				// construction de la barre d'outil
+				panel_barre_outil= new HboxBarreOutil(tab_onglet,panel_option);
+				this.addChild(panel_barre_outil);
 				
+				// construction du menu accordeon contenant les objets
+				menu_accordeon = new MenuAccordeon();
+
 				// creation de la barre centrale
 				hBoxCentrale = new HBox();
 				hBoxCentrale.addChild(menu_accordeon);
