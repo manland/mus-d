@@ -10,8 +10,8 @@ package MenuAccordeons
 		public function ListeObjetDynamique()
 		{
 			super();
-			liste.push({id:"balle_foot", label:"", source:"Images/objets_dynamiques/balle-foot.png", icon:balle_foot, toolTip:"Balle foot"});
-			liste.push({id:"balle_billard", label:"", source:"Images/objets_dynamiques/balle-billard.png", icon:balle_billard, toolTip:"Balle billard"});
+			liste.push({id:"balle_foot", label:"", source:"Images/objets_dynamiques/balle-foot.png",largeur:"64", hauteur:"64", icon:balle_foot, type:"ObjetDynamique", toolTip:"Balle foot"});
+			liste.push({id:"balle_billard", label:"", source:"Images/objets_dynamiques/balle-billard.png", largeur:"64", hauteur:"64",icon:balle_billard, type:"ObjetDynamique", toolTip:"Balle billard"});
 		}
 		
 	}

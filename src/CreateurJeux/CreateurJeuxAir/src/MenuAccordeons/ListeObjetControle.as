@@ -10,7 +10,7 @@ package MenuAccordeons
 		public function ListeObjetControle()
 		{
 			super();
-			liste.push({id:"voiture", label:"", source:"Images/objets_controles/voiture.png", icon:voiture, toolTip:"voiture"});
+			liste.push({id:"voiture", label:"", source:"Images/objets_controles/voiture.png",largeur:"64", hauteur:"64", icon:voiture,type:"ObjetControle", toolTip:"voiture"});
 		}
 	}
 }	
