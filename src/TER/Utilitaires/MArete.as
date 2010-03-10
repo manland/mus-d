@@ -6,9 +6,22 @@ package Utilitaires
 		protected var depart:MCoordonnee;
 		protected var arrivee:MCoordonnee;
 		
-		public function MArete()
+		public function MArete(depart:MCoordonnee, arrivee:MCoordonnee)
 		{
+			this.depart = depart;
+			this.arrivee = arrivee;
 			this.nom_classe = "MArete";
+		}
+		
+		public function initialise(depart:MCoordonnee, arrivee:MCoordonnee)
+		{
+			this.depart = depart;
+			this.arrivee = arrivee;
+		}
+		public function initialise2(xa:Number, ya:Number, xb:Number, yb:Number)
+		{
+			this.depart = new MCoordonnee(xa,ya);
+			this.arrivee = new MCoordonnee(xb,yb);
 		}
 		
 		public function getDepart():MCoordonnee

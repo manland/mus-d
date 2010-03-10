@@ -6,8 +6,10 @@ package Utilitaires
 		protected var x:Number;
 		protected var y:Number;
 		
-		public function MCoordonnee()
+		public function MCoordonnee(x:Number, y:Number)
 		{
+			this.x = x;
+			this.y = y;
 			this.nom_classe = "MCoordonnee";
 		}
 		
