@@ -56,9 +56,25 @@ package Coeur.Forme
 		}
 		public function setAretes(aretes:Array):void
 		{
+			var tableau_tmp:Array = this.aretes;//en cas ou le tableau que l'on passe est mauvais, on sauvegarde l'ancien pour le remettre ensuite
 			
+			if(aretes.length == this.nombre_arete)
+			{
+				for(var i:uint=0; i<nombre_arete; i++)
+				{
+					var arete:MArete = aretes[i] as MArete;
+					if(arete == null)
+					{
+						this.aretes = tableau_tmp;
+						throw new Error("Erreur dans la fonction setAretes de la classe MFormeTriangle : donnée du tableau "+i+" incohérente");
+						return;
+					}
+					this.aretes[i] = aretes[i];
+				}
+			}	
+			else
+				throw new Error("Erreur dans la fonction setAretes de la classe MFormeTriangle : taille du tableau incohérente");
 		}
-		//pas de setArray paskon peut setter un tableau de qch qui ne contient pas d'arete...
 
 
 		//retourne 0 si soucis ... pas assez de coté ou un membre du tableau n'est pas une arete
