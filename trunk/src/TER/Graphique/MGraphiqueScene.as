@@ -1,10 +1,10 @@
 package Graphique {
 	import Coeur.*;
-	import flash.display.DisplayObjectContainer;
+	import mx.containers.Canvas;
 	
-	public class MGraphiqueScene {
+	public class MGraphiqueScene extends Canvas {
 		public function MGraphiqueScene() {
-			
+			super();
 		}
 	}
 }
