@@ -1,0 +1,121 @@
+format 66
+
+classinstance 128214 class_ref 128342 // MIObjet
+  name "objet"   xyz 27 36 2010 life_line_z 2000
+classinstance 128854 class_ref 128214 // MScene
+  name "scene"   xyz 259 34 2005 life_line_z 2000
+classinstance 130902 class_ref 128470 // MElement
+  name "element"   xyz 522 34 2005 life_line_z 2000
+fragment 133206 "alt"
+  xyzwh 21 257 2031 601 141
+  separator 5638
+end
+textcanvas 133462 "[collision]"
+  xyzwh 82 262 2031 136 15
+textcanvas 133846 "[collision avec un bord]"
+  xyzwh 82 473 2000 143 15
+fragment 133974 "opt"
+  xyzwh 20 469 2000 418 94
+end
+textcanvas 135766 "[else]"
+  xyzwh 83 342 2037 35 15
+durationcanvas 129366 classinstance_ref 128214 // objet:MIObjet
+  xyzwh 67 99 2010 11 49
+end
+durationcanvas 129494 classinstance_ref 128854 // scene:MScene
+  xyzwh 302 98 2010 11 47
+end
+durationcanvas 130390 classinstance_ref 128214 // objet:MIObjet
+  xyzwh 67 217 2010 11 359
+end
+durationcanvas 130518 classinstance_ref 128854 // scene:MScene
+  xyzwh 302 219 2010 11 201
+end
+durationcanvas 131030 classinstance_ref 130902 // element:MElement
+  xyzwh 578 99 2010 11 47
+end
+durationcanvas 132182 classinstance_ref 130902 // element:MElement
+  xyzwh 578 237 2010 11 182
+end
+durationcanvas 136022 classinstance_ref 128854 // scene:MScene
+  xyzwh 302 448 2010 11 137
+end
+msg 129622 asynchronous
+  from durationcanvas_ref 129366
+  to durationcanvas_ref 129494
+  yz 99 2015 msg operation_ref 133078 // "ajouterEnfant(in objet : MIObjet) : void"
+  show_full_operations_definition default drawing_language default
+  args "this"
+  label_xy 131 84
+msg 130262 asynchronous
+  from durationcanvas_ref 129494
+  to durationcanvas_ref 129366
+  yz 124 2025 msg operation_ref 141142 // "ajouterEcouteur(in objet : MIObjetEcouteur) : void"
+  show_full_operations_definition default drawing_language default
+  args "this"
+  label_xy 109 132
+msg 130646 asynchronous
+  from durationcanvas_ref 130390
+  to durationcanvas_ref 130518
+  yz 222 2015 msg operation_ref 132566 // "deplacementModel(in objet : MIObjet) : void"
+  show_full_operations_definition default drawing_language default
+  args "this"
+  label_xy 107 207
+msg 131286 asynchronous
+  from durationcanvas_ref 131030
+  to durationcanvas_ref 129494
+  yz 99 2025 msg operation_ref 133078 // "ajouterEnfant(in objet : MIObjet) : void"
+  show_full_operations_definition default drawing_language default
+  args "this"
+  label_xy 355 84
+msg 131542 asynchronous
+  from durationcanvas_ref 129494
+  to durationcanvas_ref 131030
+  yz 124 2025 msg operation_ref 141142 // "ajouterEcouteur(in objet : MIObjetEcouteur) : void"
+  show_full_operations_definition default drawing_language default
+  args "this"
+  label_xy 351 132
+msg 132310 asynchronous
+  from durationcanvas_ref 130518
+  to durationcanvas_ref 132182
+  yz 307 2015 msg operation_ref 132310 // "actionCollision() : void"
+  show_full_operations_definition default drawing_language default
+  label_xy 367 292
+reflexivemsg 132822 synchronous
+  to durationcanvas_ref 136022
+  yz 448 2025 msg operation_ref 131542 // "collisionBord(in objet : MIObjet) : void"
+  show_full_operations_definition default drawing_language default
+  args "objet"
+  label_xy 343 445
+msg 133078 asynchronous
+  from durationcanvas_ref 130518
+  to durationcanvas_ref 130390
+  yz 307 2025 msg operation_ref 132310 // "actionCollision() : void"
+  show_full_operations_definition default drawing_language default
+  label_xy 136 292
+msg 133718 asynchronous
+  from durationcanvas_ref 136022
+  to durationcanvas_ref 130390
+  yz 540 2025 msg operation_ref 132438 // "actionCollisionBord() : void"
+  show_full_operations_definition default drawing_language default
+  label_xy 125 525
+msg 135126 synchronous
+  from durationcanvas_ref 130518
+  to durationcanvas_ref 132182
+  yz 241 2015 msg operation_ref 131798 // "estTouchePar(in x : Number, in y : Number) : bool"
+  show_full_operations_definition default drawing_language default
+  args "objet.getX(), objet.getY()"
+  label_xy 322 226
+msg 135254 return
+  from durationcanvas_ref 132182
+  to durationcanvas_ref 130518
+  yz 276 2015 explicitmsg "true"
+  show_full_operations_definition default drawing_language default
+  label_xy 432 261
+msg 135382 return
+  from durationcanvas_ref 132182
+  to durationcanvas_ref 130518
+  yz 372 2015 explicitmsg "false"
+  show_full_operations_definition default drawing_language default
+  label_xy 431 357
+end

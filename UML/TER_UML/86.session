@@ -1,22 +1,25 @@
-window_sizes 1270 720 300 964 1 652
+window_sizes 1270 720 300 964 582 64
 diagrams
-  classdiagram_ref 128214 // Diagramme
-    964 526 80 4 93 0
-  active  classdiagram_ref 128342 // Diagramme
-    964 91 100 4 180 0
+  classdiagram_ref 128214 // DiagrammeClasse
+    478 91 80 4 0 0
+  classdiagram_ref 128342 // Diagramme
+    964 582 100 4 515 0
   classdiagram_ref 128470 // Diagramme
-    974 530 100 4 0 0
+    478 91 100 4 0 0
   classdiagram_ref 129622 // Diagramme
-    964 526 100 4 360 0
+    478 91 100 4 360 0
+  active  sequencediagram_ref 130774 // DiagSeqCollision
+    974 586 100 4 120 0
 end
 show_stereotypes
-selected classdiagram_ref 128342 // Diagramme
+selected sequencediagram_ref 130774 // DiagSeqCollision
 open
   classview_ref 128342 // VueClasses
-  classview_ref 129878 // VueClasse
-  classview_ref 128470 // VueClasses
-  classview_ref 128726 // VueClasses
-  classview_ref 131158 // VueClasse
-  classview_ref 132438 // VueClasse
+  
+package_ref 128342 // Graphique
+  
+package_ref 128598 // Utilitaire
+  
+package_ref 131158 // Controleur
 end
 end
