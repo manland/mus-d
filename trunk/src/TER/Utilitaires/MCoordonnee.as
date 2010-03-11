@@ -40,6 +40,12 @@ package Utilitaires
 		{
 			return this.x == coordonnee.getX() && this.y == coordonnee.getY();
 		}
+		
+		public function deplacement(x:Number, y:Number):void
+		{
+			this.x += x;
+			this.y += y;
+		}
 
 	}
 }
