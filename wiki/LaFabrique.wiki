@@ -18,13 +18,13 @@ Dans tous les cas il lui faut récupérer les informations écrit en string et l
 = Exemple =
 
 Flex :
-<mx:Label text="toto" color="red" />
+{{{<mx:Label text="toto" color="red" />}}}
 
 ActionScript :
-var l:Label = new Label();
+{{{var l:Label = new Label();
 l.setText("toto");
 var c:Color = new Color(0xFF0000);
-l.setColor(c);
+l.setColor(c);}}}
 
 Nous voyons bien sur cet exemple que flex doit non seulement setter le text mais aussi être capable de créer l'objet color à partir du string red !! Et c'est cette partie que l'on appel la Fabrique puisqu'elle fabrique un objet.
 
