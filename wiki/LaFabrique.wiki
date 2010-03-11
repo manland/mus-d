@@ -93,7 +93,7 @@ Ce code n'est pas du tout compilable !!! C'est juste pour vous donner un ordre d
 <TER:MGraphique[FORME] x="" y="" largeur="" hauteur="" texture="[TEXTURE]" type="[TYPE]" />
 FORME = Ellipse ou Rond ou Triangle ou Rectangle ou Carre
 --> si Triangle rajouter point1x="" point1y="" point2x="" point2y="" point3x="" point3y=""
-TEXTURE = Couleur ou Degrade ou Image
+TEXTURE = MCouleur ou MDegrade ou MImage
 --> si Couleur rajouter rgb="rrrgggbbb"
 --> si Degrade rajouter...
 --> si Image rajouter url="file://" ou url="http://"
