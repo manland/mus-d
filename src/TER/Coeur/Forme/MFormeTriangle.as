@@ -9,6 +9,25 @@ package Coeur.Forme
 		protected var aretes:Array;
 		protected var somme_angle:Number;
 		
+		public function deplacement(x:Number, y:Number):void
+		{
+			if(this.aretes.length == this.nombre_arete)
+			{
+				for(var i:uint=0; i<this.nombre_arete; i++)
+				{
+					var arete:MArete = aretes[i] as MArete;
+					if(arete == null)
+					{
+						throw new Error("Probleme deplacement");
+					}
+					arete.getDepart().deplacement(x, y);
+					arete.getArrivee().deplacement(x, y);
+					aretes[i] = arete;
+				}
+			}
+			else throw new Error("Probleme deplacement");
+		}
+		
 		
 		/**
 		 * 

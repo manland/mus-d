@@ -66,6 +66,14 @@ package Coeur
 			fireDeplacementObjet();
 		}
 		
+		public function deplacementObjet(x:Number, y:Number)
+		{
+			this.x += x;
+			this.y += y;
+			this.forme.deplacement(x, y);
+			fireDeplacementObjet();
+		}
+		
 		public function fireDeplacementObjet():void {
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
 				(ecouteurs[i] as MIObjetEcouteur).deplacementObjet(this);
