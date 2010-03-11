@@ -1,0 +1,21 @@
+#summary Comment notre framework va gérer les erreurs.
+#labels Phase-Requirements,Phase-Design,Phase-Implementation
+
+= Introduction =
+
+Throw, try et catch sont les 3 mots clés pour gérer les erreurs en ActionScript. Petit rappel de ce que j'ai pu comprendre :
+  * throw permet de lancer une erreur qui est captable par un try-catch
+  * try permet permet d'essayer de faire quelque chose
+  * catch capte l'erreur lancer par le throw
+
+= Classe =
+
+Pour ce faire je vous propose donc de créer une classe Erreur dans le package Utilitaire. Cette classe descend directement de Error comme ça nous n'avons pas à nous intéresser au mécanisme interne des throw. Mais nous ajoutons des paramètres au constructeur :
+  * classe:String = la classe générant l'erreur
+  * méthode:String = la méthode de l'erreur
+  * desciption:String = la description de l'erreur
+  * param:Array = [] = un tableau optionel permettant d'ajouter les valeurs de variables
+
+= Conclusion =
+
+Je ne sais pas du tout si tout ça est vrai et/ou réalisable merci de corriger en cas de faute.
