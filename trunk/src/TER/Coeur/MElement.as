@@ -66,7 +66,7 @@ package Coeur
 			fireDeplacementObjet();
 		}
 		
-		public function deplacementObjet(x:Number, y:Number)
+		public function deplacementObjet(x:Number, y:Number):void
 		{
 			this.x += x;
 			this.y += y;
