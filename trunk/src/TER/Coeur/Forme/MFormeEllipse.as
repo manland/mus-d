@@ -46,5 +46,9 @@ package Coeur.Forme
 			return nom_classe;
 		}
 		
+		public function deplacement(x:Number, y:Number):void
+		{
+			
+		}
 	}
 }
