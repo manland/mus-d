@@ -53,8 +53,8 @@ public class MGraphiqueTriangle extends UIComponent {
    override protected function commitProperties():void {
       super.commitProperties();
       if(test != "" && texture != "") {
-         objet = FabriqueObjet(forme);
-         graphique = FabriqueGraphique(texture);
+         objet = FabriqueObjet.creerForme(forme);
+         graphique = FabriqueGraphique.creerTexture(texture);
       }
    }
 }
