@@ -91,12 +91,12 @@ Ce code n'est pas du tout compilable !!! C'est juste pour vous donner un ordre d
 
 {{{
 <TER:MGraphique[FORME] x="" y="" largeur="" hauteur="" texture="[TEXTURE]" type="[TYPE]" />
-FORME = Ellipse ou Rond ou Triangle ou Rectangle ou Carre
---> si Triangle rajouter point1x="" point1y="" point2x="" point2y="" point3x="" point3y=""
+FORME = MEllipse ou MRond ou MTriangle ou MRectangle ou MCarre
+--> si MTriangle rajouter point1x="" point1y="" point2x="" point2y="" point3x="" point3y=""
 TEXTURE = MCouleur ou MDegrade ou MImage
---> si Couleur rajouter rgb="rrrgggbbb"
---> si Degrade rajouter...
---> si Image rajouter url="file://" ou url="http://"
+--> si MCouleur rajouter rgb="rrrgggbbb"
+--> si MDegrade rajouter...
+--> si MImage rajouter url="file://" ou url="http://"
 TYPE = MScene ou MStatique ou MControle ou MDynamique
 --> si MControle rajouter control="MClavier" ou control="MSouris"
 --> si MDynamique rajouter effet="MMouvement" ou effet="MRedimensionnement" ou effet="MMouvementPerpetuel"
