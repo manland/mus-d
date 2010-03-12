@@ -21,11 +21,14 @@ package Graphique
 	import Graphique.Textures.Degrades.MDegradeObliqueGauche;
 	import Graphique.Textures.Degrades.MDegradeRadial;
 	import Graphique.Textures.Degrades.MDegradeVertical;
+	import Coeur.MIObjetEcouteur;
+	import Controleur.MMouvement;
 	
-	public class MGraphiqueTriangle extends UIComponent implements MIObjetGraphique
+	public class MGraphiqueTriangle extends UIComponent implements MIObjetGraphique, MIObjetEcouteur
 	{
 		private var objet:MIObjet;
 		private var texture:MITexture;
+		private var mouvement:MMouvement;
 		private var sysout:Text;
 		public function MGraphiqueTriangle(sysout:Text)
 		{
@@ -34,6 +37,7 @@ package Graphique
 			var x:Number = 20;
 			var y:Number = 20;
 			objet = new MElement();
+			objet.ajoutObjetEcouteur(this);
 			var forme:MFormeTriangle = new MFormeTriangle();
 			forme.ajouterArete(new MArete(new MCoordonnee(x, y),new MCoordonnee(x+20, y+20)));
 			forme.ajouterArete(new MArete(new MCoordonnee(x+20, y+20), new MCoordonnee(x-40, y+20)));
@@ -43,6 +47,8 @@ package Graphique
 			objet.setY(y);
 			objet.setLargeur(40);
 			objet.setHauteur(20);
+			
+			mouvement = new MMouvement(objet);
 			
 			texture = new MCouleur(this);
 			
@@ -77,6 +83,29 @@ package Graphique
 		}
 		public function setTexture(texture:MITexture):void {
 			this.texture = texture;
+		}
+		
+		public function deplacementObjet(objet:MIObjet):void {
+			x = objet.getX();
+			y = objet.getY();
+		}
+		public function changementTaille(objet:MIObjet):void {
+			
+		}
+		public function objetMeurt(objet:MIObjet):void {
+			
+		}
+		public function objetNait(objet:MIObjet):void {
+			
+		}
+		
+		public function getMouvement():MMouvement {
+			return mouvement;
+		}
+		
+		public function setCoordonnees(x:Number, y:Number):void {
+			objet.setX(x);
+			objet.setY(y);
 		}
 
 	}

@@ -12,6 +12,7 @@ package Graphique.Textures {
 		}
 		
 		public function appliquer():void {
+			objet.getGraphique().graphics.lineStyle(2, 0x000000);
 			objet.getGraphique().graphics.beginFill(couleur);
 		}
 	}
