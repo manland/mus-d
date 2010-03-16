@@ -118,3 +118,11 @@ class ChangementSpontaneeEtat implements ITimer {
    }
 }
 }}}
+
+= Projet =
+
+Pour le projet je vous propose de faire un MIEtatObjet représentant un objet à état. Il faut alors faire un MIEtat avec les méthodes actionCollision(); actionCollisionBord(); mourir(); naitre(); ....
+
+Biensur il faudra un MEtatElement et une MEtatScene avec un argument etat_courant:MIEtat et implémentant MIEtatObjet. Ses méthodes seront les même sauf qu'elles appelleront la méthode de l'action : actionCollision() {etat_courant.actionCollision();}
+
+Ainsi le programmeur n'aura plus qu'à créer ces états qui implémenteront MIEtat. Enfin il pourra au choix changer l'état courant de son MIEtatObjet.
