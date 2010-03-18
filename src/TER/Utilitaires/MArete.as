@@ -13,12 +13,12 @@ package Utilitaires
 			this.nom_classe = "MArete";
 		}
 		
-		public function initialise(depart:MCoordonnee, arrivee:MCoordonnee)
+		public function initialise(depart:MCoordonnee, arrivee:MCoordonnee):void
 		{
 			this.depart = depart;
 			this.arrivee = arrivee;
 		}
-		public function initialise2(xa:Number, ya:Number, xb:Number, yb:Number)
+		public function initialise2(xa:Number, ya:Number, xb:Number, yb:Number):void
 		{
 			this.depart = new MCoordonnee(xa,ya);
 			this.arrivee = new MCoordonnee(xb,yb);
@@ -75,6 +75,11 @@ package Utilitaires
 			this.arrivee.estEgal(arete.getArrivee())))
 				return true;
 			return false;
+		}
+		
+		public function affiche():void
+		{
+			trace("("+depart.getX()+","+depart.getY()+")-("+arrivee.getX()+","+arrivee.getY()+")");
 		}
 
 	}
