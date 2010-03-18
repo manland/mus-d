@@ -50,5 +50,10 @@ package Coeur.Forme
 		{
 			
 		}
+		
+		public function affiche():void
+		{
+			trace("MEllipse");
+		}
 	}
 }

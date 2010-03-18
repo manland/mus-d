@@ -1,6 +1,5 @@
 package Coeur
 {
-	import mx.utils.StringUtil;
 	import Coeur.Forme.*;
 	
 	public interface MIObjet
@@ -14,6 +13,7 @@ package Coeur
 		/**
 		* Méthodes des getters et setters
 		**/
+		function deplacement(x:Number, y:Number):void;
 		function getX():Number;
 		function setX(x:Number):void;
 		function getY():Number;
@@ -30,6 +30,7 @@ package Coeur
 		function setEcouteurs(ecouteurs:Array):void;
 		function getForme():MIForme;
 		function setForme(forme:MIForme):void;
+		function affiche():void;
 		
 		/**
 		 * Vrais méthodes
