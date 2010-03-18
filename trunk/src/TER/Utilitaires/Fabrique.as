@@ -10,7 +10,7 @@ package Utilitaires {
 		public var sysout:Text = null;
 		public function Test()
 		{
-			super();
+			//super();
 		}
         
 		override protected function commitProperties():void {
