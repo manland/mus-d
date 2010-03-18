@@ -154,5 +154,16 @@ package Coeur.Forme
 				this.nombre_arete = nombre_arete;
 		}
 		
+		public function affiche():void
+		{
+			for(var i:uint = 0; i<nombre_arete; i++)
+			{
+				var arete:MArete = aretes[i] as MArete;
+				if(arete == null)
+					return ;
+				arete.affiche();
+			}
+		}
+		
 	}
 }

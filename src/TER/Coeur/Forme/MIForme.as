@@ -6,5 +6,6 @@ package Coeur.Forme
 		function getNomClasse():String;
 		function getPerimetre():Number;
 		function deplacement(x:Number, y:Number):void;
+		function affiche():void;
 	}
 }

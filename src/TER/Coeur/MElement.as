@@ -28,6 +28,11 @@ package Coeur
 			this.bonus = null;
 		}
 		
+		public function affiche():void
+		{
+			this.forme.affiche();
+		}
+		
 		public function getBonus():MBonus
 		{
 			return this.bonus;
@@ -52,6 +57,8 @@ package Coeur
 		}
 		public function setX(x:Number):void
 		{
+			//var difference:Number = this.x - x;
+			//this.deplacementObjet(difference, 0);
 			this.x = x;
 			fireDeplacementObjet();
 		}
@@ -62,11 +69,13 @@ package Coeur
 		}
 		public function setY(y:Number):void
 		{
+			//var difference:Number = this.y - y;
+			//this.deplacementObjet(0, difference);
 			this.y = y;
 			fireDeplacementObjet();
 		}
 		
-		public function deplacementObjet(x:Number, y:Number):void
+		public function deplacement(x:Number, y:Number):void
 		{
 			this.x += x;
 			this.y += y;

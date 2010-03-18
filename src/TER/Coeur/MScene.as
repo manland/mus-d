@@ -197,8 +197,14 @@ package Coeur
 		}
 		
 		
+		public function deplacement(x:Number, y:Number):void
+		{
+			trace("Il y a un deplacement");
+		}
+		
 		public function deplacementObjet(objet:MIObjet):void
 		{
+			trace("Mscene : deplacementObjet");
 		}
 		
 		public function changementTaille(objet:MIObjet):void
@@ -211,6 +217,11 @@ package Coeur
 		
 		public function objetNait(objet:MIObjet):void
 		{
+		}
+		
+		public function affiche():void
+		{
+			trace("MScene");
 		}
 	}
 }
