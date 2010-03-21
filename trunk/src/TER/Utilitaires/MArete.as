@@ -81,6 +81,21 @@ package Utilitaires
 		{
 			trace("("+depart.getX()+","+depart.getY()+")-("+arrivee.getX()+","+arrivee.getY()+")");
 		}
+		
+		public function contient(x:Number, y:Number):Boolean{
+			x1 = getArrivee().getX();
+			x2 = getDepart().getX();
+			y1 = getArrivee().getY();
+			y2 = getDepart().getY()
+			
+			if(x1 != x2){
+				a = (y2 - y1) / (x2 - x1);
+				b = y1 - (a * x1);
+				return y == (a*x + b);
+			}
+			else
+				return x1 == x;
+		}
 
 	}
 }

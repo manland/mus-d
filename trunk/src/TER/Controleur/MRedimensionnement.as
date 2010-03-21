@@ -5,7 +5,7 @@ package Controleur
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
-	public class MRedimensionnement implements MIEffet
+	public class MRedimensionnement implements MIEffetFini
 	{
 		private var objet:MIObjet;
 		private var timer:Timer;
@@ -43,6 +43,20 @@ package Controleur
 			timer.stop();
 		}
 		
+		/* getteurs et setteurs */
+		public function getObjet():MIObjet{
+			return this.objet;
+		}	
+		public function setObjet(objet:MIObjet):void{
+			this.objet = objet;
+		}	
+		
+		public function getTimer():Timer{
+			return this.timer;
+		}	
+		public function setTimer(timer:Timer):void{
+			this.timer = timer;
+		}	
 
 	}
 }
