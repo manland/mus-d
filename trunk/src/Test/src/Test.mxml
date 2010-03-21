@@ -6,43 +6,30 @@
 	
 	<mx:Script>
 		<![CDATA[
-			import Utilitaires.MError;
+			import Utilitaires.MErreur;
 			import Utilitaires.MArete;
 			import Graphique.Textures.MImage;
 			import Graphique.MGraphiqueTriangle;
 			import Coeur.*;
 			private var triangles:Array = new Array();
 			public function init():void {
-			//	var triangle:MGraphiqueTriangle = new MGraphiqueTriangle(sysout);
-//				triangle.setTexture(new MImage(sysout, triangle, "file:///home/manland/workspace/Test/src/nicubunu-personnage.png"));
-	//			scene.addChild(triangle);
-		//		triangle.dessiner();
 		
 				scene.width = 300;
 				scene.height = 300;
-				for(var i:int=0; i<1; i++) {
+				for(var i:int=0; i<10; i++) {
 					
 					var tt:MGraphiqueTriangle = new MGraphiqueTriangle(sysout);
 					var x:Number = Math.ceil(Math.random()*100);
 					
 					var y:Number = Math.ceil(Math.random()*100);
 					
-					tt.affiche();
-					tt.setCoordonnees(50, 100);
-					tt.affiche();
+//					tt.x = x;
+//					tt.y = y;
+					tt.setCoordonnees(x, y);
 					scene.addChild(tt);
-					tt.dessiner();
 					
 					triangles[i] = tt;
 					sysout.text += "n°" + i + " ==> x="+x+"; y="+y+";\n";
-					try
-					{
-						var m:MBonus= new MBonus(sysout);
-					}
-					catch(e:MError)
-					{
-						e.sysout();
-					}
 				}
 			}
 			
@@ -50,7 +37,7 @@
 				for(var i:int=0; i<triangles.length; i++) {
 					var tt:MGraphiqueTriangle = triangles[i] as MGraphiqueTriangle;
 					tt.getMouvement().lancer(100, 100, 2000);
-					tt.affiche();
+//					tt.affiche();
 				}
 			}
 		]]>
@@ -62,7 +49,6 @@
 		<mx:Button label="Lancer" click="lancer()"/>
 	</mx:Panel>
 	<mx:Panel>
-		<!--<TER:Test id="monTest" sysout="{sysout}" test="salut" />-->
 		<TER:MGraphiqueScene id="scene" width="100" height="100" />
 	</mx:Panel>
 </mx:Application>
