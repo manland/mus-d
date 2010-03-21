@@ -1,8 +1,18 @@
 package Controleur
 {
+	import Coeur.MIObjet;
+	import flash.utils.Timer;
+	
 	public interface MIEffet
 	{
-		function lancer(x_arrivee:Number, y_arrivee:Number, temps_ms:Number):void;
-		function stopper():void;		
+		/*getteur et setteur*/
+		function getObjet():MIObjet;
+		function setObjet(objet:MIObjet):void;
+		function getTimer():Timer;	
+		function setTimer(timer:Timer):void;	
+						
+		
+		/*vrai fonctions*/
+		function stopper():void;
 	}
 }

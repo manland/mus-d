@@ -165,5 +165,15 @@ package Coeur.Forme
 			}
 		}
 		
+		public function contient(x:Number,y:Number):Boolean{
+			for(var i:uint = 0; i<nombre_arete; i++)
+			{
+				var arete:MArete = aretes[i] as MArete;
+				if(arete.contient(x,y))
+					return true;
+			}
+			return false;
+		}
+		
 	}
 }

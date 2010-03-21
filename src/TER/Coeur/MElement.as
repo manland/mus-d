@@ -167,12 +167,10 @@ package Coeur
 		}
 		
 		public function estTouchePar(tx:Number, ty:Number):Boolean {
-			if(tx >= x && tx <= x + largeur) {
-				if(ty >= y && ty <= y + hauteur) {
-					return true
-				}
-			}
-			return false;
+			if(getForme().contient(x,y))
+				return true;
+			else
+				return false;
 		}
 		
 		public function drag():void

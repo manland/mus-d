@@ -1,0 +1,11 @@
+window_sizes 1200 700 300 900 533 82
+diagrams
+  active  classdiagram_ref 128214 // Diagramme
+    711 435 100 4 0 0
+end
+show_stereotypes
+selected classdiagram_ref 128214 // Diagramme
+open
+  classview_ref 128342 // VueClasses
+end
+end
