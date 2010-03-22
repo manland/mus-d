@@ -18,7 +18,8 @@ package Coeur.Forme
 			return this.getHauteur();
 		}
 		
-		override public function contient(x:Number,y:Number):Boolean{
+		public override function contient(x:Number,y:Number):Boolean{
+			/**a remplir**/
 			return false;
 		}
 	}

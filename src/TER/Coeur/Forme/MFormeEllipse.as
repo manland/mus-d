@@ -57,6 +57,7 @@ package Coeur.Forme
 		}
 		
 		public function contient(x:Number,y:Number):Boolean{
+			//a remplir
 			return false;
 		}
 	}
