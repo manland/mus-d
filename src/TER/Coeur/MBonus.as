@@ -1,14 +1,14 @@
 package Coeur
 {
-	import Utilitaires.MError;
 	
 	import mx.controls.Text;
+	import Utilitaires.MErreur;
 	
 	public class MBonus
 	{
 		public function MBonus(sys:Text)
 		{
-			throw new MError("MBonus", "MBonus()", "", sys);
+			throw new MErreur("MBonus", "MBonus()", "", sys);
 		}
 
 	}

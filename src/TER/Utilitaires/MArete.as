@@ -83,14 +83,14 @@ package Utilitaires
 		}
 		
 		public function contient(x:Number, y:Number):Boolean{
-			x1 = getArrivee().getX();
-			x2 = getDepart().getX();
-			y1 = getArrivee().getY();
-			y2 = getDepart().getY()
+			var x1:Number = getArrivee().getX();
+			var x2:Number = getDepart().getX();
+			var y1:Number = getArrivee().getY();
+			var y2:Number = getDepart().getY();
 			
 			if(x1 != x2){
-				a = (y2 - y1) / (x2 - x1);
-				b = y1 - (a * x1);
+				var a:Number = (y2 - y1) / (x2 - x1);
+				var b:Number = y1 - (a * x1);
 				return y == (a*x + b);
 			}
 			else

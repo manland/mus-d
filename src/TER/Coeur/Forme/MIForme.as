@@ -7,5 +7,6 @@ package Coeur.Forme
 		function getPerimetre():Number;
 		function deplacement(x:Number, y:Number):void;
 		function affiche():void;
+		function contient(x:Number, y:Number):Boolean;
 	}
 }

@@ -55,5 +55,9 @@ package Coeur.Forme
 		{
 			trace("MEllipse");
 		}
+		
+		public function contient(x:Number,y:Number):Boolean{
+			return false;
+		}
 	}
 }

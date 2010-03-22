@@ -22,15 +22,16 @@ package Graphique
 	import Graphique.Textures.Degrades.MDegradeRadial;
 	import Graphique.Textures.Degrades.MDegradeVertical;
 	import Coeur.MIObjetEcouteur;
-	import Controleur.MMouvement;
 	import mx.events.MoveEvent;
 	import Coeur.MDynamique;
+	import Controleur.MMouvementFini;
+	import Controleur.MIEffetFini;
 	
 	public class MGraphiqueTriangle extends UIComponent implements MIObjetGraphique, MIObjetEcouteur
 	{
 		private var objet:MIObjet;
 		private var texture:MITexture;
-		private var mouvement:MMouvement;
+		private var mouvement:MIEffetFini;
 		private var sysout:Text;
 		public function MGraphiqueTriangle(sysout:Text)
 		{
@@ -52,9 +53,9 @@ package Graphique
 			objet.setLargeur(40);
 			objet.setHauteur(20);
 			
-			mouvement = new MMouvement(objet);
+			mouvement = new MMouvementFini(objet);
 			
-			texture = new MDegradeRadial(this);
+			texture = new MDegradeVertical(this);
 		}
 		
 		public function getObjet():MIObjet {
@@ -92,7 +93,7 @@ package Graphique
 			sysout.text += "Je nais !!";
 		}
 		
-		public function getMouvement():MMouvement {
+		public function getMouvement():MIEffetFini {
 			return mouvement;
 		}
 		
