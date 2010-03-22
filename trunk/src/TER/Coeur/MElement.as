@@ -57,9 +57,10 @@ package Coeur
 		}
 		public function setX(x:Number):void
 		{
-			//var difference:Number = this.x - x;
-			//this.deplacementObjet(difference, 0);
+			var difference:Number = x - this.x;
 			this.x = x;
+			trace("setX : "+this.x+"=====>"+difference);
+			forme.deplacement(difference, 0);
 			fireDeplacementObjet();
 		}
 		
@@ -69,9 +70,9 @@ package Coeur
 		}
 		public function setY(y:Number):void
 		{
-			//var difference:Number = this.y - y;
-			//this.deplacementObjet(0, difference);
+			var difference:Number = y - this.y;
 			this.y = y;
+			forme.deplacement(0, difference);
 			fireDeplacementObjet();
 		}
 		
@@ -79,6 +80,7 @@ package Coeur
 		{
 			this.x += x;
 			this.y += y;
+			trace(this.x+"-"+this.y);
 			this.forme.deplacement(x, y);
 			fireDeplacementObjet();
 		}
