@@ -42,7 +42,6 @@ package Coeur.Forme
 		
 		public function setHauteur(hauteur:Number):void{
 			
-			this.affiche();
 			var a1:MArete = this.aretes[0] as MArete;
 			var a2:MArete = this.aretes[1] as MArete;
 			var a3:MArete = this.aretes[2] as MArete;
@@ -58,9 +57,9 @@ package Coeur.Forme
 				var arete:MArete = aretes[i] as MArete;
 				if(arete == null)
 					return ;
-				if(arete.getArrivee().getY() != this.y)
+				if(arete.getArrivee().getY() > this.y)
 					arete.getArrivee().setY( (arete.getArrivee().getY() * pourcentageAugmentation) / 100);
-				if(arete.getDepart().getY() != this.y)
+				if(arete.getDepart().getY() > this.y)
 					arete.getDepart().setY( (arete.getDepart().getY() * pourcentageAugmentation) / 100);
 				//if(arete.getArrivee().estEgal(max))
 					//arete.getArrivee().setY(this.y + hauteur);
@@ -90,9 +89,9 @@ package Coeur.Forme
 				var arete:MArete = aretes[i] as MArete;
 				if(arete == null)
 					return ;
-				if(arete.getArrivee().getX() != this.x)
+				if(arete.getArrivee().getX() > this.x)
 					arete.getArrivee().setX( (arete.getArrivee().getX() * pourcentageAugmentation) / 100);
-				if(arete.getDepart().getX() != this.x)
+				if(arete.getDepart().getX() > this.x)
 					arete.getDepart().setX( (arete.getDepart().getX() * pourcentageAugmentation) / 100);
 				//if(arete.getArrivee().estEgal(max))
 					//arete.getArrivee().setX(this.x + largeur);
@@ -126,7 +125,7 @@ package Coeur.Forme
 			var m5:MCoordonnee = new MCoordonnee(m2.getX(), m2.getY());
 			var m6:MCoordonnee = new MCoordonnee(m3.getX(), m3.getY());
 			
-			var a1:MArete = new MArete(m1,m2);
+			var a1:MArete = new MArete(m1 ,m2);
 			var a2:MArete = new MArete(m5, m3);
 			var a3:MArete = new MArete(m6, m4);
 			aretes.push(a1);
@@ -180,6 +179,8 @@ package Coeur.Forme
 		 
 		public function ajouterArete(arete:MArete):Boolean
 		{
+			arete = new MArete(new MCoordonnee(arete.getDepart().getX(),arete.getDepart().getY()),
+								new MCoordonnee(arete.getArrivee().getX(),arete.getArrivee().getY()));
 			if(aretes.length < nombre_arete)
 			{
 				aretes.push(arete);
