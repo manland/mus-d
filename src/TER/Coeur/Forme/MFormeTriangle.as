@@ -45,7 +45,6 @@ package Coeur.Forme
 		}
 		
 		public function setLargeur(largeur:Number):void{
-			trace(largeur);
 			var a1:MArete = this.aretes[0] as MArete;
 			var a2:MArete = this.aretes[1] as MArete;
 			var a3:MArete = this.aretes[2] as MArete;

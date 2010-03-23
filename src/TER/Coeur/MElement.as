@@ -49,6 +49,10 @@ package Coeur
 		public function setForme(forme:MIForme):void
 		{
 			this.forme = forme;
+			this.x = this.forme.getX();
+			this.y = this.forme.getY();
+			this.largeur = this.forme.getLargeur();
+			this.hauteur = this.forme.getHauteur();
 		}
 		
 		public function getX():Number
@@ -117,6 +121,7 @@ package Coeur
 		public function setHauteur(hauteur:Number):void
 		{
 			this.hauteur = hauteur;
+			trace("par ici MElement"+hauteur);
 			fireChangementTaille();
 		}
 		
