@@ -38,12 +38,15 @@ package Graphique
 		
 		public function MGraphiqueTriangle(point1:MCoordonnee=null, point2:MCoordonnee=null, point3:MCoordonnee=null)
 		{
-			objet = new MDynamique();
+			objet = new MElement();
 			objet.ajoutObjetEcouteur(this);
 			
 			if(point1 != null && point2 != null && point3 != null) {
 				var forme:MFormeTriangle = new MFormeTriangle();
-				forme.instancie(point1, point2, point3);
+				forme.ajouterArete(new MArete(point1, point2));
+				forme.ajouterArete(new MArete(point2, point3));
+				forme.ajouterArete(new MArete(point3, point1));
+//				forme.instancie(point1, point2, point3);
 				objet.setForme(forme);
 				x = objet.getX();
 				y = objet.getY();
@@ -75,6 +78,9 @@ package Graphique
 		public function deplacementObjet(objet:MIObjet):void {
 			x = objet.getX();
 			y = objet.getY();
+			if(sysout != null) {
+				sysout.text += "déplacement : "+x+", "+y+"\n";
+			}
 			invalidateDisplayList();
 		}
 		public function changementTaille(objet:MIObjet):void {
