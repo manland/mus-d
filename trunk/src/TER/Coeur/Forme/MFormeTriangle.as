@@ -51,15 +51,21 @@ package Coeur.Forme
 			max = MUtilitaire.maxMCoordonneeY(max, MUtilitaire.maxMCoordonneeY(a2.getDepart(), a2.getArrivee()));
 			max = MUtilitaire.maxMCoordonneeY(max, MUtilitaire.maxMCoordonneeY(a3.getDepart(), a3.getArrivee()));
 			
+			var pourcentageAugmentation:Number = ((this.y + hauteur) * 100) / max.getY();
+			
 			for(var i:uint = 0; i<nombre_arete; i++)
 			{
 				var arete:MArete = aretes[i] as MArete;
 				if(arete == null)
 					return ;
-				if(arete.getArrivee().estEgal(max))
-					arete.getArrivee().setY(this.y + hauteur);
-				if(arete.getDepart().estEgal(max))
-					arete.getDepart().setY(this.y + hauteur);
+				if(arete.getArrivee().getY() != this.y)
+					arete.getArrivee().setY( (arete.getArrivee().getY() * pourcentageAugmentation) / 100);
+				if(arete.getDepart().getY() != this.y)
+					arete.getDepart().setY( (arete.getDepart().getY() * pourcentageAugmentation) / 100);
+				//if(arete.getArrivee().estEgal(max))
+					//arete.getArrivee().setY(this.y + hauteur);
+				//if(arete.getDepart().estEgal(max))
+					//arete.getDepart().setY(this.y + hauteur);
 			}
 			this.hauteur = hauteur;	
 		}
@@ -77,16 +83,22 @@ package Coeur.Forme
 			max = MUtilitaire.maxMCoordonneeX(max, MUtilitaire.maxMCoordonneeX(a2.getDepart(), a2.getArrivee()));
 			max = MUtilitaire.maxMCoordonneeX(max, MUtilitaire.maxMCoordonneeX(a3.getDepart(), a3.getArrivee()));
 			
+			var pourcentageAugmentation:Number = ((this.x + largeur) * 100) / max.getX();
+			
 			for(var i:uint = 0; i<nombre_arete; i++)
 			{
 				var arete:MArete = aretes[i] as MArete;
 				if(arete == null)
 					return ;
-				if(arete.getArrivee().estEgal(max))
-					arete.getArrivee().setX(this.x + largeur);
+				if(arete.getArrivee().getX() != this.x)
+					arete.getArrivee().setX( (arete.getArrivee().getX() * pourcentageAugmentation) / 100);
+				if(arete.getDepart().getX() != this.x)
+					arete.getDepart().setX( (arete.getDepart().getX() * pourcentageAugmentation) / 100);
+				//if(arete.getArrivee().estEgal(max))
+					//arete.getArrivee().setX(this.x + largeur);
 					
-				if(arete.getDepart().estEgal(max))
-					arete.getDepart().setX(this.x + largeur);
+				//if(arete.getDepart().estEgal(max))
+					//arete.getDepart().setX(this.x + largeur);
 			}
 			this.largeur = largeur;			
 		}
