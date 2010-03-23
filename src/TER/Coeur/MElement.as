@@ -30,6 +30,7 @@ package Coeur
 		
 		public function affiche():void
 		{
+			trace("MElement : (",x,",",y,")");
 			this.forme.affiche();
 		}
 		
@@ -53,6 +54,9 @@ package Coeur
 			this.y = this.forme.getY();
 			this.largeur = this.forme.getLargeur();
 			this.hauteur = this.forme.getHauteur();
+			
+			fireChangementTaille();
+			fireDeplacementObjet();
 		}
 		
 		public function getX():Number
@@ -121,7 +125,7 @@ package Coeur
 		public function setHauteur(hauteur:Number):void
 		{
 			this.hauteur = hauteur;
-			trace("par ici MElement"+hauteur);
+			this.forme.setHauteur(hauteur);
 			fireChangementTaille();
 		}
 		
