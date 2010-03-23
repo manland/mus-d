@@ -32,30 +32,67 @@ package Graphique
 		private var objet:MIObjet;
 		private var texture:MITexture;
 		private var mouvement:MIEffetFini;
-		private var sysout:Text;
-		public function MGraphiqueTriangle(sysout:Text)
+		public var sysout:Text;
+		private var mon_x:Number;
+		private var mon_y:Number;
+		
+		public function MGraphiqueTriangle(point1:MCoordonnee=null, point2:MCoordonnee=null, point3:MCoordonnee=null)
 		{
-			this.sysout = sysout;
-			
-			var x:Number = 20;
-			var y:Number = 20;
 			objet = new MDynamique();
 			objet.ajoutObjetEcouteur(this);
 			
-			var forme:MFormeTriangle = new MFormeTriangle();
-			forme.ajouterArete(new MArete(new MCoordonnee(x, y),new MCoordonnee(x+20, y+20)));
-			forme.ajouterArete(new MArete(new MCoordonnee(x+20, y+20), new MCoordonnee(x-40, y+20)));
-			forme.ajouterArete(new MArete(new MCoordonnee(x-40, y+20), new MCoordonnee(x, y)));
-			objet.setForme(forme);
-			
-//			objet.setX(x);
-//			objet.setY(y);
-			objet.setLargeur(40);
-			objet.setHauteur(20);
+			if(point1 != null && point2 != null && point3 != null) {
+//				var forme:MFormeTriangle = new MFormeTriangle();
+//				forme.ajouterArete(new MArete(point1, point2));
+//				forme.ajouterArete(new MArete(point2, point3));
+//				forme.ajouterArete(new MArete(point3, point1));
+//				objet.setForme(forme);
+//				var aretes:Array = forme.getAretes();
+//				var plus_a_gauche:Number = point1.getX();
+//				var plus_a_droite:Number = point1.getX();
+//				var plus_en_haut:Number = point1.getY();
+//				var plus_en_bas:Number = point1.getY();
+//				for(var i:int=0; i<aretes.length; i++) {
+//					var arete:MArete = aretes[i] as MArete;
+//					var point:MCoordonnee = arete.getDepart();
+//					if(plus_a_gauche > point.getX()) {
+//						plus_a_gauche = point.getX();
+//					}
+//					if(plus_a_droite < point.getX()) {
+//						plus_a_droite = point.getX();
+//					}
+//					if(plus_en_haut > point.getY()) {
+//						plus_en_haut = point.getY();
+//					}
+//					if(plus_en_bas < point.getY()) {
+//						plus_en_bas = point.getY();
+//					}
+//					point = arete.getArrivee();
+//					if(plus_a_gauche > point.getX()) {
+//						plus_a_gauche = point.getX();
+//					}
+//					if(plus_a_droite < point.getX()) {
+//						plus_a_droite = point.getX();
+//					}
+//					if(plus_en_haut > point.getY()) {
+//						plus_en_haut = point.getY();
+//					}
+//					if(plus_en_bas < point.getY()) {
+//						plus_en_bas = point.getY();
+//					}
+//				}
+//				objet.setLargeur(plus_a_droite-plus_a_gauche);
+//				objet.setHauteur(plus_en_bas-plus_en_haut);
+//				objet.setX(plus_a_gauche);
+//				objet.setY(plus_en_haut);
+				var forme:MFormeTriangle = new MFormeTriangle();
+				forme.instancie(point1, point2, point3);
+				objet.setForme(forme);
+			}
 			
 			mouvement = new MMouvementFini(objet);
 			
-			texture = new MDegradeVertical(this);
+			texture = new MDegradeRadial(this);
 		}
 		
 		public function getObjet():MIObjet {
@@ -75,19 +112,21 @@ package Graphique
 		}
 		
 		public function deplacementObjet(objet:MIObjet):void {
-//			move(x, y);
-//			dispatchEvent(new MoveEvent("move"));
 			x = objet.getX();
 			y = objet.getY();
 			invalidateDisplayList();
 		}
 		public function changementTaille(objet:MIObjet):void {
+			if(sysout != null) {
+				sysout.text += "changement taille : "+objet.getLargeur()+","+objet.getHauteur()+"\n";
+			}
 			width = objet.getLargeur();
 			height = objet.getHauteur();
 			invalidateDisplayList();
 		}
 		public function objetMeurt(objet:MIObjet):void {
 			sysout.text += "Je neurt !!";
+			parent.removeChild(this);
 		}
 		public function objetNait(objet:MIObjet):void {
 			sysout.text += "Je nais !!";
@@ -97,21 +136,38 @@ package Graphique
 			return mouvement;
 		}
 		
-		public function setCoordonnees(x:Number, y:Number):void {
-			objet.setX(x);
-			objet.setY(y);
+		public function set coordonnees(coordonnes:MCoordonnee):void {
+			objet.setX(coordonnes.getX());
+			objet.setY(coordonnes.getY());
+		}
+		public function get coordonnees():MCoordonnee {
+			return new MCoordonnee(x, y);
 		}
 		
-//		override public function set x(x:Number):void {
-//			if(objet.getX() != x) {
-//				objet.setX(x);
-//			}
-//		}
-//		override public function set y(y:Number):void {
-//			if(objet.getY() != y) {
-//				objet.setY(y);
-//			}
-//		}
+		override public function set x(x:Number):void {
+			super.x = x;
+			if(objet.getX() != x) {
+				objet.setX(x);
+			}
+		}
+		override public function set y(y:Number):void {
+			super.y = y;
+			if(objet.getY() != y) {
+				objet.setY(y);
+			}
+		}
+		override public function set width(width:Number):void {
+			super.width = width;
+			if(objet.getLargeur() != width) {
+				objet.setLargeur(width);
+			}
+		}
+		override public function set height(height:Number):void {
+			super.height = height;
+			if(objet.getHauteur() != height) {
+				objet.setHauteur(height);
+			}
+		}
 		
 		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
 			super.updateDisplayList(unscaledWidth, unscaledHeight );
@@ -133,6 +189,11 @@ package Graphique
 			graphics.endFill();
 			
 		}
+		
+//		override protected function commitProperties():void {
+//            super.commitProperties();
+//			invalidateDisplayList();
+//		}
 
 	}
 }
