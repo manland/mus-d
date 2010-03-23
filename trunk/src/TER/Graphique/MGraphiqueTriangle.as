@@ -26,6 +26,9 @@ package Graphique
 	import Coeur.MDynamique;
 	import Controleur.MMouvementFini;
 	import Controleur.MIEffetFini;
+	import Controleur.MRedimensionnement;
+	import Controleur.MIEffetInfini;
+	import Controleur.MMouvementPerpetuel;
 	
 	public class MGraphiqueTriangle extends UIComponent implements MIObjetGraphique, MIObjetEcouteur
 	{
@@ -36,7 +39,7 @@ package Graphique
 		private var mon_x:Number;
 		private var mon_y:Number;
 		
-		public function MGraphiqueTriangle(point1:MCoordonnee=null, point2:MCoordonnee=null, point3:MCoordonnee=null)
+		public function MGraphiqueTriangle(point1:MCoordonnee=null, point2:MCoordonnee=null, point3:MCoordonnee=null, texture:MITexture=null)
 		{
 			objet = new MElement();
 			objet.ajoutObjetEcouteur(this);
@@ -54,9 +57,9 @@ package Graphique
 				height = objet.getHauteur();
 			}
 			
-			mouvement = new MMouvementFini(objet);
+			mouvement = new MRedimensionnement(objet);
 			
-			texture = new MDegradeRadial(this);
+			this.texture = new MCouleur(this);
 		}
 		
 		public function getObjet():MIObjet {
@@ -78,18 +81,18 @@ package Graphique
 		public function deplacementObjet(objet:MIObjet):void {
 			x = objet.getX();
 			y = objet.getY();
-			if(sysout != null) {
-				sysout.text += "déplacement : "+x+", "+y+"\n";
-			}
 			invalidateDisplayList();
 		}
 		public function changementTaille(objet:MIObjet):void {
+			if(sysout != null) {
+				sysout.text += "redim\n";
+			}
 			width = objet.getLargeur();
 			height = objet.getHauteur();
 			invalidateDisplayList();
 		}
 		public function objetMeurt(objet:MIObjet):void {
-			sysout.text += "Je neurt !!";
+			sysout.text += "Je meurt !!";
 			parent.removeChild(this);
 		}
 		public function objetNait(objet:MIObjet):void {
@@ -113,9 +116,6 @@ package Graphique
 			}
 		}
 		override public function set width(width:Number):void {
-			if(sysout != null) {
-				sysout.text += "setWidth";
-			}
 			super.width = width;
 			if(objet.getLargeur() != width) {
 				objet.setLargeur(width);
@@ -130,8 +130,8 @@ package Graphique
 		
 		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
 			super.updateDisplayList(unscaledWidth, unscaledHeight );
-			objet.setLargeur(unscaledWidth);
-			objet.setHauteur(unscaledHeight);
+//			objet.setLargeur(unscaledWidth);
+//			objet.setHauteur(unscaledHeight);
 			dessiner();
 		}
 		
