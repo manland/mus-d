@@ -6,37 +6,36 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import Utilitaires.MCoordonnee;
 			import Utilitaires.MErreur;
 			import Utilitaires.MArete;
 			import Graphique.Textures.MImage;
 			import Graphique.MGraphiqueTriangle;
 			import Coeur.*;
-			private var triangles:Array = new Array();
+			public var triangles:Array = new Array();
 			public function init():void {
 		
 				scene.width = 300;
 				scene.height = 300;
-				for(var i:int=0; i<10; i++) {
+				for(var i:int=0; i<2; i++) {
+					var tt:MGraphiqueTriangle = new MGraphiqueTriangle(new MCoordonnee(40,0), new MCoordonnee(20, 10), new MCoordonnee(0, 10));
+
+					tt.sysout = sysout;
+					tt.x = Math.ceil(Math.random()*100);
+					tt.y = Math.ceil(Math.random()*100);
+//					tt.setCoordonnees(x, y);
 					
-					var tt:MGraphiqueTriangle = new MGraphiqueTriangle(sysout);
-					var x:Number = Math.ceil(Math.random()*100);
 					
-					var y:Number = Math.ceil(Math.random()*100);
-					
-//					tt.x = x;
-//					tt.y = y;
-					tt.setCoordonnees(x, y);
+					triangles[triangles.length] = tt;
+					sysout.text += "n°" + i + " ==> x="+tt.x+"; y="+tt.y+";largeur="+tt.width+"\n";
 					scene.addChild(tt);
-					
-					triangles[i] = tt;
-					sysout.text += "n°" + i + " ==> x="+x+"; y="+y+";\n";
 				}
 			}
 			
 			public function lancer():void {
 				for(var i:int=0; i<triangles.length; i++) {
 					var tt:MGraphiqueTriangle = triangles[i] as MGraphiqueTriangle;
-					tt.getMouvement().lancer(100, 100, 2000);
+					tt.getMouvement().lancer(100, 100, 1000);
 //					tt.affiche();
 				}
 			}
@@ -46,9 +45,11 @@
 	<mx:Panel>
 		<mx:Text id="sysout" />
 		<mx:Spacer height="50" />
-		<mx:Button label="Lancer" click="lancer()"/>
+		<mx:Button label="Lancer" click="lancer()" />
 	</mx:Panel>
 	<mx:Panel>
-		<TER:MGraphiqueScene id="scene" width="100" height="100" />
+		<TER:MGraphiqueScene id="scene" width="100" height="100" >
+			<!--<TER:MGraphiqueTriangle id="ttt" x="10" y="10" sysout="{sysout}" creationComplete="{triangles[triangles.length] = ttt;}"/>-->
+		</TER:MGraphiqueScene>
 	</mx:Panel>
 </mx:Application>
