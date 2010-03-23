@@ -1,5 +1,7 @@
 package Coeur
 {
+	import Utilitaires.MCoordonnee;
+	
 	import mx.controls.Text;
 	
 	public class MUtilitaire
@@ -25,6 +27,24 @@ package Coeur
 				taille = tab.length;
 			}
 			return tabRes;
+		}
+		
+		public static function min(a:Number, b:Number):Number{
+			if(a<b)
+				return a;
+			return b;
+		}
+		
+		public static function max(a:Number, b:Number):Number{
+			if(a>b)
+				return a;
+			return b;
+		}
+		
+		public static function maxMCoordonneeX(m1:MCoordonnee, m2:MCoordonnee):MCoordonnee{
+			if(m1.getX() > m2.getX())
+				return m1;
+			return m2;
 		}
 		/* afficher et trier déjà fait de base */
 		

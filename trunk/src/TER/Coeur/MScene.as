@@ -201,6 +201,10 @@ package Coeur
 		{
 			trace("Il y a un deplacement");
 		}
+		public function setCoordonnees(x:Number, y:Number):void
+		{
+			trace("Il y a un deplacement");
+		}
 		
 		public function deplacementObjet(objet:MIObjet):void
 		{

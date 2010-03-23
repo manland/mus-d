@@ -14,6 +14,7 @@ package Coeur
 		* Méthodes des getters et setters
 		**/
 		function deplacement(x:Number, y:Number):void;
+		function setCoordonnees(x:Number, y:Number):void;
 		function getX():Number;
 		function setX(x:Number):void;
 		function getY():Number;
