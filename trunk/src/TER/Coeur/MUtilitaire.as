@@ -46,6 +46,12 @@ package Coeur
 				return m1;
 			return m2;
 		}
+		
+		public static function maxMCoordonneeY(m1:MCoordonnee, m2:MCoordonnee):MCoordonnee{
+			if(m1.getY() > m2.getY())
+				return m1;
+			return m2;
+		}
 		/* afficher et trier déjà fait de base */
 		
 

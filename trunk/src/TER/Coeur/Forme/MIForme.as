@@ -5,6 +5,7 @@ package Coeur.Forme
 		function getX():Number;
 		function getY():Number;
 		function getLargeur():Number;
+		function setHauteur(hauteur:Number):void;
 		function getHauteur():Number;
 		function setLargeur(largeur:Number):void;
 		

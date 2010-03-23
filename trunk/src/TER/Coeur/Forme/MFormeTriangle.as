@@ -40,6 +40,30 @@ package Coeur.Forme
 			return this.hauteur;
 		}
 		
+		public function setHauteur(hauteur:Number):void{
+			
+			this.affiche();
+			var a1:MArete = this.aretes[0] as MArete;
+			var a2:MArete = this.aretes[1] as MArete;
+			var a3:MArete = this.aretes[2] as MArete;
+			
+			var max:MCoordonnee = MUtilitaire.maxMCoordonneeY(a1.getDepart(), a1.getArrivee());
+			max = MUtilitaire.maxMCoordonneeY(max, MUtilitaire.maxMCoordonneeY(a2.getDepart(), a2.getArrivee()));
+			max = MUtilitaire.maxMCoordonneeY(max, MUtilitaire.maxMCoordonneeY(a3.getDepart(), a3.getArrivee()));
+			
+			for(var i:uint = 0; i<nombre_arete; i++)
+			{
+				var arete:MArete = aretes[i] as MArete;
+				if(arete == null)
+					return ;
+				if(arete.getArrivee().estEgal(max))
+					arete.getArrivee().setY(this.y + hauteur);
+				if(arete.getDepart().estEgal(max))
+					arete.getDepart().setY(this.y + hauteur);
+			}
+			this.hauteur = hauteur;	
+		}
+		
 		public function getLargeur():Number{
 			return this.largeur;
 		}
@@ -52,8 +76,19 @@ package Coeur.Forme
 			var max:MCoordonnee = MUtilitaire.maxMCoordonneeX(a1.getDepart(), a1.getArrivee());
 			max = MUtilitaire.maxMCoordonneeX(max, MUtilitaire.maxMCoordonneeX(a2.getDepart(), a2.getArrivee()));
 			max = MUtilitaire.maxMCoordonneeX(max, MUtilitaire.maxMCoordonneeX(a3.getDepart(), a3.getArrivee()));
-			trace("ici :"+max.getX(), max.getY());
 			
+			for(var i:uint = 0; i<nombre_arete; i++)
+			{
+				var arete:MArete = aretes[i] as MArete;
+				if(arete == null)
+					return ;
+				if(arete.getArrivee().estEgal(max))
+					arete.getArrivee().setX(this.x + largeur);
+					
+				if(arete.getDepart().estEgal(max))
+					arete.getDepart().setX(this.x + largeur);
+			}
+			this.largeur = largeur;			
 		}
 		
 		public function getX():Number{
@@ -75,9 +110,13 @@ package Coeur.Forme
 		
 		public function instancie(m1:MCoordonnee, m2:MCoordonnee, m3:MCoordonnee) : void
 		{
+			var m4:MCoordonnee = new MCoordonnee(m1.getX(), m1.getY());
+			var m5:MCoordonnee = new MCoordonnee(m2.getX(), m2.getY());
+			var m6:MCoordonnee = new MCoordonnee(m3.getX(), m3.getY());
+			
 			var a1:MArete = new MArete(m1,m2);
-			var a2:MArete = new MArete(m2,m3);
-			var a3:MArete = new MArete(m3,m1);
+			var a2:MArete = new MArete(m5, m3);
+			var a3:MArete = new MArete(m6, m4);
 			aretes.push(a1);
 			aretes.push(a2);
 			aretes.push(a3);
@@ -107,14 +146,15 @@ package Coeur.Forme
 				
 				
 				var max_x:Number = MUtilitaire.max(a1.getDepart().getX(), a1.getArrivee().getX());
-				max_x = MUtilitaire.max(this.x , MUtilitaire.max(a2.getDepart().getX(), a2.getArrivee().getX()));
-				max_x = MUtilitaire.max(this.x , MUtilitaire.max(a3.getDepart().getX(), a3.getArrivee().getX()));
-				var max_y:Number = MUtilitaire.max(a1.getDepart().getY(), a1.getArrivee().getY());
-				max_y = MUtilitaire.max(this.y , MUtilitaire.max(a2.getDepart().getY(), a2.getArrivee().getY()));
-				max_y = MUtilitaire.max(this.y , MUtilitaire.max(a3.getDepart().getY(), a3.getArrivee().getY()));
+				max_x = MUtilitaire.max(max_x , MUtilitaire.max(a2.getDepart().getX(), a2.getArrivee().getX()));
+				max_x = MUtilitaire.max(max_x , MUtilitaire.max(a3.getDepart().getX(), a3.getArrivee().getX()));
 				
-				this.hauteur = max_x - this.x;
-				this.largeur = max_y - this.y;
+				var max_y:Number = MUtilitaire.max(a1.getDepart().getY(), a1.getArrivee().getY());
+				max_y = MUtilitaire.max(max_y , MUtilitaire.max(a2.getDepart().getY(), a2.getArrivee().getY()));
+				max_y = MUtilitaire.max(max_y , MUtilitaire.max(a3.getDepart().getY(), a3.getArrivee().getY()));
+				
+				this.largeur = max_x - this.x;
+				this.hauteur = max_y - this.y;
 			}
 			
 		}
@@ -232,6 +272,8 @@ package Coeur.Forme
 		
 		public function affiche():void
 		{
+			trace("MFormeTriangle : (",x,",",y,")");
+			trace("MFormeTriangle : largeur = ",this.largeur,", hauteur=",hauteur);
 			for(var i:uint = 0; i<nombre_arete; i++)
 			{
 				var arete:MArete = aretes[i] as MArete;
