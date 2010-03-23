@@ -1,50 +1,52 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <flexLibProperties version="1">
-  <includeClasses>
-    <classEntry path="Coeur.Forme.MFormeEllipse"/>
-    <classEntry path="Coeur.Forme.MFormeRond"/>
-    <classEntry path="Coeur.Forme.MFormeTriangle"/>
-    <classEntry path="Coeur.Forme.MIForme"/>
-    <classEntry path="Coeur.Forme.MIFormePolygone"/>
-    <classEntry path="Coeur.MBonus"/>
-    <classEntry path="Coeur.MControle"/>
-    <classEntry path="Coeur.MDynamique"/>
-    <classEntry path="Coeur.MElement"/>
-    <classEntry path="Coeur.MIObjet"/>
-    <classEntry path="Coeur.MIObjetEcouteur"/>
-    <classEntry path="Coeur.MPropriete"/>
-    <classEntry path="Coeur.MScene"/>
-    <classEntry path="Coeur.MScore"/>
-    <classEntry path="Coeur.MStatique"/>
-    <classEntry path="Coeur.MUtilitaire"/>
-    <classEntry path="Controleur.MClavier"/>
-    <classEntry path="Controleur.MIEcouteurClavier"/>
-    <classEntry path="Controleur.MIEcouteurSouris"/>
-    <classEntry path="Controleur.MIEffet"/>
-    <classEntry path="Controleur.MIEffetFini"/>
-    <classEntry path="Controleur.MIEffetInfini"/>
-    <classEntry path="Controleur.MMouvementFini"/>
-    <classEntry path="Controleur.MMouvementPerpetuel"/>
-    <classEntry path="Controleur.MRedimensionnement"/>
-    <classEntry path="Controleur.MSouris"/>
-    <classEntry path="Graphique.MGraphiqueRectangle"/>
-    <classEntry path="Graphique.MGraphiqueScene"/>
-    <classEntry path="Graphique.MGraphiqueTriangle"/>
-    <classEntry path="Graphique.MIObjetGraphique"/>
-    <classEntry path="Graphique.Textures.Degrades.MDegrade"/>
-    <classEntry path="Graphique.Textures.Degrades.MDegradeHorizontal"/>
-    <classEntry path="Graphique.Textures.Degrades.MDegradeObliqueDroite"/>
-    <classEntry path="Graphique.Textures.Degrades.MDegradeObliqueGauche"/>
-    <classEntry path="Graphique.Textures.Degrades.MDegradeRadial"/>
-    <classEntry path="Graphique.Textures.Degrades.MDegradeVertical"/>
-    <classEntry path="Graphique.Textures.MCouleur"/>
-    <classEntry path="Graphique.Textures.MITexture"/>
-    <classEntry path="Graphique.Textures.MImage"/>
-    <classEntry path="Utilitaires.Fabrique"/>
-    <classEntry path="Utilitaires.MArete"/>
-    <classEntry path="Utilitaires.MCoordonnee"/>
-    <classEntry path="Utilitaires.MErreur"/>
-  </includeClasses>
-  <includeResources/>
-  <namespaceManifests/>
+<includeClasses>
+<classEntry path="Graphique.Textures.MITexture"/>
+<classEntry path="Coeur.MScene"/>
+<classEntry path="Controleur.MSouris"/>
+<classEntry path="Coeur.Forme.MFormeRectangle"/>
+<classEntry path="Coeur.Forme.MFormeEllipse"/>
+<classEntry path="Coeur.MIObjetEcouteur"/>
+<classEntry path="Controleur.MClavier"/>
+<classEntry path="Coeur.Forme.MFormeRond"/>
+<classEntry path="Graphique.Textures.Degrades.MDegradeObliqueDroite"/>
+<classEntry path="Coeur.Forme.MFormeTriangle"/>
+<classEntry path="Controleur.MIEffet"/>
+<classEntry path="Graphique.Textures.MImage"/>
+<classEntry path="Graphique.MIObjetGraphique"/>
+<classEntry path="Controleur.MIEcouteurSouris"/>
+<classEntry path="Graphique.Textures.Degrades.MDegradeHorizontal"/>
+<classEntry path="Coeur.Forme.MIFormePolygone"/>
+<classEntry path="Coeur.MUtilitaire"/>
+<classEntry path="Controleur.MRedimensionnement"/>
+<classEntry path="Graphique.MGraphiqueRectangle"/>
+<classEntry path="Graphique.Textures.Degrades.MDegradeVertical"/>
+<classEntry path="Controleur.MIEcouteurClavier"/>
+<classEntry path="Coeur.MIObjet"/>
+<classEntry path="Controleur.MMouvementFini"/>
+<classEntry path="Coeur.Forme.MIForme"/>
+<classEntry path="Coeur.MElement"/>
+<classEntry path="Controleur.MMouvementPerpetuel"/>
+<classEntry path="Graphique.Textures.Degrades.MDegrade"/>
+<classEntry path="Coeur.MControle"/>
+<classEntry path="Utilitaires.Fabrique"/>
+<classEntry path="Coeur.MBonus"/>
+<classEntry path="Coeur.MPropriete"/>
+<classEntry path="Coeur.MStatique"/>
+<classEntry path="Utilitaires.MArete"/>
+<classEntry path="Graphique.Textures.MCouleur"/>
+<classEntry path="Coeur.MDynamique"/>
+<classEntry path="Coeur.MScore"/>
+<classEntry path="Graphique.Textures.Degrades.MDegradeObliqueGauche"/>
+<classEntry path="Utilitaires.MCoordonnee"/>
+<classEntry path="Graphique.MGraphiqueScene"/>
+<classEntry path="Coeur.Forme.MFormeCarre"/>
+<classEntry path="Graphique.Textures.Degrades.MDegradeRadial"/>
+<classEntry path="Controleur.MIEffetInfini"/>
+<classEntry path="Utilitaires.MErreur"/>
+<classEntry path="Controleur.MIEffetFini"/>
+<classEntry path="Graphique.MGraphiqueTriangle"/>
+</includeClasses>
+<includeResources/>
+<namespaceManifests/>
 </flexLibProperties>

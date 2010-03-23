@@ -2,15 +2,27 @@ package Coeur.Forme
 {
 	public class MFormeRond extends MFormeEllipse
 	{
-		public function MFormeRond(rayon:Number = 0)
+		public function MFormeRond()
 		{
-			nom_classe = "MFormeRond";
+			super();
+			this.nom_classe = "MFormeRond";
 		}
 		
-		public function setRayon(rayon:Number):void
-		{
-			setLargeur(rayon);
-			setHauteur(rayon);
+		public override function instancie(x:Number, y:Number, largeur:Number, hauteur:Number):void{
+			this.x = x;
+			this.y = y;
+			this.largeur = largeur;
+			this.hauteur = largeur;
+		}
+		
+		public override function setLargeur(largeur:Number):void{
+			this.largeur = largeur;
+			this.hauteur = largeur
+		}
+		
+		public override function setHauteur(hauteur:Number):void{
+			this.hauteur = hauteur;
+			this.largeur = hauteur;
 		}
 		
 		public function getRayon():Number
@@ -21,6 +33,11 @@ package Coeur.Forme
 		public override function contient(x:Number,y:Number):Boolean{
 			/**a remplir**/
 			return false;
+		}
+		
+		public override function getPerimetre():Number
+		{
+			return 2 * Math.PI * this.getHauteur();
 		}
 	}
 }

@@ -10,9 +10,18 @@ package Coeur.Forme
 		
 		public function MFormeEllipse()
 		{
+			this.x = 0;
+			this.y = 0;
+			this.largeur = 0;
+			this.hauteur = 0;
+			this.nom_classe = "MFormeEllipse";
+		}
+		
+		public function instancie(x:Number, y:Number, largeur:Number, hauteur:Number):void{
+			this.x = x;
+			this.y = y;
 			this.largeur = largeur;
 			this.hauteur = hauteur;
-			this.nom_classe = "MFormeEllipse";
 		}
 		
 		public function getLargeur():Number
@@ -50,12 +59,13 @@ package Coeur.Forme
 		
 		public function deplacement(x:Number, y:Number):void
 		{
-			
+			this.x += x;
+			this.y += y;
 		}
 		
 		public function affiche():void
 		{
-			trace("MEllipse");
+			trace(this.getNomClasse());
 		}
 		
 		public function contient(x:Number,y:Number):Boolean{
