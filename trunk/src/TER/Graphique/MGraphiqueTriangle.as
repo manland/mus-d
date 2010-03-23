@@ -30,116 +30,36 @@ package Graphique
 	import Controleur.MIEffetInfini;
 	import Controleur.MMouvementPerpetuel;
 	
-	public class MGraphiqueTriangle extends UIComponent implements MIObjetGraphique, MIObjetEcouteur
+	public class MGraphiqueTriangle extends MGraphiqueAbstrait
 	{
-		private var objet:MIObjet;
-		private var texture:MITexture;
 		private var mouvement:MIEffetFini;
-		public var sysout:Text;
-		private var mon_x:Number;
-		private var mon_y:Number;
+		private var mouvement2:MIEffetFini;
 		
-		public function MGraphiqueTriangle(point1:MCoordonnee=null, point2:MCoordonnee=null, point3:MCoordonnee=null, texture:MITexture=null)
+		public function MGraphiqueTriangle(point1:MCoordonnee=null, point2:MCoordonnee=null, point3:MCoordonnee=null)
 		{
-			objet = new MElement();
-			objet.ajoutObjetEcouteur(this);
-			
 			if(point1 != null && point2 != null && point3 != null) {
-				var forme:MFormeTriangle = new MFormeTriangle();
-				forme.ajouterArete(new MArete(point1, point2));
-				forme.ajouterArete(new MArete(point2, point3));
-				forme.ajouterArete(new MArete(point3, point1));
-//				forme.instancie(point1, point2, point3);
+				forme = new MFormeTriangle();
+				(forme as MFormeTriangle).instancie(point1, point2, point3);
 				objet.setForme(forme);
-				x = objet.getX();
-				y = objet.getY();
-				width = objet.getLargeur();
-				height = objet.getHauteur();
 			}
 			
 			mouvement = new MRedimensionnement(objet);
-			
-			this.texture = new MCouleur(this);
-		}
-		
-		public function getObjet():MIObjet {
-			return objet;
-		}
-		
-		public function getGraphique():UIComponent {
-			return this;
-		}
-		
-		public function getTexture():MITexture {
-			return texture;
-		}
-		public function setTexture(texture:MITexture):void {
-			this.texture = texture;
-			invalidateDisplayList();
-		}
-		
-		public function deplacementObjet(objet:MIObjet):void {
-			x = objet.getX();
-			y = objet.getY();
-			invalidateDisplayList();
-		}
-		public function changementTaille(objet:MIObjet):void {
-			if(sysout != null) {
-				sysout.text += "redim\n";
-			}
-			width = objet.getLargeur();
-			height = objet.getHauteur();
-			invalidateDisplayList();
-		}
-		public function objetMeurt(objet:MIObjet):void {
-			sysout.text += "Je meurt !!";
-			parent.removeChild(this);
-		}
-		public function objetNait(objet:MIObjet):void {
-			sysout.text += "Je nais !!";
+			mouvement2 = new MMouvementFini(objet);
 		}
 		
 		public function getMouvement():MIEffetFini {
 			return mouvement;
 		}
 		
-		override public function set x(x:Number):void {
-			super.x = x;
-			if(objet.getX() != x) {
-				objet.setX(x);
-			}
-		}
-		override public function set y(y:Number):void {
-			super.y = y;
-			if(objet.getY() != y) {
-				objet.setY(y);
-			}
-		}
-		override public function set width(width:Number):void {
-			super.width = width;
-			if(objet.getLargeur() != width) {
-				objet.setLargeur(width);
-			}
-		}
-		override public function set height(height:Number):void {
-			super.height = height;
-			if(objet.getHauteur() != height) {
-				objet.setHauteur(height);
-			}
+		public function getMouvement2():MIEffetFini {
+			return mouvement2;
 		}
 		
-		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
-			super.updateDisplayList(unscaledWidth, unscaledHeight );
-//			objet.setLargeur(unscaledWidth);
-//			objet.setHauteur(unscaledHeight);
-			dessiner();
-		}
-		
-		protected function dessiner():void {
+		override protected function dessiner():void {
 			var o:MFormeTriangle = objet.getForme() as MFormeTriangle;
 			var aretes:Array = o.getAretes();
 			graphics.clear();
-			texture.appliquer();
+			ma_texture.appliquer();
 			var elem:MArete = aretes[0] as MArete;
 			graphics.moveTo(elem.getDepart().getX(), elem.getDepart().getY());
 			for(var i:Number=0; i<o.getNombreArete(); i++) {
@@ -149,11 +69,5 @@ package Graphique
 			graphics.endFill();
 			
 		}
-		
-//		override protected function commitProperties():void {
-//            super.commitProperties();
-//			invalidateDisplayList();
-//		}
-
 	}
 }

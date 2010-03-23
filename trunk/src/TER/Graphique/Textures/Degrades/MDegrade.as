@@ -58,13 +58,13 @@ package Graphique.Textures.Degrades {
 		}
 		
 		public function appliquer():void {
-//			//taille du dégradé != taille de l'affichage
-//			box_largeur = objet.getObjet().getLargeur();
-//			box_hauteur = objet.getObjet().getHauteur();
-//			
-//			//placer le dégradé dans ça box
-//			tx = objet.getObjet().getX();
-//			ty = objet.getObjet().getY();
+			//taille du dégradé != taille de l'affichage
+			box_largeur = objet.getObjet().getLargeur();
+			box_hauteur = objet.getObjet().getHauteur();
+			
+			//placer le dégradé dans ça box
+			tx = objet.getObjet().getX();
+			ty = objet.getObjet().getY();
 			matrix.createGradientBox(box_largeur, box_hauteur, box_rotation, tx, ty);
 		    objet.getGraphique().graphics.beginGradientFill(type, couleurs, alphas, ratios, matrix, spread_method, 
 				interpolation, focal_pt_ratio);
