@@ -6,6 +6,9 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import Graphique.MGraphiqueRond;
+			import Graphique.Textures.MCouleur;
+			import Graphique.MGraphiqueRectangle;
 			import Graphique.Textures.Degrades.MDegradeRadial;
 			import Utilitaires.MCoordonnee;
 			import Utilitaires.MErreur;
@@ -25,20 +28,53 @@
 					tt.sysout = sysout;
 					tt.x = Math.ceil(Math.random()*100);
 					tt.y = Math.ceil(Math.random()*100);
-//					tt.setCoordonnees(x, y);
-					
 
 					triangles[triangles.length] = tt;
-					sysout.text += "n°" + i + " ==> x="+tt.x+"; y="+tt.y+";largeur="+tt.width+";hauteur="+tt.height+"\n";
 					scene.addChild(tt);
+				}
+				for(var i:int=0; i<20; i++) {
+					var rr:MGraphiqueRectangle = new MGraphiqueRectangle();
+					rr.setTexture(new MCouleur(rr, 0x00FF00));
+
+					rr.sysout = sysout;
+					rr.x = Math.ceil(Math.random()*100);
+					rr.y = Math.ceil(Math.random()*100);
+
+					triangles[triangles.length] = rr;
+					scene.addChild(rr);
+				}
+				for(var i:int=0; i<20; i++) {
+					var rond:MGraphiqueRond = new MGraphiqueRond();
+					rond.setTexture(new MCouleur(rond, 0x0000FF));
+
+					rond.sysout = sysout;
+					rond.x = Math.ceil(Math.random()*100);
+					rond.y = Math.ceil(Math.random()*100);
+
+					triangles[triangles.length] = rond;
+					scene.addChild(rond);
 				}
 			}
 			
 			public function lancer():void {
 				for(var i:int=0; i<triangles.length; i++) {
 					var tt:MGraphiqueTriangle = triangles[i] as MGraphiqueTriangle;
-					tt.getMouvement().lancer(100, 100, 2000);
-//					tt.affiche();
+					if(tt != null) {
+						tt.getMouvement().lancer(10, 10, 1000);
+						tt.getMouvement2().lancer(100, 100, 1000);
+					}
+					else {
+						var rr:MGraphiqueRectangle = triangles[i] as MGraphiqueRectangle;
+						if(rr != null) {
+							rr.getMouvement().lancer(10, 10, 1000);
+							rr.getMouvement2().lancer(100, 100, 1000);
+						}
+						else {
+							var rond:MGraphiqueRond = triangles[i] as MGraphiqueRond;
+							rond.getMouvement().lancer(10, 10, 1000);
+							rond.getMouvement2().lancer(100, 100, 1000);
+						}
+					}
 				}
 			}
 		]]>
@@ -51,7 +87,7 @@
 	</mx:Panel>
 	<mx:Panel>
 		<TER:MGraphiqueScene id="scene" width="100" height="100" >
-			<!--<TER:MGraphiqueTriangle id="ttt" x="10" y="10" sysout="{sysout}" creationComplete="{triangles[triangles.length] = ttt;}"/>-->
+			<!--<TER:MGraphiqueTriangle id="ttt" x="10" y="10" texture="MCouleur" rgb="0x00FF00" sysout="{sysout}" creationComplete="{triangles[triangles.length] = ttt;}"/>-->
 		</TER:MGraphiqueScene>
 	</mx:Panel>
 </mx:Application>
