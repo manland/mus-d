@@ -84,8 +84,8 @@ package Graphique
 			invalidateDisplayList();
 		}
 		public function changementTaille(objet:MIObjet):void {
-//			width = objet.getLargeur();
-//			height = objet.getHauteur();
+			width = objet.getLargeur();
+			height = objet.getHauteur();
 			invalidateDisplayList();
 		}
 		public function objetMeurt(objet:MIObjet):void {
@@ -100,36 +100,38 @@ package Graphique
 			return mouvement;
 		}
 		
-//		override public function set x(x:Number):void {
-//			super.x = x;
-//			if(objet.getX() != x) {
-//				objet.setX(x);
-//			}
-//		}
-//		override public function set y(y:Number):void {
-//			super.y = y;
-//			if(objet.getY() != y) {
-//				objet.setY(y);
-//			}
-//		}
-//		override public function set width(width:Number):void {
-//			sysout.text += "setWidth";
-//			super.width = width;
-//			if(objet.getLargeur() != width) {
-////				objet.setLargeur(width);
-//			}
-//		}
-//		override public function set height(height:Number):void {
-//			super.height = height;
-//			if(objet.getHauteur() != height) {
-////				objet.setHauteur(height);
-//			}
-//		}
+		override public function set x(x:Number):void {
+			super.x = x;
+			if(objet.getX() != x) {
+				objet.setX(x);
+			}
+		}
+		override public function set y(y:Number):void {
+			super.y = y;
+			if(objet.getY() != y) {
+				objet.setY(y);
+			}
+		}
+		override public function set width(width:Number):void {
+			if(sysout != null) {
+				sysout.text += "setWidth";
+			}
+			super.width = width;
+			if(objet.getLargeur() != width) {
+				objet.setLargeur(width);
+			}
+		}
+		override public function set height(height:Number):void {
+			super.height = height;
+			if(objet.getHauteur() != height) {
+				objet.setHauteur(height);
+			}
+		}
 		
 		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
 			super.updateDisplayList(unscaledWidth, unscaledHeight );
-//			objet.setLargeur(unscaledWidth);
-//			objet.setHauteur(unscaledHeight);
+			objet.setLargeur(unscaledWidth);
+			objet.setHauteur(unscaledHeight);
 			dessiner();
 		}
 		
