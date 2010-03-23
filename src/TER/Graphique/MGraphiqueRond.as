@@ -1,27 +1,25 @@
 package Graphique
 {
-	import Coeur.MIObjet;
-	import Utilitaires.MCoordonnee;
-	import Coeur.Forme.MFormeRectangle;
 	import Controleur.MIEffetFini;
 	import Controleur.MRedimensionnement;
 	import Controleur.MMouvementFini;
+	import Coeur.Forme.MFormeRond;
 	
-	public class MGraphiqueRectangle extends MGraphiqueAbstrait
+	public class MGraphiqueRond extends MGraphiqueAbstrait
 	{
 		private var mouvement:MIEffetFini;
 		private var mouvement2:MIEffetFini;
 		
-		public function MGraphiqueRectangle(x:int=0, y:int=0, largeur:int=30, hauteur:int=10)
+		public function MGraphiqueRond(x:int=0, y:int=0, largeur:int=30, hauteur:int=30)
 		{
-			forme = new MFormeRectangle();
-			(forme as MFormeRectangle).instancie(x, y, largeur, hauteur);
+			forme = new MFormeRond();
+			(forme as MFormeRond).instancie(x, y, largeur, hauteur);
 			objet.setForme(forme);
 			
 			mouvement = new MRedimensionnement(objet);
 			mouvement2 = new MMouvementFini(objet);
 		}
-
+		
 		public function getMouvement():MIEffetFini {
 			return mouvement;
 		}
@@ -34,9 +32,10 @@ package Graphique
 			graphics.clear();
 			ma_texture.appliquer();
 			graphics.moveTo(x, y);
-			graphics.drawRect(x, y, width, height);
+			graphics.drawEllipse(x, y, width, height);
 			graphics.endFill();
 			
 		}
+
 	}
 }
