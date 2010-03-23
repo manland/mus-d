@@ -7,6 +7,8 @@ package Coeur.Forme
 		 * créer une classe coté ayant 2 points chaque point ayant des coordonnées ?
 		 * */
 		 
+		
+		
 		function getAretes():Array;
 		function setAretes(aretes:Array):void;
 		function getSommeAngles():Number;
