@@ -5,6 +5,8 @@ package Coeur.Forme
 		protected var nom_classe:String;
 		protected var largeur:Number;
 		protected var hauteur:Number;
+		protected var x:Number;
+		protected var y:Number;
 		
 		public function MFormeEllipse()
 		{
@@ -60,5 +62,14 @@ package Coeur.Forme
 			//a remplir
 			return false;
 		}
+		
+		public function getX():Number{
+			return this.x;
+		}
+		
+		public function getY():Number{
+			return this.y;
+		}
+		 
 	}
 }
