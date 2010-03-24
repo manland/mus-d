@@ -11,6 +11,7 @@ package Graphique
 	import Graphique.Textures.MCouleur;
 	import mx.controls.Text;
 	import Coeur.Forme.MIForme;
+	import flash.events.TimerEvent;
 	
 	public class MGraphiqueAbstrait extends UIComponent implements MIObjetGraphique, MIObjetEcouteur
 	{
@@ -152,7 +153,7 @@ package Graphique
             if(texture != null) {
             	if(texture == "MCouleur") {
             		if(rgb != null) {
-            			setTexture(new MCouleur(this, uint(rgb)));
+            			setTexture(new MCouleur(this, uint("0x"+rgb)));
             		}
             	}
             	else if(texture == "MDegrade") {
@@ -162,6 +163,10 @@ package Graphique
             		
             	}
             }
+			invalidateDisplayList();
+		}
+		
+		public function redessiner(e:TimerEvent=null):void {
 			invalidateDisplayList();
 		}
 

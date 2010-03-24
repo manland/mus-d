@@ -57,7 +57,7 @@ package Graphique.Textures.Degrades {
 			ty = objet.getObjet().getY();
 		}
 		
-		public function appliquer():void {
+		public function appliquer():Boolean {
 			//taille du dégradé != taille de l'affichage
 			box_largeur = objet.getObjet().getLargeur();
 			box_hauteur = objet.getObjet().getHauteur();
@@ -68,6 +68,7 @@ package Graphique.Textures.Degrades {
 			matrix.createGradientBox(box_largeur, box_hauteur, box_rotation, tx, ty);
 		    objet.getGraphique().graphics.beginGradientFill(type, couleurs, alphas, ratios, matrix, spread_method, 
 				interpolation, focal_pt_ratio);
+			return true;
 		}
 		
 		public function setCouleurs(c:Array):void {

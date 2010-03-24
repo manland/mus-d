@@ -34,7 +34,6 @@ package Graphique
 			graphics.moveTo(x, y);
 			graphics.drawEllipse(x, y, width, height);
 			graphics.endFill();
-			
 		}
 
 	}

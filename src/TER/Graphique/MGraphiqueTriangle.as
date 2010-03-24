@@ -29,6 +29,8 @@ package Graphique
 	import Controleur.MRedimensionnement;
 	import Controleur.MIEffetInfini;
 	import Controleur.MMouvementPerpetuel;
+	import flash.utils.Timer;
+	import flash.events.TimerEvent;
 	
 	public class MGraphiqueTriangle extends MGraphiqueAbstrait
 	{
@@ -40,6 +42,11 @@ package Graphique
 			if(point1 != null && point2 != null && point3 != null) {
 				forme = new MFormeTriangle();
 				(forme as MFormeTriangle).instancie(point1, point2, point3);
+				objet.setForme(forme);
+			}
+			else {
+				forme = new MFormeTriangle();
+				(forme as MFormeTriangle).instancie(new MCoordonnee(20, 0), new MCoordonnee(0, 20), new MCoordonnee(40, 20));
 				objet.setForme(forme);
 			}
 			
@@ -67,7 +74,6 @@ package Graphique
 				graphics.lineTo(elem.getArrivee().getX(), elem.getArrivee().getY());
 			}
 			graphics.endFill();
-			
 		}
 	}
 }
