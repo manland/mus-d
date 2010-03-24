@@ -4,6 +4,6 @@ package Graphique.Textures
 	
 	public interface MITexture
 	{
-		function appliquer():void;
+		function appliquer():Boolean;
 	}
 }

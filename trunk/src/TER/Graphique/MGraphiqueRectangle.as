@@ -36,7 +36,6 @@ package Graphique
 			graphics.moveTo(x, y);
 			graphics.drawRect(x, y, width, height);
 			graphics.endFill();
-			
 		}
 	}
 }

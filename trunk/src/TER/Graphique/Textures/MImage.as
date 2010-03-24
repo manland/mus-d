@@ -7,7 +7,8 @@ package Graphique.Textures {
 	import flash.display.BitmapData;
 	import flash.geom.Matrix;
 	import mx.controls.Text;
-	
+	import flash.utils.Timer;
+	import flash.events.TimerEvent;
 	
 	public class MImage implements MITexture {
 		protected var objet:MIObjetGraphique;
@@ -15,6 +16,8 @@ package Graphique.Textures {
 		private var loader:Loader = new Loader();
 		private var matrix:Matrix;
 		private var myBitmap:BitmapData;
+		
+		private var timer:Timer;
 		
 		private var sysout:Text;
 		
@@ -27,21 +30,25 @@ package Graphique.Textures {
 			var request:URLRequest = new URLRequest(url_image);
             
             loader.load(request);
+            loader.contentLoaderInfo.addEventListener(Event.COMPLETE, finaliser);
             loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, erreur);
             
             matrix = null;
             myBitmap = null;
 		}
 		
-		public function appliquer():void {
-			sysout.text += "avant le if";
+		public function appliquer():Boolean {
+			objet.getGraphique().graphics.lineStyle(2, 0x000000);
 			if(myBitmap != null) {
-				sysout.text += "Dans le if";
-            	objet.getGraphique().graphics.beginBitmapFill(myBitmap);
+            	objet.getGraphique().graphics.beginBitmapFill(myBitmap, null, false);
+            	return true;
    			}
-   			else {//Permet par le biai des events de pouvoir utiliser appliquer malgrès que l'image ne soit pas encore loader !!!
-   				loader.contentLoaderInfo.addEventListener(Event.COMPLETE, finaliser);
+   			else {
+   				timer = new Timer(100, 1);
+				timer.addEventListener(TimerEvent.TIMER, objet.redessiner);
+				timer.start();
    			}
+   			return false;
 		}
 		
 		private function finaliser(event:Event):void {
@@ -51,7 +58,7 @@ package Graphique.Textures {
 //            matrix = new Matrix();
 //            matrix.rotate(Math.PI/4);
             
-            appliquer();
+//            appliquer();
 		}
 		
 		private function erreur(event:IOErrorEvent):void {
