@@ -66,7 +66,7 @@ package Graphique
 			var o:MFormeTriangle = objet.getForme() as MFormeTriangle;
 			var aretes:Array = o.getAretes();
 			graphics.clear();
-			ma_texture.appliquer();
+			ma_texture.appliquer(graphics);
 			var elem:MArete = aretes[0] as MArete;
 			graphics.moveTo(elem.getDepart().getX(), elem.getDepart().getY());
 			for(var i:Number=0; i<o.getNombreArete(); i++) {

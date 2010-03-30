@@ -20,8 +20,7 @@ package Graphique
 		protected var ma_texture:MITexture;
 		
 		public var type:String;
-		public var texture:String;
-		public var rgb:String;
+		public var texture:MITexture;
 		
 		public var sysout:Text;
 		
@@ -55,6 +54,10 @@ package Graphique
 		public function setTexture(texture:MITexture):void {
 			this.ma_texture = texture;
 			invalidateDisplayList();
+		}
+		
+		public function ajouterTexture(texture:MITexture):void {
+			ma_texture = texture.setADecorer(ma_texture);
 		}
 		
 		public function deplacementObjet(objet:MIObjet):void {
@@ -151,17 +154,7 @@ package Graphique
             	}
             }
             if(texture != null) {
-            	if(texture == "MCouleur") {
-            		if(rgb != null) {
-            			setTexture(new MCouleur(this, uint("0x"+rgb)));
-            		}
-            	}
-            	else if(texture == "MDegrade") {
-            		
-            	}
-            	else if(texture == "MImage") {
-            		
-            	}
+        		setTexture(texture);
             }
 			invalidateDisplayList();
 		}

@@ -6,6 +6,7 @@ package Graphique
 	import Controleur.MIEffetFini;
 	import Controleur.MRedimensionnement;
 	import Controleur.MMouvementFini;
+	import flash.display.Graphics;
 	
 	public class MGraphiqueRectangle extends MGraphiqueAbstrait
 	{
@@ -32,7 +33,7 @@ package Graphique
 		
 		override protected function dessiner():void {
 			graphics.clear();
-			ma_texture.appliquer();
+			ma_texture.appliquer(graphics);
 			graphics.moveTo(x, y);
 			graphics.drawRect(x, y, width, height);
 			graphics.endFill();
