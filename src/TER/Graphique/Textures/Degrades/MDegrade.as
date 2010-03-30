@@ -33,8 +33,8 @@ package Graphique.Textures.Degrades {
 		
 		private var a_decorer:MITexture = null;
         
-		public function MDegrade(objet:MIObjetGraphique) {
-			this.objet = objet;
+		public function MDegrade() {
+			this.objet = null;
 			
 			nom_classe = "MDegrade";
 			matrix = new Matrix();
@@ -49,7 +49,10 @@ package Graphique.Textures.Degrades {
 			focal_pt_ratio = 0;//point de départ pour la fuite peut être utile pour faire une lumière
 			
 			type = GradientType.LINEAR;//LINEAR = trait, RADIAL = rond
-			
+		}
+		
+		public function setObjetADessiner(objet:MIObjetGraphique):void {
+			this.objet = objet;
 			//taille du dégradé != taille de l'affichage
 			box_largeur = objet.getObjet().getLargeur();
 			box_hauteur = objet.getObjet().getHauteur();

@@ -9,7 +9,7 @@ package Graphique.Textures {
 		
 		public var sysout:Text;
 		
-		public function MCouleur(objet:MIObjetGraphique, couleur:uint=0xFF0000) {
+		public function MCouleur(couleur:uint=0xFF0000) {
 			this.couleur = couleur;
 		}
 		
@@ -25,5 +25,7 @@ package Graphique.Textures {
 			graphics.lineStyle(2, 0x000000);
 			graphics.beginFill(couleur);
 		}
+		
+		public function setObjetADessiner(objet:MIObjetGraphique):void {}
 	}
 }

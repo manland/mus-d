@@ -13,6 +13,7 @@ package Graphique.Textures {
 	import mx.controls.TileList;
 	import flash.display.Bitmap;
 	import flash.filters.ColorMatrixFilter;
+	import flash.filters.ConvolutionFilter;
 	
 	public class MImage implements MITexture {
 		protected var objet:MIObjetGraphique;
@@ -28,10 +29,10 @@ package Graphique.Textures {
 		
 		private var sysout:Text;
 		
-		public function MImage(sysout:Text, objet:MIObjetGraphique, url_image:String="") {
+		public function MImage(sysout:Text, url_image:String="") {
 			this.sysout = sysout;
 			
-			this.objet = objet;
+			this.objet = null;
 			this.url_image = url_image;
 			
 			var request:URLRequest = new URLRequest(url_image);
@@ -41,6 +42,10 @@ package Graphique.Textures {
             loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, erreur);
          
             myBitmap = null;
+		}
+		
+		public function setObjetADessiner(objet:MIObjetGraphique):void {
+			this.objet = objet;
 		}
 		
 		public function setADecorer(texture:MITexture):MITexture {
@@ -97,18 +102,8 @@ package Graphique.Textures {
 			sysout.text += "Impossible de charger l'image : " + url_image;
 		}
 		
-		public function ajusterCouleur(nouvelle_valeur_rouge:Number=255, nouvelle_valeur_vert:Number=255, nouvelle_valeur_bleu:Number=255, nouvelle_valeur_alpha:Number=0):void {
-			var matrix:Array = new Array();
-			matrix = matrix.concat([1, 0, 0, 0, nouvelle_valeur_rouge]); // red
-			matrix = matrix.concat([0, 1, 0, 0, nouvelle_valeur_vert]); // green
-			matrix = matrix.concat([0, 0, 1, 0, nouvelle_valeur_bleu]); // blue
-			matrix = matrix.concat([0, 0, 0, 1, nouvelle_valeur_alpha]); 	// alpha
-			var cmf:ColorMatrixFilter = new ColorMatrixFilter(matrix); 
-			
-			var filtersArray:Array = new Array();
-			filtersArray.push(cmf);
-			
-			objet.getGraphique().filters = filtersArray;
+		public function getUrlImage():String {
+			return url_image;
 		}
 	}
 }
