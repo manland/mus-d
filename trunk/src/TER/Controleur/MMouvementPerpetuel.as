@@ -4,19 +4,23 @@ package Controleur
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 
-	public class MMouvementPerpetuel implements MIEffetInfini
+	public class MMouvementPerpetuel implements MIEffet
 	{
 		private var objet:MIObjet;
 		private var timer:Timer;
 		private var unite_x:Number;
 		private var unite_y:Number;
+		private var vitesse_px_s_X:Number;
+		private var vitesse_px_s_Y:Number;
 		
-		public function MMouvementPerpetuel(objet:MIObjet)
+		public function MMouvementPerpetuel(objet:MIObjet,vitesse_px_s_X:Number, vitesse_px_s_Y:Number)
 		{
 			this.objet = objet;
+			this.vitesse_px_s_X = vitesse_px_s_X;
+			this.vitesse_px_s_Y = vitesse_px_s_Y;
 		}
 		
-		public function lancer(vitesse_px_s_X:Number, vitesse_px_s_Y:Number):void{
+		public function lancer():void{
 			//remise a zéro si ce n'est pas fait
 			if(timer != null) {
 				stopper();

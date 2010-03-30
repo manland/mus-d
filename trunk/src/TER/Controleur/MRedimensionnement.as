@@ -5,18 +5,24 @@ package Controleur
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
-	public class MRedimensionnement implements MIEffetFini
+	public class MRedimensionnement implements MIEffet
 	{
 		private var objet:MIObjet;
 		private var timer:Timer;
 		private var unite_largeur:Number;
 		private var unite_hauteur:Number;
+		private var largeur_arrivee:Number;
+		private var hauteur_arrivee:Number;
+		private var temps_ms:Number;
 		
-		public function MRedimensionnement(objet:MIObjet){
+		public function MRedimensionnement(objet:MIObjet,largeur_arrivee:Number, hauteur_arrivee:Number, temps_ms:Number){
 			this.objet = objet;
+			this.largeur_arrivee = largeur_arrivee;
+			this.hauteur_arrivee = hauteur_arrivee;
+			this.temps_ms = temps_ms;
 		}
 		
-		public function lancer(largeur_arrivee:Number, hauteur_arrivee:Number, temps_ms:Number):void{
+		public function lancer():void{
 			if (temps_ms < 20)//temps trop court
 				return;
 			//remise a zéro si ce n'est pas fait

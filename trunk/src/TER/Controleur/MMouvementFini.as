@@ -5,20 +5,26 @@ package Controleur
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
-	public class MMouvementFini implements MIEffetFini
+	public class MMouvementFini implements MIEffet
 	{
 		private var objet:MIObjet;
 		private var timer:Timer;
 		private var unite_x:Number;
 		private var unite_y:Number;
+		private var x_arrivee:Number;
+		private var y_arrivee:Number;
+		private var temps_ms:Number;
 		
-		public function MMouvementFini(objet : MIObjet){
+		public function MMouvementFini(objet : MIObjet, x_arrivee:Number, y_arrivee:Number, temps_ms:Number){
 			this.objet = objet;
 			unite_x = 0;
 			unite_y = 0;
+			this.x_arrivee = x_arrivee;
+			this.y_arrivee = y_arrivee;
+			this.temps_ms = temps_ms;
 		}
 		
-		public function lancer(x_arrivee:Number, y_arrivee:Number, temps_ms:Number):void{
+		public function lancer():void{
 			if (temps_ms < 20)//temps trop court
 				return;
 			//remise a zéro si ce n'est pas fait
