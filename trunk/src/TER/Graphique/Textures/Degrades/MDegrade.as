@@ -8,6 +8,7 @@ package Graphique.Textures.Degrades {
 	import Graphique.Textures.MITexture;
 	import Graphique.MIObjetGraphique;
 	import mx.controls.Text;
+	import flash.display.Graphics;
 	
 	public class MDegrade implements MITexture {
 		
@@ -25,10 +26,12 @@ package Graphique.Textures.Degrades {
 		protected var ty:Number;
 		protected var type:String;
 		
-		protected var sysout:Text;
+		public var sysout:Text;
 		
 		protected var nom_classe:String;
 		protected var objet:MIObjetGraphique;
+		
+		private var a_decorer:MITexture = null;
         
 		public function MDegrade(objet:MIObjetGraphique) {
 			this.objet = objet;
@@ -57,7 +60,15 @@ package Graphique.Textures.Degrades {
 			ty = objet.getObjet().getY();
 		}
 		
-		public function appliquer():Boolean {
+		public function setADecorer(texture:MITexture):MITexture {
+			a_decorer = texture;
+			return this;
+		}
+		
+		public function appliquer(graphics:Graphics):void {
+			if(a_decorer != null) {
+				a_decorer.appliquer(graphics);
+			}
 			//taille du dégradé != taille de l'affichage
 			box_largeur = objet.getObjet().getLargeur();
 			box_hauteur = objet.getObjet().getHauteur();
@@ -66,9 +77,8 @@ package Graphique.Textures.Degrades {
 			tx = objet.getObjet().getX();
 			ty = objet.getObjet().getY();
 			matrix.createGradientBox(box_largeur, box_hauteur, box_rotation, tx, ty);
-		    objet.getGraphique().graphics.beginGradientFill(type, couleurs, alphas, ratios, matrix, spread_method, 
+		    graphics.beginGradientFill(type, couleurs, alphas, ratios, matrix, spread_method, 
 				interpolation, focal_pt_ratio);
-			return true;
 		}
 		
 		public function setCouleurs(c:Array):void {

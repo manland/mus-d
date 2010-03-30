@@ -9,15 +9,22 @@ package Graphique.Textures {
 	import mx.controls.Text;
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
+	import flash.display.Graphics;
+	import mx.controls.TileList;
+	import flash.display.Bitmap;
+	import flash.filters.ColorMatrixFilter;
 	
 	public class MImage implements MITexture {
 		protected var objet:MIObjetGraphique;
 		private var url_image:String;
 		private var loader:Loader = new Loader();
-		private var matrix:Matrix;
 		private var myBitmap:BitmapData;
 		
+		private var newWidth:Number;
+		private var newHeight:Number;
+		
 		private var timer:Timer;
+		private var a_decorer:MITexture = null;
 		
 		private var sysout:Text;
 		
@@ -32,37 +39,76 @@ package Graphique.Textures {
             loader.load(request);
             loader.contentLoaderInfo.addEventListener(Event.COMPLETE, finaliser);
             loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, erreur);
-            
-            matrix = null;
+         
             myBitmap = null;
 		}
 		
-		public function appliquer():Boolean {
-			objet.getGraphique().graphics.lineStyle(2, 0x000000);
+		public function setADecorer(texture:MITexture):MITexture {
+			a_decorer = texture;
+			return this;
+		}
+		
+		public function appliquer(graphics:Graphics):void {
+			if(a_decorer != null) {
+				a_decorer.appliquer(graphics);
+			}
+			graphics.lineStyle(2, 0x000000);
 			if(myBitmap != null) {
-            	objet.getGraphique().graphics.beginBitmapFill(myBitmap, null, false);
-            	return true;
+				finaliser();
+				var m:Matrix = new Matrix();
+				m.translate(objet.getObjet().getX()+((objet.getObjet().getLargeur()-newWidth)/2), objet.getObjet().getY()+((objet.getObjet().getLargeur()-newHeight)/2));
+            	graphics.beginBitmapFill(myBitmap, m, false);
    			}
    			else {
    				timer = new Timer(100, 1);
 				timer.addEventListener(TimerEvent.TIMER, objet.redessiner);
 				timer.start();
    			}
-   			return false;
 		}
 		
-		private function finaliser(event:Event):void {
-			myBitmap = new BitmapData(loader.width, loader.height);
-            myBitmap.draw(loader);
-            
-//            matrix = new Matrix();
-//            matrix.rotate(Math.PI/4);
-            
-//            appliquer();
+		private function finaliser(event:Event=null):void {
+			var bmd:BitmapData = new BitmapData(loader.width, loader.height);
+			bmd.draw(loader);
+ 				
+		 	var originalWidth:Number = bmd.width;
+		 	var originalHeight:Number = bmd.height;
+		 	newWidth = originalWidth;
+		 	newHeight = originalHeight;
+		 	
+		 	var matrix:Matrix = new Matrix();
+		 	
+		 	var MAX_WIDTH:Number = objet.getObjet().getLargeur();
+		 	var MAX_HEIGHT:Number = objet.getObjet().getHauteur();
+		 	var scale:Number = 1;
+		 
+		 	if (originalWidth > MAX_WIDTH || originalHeight > MAX_HEIGHT) {
+		  		var sx:Number =  MAX_WIDTH / originalWidth;
+		  		var sy:Number = MAX_HEIGHT / originalHeight;
+		  		scale = Math.min(sx, sy);
+		  		newWidth = originalWidth * scale;
+		  		newHeight = originalHeight * scale;	
+		  	}
+		 	matrix.scale(scale, scale);
+		 	myBitmap = new BitmapData(newWidth, newHeight); 
+		 	myBitmap.draw(bmd, matrix);
 		}
 		
 		private function erreur(event:IOErrorEvent):void {
 			sysout.text += "Impossible de charger l'image : " + url_image;
+		}
+		
+		public function ajusterCouleur(nouvelle_valeur_rouge:Number=255, nouvelle_valeur_vert:Number=255, nouvelle_valeur_bleu:Number=255, nouvelle_valeur_alpha:Number=0):void {
+			var matrix:Array = new Array();
+			matrix = matrix.concat([1, 0, 0, 0, nouvelle_valeur_rouge]); // red
+			matrix = matrix.concat([0, 1, 0, 0, nouvelle_valeur_vert]); // green
+			matrix = matrix.concat([0, 0, 1, 0, nouvelle_valeur_bleu]); // blue
+			matrix = matrix.concat([0, 0, 0, 1, nouvelle_valeur_alpha]); 	// alpha
+			var cmf:ColorMatrixFilter = new ColorMatrixFilter(matrix); 
+			
+			var filtersArray:Array = new Array();
+			filtersArray.push(cmf);
+			
+			objet.getGraphique().filters = filtersArray;
 		}
 	}
 }

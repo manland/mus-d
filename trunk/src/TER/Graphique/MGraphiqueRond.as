@@ -4,6 +4,7 @@ package Graphique
 	import Controleur.MRedimensionnement;
 	import Controleur.MMouvementFini;
 	import Coeur.Forme.MFormeRond;
+	import flash.display.Graphics;
 	
 	public class MGraphiqueRond extends MGraphiqueAbstrait
 	{
@@ -16,7 +17,7 @@ package Graphique
 			(forme as MFormeRond).instancie(x, y, largeur, hauteur);
 			objet.setForme(forme);
 			
-			mouvement = new MRedimensionnement(objet);
+			mouvement = new MMouvementFini(objet);
 			mouvement2 = new MMouvementFini(objet);
 		}
 		
@@ -30,7 +31,7 @@ package Graphique
 		
 		override protected function dessiner():void {
 			graphics.clear();
-			ma_texture.appliquer();
+			ma_texture.appliquer(graphics);
 			graphics.moveTo(x, y);
 			graphics.drawEllipse(x, y, width, height);
 			graphics.endFill();
