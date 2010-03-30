@@ -10,10 +10,7 @@ package Graphique.Textures.Degrades
 	
 	public class MDegradeRadial extends MDegrade
 	{
-		public function MDegradeRadial(objet:MIObjetGraphique)
-		{
-			super(objet);
-			
+		public function MDegradeRadial() {
 			nom_classe = "MRadial";
 			
 			spread_method = SpreadMethod.REPEAT;

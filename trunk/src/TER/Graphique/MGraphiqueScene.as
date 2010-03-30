@@ -10,12 +10,11 @@ package Graphique {
 	import flash.display.DisplayObject;
 	import mx.controls.Text;
 	
-	public class MGraphiqueScene extends Canvas implements MIObjetGraphique {
+	public class MGraphiqueScene extends Canvas implements MIObjetGraphique, MIObjetEcouteur {
 		protected var objet:MScene;
 		protected var forme:MFormeRectangle;
 		protected var ma_texture:MITexture;
 		
-		public var texture:MITexture;
 		public var rgb:String;
 		
 		public var sysout:Text;
@@ -23,8 +22,13 @@ package Graphique {
 		public function MGraphiqueScene() {
 			super();
 			objet = new MScene();
+			objet.ajoutObjetEcouteur(this);
 			forme = new MFormeRectangle();
 			objet.setForme(forme);
+			ma_texture = new MCouleur(0xFFFFFF);
+			
+			horizontalScrollPolicy = "auto";
+			verticalScrollPolicy = "auto";
 		}
 		
 		override public function addChild(child:DisplayObject):DisplayObject {
@@ -44,17 +48,95 @@ package Graphique {
 			return this;
 		}
 		
-		public function redessiner(e:TimerEvent=null):void {
-			invalidateDisplayList();
+		public function setTexture(t:MITexture):void {
+			texture = t;
 		}
 		
 		public function getTexture():MITexture {
 			return ma_texture;
 		}
 		
-		public function setTexture(texture:MITexture):void {
-			this.ma_texture = texture;
+		public function set texture(une_texture:MITexture):void {
+			ma_texture = une_texture;
+			ma_texture.setObjetADessiner(this);
 			invalidateDisplayList();
+		}
+		
+		public function get texture():MITexture {
+			return ma_texture;
+		}
+		
+		public function redessiner(e:TimerEvent=null):void {
+			invalidateDisplayList();
+		}
+		
+		public function deplacementObjet(objet:MIObjet):void {
+			x = objet.getX();
+			y = objet.getY();
+			invalidateDisplayList();
+		}
+		
+		public function changementTaille(objet:MIObjet):void {
+			width = objet.getLargeur();
+			height = objet.getHauteur();
+			invalidateDisplayList();
+		}
+		
+		public function objetMeurt(objet:MIObjet):void {
+			parent.removeChild(this);
+		}
+		
+		public function objetNait(objet:MIObjet):void {
+		}
+		
+		public function set largeur(largeur:Number):void {
+			super.width = largeur;
+			if(objet.getLargeur() != largeur) {
+				objet.setLargeur(largeur);
+			}
+		}
+		
+		public function get largeur():Number {
+			return objet.getLargeur();
+		}
+		
+		public function set hauteur(hauteur:Number):void {
+			super.height = hauteur;
+			if(objet.getHauteur() != hauteur) {
+				objet.setHauteur(hauteur);
+			}
+		}
+		
+		public function get hauteur():Number {
+			return objet.getHauteur();
+		}
+		
+		override public function set x(x:Number):void {
+			super.x = x;
+			if(objet.getX() != x) {
+				objet.setX(x);
+			}
+		}
+		
+		override public function set y(y:Number):void {
+			super.y = y;
+			if(objet.getY() != y) {
+				objet.setY(y);
+			}
+		}
+		
+		override public function set width(width:Number):void {
+			super.width = width;
+			if(objet.getLargeur() != width) {
+				objet.setLargeur(width);
+			}
+		}
+		
+		override public function set height(height:Number):void {
+			super.height = height;
+			if(objet.getHauteur() != height) {
+				objet.setHauteur(height);
+			}
 		}
 		
 		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
@@ -77,9 +159,9 @@ package Graphique {
 		override protected function commitProperties():void {
             super.commitProperties();
             forme.instancie(x, y, width, height);
-            if(texture != null) {
-            	setTexture(texture);
-            }
+//            if(ma_texture != null) {
+//            	setTexture(texture);
+//            }
 			invalidateDisplayList();
 		}
 	}

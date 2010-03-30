@@ -20,7 +20,6 @@ package Graphique
 		protected var ma_texture:MITexture;
 		
 		public var type:String;
-		public var texture:MITexture;
 		
 		public var sysout:Text;
 		
@@ -28,7 +27,7 @@ package Graphique
 		{
 			objet = new MElement();
 			objet.ajoutObjetEcouteur(this);
-			ma_texture = new MCouleur(this);
+			ma_texture = new MCouleur();
 		}
 		
 		public function getObjet():MIObjet {
@@ -47,13 +46,22 @@ package Graphique
 			this.objet.ajoutObjetEcouteur(this);
 		}
 		
+		public function setTexture(t:MITexture):void {
+			texture = t;
+		}
+		
 		public function getTexture():MITexture {
 			return ma_texture;
 		}
 		
-		public function setTexture(texture:MITexture):void {
-			this.ma_texture = texture;
+		public function set texture(texture:MITexture):void {
+			ma_texture = texture;
+			ma_texture.setObjetADessiner(this);
 			invalidateDisplayList();
+		}
+		
+		public function get texture():MITexture {
+			return ma_texture;
 		}
 		
 		public function ajouterTexture(texture:MITexture):void {
@@ -153,9 +161,9 @@ package Graphique
             		getObjet().setForme(forme);
             	}
             }
-            if(texture != null) {
-        		setTexture(texture);
-            }
+//            if(texture != null) {
+//        		setTexture(texture);
+//            }
 			invalidateDisplayList();
 		}
 		

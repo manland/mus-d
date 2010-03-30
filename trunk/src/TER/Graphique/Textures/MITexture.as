@@ -7,5 +7,6 @@ package Graphique.Textures
 	{
 		function appliquer(graphics:Graphics):void;
 		function setADecorer(texture:MITexture):MITexture;
+		function setObjetADessiner(objet:MIObjetGraphique):void;
 	}
 }
