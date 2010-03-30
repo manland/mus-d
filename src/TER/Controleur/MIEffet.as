@@ -13,6 +13,8 @@ package Controleur
 						
 		
 		/*vrai fonctions*/
+		function lancer():void;
 		function stopper():void;
+		
 	}
 }
