@@ -50,6 +50,7 @@
 				
 				etoile = new MGraphiqueEtoile(5, 5, 50);
 				etoile.setTexture(new MCouleur());
+				etoile.sysout = sysout;
 				scene.addChild(etoile);
 			}
 			
