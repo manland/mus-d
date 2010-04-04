@@ -32,9 +32,6 @@ package Graphique
 			for(var i:Number=0; i<o.getNombreArete(); i++) {
 				elem = aretes[i] as MArete;
 				graphics.lineTo(elem.getArrivee().getX(), elem.getArrivee().getY());
-				if(sysout != null) {
-					sysout.text += "de:"+elem.getDepart().getX()+" - a:"+elem.getArrivee().getX()+"\n";
-				}
 			}
 			graphics.endFill();
 		}
