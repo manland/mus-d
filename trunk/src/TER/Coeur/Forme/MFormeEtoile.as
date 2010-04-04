@@ -31,10 +31,10 @@ package Coeur.Forme
 			var point5:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((10*Math.PI)/5)), milieu_y + (rayon * Math.sin((10*Math.PI)/5)));
 			
 			this.ajouterArete(new MArete(point1, point3));
-			this.ajouterArete(new MArete(point1, point4));
-			this.ajouterArete(new MArete(point2, point4));
-			this.ajouterArete(new MArete(point2, point5));
 			this.ajouterArete(new MArete(point3, point5));
+			this.ajouterArete(new MArete(point5, point2));
+			this.ajouterArete(new MArete(point2, point4));
+			this.ajouterArete(new MArete(point4, point1));
 			
 		}
 		
