@@ -25,17 +25,14 @@ package Graphique
 	import mx.events.MoveEvent;
 	import Coeur.MDynamique;
 	import Controleur.MMouvementFini;
-	import Controleur.MIEffetFini;
 	import Controleur.MRedimensionnement;
-	import Controleur.MIEffetInfini;
 	import Controleur.MMouvementPerpetuel;
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
+	import Controleur.MIEffet;
 	
 	public class MGraphiqueTriangle extends MGraphiqueAbstrait
 	{
-		private var mouvement:MIEffetFini;
-		private var mouvement2:MIEffetFini;
 		
 		public function MGraphiqueTriangle(point1:MCoordonnee=null, point2:MCoordonnee=null, point3:MCoordonnee=null)
 		{
@@ -49,17 +46,6 @@ package Graphique
 				(forme as MFormeTriangle).instancie(new MCoordonnee(20, 0), new MCoordonnee(0, 20), new MCoordonnee(40, 20));
 				objet.setForme(forme);
 			}
-			
-			mouvement = new MRedimensionnement(objet);
-			mouvement2 = new MMouvementFini(objet);
-		}
-		
-		public function getMouvement():MIEffetFini {
-			return mouvement;
-		}
-		
-		public function getMouvement2():MIEffetFini {
-			return mouvement2;
 		}
 		
 		override protected function dessiner():void {
