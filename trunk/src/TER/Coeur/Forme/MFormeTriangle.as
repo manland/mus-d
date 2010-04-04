@@ -43,7 +43,7 @@ package Coeur.Forme
 				if(arete.getDepart().getY() > this.y)
 					arete.getDepart().setY( (arete.getDepart().getY() * pourcentageAugmentation) / 100);
 			}
-			this.hauteur = hauteur;	
+			super.setHauteur(hauteur);
 		}
 		
 		public override function setLargeur(largeur:Number):void{
@@ -67,7 +67,7 @@ package Coeur.Forme
 				if(arete.getDepart().getX() > this.x)
 					arete.getDepart().setX( (arete.getDepart().getX() * pourcentageAugmentation) / 100);
 			}
-			this.largeur = largeur;			
+			super.setLargeur(largeur);		
 		}
 		
 		public function instancie(m1:MCoordonnee, m2:MCoordonnee, m3:MCoordonnee) : void
