@@ -195,6 +195,9 @@ package Coeur
 			enfant.supprimeObjetEcouteur(this);
 			enfants.slice(enfants.indexOf(enfant), 1);
 		}
+		public function getEnfants():Array{
+			return this.enfants;
+		}
 		
 		
 		public function deplacement(x:Number, y:Number):void
