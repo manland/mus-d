@@ -23,7 +23,7 @@ package Graphique.Textures {
 				a_decorer.appliquer(graphics);
 			}
 			graphics.lineStyle(2, 0x000000);
-			graphics.beginFill(couleur);
+//			graphics.beginFill(couleur);
 		}
 		
 		public function setObjetADessiner(objet:MIObjetGraphique):void {}
