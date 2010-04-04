@@ -16,17 +16,19 @@ package Coeur.Forme
 			this.x = x;
 			this.y = y;
 			this.largeur = largeur;
-			this.hauteur = hauteur;
+			this.hauteur = largeur;
 			
-			var milieu_x:Number = (x+largeur)/2;
-			var milieu_y:Number = (y+largeur)/2;
+			var milieu_x:Number = (x) +largeur/2;
+			var milieu_y:Number = (y) +largeur/2;
+			trace(milieu_x);
+			trace(milieu_y);
 			var rayon:Number = largeur/2;
 			
-			var point1:MCoordonnee = new MCoordonnee(milieu_x + rayon * Math.cos((2*Math.PI)/5), milieu_y + rayon * Math.sin((2*Math.PI)/5));
-			var point2:MCoordonnee = new MCoordonnee(milieu_x + rayon * Math.cos((4*Math.PI)/5), milieu_y + rayon * Math.sin((4*Math.PI)/5));
-			var point3:MCoordonnee = new MCoordonnee(milieu_x + rayon * Math.cos((6*Math.PI)/5), milieu_y + rayon * Math.sin((6*Math.PI)/5));
-			var point4:MCoordonnee = new MCoordonnee(milieu_x + rayon * Math.cos((8*Math.PI)/5), milieu_y + rayon * Math.sin((8*Math.PI)/5));
-			var point5:MCoordonnee = new MCoordonnee(milieu_x + rayon * Math.cos((10*Math.PI)/5), milieu_y + rayon * Math.sin((10*Math.PI)/5));
+			var point1:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((2*Math.PI)/5)), milieu_y + (rayon * Math.sin((2*Math.PI)/5)));
+			var point2:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((4*Math.PI)/5)), milieu_y + (rayon * Math.sin((4*Math.PI)/5)));
+			var point3:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((6*Math.PI)/5)), milieu_y + (rayon * Math.sin((6*Math.PI)/5)));
+			var point4:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((8*Math.PI)/5)), milieu_y + (rayon * Math.sin((8*Math.PI)/5)));
+			var point5:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((10*Math.PI)/5)), milieu_y + (rayon * Math.sin((10*Math.PI)/5)));
 			
 			this.ajouterArete(new MArete(point1, point3));
 			this.ajouterArete(new MArete(point1, point4));
@@ -78,7 +80,15 @@ package Coeur.Forme
 		
 		public function affiche():void
 		{
-			trace(this.getNomClasse());
+			trace("MFormeEtoile : (",x,",",y,")");
+			trace("MFormeEtoile : largeur = ",this.largeur,", hauteur=",hauteur);
+			for(var i:uint = 0; i<nombre_arete; i++)
+			{
+				var arete:MArete = aretes[i] as MArete;
+				if(arete == null)
+					return ;
+				arete.affiche();
+			}
 		}
 		
 		public function contient(x:Number, y:Number):Boolean
