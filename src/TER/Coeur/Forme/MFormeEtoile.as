@@ -7,6 +7,7 @@ package Coeur.Forme
 	{
 		public function MFormeEtoile()
 		{
+			super();
 			this.nom_classe="MEtoile";
 			this.nombre_arete = 5;
 			this.somme_angle = -1;
@@ -20,8 +21,6 @@ package Coeur.Forme
 			
 			var milieu_x:Number = (x) +largeur/2;
 			var milieu_y:Number = (y) +largeur/2;
-			trace(milieu_x);
-			trace(milieu_y);
 			var rayon:Number = largeur/2;
 			
 			var point1:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((2*Math.PI)/5)), milieu_y + (rayon * Math.sin((2*Math.PI)/5)));
@@ -36,6 +35,33 @@ package Coeur.Forme
 			this.ajouterArete(new MArete(point2, point4));
 			this.ajouterArete(new MArete(point4, point1));
 			
+		}
+		
+		public override function setHauteur(hauteur:Number):void{
+			
+			this.aretes = new Array();
+			
+			var milieu_x:Number = (x) +hauteur/2;
+			var milieu_y:Number = (y) +hauteur/2;
+			var rayon:Number = largeur/2;
+			
+			var point1:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((2*Math.PI)/5)), milieu_y + (rayon * Math.sin((2*Math.PI)/5)));
+			var point2:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((4*Math.PI)/5)), milieu_y + (rayon * Math.sin((4*Math.PI)/5)));
+			var point3:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((6*Math.PI)/5)), milieu_y + (rayon * Math.sin((6*Math.PI)/5)));
+			var point4:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((8*Math.PI)/5)), milieu_y + (rayon * Math.sin((8*Math.PI)/5)));
+			var point5:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((10*Math.PI)/5)), milieu_y + (rayon * Math.sin((10*Math.PI)/5)));
+			
+			this.ajouterArete(new MArete(point1, point3));
+			this.ajouterArete(new MArete(point3, point5));
+			this.ajouterArete(new MArete(point5, point2));
+			this.ajouterArete(new MArete(point2, point4));
+			this.ajouterArete(new MArete(point4, point1));
+			super.setHauteur(hauteur);
+			super.setLargeur(hauteur);
+		}
+		
+		public override function setLargeur(largeur:Number):void{
+			this.setHauteur(largeur);
 		}
 		
 		public function ajouterArete(arete:MArete):Boolean
