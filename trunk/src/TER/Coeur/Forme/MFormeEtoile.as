@@ -8,7 +8,7 @@ package Coeur.Forme
 		public function MFormeEtoile()
 		{
 			this.nom_classe="MEtoile";
-			this.nombre_arete = 3;
+			this.nombre_arete = 5;
 			this.somme_angle = -1;
 		}
 		
@@ -22,11 +22,11 @@ package Coeur.Forme
 			var milieu_y:Number = (y+largeur)/2;
 			var rayon:Number = largeur/2;
 			
-			var point1:MCoordonnee = new MCoordonnee(rayon * Math.cos((2*Math.PI)/5), rayon * Math.sin((2*Math.PI)/5));
-			var point2:MCoordonnee = new MCoordonnee(rayon * Math.cos((4*Math.PI)/5), rayon * Math.sin((4*Math.PI)/5));
-			var point3:MCoordonnee = new MCoordonnee(rayon * Math.cos((6*Math.PI)/5), rayon * Math.sin((6*Math.PI)/5));
-			var point4:MCoordonnee = new MCoordonnee(rayon * Math.cos((8*Math.PI)/5), rayon * Math.sin((8*Math.PI)/5));
-			var point5:MCoordonnee = new MCoordonnee(rayon * Math.cos((10*Math.PI)/5), rayon * Math.sin((10*Math.PI)/5));
+			var point1:MCoordonnee = new MCoordonnee(milieu_x + rayon * Math.cos((2*Math.PI)/5), milieu_y + rayon * Math.sin((2*Math.PI)/5));
+			var point2:MCoordonnee = new MCoordonnee(milieu_x + rayon * Math.cos((4*Math.PI)/5), milieu_y + rayon * Math.sin((4*Math.PI)/5));
+			var point3:MCoordonnee = new MCoordonnee(milieu_x + rayon * Math.cos((6*Math.PI)/5), milieu_y + rayon * Math.sin((6*Math.PI)/5));
+			var point4:MCoordonnee = new MCoordonnee(milieu_x + rayon * Math.cos((8*Math.PI)/5), milieu_y + rayon * Math.sin((8*Math.PI)/5));
+			var point5:MCoordonnee = new MCoordonnee(milieu_x + rayon * Math.cos((10*Math.PI)/5), milieu_y + rayon * Math.sin((10*Math.PI)/5));
 			
 			this.ajouterArete(new MArete(point1, point3));
 			this.ajouterArete(new MArete(point1, point4));
