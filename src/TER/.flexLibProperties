@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flexLibProperties version="1">
 <includeClasses>
-<classEntry path="Coeur.Forme.MFormeEtoile"/>
 <classEntry path="Coeur.Forme.MFormeCarre"/>
 <classEntry path="Coeur.Forme.MFormeComplexe"/>
 <classEntry path="Coeur.Forme.MFormeEllipse"/>
+<classEntry path="Coeur.Forme.MFormeEtoile"/>
 <classEntry path="Coeur.Forme.MFormeRectangle"/>
 <classEntry path="Coeur.Forme.MFormeRond"/>
 <classEntry path="Coeur.Forme.MFormeTriangle"/>
@@ -30,6 +30,7 @@
 <classEntry path="Controleur.MRedimensionnement"/>
 <classEntry path="Controleur.MSouris"/>
 <classEntry path="Graphique.MGraphiqueAbstrait"/>
+<classEntry path="Graphique.MGraphiqueEtoile"/>
 <classEntry path="Graphique.MGraphiqueRectangle"/>
 <classEntry path="Graphique.MGraphiqueRond"/>
 <classEntry path="Graphique.MGraphiqueScene"/>
