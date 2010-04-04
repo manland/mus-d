@@ -31,8 +31,18 @@ package Coeur.Forme
 		}
 		
 		public override function contient(x:Number,y:Number):Boolean{
-			/**a remplir**/
-			return false;
+			var x_cercle:Number;
+			var y_cercle:Number;
+			var rayon:Number;
+			x_cercle = this.x + (this.largeur/ 2);
+			y_cercle= this.y - (this.hauteur/ 2);
+			rayon = this.largeur/2;
+			// equation d'un cercle de centre (a,b) et de rayon r : (x − a)²+ (y − b)²  = r²
+			if( ( ((x - x_cercle)*(x - x_cercle)) + ((y - y_cercle)*(y - y_cercle)) ) == (rayon * rayon)){
+				return true;
+			}
+			else
+				return false;
 		}
 		
 		public override function getPerimetre():Number
