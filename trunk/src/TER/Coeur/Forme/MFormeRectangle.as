@@ -1,5 +1,7 @@
 package Coeur.Forme
 {
+	import Utilitaires.MAxe;
+	
 	public class MFormeRectangle implements MIFormePolygone
 	{
 		protected var x:Number;
@@ -47,8 +49,8 @@ package Coeur.Forme
 			return this.nom_classe;
 		}
 		
-		public function contient(x:Number,y:Number):Boolean{
-			return false;
+		public function axeCollision(x:Number,y:Number):MAxe{
+			return null;
 		}
 		
 		public function getAretes():Array

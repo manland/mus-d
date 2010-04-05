@@ -1,5 +1,7 @@
 package Coeur.Forme
 {
+	import Utilitaires.MAxe;
+	
 	public interface MIForme
 	{
 		function getX():Number;
@@ -14,7 +16,7 @@ package Coeur.Forme
 		function getPerimetre():Number;
 		function deplacement(x:Number, y:Number):void;
 		function affiche():void;
-		function contient(x:Number, y:Number):Boolean;
+		function axeCollision(x:Number, y:Number):MAxe;
 	
 	}
 }

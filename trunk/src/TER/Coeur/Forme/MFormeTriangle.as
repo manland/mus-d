@@ -204,14 +204,17 @@ package Coeur.Forme
 			}
 		}
 		
-		public function contient(x:Number,y:Number):Boolean{
+		public function axeCollision(x:Number,y:Number):MAxe{
+			var axe:MAxe = new MAxe();
 			for(var i:uint = 0; i<nombre_arete; i++)
 			{
 				var arete:MArete = aretes[i] as MArete;
-				if(arete.contient(x,y))
-					return true;
+				if(arete.contient(x,y)){
+					axe.instancie2(arete);
+					return axe;
+				}
 			}
-			return false;
+			return null;
 		}
 		
 	}
