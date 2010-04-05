@@ -1,6 +1,7 @@
 package Coeur
 {
 	import Coeur.Forme.*;
+	import Utilitaires.MAxe;
 	
 	
 	public class MElement implements MIObjet
@@ -179,18 +180,12 @@ package Coeur
 			}
 		}
 		
-		public function actionCollision(objet:MIObjet):void {
+		public function actionCollision(objet:MIObjet,axe:MAxe):void {
 			//a réimplanté
 		}
-		public function actionCollisionBord():void {
-			//a réimplanté
-		}
-		
-		public function estTouchePar(tx:Number, ty:Number):Boolean {
-			if(getForme().contient(x,y))
-				return true;
-			else
-				return false;
+			
+		public function estTouchePar(tx:Number, ty:Number):MAxe {
+			return getForme().axeCollision(x,y);
 		}
 		
 		public function drag():void
