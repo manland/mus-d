@@ -1,5 +1,7 @@
 package Coeur.Forme
 {
+	import Utilitaires.MAxe;
+	
 	public class MFormeEllipse implements MIForme
 	{
 		protected var nom_classe:String;
@@ -68,9 +70,9 @@ package Coeur.Forme
 			trace(this.getNomClasse());
 		}
 		
-		public function contient(x:Number,y:Number):Boolean{
+		public function axeCollision(x:Number,y:Number):MAxe{
 			//a remplir
-			return false;
+			return null;
 		}
 		
 		public function getX():Number{
