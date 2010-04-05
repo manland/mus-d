@@ -3,6 +3,7 @@ package Controleur
 	import Coeur.MIObjet;
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
+	import Utilitaires.MAxe;
 
 	public class MMouvementPerpetuel implements MIEffet
 	{
@@ -13,7 +14,9 @@ package Controleur
 		private var vitesse_px_s_X:Number;
 		private var vitesse_px_s_Y:Number;
 		
-		public function MMouvementPerpetuel(objet:MIObjet,vitesse_px_s_X:Number, vitesse_px_s_Y:Number)
+		public function MMouvementPerpetuel(){}
+		
+		public function instancie(objet:MIObjet,vitesse_px_s_X:Number, vitesse_px_s_Y:Number):void
 		{
 			this.objet = objet;
 			this.vitesse_px_s_X = vitesse_px_s_X;
@@ -48,24 +51,20 @@ package Controleur
 			getTimer().stop();
 		}
 		
-		//axe_obstacle est égale à 
-		// 0 si l'axe de l'obstacle est parallèle à celui des x
-		// 1 si il est parallèle à celui des y
-		// 2 si il est parallèle à y = x
-		// 3 si il est parallèle à y = -x
-		public function rebondir(axe_obstacle:int ){
-			if(axe_obstacle == 0){ //x
+		
+		public function rebondir(axe_obstacle:MAxe ):void{
+			if(axe_obstacle.estHorizontal()){ //x
 				setUnite_y( - getUnite_y());
 			}
-			else if(axe_obstacle == 1){ //y
+			else if(axe_obstacle.estVertical()){ //y
 				setUnite_x( - getUnite_x());
 			}	
-			else if(axe_obstacle == 2){// y = x
+			else if(axe_obstacle.estObliqueMontant()){// y = x
 				var i:Number = getUnite_x();	
 				setUnite_x( getUnite_y());
 				setUnite_y(i);
 			}
-			else if(axe_obstacle == 3){// y = -x
+			else if(axe_obstacle.estObliqueDescendant()){// y = -x
 				var i:Number = getUnite_x();	
 				setUnite_x( - getUnite_y());
 				setUnite_y(- i);
@@ -90,14 +89,14 @@ package Controleur
 		public function getUnite_x():Number{
 			return this.unite_x;
 		}
-		public function setUnite_x(unite_x:Number){
+		public function setUnite_x(unite_x:Number):void{
 			this.unite_x = unite_x; 
 		}
 		
 		public function getUnite_y():Number{
 			return this.unite_y;
 		}		
-		public function setUnite_y(unite_y:Number){
+		public function setUnite_y(unite_y:Number):void{
 			this.unite_y = unite_y; 
 		}
 		

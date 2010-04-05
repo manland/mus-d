@@ -15,7 +15,9 @@ package Controleur
 		private var hauteur_arrivee:Number;
 		private var temps_ms:Number;
 		
-		public function MRedimensionnement(objet:MIObjet,largeur_arrivee:Number, hauteur_arrivee:Number, temps_ms:Number){
+		public function MRedimensionnement(){}
+		
+		public function instancie(objet:MIObjet,largeur_arrivee:Number, hauteur_arrivee:Number, temps_ms:Number):void{
 			this.objet = objet;
 			this.largeur_arrivee = largeur_arrivee;
 			this.hauteur_arrivee = hauteur_arrivee;

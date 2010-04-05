@@ -15,7 +15,9 @@ package Controleur
 		private var y_arrivee:Number;
 		private var temps_ms:Number;
 		
-		public function MMouvementFini(objet : MIObjet, x_arrivee:Number, y_arrivee:Number, temps_ms:Number){
+		public function MMouvementFini(){}
+		
+		public function instancie(objet : MIObjet, x_arrivee:Number, y_arrivee:Number, temps_ms:Number):void{
 			this.objet = objet;
 			unite_x = 0;
 			unite_y = 0;
@@ -59,14 +61,14 @@ package Controleur
 		public function getUnite_x():Number{
 			return this.unite_x;
 		}
-		public function setUnite_x(unite_x:Number){
+		public function setUnite_x(unite_x:Number):void{
 			this.unite_x = unite_x; 
 		}
 		
 		public function getUnite_y():Number{
 			return this.unite_y;
 		}		
-		public function setUnite_y(unite_y:Number){
+		public function setUnite_y(unite_y:Number):void{
 			this.unite_y = unite_y; 
 		}
 		
