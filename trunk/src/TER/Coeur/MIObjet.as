@@ -2,6 +2,8 @@ package Coeur
 {
 	import Coeur.Forme.*;
 	
+	import Utilitaires.MAxe;
+	
 	public interface MIObjet
 	{	
 		/**
@@ -36,11 +38,10 @@ package Coeur
 		/**
 		 * Vrais méthodes
 		 **/
-		function estTouchePar(tx:Number, ty:Number):Boolean;
+		function estTouchePar(tx:Number, ty:Number):MAxe;
 		function mourir():void;
 		function naitre():void;
-		function actionCollision(objet:MIObjet):void;
-		function actionCollisionBord():void;
+		function actionCollision(objet:MIObjet,axe:MAxe):void;
 		function drag():void;
 		 
 	}

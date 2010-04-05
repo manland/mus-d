@@ -2,6 +2,8 @@ package Coeur
 {
 	import Coeur.Forme.*;
 	
+	import Utilitaires.MAxe;
+	
 	public class MScene implements MIObjet, MIObjetEcouteur
 	{
 		protected var x:Number;
@@ -22,6 +24,7 @@ package Coeur
 			this.largeur = 0;
 			this.hauteur = 0;
 			this.ecouteurs = new Array();
+			ecouteurs.push(this);
 			this.proprietes = new Array();
 			this.enfants = new Array();
 			this.nom_classe = "MScene";
@@ -133,20 +136,13 @@ package Coeur
 			}
 		}
 		
-		public function actionCollision(objet:MIObjet):void {
+		public function actionCollision(objet:MIObjet,axe:MAxe):void {
 			//a réimplanté
 		}
-		public function actionCollisionBord():void {
-			//a réimplanté
-		}
-		
-		public function estTouchePar(tx:Number, ty:Number):Boolean {
-			if(tx >= x && tx <= x + largeur) {
-				if(ty >= y && ty <= y + hauteur) {
-					return true
-				}
-			}
-			return false;
+				
+		public function estTouchePar(tx:Number, ty:Number):MAxe {
+			/* a reprendre*/
+			return null;
 		}
 		
 		public function drag():void
@@ -174,18 +170,12 @@ package Coeur
 		{
 		}
 		
-		public function collision(objet1:MIObjet, objet2:MIObjet) : void
+		public function collision(objet1:MIObjet, objet2:MIObjet, axe:MAxe) : void
 		{
-			objet1.actionCollision(objet2);
-			objet2.actionCollision(objet1);
+			objet1.actionCollision(objet2,axe);
+			objet2.actionCollision(objet1,axe);
 		}
-		
-		public function collisionBord(objet:MIObjet) : void
-		{
-			objet.actionCollisionBord();
-		}
-		
-		
+				
 		public function ajouterEnfants(enfant:MIObjet):void {
 			enfant.ajoutObjetEcouteur(this);
 			enfants.push(enfant);
