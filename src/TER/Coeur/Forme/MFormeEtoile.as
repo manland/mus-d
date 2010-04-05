@@ -117,9 +117,10 @@ package Coeur.Forme
 			}
 		}
 		
-		public function contient(x:Number, y:Number):Boolean
+		public function axeCollision(x:Number, y:Number):MAxe
 		{
-			return false;
+			/* a remplir*/
+			return null;
 		}
 		
 	}
