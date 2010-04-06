@@ -11,6 +11,7 @@ package Coeur.Forme
 		
 		function getAretes():Array;
 		function setAretes(aretes:Array):void;
+		function setSommeAngles(somme_angles:Number):void;
 		function getSommeAngles():Number;
 		function getNombreArete():Number;
 		function setNombreArete(nombre_arete:Number):void;

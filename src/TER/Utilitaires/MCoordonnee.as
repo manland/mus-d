@@ -46,6 +46,13 @@ package Utilitaires
 			this.x += x;
 			this.y += y;
 		}
+		
+		public function clone():MCoordonnee{
+			var clone_x:Number = new Number(x);
+			var clone_y:Number = new Number(y);
+			
+			return new MCoordonnee(clone_x, clone_y);
+		}
 
 	}
 }

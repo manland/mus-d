@@ -1,101 +1,77 @@
 package Coeur.Forme
 {
 	import Utilitaires.MArete;
+	import Utilitaires.MAxe;
 	import Utilitaires.MCoordonnee;
 	
-	public class MFormeEtoile extends MFormeComplexe implements MIFormePolygone
+	public class MFormeEtoile extends MFormePolygone implements MIFormePolygone
 	{
+		protected var decalage:Number;
+		
 		public function MFormeEtoile()
 		{
 			super();
-			this.nom_classe="MEtoile";
+			this.nom_classe="MFormeEtoile";
 			this.nombre_arete = 5;
-			this.somme_angle = -1;
+			this.somme_angles = -1;
+			this.decalage = 0;
 		}
 		
-		public function instancie(x:Number, y:Number, largeur:Number):void{
+		public function instancie(x:Number, y:Number, largeur:Number, decalage:Number = 0):void{
 			this.x = x;
 			this.y = y;
 			this.largeur = largeur;
 			this.hauteur = largeur;
-			
-			var milieu_x:Number = (x) +largeur/2;
-			var milieu_y:Number = (y) +largeur/2;
+			this.decalage = decalage;
+			this.calculAretes()
+		}
+		
+		public function calculAretes():void{
+			var milieu_x:Number = x +largeur/2;
+			var milieu_y:Number = y +largeur/2;
 			var rayon:Number = largeur/2;
+			var angle:Number = decalage;
 			
-			var point1:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((2*Math.PI)/5)), milieu_y + (rayon * Math.sin((2*Math.PI)/5)));
-			var point2:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((4*Math.PI)/5)), milieu_y + (rayon * Math.sin((4*Math.PI)/5)));
-			var point3:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((6*Math.PI)/5)), milieu_y + (rayon * Math.sin((6*Math.PI)/5)));
-			var point4:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((8*Math.PI)/5)), milieu_y + (rayon * Math.sin((8*Math.PI)/5)));
-			var point5:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((10*Math.PI)/5)), milieu_y + (rayon * Math.sin((10*Math.PI)/5)));
+			this.aretes = new Array();
+			var point1:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos(angle)), milieu_y + (rayon * Math.sin(angle)));
+			angle += ((2*Math.PI)/5);
+			var point2:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos(angle)), milieu_y + (rayon * Math.sin(angle)));
+			angle += ((2*Math.PI)/5);
+			var point3:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos(angle)), milieu_y + (rayon * Math.sin(angle)));
+			angle += ((2*Math.PI)/5);
+			var point4:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos(angle)), milieu_y + (rayon * Math.sin(angle)));
+			angle += ((2*Math.PI)/5);
+			var point5:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos(angle)), milieu_y + (rayon * Math.sin(angle)));
 			
 			this.ajouterArete(new MArete(point1, point3));
 			this.ajouterArete(new MArete(point3, point5));
 			this.ajouterArete(new MArete(point5, point2));
 			this.ajouterArete(new MArete(point2, point4));
 			this.ajouterArete(new MArete(point4, point1));
-			
 		}
 		
 		public override function setHauteur(hauteur:Number):void{
-			
-			this.aretes = new Array();
-			
-			var milieu_x:Number = (x) +hauteur/2;
-			var milieu_y:Number = (y) +hauteur/2;
-			var rayon:Number = largeur/2;
-			
-			var point1:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((2*Math.PI)/5)), milieu_y + (rayon * Math.sin((2*Math.PI)/5)));
-			var point2:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((4*Math.PI)/5)), milieu_y + (rayon * Math.sin((4*Math.PI)/5)));
-			var point3:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((6*Math.PI)/5)), milieu_y + (rayon * Math.sin((6*Math.PI)/5)));
-			var point4:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((8*Math.PI)/5)), milieu_y + (rayon * Math.sin((8*Math.PI)/5)));
-			var point5:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos((10*Math.PI)/5)), milieu_y + (rayon * Math.sin((10*Math.PI)/5)));
-			
-			this.ajouterArete(new MArete(point1, point3));
-			this.ajouterArete(new MArete(point3, point5));
-			this.ajouterArete(new MArete(point5, point2));
-			this.ajouterArete(new MArete(point2, point4));
-			this.ajouterArete(new MArete(point4, point1));
 			super.setHauteur(hauteur);
 			super.setLargeur(hauteur);
+			this.calculAretes();
 		}
 		
 		public override function setLargeur(largeur:Number):void{
 			this.setHauteur(largeur);
 		}
 		
-		public function ajouterArete(arete:MArete):Boolean
-		{
-			arete = new MArete(new MCoordonnee(arete.getDepart().getX(),arete.getDepart().getY()),
-								new MCoordonnee(arete.getArrivee().getX(),arete.getArrivee().getY()));
-			if(aretes.length < nombre_arete)
-			{
-				aretes.push(arete);
-				return true;
-			}
-			else return false;
-		}
-		
-		public override function setHauteur(hauteur:Number):void
-		{
-		}
-		public override function setLargeur(largeur:Number):void
-		{
-		}
 		public override function setX(x:Number):void
 		{
+			super.setX(x);
+			this.calculAretes();
 		}
 		public override function setY(y:Number):void
 		{
+			super.setY(y);
+			this.calculAretes();
 		}
 		
 		public function getAire():Number
-		{
-			return 0;
-		}
-		
-		
-		public function getPerimetre():Number
 		{
 			return 0;
 		}
@@ -104,23 +80,24 @@ package Coeur.Forme
 		{
 		}
 		
-		public function affiche():void
-		{
-			trace("MFormeEtoile : (",x,",",y,")");
-			trace("MFormeEtoile : largeur = ",this.largeur,", hauteur=",hauteur);
-			for(var i:uint = 0; i<nombre_arete; i++)
-			{
-				var arete:MArete = aretes[i] as MArete;
-				if(arete == null)
-					return ;
-				arete.affiche();
-			}
-		}
-		
 		public function axeCollision(x:Number, y:Number):MAxe
-		{
+		{ 
 			/* a remplir*/
 			return null;
+		}
+		
+		public function getDecalage():Number{
+			return this.decalage;
+		}
+		public function setDecalage(decalage:Number):void{
+			this.decalage = decalage;
+			this.calculAretes();
+		}
+		
+		public override function clone():MIForme{
+			var clone_mformeetoile:MFormeEtoile = super.clone()as MFormeEtoile;
+			clone_mformeetoile.setDecalage(new Number(this.decalage));
+			return clone_mformeetoile;
 		}
 		
 	}

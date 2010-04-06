@@ -4,7 +4,9 @@ package Coeur.Forme
 	
 	public interface MIForme
 	{
+		function setX(x:Number):void;
 		function getX():Number;
+		function setY(y:Number):void;
 		function getY():Number;
 		function getLargeur():Number;
 		function setHauteur(hauteur:Number):void;
@@ -13,10 +15,13 @@ package Coeur.Forme
 		
 		function getAire():Number;
 		function getNomClasse():String;
+		function setNomClasse(nom_classe:String):void;
 		function getPerimetre():Number;
 		function deplacement(x:Number, y:Number):void;
 		function affiche():void;
 		function axeCollision(x:Number, y:Number):MAxe;
+		
+		function clone():MIForme;
 	
 	}
 }

@@ -6,6 +6,13 @@ package Coeur
 	
 	public class MScene implements MIObjet, MIObjetEcouteur
 	{
+		/**
+		 * 
+		 * A faire : vérifier que les set de tableaux sont correctes (castage)
+		 * 
+		 * */
+		
+		
 		protected var x:Number;
 		protected var y:Number;
 		protected var largeur:Number;
@@ -188,6 +195,9 @@ package Coeur
 		public function getEnfants():Array{
 			return this.enfants;
 		}
+		public function setEnfants(enfants:Array):void{
+			this.enfants = enfants;
+		}
 		
 		
 		public function deplacement(x:Number, y:Number):void
@@ -219,6 +229,31 @@ package Coeur
 		public function affiche():void
 		{
 			trace("MScene");
+		}
+		
+		public function clone():MIObjet{
+
+			var clone_x:Number = new Number(x);
+			var clone_y:Number = new Number(y);
+			var clone_largeur:Number = new Number(largeur);
+			var clone_hauteur:Number = new Number(hauteur);
+			var clone_nom_classe:String = new String(nom_classe);
+			var clone_forme:MIForme = this.forme.clone();
+			
+			var clone_ecouteurs:Array = new Array().concat(ecouteurs);
+			var clone_enfants:Array = new Array().concat(enfants);
+			var clone_proprietes:Array = new Array().concat(proprietes);
+			
+			var clone_mscene:MScene = new MScene();
+			clone_mscene.setHauteur(clone_hauteur);
+			clone_mscene.setLargeur(clone_largeur);
+			clone_mscene.setX(clone_x);
+			clone_mscene.setY(clone_y);
+			clone_mscene.setForme(clone_forme);
+			clone_mscene.setEcouteurs(clone_ecouteurs);
+			clone_mscene.setEnfants(clone_enfants);
+			clone_mscene.setProprietes(clone_proprietes);
+			return clone_mscene;
 		}
 	}
 }

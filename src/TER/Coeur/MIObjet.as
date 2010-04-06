@@ -43,6 +43,7 @@ package Coeur
 		function naitre():void;
 		function actionCollision(objet:MIObjet,axe:MAxe):void;
 		function drag():void;
+		function clone():MIObjet;
 		 
 	}
 }
