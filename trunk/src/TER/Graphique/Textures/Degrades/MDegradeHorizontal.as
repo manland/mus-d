@@ -10,7 +10,7 @@ package Graphique.Textures.Degrades
 	public class MDegradeHorizontal extends MDegrade
 	{
 		public function MDegradeHorizontal() {
-			nom_classe = "MHorizontal";
+			nom_classe = "MDegradeHorizontal";
 
 			box_rotation = Math.PI/2;//à diviser pour faire tourner
 		}

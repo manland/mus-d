@@ -11,7 +11,7 @@ package Graphique.Textures.Degrades
 	public class MDegradeRadial extends MDegrade
 	{
 		public function MDegradeRadial() {
-			nom_classe = "MRadial";
+			nom_classe = "MDegradeRadial";
 			
 			spread_method = SpreadMethod.REPEAT;
 			type = GradientType.RADIAL;//LINEAR = trait, RADIAL = rond

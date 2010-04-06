@@ -9,8 +9,9 @@ package Graphique.Textures.Degrades {
 	import Graphique.MIObjetGraphique;
 	import mx.controls.Text;
 	import flash.display.Graphics;
+	import Graphique.Textures.MTextureAbstraite;
 	
-	public class MDegrade implements MITexture {
+	public class MDegrade extends MTextureAbstraite implements MITexture {
 		
         protected var couleurs:Array;
 		protected var alphas:Array;
@@ -25,13 +26,6 @@ package Graphique.Textures.Degrades {
 		protected var tx:Number;
 		protected var ty:Number;
 		protected var type:String;
-		
-		public var sysout:Text;
-		
-		protected var nom_classe:String;
-		protected var objet:MIObjetGraphique;
-		
-		private var a_decorer:MITexture = null;
         
 		public function MDegrade() {
 			this.objet = null;
@@ -51,7 +45,12 @@ package Graphique.Textures.Degrades {
 			type = GradientType.LINEAR;//LINEAR = trait, RADIAL = rond
 		}
 		
-		public function setObjetADessiner(objet:MIObjetGraphique):void {
+		public function setADecorer(texture:MITexture):MITexture {
+			a_decorer = texture;
+			return this;
+		}
+		
+		override public function setObjetADessiner(objet:MIObjetGraphique):void {
 			this.objet = objet;
 			//taille du dégradé != taille de l'affichage
 			box_largeur = objet.getObjet().getLargeur();
@@ -61,11 +60,6 @@ package Graphique.Textures.Degrades {
 			//placer le dégradé dans ça box
 			tx = objet.getObjet().getX();
 			ty = objet.getObjet().getY();
-		}
-		
-		public function setADecorer(texture:MITexture):MITexture {
-			a_decorer = texture;
-			return this;
 		}
 		
 		public function appliquer(graphics:Graphics):void {
@@ -134,6 +128,27 @@ package Graphique.Textures.Degrades {
 		
 		public function toString():String {
 			return nom_classe+" : couleurs="+couleurs+"; alphas="+alphas+"; ratios="+ratios+"; spread_method="+spread_method+"; interpolation="+interpolation+"; focal_pt_ratio="+focal_pt_ratio+"; matrix="+matrix+"; box_largeur="+box_largeur+"; box_hauteur="+box_hauteur+"; box_rotation="+box_rotation+"; tx="+tx+"; ty="+ty+"; type="+type+";";
+		}
+		
+		public function clone():MITexture {
+			var clone:MDegrade = new MDegrade();
+			clone.setObjetADessiner(objet);
+			clone.setCouleurs(new Array().concat(couleurs));
+			clone.setAlphas(new Array().concat(alphas));
+			clone.setRatios(new Array().concat(ratios));
+			clone.setSpreadMethod(new String(spread_method));
+			clone.setInterpolation(new String(interpolation));
+			clone.setFocalPtRatio(new Number(focal_pt_ratio));
+			clone.setBoxHauteur(new Number(box_hauteur));
+			clone.setBoxLargeur(new Number(box_largeur));
+			clone.setBoxRotation(new Number(box_rotation));
+			clone.setTx(new Number(tx));
+			clone.setTy(new Number(ty));
+			clone.setType(new String(type));
+			if(a_decorer != null) {
+				clone.setADecorer(a_decorer.clone());
+			}
+			return clone;
 		}
 	}
 	

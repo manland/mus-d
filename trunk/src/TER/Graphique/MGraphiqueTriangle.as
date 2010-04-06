@@ -30,6 +30,7 @@ package Graphique
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
 	import Controleur.MIEffet;
+	import Graphique.Textures.MBordure;
 	
 	public class MGraphiqueTriangle extends MGraphiqueAbstrait
 	{
@@ -46,6 +47,7 @@ package Graphique
 				(forme as MFormeTriangle).instancie(new MCoordonnee(20, 0), new MCoordonnee(0, 20), new MCoordonnee(40, 20));
 				objet.setForme(forme);
 			}
+			nom_classe = "MGraphiqueTriangle";
 		}
 		
 		override protected function dessiner():void {
@@ -53,6 +55,9 @@ package Graphique
 			var aretes:Array = o.getAretes();
 			graphics.clear();
 			ma_texture.appliquer(graphics);
+			if(ma_bordure != null) {
+				ma_bordure.appliquer(graphics);
+			}
 			var elem:MArete = aretes[0] as MArete;
 			graphics.moveTo(elem.getDepart().getX(), elem.getDepart().getY());
 			for(var i:Number=0; i<o.getNombreArete(); i++) {

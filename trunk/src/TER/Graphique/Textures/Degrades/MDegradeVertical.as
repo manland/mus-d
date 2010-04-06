@@ -6,7 +6,7 @@ package Graphique.Textures.Degrades
 	public class MDegradeVertical extends MDegrade
 	{
 		public function MDegradeVertical() {
-			nom_classe = "MVertical";
+			nom_classe = "MDegradeVertical";
 		}
 	}
 }
