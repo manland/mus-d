@@ -7,7 +7,6 @@ package Graphique.Textures
 	
 	public class MTextureUtilitaire
 	{
-		public function MTextureUtilitaire() {}
 		
 		public static function ajusterCouleur(objet:MIObjetGraphique, nouvelle_valeur_rouge:Number=0, nouvelle_valeur_vert:Number=0, nouvelle_valeur_bleu:Number=0, nouvelle_valeur_alpha:Number=0):void {
 			var matrix:Array = new Array();

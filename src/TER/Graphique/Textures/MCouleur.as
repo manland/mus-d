@@ -3,13 +3,11 @@ package Graphique.Textures {
 	import flash.display.Graphics;
 	import mx.controls.Text;
 	
-	public class MCouleur implements MITexture {
+	public class MCouleur extends MTextureAbstraite implements MITexture {
 		private var couleur:uint;
-		private var a_decorer:MITexture = null;
-		
-		public var sysout:Text;
 		
 		public function MCouleur(couleur:uint=0xFF0000) {
+			nom_classe = "MCouleur";
 			this.couleur = couleur;
 		}
 		
@@ -22,10 +20,16 @@ package Graphique.Textures {
 			if(a_decorer != null) {
 				a_decorer.appliquer(graphics);
 			}
-			graphics.lineStyle(2, 0x000000);
 			graphics.beginFill(couleur);
 		}
 		
-		public function setObjetADessiner(objet:MIObjetGraphique):void {}
+		public function clone():MITexture {
+			var clone:MCouleur = new MCouleur(couleur);
+			clone.setObjetADessiner(objet);
+			if(a_decorer != null) {
+				clone.setADecorer(a_decorer.clone());
+			}
+			return clone;
+		}
 	}
 }

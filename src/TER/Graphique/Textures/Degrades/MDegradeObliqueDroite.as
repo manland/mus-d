@@ -11,7 +11,7 @@ package Graphique.Textures.Degrades
 	public class MDegradeObliqueDroite extends MDegrade
 	{
 		public function MDegradeObliqueDroite() {
-			nom_classe = "MObliqueDroite";
+			nom_classe = "MDegradeObliqueDroite";
 			
 			box_rotation = Math.PI/8;//à diviser pour faire tourner
 		}

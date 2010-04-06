@@ -11,5 +11,7 @@ package Graphique
 		function getObjet():MIObjet;
 		function getGraphique():UIComponent;
 		function redessiner(e:TimerEvent=null):void;
+		function getNomClasse():String;
+		function clone():MIObjetGraphique;
 	}
 }

@@ -9,12 +9,14 @@ package Graphique {
 	import Coeur.Forme.MFormeRectangle;
 	import flash.display.DisplayObject;
 	import mx.controls.Text;
+	import Graphique.Textures.MBordure;
 	
 	public class MGraphiqueScene extends Canvas implements MIObjetGraphique, MIObjetEcouteur {
 		protected var objet:MScene;
 		protected var forme:MFormeRectangle;
 		protected var ma_texture:MITexture;
-		
+		protected var ma_bordure:MBordure;
+		protected var nom_classe:String;
 		public var rgb:String;
 		
 		public var sysout:Text;
@@ -26,7 +28,8 @@ package Graphique {
 			forme = new MFormeRectangle();
 			objet.setForme(forme);
 			ma_texture = new MCouleur(0xFFFFFF);
-			
+			ma_bordure = null;
+			nom_classe = "MGraphiqueScene";
 			horizontalScrollPolicy = "auto";
 			verticalScrollPolicy = "auto";
 		}
@@ -64,6 +67,33 @@ package Graphique {
 		
 		public function get texture():MITexture {
 			return ma_texture;
+		}
+		
+		public function ajouterTexture(texture:MITexture):void {
+			ma_texture = texture.setADecorer(ma_texture);
+		}
+		
+		public function setBordure(b:MBordure):void {
+			bordure = b;
+		}
+		
+		public function getBordure():MBordure {
+			return ma_bordure;
+		}
+		
+		public function set bordure(bordure:MBordure):void {
+			ma_bordure = bordure;
+			ma_bordure.setObjetADessiner(this);
+			invalidateDisplayList();
+		}
+		
+		public function get bordure():MBordure {
+			return ma_bordure;
+		}
+		
+		public function ajouterBordure(bordure:MBordure):void {
+			var bordure_temp:MITexture = bordure.setADecorer(ma_bordure);
+			ma_bordure = bordure_temp as MBordure;
 		}
 		
 		public function redessiner(e:TimerEvent=null):void {
@@ -147,6 +177,9 @@ package Graphique {
 		protected function dessiner():void {
 			graphics.clear();
 			ma_texture.appliquer(graphics);
+			if(ma_bordure != null) {
+				ma_bordure.appliquer(graphics);
+			}
 			graphics.moveTo(forme.getX(), forme.getY());
 			graphics.drawRect(forme.getX(), forme.getY(), forme.getLargeur(), forme.getHauteur());
 //			if(sysout != null) {
@@ -163,6 +196,19 @@ package Graphique {
 //            	setTexture(texture);
 //            }
 			invalidateDisplayList();
+		}
+		
+		public function clone():MIObjetGraphique {
+			var graphique_temp:MGraphiqueScene = new MGraphiqueScene();
+			graphique_temp.setBordure(ma_bordure.clone() as MBordure);
+			graphique_temp.setTexture(ma_texture.clone());
+			graphique_temp.objet = objet;
+			
+			return graphique_temp;
+		}
+		
+		public function getNomClasse():String {
+			return nom_classe;
 		}
 	}
 }

@@ -14,26 +14,24 @@ package Graphique.Textures {
 	import flash.display.Bitmap;
 	import flash.filters.ColorMatrixFilter;
 	import flash.filters.ConvolutionFilter;
+	import Utilitaires.MErreur;
 	
-	public class MImage implements MITexture {
-		protected var objet:MIObjetGraphique;
+	public class MImage extends MTextureAbstraite implements MITexture {
 		private var url_image:String;
 		private var loader:Loader = new Loader();
 		private var myBitmap:BitmapData;
-		
 		private var newWidth:Number;
 		private var newHeight:Number;
+		private var garder_ratio:Boolean;
 		
 		private var timer:Timer;
-		private var a_decorer:MITexture = null;
 		
-		private var sysout:Text;
-		
-		public function MImage(sysout:Text, url_image:String="") {
-			this.sysout = sysout;
+		public function MImage(url_image:String="") {
+			nom_classe = "MImage";
 			
 			this.objet = null;
 			this.url_image = url_image;
+			this.garder_ratio = false;
 			
 			var request:URLRequest = new URLRequest(url_image);
             
@@ -42,10 +40,6 @@ package Graphique.Textures {
             loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, erreur);
          
             myBitmap = null;
-		}
-		
-		public function setObjetADessiner(objet:MIObjetGraphique):void {
-			this.objet = objet;
 		}
 		
 		public function setADecorer(texture:MITexture):MITexture {
@@ -57,11 +51,10 @@ package Graphique.Textures {
 			if(a_decorer != null) {
 				a_decorer.appliquer(graphics);
 			}
-			graphics.lineStyle(2, 0x000000);
 			if(myBitmap != null) {
 				finaliser();
 				var m:Matrix = new Matrix();
-				m.translate(objet.getObjet().getX()+((objet.getObjet().getLargeur()-newWidth)/2), objet.getObjet().getY()+((objet.getObjet().getLargeur()-newHeight)/2));
+				m.translate(objet.getObjet().getX(), objet.getObjet().getY());
             	graphics.beginBitmapFill(myBitmap, m, false);
    			}
    			else {
@@ -84,26 +77,53 @@ package Graphique.Textures {
 		 	
 		 	var MAX_WIDTH:Number = objet.getObjet().getLargeur();
 		 	var MAX_HEIGHT:Number = objet.getObjet().getHauteur();
-		 	var scale:Number = 1;
-		 
+		 	var sx:Number = 1;
+		 	var sy:Number = 1;
 		 	if (originalWidth > MAX_WIDTH || originalHeight > MAX_HEIGHT) {
-		  		var sx:Number =  MAX_WIDTH / originalWidth;
-		  		var sy:Number = MAX_HEIGHT / originalHeight;
-		  		scale = Math.min(sx, sy);
-		  		newWidth = originalWidth * scale;
-		  		newHeight = originalHeight * scale;	
+		  		sx =  MAX_WIDTH / originalWidth;
+		  		sy = MAX_HEIGHT / originalHeight;
+		  		if(garder_ratio) {
+		  			sx = sy = Math.min(sx, sy);
+		  		}
+		  		newWidth = originalWidth * sx;
+		  		newHeight = originalHeight * sy;	
 		  	}
-		 	matrix.scale(scale, scale);
+		  	else if (originalWidth < MAX_WIDTH || originalHeight < MAX_HEIGHT) {
+		  		sx = MAX_WIDTH / originalWidth;
+		  		sy = MAX_HEIGHT / originalHeight;
+		  		if(garder_ratio) {
+		  			sx = sy = Math.min(sx, sy);
+		  		}
+		  		newWidth = MAX_WIDTH * sx;
+		  		newHeight = MAX_HEIGHT * sy;
+		  	}
+		 	matrix.scale(sx, sy);
 		 	myBitmap = new BitmapData(newWidth, newHeight); 
 		 	myBitmap.draw(bmd, matrix);
 		}
 		
 		private function erreur(event:IOErrorEvent):void {
-			sysout.text += "Impossible de charger l'image : " + url_image;
+			throw new MErreur("MImage", "erreur", "Impossible de charger l'image : " + url_image, sysout);
 		}
 		
 		public function getUrlImage():String {
 			return url_image;
+		}
+		
+		public function getGarderRatio():Boolean {
+			return garder_ratio;
+		}
+		public function setGarderRatio(garder_ratio:Boolean) {
+			this.garder_ratio = garder_ratio;
+		}
+		
+		public function clone():MITexture {
+			var clone:MImage = new MImage(new String(url_image));
+			clone.setObjetADessiner(objet);
+			if(a_decorer != null) {
+				clone.setADecorer(a_decorer.clone());
+			}
+			return clone;
 		}
 	}
 }

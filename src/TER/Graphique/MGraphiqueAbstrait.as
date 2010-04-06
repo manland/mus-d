@@ -12,12 +12,15 @@ package Graphique
 	import mx.controls.Text;
 	import Coeur.Forme.MIForme;
 	import flash.events.TimerEvent;
+	import Graphique.Textures.MBordure;
 	
 	public class MGraphiqueAbstrait extends UIComponent implements MIObjetGraphique, MIObjetEcouteur
 	{
 		protected var objet:MIObjet;
 		protected var forme:MIForme;
 		protected var ma_texture:MITexture;
+		protected var ma_bordure:MBordure;
+		protected var nom_classe:String;
 		
 		public var type:String;
 		
@@ -28,6 +31,8 @@ package Graphique
 			objet = new MElement();
 			objet.ajoutObjetEcouteur(this);
 			ma_texture = new MCouleur();
+			ma_bordure = null;
+			nom_classe = "MGraphiqueAbstrait";
 		}
 		
 		public function getObjet():MIObjet {
@@ -66,6 +71,29 @@ package Graphique
 		
 		public function ajouterTexture(texture:MITexture):void {
 			ma_texture = texture.setADecorer(ma_texture);
+		}
+		
+		public function setBordure(b:MBordure):void {
+			bordure = b;
+		}
+		
+		public function getBordure():MBordure {
+			return ma_bordure;
+		}
+		
+		public function set bordure(bordure:MBordure):void {
+			ma_bordure = bordure;
+			ma_bordure.setObjetADessiner(this);
+			invalidateDisplayList();
+		}
+		
+		public function get bordure():MBordure {
+			return ma_bordure;
+		}
+		
+		public function ajouterBordure(bordure:MBordure):void {
+			var bordure_temp:MITexture = bordure.setADecorer(ma_bordure);
+			ma_bordure = bordure_temp as MBordure;
 		}
 		
 		public function deplacementObjet(objet:MIObjet):void {
@@ -169,6 +197,19 @@ package Graphique
 		
 		public function redessiner(e:TimerEvent=null):void {
 			invalidateDisplayList();
+		}
+		
+		public function clone():MIObjetGraphique {
+			var graphique_temp:MGraphiqueAbstrait = new MGraphiqueAbstrait();
+			graphique_temp.setBordure(ma_bordure.clone() as MBordure);
+			graphique_temp.setTexture(ma_texture.clone());
+			graphique_temp.objet = objet;
+			
+			return graphique_temp;
+		}
+		
+		public function getNomClasse():String {
+			return nom_classe;
 		}
 
 	}
