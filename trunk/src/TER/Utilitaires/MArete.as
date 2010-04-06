@@ -98,6 +98,15 @@ package Utilitaires
 			else
 				return x1 == x && ((y1 <= y && y<= y2) || (y2 <= y && y<= y1)) ;
 		}
+		
+		public function clone():MArete{
+			
+			var clone_depart:MCoordonnee = this.depart.clone();
+			var clone_arrivee:MCoordonnee = this.arrivee.clone();
+			
+			var clone_marete:MArete = new MArete(clone_depart, clone_arrivee);
+			return clone_marete;
+		}
 
 	}
 }

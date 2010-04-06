@@ -8,11 +8,8 @@ package Coeur.Forme
 			this.nom_classe = "MFormeCarre";
 		}
 		
-		public override function instancie(x:Number, y:Number, largeur:Number, hauteur:Number):void{
-			this.x = x;
-			this.y = y;
-			this.largeur = largeur;
-			this.hauteur = largeur;
+		public override function instancie(x:Number, y:Number, largeur:Number, hauteur:Number = -1):void{
+			super.instancie(x,y, largeur, largeur);
 		}
 		
 		public override function setLargeur(largeur:Number):void{

@@ -2,13 +2,13 @@ package Coeur.Forme
 {
 	import Utilitaires.MAxe;
 	
-	public class MFormeEllipse implements MIForme
+	public class MFormeEllipse extends MForme implements MIForme
 	{
-		protected var nom_classe:String;
-		protected var largeur:Number;
-		protected var hauteur:Number;
-		protected var x:Number;
-		protected var y:Number;
+		/**
+		 * 
+		 * A refaire
+		 * 
+		 * */
 		
 		public function MFormeEllipse()
 		{
@@ -25,24 +25,6 @@ package Coeur.Forme
 			this.largeur = largeur;
 			this.hauteur = hauteur;
 		}
-		
-		public function getLargeur():Number
-		{
-			return this.largeur;
-		}
-		public function setLargeur(largeur:Number):void
-		{
-			this.largeur = largeur;
-		}
-		
-		public function getHauteur():Number
-		{
-			return this.hauteur;
-		}
-		public function setHauteur(hauteur:Number):void
-		{
-			this.hauteur = hauteur;
-		}
 
 		public function getAire():Number
 		{
@@ -52,17 +34,6 @@ package Coeur.Forme
 		public function getPerimetre():Number
 		{
 			return 0;
-		}
-		
-		public function getNomClasse():String
-		{
-			return nom_classe;
-		}
-		
-		public function deplacement(x:Number, y:Number):void
-		{
-			this.x += x;
-			this.y += y;
 		}
 		
 		public function affiche():void
@@ -75,13 +46,6 @@ package Coeur.Forme
 			return null;
 		}
 		
-		public function getX():Number{
-			return this.x;
-		}
-		
-		public function getY():Number{
-			return this.y;
-		}
 		 
 	}
 }

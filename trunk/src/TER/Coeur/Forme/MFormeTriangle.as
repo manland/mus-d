@@ -4,14 +4,14 @@ package Coeur.Forme
 	
 	import Utilitaires.*;
 	
-	public class MFormeTriangle extends MFormeComplexe implements MIFormePolygone
+	public class MFormeTriangle extends MFormePolygone implements MIFormePolygone
 	{
 		
 		public function MFormeTriangle()
 		{
 			this.nom_classe = "MFormeTriangle";
 			this.nombre_arete = 3;
-			this.somme_angle = 180;
+			this.somme_angles = 180;
 		}
 		
 		public override function setX(x:Number):void{
@@ -36,8 +36,10 @@ package Coeur.Forme
 			for(var i:uint = 0; i<nombre_arete; i++)
 			{
 				var arete:MArete = aretes[i] as MArete;
-				if(arete == null)
+				if(arete == null){
+					throw new MErreur(this.nom_classe, "setHauteur", "Une arete est vide");
 					return ;
+				}
 				if(arete.getArrivee().getY() > this.y)
 					arete.getArrivee().setY( (arete.getArrivee().getY() * pourcentageAugmentation) / 100);
 				if(arete.getDepart().getY() > this.y)
@@ -60,8 +62,10 @@ package Coeur.Forme
 			for(var i:uint = 0; i<nombre_arete; i++)
 			{
 				var arete:MArete = aretes[i] as MArete;
-				if(arete == null)
+				if(arete == null){
+					throw new MErreur(this.nom_classe, "setHauteur", "Une arete est vide");
 					return ;
+				}
 				if(arete.getArrivee().getX() > this.x)
 					arete.getArrivee().setX( (arete.getArrivee().getX() * pourcentageAugmentation) / 100);
 				if(arete.getDepart().getX() > this.x)
@@ -79,9 +83,9 @@ package Coeur.Forme
 			var a1:MArete = new MArete(m1 ,m2);
 			var a2:MArete = new MArete(m5, m3);
 			var a3:MArete = new MArete(m6, m4);
-			aretes.push(a1);
-			aretes.push(a2);
-			aretes.push(a3);
+			this.ajouterArete(a1);
+			this.ajouterArete(a2);
+			this.ajouterArete(a3);
 			
 			this.calculParametres();
 			
@@ -95,7 +99,7 @@ package Coeur.Forme
 			var a3:MArete = this.aretes[2] as MArete;
 			
 			if(a1 == null || a2 == null || a3 == null)
-				throw new MErreur("MFormeTriangle", "calculParametres", "Une arete est vide")
+				throw new MErreur(this.nom_classe, "calculParametres", "Une arete est vide");
 			else
 			{
 			
@@ -129,18 +133,12 @@ package Coeur.Forme
 		 * 
 		 * **/
 		 
-		public function ajouterArete(arete:MArete):Boolean
+		public override function ajouterArete(arete:MArete):Boolean
 		{
-			arete = new MArete(new MCoordonnee(arete.getDepart().getX(),arete.getDepart().getY()),
-								new MCoordonnee(arete.getArrivee().getX(),arete.getArrivee().getY()));
-			if(aretes.length < nombre_arete)
-			{
-				aretes.push(arete);
-				if(aretes.length == this.nombre_arete)
-					this.calculParametres();
-				return true;
-			}
-			else return false;
+			var b:Boolean = super.ajouterArete(arete);
+			if(aretes.length == this.nombre_arete)
+				this.calculParametres();
+			return b;
 		}
 		
 		public override function setAretes(aretes:Array):void{
@@ -159,49 +157,23 @@ package Coeur.Forme
 				for(var i:uint = 0; i<nombre_arete; i++)
 				{
 					var arete:MArete = aretes[i] as MArete;
-					if(arete == null)
+					if(arete == null){
+						throw new MErreur(this.nom_classe, "getAire", "Une arete n'en est pas une");
 						return 0;
+					}
 					aire = aire * (demi_perimetre - arete.longueur());
 				}
 			}
-			else return 0;
+			else{
+				throw new MErreur(this.nom_classe, "getAire", "Le triangle n'est pas complet");
+				return 0;
+			} 
 			
 			return Math.sqrt(aire);
 		}
 		
-		public function getPerimetre():Number
-		{
-			var perimetre:Number = 0;
-			if(aretes.length == nombre_arete)
-			{
-				for(var i:uint = 0; i<nombre_arete; i++)
-				{
-					var arete:MArete = aretes[i] as MArete;
-					if(arete == null)
-						return 0;
-					perimetre += arete.longueur();
-				}
-			}
-			else return 0;
-			
-			return perimetre;
-		}
-		
 		public override function setNombreArete(nombre_arete:Number):void
 		{
-		}
-		
-		public function affiche():void
-		{
-			trace("MFormeTriangle : (",x,",",y,")");
-			trace("MFormeTriangle : largeur = ",this.largeur,", hauteur=",hauteur);
-			for(var i:uint = 0; i<nombre_arete; i++)
-			{
-				var arete:MArete = aretes[i] as MArete;
-				if(arete == null)
-					return ;
-				arete.affiche();
-			}
 		}
 		
 		public function axeCollision(x:Number,y:Number):MAxe{

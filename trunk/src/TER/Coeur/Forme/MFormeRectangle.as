@@ -1,37 +1,46 @@
 package Coeur.Forme
 {
+	import Utilitaires.MArete;
 	import Utilitaires.MAxe;
+	import Utilitaires.MCoordonnee;
 	
-	public class MFormeRectangle implements MIFormePolygone
+	public class MFormeRectangle extends MFormePolygone implements MIFormePolygone
 	{
-		protected var x:Number;
-		protected var y:Number;
-		protected var largeur:Number;
-		protected var hauteur:Number;
-		protected var nom_classe:String;
 		
 		public function MFormeRectangle()
 		{
-			this.x = 0;
-			this.y = 0;
-			this.largeur = 0;
-			this.hauteur = 0;
+			super()
 			this.nom_classe = "MFormeRectangle";
+			this.nombre_arete = 4;
+			this.somme_angles = 360;
 		}
 		
-		public function instancie(x:Number, y:Number, largeur:Number, hauteur:Number):void{
+		public function instancie(x:Number, y:Number, largeur:Number, hauteur:Number = -1):void{
 			this.x = x;
 			this.y = y;
 			this.largeur = largeur;
-			this.hauteur = hauteur;
+			if(hauteur == -1)
+				this.hauteur = largeur;
+			else
+				this.hauteur = hauteur;
+			
+			
+			var m1:MCoordonnee = new MCoordonnee(x, y);
+			var m2:MCoordonnee = new MCoordonnee(x+largeur, y);
+			var m3:MCoordonnee = new MCoordonnee(x+largeur, y+hauteur);
+			var m4:MCoordonnee = new MCoordonnee(x, y+hauteur);
+			
+			var a1:MArete = new MArete(m1 ,m2);
+			var a2:MArete = new MArete(m2, m3);
+			var a3:MArete = new MArete(m3, m4);
+			var a4:MArete = new MArete(m4, m1);
+			this.ajouterArete(a1);
+			this.ajouterArete(a2);
+			this.ajouterArete(a3);
+			this.ajouterArete(a4);
 		}
 		
-		public function affiche():void
-		{
-			trace(this.getNomClasse());
-		}
-		
-		public function deplacement(x:Number, y:Number):void{
+		public override function deplacement(x:Number, y:Number):void{
 			this.x += x;
 			this.y += y;
 		}
@@ -40,61 +49,22 @@ package Coeur.Forme
 			return this.largeur * this.hauteur;
 		}
 		
-		public function getPerimetre():Number{
+		public override function getPerimetre():Number{
 			return 2*this.largeur + 2*this.hauteur;
-		}
-		
-		public function getNomClasse():String
-		{
-			return this.nom_classe;
 		}
 		
 		public function axeCollision(x:Number,y:Number):MAxe{
 			return null;
 		}
 		
-		public function getAretes():Array
-		{
-			return null;
+		public override function setAretes(aretes:Array):void{
 		}
 		
-		public function getX():Number{
-			return this.x;
+		public override function setNombreArete(nombre_arete:Number):void{
 		}
 		
-		public function getY():Number{
-			return this.y;
+		public override function setSommeAngles(somme_angles:Number):void{
 		}
 		
-		public function setLargeur(largeur:Number):void{
-			this.largeur = largeur;
-		}
-		
-		public function getLargeur():Number{
-			return this.largeur;
-		}
-		
-		public function setHauteur(hauteur:Number):void{
-			this.hauteur = hauteur;
-		}
-		
-		public function getHauteur():Number{
-			return this.hauteur;
-		}
-		
-		public function getNombreArete():Number{
-			return 0;
-		}
-		
-		public function getSommeAngles():Number{
-			return 360;
-		}
-		
-		public function setAretes(aretes:Array):void
-		{
-		}
-		public function setNombreArete(nombre_arete:Number):void{
-			
-		}
 	}
 }
