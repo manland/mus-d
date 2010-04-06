@@ -36,9 +36,9 @@ package Coeur.Forme
 			return 0;
 		}
 		
-		public function affiche():void
+		public override function affiche():void
 		{
-			trace(this.getNomClasse());
+			super.affiche();
 		}
 		
 		public function axeCollision(x:Number,y:Number):MAxe{
@@ -46,6 +46,12 @@ package Coeur.Forme
 			return null;
 		}
 		
+		public function clone():MIForme{
+			
+			var clone_miforme:MFormeEllipse = new MFormeEllipse();
+			this.remplirForme(clone_miforme);
+			return clone_miforme; 
+		}
 		 
 	}
 }

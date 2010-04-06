@@ -142,7 +142,8 @@ package Coeur.Forme
 		}
 		
 		public override function setAretes(aretes:Array):void{
-			throw super.setAretes(aretes);
+			trace("setArete",aretes.length);
+			super.setAretes(aretes);
 			this.calculParametres();
 		}
 
@@ -187,6 +188,12 @@ package Coeur.Forme
 				}
 			}
 			return null;
+		}
+		
+		public function clone():MIForme{
+			var clone_miforme:MFormeTriangle = new MFormeTriangle();
+			this.remplirFormePolygone(clone_miforme);
+			return clone_miforme; 
 		}
 		
 	}

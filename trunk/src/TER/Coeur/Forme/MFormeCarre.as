@@ -15,11 +15,26 @@ package Coeur.Forme
 		public override function setLargeur(largeur:Number):void{
 			this.largeur = largeur;
 			this.hauteur = largeur
+			super.calculParametres();
 		}
 		
 		public override function setHauteur(hauteur:Number):void{
 			this.hauteur = hauteur;
 			this.largeur = hauteur;
+			super.calculParametres();
+		}
+		public override function clone():MIForme{
+			var clone_miforme:MFormeCarre = new MFormeCarre();
+			this.remplirFormePolygone(clone_miforme);
+			return clone_miforme; 
+			
+			
+			/* var clone_miforme:MIForme = super.clone();
+			trace("----------");
+			clone_miforme.affiche();
+			trace("----------");
+			return clone_miforme;
+			; */ 
 		}
 
 	}

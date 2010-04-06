@@ -24,6 +24,12 @@ package Coeur.Forme
 			}
 		}
 		
+		public function affiche():void
+		{
+			trace(this.nom_classe,": (",x,",",y,")");
+			trace(this.nom_classe,": largeur = ",this.largeur,", hauteur=",hauteur);
+		}
+		
 		public function getX():Number{
 			return this.x;
 		}
@@ -68,22 +74,11 @@ package Coeur.Forme
 			this.y += y;
 		}
 		
-		public function clone():MIForme{
-
-			var clone_x:Number = new Number(x);
-			var clone_y:Number = new Number(y);
-			var clone_largeur:Number = new Number(largeur);
-			var clone_hauteur:Number = new Number(hauteur);
-			var clone_nom_classe:String = new String(nom_classe);
-			
-			
-			var clone_miforme:MIForme;
-			clone_miforme.setHauteur(clone_hauteur);
-			clone_miforme.setLargeur(clone_largeur);
-			clone_miforme.setX(clone_x);
-			clone_miforme.setY(clone_y);
-			clone_miforme.setNomClasse(clone_nom_classe);
-			return clone_miforme;
+		protected function remplirForme(miforme:MForme):void{
+			miforme.setX(new Number(x));
+			miforme.setY(new Number(y));
+			miforme.setHauteur(new Number(hauteur));
+			miforme.setLargeur(new Number(largeur));
 		}
 
 	}
