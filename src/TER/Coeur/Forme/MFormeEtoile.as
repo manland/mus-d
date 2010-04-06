@@ -94,10 +94,11 @@ package Coeur.Forme
 			this.calculAretes();
 		}
 		
-		public override function clone():MIForme{
-			var clone_mformeetoile:MFormeEtoile = super.clone()as MFormeEtoile;
-			clone_mformeetoile.setDecalage(new Number(this.decalage));
-			return clone_mformeetoile;
+		public function clone():MIForme{
+			var clone_miforme:MFormeEtoile = new MFormeEtoile();
+			this.remplirFormePolygone(clone_miforme);
+			clone_miforme.setDecalage(new Number(decalage));
+			return clone_miforme; 
 		}
 		
 	}

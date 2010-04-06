@@ -79,7 +79,7 @@ package Coeur.Forme
 						throw new MErreur(this.nom_classe, "setAretes", " Donnée du tableau "+i+" incohérente");
 						return;
 					}
-					this.aretes[i] = aretes[i];
+					this.aretes[i] = aretes[i].clone();
 				}
 			}	
 			else
@@ -123,22 +123,7 @@ package Coeur.Forme
 			return perimetre;
 		}
 		
-		public override function clone():MIForme{
-
-			var clone_miforme:MIFormePolygone = super.clone()as MIFormePolygone;
-
-			var clone_somme_angle:Number = new Number(somme_angles);
-			var clone_nombre_arete:Number = new Number(nombre_arete);
-			var clone_aretes:Array = new Array().concat(aretes);
-			
-			clone_miforme.setNombreArete(clone_nombre_arete);
-			clone_miforme.setSommeAngles(clone_somme_angle);
-			clone_miforme.setAretes(clone_aretes);
-			
-			return clone_miforme;
-		}
-		
-		public function affiche():void
+		public override function affiche():void
 		{
 			trace(this.nom_classe,": (",x,",",y,")");
 			trace(this.nom_classe,": largeur = ",this.largeur,", hauteur=",hauteur);
@@ -149,6 +134,13 @@ package Coeur.Forme
 					return ;
 				arete.affiche();
 			}
+		}
+		
+		protected function remplirFormePolygone(miforme:MFormePolygone):void{
+			miforme.setAretes(new Array().concat(aretes));
+			super.remplirForme(miforme);
+			miforme.setNombreArete(new Number(nombre_arete));
+			miforme.setSommeAngles(new Number(somme_angles));
 		}
 
 	}

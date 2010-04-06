@@ -101,10 +101,9 @@ package Coeur.Forme
 		}
 		
 		public override function clone():MIForme{
-			var clone_mformeetoilepleine:MFormeEtoilePleine = super.clone()as MFormeEtoilePleine;
-			clone_mformeetoilepleine.setDecalage(new Number(this.decalage));
-			clone_mformeetoilepleine.setPetitRayon(new Number(this.petit_rayon));
-			return clone_mformeetoilepleine;
+			var clone_miforme:MFormeEtoilePleine = super.clone() as MFormeEtoilePleine;
+			clone_miforme.setPetitRayon(new Number(this.petit_rayon));
+			return clone_miforme; 
 		}
 		
 
