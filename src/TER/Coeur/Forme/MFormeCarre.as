@@ -23,18 +23,12 @@ package Coeur.Forme
 			this.largeur = hauteur;
 			super.calculParametres();
 		}
+		
+		
 		public override function clone():MIForme{
-			var clone_miforme:MFormeCarre = new MFormeCarre();
-			this.remplirFormePolygone(clone_miforme);
+			var clone_miforme:MIForme = new MFormeCarre();
+			this.remplirFormePolygone((clone_miforme as MFormeCarre));
 			return clone_miforme; 
-			
-			
-			/* var clone_miforme:MIForme = super.clone();
-			trace("----------");
-			clone_miforme.affiche();
-			trace("----------");
-			return clone_miforme;
-			; */ 
 		}
 
 	}

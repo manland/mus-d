@@ -47,10 +47,9 @@ package Coeur.Forme
 		}
 		
 		public function clone():MIForme{
-			
-			var clone_miforme:MFormeEllipse = new MFormeEllipse();
-			this.remplirForme(clone_miforme);
-			return clone_miforme; 
+			var clone_miforme:MIForme = new MFormeEllipse();
+			this.remplirForme((clone_miforme as MFormeEllipse));
+			return clone_miforme as MIForme; 
 		}
 		 
 	}

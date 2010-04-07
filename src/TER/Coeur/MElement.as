@@ -1,6 +1,7 @@
 package Coeur
 {
 	import Coeur.Forme.*;
+	
 	import Utilitaires.MAxe;
 	
 	
@@ -211,6 +212,10 @@ package Coeur
 			clone_mscene.setForme(clone_forme);
 			clone_mscene.setEcouteurs(clone_ecouteurs);
 			return clone_mscene;
+		}
+		
+		public function axeCollision(objet:MIObjet):MAxe{
+			return null;
 		}
 
 	}

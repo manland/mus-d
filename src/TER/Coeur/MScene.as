@@ -211,6 +211,13 @@ package Coeur
 		
 		public function deplacementObjet(objet:MIObjet):void
 		{
+			var axe:MAxe;
+			for(var i:uint=0; i<this.enfants.length; i++){
+				if(( axe = (enfants[i] as MIObjet).axeCollision(objet)) != null){
+					objet.actionCollision(enfants[i], axe);
+					(enfants[i] as MIObjet).actionCollision(objet,axe);
+				}
+			}
 			trace("Mscene : deplacementObjet");
 		}
 		
@@ -254,6 +261,10 @@ package Coeur
 			clone_mscene.setEnfants(clone_enfants);
 			clone_mscene.setProprietes(clone_proprietes);
 			return clone_mscene;
+		}
+		
+		public function axeCollision(objet:MIObjet):MAxe{
+			return null;
 		}
 	}
 }

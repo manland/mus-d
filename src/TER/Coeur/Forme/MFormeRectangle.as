@@ -88,8 +88,8 @@ package Coeur.Forme
 		}
 		
 		public function clone():MIForme{
-			var clone_miforme:MFormeRectangle = new MFormeRectangle();
-			this.remplirFormePolygone(clone_miforme);
+			var clone_miforme:MIForme = new MFormeRectangle();
+			this.remplirFormePolygone((clone_miforme as MFormeRectangle));
 			return clone_miforme; 
 		}
 		
