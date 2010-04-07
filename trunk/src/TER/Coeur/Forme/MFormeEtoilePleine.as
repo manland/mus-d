@@ -31,13 +31,13 @@ package Coeur.Forme
 		}
 		
 		public function instancie2(x:Number, y:Number, largeur:Number, decalage:Number = 0, petit_rayon:Number = 0):void{
-			if(petit_rayon > largeur / 2)
+			if(petit_rayon > largeur / 3)
 				throw new MErreur(this.nom_classe, "instancie", "Le petit rayon est trop petit");
 			this.x = x;
 			this.y = y;
 			this.largeur = largeur;
 			this.hauteur = largeur;
-			this.petit_rayon = largeur / 4;
+			this.petit_rayon = petit_rayon;
 			this.decalage = decalage;
 			this.calculAretes();
 		}
@@ -101,9 +101,16 @@ package Coeur.Forme
 		}
 		
 		public override function clone():MIForme{
-			var clone_miforme:MFormeEtoilePleine = super.clone() as MFormeEtoilePleine;
-			clone_miforme.setPetitRayon(new Number(this.petit_rayon));
+			var clone_miforme:MIForme = new MFormeEtoilePleine();
+			this.remplirFormePolygone(clone_miforme as MFormeEtoile);
+			(clone_miforme as MFormeEtoilePleine).setDecalage(new Number(decalage));
+			(clone_miforme as MFormeEtoilePleine).setPetitRayon(new Number(this.petit_rayon));
 			return clone_miforme; 
+		}
+		
+		public override function affiche():void{
+			super.affiche();
+			trace("Petit rayon :",this.petit_rayon);
 		}
 		
 

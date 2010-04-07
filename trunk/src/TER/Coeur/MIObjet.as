@@ -44,6 +44,7 @@ package Coeur
 		function actionCollision(objet:MIObjet,axe:MAxe):void;
 		function drag():void;
 		function clone():MIObjet;
+		function axeCollision(objet:MIObjet):MAxe;
 		 
 	}
 }

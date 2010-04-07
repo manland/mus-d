@@ -64,5 +64,12 @@ package Coeur.Forme
 		{
 			return 2 * Math.PI * this.getHauteur();
 		}
+		
+		public override function clone():MIForme{
+			var clone_miforme:MIForme = new MFormeRond();
+			this.remplirForme((clone_miforme as MFormeRond));
+			return clone_miforme; 
+		}
+		 
 	}
 }

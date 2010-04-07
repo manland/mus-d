@@ -95,10 +95,15 @@ package Coeur.Forme
 		}
 		
 		public function clone():MIForme{
-			var clone_miforme:MFormeEtoile = new MFormeEtoile();
-			this.remplirFormePolygone(clone_miforme);
-			clone_miforme.setDecalage(new Number(decalage));
+			var clone_miforme:MIForme = new MFormeEtoile();
+			this.remplirFormePolygone(clone_miforme as MFormeEtoile);
+			(clone_miforme as MFormeEtoile).setDecalage(new Number(decalage));
 			return clone_miforme; 
+		}
+		
+		public override function affiche():void{
+			super.affiche();
+			trace("decalage :",this.decalage);
 		}
 		
 	}
