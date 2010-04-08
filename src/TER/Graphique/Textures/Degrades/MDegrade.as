@@ -45,11 +45,6 @@ package Graphique.Textures.Degrades {
 			type = GradientType.LINEAR;//LINEAR = trait, RADIAL = rond
 		}
 		
-		public function setADecorer(texture:MITexture):MITexture {
-			a_decorer = texture;
-			return this;
-		}
-		
 		override public function setObjetADessiner(objet:MIObjetGraphique):void {
 			this.objet = objet;
 			//taille du dégradé != taille de l'affichage
@@ -132,10 +127,21 @@ package Graphique.Textures.Degrades {
 		
 		public function clone():MITexture {
 			var clone:MDegrade = new MDegrade();
-			clone.setObjetADessiner(objet);
-			clone.setCouleurs(new Array().concat(couleurs));
-			clone.setAlphas(new Array().concat(alphas));
-			clone.setRatios(new Array().concat(ratios));
+			var clone_couleurs:Array = new Array();
+			for(var i:int=0; i<couleurs.length; i++) {
+				clone_couleurs[i] = couleurs[i];
+			}
+			clone.setCouleurs(clone_couleurs);
+			var clone_alphas:Array = new Array();
+			for(var i:int=0; i<alphas.length; i++) {
+				clone_alphas[i] = new Number(alphas[i]);
+			}
+			clone.setAlphas(clone_alphas);
+			var clone_ratios:Array = new Array();
+			for(var i:int=0; i<ratios.length; i++) {
+				clone_ratios[i] = new Number(ratios[i]);
+			}
+			clone.setRatios(clone_ratios);
 			clone.setSpreadMethod(new String(spread_method));
 			clone.setInterpolation(new String(interpolation));
 			clone.setFocalPtRatio(new Number(focal_pt_ratio));

@@ -13,9 +13,11 @@ package Graphique
 	import Coeur.Forme.MIForme;
 	import flash.events.TimerEvent;
 	import Graphique.Textures.MBordure;
+	import Utilitaires.MErreur;
 	
 	public class MGraphiqueAbstrait extends UIComponent implements MIObjetGraphique, MIObjetEcouteur
 	{
+		private var sous_classe:MIObjetGraphique;
 		protected var objet:MIObjet;
 		protected var forme:MIForme;
 		protected var ma_texture:MITexture;
@@ -33,6 +35,10 @@ package Graphique
 			ma_texture = new MCouleur();
 			ma_bordure = null;
 			nom_classe = "MGraphiqueAbstrait";
+			sous_classe = MIObjetGraphique(this);
+			if(sous_classe == null) {
+				throw new MErreur(this.nom_classe, "Constructeur", "Les classes qui étendent MGraphiqueAbstrait doivent implementer MIObjetGraphique");
+			}
 		}
 		
 		public function getObjet():MIObjet {
@@ -189,9 +195,6 @@ package Graphique
             		getObjet().setForme(forme);
             	}
             }
-//            if(texture != null) {
-//        		setTexture(texture);
-//            }
 			invalidateDisplayList();
 		}
 		
@@ -200,11 +203,25 @@ package Graphique
 		}
 		
 		public function clone():MIObjetGraphique {
+			if(sysout != null) {
+				sysout.text += "début objet.clone()\n";
+			}
 			var graphique_temp:MGraphiqueAbstrait = new MGraphiqueAbstrait();
-			graphique_temp.setBordure(ma_bordure.clone() as MBordure);
-			graphique_temp.setTexture(ma_texture.clone());
-			graphique_temp.objet = objet;
-			
+			if(ma_bordure != null) {
+				graphique_temp.setBordure(ma_bordure.clone() as MBordure);
+			}
+			if(ma_texture != null) {
+				var texture_temp:MITexture = ma_texture.clone();
+				graphique_temp.setTexture(texture_temp);
+				texture_temp.setObjetADessiner(graphique_temp);
+			}
+			if(sysout != null) {
+				sysout.text += "avant objet.clone()\n";
+			}
+			graphique_temp.objet = objet.clone();
+			if(sysout != null) {
+				sysout.text += "objet:clone="+graphique_temp.objet+"; origine="+objet+"\n";
+			}
 			return graphique_temp;
 		}
 		

@@ -26,11 +26,6 @@ package Graphique.Textures
 			this.miter_limit = 3;
 		}
 		
-		public function setADecorer(texture:MITexture):MITexture {
-			a_decorer = texture;
-			return this;
-		}
-		
 		public function appliquer(graphics:Graphics):void {
 			if(a_decorer != null) {
 				a_decorer.appliquer(graphics);
@@ -40,7 +35,6 @@ package Graphique.Textures
 		
 		public function clone():MITexture {
 			var clone:MBordure = new MBordure(new Number(epaisseur), couleur);
-			clone.setObjetADessiner(objet);
 			if(a_decorer != null) {
 				clone.setADecorer(a_decorer.clone());
 			}
