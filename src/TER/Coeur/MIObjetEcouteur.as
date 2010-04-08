@@ -7,5 +7,6 @@ package Coeur
 		function objetMeurt(objet:MIObjet):void;
 		function objetNait(objet:MIObjet):void;
 		
+		
 	}
 }

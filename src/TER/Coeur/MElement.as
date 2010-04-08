@@ -3,10 +3,15 @@ package Coeur
 	import Coeur.Forme.*;
 	
 	import Utilitaires.MAxe;
+	import Utilitaires.MErreur;
 	
 	
 	public class MElement implements MIObjet
 	{
+		//clone setEcouteur...
+		
+		
+		
 		protected var forme:MIForme;
 		protected var bonus:MBonus;
 		
@@ -152,7 +157,19 @@ package Coeur
 		}
 		public function setEcouteurs(ecouteurs:Array):void
 		{
-			this.ecouteurs = ecouteurs;
+			var tableau_tmp:Array = this.ecouteurs;//en cas ou le tableau que l'on passe est mauvais, on sauvegarde l'ancien pour le remettre ensuite
+			
+			for(var i:uint=0; i<ecouteurs.length; i++)
+			{
+				var ecouteur:MIObjetEcouteur = ecouteurs[i] as MIObjetEcouteur;
+				if(ecouteur == null)
+				{
+					this.ecouteurs = tableau_tmp;
+					throw new MErreur(this.nom_classe, "setEcouteurs", " Donnée du tableau "+i+" incohérente");
+					return;
+				}
+				this.ecouteurs[i] = ecouteur;
+			}
 		}
 		
 		public function ajoutObjetEcouteur(objet:MIObjetEcouteur):void {
@@ -202,15 +219,14 @@ package Coeur
 			var clone_nom_classe:String = new String(nom_classe);
 			var clone_forme:MIForme = this.forme.clone();
 			
-			var clone_ecouteurs:Array = new Array().concat(ecouteurs);
 			
-			var clone_mscene:MScene = new MScene();
+			var clone_mscene:MElement = new MElement();
 			clone_mscene.setHauteur(clone_hauteur);
 			clone_mscene.setLargeur(clone_largeur);
 			clone_mscene.setX(clone_x);
 			clone_mscene.setY(clone_y);
 			clone_mscene.setForme(clone_forme);
-			clone_mscene.setEcouteurs(clone_ecouteurs);
+			clone_mscene.ecouteurs = this.ecouteurs; //memes ecouteurs
 			return clone_mscene;
 		}
 		

@@ -5,6 +5,10 @@ package Coeur
 		public function MPropriete()
 		{
 		}
+		
+		public function clone():MPropriete{
+			return this;
+		}
 
 	}
 }
