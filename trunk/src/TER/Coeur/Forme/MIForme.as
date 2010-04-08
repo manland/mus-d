@@ -22,6 +22,11 @@ package Coeur.Forme
 		function axeCollision(x:Number, y:Number):MAxe;
 		
 		function clone():MIForme;
+		
+		function calculMinX():Number;
+		function calculMinY():Number;
+		function calculMaxX():Number;
+		function calculMaxY():Number;
 	
 	}
 }

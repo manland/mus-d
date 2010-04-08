@@ -3,6 +3,7 @@ package Coeur
 	import Coeur.Forme.*;
 	
 	import Utilitaires.MAxe;
+	import Utilitaires.MErreur;
 	
 	public class MScene implements MIObjet, MIObjetEcouteur
 	{
@@ -114,7 +115,20 @@ package Coeur
 		}
 		public function setEcouteurs(ecouteurs:Array):void
 		{
-			this.ecouteurs = ecouteurs;
+			var tableau_tmp:Array = this.ecouteurs;//en cas ou le tableau que l'on passe est mauvais, on sauvegarde l'ancien pour le remettre ensuite
+			
+			for(var i:uint=0; i<ecouteurs.length; i++)
+			{
+				var ecouteur:MIObjetEcouteur = ecouteurs[i] as MIObjetEcouteur;
+				if(ecouteur == null)
+				{
+					this.ecouteurs = tableau_tmp;
+					throw new MErreur(this.nom_classe, "setEcouteurs", " Donnée du tableau "+i+" incohérente");
+					return;
+				}
+				this.ecouteurs[i] = ecouteur;
+			}
+				
 		}
 		
 		public function ajoutObjetEcouteur(objet:MIObjetEcouteur):void {
@@ -162,7 +176,19 @@ package Coeur
 		}
 		public function setProprietes(proprietes:Array):void
 		{
-			this.proprietes = proprietes;
+			var tableau_tmp:Array = this.proprietes;//en cas ou le tableau que l'on passe est mauvais, on sauvegarde l'ancien pour le remettre ensuite
+			
+			for(var i:uint=0; i<proprietes.length; i++)
+			{
+				var propriete:MPropriete = proprietes[i] as MPropriete;
+				if(propriete == null)
+				{
+					this.proprietes = tableau_tmp;
+					throw new MErreur(this.nom_classe, "setProprietes", " Donnée du tableau "+i+" incohérente");
+					return;
+				}
+				this.proprietes[i] = propriete.clone();
+			}
 		}
 		public function ajoutPropriete(propriete:MPropriete) :void
 		{
@@ -196,7 +222,19 @@ package Coeur
 			return this.enfants;
 		}
 		public function setEnfants(enfants:Array):void{
-			this.enfants = enfants;
+			var tableau_tmp:Array = this.enfants;//en cas ou le tableau que l'on passe est mauvais, on sauvegarde l'ancien pour le remettre ensuite
+			
+			for(var i:uint=0; i<enfants.length; i++)
+			{
+				var enfant:MIObjet = enfants[i] as MIObjet;
+				if(enfant == null)
+				{
+					this.enfants = tableau_tmp;
+					throw new MErreur(this.nom_classe, "setEnfants", " Donnée du tableau "+i+" incohérente");
+					return;
+				}
+				this.enfants[i] = enfant.clone();
+			}
 		}
 		
 		
@@ -227,10 +265,12 @@ package Coeur
 		
 		public function objetMeurt(objet:MIObjet):void
 		{
+			this.supprimerEnfants(objet);
 		}
 		
 		public function objetNait(objet:MIObjet):void
 		{
+			this.ajouterEnfants(objet);
 		}
 		
 		public function affiche():void
@@ -239,7 +279,6 @@ package Coeur
 		}
 		
 		public function clone():MIObjet{
-
 			var clone_x:Number = new Number(x);
 			var clone_y:Number = new Number(y);
 			var clone_largeur:Number = new Number(largeur);
@@ -247,20 +286,20 @@ package Coeur
 			var clone_nom_classe:String = new String(nom_classe);
 			var clone_forme:MIForme = this.forme.clone();
 			
-			var clone_ecouteurs:Array = new Array().concat(ecouteurs);
-			var clone_enfants:Array = new Array().concat(enfants);
-			var clone_proprietes:Array = new Array().concat(proprietes);
-			
 			var clone_mscene:MScene = new MScene();
 			clone_mscene.setHauteur(clone_hauteur);
 			clone_mscene.setLargeur(clone_largeur);
 			clone_mscene.setX(clone_x);
 			clone_mscene.setY(clone_y);
 			clone_mscene.setForme(clone_forme);
-			clone_mscene.setEcouteurs(clone_ecouteurs);
-			clone_mscene.setEnfants(clone_enfants);
-			clone_mscene.setProprietes(clone_proprietes);
+			clone_mscene.ecouteurs = this.ecouteurs;
+			clone_mscene.setEnfants(this.enfants);
+			clone_mscene.setProprietes(this.proprietes);
 			return clone_mscene;
+		}
+		
+		public function cloneObjetEcouteur():MIObjetEcouteur{
+			return this.clone() as MIObjetEcouteur;
 		}
 		
 		public function axeCollision(objet:MIObjet):MAxe{

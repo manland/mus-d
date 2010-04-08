@@ -24,6 +24,22 @@ package Coeur.Forme
 			}
 		}
 		
+		public function calculMinX():Number{
+			return this.x;
+		}
+		
+		public function calculMinY():Number{
+			return this.y;
+		}
+		
+		public function calculMaxX():Number{
+			return this.largeur + x;
+		}
+		
+		public function calculMaxY():Number{
+			return this.hauteur + y;
+		}
+		
 		public function affiche():void
 		{
 			trace(this.nom_classe,": (",x,",",y,")");
