@@ -191,7 +191,9 @@ package Graphique {
 		
 		override protected function commitProperties():void {
             super.commitProperties();
-            forme.instancie(x, y, width, height);
+            if(forme.getAretes().length == 0) {
+            	forme.instancie(x, y, width, height);
+            }
 //            if(ma_texture != null) {
 //            	setTexture(texture);
 //            }
@@ -202,7 +204,7 @@ package Graphique {
 			var graphique_temp:MGraphiqueScene = new MGraphiqueScene();
 			graphique_temp.setBordure(ma_bordure.clone() as MBordure);
 			graphique_temp.setTexture(ma_texture.clone());
-			graphique_temp.objet = objet;
+			graphique_temp.objet = objet.clone() as MScene;
 			
 			return graphique_temp;
 		}

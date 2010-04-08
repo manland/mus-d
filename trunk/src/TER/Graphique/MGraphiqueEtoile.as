@@ -22,7 +22,7 @@ package Graphique
 			}
 			else {
 				forme = new MFormeEtoilePleine();
-				(forme as MFormeEtoilePleine).instancie(x, y, largeur, largeur/5, rotation);
+				(forme as MFormeEtoilePleine).instancie2(x, y, largeur, largeur/5, rotation);
 			}
 			objet.setForme(forme);
 			nom_classe = "MGraphiqueEtoile";

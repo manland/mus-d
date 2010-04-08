@@ -22,7 +22,6 @@ package Graphique.Textures {
 		private var myBitmap:BitmapData;
 		private var newWidth:Number;
 		private var newHeight:Number;
-		private var garder_ratio:Boolean;
 		
 		private var timer:Timer;
 		
@@ -31,7 +30,6 @@ package Graphique.Textures {
 			
 			this.objet = null;
 			this.url_image = url_image;
-			this.garder_ratio = false;
 			
 			var request:URLRequest = new URLRequest(url_image);
             
@@ -40,11 +38,6 @@ package Graphique.Textures {
             loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, erreur);
          
             myBitmap = null;
-		}
-		
-		public function setADecorer(texture:MITexture):MITexture {
-			a_decorer = texture;
-			return this;
 		}
 		
 		public function appliquer(graphics:Graphics):void {
@@ -65,7 +58,7 @@ package Graphique.Textures {
 		}
 		
 		private function finaliser(event:Event=null):void {
-			var bmd:BitmapData = new BitmapData(loader.width, loader.height);
+			var bmd:BitmapData = new BitmapData(loader.width, loader.height, true, 0x00FFFFFF);
 			bmd.draw(loader);
  				
 		 	var originalWidth:Number = bmd.width;
@@ -82,23 +75,17 @@ package Graphique.Textures {
 		 	if (originalWidth > MAX_WIDTH || originalHeight > MAX_HEIGHT) {
 		  		sx =  MAX_WIDTH / originalWidth;
 		  		sy = MAX_HEIGHT / originalHeight;
-		  		if(garder_ratio) {
-		  			sx = sy = Math.min(sx, sy);
-		  		}
 		  		newWidth = originalWidth * sx;
 		  		newHeight = originalHeight * sy;	
 		  	}
 		  	else if (originalWidth < MAX_WIDTH || originalHeight < MAX_HEIGHT) {
 		  		sx = MAX_WIDTH / originalWidth;
 		  		sy = MAX_HEIGHT / originalHeight;
-		  		if(garder_ratio) {
-		  			sx = sy = Math.min(sx, sy);
-		  		}
 		  		newWidth = MAX_WIDTH * sx;
 		  		newHeight = MAX_HEIGHT * sy;
 		  	}
 		 	matrix.scale(sx, sy);
-		 	myBitmap = new BitmapData(newWidth, newHeight); 
+		 	myBitmap = new BitmapData(newWidth, newHeight, true, 0x00FFFFFF); 
 		 	myBitmap.draw(bmd, matrix);
 		}
 		
@@ -110,16 +97,8 @@ package Graphique.Textures {
 			return url_image;
 		}
 		
-		public function getGarderRatio():Boolean {
-			return garder_ratio;
-		}
-		public function setGarderRatio(garder_ratio:Boolean) {
-			this.garder_ratio = garder_ratio;
-		}
-		
 		public function clone():MITexture {
 			var clone:MImage = new MImage(new String(url_image));
-			clone.setObjetADessiner(objet);
 			if(a_decorer != null) {
 				clone.setADecorer(a_decorer.clone());
 			}
