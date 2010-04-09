@@ -51,6 +51,7 @@ package Graphique
 		}
 		
 		override protected function dessiner():void {
+			fireSeDessine();
 			var o:MFormeTriangle = objet.getForme() as MFormeTriangle;
 			var aretes:Array = o.getAretes();
 			graphics.clear();

@@ -10,6 +10,7 @@ package Graphique {
 	import flash.display.DisplayObject;
 	import mx.controls.Text;
 	import Graphique.Textures.MBordure;
+	import Utilitaires.MAxe;
 	
 	public class MGraphiqueScene extends Canvas implements MIObjetGraphique, MIObjetEcouteur {
 		protected var objet:MScene;
@@ -17,6 +18,7 @@ package Graphique {
 		protected var ma_texture:MITexture;
 		protected var ma_bordure:MBordure;
 		protected var nom_classe:String;
+		protected var ecouteurs:Array = new Array();
 		public var rgb:String;
 		
 		public var sysout:Text;
@@ -32,6 +34,32 @@ package Graphique {
 			nom_classe = "MGraphiqueScene";
 			horizontalScrollPolicy = "auto";
 			verticalScrollPolicy = "auto";
+		}
+		
+		public function ajouterEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void {
+			ecouteurs.push(ecouteur);
+		}
+		
+		public function fireSeDessine():void {
+			for(var i:int=0; i<ecouteurs.length; i++) {
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueSeDessine(this);
+			}
+		}
+		
+		public function fireMeurt():void {
+			for(var i:int=0; i<ecouteurs.length; i++) {
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueMeurt(this);
+			}
+		}
+		
+		public function fireCollision(axe:MAxe):void {
+			for(var i:int=0; i<ecouteurs.length; i++) {
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueCollision(this, axe);
+			}
+		}
+		
+		public function objetCollision(objet:MIObjet, axe:MAxe):void {
+			fireCollision(axe);
 		}
 		
 		override public function addChild(child:DisplayObject):DisplayObject {
@@ -175,6 +203,7 @@ package Graphique {
 		}
 		
 		protected function dessiner():void {
+			fireSeDessine();
 			graphics.clear();
 			ma_texture.appliquer(graphics);
 			if(ma_bordure != null) {

@@ -13,5 +13,6 @@ package Graphique
 		function redessiner(e:TimerEvent=null):void;
 		function getNomClasse():String;
 		function clone():MIObjetGraphique;
+		function ajouterEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void;
 	}
 }

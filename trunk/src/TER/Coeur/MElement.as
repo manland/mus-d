@@ -198,8 +198,15 @@ package Coeur
 			}
 		}
 		
+		public function fireCollision(axe:MAxe):void {
+			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
+				(ecouteurs[i] as MIObjetEcouteur).objetCollision(this, axe);
+			}
+		}
+		
 		public function actionCollision(objet:MIObjet,axe:MAxe):void {
-			//a réimplanté
+			//a réimplanté ou à écouter
+			fireCollision(axe);
 		}
 			
 		public function estTouchePar(tx:Number, ty:Number):MAxe {
@@ -219,19 +226,20 @@ package Coeur
 			var clone_nom_classe:String = new String(nom_classe);
 			var clone_forme:MIForme = this.forme.clone();
 			
-			
 			var clone_mscene:MElement = new MElement();
+			clone_mscene.setForme(clone_forme);
 			clone_mscene.setHauteur(clone_hauteur);
 			clone_mscene.setLargeur(clone_largeur);
 			clone_mscene.setX(clone_x);
 			clone_mscene.setY(clone_y);
-			clone_mscene.setForme(clone_forme);
-			clone_mscene.ecouteurs = this.ecouteurs; //memes ecouteurs
+			
+//			clone_mscene.ecouteurs = this.ecouteurs; //memes ecouteurs
 			return clone_mscene;
 		}
 		
-		public function axeCollision(objet:MIObjet):MAxe{
-			return null;
+		public function axeCollision(objet:MIObjet):MAxe {
+			var axe:MAxe = forme.axeCollision(objet.getX(), objet.getY());
+			return axe;
 		}
 
 	}

@@ -17,6 +17,7 @@ package Graphique
 		}
 		
 		override protected function dessiner():void {
+			fireSeDessine();
 			graphics.clear();
 			ma_texture.appliquer(graphics);
 			if(ma_bordure != null) {

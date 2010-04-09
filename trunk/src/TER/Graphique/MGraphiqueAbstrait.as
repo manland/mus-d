@@ -14,6 +14,8 @@ package Graphique
 	import flash.events.TimerEvent;
 	import Graphique.Textures.MBordure;
 	import Utilitaires.MErreur;
+	import mx.olap.aggregators.MaxAggregator;
+	import Utilitaires.MAxe;
 	
 	public class MGraphiqueAbstrait extends UIComponent implements MIObjetGraphique, MIObjetEcouteur
 	{
@@ -23,6 +25,7 @@ package Graphique
 		protected var ma_texture:MITexture;
 		protected var ma_bordure:MBordure;
 		protected var nom_classe:String;
+		protected var ecouteurs:Array = new Array();
 		
 		public var type:String;
 		
@@ -40,6 +43,32 @@ package Graphique
 				throw new MErreur(this.nom_classe, "Constructeur", "Les classes qui étendent MGraphiqueAbstrait doivent implementer MIObjetGraphique");
 			}
 		}
+	
+		public function ajouterEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void {
+			ecouteurs.push(ecouteur);
+		}
+		
+		public function fireSeDessine():void {
+			for(var i:int=0; i<ecouteurs.length; i++) {
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueSeDessine(this);
+			}
+		}
+		
+		public function fireMeurt():void {
+			for(var i:int=0; i<ecouteurs.length; i++) {
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueMeurt(this);
+			}
+		}
+		
+		public function fireCollision(axe:MAxe):void {
+			for(var i:int=0; i<ecouteurs.length; i++) {
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueCollision(this, axe);
+			}
+		}
+		
+		public function objetCollision(objet:MIObjet, axe:MAxe):void {
+			fireCollision(axe);
+		}
 		
 		public function getObjet():MIObjet {
 			return objet;
@@ -55,6 +84,8 @@ package Graphique
 			}
 			this.objet = objet;
 			this.objet.ajoutObjetEcouteur(this);
+			changementTaille(objet);
+			deplacementObjet(objet);
 		}
 		
 		public function setTexture(t:MITexture):void {
@@ -76,7 +107,14 @@ package Graphique
 		}
 		
 		public function ajouterTexture(texture:MITexture):void {
-			ma_texture = texture.setADecorer(ma_texture);
+			if(ma_texture == null) {
+				ma_texture = texture;
+			}
+			else {
+				ma_texture = texture.setADecorer(ma_texture);
+				ma_texture.setObjetADessiner(this);
+				invalidateDisplayList();
+			}
 		}
 		
 		public function setBordure(b:MBordure):void {
@@ -98,8 +136,15 @@ package Graphique
 		}
 		
 		public function ajouterBordure(bordure:MBordure):void {
-			var bordure_temp:MITexture = bordure.setADecorer(ma_bordure);
-			ma_bordure = bordure_temp as MBordure;
+			if(ma_bordure == null) {
+				ma_bordure = bordure;
+			}
+			else {
+				var bordure_temp:MITexture = bordure.setADecorer(ma_bordure);
+				ma_bordure = bordure_temp as MBordure;
+				ma_bordure.setObjetADessiner(this);
+				invalidateDisplayList();
+			}
 		}
 		
 		public function deplacementObjet(objet:MIObjet):void {
@@ -115,6 +160,7 @@ package Graphique
 		}
 		
 		public function objetMeurt(objet:MIObjet):void {
+			fireMeurt();
 			parent.removeChild(this);
 		}
 		
@@ -145,16 +191,16 @@ package Graphique
 		
 		override public function set x(x:Number):void {
 			super.x = x;
-			if(objet.getX() != x) {
-				objet.setX(x);
-			}
+//			if(objet.getX() != x) {
+//				objet.setX(x);
+//			}
 		}
 		
 		override public function set y(y:Number):void {
 			super.y = y;
-			if(objet.getY() != y) {
-				objet.setY(y);
-			}
+//			if(objet.getY() != y) {
+//				objet.setY(y);
+//			}
 		}
 		
 		override public function set width(width:Number):void {
@@ -207,18 +253,19 @@ package Graphique
 				sysout.text += "début objet.clone()\n";
 			}
 			var graphique_temp:MGraphiqueAbstrait = new MGraphiqueAbstrait();
-			if(ma_bordure != null) {
-				graphique_temp.setBordure(ma_bordure.clone() as MBordure);
-			}
-			if(ma_texture != null) {
-				var texture_temp:MITexture = ma_texture.clone();
-				graphique_temp.setTexture(texture_temp);
-				texture_temp.setObjetADessiner(graphique_temp);
-			}
+			graphique_temp.objet = objet.clone();
+//			if(ma_bordure != null) {
+//				graphique_temp.setBordure(ma_bordure.clone() as MBordure);
+//			}
+//			if(ma_texture != null) {
+//				var texture_temp:MITexture = ma_texture.clone();
+//				graphique_temp.setTexture(texture_temp);
+//				texture_temp.setObjetADessiner(graphique_temp);
+//			}
 			if(sysout != null) {
 				sysout.text += "avant objet.clone()\n";
 			}
-			graphique_temp.objet = objet.clone();
+			
 			if(sysout != null) {
 				sysout.text += "objet:clone="+graphique_temp.objet+"; origine="+objet+"\n";
 			}

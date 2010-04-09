@@ -29,6 +29,7 @@ package Graphique
 		}
 
 		override protected function dessiner():void {
+			fireSeDessine();
 			var aretes:Array = null;
 			if(vide) {
 				var o:MFormeEtoile = objet.getForme() as MFormeEtoile;
