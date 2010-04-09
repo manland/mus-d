@@ -157,8 +157,16 @@ package Coeur
 			}
 		}
 		
+		public function fireCollision(axe:MAxe):void {
+			throw new MErreur("MElement", "fireCollision", "Yououuupi");
+			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
+				(ecouteurs[i] as MIObjetEcouteur).objetCollision(this, axe);
+			}
+		}
+		
 		public function actionCollision(objet:MIObjet,axe:MAxe):void {
-			//a réimplanté
+			//a réimplanté ou à écouter
+			fireCollision(axe);
 		}
 				
 		public function estTouchePar(tx:Number, ty:Number):MAxe {
@@ -201,6 +209,10 @@ package Coeur
 		
 		public function drop():void
 		{
+		}
+		
+		public function objetCollision(objet:MIObjet, axe:MAxe):void {
+			//ne surtout rien faire sans quoi il y aurais boucle infinie !!!! Du à la fonction du sessous !!??
 		}
 		
 		public function collision(objet1:MIObjet, objet2:MIObjet, axe:MAxe) : void
@@ -249,10 +261,11 @@ package Coeur
 		
 		public function deplacementObjet(objet:MIObjet):void
 		{
-			var axe:MAxe;
+			var axe:MAxe = null;
 			for(var i:uint=0; i<this.enfants.length; i++){
-				if(( axe = (enfants[i] as MIObjet).axeCollision(objet)) != null){
-					objet.actionCollision(enfants[i], axe);
+				axe = (enfants[i] as MIObjet).axeCollision(objet);
+				if(axe != null){
+					objet.actionCollision((enfants[i] as MIObjet), axe);
 					(enfants[i] as MIObjet).actionCollision(objet,axe);
 				}
 			}
