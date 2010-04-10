@@ -8,6 +8,8 @@ package Graphique
 	import Graphique.Textures.MBordure;
 	import Graphique.Textures.MITexture;
 	import Coeur.Forme.MFormeEtoilePleine;
+	import flash.display.Graphics;
+	import Coeur.Forme.MIForme;
 	
 	public class MGraphiqueEtoile extends MGraphiqueAbstrait
 	{
@@ -37,6 +39,30 @@ package Graphique
 			}
 			else {
 				var oo:MFormeEtoilePleine = objet.getForme() as MFormeEtoilePleine;
+				aretes = oo.getAretes();
+			}
+			graphics.clear();
+			ma_texture.appliquer(graphics);
+			if(ma_bordure != null) {
+				ma_bordure.appliquer(graphics);
+			}
+			var elem:MArete = aretes[0] as MArete;
+			graphics.moveTo(elem.getDepart().getX(), elem.getDepart().getY());
+			for(var i:Number=0; i<aretes.length; i++) {
+				elem = aretes[i] as MArete;
+				graphics.lineTo(elem.getArrivee().getX(), elem.getArrivee().getY());
+			}
+			graphics.endFill();
+		}
+		
+		static public function dessiner(graphics:Graphics, forme:MIForme, ma_texture:MITexture, vide:Boolean, ma_bordure:MBordure = null):void {
+			var aretes:Array = null;
+			if(vide) {
+				var o:MFormeEtoile = forme as MFormeEtoile;
+				aretes = o.getAretes();
+			}
+			else {
+				var oo:MFormeEtoilePleine = forme as MFormeEtoilePleine;
 				aretes = oo.getAretes();
 			}
 			graphics.clear();
