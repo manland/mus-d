@@ -6,6 +6,7 @@ package Graphique
 	import flash.display.Graphics;
 	import Graphique.Textures.MBordure;
 	import Graphique.Textures.MITexture;
+	import Coeur.Forme.MIForme;
 	
 	public class MGraphiqueRectangle extends MGraphiqueAbstrait
 	{
@@ -30,6 +31,17 @@ package Graphique
 			graphics.endFill();
 		}
 		
+		static public function dessiner(graphics:Graphics, forme:MIForme, ma_texture:MITexture, ma_bordure:MBordure = null):void {
+			graphics.clear();
+			ma_texture.appliquer(graphics);
+			if(ma_bordure != null) {
+				ma_bordure.appliquer(graphics);
+			}
+			graphics.moveTo(forme.getX(), forme.getY());
+			graphics.drawRect(forme.getX(), forme.getY(), forme.getLargeur(), forme.getHauteur());
+			graphics.endFill();
+		}
+
 		override public function clone():MIObjetGraphique {
 			var graphique_temp:MGraphiqueRectangle = new MGraphiqueRectangle();
 			graphique_temp.setObjet(objet.clone());
