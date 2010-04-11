@@ -7,6 +7,7 @@ package Controleur
 	
 	public class MMouvementFini implements MIEffet
 	{
+		private var nom_classe:String 
 		private var objet:MIObjet;
 		private var timer:Timer;
 		private var unite_x:Number;
@@ -15,7 +16,9 @@ package Controleur
 		private var y_arrivee:Number;
 		private var temps_ms:Number;
 		
-		public function MMouvementFini(){}
+		public function MMouvementFini(){
+			this.nom_classe = "MMouvementFini";
+		}
 		
 		public function instancie(objet : MIObjet, x_arrivee:Number, y_arrivee:Number, temps_ms:Number):void{
 			this.objet = objet;
@@ -57,6 +60,12 @@ package Controleur
 			getTimer().stop();
 		}
 		
+		public function clone():MIEffet{
+			var mouv:MMouvementFini = new MMouvementFini();
+			mouv.instancie(this.objet,this.x_arrivee,this.y_arrivee,this.temps_ms);
+			return mouv;
+		}
+		
 		/* getteurs setteurs */
 		public function getUnite_x():Number{
 			return this.unite_x;
@@ -85,5 +94,14 @@ package Controleur
 		public function setObjet(objet:MIObjet):void{
 			this.objet = objet;
 		}	
+		
+		public function getNomClasse():String
+		{
+			return this.nom_classe;
+		}
+		public function setNomClasse(nom_classe:String):void
+		{
+			this.nom_classe = nom_classe;
+		}
 	}
 }

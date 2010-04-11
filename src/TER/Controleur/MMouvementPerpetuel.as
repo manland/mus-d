@@ -1,12 +1,15 @@
 package Controleur
 {
 	import Coeur.MIObjet;
+	
+	import Utilitaires.MAxe;
+	
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
-	import Utilitaires.MAxe;
 
 	public class MMouvementPerpetuel implements MIEffet
 	{
+		private var nom_classe:String 
 		private var objet:MIObjet;
 		private var timer:Timer;
 		private var unite_x:Number;
@@ -14,7 +17,9 @@ package Controleur
 		private var vitesse_px_s_X:Number;
 		private var vitesse_px_s_Y:Number;
 		
-		public function MMouvementPerpetuel(){}
+		public function MMouvementPerpetuel(){
+			this.nom_classe = "MMouvementPerpetuel";
+		}
 		
 		public function instancie(objet:MIObjet,vitesse_px_s_X:Number, vitesse_px_s_Y:Number):void
 		{
@@ -71,6 +76,12 @@ package Controleur
 			}
 		}
 		
+		public function clone():MIEffet{
+			var mouv:MMouvementPerpetuel = new MMouvementPerpetuel();
+			mouv.instancie(this.objet,this.vitesse_px_s_X,this.vitesse_px_s_Y);
+			return mouv;
+		}
+		
 		/* getteurs et setteurs */
 		public function getObjet():MIObjet{
 			return this.objet;
@@ -98,6 +109,15 @@ package Controleur
 		}		
 		public function setUnite_y(unite_y:Number):void{
 			this.unite_y = unite_y; 
+		}
+		
+		public function getNomClasse():String
+		{
+			return this.nom_classe;
+		}
+		public function setNomClasse(nom_classe:String):void
+		{
+			this.nom_classe = nom_classe;
 		}
 		
 		
