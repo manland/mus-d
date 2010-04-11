@@ -6,6 +6,7 @@ package Graphique
 	import Coeur.Forme.MFormeRond;
 	import Coeur.Forme.MFormeTriangle;
 	import Utilitaires.MErreur;
+	import Utilitaires.MCoordonnee;
 	
 	public class MGraphiqueFormeCompose extends MGraphiqueAbstrait
 	{
@@ -13,12 +14,14 @@ package Graphique
 		{
 			var rectangle:MFormeRectangle = new MFormeRectangle();
             rectangle.instancie(10,10,50,70);
-                
+            var triangle:MFormeTriangle = new MFormeTriangle();
+            triangle.instancie(new MCoordonnee(40, 0), new MCoordonnee(0, 40), new MCoordonnee(40, 40));
+            
             var r:MFormeCompose = new MFormeCompose();
             r.instancie(rectangle);
             r.setFormeBas(rectangle);
             r.setFormeGauche(rectangle);
-            r.setFormeDroit(rectangle);
+            r.setFormeDroit(triangle);
             r.setFormeHaut(rectangle);
 			nom_classe = "MGraphiqueFormeCompose";
 			
@@ -33,13 +36,12 @@ package Graphique
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
 			}
-			var aretes:Array = null;
-			var o:MFormeCompose = objet.getForme() as MFormeCompose;
-			dessinerRecursion(o);
+			dessinerRecursion(objet.getForme());
 			graphics.endFill();
 		}
-		
+		private var cpt:int = 0;
 		private function dessinerRecursion(f:MIForme):void {
+			cpt++;
 //			throw new MErreur("MGraphiqueFormeCompose", "dessinerRecursion", ""+f.affiche());
 			var forme_compose:MFormeCompose = f as MFormeCompose;
 			var forme_rectangle:MFormeRectangle = f as MFormeRectangle;
@@ -52,14 +54,14 @@ package Graphique
 				dessinerRecursion(forme_compose.getFormeHaut());
 				dessinerRecursion(forme_compose.getFormeBas());
 			}
-			if(forme_rectangle != null) {
+			else if(forme_rectangle != null) {
 //				throw new MErreur("MGraphiqueFormeCompose", "dessinerRecursion", ""+f);
 				MGraphiqueRectangle.dessiner(graphics, forme_rectangle, ma_texture, ma_bordure);
 			}
-			if(forme_rond != null) {
+			else if(forme_rond != null) {
 				MGraphiqueRond.dessiner(graphics, forme_rond, ma_texture, ma_bordure);
 			}
-			if(forme_triangle != null) {
+			else if(forme_triangle != null) {
 				MGraphiqueTriangle.dessiner(graphics, forme_triangle, ma_texture, ma_bordure);
 			}
 		}

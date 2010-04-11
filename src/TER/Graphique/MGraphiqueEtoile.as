@@ -65,7 +65,6 @@ package Graphique
 				var oo:MFormeEtoilePleine = forme as MFormeEtoilePleine;
 				aretes = oo.getAretes();
 			}
-			graphics.clear();
 			ma_texture.appliquer(graphics);
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);

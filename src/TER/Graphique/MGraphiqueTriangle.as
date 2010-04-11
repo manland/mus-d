@@ -32,6 +32,7 @@ package Graphique
 	import Controleur.MIEffet;
 	import Graphique.Textures.MBordure;
 	import flash.display.Graphics;
+	import Utilitaires.MErreur;
 	
 	public class MGraphiqueTriangle extends MGraphiqueAbstrait
 	{
@@ -72,7 +73,6 @@ package Graphique
 		static public function dessiner(graphics:Graphics, forme:MIForme, ma_texture:MITexture, ma_bordure:MBordure = null):void {
 			var o:MFormeTriangle = forme as MFormeTriangle;
 			var aretes:Array = o.getAretes();
-			graphics.clear();
 			ma_texture.appliquer(graphics);
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);

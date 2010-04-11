@@ -30,7 +30,6 @@ package Graphique
 		}
 		
 		static public function dessiner(graphics:Graphics, forme:MIForme, ma_texture:MITexture, ma_bordure:MBordure = null):void {
-			graphics.clear();
 			ma_texture.appliquer(graphics);
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
