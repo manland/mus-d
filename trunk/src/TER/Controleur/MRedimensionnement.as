@@ -7,6 +7,7 @@ package Controleur
 	
 	public class MRedimensionnement implements MIEffet
 	{
+		private var nom_classe:String 
 		private var objet:MIObjet;
 		private var timer:Timer;
 		private var unite_largeur:Number;
@@ -15,7 +16,9 @@ package Controleur
 		private var hauteur_arrivee:Number;
 		private var temps_ms:Number;
 		
-		public function MRedimensionnement(){}
+		public function MRedimensionnement(){
+			this.nom_classe = "MRedimensionnement";
+		}
 		
 		public function instancie(objet:MIObjet,largeur_arrivee:Number, hauteur_arrivee:Number, temps_ms:Number):void{
 			this.objet = objet;
@@ -51,6 +54,12 @@ package Controleur
 			timer.stop();
 		}
 		
+		public function clone():MIEffet{
+			var mouv:MRedimensionnement = new MRedimensionnement();
+			mouv.instancie(this.objet,this.largeur_arrivee,this.hauteur_arrivee,this.temps_ms);
+			return mouv;
+		}
+		
 		/* getteurs et setteurs */
 		public function getObjet():MIObjet{
 			return this.objet;
@@ -65,6 +74,15 @@ package Controleur
 		public function setTimer(timer:Timer):void{
 			this.timer = timer;
 		}	
+		
+		public function getNomClasse():String
+		{
+			return this.nom_classe;
+		}
+		public function setNomClasse(nom_classe:String):void
+		{
+			this.nom_classe = nom_classe;
+		}
 
 	}
 }

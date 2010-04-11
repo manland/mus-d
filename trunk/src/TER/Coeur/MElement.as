@@ -209,10 +209,6 @@ package Coeur
 			fireCollision(axe);
 		}
 			
-		public function estTouchePar(tx:Number, ty:Number):MAxe {
-			return getForme().axeCollision(x,y);
-		}
-		
 		public function drag():void
 		{
 		}
@@ -237,9 +233,27 @@ package Coeur
 			return clone_mscene;
 		}
 		
-		public function axeCollision(objet:MIObjet):MAxe {
-			var axe:MAxe = forme.axeCollision(objet.getX(), objet.getY());
+		public function axeCollision(tx:Number, ty:Number):MAxe {
+			var axe:MAxe = forme.axeCollision(tx,ty);
 			return axe;
+		}
+		
+		public function estProche(objet:MIObjet):Boolean{
+			var x2:Number = objet.getX();
+			var y2:Number = objet.getY();
+			var h2:Number = objet.getHauteur();
+			var l2:Number = objet.getLargeur();
+			
+			if(x2 >= x && x2 <= x+largeur && y2 >= y && y2 <= y+hauteur)
+				return true;
+			else if(x2+l2 >= x && x2+l2 <= x+largeur && y2 >= y && y2 <= y+hauteur)
+				return true;
+			else if(x2 >= x && x2 <= x+largeur && y2+h2 >= y && y2+h2 <= y+hauteur)
+				return true;	
+			else if(x2+l2 >= x && x2+l2 <= x+largeur && y2+h2 >= y && y2+h2 <= y+hauteur)
+				return true;
+			else				
+				return false;
 		}
 
 	}

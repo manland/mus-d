@@ -38,13 +38,13 @@ package Coeur
 		/**
 		 * Vrais méthodes
 		 **/
-		function estTouchePar(tx:Number, ty:Number):MAxe;
 		function mourir():void;
 		function naitre():void;
 		function actionCollision(objet:MIObjet,axe:MAxe):void;
 		function drag():void;
 		function clone():MIObjet;
-		function axeCollision(objet:MIObjet):MAxe;
+		function axeCollision(tx:Number, ty:Number):MAxe;
+		function estProche(objet:MIObjet):Boolean;
 		 
 	}
 }

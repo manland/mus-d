@@ -169,11 +169,6 @@ package Coeur
 			fireCollision(axe);
 		}
 				
-		public function estTouchePar(tx:Number, ty:Number):MAxe {
-			/* a reprendre*/
-			return null;
-		}
-		
 		public function drag():void
 		{
 		}
@@ -263,14 +258,16 @@ package Coeur
 		{
 			var axe:MAxe = null;
 			for(var i:uint=0; i<this.enfants.length; i++){
-				axe = (enfants[i] as MIObjet).axeCollision(objet);
-				if(axe != null){
-					objet.actionCollision((enfants[i] as MIObjet), axe);
-					(enfants[i] as MIObjet).actionCollision(objet,axe);
+				if(objet.estProche((enfants[i] as MIObjet))){
+					axe = (enfants[i] as MIObjet).axeCollision(objet.getX(),objet.getY());
+					if(axe != null){
+						collision(objet, (enfants[i] as MIObjet), axe);
+					}
 				}
 			}
 			trace("Mscene : deplacementObjet");
 		}
+		
 		
 		public function changementTaille(objet:MIObjet):void
 		{
@@ -315,8 +312,21 @@ package Coeur
 			return this.clone() as MIObjetEcouteur;
 		}
 		
-		public function axeCollision(objet:MIObjet):MAxe{
-			return null;
+		public function axeCollision(tx:Number, ty:Number):MAxe{
+			var axe:MAxe = null;
+			if(tx == this.x || tx == this.x + largeur){
+				axe = new MAxe();
+				axe.setAxe(0);
+			}
+			else if(ty == this.y || ty == this.y + hauteur){
+				axe = new MAxe();
+				axe.setAxe(1);
+			}
+			return axe;
+		}
+		
+		public function estProche(objet:MIObjet):Boolean{
+			return true;
 		}
 	}
 }

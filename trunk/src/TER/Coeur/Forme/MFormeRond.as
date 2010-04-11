@@ -37,7 +37,7 @@ package Coeur.Forme
 			var y_cercle:Number;
 			var rayon:Number;
 			x_cercle = this.x + (this.largeur/ 2);
-			y_cercle= this.y - (this.hauteur/ 2);
+			y_cercle= this.y + (this.hauteur/ 2);
 			rayon = this.largeur/2;
 			// equation d'un cercle de centre (a,b) et de rayon r : (x − a)²+ (y − b)²  = r²
 			if( ( ((x - x_cercle)*(x - x_cercle)) + ((y - y_cercle)*(y - y_cercle)) ) == (rayon * rayon)){
@@ -46,10 +46,10 @@ package Coeur.Forme
 				if(x <= (this.x + 2*tiers) && x >= (this.x + tiers)){
 					axe.setAxe(0);
 				}
-				else if(y >= (this.y - 2*tiers) && y <= (this.y - tiers)){
+				else if(y >= (this.y + 2*tiers) && y <= (this.y + tiers)){
 					axe.setAxe(1);
 				}
-				else if( (y >= (this.y - tiers) && x <= (this.x + tiers)) || (y <= (this.y - 2*tiers) && x >= (this.x + 2*tiers)) ) {
+				else if( (y >= (this.y + tiers) && x <= (this.x + tiers)) || (y <= (this.y + 2*tiers) && x >= (this.x + 2*tiers)) ) {
 					axe.setAxe(2);
 				}
 				else
