@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="horizontal" 
+	xmlns:TER="Graphique.*"
+	applicationComplete="init()">
+
+	<mx:Script>
+		<![CDATA[
+			import Coeur.Forme.MFormeCompose;
+			import Graphique.MGraphiqueFormeCompose;
+			import Controleur.MMouvementPerpetuel;
+			import Graphique.MIObjetGraphique;
+			import Controleur.MIEffet;
+			import Controleur.MMouvementFini;
+			import Controleur.MRedimensionnement;
+			import Graphique.Textures.MBordure;
+			import Graphique.MGraphiqueEtoile;
+			import Graphique.Textures.MITexture;
+			import Graphique.Textures.Degrades.MDegradeObliqueDroite;
+			import Graphique.Textures.Degrades.MDegradeHorizontal;
+			import Graphique.Textures.Degrades.MDegrade;
+			import Graphique.MGraphiqueRond;
+			import Graphique.Textures.MCouleur;
+			import Graphique.MGraphiqueRectangle;
+			import Graphique.Textures.Degrades.MDegradeRadial;
+			import Utilitaires.MCoordonnee;
+			import Utilitaires.MErreur;
+			import Utilitaires.MArete;
+			import Graphique.Textures.MImage;
+			import Graphique.MGraphiqueTriangle;
+			import Coeur.*;
+			public var triangles:Array = new Array();
+			public var etoile:MGraphiqueEtoile;
+			public var rect:MGraphiqueRectangle;
+			public var rect2:MGraphiqueRectangle;
+			public var mouv:MMouvementPerpetuel;
+			public var img:MImage;
+			public var texture:MITexture;
+			public function init():void {
+				rect = new MGraphiqueRectangle(30, 30, 100, 30);
+				img = new MImage("file:///home/manland/workspace/Test/src/nicubunu-personnage.png");
+				img.sysout = sysout;
+				rect.setTexture(img);
+				rect.setBordure(new MBordure());
+				rect.sysout = sysout;
+//				scene.addChild(rect);
+				
+				rect2 = new MGraphiqueRectangle(50, 50, 100, 30);
+				texture = new MDegradeRadial();
+				rect2.setTexture(texture);
+				rect2.setBordure(new MBordure());
+				rect2.sysout = sysout;
+				scene.addChild(rect2);
+				mouv = new MMouvementPerpetuel();
+				rect2.ajouterEcouteur(new EcouteurGraphique(sysout, mouv));
+				
+				etoile = new MGraphiqueEtoile(50, 5, 50, 3.14);
+				etoile.setTexture(new MCouleur(0xCCCC15));
+				etoile.sysout = sysout;
+//				scene.addChild(etoile);
+
+				var compose:MGraphiqueFormeCompose = new MGraphiqueFormeCompose();
+				compose.setTexture(new MCouleur(0xFFFF00));
+				compose.sysout = sysout;
+				compose.setBordure(new MBordure());
+				scene.addChild(compose);
+			}
+			
+			public function lancer():void {
+				etoile.bordure = new MBordure(2, 0x000000);
+				var clone:MIObjetGraphique = rect.clone();
+//				scene.addChild(clone.getGraphique());
+//				mouv.instancie(rect2.getObjet(), 5000, 5000);
+				
+				sysout.text += "nb enfants : "+scene.getChildren().length+"\n";
+				mouv.lancer();
+			}
+			
+			public function scale():void {
+				
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:Panel>
+		<mx:Text id="sysout" />
+		<mx:Spacer height="10" />
+		<mx:Button label="Lancer" click="lancer()" />
+	</mx:Panel>
+	<mx:Panel>
+		<TER:MGraphiqueScene id="scene" sysout="{sysout}" width="300" height="300" bordure="{new MBordure(3, 0x00FF00)}" texture="{new MCouleur()}">
+			<!--<TER:MGraphiqueEtoile id="ttt" texture="{new MDegradeHorizontal()}" sysout="{sysout}" />-->
+		</TER:MGraphiqueScene>
+	</mx:Panel>
+</mx:WindowedApplication>
