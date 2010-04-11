@@ -18,7 +18,7 @@ package Graphique.Textures {
 	
 	public class MImage extends MTextureAbstraite implements MITexture {
 		private var url_image:String;
-		private var loader:Loader = new Loader();
+		private var loader:Loader;
 		private var myBitmap:BitmapData;
 		private var newWidth:Number;
 		private var newHeight:Number;
@@ -32,12 +32,17 @@ package Graphique.Textures {
 			this.url_image = url_image;
 			
 			var request:URLRequest = new URLRequest(url_image);
-            
+            loader = new Loader();
             loader.load(request);
             loader.contentLoaderInfo.addEventListener(Event.COMPLETE, finaliser);
             loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, erreur);
          
             myBitmap = null;
+		}
+		
+		override public function setObjetADessiner(objet:MIObjetGraphique):void {
+			super.setObjetADessiner(objet);
+            loader.load(new URLRequest(url_image));
 		}
 		
 		public function appliquer(graphics:Graphics):void {

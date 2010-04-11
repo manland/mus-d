@@ -51,7 +51,7 @@ package Graphique
 			if(ma_texture != null) {
 				var texture_temp:MITexture = ma_texture.clone();
 				graphique_temp.setTexture(texture_temp);
-				texture_temp.setObjetADessiner(graphique_temp);
+				graphique_temp.redessiner();
 			}
 			return graphique_temp;
 		}

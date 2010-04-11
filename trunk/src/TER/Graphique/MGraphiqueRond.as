@@ -39,6 +39,20 @@ package Graphique
 			graphics.drawRect(forme.getX(), forme.getY(), forme.getLargeur(), forme.getHauteur());
 			graphics.endFill();
 		}
+		
+		override public function clone():MIObjetGraphique {
+			var graphique_temp:MGraphiqueRond = new MGraphiqueRond();
+			graphique_temp.setObjet(objet.clone());
+			if(ma_bordure != null) {
+				graphique_temp.setBordure(ma_bordure.clone() as MBordure);
+			}
+			if(ma_texture != null) {
+				var texture_temp:MITexture = ma_texture.clone();
+				graphique_temp.setTexture(texture_temp);
+				graphique_temp.redessiner();
+			}
+			return graphique_temp;
+		}
 
 	}
 }
