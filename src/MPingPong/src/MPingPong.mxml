@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:ter="Graphique.*" layout="absolute" xmlns:local="*">
+	
+	<mx:Style source="monStyle.css"/>
+	
+	<mx:Script>
+		<![CDATA[
+
+			var laFenetre:FenetrePrincipale = new FenetrePrincipale();
+			//addChild(laFenetre);
+		]]>
+	</mx:Script>
+	
+	<local:FenetrePrincipale>
+	
+	</local:FenetrePrincipale>
+	
+</mx:Application>

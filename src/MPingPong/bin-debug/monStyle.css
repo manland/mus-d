@@ -1,0 +1,17 @@
+
+.boutonMenuDroite {
+	 up-skin:Embed("boutons/boutonDroiteUp.png");
+	 over-skin:Embed("boutons/boutonDroiteOver.png");
+	 skin:Embed("boutons/boutonDroiteDown.png");
+}
+
+.boutonMenuGauche {
+	 up-skin:Embed("boutons/boutonGaucheUp.png");
+	 over-skin:Embed("boutons/boutonGaucheOver.png");
+	 skin:Embed("boutons/boutonGaucheDown.png");
+}
+
+.angleHautGauche
+{
+	 skin:Embed("Images/angleHautGauche.png");
+}
