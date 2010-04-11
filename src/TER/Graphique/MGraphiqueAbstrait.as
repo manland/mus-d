@@ -191,16 +191,16 @@ package Graphique
 		
 		override public function set x(x:Number):void {
 			super.x = x;
-//			if(objet.getX() != x) {
-//				objet.setX(x);
-//			}
+			if(objet.getX() != x) {
+				objet.setX(x);
+			}
 		}
 		
 		override public function set y(y:Number):void {
 			super.y = y;
-//			if(objet.getY() != y) {
-//				objet.setY(y);
-//			}
+			if(objet.getY() != y) {
+				objet.setY(y);
+			}
 		}
 		
 		override public function set width(width:Number):void {
@@ -249,27 +249,7 @@ package Graphique
 		}
 		
 		public function clone():MIObjetGraphique {
-			if(sysout != null) {
-				sysout.text += "début objet.clone()\n";
-			}
-			var graphique_temp:MGraphiqueAbstrait = new MGraphiqueAbstrait();
-			graphique_temp.objet = objet.clone();
-//			if(ma_bordure != null) {
-//				graphique_temp.setBordure(ma_bordure.clone() as MBordure);
-//			}
-//			if(ma_texture != null) {
-//				var texture_temp:MITexture = ma_texture.clone();
-//				graphique_temp.setTexture(texture_temp);
-//				texture_temp.setObjetADessiner(graphique_temp);
-//			}
-			if(sysout != null) {
-				sysout.text += "avant objet.clone()\n";
-			}
-			
-			if(sysout != null) {
-				sysout.text += "objet:clone="+graphique_temp.objet+"; origine="+objet+"\n";
-			}
-			return graphique_temp;
+			return null;
 		}
 		
 		public function getNomClasse():String {
