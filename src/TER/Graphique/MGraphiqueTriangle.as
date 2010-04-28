@@ -34,7 +34,7 @@ package Graphique
 	import flash.display.Graphics;
 	import Utilitaires.MErreur;
 	
-	public class MGraphiqueTriangle extends MGraphiqueAbstrait
+	public class MGraphiqueTriangle extends MGraphiqueAbstrait implements MIObjetGraphique
 	{
 		
 		public function MGraphiqueTriangle(point1:MCoordonnee=null, point2:MCoordonnee=null, point3:MCoordonnee=null)

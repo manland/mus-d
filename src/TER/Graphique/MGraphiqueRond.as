@@ -6,7 +6,7 @@ package Graphique
 	import Graphique.Textures.MITexture;
 	import Coeur.Forme.MIForme;
 	
-	public class MGraphiqueRond extends MGraphiqueAbstrait
+	public class MGraphiqueRond extends MGraphiqueAbstrait implements MIObjetGraphique
 	{
 		
 		public function MGraphiqueRond(x:int=0, y:int=0, largeur:int=30, hauteur:int=30)
