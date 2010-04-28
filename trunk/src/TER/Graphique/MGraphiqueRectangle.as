@@ -8,7 +8,7 @@ package Graphique
 	import Graphique.Textures.MITexture;
 	import Coeur.Forme.MIForme;
 	
-	public class MGraphiqueRectangle extends MGraphiqueAbstrait
+	public class MGraphiqueRectangle extends MGraphiqueAbstrait implements MIObjetGraphique
 	{
 		
 		public function MGraphiqueRectangle(x:int=0, y:int=0, largeur:int=30, hauteur:int=10)

@@ -11,7 +11,7 @@ package Graphique
 	import flash.display.Graphics;
 	import Coeur.Forme.MIForme;
 	
-	public class MGraphiqueEtoile extends MGraphiqueAbstrait
+	public class MGraphiqueEtoile extends MGraphiqueAbstrait implements MIObjetGraphique
 	{
 		private var vide:Boolean;
 		

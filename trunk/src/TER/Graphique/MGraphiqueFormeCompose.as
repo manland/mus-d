@@ -8,7 +8,7 @@ package Graphique
 	import Utilitaires.MErreur;
 	import Utilitaires.MCoordonnee;
 	
-	public class MGraphiqueFormeCompose extends MGraphiqueAbstrait
+	public class MGraphiqueFormeCompose extends MGraphiqueAbstrait implements MIObjetGraphique
 	{
 		public function MGraphiqueFormeCompose()
 		{

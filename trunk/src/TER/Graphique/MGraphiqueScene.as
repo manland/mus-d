@@ -215,8 +215,8 @@ package Graphique {
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
 			}
-			graphics.moveTo(forme.getX(), forme.getY());
-			graphics.drawRect(forme.getX(), forme.getY(), forme.getLargeur(), forme.getHauteur());
+//			graphics.moveTo(objet.getX(), objet.getY());
+			graphics.drawRect(0, 0, width, height);
 //			if(sysout != null) {
 //				sysout.text += "objet => x:"+forme.getX()+" y:"+forme.getY()+" largeur:"+forme.getLargeur()+" hauteur:"+forme.getHauteur()+"\n";
 //				sysout.text += "gaphique => x:"+x+" y:"+y+" largeur:"+width+" hauteur:"+height+"\n";

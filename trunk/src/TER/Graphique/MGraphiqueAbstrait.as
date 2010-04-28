@@ -17,7 +17,7 @@ package Graphique
 	import mx.olap.aggregators.MaxAggregator;
 	import Utilitaires.MAxe;
 	
-	public class MGraphiqueAbstrait extends UIComponent implements MIObjetGraphique, MIObjetEcouteur
+	public class MGraphiqueAbstrait extends UIComponent implements MIObjetEcouteur
 	{
 		private var sous_classe:MIObjetGraphique;
 		protected var objet:MIObjet;
@@ -50,19 +50,19 @@ package Graphique
 		
 		public function fireSeDessine():void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
-				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueSeDessine(this);
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueSeDessine(sous_classe);
 			}
 		}
 		
 		public function fireMeurt():void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
-				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueMeurt(this);
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueMeurt(sous_classe);
 			}
 		}
 		
 		public function fireCollision(axe:MAxe):void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
-				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueCollision(this, axe);
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueCollision(sous_classe, axe);
 			}
 		}
 		
@@ -98,7 +98,7 @@ package Graphique
 		
 		public function set texture(texture:MITexture):void {
 			ma_texture = texture;
-			ma_texture.setObjetADessiner(this);
+			ma_texture.setObjetADessiner(sous_classe);
 			invalidateDisplayList();
 		}
 		
@@ -112,7 +112,7 @@ package Graphique
 			}
 			else {
 				ma_texture = texture.setADecorer(ma_texture);
-				ma_texture.setObjetADessiner(this);
+				ma_texture.setObjetADessiner(sous_classe);
 				invalidateDisplayList();
 			}
 		}
@@ -127,7 +127,7 @@ package Graphique
 		
 		public function set bordure(bordure:MBordure):void {
 			ma_bordure = bordure;
-			ma_bordure.setObjetADessiner(this);
+			ma_bordure.setObjetADessiner(sous_classe);
 			invalidateDisplayList();
 		}
 		
@@ -142,7 +142,7 @@ package Graphique
 			else {
 				var bordure_temp:MITexture = bordure.setADecorer(ma_bordure);
 				ma_bordure = bordure_temp as MBordure;
-				ma_bordure.setObjetADessiner(this);
+				ma_bordure.setObjetADessiner(sous_classe);
 				invalidateDisplayList();
 			}
 		}
