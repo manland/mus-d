@@ -1,0 +1,635 @@
+
+AccordionHeader
+{
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="AccordionHeader_disabledSkin");
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol="AccordionHeader_downSkin");
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol="AccordionHeader_overSkin");
+	selectedSkin: Embed(source="assets/skins/MySkin4.swf", symbol="AccordionHeader_selectedSkin");
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol="AccordionHeader_upSkin");
+	fontSize: 14;
+}
+.AccordianHeaderBar{
+	headerStyleName: accordionHeader;
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	paddingBottom: 0;
+	headerHeight: 25;
+	fontFamily: "Acknowledge TT (BRK)";
+	fontSize: 14;
+	backgroundColor: #000000;
+	leading: 0;
+	horizontalGap: 0;
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol='AccordionHeader_upSkin');
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol='AccordionHeader_overSkin');
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol='AccordionHeader_overSkin');
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf" , symbol='AccordionHeader_overSkin');
+	selectedUpSkin: Embed(source="assets/skins/MySkin4.swf" , symbol='AccordionHeader_overSkin');
+	selectedOverSkin: Embed(source="assets/skins/MySkin4.swf" , symbol='AccordionHeader_overSkin');
+	selectedDownSkin: Embed(source="assets/skins/MySkin4.swf" , symbol='AccordionHeader_overSkin');
+	selectedDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol='AccordionHeader_overSkin');
+}
+Button
+{
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Button_downSkin");
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Button_overSkin");
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Button_upSkin");
+	fontFamily: "Acknowledge TT (BRK)";
+	color: #FFFFFF;
+	textRollOverColor: #FFFFFF;
+	fontSize: 14;
+	fontWeight: normal;
+}
+ButtonBar
+{
+	buttonStyleName: "buttonBarButton";
+	firstButtonStyleName: "buttonBarFirstButton";
+	lastButtonStyleName: "buttonBarLastButton";
+	fontFamily: "Acknowledge TT (BRK)";
+	fontSize: 14;
+}
+.buttonBarButton
+{
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-button_disabledSkin");
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-button_downSkin");
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-button_overSkin");
+	selectedDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-button_selectedDisabledSkin");
+	selectedUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-button_selectedUpSkin");
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-button_upSkin");
+	selectedOverSkin: Embed(source='assets/skins/MySkin4.swf', symbol='ButtonBar-button_overSkin');
+	selectedDownSkin: Embed(source='assets/skins/MySkin4.swf', symbol='ButtonBar-button_overSkin');
+}
+.buttonBarFirstButton
+{
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-firstButton_disabledSkin");
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-firstButton_downSkin");
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-firstButton_overSkin");
+	selectedDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-firstButton_selectedDisabledSkin");
+	selectedUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-firstButton_selectedUpSkin");
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-firstButton_upSkin");
+	selectedOverSkin: Embed(source='assets/skins/MySkin4.swf', symbol='ButtonBar-firstButton_overSkin');
+	selectedDownSkin: Embed(source='assets/skins/MySkin4.swf', symbol='ButtonBar-firstButton_overSkin');
+}
+.buttonBarLastButton
+{
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-lastButton_disabledSkin");
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-lastButton_downSkin");
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-lastButton_overSkin");
+	selectedDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-lastButton_selectedDisabledSkin");
+	selectedUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-lastButton_selectedUpSkin");
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ButtonBar-lastButton_upSkin");
+	selectedOverSkin: Embed(source='assets/skins/MySkin4.swf', symbol='ButtonBar-lastButton_overSkin');
+	selectedDownSkin: Embed(source='assets/skins/MySkin4.swf', symbol='ButtonBar-lastButton_overSkin');
+}
+CheckBox
+{
+	downIcon: Embed(source="assets/skins/MySkin4.swf", symbol="CheckBox_downIcon");
+	overIcon: Embed(source="assets/skins/MySkin4.swf", symbol="CheckBox_overIcon");
+	selectedDownIcon: Embed(source="assets/skins/MySkin4.swf", symbol="CheckBox_selectedDownIcon");
+	selectedOverIcon: Embed(source="assets/skins/MySkin4.swf", symbol="CheckBox_selectedOverIcon");
+	selectedUpIcon: Embed(source="assets/skins/MySkin4.swf", symbol="CheckBox_selectedUpIcon");
+	upIcon: Embed(source="assets/skins/MySkin4.swf", symbol="CheckBox_upIcon");
+}
+ColorPicker
+{
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ColorPicker_disabledSkin");
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ColorPicker_downSkin");
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ColorPicker_overSkin");
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ColorPicker_upSkin");
+}
+ComboBox
+{
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ComboBox_disabledSkin");
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ComboBox_downSkin");
+	editableDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ComboBox_editableDisabledSkin");
+	editableDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ComboBox_editableDownSkin");
+	editableOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ComboBox_editableOverSkin");
+	editableUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ComboBox_editableUpSkin");
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ComboBox_overSkin");
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ComboBox_upSkin");
+	paddingTop: 0;
+	paddingRight: 10;
+	fontFamily: "Acknowledge TT (BRK)";
+	color: #FFFFFF;
+	fontSize: 14;
+	cornerRadius: 0;
+	fontWeight: normal;
+	textRollOverColor: #FFFFFF;
+	dropdownStyleName: comboBoxDropdown;
+	paddingLeft: 10;
+	paddingBottom: 0;
+	leading: 0;
+}
+CursorManager
+{
+	busyCursor: Embed(source="assets/skins/MySkin4.swf", symbol="CursorManager_busyCursor");
+}
+DataGrid
+{
+	borderSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DataGrid_borderSkin");
+	columnDropIndicatorSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DataGrid_columnDropIndicatorSkin");
+	columnResizeSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DataGrid_columnResizeSkin");
+	headerSeparatorSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DataGrid_headerSeparatorSkin");
+	sortArrowSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DataGrid_sortArrowSkin");
+	stretchCursor: Embed(source="assets/skins/MySkin4.swf", symbol="DataGrid_stretchCursor");
+	headerStyleName: dataGridHeader;
+	fontFamily: "Visitor TT2 BRK";
+	fontSize: 14;
+	leading: 5;
+	color: #FFFFFF;
+	textRollOverColor: #FFFFFF;
+	horizontalGridLineColor: #000000;
+	horizontalGridLines: true;
+	verticalGridLineColor: #000000;
+	verticalScrollBarStyleName: dataGridVerticalScrollBar;
+	paddingLeft: 0;
+	paddingRight: 0;
+	verticalAlign: top;
+	alternatingItemColors: #223462, #404864;
+	rollOverColor: #486ABF;
+	selectionColor: #486ABF;
+	selectionDisabledColor: #8C9BC0;
+	headerBackgroundSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DataGrid_headerBackgroundSkin");
+	paddingTop: 0;
+	paddingBottom: 0;
+}
+DateChooser
+{
+	nextMonthDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_nextMonthDisabledSkin");
+	nextMonthDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_nextMonthDownSkin");
+	nextMonthOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_nextMonthOverSkin");
+	nextMonthUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_nextMonthUpSkin");
+	nextYearDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_nextYearDisabledSkin");
+	nextYearDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_nextYearDownSkin");
+	nextYearOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_nextYearOverSkin");
+	nextYearUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_nextYearUpSkin");
+	prevMonthDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_prevMonthDisabledSkin");
+	prevMonthDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_prevMonthDownSkin");
+	prevMonthOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_prevMonthOverSkin");
+	prevMonthUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_prevMonthUpSkin");
+	prevYearDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_prevYearDisabledSkin");
+	prevYearDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_prevYearDownSkin");
+	prevYearOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_prevYearOverSkin");
+	prevYearUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_prevYearUpSkin");
+	rollOverIndicatorSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_rollOverIndicatorSkin");
+	selectionIndicatorSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_selectionIndicatorSkin");
+	todayIndicatorSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateChooser_todayIndicatorSkin");
+	fontFamily: "Acknowledge TT (BRK)";
+	fontSize: 16;
+	horizontalGap: 0;
+	verticalGap: 4;
+	headerStyleName: dateChooserHeader;
+	weekDayStyleName: dateChooserWeekDay;
+	backgroundColor: #000000;
+	todayColor: #404040;
+	headerColors: #404040, #404040;
+	color: #FFFFFF;
+	selectionColor: #404040;
+	rollOverColor: #404040;
+	borderColor: #404040;
+	todayStyleName: dateChooserToday;
+	cornerRadius: 0;
+	borderThickness: 0;
+}
+DateField
+{
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateField_disabledSkin");
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateField_downSkin");
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateField_overSkin");
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DateField_upSkin");
+}
+.DividedBox
+{
+	dividerSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DividedBox_dividerSkin");
+	horizontalCursor: Embed(source="assets/skins/MySkin4.swf", symbol="DividedBox_horizontalCursor");
+	verticalCursor: Embed(source="assets/skins/MySkin4.swf", symbol="DividedBox_verticalCursor");
+}
+DragManager
+{
+	copyCursor: Embed(source="assets/skins/MySkin4.swf", symbol="DragManager_copyCursor");
+	defaultDragImageSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DragManager_defaultDragImageSkin");
+	linkCursor: Embed(source="assets/skins/MySkin4.swf", symbol="DragManager_linkCursor");
+	moveCursor: Embed(source="assets/skins/MySkin4.swf", symbol="DragManager_moveCursor");
+	rejectCursor: Embed(source="assets/skins/MySkin4.swf", symbol="DragManager_rejectCursor");
+}
+.FormItem
+{
+	indicatorSkin: Embed(source="assets/skins/MySkin4.swf", symbol="FormItem_indicatorSkin");
+}
+HScrollBar
+{
+	downArrowDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_downArrowDisabledSkin");
+	downArrowDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_downArrowDownSkin");
+	downArrowOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_downArrowOverSkin");
+	downArrowUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_downArrowUpSkin");
+	thumbDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_thumbDownSkin");
+	thumbIcon: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_thumbIcon");
+	thumbOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_thumbOverSkin");
+	thumbUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_thumbUpSkin");
+	trackDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_trackDisabledSkin");
+	trackSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_trackSkin");
+	upArrowDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_upArrowDisabledSkin");
+	upArrowDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_upArrowDownSkin");
+	upArrowOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_upArrowOverSkin");
+	upArrowUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_upArrowUpSkin");
+}
+VScrollBar
+{
+	downArrowDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_downArrowDisabledSkin");
+	downArrowDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_downArrowDownSkin");
+	downArrowOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_downArrowOverSkin");
+	downArrowUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_downArrowUpSkin");
+	thumbDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_thumbDownSkin");
+	thumbIcon: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_thumbIcon");
+	thumbOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_thumbOverSkin");
+	thumbUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_thumbUpSkin");
+	trackDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_trackDisabledSkin");
+	trackSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_trackSkin");
+	upArrowDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_upArrowDisabledSkin");
+	upArrowDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_upArrowDownSkin");
+	upArrowOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_upArrowOverSkin");
+	upArrowUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="HScrollBar_upArrowUpSkin");
+}
+LinkButton
+{
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="LinkButton_disabledSkin");
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol="LinkButton_downSkin");
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol="LinkButton_overSkin");
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol="LinkButton_upSkin");
+	textSelectedColor: #FFFFFF;
+}
+List
+{
+	borderSkin: Embed(source="assets/skins/MySkin4.swf", symbol="List_borderSkin");
+}
+Menu
+{
+	branchDisabledIcon: Embed(source="assets/skins/MySkin4.swf", symbol="Menu_branchDisabledIcon");
+	branchIcon: Embed(source="assets/skins/MySkin4.swf", symbol="Menu_branchIcon");
+	checkDisabledIcon: Embed(source="assets/skins/MySkin4.swf", symbol="Menu_checkDisabledIcon");
+	checkIcon: Embed(source="assets/skins/MySkin4.swf", symbol="Menu_checkIcon");
+	radioDisabledIcon: Embed(source="assets/skins/MySkin4.swf", symbol="Menu_radioDisabledIcon");
+	radioIcon: Embed(source="assets/skins/MySkin4.swf", symbol="Menu_radioIcon");
+	separatorSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Menu_separatorSkin");
+}
+MenuBar
+{
+	backgroundSkin: Embed(source="assets/skins/MySkin4.swf", symbol="MenuBar_backgroundSkin");
+	itemDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="MenuBar_itemDownSkin");
+	itemOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="MenuBar_itemOverSkin");
+	itemUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="MenuBar_itemUpSkin");
+	fontFamily: "Acknowledge TT (BRK)";
+	fontSize: 14;
+	color: #FFFFFF;
+	fillAlphas: 1.0, 1.0;
+	fillColors: #000000, #000000;
+}
+NumericStepper
+{
+	downArrowDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="NumericStepper_downArrowDisabledSkin");
+	downArrowDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="NumericStepper_downArrowDownSkin");
+	downArrowOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="NumericStepper_downArrowOverSkin");
+	downArrowUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="NumericStepper_downArrowUpSkin");
+	upArrowDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="NumericStepper_upArrowDisabledSkin");
+	upArrowDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="NumericStepper_upArrowDownSkin");
+	upArrowOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="NumericStepper_upArrowOverSkin");
+	upArrowUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="NumericStepper_upArrowUpSkin");
+	color: #FFFFFF;
+	fontFamily: "Acknowledge TT (BRK)";
+	fontSize: 14;
+	borderThickness: 0;
+	cornerRadius: 0;
+}
+Panel
+{
+	borderSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Panel_borderSkin");
+	closeButtonDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Panel_closeButtonDisabledSkin");
+	closeButtonDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Panel_closeButtonDownSkin");
+	closeButtonOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Panel_closeButtonOverSkin");
+	closeButtonUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Panel_closeButtonUpSkin");
+	controlBarBackgroundSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Panel_controlBarBackgroundSkin");
+}
+PopUpButton
+{
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="PopUpButton_disabledSkin");
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol="PopUpButton_downSkin");
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol="PopUpButton_overSkin");
+	popUpDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="PopUpButton_popUpDownSkin");
+	popUpOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="PopUpButton_popUpOverSkin");
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol="PopUpButton_upSkin");
+	fontFamily: "Acknowledge TT (BRK)";
+	fontWeight: normal;
+	fontSize: 14;
+	color: #FFFFFF;
+	textRollOverColor: #FFFFFF;
+}
+ProgressBar
+{
+	barSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ProgressBar_barSkin");
+	indeterminateSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ProgressBar_indeterminateSkin");
+	trackSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ProgressBar_trackSkin");
+}
+RadioButton
+{
+	downIcon: Embed(source="assets/skins/MySkin4.swf", symbol="RadioButton_downIcon");
+	overIcon: Embed(source="assets/skins/MySkin4.swf", symbol="RadioButton_overIcon");
+	selectedDownIcon: Embed(source="assets/skins/MySkin4.swf", symbol="RadioButton_selectedDownIcon");
+	selectedOverIcon: Embed(source="assets/skins/MySkin4.swf", symbol="RadioButton_selectedOverIcon");
+	selectedUpIcon: Embed(source="assets/skins/MySkin4.swf", symbol="RadioButton_selectedUpIcon");
+	upIcon: Embed(source="assets/skins/MySkin4.swf", symbol="RadioButton_upIcon");
+}
+Slider
+{
+	thumbDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Slider_thumbDisabledSkin");
+	thumbDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Slider_thumbDownSkin");
+	thumbOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Slider_thumbOverSkin");
+	thumbUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Slider_thumbUpSkin");
+	trackHighlightSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Slider_trackHighlightSkin");
+	trackSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Slider_trackSkin");
+}
+SWFLoader
+{
+	brokenImageSkin: Embed(source="assets/skins/MySkin4.swf", symbol="SWFLoader_brokenImageSkin");
+}
+TabBar
+{
+	tabStyleName: "tabBarTab";
+	firstTabStyleName: "tabBarTab";
+	lastTabStyleName: "tabBarTab";
+	selectedTabTextStyleName: tabBarSelectedTabText;
+	fontFamily: "Acknowledge TT (BRK)";
+	fontSize: 16;
+	color: #FFFFFF;
+}
+
+.tabBarTab
+{
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="TabBar-tab_disabledSkin");
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol="TabBar-tab_downSkin");
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol="TabBar-tab_overSkin");
+	selectedDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol="TabBar-tab_selectedDisabledSkin");
+	selectedUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol="TabBar-tab_selectedUpSkin");
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol="TabBar-tab_upSkin");
+	color: #FFFFFF;
+	textRollOverColor: #FFFFFF;
+	fontFamily: "Acknowledge TT (BRK)";
+	fontSize: 16;
+	selectedOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	selectedDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+}
+TextArea
+{
+	borderSkin: Embed(source="assets/skins/MySkin4.swf", symbol="TextArea_borderSkin");
+	focusSkin: Embed(source="assets/skins/MySkin4.swf", symbol="TextArea_focusSkin");
+}
+TextInput
+{
+	borderSkin: Embed(source="assets/skins/MySkin4.swf", symbol="TextInput_borderSkin");
+	borderThickness: 0;
+	fontFamily: "Acknowledge TT (BRK)";
+	fontSize: 14;
+}
+ToolTip
+{
+	borderSkin: Embed(source="assets/skins/MySkin4.swf", symbol="ToolTip_borderSkin");
+	backgroundColor: #9FA072;
+}
+Tree
+{
+	borderSkin: Embed(source="assets/skins/MySkin4.swf", symbol="Tree_borderSkin");
+	defaultLeafIcon: Embed(source="assets/skins/MySkin4.swf", symbol="Tree_defaultLeafIcon");
+	disclosureClosedIcon: Embed(source="assets/skins/MySkin4.swf", symbol="Tree_disclosureClosedIcon");
+	disclosureOpenIcon: Embed(source="assets/skins/MySkin4.swf", symbol="Tree_disclosureOpenIcon");
+	folderClosedIcon: Embed(source="assets/skins/MySkin4.swf", symbol="Tree_folderClosedIcon");
+	folderOpenIcon: Embed(source="assets/skins/MySkin4.swf", symbol="Tree_folderOpenIcon");
+}
+
+TabNavigator
+{
+	borderSkin: Embed(source="assets/skins/MySkin4.swf", symbol="InnerBox");
+	paddingLeft: 10;
+	paddingRight: 10;
+	paddingTop: 10;
+	paddingBottom: 10;
+	firstTabStyleName: tabNavigatorFirstTab;
+	fontFamily: "Acknowledge TT (BRK)";
+	tabStyleName: tabNavigatorTab;
+	fontWeight: normal;
+	fontSize: 16;
+	color: #FFFFFF;
+	lastTabStyleName: tabNavigatorLastTab;
+	selectedTabTextStyleName: tabNavigatorSelectedTabText;
+	horizontalGap: -1;
+}
+.tabBarSelectedTabText
+{
+}
+.tabNavigatorFirstTab
+{
+	color: #FFFFFF;
+	fontFamily: "Acknowledge TT (BRK)";
+	fontWeight: normal;
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_upSkin');
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	selectedUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	selectedOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	selectedDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	selectedDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	leading: 0;
+	fontSize: 16;
+	textRollOverColor: #FFFFFF;
+}
+/*@font-face
+{
+	fontFamily: Impact;
+	fontWeight: bold;
+	fontStyle: normal;
+	src: local("Impact");
+}*/
+/* @font-face
+{
+	fontFamily: Gautami;
+	fontWeight: normal;
+	fontStyle: normal;
+	src: local("Gautami");
+}
+@font-face
+{
+	fontFamily: "Lucida Console";
+	fontWeight: normal;
+	fontStyle: normal;
+	src: local("Lucida Console");
+} */
+/*@font-face
+{
+	fontFamily: "Microsoft Sans Serif";
+	fontWeight: normal;
+	fontStyle: normal;
+	src: local("Microsoft Sans Serif");
+}*/
+.tabNavigatorTab
+{
+	leading: 0;
+	fontFamily: "Acknowledge TT (BRK)";
+	fontWeight: normal;
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_upSkin');
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	selectedUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	selectedOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	selectedDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	selectedDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	fontSize: 16;
+	paddingTop: 4;
+	paddingBottom: 4;
+	horizontalGap: 2;
+	color: #FFFFFF;
+	textRollOverColor: #FFFFFF;
+}
+/*@font-face
+{
+	fontFamily: Arial;
+	fontWeight: normal;
+	fontStyle: normal;
+	src: local("Arial");
+}
+@font-face
+{
+	fontFamily: Arial;
+	fontWeight: bold;
+	fontStyle: normal;
+	src: local("Arial");
+}
+*/
+/* @font-face
+{
+	fontFamily: "Visitor TT1 BRK";
+	fontWeight: bold;
+	fontStyle: normal;
+	src: local("Visitor TT1 BRK");
+}
+@font-face
+{
+	fontFamily: "Visitor TT2 BRK";
+	fontWeight: bold;
+	fontStyle: normal;
+	src: local("Visitor TT2 BRK");
+}
+@font-face
+{
+	fontFamily: "Visitor TT2 BRK";
+	fontWeight: normal;
+	fontStyle: normal;
+	src: local("Visitor TT2 BRK");
+}
+@font-face
+{
+	fontFamily: "Visitor TT1 BRK";
+	fontWeight: normal;
+	fontStyle: normal;
+	src: local("Visitor TT1 BRK");
+} */
+.tabNavigatorLastTab
+{
+	leading: 0;
+	color: #FFFFFF;
+	fontFamily: "Acknowledge TT (BRK)";
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_upSkin');
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	selectedUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	selectedOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	selectedDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	selectedDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol='TabBar-tab_overSkin');
+	fontSize: 16;
+	textRollOverColor: #FFFFFF;
+}
+.tabNavigatorSelectedTabText
+{
+	fontFamily: "Acknowledge TT (BRK)";
+	fontSize: 16;
+}
+.dataGridHeader
+{
+	paddingLeft: 12;
+	paddingRight: 0;
+	fontFamily: "Acknowledge TT (BRK)";
+}
+.dataGridVerticalScrollBar
+{
+}
+DividedBox
+{
+	dividerSkin: Embed(source="assets/skins/MySkin4.swf", symbol="DividedBox_dividerSkin");
+	horizontalCursor: Embed(source="assets/skins/MySkin4.swf", symbol="DividedBox_horizontalCursor");
+	verticalCursor: Embed(source="assets/skins/MySkin4.swf", symbol="DividedBox_verticalCursor");
+}
+FormItem
+{
+	indicatorSkin: Embed(source="assets/skins/MySkin4.swf", symbol="FormItem_indicatorSkin");
+}
+.comboBoxDropdown
+{
+	leading: 0;
+	paddingLeft: 2;
+}
+
+/*@font-face
+{
+	fontFamily: "Acknowledge TT BRK";
+	fontWeight: normal;
+	fontStyle: normal;
+	src: local("acknowtt.ttf");
+}
+@font-face
+{
+	fontFamily: "Acknowledge TT BRK";
+	fontWeight: bold;
+	fontStyle: normal;
+	src: lo("acknowtt.ttf");
+}
+*/
+Canvas
+{
+	fontSize: 16;
+}
+.accordionHeader
+{
+	paddingLeft: 15;
+	leading: 0;
+	paddingRight: 0;
+	horizontalGap: 0;
+	color: #FFFFFF;
+	fillAlphas: 1.0, 1.0;
+	fillColors: #000000, #000000;
+	upSkin: Embed(source="assets/skins/MySkin4.swf", symbol='AccordionHeader_upSkin');
+	overSkin: Embed(source="assets/skins/MySkin4.swf", symbol='AccordionHeader_overSkin');
+	downSkin: Embed(source="assets/skins/MySkin4.swf", symbol='AccordionHeader_overSkin');
+	disabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol='AccordionHeader_overSkin');
+	selectedUpSkin: Embed(source="assets/skins/MySkin4.swf", symbol='AccordionHeader_overSkin');
+	selectedOverSkin: Embed(source="assets/skins/MySkin4.swf", symbol='AccordionHeader_overSkin');
+	selectedDownSkin: Embed(source="assets/skins/MySkin4.swf", symbol='AccordionHeader_overSkin');
+	selectedDisabledSkin: Embed(source="assets/skins/MySkin4.swf", symbol='AccordionHeader_overSkin');
+}
+.dateChooserHeader
+{
+	fontFamily: "Acknowledge TT (BRK)";
+	fontSize: 16;
+	color: #FFFFFF;
+}
+.dateChooserWeekDay
+{
+	fontFamily: "Acknowledge TT (BRK)";
+	fontSize: 16;
+	color: #FFFFFF;
+}
+.dateChooserToday
+{
+	fontFamily: "Acknowledge TT (BRK)";
+	color: #000000;
+	fontSize: 16;
+}

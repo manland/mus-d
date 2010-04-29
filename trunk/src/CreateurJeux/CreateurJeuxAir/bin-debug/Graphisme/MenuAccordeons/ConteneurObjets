@@ -1,0 +1,83 @@
+package Graphisme.MenuAccordeons
+{
+	import Erreurs.Erreur;
+	
+	import Graphique.MGraphiqueRectangle;
+	import Graphique.MGraphiqueScene;
+	import Graphique.Textures.MCouleur;
+	import Graphique.Textures.MImage;
+	
+	import flash.events.Event;
+	import flash.events.MouseEvent;
+	import flash.net.URLLoader;
+	import flash.net.URLRequest;
+	
+	import mx.controls.Image;
+	import mx.core.DragSource;
+	import mx.managers.DragManager;
+
+	public class CanvasTileListStatique extends MGraphiqueScene
+	{
+		private var image:MGraphiqueRectangle;
+		private var erreur:Erreur;
+		
+		// chargement d'un fichier xml :
+		private var chargementXML:URLLoader;
+		private var fichier:URLRequest;
+		
+		
+		
+		public function CanvasTileListStatique(erreur:Erreur)
+		{
+			super();
+			this.erreur=erreur;
+		
+			this.height=200;
+			this.width=140;
+			this.texture = new MCouleur(0x00FFFF);
+			
+			chargementXML = new URLLoader();
+			fichier = new URLRequest("XML/liste_images.xml");	
+			
+			chargementXML.addEventListener(Event.COMPLETE,chargementComplet);
+			chargementXML.load(fichier);	
+		}
+		
+		public function chargementComplet(event:Event):void 
+		{   // on récupère notre xml
+			var mon_fichier_xml:XML = new XML(event.target.data);
+			var images:XMLList = mon_fichier_xml.elements("carres");
+			var place_x:int=0;
+			var place_y:int=0;
+			for each (var carre in images)
+			{
+				var mon_carre:MGraphiqueRectangle= new MGraphiqueRectangle(place_x,place_y,Number(carre.@largeur),Number(carre.@hauteur));
+				mon_carre.id=carre.@id;
+				mon_carre.texture = new MImage(erreur.sysout,carre.@source);
+				this.addChild(mon_carre);
+				place_x+=20;
+				if(place_x==60)
+				{
+					place_x=0;
+					place_y+=20;
+				}
+				mon_carre.addEventListener(MouseEvent.MOUSE_MOVE,drag);
+			}
+	   }
+	   
+	   public function drag(event:MouseEvent):void
+	   {
+	   		var dragInitiator:MGraphiqueRectangle=MGraphiqueRectangle(event.currentTarget);
+            var ds:DragSource = new DragSource();
+
+            ds.addData(dragInitiator, "carre");
+
+			var imageProxy:Image = new Image();
+			var image_rect:MImage = event.currentTarget.getTexture() as MImage;
+		    imageProxy.source =  image_rect.getUrlImage();
+		    imageProxy.height=dragInitiator.height;
+		    imageProxy.width=dragInitiator.width;         
+            DragManager.doDrag(dragInitiator, ds, event, imageProxy);
+	   }
+	}
+}

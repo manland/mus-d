@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:TER="Graphique.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Créateur de jeux" layout="absolute" creationComplete="initialisation()">
+	<!--<mx:Style source="Images/skins/arcade/arcade.css"/> -->
+	<mx:Style source="style.css"/>
+	<mx:Script>
+		<![CDATA[
+			import mx.containers.Panel;
+			import Graphique.Textures.MCouleur;
+			import Graphique.MGraphiqueScene;
+			import mx.containers.VBox;
+			import Erreurs.Erreur;
+			import Graphisme.PanelOptions.PanelOption;
+			import Graphisme.Onglets.*;
+			import mx.containers.HBox;
+			import Graphisme.MenuAccordeons.*;		
+			import Graphisme.BarreOutils.*;
+			import Graphisme.BarreMenus.*;
+		
+			private var barre_menu:BarreMenu;	
+			private var panel_barre_outil:HboxBarreOutil;
+			
+			private var hBoxCentrale:HBox;
+			private var menu_accordeon:ConteneurObjets;
+			private var tab_onglet:TabOnglet;
+			
+			private var panel_option:PanelOption;
+			
+			private var erreur:Erreur;
+			private var vBox:VBox; // boite contenant le panel d'erreur et le menu accordeon
+
+			//private var scene:MGraphiqueScene;
+				
+			private function initialisation():void
+			{
+				
+				vBox = new VBox();
+				// construction du panel d'erreur :
+				erreur = new Erreur();
+				
+							
+				// construction du panel des options:
+				panel_option= new PanelOption(erreur);
+				// construction des onglets : 
+				tab_onglet = new TabOnglet(panel_option,erreur);
+				panel_option.setTabOnglet(tab_onglet);
+				
+				// construction de la barre d'outil
+				panel_barre_outil= new HboxBarreOutil(tab_onglet,panel_option,erreur);
+				this.addChild(panel_barre_outil);
+				
+				
+				// construction de la barre de menu
+				barre_menu= new BarreMenu(tab_onglet,panel_option,erreur);
+				addChild(barre_menu);
+				
+				// construction du menu accordeon contenant les objets
+			//	menu_accordeon = new MenuAccordeon(erreur);
+				menu_accordeon = new ConteneurObjets(erreur);
+
+				vBox.addChild(menu_accordeon);
+				vBox.addChild(erreur);
+				// creation de la barre centrale
+				hBoxCentrale = new HBox();
+				hBoxCentrale.addChild(vBox);
+				hBoxCentrale.addChild(tab_onglet);
+				hBoxCentrale.addChild(panel_option);
+				
+				hBoxCentrale.styleName="hBoxCentrale";
+				hBoxCentrale.percentWidth=100;
+				hBoxCentrale.percentHeight=100;
+				this.addChild(hBoxCentrale);
+				
+				application.addEventListener(KeyboardEvent.KEY_UP,controleClavier);
+			}
+			
+			public function controleClavier(event:KeyboardEvent):void
+			{
+				if(event.controlKey && event.keyCode==Keyboard.N)
+				{
+					barre_menu.nouvelOnglet();
+				}
+				else if(event.controlKey && event.keyCode==Keyboard.Q)
+				{
+					this.close();
+				}
+			}
+		]]>
+	</mx:Script>
+</mx:WindowedApplication>
