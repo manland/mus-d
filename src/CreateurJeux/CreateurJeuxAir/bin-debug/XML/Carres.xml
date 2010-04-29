@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<image>
+		<carres id="carre_bleu" source="Images/carres/bleu.png" label="essai" type="ObjetDynamique" largeur="64" hauteur="64"/>
+		<carres id="carre_jaune" source="Images/carres/jaune.png" label="essai" type="ObjetDynamique" largeur="64" hauteur="64"/>
+</image>

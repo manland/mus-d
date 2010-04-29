@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<image>
+	<img id="carre_bleu" source="Images/carres/bleu.png" type="carre" largeur="64" hauteur="64"/>
+	
+</image>

@@ -1,0 +1,87 @@
+/* CSS file */
+BarreMenu
+{ 
+	font-size:12;
+}
+
+BarreOutil
+{
+	font-size:12;
+	disabled-color:red;
+	
+}
+
+HboxBarreOutil
+{
+	border-style:inset;
+	background-color:#C3C3C3;
+	
+}
+
+Onglet
+{
+	
+}
+
+.hBoxCentrale
+{
+	padding-bottom:10;
+	padding-left:10;
+	padding-right:10;
+	padding-top:80;
+}
+
+.imageGlobale
+{
+	down-skin:Embed("Images/barre_outil/zoom_out_gris.png");
+	focus-thickness:30;
+	focus-skin:Embed("Images/barre_outil/zoom_out_gris.png");
+}
+
+TextArea
+{
+	 horizontalScrollPolicy:auto;
+	 verticalScrollPolicy:auto;
+}
+
+.btnZoomMoins
+{
+	
+	disabled-color:red;
+	disabled-icon:Embed("Images/barre_outil/zoom_out_gris.png");
+}
+
+.cadre
+{
+	
+	border-color:red;
+	border-style:solid;
+	skin:Embed("Images/barre_outil/zoom_out_gris.png");
+}
+
+.separateur
+{
+	stroke-width:2;
+	stroke-color:#909090;
+}
+
+FenetreDegrade
+{
+	borderColor: #99ff33;
+}
+
+.stylePanelDegrade
+{
+   borderColor: #99ff33;
+   borderThicknessLeft: 3;
+   borderThicknessTop: 0;
+   borderThicknessBottom: 3;
+   borderThicknessRight: 3;
+   roundedBottomCorners: false;
+   cornerRadius: 0;
+   headerHeight: 12;
+   backgroundAlpha: 1;
+   highlightAlphas: 0, 0;
+   headerColors: #e7e7e7, #d9d9d9;
+   dropShadowEnabled: true;
+}
