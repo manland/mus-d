@@ -3,7 +3,11 @@ package Coeur
 	import Coeur.Forme.*;
 	
 	import Utilitaires.MAxe;
+	import Utilitaires.MCoordonnee;
 	import Utilitaires.MErreur;
+	import Utilitaires.MVecteur;
+	
+	import mx.controls.Text;
 	
 	public class MScene implements MIObjet, MIObjetEcouteur
 	{
@@ -25,14 +29,15 @@ package Coeur
 		protected var enfants:Array;
 		protected var proprietes:Array;
 		
+		public var sysout:Text;
+		
 		public function MScene()
 		{
 			this.x = 0;
 			this.y = 0;
-			this.largeur = 0;
-			this.hauteur = 0;
+			this.largeur = 300;
+			this.hauteur = 300;
 			this.ecouteurs = new Array();
-			ecouteurs.push(this);
 			this.proprietes = new Array();
 			this.enfants = new Array();
 			this.nom_classe = "MScene";
@@ -65,6 +70,13 @@ package Coeur
 		public function setY(y:Number):void
 		{
 			this.y = y;
+			fireDeplacementObjet();
+		}
+		
+		public function avance(x:Number,y:Number):void
+		{
+			this.x = this.x + x;
+			this.y = this.y + y;
 			fireDeplacementObjet();
 		}
 		
@@ -257,12 +269,23 @@ package Coeur
 		public function deplacementObjet(objet:MIObjet):void
 		{
 			var axe:MAxe = null;
+			//collision avec les autres objets
 			for(var i:uint=0; i<this.enfants.length; i++){
-				if(objet.estProche((enfants[i] as MIObjet))){
-					axe = (enfants[i] as MIObjet).axeCollision(objet.getX(),objet.getY());
-					if(axe != null){
-						collision(objet, (enfants[i] as MIObjet), axe);
+				var obj2:MIObjet = (enfants[i] as MIObjet);
+				if(objet != obj2){
+					if(objet.estProcheDe(obj2)){					
+						axe = objet.axeCollision(obj2);
+						if(axe != null){
+							collision(objet, (enfants[i] as MIObjet), axe);
+						}
 					}
+				}
+			}
+			//collision avec les bords de la scene
+			if(this.estProcheDe(objet)){
+				axe = this.axeCollision(objet);
+				if( axe != null){
+					collision(objet, this, axe);
 				}
 			}
 			trace("Mscene : deplacementObjet");
@@ -312,21 +335,106 @@ package Coeur
 			return this.clone() as MIObjetEcouteur;
 		}
 		
-		public function axeCollision(tx:Number, ty:Number):MAxe{
-			var axe:MAxe = null;
-			if(tx == this.x || tx == this.x + largeur){
-				axe = new MAxe();
-				axe.setAxe(0);
+		public function getAxeSeparateur(objet:MIObjet):MVecteur{
+			var vecteur:MVecteur = new MVecteur();
+			
+			var tx:Number = objet.getX();
+			var ty:Number = objet.getY();
+			var larg:Number = objet.getLargeur();
+			var haut:Number = objet.getHauteur();
+			
+			var pt_a:MCoordonnee;
+			var pt_b:MCoordonnee;
+			if(tx <= this.x){
+				pt_a = new MCoordonnee(getX(), getY());
+				pt_b = new MCoordonnee(getX(), getY()+hauteur);
+			}else if( tx+larg >= this.x + largeur){
+				pt_a = new MCoordonnee( getX()+largeur, getY());
+				pt_b = new MCoordonnee( getX()+largeur, getY()+hauteur);
+			}else if(ty <= this.y){
+				pt_a = new MCoordonnee(getX(), getY());
+				pt_b = new MCoordonnee(getX()+largeur, getY());
+			}else if (ty+hauteur >= this.y + hauteur){
+				pt_a = new MCoordonnee(getX(), getY()+hauteur);
+				pt_b = new MCoordonnee(getX()+largeur, getY()+hauteur);
 			}
-			else if(ty == this.y || ty == this.y + hauteur){
-				axe = new MAxe();
-				axe.setAxe(1);
+			
+			vecteur.entreDeuxPoint(pt_a,pt_b);	
+        	vecteur = vecteur.getNormal();
+        	vecteur.normalise();
+        	return vecteur;
+		}
+		
+		public function getPointProjection(objet:MIObjet):MCoordonnee{
+			var pt:MCoordonnee;
+			
+			var tx:Number = objet.getX();
+			var ty:Number = objet.getY();
+			var larg:Number = objet.getLargeur();
+			var haut:Number = objet.getHauteur();
+						
+			if(tx <= this.x){
+				pt = new MCoordonnee(getX(),getY());
+			}else if( tx+larg >= this.x + largeur){
+				pt = new MCoordonnee(getX()+largeur,getY());
+			}else if(ty <= this.y){
+				pt = new MCoordonnee(getX(),getY());
+			}else if (ty+haut >= this.y + hauteur){
+				pt = new MCoordonnee(this.x,this.y+hauteur);
 			}
+			return pt;
+		}
+		
+		public function seProjeteSur(vecteur:MVecteur, objet:MIObjet):Number{
+			var pt:MCoordonnee = getPointProjection(objet);
+			
+			var scalaire:Number = vecteur.getX()*pt.getX() + pt.getY()*vecteur.getY();
+				
+			var projection:MVecteur = new MVecteur();
+			
+			projection.instancie(scalaire * vecteur.getX(),scalaire * vecteur.getY());
+			
+         	if(projection.getX()*vecteur.getX() >= 0 && projection.getY() * vecteur.getY() >= 0){
+             	return projection.getNorme();
+          	}
+         	else{
+             	return -projection.getNorme();
+          	}
+		}
+		
+		public function axeCollision(objet:MIObjet):MAxe{
+			var forme:MIForme = objet.getForme();
+			var vecteur:MVecteur = getAxeSeparateur(objet);
+			
+			
+			//valeur minimale et maximale des projections de l'objet sur l'axe séparateur
+			var min:Number;
+			var max:Number;
+			
+			var res:Array = forme.seProjeteSur(vecteur);
+			
+			min = res.pop();
+			max = res.pop();
+		
+			var val:Number = this.seProjeteSur(vecteur,objet);
+			var espacement:Number = (Math.max(max,val)-Math.min(min,val) )- (max-min);
+				
+			if(espacement > 0){
+				return null;
+			}
+			
+			var axe:MAxe = new MAxe();
+			axe.orthogonalA(vecteur);
 			return axe;
 		}
 		
-		public function estProche(objet:MIObjet):Boolean{
-			return true;
+		public function estProcheDe(objet:MIObjet):Boolean{
+			var tx:Number = objet.getX();
+			var ty:Number = objet.getY();
+			var larg:Number = objet.getLargeur();
+			var haut:Number = objet.getHauteur();
+			
+			return (tx <= this.x || (tx+larg) >= this.x + largeur || ty <= this.y || (ty+haut) >= this.y + hauteur);
 		}
 	}
 }
