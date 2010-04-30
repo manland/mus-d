@@ -56,7 +56,7 @@ package Controleur
 		
 		public function clone():MIEffet{
 			var mouv:MRedimensionnement = new MRedimensionnement();
-			mouv.instancie(this.objet,this.largeur_arrivee,this.hauteur_arrivee,this.temps_ms);
+			mouv.instancie(this.objet,new Number(this.largeur_arrivee),new Number(this.hauteur_arrivee),new Number(this.temps_ms));
 			return mouv;
 		}
 		
