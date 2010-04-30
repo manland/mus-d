@@ -43,8 +43,9 @@ package Coeur
 		function actionCollision(objet:MIObjet,axe:MAxe):void;
 		function drag():void;
 		function clone():MIObjet;
-		function axeCollision(tx:Number, ty:Number):MAxe;
-		function estProche(objet:MIObjet):Boolean;
+		function axeCollision(objet:MIObjet):MAxe;
+		function estProcheDe(objet:MIObjet):Boolean;
+		function avance(x:Number,y:Number):void;
 		 
 	}
 }
