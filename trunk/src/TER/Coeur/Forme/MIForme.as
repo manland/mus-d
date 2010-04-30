@@ -1,6 +1,6 @@
 package Coeur.Forme
 {
-	import Utilitaires.MAxe;
+	import Utilitaires.MVecteur;
 	
 	public interface MIForme
 	{
@@ -19,7 +19,9 @@ package Coeur.Forme
 		function getPerimetre():Number;
 		function deplacement(x:Number, y:Number):void;
 		function affiche():void;
-		function axeCollision(x:Number, y:Number):MAxe;
+		function getAxesSeparateurs(obj:MIForme):Array;
+		function getPointsProjection(vect:MVecteur):Array;
+		function seProjeteSur(vecteur:MVecteur):Array;
 		
 		function clone():MIForme;
 		

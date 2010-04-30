@@ -177,18 +177,19 @@ package Coeur.Forme
 		{
 		}
 		
-		public function axeCollision(x:Number,y:Number):MAxe{
-			var axe:MAxe = new MAxe();
-			for(var i:uint = 0; i<nombre_arete; i++)
-			{
-				var arete:MArete = aretes[i] as MArete;
-				if(arete.contient(x,y)){
-					axe.instancie2(arete);
-					return axe;
-				}
-			}
-			return null;
-		}
+		//a degager??
+//		public function axeCollision(x:Number,y:Number):MAxe{
+//			var axe:MAxe = new MAxe();
+//			for(var i:uint = 0; i<nombre_arete; i++)
+//			{
+//				var arete:MArete = aretes[i] as MArete;
+//				if(arete.contient(x,y)){
+//					axe.instancie2(arete);
+//					return axe;
+//				}
+//			}
+//			return null;
+//		}
 		
 		public function clone():MIForme{
 			var clone_miforme:MFormeTriangle = new MFormeTriangle();
