@@ -2,8 +2,13 @@ package Coeur
 {
 	import Coeur.Forme.*;
 	
+	import Controleur.MMouvementPerpetuel;
+	
 	import Utilitaires.MAxe;
 	import Utilitaires.MErreur;
+	import Utilitaires.MVecteur;
+	
+	import mx.controls.Text;
 	
 	
 	public class MElement implements MIObjet
@@ -23,6 +28,9 @@ package Coeur
 		protected var nom_classe:String;
 		protected var ecouteurs:Array;
 		
+		public var mouv:MMouvementPerpetuel;
+		public var sysout:Text;
+		
 		public function MElement()
 		{
 			this.x = 0;
@@ -33,6 +41,9 @@ package Coeur
 			this.ecouteurs = new Array();
 			this.forme = null;
 			this.bonus = null;
+			this.mouv = new MMouvementPerpetuel();
+			mouv.instancie(this, 100, 100);
+			mouv.lancer();
 		}
 		
 		public function affiche():void
@@ -87,6 +98,14 @@ package Coeur
 			var difference:Number = y - this.y;
 			this.y = y;
 			forme.deplacement(0, difference);
+			fireDeplacementObjet();
+		}
+		
+		public function avance(x:Number,y:Number):void
+		{
+			this.x = this.x + x;
+			this.y = this.y + y;
+			forme.deplacement(x,y);
 			fireDeplacementObjet();
 		}
 		
@@ -206,7 +225,9 @@ package Coeur
 		
 		public function actionCollision(objet:MIObjet,axe:MAxe):void {
 			//a réimplanté ou à écouter
+			mouv.rebondir(axe);
 			fireCollision(axe);
+			
 		}
 			
 		public function drag():void
@@ -233,12 +254,8 @@ package Coeur
 			return clone_mscene;
 		}
 		
-		public function axeCollision(tx:Number, ty:Number):MAxe {
-			var axe:MAxe = forme.axeCollision(tx,ty);
-			return axe;
-		}
 		
-		public function estProche(objet:MIObjet):Boolean{
+		public function estProcheDe(objet:MIObjet):Boolean{
 			var x2:Number = objet.getX();
 			var y2:Number = objet.getY();
 			var h2:Number = objet.getHauteur();
@@ -254,6 +271,49 @@ package Coeur
 				return true;
 			else				
 				return false;
+		}
+		
+		//retourne l'axe de la collision avec l'objet passé en param ou null s'il n'y a pas collision
+		public function axeCollision(objet:MIObjet):MAxe{
+			var axe:MAxe = null;
+			var forme1:MIForme = this.getForme();
+			var forme2:MIForme = objet.getForme();
+			
+			var axesSeparateur:Array = forme1.getAxesSeparateurs(forme2);
+			axesSeparateur = axesSeparateur.concat(forme2.getAxesSeparateurs(forme1));
+			
+			//valeur minimale et maximale des projections des deux figures sur les axes séparateurs
+			var min1:Number;
+			var max1:Number;
+			var min2:Number;
+			var max2:Number;
+			
+			// on stocke l'axe sur lequel l'espacement est maximum pour connaitre l'axe de collision
+			var espacement_max:Number = Number.NEGATIVE_INFINITY;
+			var vecteur_coll:MVecteur = (axesSeparateur[1] as MVecteur);
+			
+			for(var i:int = 0; i < axesSeparateur.length; i = i + 1) {
+				var vecteur:MVecteur = (axesSeparateur[i] as MVecteur);
+				var res:Array = forme1.seProjeteSur(vecteur);
+				min1 = res.pop();
+				max1 = res.pop();
+				res = forme2.seProjeteSur(vecteur);
+				min2 = res.pop();
+				max2 = res.pop();
+				var espacement:Number = (Math.max(max1, max2)-Math.min(min1, min2) )- (max2-min2+max1-min1)
+				
+				if(espacement > 0){
+					return null;
+				}
+				else if(espacement > espacement_max){
+					espacement_max = espacement;
+					vecteur_coll = vecteur;
+				}
+			}
+			axe = new MAxe();
+			axe.orthogonalA(vecteur_coll);
+						
+			return axe;
 		}
 
 	}
