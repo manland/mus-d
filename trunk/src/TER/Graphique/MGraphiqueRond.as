@@ -5,6 +5,7 @@ package Graphique
 	import Graphique.Textures.MBordure;
 	import Graphique.Textures.MITexture;
 	import Coeur.Forme.MIForme;
+	import Coeur.MIObjet;
 	
 	public class MGraphiqueRond extends MGraphiqueAbstrait implements MIObjetGraphique
 	{
@@ -24,8 +25,7 @@ package Graphique
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
 			}
-			graphics.moveTo(x, y);
-			graphics.drawEllipse(x, y, width, height);
+			graphics.drawEllipse(0, 0, width, height);
 			graphics.endFill();
 		}
 		
@@ -34,8 +34,7 @@ package Graphique
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
 			}
-			graphics.moveTo(forme.getX(), forme.getY());
-			graphics.drawRect(forme.getX(), forme.getY(), forme.getLargeur(), forme.getHauteur());
+			graphics.drawRect(0, 0, forme.getLargeur(), forme.getHauteur());
 			graphics.endFill();
 		}
 		

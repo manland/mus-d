@@ -7,6 +7,7 @@ package Graphique
 	import Coeur.Forme.MFormeTriangle;
 	import Utilitaires.MErreur;
 	import Utilitaires.MCoordonnee;
+	import Coeur.Forme.MFormeEtoile;
 	
 	public class MGraphiqueFormeCompose extends MGraphiqueAbstrait implements MIObjetGraphique
 	{
@@ -16,13 +17,17 @@ package Graphique
             rectangle.instancie(10,10,50,70);
             var triangle:MFormeTriangle = new MFormeTriangle();
             triangle.instancie(new MCoordonnee(40, 0), new MCoordonnee(0, 40), new MCoordonnee(40, 40));
+            var eto:MFormeEtoile = new MFormeEtoile();
+            eto.instancie(50, 50, 60);
             
             var r:MFormeCompose = new MFormeCompose();
             r.instancie(rectangle);
-            r.setFormeBas(rectangle);
+            r.setFormeBas(triangle);
             r.setFormeGauche(rectangle);
             r.setFormeDroit(triangle);
             r.setFormeHaut(rectangle);
+            r.setX(100);
+            r.setY(100);
 			nom_classe = "MGraphiqueFormeCompose";
 			
 			forme = r;
@@ -39,10 +44,8 @@ package Graphique
 			dessinerRecursion(objet.getForme());
 			graphics.endFill();
 		}
-		private var cpt:int = 0;
+
 		private function dessinerRecursion(f:MIForme):void {
-			cpt++;
-//			throw new MErreur("MGraphiqueFormeCompose", "dessinerRecursion", ""+f.affiche());
 			var forme_compose:MFormeCompose = f as MFormeCompose;
 			var forme_rectangle:MFormeRectangle = f as MFormeRectangle;
 			var forme_rond:MFormeRond = f as MFormeRond;
@@ -55,7 +58,6 @@ package Graphique
 				dessinerRecursion(forme_compose.getFormeBas());
 			}
 			else if(forme_rectangle != null) {
-//				throw new MErreur("MGraphiqueFormeCompose", "dessinerRecursion", ""+f);
 				MGraphiqueRectangle.dessiner(graphics, forme_rectangle, ma_texture, ma_bordure);
 			}
 			else if(forme_rond != null) {

@@ -26,8 +26,7 @@ package Graphique
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
 			}
-			graphics.moveTo(x, y);
-			graphics.drawRect(x, y, width, height);
+			graphics.drawRect(0, 0, width, height);
 			graphics.endFill();
 		}
 		
@@ -36,7 +35,6 @@ package Graphique
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
 			}
-			graphics.moveTo(forme.getX(), forme.getY());
 			graphics.drawRect(forme.getX(), forme.getY(), forme.getLargeur(), forme.getHauteur());
 			graphics.endFill();
 		}
