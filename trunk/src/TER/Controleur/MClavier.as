@@ -50,7 +50,11 @@ package Controleur
 				// appuis sur espace
 				case Keyboard.BACKSPACE:
 					appuisFlecheBas();
-					break;                         
+					break; 
+					
+				default:
+					appuisTouche(evt.keyCode);
+					break;                        
 			}
 		}
 		
@@ -87,6 +91,12 @@ package Controleur
 		private function appuisEspace():void {
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
 				(ecouteurs[i] as MIEcouteurClavier).espace();
+			}
+		}
+		
+		private function appuisTouche(touche:uint):void {
+			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
+				(ecouteurs[i] as MIEcouteurClavier).touche(touche);
 			}
 		}
 

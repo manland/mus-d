@@ -8,6 +8,6 @@ package Controleur
 		function flecheDroite():void;
 		function entree():void;
 		function espace():void;
-
+		function touche(touche:uint):void;
 	}
 }
