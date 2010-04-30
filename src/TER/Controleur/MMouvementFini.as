@@ -62,7 +62,8 @@ package Controleur
 		
 		public function clone():MIEffet{
 			var mouv:MMouvementFini = new MMouvementFini();
-			mouv.instancie(this.objet,this.x_arrivee,this.y_arrivee,this.temps_ms);
+			mouv.instancie(this.objet,new Number(this.x_arrivee),new Number(this.y_arrivee),new Number(this.temps_ms));
+			
 			return mouv;
 		}
 		
