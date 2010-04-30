@@ -2,7 +2,6 @@ package Graphisme.MenuAccordeons
 {
 	import Erreurs.Erreur;
 	
-	import Graphique.MGraphiqueAbstrait;
 	import Graphique.MGraphiqueRectangle;
 	import Graphique.MGraphiqueRond;
 	import Graphique.MGraphiqueScene;
@@ -11,6 +10,8 @@ package Graphisme.MenuAccordeons
 	import Graphique.Textures.MBordure;
 	import Graphique.Textures.MCouleur;
 	import Graphique.Textures.MImage;
+	
+	import Utilitaires.MCoordonnee;
 	
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -27,7 +28,6 @@ package Graphisme.MenuAccordeons
 	{
 		private var image:MGraphiqueRectangle;
 		private var erreur:Erreur;
-		private var mon_objet:MGraphiqueAbstrait;
 		private var monObjetR:MGraphiqueRectangle;
 		private var monObjetRd:MGraphiqueRond;
 		private var monObjetS:MGraphiqueScene;
@@ -45,7 +45,7 @@ package Graphisme.MenuAccordeons
 			this.erreur=erreur;
 		
 			this.height=200;
-			this.width=135;
+			this.width=145;
 			
 			chargementXML = new URLLoader();
 			fichier = new URLRequest("XML/liste_images.xml");	
@@ -75,55 +75,70 @@ package Graphisme.MenuAccordeons
 					var resultat:Array = ((String)(noeud.name())).split(/MGraphique/);
 					mon_conteneur.label=resultat[1].toString();
 					var liste_attribut_obj_vide:Array = [];
-					if(noeud.name()=="MGraphiqueScene")
+					
+					if(noeud.name()=="MGraphiqueTriangle")
 					{
-						
 						for each (var fils:XML in noeud.children())
-						{
-							var img_scene:MGraphiqueRectangle = new MGraphiqueRectangle(place_x,place_y,30,30);				
-							img_scene.id=fils.@id;
-							img_scene.texture = new MImage(fils.@source);
-							mon_conteneur.addChild(img_scene);
-		
-							place_x+=20;
-							if(place_x>=60)
+						{	
+							var liste_attribut_obj_vide:Array=[Number(fils.@point1X),Number(fils.@point1Y),Number(fils.@point2X),Number(fils.@point2Y),Number(fils.@point3X),Number(fils.@point3Y)];
+							//var obj_vide = creerInstance("Graphique."+noeud.name(),liste_attribut);
+						
+							var obj_vide = creerInstance("Graphique."+noeud.name(), liste_attribut_obj_vide);
+							obj_vide.id=resultat[1]+"_vide";
+							if(fils.@source=="")
+							{
+								obj_vide.setTexture(new MCouleur(0xFFFFFF));
+								obj_vide.setBordure(new MBordure(1,0x000000));
+							}
+							else
+							{
+								obj_vide.texture = new MImage(fils.@source);
+								obj_vide.setBordure(new MBordure(1,0x000000));
+							}
+							obj_vide.addEventListener(MouseEvent.MOUSE_MOVE,drag);
+							mon_conteneur.addChild(obj_vide);
+							obj_vide.x=place_x;
+							obj_vide.y=place_y;
+							place_x+=40;
+							if(place_x>=120)
 							{
 								place_x=5;
-								place_y+=20;
-							}		
-							img_scene.addEventListener(MouseEvent.MOUSE_MOVE,drag);
-						}
-						this.addChild(mon_conteneur);	
+								place_y+=40;
+							}	
+						}	
 					}
 					else
 					{
 						liste_attribut_obj_vide= [place_x,place_y,30,30];
-						place_x+=20;
+					
+					
 						var obj_vide = creerInstance("Graphique."+noeud.name(), liste_attribut_obj_vide);
 						obj_vide.id=resultat[1]+"_vide";
 						obj_vide.setTexture(new MCouleur(0xFFFFFF));
 						obj_vide.setBordure(new MBordure(1,0x000000));
 						obj_vide.addEventListener(MouseEvent.MOUSE_MOVE,drag);
 						mon_conteneur.addChild(obj_vide);
+						place_x+=40;
 						for each (var fils:XML in noeud.children())
-						{				
-							var liste_attribut:Array = [place_x,place_y,Number(fils.@largeur)/2,Number(fils.@hauteur)/2];
+						{	
+							var liste_attribut:Array = [place_x,place_y,30,(Number(fils.@hauteur)*30)/Number(fils.@largeur)];
+							
 							var mon_obj = creerInstance("Graphique."+noeud.name(),liste_attribut);
 	
-							mon_obj.id=fils.@id;
 							mon_obj.texture = new MImage(fils.@source);
+							mon_obj.id=fils.@id;
 							mon_conteneur.addChild(mon_obj);
 		
-							place_x+=20;
-							if(place_x>=60)
+							place_x+=40;
+							if(place_x>=120)
 							{
 								place_x=5;
-								place_y+=20;
+								place_y+=40;
 							}		
 							mon_obj.addEventListener(MouseEvent.MOUSE_MOVE,drag);
 						}
-						this.addChild(mon_conteneur);
 					}
+					this.addChild(mon_conteneur);
 				}
 				else
 				{
@@ -145,6 +160,7 @@ package Graphisme.MenuAccordeons
 						obj.addEventListener(MouseEvent.MOUSE_MOVE,drag);
 					}
 					this.addChild(mon_conteneur);
+				
 				}
 						 
 			}
@@ -174,7 +190,14 @@ package Graphisme.MenuAccordeons
         {
         	var ma_classe:Class = getDefinitionByName(nom_classe) as Class;
         	var instance:MIObjetGraphique=null;
-        	instance = new ma_classe(args[0],args[1],args[2],args[3]);
+        	if(nom_classe=="Graphique.MGraphiqueTriangle")
+        	{
+        		instance = new ma_classe(new MCoordonnee(args[0],args[1]),new MCoordonnee(args[2],args[3]),new MCoordonnee(args[4],args[5]));
+        	}
+        	else
+       		{
+       			instance = new ma_classe(args[0],args[1],args[2],args[3]);
+       		}
         	return instance;
         }  
 	   

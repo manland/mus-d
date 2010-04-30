@@ -5,7 +5,6 @@ package Graphisme.PanelOptions
 	
 	import Erreurs.Erreur;
 	
-	import Graphique.MGraphiqueAbstrait;
 	import Graphique.MGraphiqueScene;
 	import Graphique.MIObjetGraphique;
 	import Graphique.Textures.Degrades.MDegrade;
@@ -444,6 +443,9 @@ package Graphisme.PanelOptions
 			 tab_onglet.addEventListener(Event.CHANGE,miseAJour);
 		}
 		public function getTabOnglet():TabOnglet { return tab_onglet; }
+		
+		// accesseur au panel de rendu degradé : 
+		public function getPanelRenduDegrade():MGraphiqueScene {return rendu_degrade;}
 
 // -----------------------------------------------------------------------------
 // 	  initialisation du panel des options en fonction de l'objet en parametre
@@ -503,9 +505,11 @@ package Graphisme.PanelOptions
 				btn_couleur.selected=false;
 				color_picker.enabled = false;
 			}
-			if(exp_reg.test(texture.getNomClasse()))
+			if(exp_reg.test(texture.getNomClasse()))		// ca du degradé :
 			{
 				btn_degrade.selected=true;
+				rendu_degrade.setTexture(objet.getTexture().clone());
+				rendu_degrade.redessiner();
 			}
 			else
 			{
@@ -721,7 +725,7 @@ package Graphisme.PanelOptions
 		public function finaliserChangementImage(event:Event):void
 		{
 			var temp_img:MImage = new MImage(adresse_image.text);
-			((MGraphiqueAbstrait)(objet)).setTexture(temp_img);
+			objet.setTexture(temp_img);
 			//objet.ajouterTexture(temp_img);
 		}
 		
@@ -763,7 +767,7 @@ package Graphisme.PanelOptions
 		
 		public function changerCouleur(event:ColorPickerEvent):void
 		{
-			((MGraphiqueAbstrait)(objet)).setTexture(new MCouleur(color_picker.selectedColor));
+			((MIObjetGraphique)(objet)).setTexture(new MCouleur(color_picker.selectedColor));
 		}
 		
 // ----------------------------------------------------------------
@@ -784,6 +788,12 @@ package Graphisme.PanelOptions
 		public function clicSurDegrade(event:MouseEvent):void
 		{
 			rendu_degrade.enabled = true;
+			if(objet.getTexture().getNomClasse()=="MDegrade")
+			{
+				fenetre_degrade.mettreAJour();
+				fenetre_degrade.getRendu().redessiner();
+			}
+			PopUpManager.removePopUp(fenetre_degrade);
 			PopUpManager.addPopUp(fenetre_degrade, tab_onglet.parent, false);
             PopUpManager.centerPopUp(fenetre_degrade);
 		}
