@@ -52,7 +52,6 @@ package Graphique.Textures {
 			if(myBitmap != null) {
 				finaliser();
 				var m:Matrix = new Matrix();
-				m.translate(objet.getObjet().getX(), objet.getObjet().getY());
             	graphics.beginBitmapFill(myBitmap, m, false);
    			}
    			else {

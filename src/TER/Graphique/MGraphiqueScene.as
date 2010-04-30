@@ -14,6 +14,7 @@ package Graphique {
 	import flash.display.Sprite;
 	import mx.core.IUIComponent;
 	import Utilitaires.MErreur;
+	import mx.events.ResizeEvent;
 	
 	public class MGraphiqueScene extends Canvas implements MIObjetGraphique, MIObjetEcouteur {
 		protected var objet:MScene;
@@ -204,7 +205,9 @@ package Graphique {
 		}
 		
 		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
-			super.updateDisplayList(unscaledWidth, unscaledHeight );
+			super.updateDisplayList(unscaledWidth, unscaledHeight);
+			objet.setLargeur(unscaledWidth);
+			objet.setHauteur(unscaledHeight);
 			dessiner();
 		}
 		
@@ -215,7 +218,6 @@ package Graphique {
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
 			}
-//			graphics.moveTo(objet.getX(), objet.getY());
 			graphics.drawRect(0, 0, width, height);
 //			if(sysout != null) {
 //				sysout.text += "objet => x:"+forme.getX()+" y:"+forme.getY()+" largeur:"+forme.getLargeur()+" hauteur:"+forme.getHauteur()+"\n";

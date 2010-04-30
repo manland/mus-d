@@ -47,10 +47,10 @@ package Graphique
 				ma_bordure.appliquer(graphics);
 			}
 			var elem:MArete = aretes[0] as MArete;
-			graphics.moveTo(elem.getDepart().getX(), elem.getDepart().getY());
+			graphics.moveTo(elem.getDepart().getX()-objet.getX(), elem.getDepart().getY()-objet.getY());
 			for(var i:Number=0; i<aretes.length; i++) {
 				elem = aretes[i] as MArete;
-				graphics.lineTo(elem.getArrivee().getX(), elem.getArrivee().getY());
+				graphics.lineTo(elem.getArrivee().getX()-objet.getX(), elem.getArrivee().getY()-objet.getY());
 			}
 			graphics.endFill();
 		}

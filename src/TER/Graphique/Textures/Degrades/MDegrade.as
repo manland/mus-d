@@ -27,96 +27,120 @@ package Graphique.Textures.Degrades {
 		protected var ty:Number;
 		protected var type:String;
         
-		public function MDegrade() {
+		public function MDegrade(couleurs:Array=null, alphas:Array=null, ratios:Array=null, spread_method:String=SpreadMethod.PAD, interpolation:String=InterpolationMethod.LINEAR_RGB, focal_pt_ratio:Number=0, type:String=GradientType.LINEAR, box_rotation=0) {
 			this.objet = null;
 			
 			nom_classe = "MDegrade";
 			matrix = new Matrix();
 			
 			//a initialisé par utilisateur
-			couleurs = [0xFF0000, 0x000000];
-			alphas = [1, 1];
-			ratios = [0, 255];
+			if(couleurs != null) {
+				this.couleurs = couleurs;
+			}
+			else {
+				this.couleurs = [0xFF0000, 0x000000];
+			}
+			if(alphas != null) {
+				this.alphas = alphas;
+			}
+			else {
+				this.alphas = [1, 1];
+			}
+			if(ratios != null) {
+				this.ratios = ratios;
+			}
+			else {
+				this.ratios = [0, 255];
+			}
 			
-			spread_method = SpreadMethod.PAD;//PAD = normal, REFLECT = reflet en dehor, REPEAT = ce répet
-			interpolation = InterpolationMethod.LINEAR_RGB;//RGB = moins de couleur
-			focal_pt_ratio = 0;//point de départ pour la fuite peut être utile pour faire une lumière
+			this.spread_method = spread_method;//PAD = normal, REFLECT = reflet en dehor, REPEAT = ce répet
+			this.interpolation = interpolation;//RGB = moins de couleur
+			this.focal_pt_ratio = focal_pt_ratio;//point de départ pour la fuite peut être utile pour faire une lumière
 			
-			type = GradientType.LINEAR;//LINEAR = trait, RADIAL = rond
+			this.type = type;//LINEAR = trait, RADIAL = rond
+			
+			
+			this.box_rotation = box_rotation;//à diviser pour faire tourner
 		}
 		
 		override public function setObjetADessiner(objet:MIObjetGraphique):void {
-			this.objet = objet;
+			super.setObjetADessiner(objet);
 			//taille du dégradé != taille de l'affichage
 			box_largeur = objet.getObjet().getLargeur();
 			box_hauteur = objet.getObjet().getHauteur();
-			box_rotation = 0;//à diviser pour faire tourner
 			
 			//placer le dégradé dans ça box
-			tx = objet.getObjet().getX();
-			ty = objet.getObjet().getY();
+			tx = 0;
+			ty = 0;
 		}
 		
 		public function appliquer(graphics:Graphics):void {
 			if(a_decorer != null) {
 				a_decorer.appliquer(graphics);
 			}
-			//taille du dégradé != taille de l'affichage
+			
 			box_largeur = objet.getObjet().getLargeur();
 			box_hauteur = objet.getObjet().getHauteur();
+			tx = 0;
+			ty = 0;
 			
-			//placer le dégradé dans ça box
-			tx = objet.getObjet().getX();
-			ty = objet.getObjet().getY();
 			matrix.createGradientBox(box_largeur, box_hauteur, box_rotation, tx, ty);
 		    graphics.beginGradientFill(type, couleurs, alphas, ratios, matrix, spread_method, 
 				interpolation, focal_pt_ratio);
 		}
 		
+		public function getCouleurs():Array {
+			return couleurs;
+		}
 		public function setCouleurs(c:Array):void {
 			couleurs = c;
 		}
 
+		public function getAlphas():Array {
+			return alphas;
+		}
 		public function setAlphas(c:Array):void {
 			alphas = c;
 		}
 		
+		public function getRatios():Array {
+			return ratios;
+		}
 		public function setRatios(c:Array):void {
 			ratios = c;
 		}
 		
+		public function getSpreadMethod():String {
+			return spread_method;
+		}
 		public function setSpreadMethod(s:String):void {
 			spread_method = s;
 		}
 		
+		public function getInterpolation():String {
+			return interpolation;
+		}
 		public function setInterpolation(s:String):void {
 			interpolation = s;
 		}
 		
+		public function getFocalPtRatio():Number {
+			return focal_pt_ratio;
+		}
 		public function setFocalPtRatio(n:Number):void {
 			focal_pt_ratio = n;
 		}
 
-		public function setBoxLargeur(n:Number):void {
-			box_largeur = n;
+		public function getBoxRotation():Number {
+			return box_rotation;
 		}
-		
-		public function setBoxHauteur(n:Number):void {
-			box_hauteur = n;
-		}
-
 		public function setBoxRotation(n:Number):void {
 			box_rotation = n;
 		}
-
-		public function setTx(n:Number):void {
-			tx = n;
-		}
 		
-		public function setTy(n:Number):void {
-			ty = n;
+		public function getType():String {
+			return type;
 		}
-		
 		public function setType(s:String):void {
 			type = s;
 		}
@@ -145,11 +169,7 @@ package Graphique.Textures.Degrades {
 			clone.setSpreadMethod(new String(spread_method));
 			clone.setInterpolation(new String(interpolation));
 			clone.setFocalPtRatio(new Number(focal_pt_ratio));
-			clone.setBoxHauteur(new Number(box_hauteur));
-			clone.setBoxLargeur(new Number(box_largeur));
 			clone.setBoxRotation(new Number(box_rotation));
-			clone.setTx(new Number(tx));
-			clone.setTy(new Number(ty));
 			clone.setType(new String(type));
 			if(a_decorer != null) {
 				clone.setADecorer(a_decorer.clone());

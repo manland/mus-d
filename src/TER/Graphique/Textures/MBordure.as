@@ -26,6 +26,22 @@ package Graphique.Textures
 			this.miter_limit = 3;
 		}
 		
+		public function getCouleur():uint {
+			return couleur;
+		}
+		
+		public function setCouleur(couleur:uint):void {
+			this.couleur = couleur;
+		}
+		
+		public function getEpaisseur():Number {
+			return epaisseur;
+		}
+		
+		public function setEpaisseur(epaisseur:Number):void {
+			this.epaisseur = epaisseur;
+		}
+		
 		public function appliquer(graphics:Graphics):void {
 			if(a_decorer != null) {
 				a_decorer.appliquer(graphics);
