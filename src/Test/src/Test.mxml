@@ -6,6 +6,7 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import Controleur.MMouvementPerpetuel;
 			import Controleur.MIEffet;
 			import Controleur.MMouvementFini;
 			import Controleur.MRedimensionnement;
@@ -26,32 +27,44 @@
 			import Graphique.MGraphiqueTriangle;
 			import Coeur.*;
 			public var triangles:Array = new Array();
-			public var etoile:MGraphiqueEtoile;
+			public var rond:MGraphiqueRectangle;
 			public var rect:MGraphiqueRectangle;
-			public var mouv:MMouvementFini;
+		//	public var mouv:MMouvementPerpetuel;
+			public var tri:MGraphiqueTriangle;
 			public var img:MImage;
 			public function init():void {
-				rect = new MGraphiqueRectangle(30, 30, 100, 30);
-				img = new MImage("file:///home/manland/workspace/Test/src/nicubunu-personnage.png");
-				img.sysout = sysout;
-				rect.setTexture(img);
-				scene.addChild(rect);
-				mouv = new MMouvementFini();
-				mouv.instancie(rect.getObjet(), 300, 100, 1000);
+				(scene.getObjet() as MScene).sysout = sysout;
+				rect = new MGraphiqueRectangle(20, 250, 60, 30);
+				rect.setTexture(new MCouleur(0xCCCC15));
 				
-				etoile = new MGraphiqueEtoile(50, 5, 50, 3.14);
-				etoile.setTexture(new MCouleur(0xCCCC15));
-				etoile.sysout = sysout;
-				scene.addChild(etoile);
+				rond = new MGraphiqueRectangle(180,100,30,30);
+				rond.setTexture(new MCouleur(0xCCCC15));
+				
+				tri = new MGraphiqueTriangle(new MCoordonnee(10,20),new MCoordonnee(40,30),new MCoordonnee(30,40));
+				tri.setTexture(new MCouleur(0xCCCC15));
+				
+				scene.addChild(rect);
+				scene.addChild(rond);
+				scene.addChild(tri);
+				
+				(rect.getObjet() as MElement).mouv.sysout = sysout;
+				(rect.getObjet() as MElement).sysout = sysout;
+				//mouv = new MMouvementPerpetuel();
+				//mouv.instancie(rect.getObjet(), 10, 10);
+				
+//				etoile = new MGraphiqueEtoile(50, 5, 50, 3.14);
+//				etoile.setTexture(new MCouleur(0xCCCC15));
+//				etoile.sysout = sysout;
+//				scene.addChild(etoile);
 			}
 			
 			public function lancer():void {
-				etoile.bordure = new MBordure(2, 0x000000);
-				sysout.text += "avan clone";
+				//etoile.bordure = new MBordure(2, 0x000000);
+				//sysout.text += "avan clone";
 //				scene.addChild(etoile.clone() as MGraphiqueEtoile);
-				sysout.text += "apré clone";
+				//sysout.text += "apré clone";
 //				img.setGarderRatio(true);
-				mouv.lancer();
+				//mouv.lancer();
 			}
 		]]>
 	</mx:Script>
@@ -62,7 +75,7 @@
 		<mx:Button label="Lancer" click="lancer()" />
 	</mx:Panel>
 	<mx:Panel>
-		<TER:MGraphiqueScene id="scene" sysout="{sysout}" width="300" height="300" bordure="{new MBordure(3, 0x00FF00)}" texture="{new MCouleur()}">
+		<TER:MGraphiqueScene id="scene" sysout="{sysout}" width="500" height="300" bordure="{new MBordure(3, 0x00FF00)}" texture="{new MCouleur()}">
 			<!--<TER:MGraphiqueEtoile id="ttt" texture="{new MDegradeHorizontal()}" sysout="{sysout}" />-->
 		</TER:MGraphiqueScene>
 	</mx:Panel>

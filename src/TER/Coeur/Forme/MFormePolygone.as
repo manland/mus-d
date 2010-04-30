@@ -142,6 +142,75 @@ package Coeur.Forme
 			miforme.setNombreArete(new Number(nombre_arete));
 			miforme.setSommeAngles(new Number(somme_angles));
 		}
+		
+		public function getPointsProjection(vecteur:MVecteur):Array{
+			return getSommet();
+		}
+		
+		public function getSommet():Array{
+			var points:Array = new Array();
+			for(var i:int = 0; i<nombre_arete; i++)
+			{
+				var arete:MArete = aretes[i] as MArete;
+				if(points.indexOf(arete.getArrivee()) == -1){
+					points.push(arete.getArrivee());
+				}
+				if(points.indexOf(arete.getDepart()) == -1){
+					points.push(arete.getDepart());
+				}
+			}
+			return points;
+		}
+		
+		public function getAxesSeparateurs(objet:MIForme):Array{
+			var axes:Array = new Array();
+			if((objet as MFormeRond) == null){
+				for(var i:int = 0; i<nombre_arete; i++)
+				{
+					var a:MArete = aretes[i] as MArete;
+					var pt_a:MCoordonnee = a.getDepart();
+	       			var pt_b:MCoordonnee = a.getArrivee();
+	       			
+	        		var axe:MVecteur = new MVecteur();
+	        		axe.entreDeuxPoint(pt_a,pt_b);
+	        		axe = axe.getNormal();
+	        		axe.normalise();
+					axes.push(axe);
+				}
+			}
+			return axes;
+		}
+		
+		// stocke dans min et max les valeurs min et max des projections des points du polygone sur le paramètre vecteur 
+		public function seProjeteSur(vecteur:MVecteur):Array{
+			var pts:Array = getPointsProjection(vecteur);
+			
+			var res:Array = new Array();
+			var min:Number = Number.POSITIVE_INFINITY;
+			var max:Number = Number.NEGATIVE_INFINITY;
+			
+			for(var i:int = 0; i<pts.length; i++){
+				var pt:MCoordonnee = pts[i] as MCoordonnee;
+				
+				var scalaire:Number = vecteur.getX()*pt.getX() + pt.getY()*vecteur.getY();
+				
+				var projection:MVecteur = new MVecteur();
+				projection.instancie(scalaire * vecteur.getX(),scalaire * vecteur.getY());
+				
+				var val:Number = 0;
+             	if(projection.getX()*vecteur.getX() >= 0 && projection.getY() * vecteur.getY() >= 0){
+                 	val = projection.getNorme();
+              	}
+             	else{
+                 	val = -projection.getNorme();
+              	}
+             	min = Math.min(val, min);
+             	max = Math.max(val, max);
+             	
+             	res.push(max,min);
+			}
+			return res;
+		}
 
 	}
 }

@@ -1,6 +1,7 @@
 package Coeur.Forme
 {
 	import Utilitaires.MAxe;
+	import Utilitaires.MVecteur;
 	
 	public class MFormeEllipse extends MForme implements MIForme
 	{
@@ -51,6 +52,22 @@ package Coeur.Forme
 			this.remplirForme((clone_miforme as MFormeEllipse));
 			return clone_miforme as MIForme; 
 		}
-		 
+		
+		public function getAxesSeparateurs(objet:MIForme):Array{
+			//a revoir??
+			var axes:Array = new Array();
+			return axes;
+		}
+		
+		public function getPointsProjection(vecteur:MVecteur):Array{
+			//a revoir??
+			var points:Array = new Array();
+			return points;
+		}
+		
+		public function seProjeteSur(vecteur:MVecteur):Array{
+			return null;
+		}
+					 
 	}
 }

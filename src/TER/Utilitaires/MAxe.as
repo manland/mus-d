@@ -65,6 +65,29 @@ package Utilitaires
 				axe = 1;
 		}
 		
+		public function perpendiculaireA(arete:MArete):void{
+			instancie2(arete);
+			
+			if(estHorizontal()){//s'il est horizontal
+				axe = 1;//on le met vertical
+			}
+			else if(estVertical()){//s'il est vertical 
+				axe = 0;//on le met horizontal
+			}
+			else if(estObliqueMontant()()){//s'il est oblique montant
+				axe = 3;//on le met oblique descendant
+			}
+			else if(estObliqueDescendant()){//s'il est oblique descendant
+				axe = 2;//on le met oblique montant
+			}
+		}
+		
+		//collision selon l'axe séparateur donné en parametre
+		public function orthogonalA(vecteur:MVecteur){
+			var arete:MArete = new MArete(new MCoordonnee(0,0),new MCoordonnee(vecteur.getX(),vecteur.getY()));
+			this.perpendiculaireA(arete);			
+		}
+		
 		public function setAxe(axe:int):void{
 			if(axe <= 3 && axe >=0){
 				this.axe = axe;

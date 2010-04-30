@@ -3,6 +3,7 @@ package Coeur.Forme
 	import Coeur.MUtilitaire;
 	
 	import Utilitaires.MAxe;
+	import Utilitaires.MVecteur;
 	
 	public class MFormeCompose extends MForme implements MIForme
 	{
@@ -234,6 +235,60 @@ package Coeur.Forme
 				this.forme_gauche.affiche();
 				trace("------------------------------");
 			}
+		}
+		
+		public function getAxesSeparateurs(objet:MIForme):Array{
+			var axes:Array = new Array();
+			if(forme_haut != null)
+				axes = axes.concat(forme_haut.getAxesSeparateurs(objet));
+			if(forme_centre != null)
+				axes = axes.concat(forme_centre.getAxesSeparateurs(objet));
+			if(forme_gauche != null)
+				axes = axes.concat(forme_gauche.getAxesSeparateurs(objet));
+			if(forme_droit != null)
+				axes = axes.concat(forme_droit.getAxesSeparateurs(objet));
+			if(forme_bas != null)
+				axes = axes.concat(forme_bas.getAxesSeparateurs(objet));
+			return axes;
+		}
+		
+		public function getPointsProjection(vecteur:MVecteur):Array{
+			var points:Array = new Array();
+			if(forme_haut != null)
+				points = points.concat(forme_haut.getPointsProjection(vecteur));
+			if(forme_centre != null)
+				points = points.concat(forme_centre.getPointsProjection(vecteur));
+			if(forme_gauche != null)
+				points = points.concat(forme_gauche.getPointsProjection(vecteur));
+			if(forme_droit != null)
+				points = points.concat(forme_droit.getPointsProjection(vecteur));
+			if(forme_bas != null)
+				points = points.concat(forme_bas.getPointsProjection(vecteur));
+			return points;
+		}
+		
+		public function seProjeteSur(vecteur:MVecteur):Array{
+			//a revoir
+//			var pts:Array = getPointsProjection(vecteur);
+//			for(var i:uint = 0; i<pts.length; i++){
+//				var pt:MCoordonnee = pts[i] as MCoordonnee;
+//				
+//				var scalaire:Number = vecteur.getX()*pt.getX() + pt.getY()*vecteur.getY();
+//				
+//				var projection:MVecteur = new MVecteur();
+//				projection.instancie(scalaire * vecteur.getX(),scalaire * vecteur.getY());
+//				
+//				var val:Number = 0;
+//             	if(projection.getX()/Math.abs(projection.getX())== vecteur.getX()/Math.abs(vecteur.getX()) && projection.getY()/Math.abs(projection.getY())== vecteur.getY()/Math.abs(vecteur.getY())){
+//                 	val = projection.getNorme();
+//              	}
+//             	else{
+//                 	val = -projection.getNorme();
+//              	}
+//             	min = Math.min(val, min);
+//             	max = Math.max(val, max);
+//			}
+			return null;
 		}
 
 	}

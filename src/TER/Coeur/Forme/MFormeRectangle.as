@@ -77,10 +77,6 @@ package Coeur.Forme
 			return 2*this.largeur + 2*this.hauteur;
 		}
 		
-		public function axeCollision(x:Number,y:Number):MAxe{
-			return null;
-		}
-		
 		public override function setNombreArete(nombre_arete:Number):void{
 		}
 		
