@@ -2,9 +2,7 @@ package Graphisme.Onglets
 {
 	import Erreurs.Erreur;
 	
-	import Graphique.MGraphiqueAbstrait;
 	import Graphique.MIObjetGraphique;
-	import Graphique.MIObjetGraphiqueEcouteur;
 	
 	import Graphisme.PanelOptions.PanelOption;
 	
@@ -43,27 +41,11 @@ package Graphisme.Onglets
         
         protected function focusInHandler(event:FocusEvent):void
         {
-        	var obj:MGraphiqueAbstrait = event.currentTarget as MGraphiqueAbstrait;
+        //	var obj:MIObjetGraphique = event.currentTarget as MIObjetGraphique;
         	objet.getGraphique().addEventListener(KeyboardEvent.KEY_UP,controleClavier);
-        	if(obj!=null)
+        	if(objet!=null)
         	{
-        		
-        		//panel_opt.mettreAJour(this,onglet.getScene().getObjetParId(id));
         		afficherCadre();
-//	        	if(type=="Scene" )
-//	        	{
-//	        		panel_opt.libererPanelOption();
-//	        		panel_opt.afficherPanelOption(panel_opt.getOptionScene());
-//	        		panel_opt.getOptionScene().setValeurX(onglet.getScene().getPosX().toString());
-//	        		panel_opt.getOptionScene().setValeurY(onglet.getScene().getPosY().toString());
-//	        		panel_opt.getOptionScene().setValeurLargeur(onglet.getScene().getLargeur().toString());
-//	        		panel_opt.getOptionScene().setValeurHauteur(onglet.getScene().getHauteur().toString());
-//	        		panel_opt.getOptionScene().setAdresseImage(onglet.getScene().getImage());
-	        	//}
-	//        	else if(!panel_deja_enleve)
-	//        	{
-	//        		panel_opt.libererPanelOption();
-	//        	}
         	}
 
 			
@@ -74,26 +56,22 @@ package Graphisme.Onglets
         	onglet.enleverCadres();
         	onglet.invalidateDisplayList();
         	cadre =new Canvas();
-        	cadre.width=objet.getObjet().getLargeur()+1;
-        	cadre.height=objet.getObjet().getHauteur()+1;
-        	cadre.x=objet.getObjet().getX()*2;
-        	cadre.y=objet.getObjet().getY()*2;
+        	cadre.width=objet.getObjet().getLargeur();
+        	cadre.height=objet.getObjet().getHauteur();
+        	cadre.x=objet.getObjet().getX();
+        	cadre.y=objet.getObjet().getY();
         	cadre.styleName="cadre";
         	onglet.addChild(cadre);	
         }
 		
 		public function perteFocus(event:FocusEvent):void
         {
-        	var obj:MGraphiqueAbstrait = event.relatedObject as MGraphiqueAbstrait;
-        	if(obj!=null)
+        	if(objet!=null)
         	{	
         		if(cadre)
         		{
-//	        		onglet.removeChild(cadre);
 	        		onglet.enleverCadres();
 	        	}
-//	        	panel_opt.libererPanelOption();
-//	        	panel_opt.afficherPanelOption(panel_opt.getOptionJeu());
 	        }
         }
         
@@ -105,7 +83,7 @@ package Graphisme.Onglets
         	}
         	else
         	{
-        		cadre.move(objet.getObjet().getX()*2,objet.getObjet().getY()*2);
+        		cadre.move(objet.getObjet().getX(),objet.getObjet().getY());
         	}
         }
       
@@ -148,15 +126,6 @@ package Graphisme.Onglets
 		
 		public function copier():void
 		{
-//			var img:MonImage = new MonImage(panel_opt,onglet,erreur);
-//		//	img.source=source;
-//			img.width=width;
-//			img.height=height;
-//			img.type=type;
-//			erreur.sysout.text+="idddd   "+onglet.getNbId()+"\n";
-//			img.id=onglet.getNbId().toString();
-//			img.x=x+20;
-//			img.y=y+20;
 			pos_x = objet.getObjet().getX();
 			pos_y = objet.getObjet().getY();
 			clone = objet.clone() as MIObjetGraphique; 	
@@ -188,11 +157,11 @@ package Graphisme.Onglets
         // accesseur : 
         public function setObjet(objet:MIObjetGraphique):void 
         {
-        	 this.objet=objet;
-        	 objet.getGraphique().addEventListener(MouseEvent.CLICK,donnerFocus);
-			 objet.getGraphique().addEventListener(FocusEvent.FOCUS_IN,focusInHandler);
-			 objet.getGraphique().addEventListener(FocusEvent.FOCUS_OUT,perteFocus);
-			 objet.getGraphique().addEventListener(MouseEvent.MOUSE_MOVE,onglet.selectionner); 
+        	this.objet=objet;
+			objet.getGraphique().addEventListener(MouseEvent.MOUSE_MOVE,onglet.selectionner);
+			objet.getGraphique().addEventListener(MouseEvent.CLICK,donnerFocus);
+			objet.getGraphique().addEventListener(FocusEvent.FOCUS_IN,focusInHandler);
+			objet.getGraphique().addEventListener(FocusEvent.FOCUS_OUT,perteFocus);
         }
         public function getObjet():MIObjetGraphique { return objet; }
 	}

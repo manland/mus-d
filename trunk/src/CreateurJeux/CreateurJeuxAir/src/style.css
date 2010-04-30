@@ -85,3 +85,18 @@ FenetreDegrade
    headerColors: #e7e7e7, #d9d9d9;
    dropShadowEnabled: true;
 }
+
+.angle
+{
+	fontSize: 10;
+	dataTipOffset: 5;
+	 labelOffset: 0;
+}
+
+.pointDeFuite
+{
+	fontSize: 7;
+	label-offset:1;
+	tickColor:"black";
+	tick-offset:2;
+}

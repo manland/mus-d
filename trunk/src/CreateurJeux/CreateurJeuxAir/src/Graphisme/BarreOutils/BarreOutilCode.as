@@ -48,6 +48,7 @@ package Graphisme.BarreOutils
 			{
 				fenetre_code.changerCode(tab_onglet.getOnglet().genererCodeApplicationAir(nom_jeu).toString());
 			}
+			PopUpManager.removePopUp(fenetre_code);
             PopUpManager.addPopUp(fenetre_code, tab_onglet.parent, false);
             PopUpManager.centerPopUp(fenetre_code);
 		}

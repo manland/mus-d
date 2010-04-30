@@ -1,35 +1,37 @@
 package Graphisme.PanelDegrades
 {
+	import Graphique.Textures.Degrades.MDegrade;
+	
+	import flash.events.Event;
+	
 	import mx.containers.HBox;
 	import mx.containers.Panel;
 	import mx.containers.VBox;
+	import mx.controls.HSlider;
 	import mx.controls.Label;
-	import mx.controls.TextArea;
+	import mx.controls.Spacer;
 
 	public class PanelBox extends Panel
 	{
 		// point de départ : 
 		private var hbox_depart:HBox;
-		private var label_point_de_depart:Label;
-		private var point_de_depart:TextArea;
+		private var label_point_de_fuite:Label;
+		private var point_de_fuite:HSlider;
 		
-		// hauteur:
-		private var hbox_hauteur:HBox;
-		private var label_hauteur:Label;
-		private var hauteur:TextArea;
+		// angle : 
+		private var label_angle:Label;
+		private var angle:HSlider;
 		
-		// largeur: 
-		private var hbox_largeur:HBox;
-		private var label_largeur:Label;
-		private var largeur:TextArea;
+		private var fenetre_degrade:FenetreDegrade;
 		
-		public function PanelBox()
+		public function PanelBox(fenetre_degrade:FenetreDegrade)
 		{
 			super();
+			this.fenetre_degrade=fenetre_degrade;
 			this.styleName = "stylePanelDegrade";
 			this.title = "Box";
-			this.width = 135;
-			this.height = 100;
+			this.width = 145;
+			this.height = 105;
 			initialisation();
 		}
 		
@@ -39,44 +41,69 @@ package Graphisme.PanelDegrades
 			vBox = new VBox();
 			
 			hbox_depart = new HBox();
-			label_point_de_depart = new Label();
-			point_de_depart = new TextArea();
-			label_point_de_depart.text = "Point de départ :"
-			point_de_depart.width=30;
-			point_de_depart.height=20;
-			hbox_depart.addChild(label_point_de_depart);
-			hbox_depart.addChild(point_de_depart);
+			label_point_de_fuite = new Label();
+			point_de_fuite = new HSlider();
+			label_point_de_fuite.text = "Point de fuite :"
+			point_de_fuite.width=50;
+			point_de_fuite.height=20;
+			point_de_fuite.maximum=1;
+			point_de_fuite.minimum = -1;
+			point_de_fuite.value=0;
+			point_de_fuite.snapInterval = 1;
+			point_de_fuite.labels = ['-1','1'];
+			point_de_fuite.styleName = "pointDeFuite";
+			point_de_fuite.showDataTip=false;
+			point_de_fuite.tickInterval=1;
+			point_de_fuite.addEventListener(Event.CHANGE,changerPointDeFuite);
+			hbox_depart.addChild(label_point_de_fuite);
+			hbox_depart.addChild(point_de_fuite);
+						
 			
-			// hauteur : 
-			hbox_hauteur = new HBox();
-			label_hauteur = new Label();
-			label_hauteur.text = "Hauteur :";
-			hauteur = new TextArea();
-			hauteur.width = 30;
-			hauteur.height=20;
+			// angle : 
+			var vbox_angle:VBox;
+			vbox_angle = new VBox();
+			label_angle = new Label();
+			label_angle.text = "Orientation :";
+			angle = new HSlider();
+			angle.styleName = "angle";
+			angle.width = 135;
+			angle.labels = ['0','2π'];
+			angle.minimum = 0;
+			angle.maximum = 2*Math.PI;
+			angle.addEventListener(Event.CHANGE,changerAngle);
+			vbox_angle.addChild(label_angle);
+			vbox_angle.addChild(angle);
 			
-			hbox_hauteur.addChild(label_hauteur);
-			hbox_hauteur.addChild(hauteur);
-			
-			// largeur : 
-			hbox_largeur = new HBox();
-			label_largeur = new Label();
-			label_largeur.text = "Largeur :";
-			largeur = new TextArea();
-			largeur.width = 30;
-			largeur.height=20;
-			
-			hbox_largeur.addChild(label_largeur);
-			hbox_largeur.addChild(largeur);
-			
+			var space:Spacer;
+			space = new Spacer();
+			space.height=3;
+			vBox.addChild(space);
 			vBox.addChild(hbox_depart);
-			vBox.addChild(hbox_hauteur);
-			vBox.addChild(hbox_largeur);
+			vBox.addChild(vbox_angle);
 			this.addChild(vBox);
+			
 			
 		}
 		
-		// accesseur : 
+		public function mettreAJour():void
+		{
+			angle.value = ((MDegrade)(fenetre_degrade.getPanelOption().getObjet().getTexture())).getBoxRotation();
+			point_de_fuite.value =  ((MDegrade)(fenetre_degrade.getPanelOption().getObjet().getTexture())).getFocalPtRatio();
+			fenetre_degrade.getRendu().redessiner();
+		}
+		
+		public function changerAngle(event:Event):void
+		{
+			fenetre_degrade.getDegrade().setBoxRotation(angle.value);
+			fenetre_degrade.getRendu().redessiner();
+			
+		}
+		
+		public function changerPointDeFuite(event:Event):void
+		{
+			fenetre_degrade.getDegrade().setFocalPtRatio(point_de_fuite.value);
+			fenetre_degrade.getRendu().redessiner();
+		}
 		
 	}
 }
