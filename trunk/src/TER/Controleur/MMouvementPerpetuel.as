@@ -6,6 +6,8 @@ package Controleur
 	
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
+	
+	import mx.controls.Text;
 
 	public class MMouvementPerpetuel implements MIEffet
 	{
@@ -16,6 +18,8 @@ package Controleur
 		private var unite_y:Number;
 		private var vitesse_px_s_X:Number;
 		private var vitesse_px_s_Y:Number;
+		
+		public var sysout:Text;
 		
 		public function MMouvementPerpetuel(){
 			this.nom_classe = "MMouvementPerpetuel";
@@ -34,8 +38,8 @@ package Controleur
 				stopper();
 			}
 			//calcul du déplacement à faire en une unité de temps
-			var unite_x:Number = vitesse_px_s_X * 0.02;
-			var unite_y:Number = vitesse_px_s_Y * 0.02;
+			setUnite_x(vitesse_px_s_X * 0.02);
+			setUnite_y(vitesse_px_s_Y * 0.02);
 			
 			//on lance le timer toutes les 20 ms indéfiniment
 			lancerTimer(20, 0);
@@ -48,8 +52,7 @@ package Controleur
 		}
 		
 		protected function avanceUneUnite(e:TimerEvent):void{
-			getObjet().setX(getObjet().getX() + unite_x);
-			getObjet().setY(getObjet().getY() + unite_y);
+			getObjet().avance(unite_x, unite_y);			
 		}
 		
 		public function stopper():void{
@@ -59,10 +62,11 @@ package Controleur
 		
 		public function rebondir(axe_obstacle:MAxe ):void{
 			if(axe_obstacle.estHorizontal()){ //x
-				setUnite_y( - getUnite_y());
+				
+				setUnite_y( -1 * getUnite_y());
 			}
 			else if(axe_obstacle.estVertical()){ //y
-				setUnite_x( - getUnite_x());
+				setUnite_x( -1 * getUnite_x());
 			}	
 			else if(axe_obstacle.estObliqueMontant()){// y = x
 				var i:Number = getUnite_x();	
@@ -74,11 +78,13 @@ package Controleur
 				setUnite_x( - getUnite_y());
 				setUnite_y(- i);
 			}
+//			getObjet().setX(getObjet().getX() + unite_x);
+//			getObjet().setY(getObjet().getY() + unite_y);
 		}
 		
 		public function clone():MIEffet{
 			var mouv:MMouvementPerpetuel = new MMouvementPerpetuel();
-			mouv.instancie(this.objet,this.vitesse_px_s_X,this.vitesse_px_s_Y);
+			mouv.instancie(this.objet,new Number(this.vitesse_px_s_X),new Number(this.vitesse_px_s_Y));
 			return mouv;
 		}
 		
