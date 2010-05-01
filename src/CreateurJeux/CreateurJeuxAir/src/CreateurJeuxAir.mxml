@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:WindowedApplication xmlns:TER="Graphique.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Créateur de jeux" layout="absolute" creationComplete="initialisation()">
-	<!--<mx:Style source="Images/skins/arcade/arcade.css"/> -->
+	<!--<mx:Style source="Images/skins/moxy/style/moxy.css"/>-->
 	<mx:Style source="style.css"/>
 	<mx:Script>
 		<![CDATA[

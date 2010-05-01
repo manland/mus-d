@@ -2,6 +2,7 @@ package Graphisme.MenuAccordeons
 {
 	import Erreurs.Erreur;
 	
+	import Graphique.MGraphiqueEtoile;
 	import Graphique.MGraphiqueRectangle;
 	import Graphique.MGraphiqueRond;
 	import Graphique.MGraphiqueScene;
@@ -32,6 +33,7 @@ package Graphisme.MenuAccordeons
 		private var monObjetRd:MGraphiqueRond;
 		private var monObjetS:MGraphiqueScene;
 		private var monObjetT:MGraphiqueTriangle;
+		private var monObjetE:MGraphiqueEtoile;
 		
 		// chargement d'un fichier xml :
 		private var chargementXML:URLLoader;
@@ -84,6 +86,36 @@ package Graphisme.MenuAccordeons
 							//var obj_vide = creerInstance("Graphique."+noeud.name(),liste_attribut);
 						
 							var obj_vide = creerInstance("Graphique."+noeud.name(), liste_attribut_obj_vide);
+							obj_vide.id=fils.@id;
+							if(fils.@source=="")
+							{
+								obj_vide.setTexture(new MCouleur(0xFFFFFF));
+								obj_vide.setBordure(new MBordure(1,0x000000));
+							}
+							else
+							{
+								obj_vide.texture = new MImage(fils.@source);
+								obj_vide.setBordure(new MBordure(1,0x000000));
+							} 
+							obj_vide.addEventListener(MouseEvent.MOUSE_MOVE,drag);
+							mon_conteneur.addChild(obj_vide);
+							obj_vide.x=place_x;
+							obj_vide.y=place_y;
+							place_x+=40;
+							if(place_x>=120)
+							{
+								place_x=5;
+								place_y+=40;
+							}	
+						}	
+					}
+					else if(noeud.name()=="MGraphiqueEtoile")
+					{
+						for each (var fils:XML in noeud.children())
+						{	
+							var liste_attribut_obj_vide:Array=[place_x,place_y,Number(fils.@largeur),Number(fils.@rotation),fils.@vide];
+						
+							var obj_vide = creerInstance("Graphique."+noeud.name(), liste_attribut_obj_vide);
 							obj_vide.id=resultat[1]+"_vide";
 							if(fils.@source=="")
 							{
@@ -94,7 +126,7 @@ package Graphisme.MenuAccordeons
 							{
 								obj_vide.texture = new MImage(fils.@source);
 								obj_vide.setBordure(new MBordure(1,0x000000));
-							}
+							} 
 							obj_vide.addEventListener(MouseEvent.MOUSE_MOVE,drag);
 							mon_conteneur.addChild(obj_vide);
 							obj_vide.x=place_x;
@@ -121,8 +153,9 @@ package Graphisme.MenuAccordeons
 						place_x+=40;
 						for each (var fils:XML in noeud.children())
 						{	
+						
 							var liste_attribut:Array = [place_x,place_y,30,(Number(fils.@hauteur)*30)/Number(fils.@largeur)];
-							
+						
 							var mon_obj = creerInstance("Graphique."+noeud.name(),liste_attribut);
 	
 							mon_obj.texture = new MImage(fils.@source);
@@ -193,6 +226,17 @@ package Graphisme.MenuAccordeons
         	if(nom_classe=="Graphique.MGraphiqueTriangle")
         	{
         		instance = new ma_classe(new MCoordonnee(args[0],args[1]),new MCoordonnee(args[2],args[3]),new MCoordonnee(args[4],args[5]));
+        	}
+        	else if(nom_classe=="Graphique.MGraphiqueEtoile")
+        	{
+        		if(args[4]=="true")
+        		{
+        			instance = new ma_classe(args[0],args[1],args[2],args[3],true);
+        		}
+        		else
+        		{
+        			instance = new ma_classe(args[0],args[1],args[2],args[3],false);
+        		}
         	}
         	else
        		{
