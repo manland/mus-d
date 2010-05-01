@@ -3,6 +3,7 @@ package Graphisme.PanelDegrades
 	import Erreurs.Erreur;
 	
 	import Graphique.MGraphiqueScene;
+	import Graphique.MIObjetGraphique;
 	import Graphique.Textures.Degrades.MDegrade;
 	
 	import Graphisme.Onglets.Onglet;
@@ -23,6 +24,8 @@ package Graphisme.PanelDegrades
 	import mx.controls.ColorPicker;
 	import mx.controls.Label;
 	import mx.controls.NumericStepper;
+	import mx.controls.RadioButton;
+	import mx.controls.RadioButtonGroup;
 	import mx.controls.Spacer;
 	import mx.events.CloseEvent;
 	import mx.managers.PopUpManager;
@@ -63,7 +66,15 @@ package Graphisme.PanelDegrades
 		
 		// Apercu : 
 		private var panel_apercu:Panel;
-		private var rendu:MGraphiqueScene;
+		private var rendu:MIObjetGraphique;
+		
+		// choix pour le type d'apercu : 
+		private var groupe_choix:RadioButtonGroup;
+		private var choix_normal:RadioButton;
+		private var choix_objet:RadioButton;
+		
+		// tableau d'historique :
+		private var historique_degrade:HistoriqueDegrades;
 		
 		// panel Box :
 		private var panel_box:PanelBox;
@@ -72,20 +83,25 @@ package Graphisme.PanelDegrades
 		private var btn_valider:Button;
 		private var btn_annuler:Button;
 		
+		
+		
 		// degradé : 
 		private var degrade:MDegrade;
 		
 		private var panel_option:PanelOption;
 		private var erreur:Erreur;
 		
+		private var objet:MIObjetGraphique;
+		
 		public function FenetreDegrade(panel_option:PanelOption,erreur:Erreur)
 		{
 			super();
 			this.panel_option = panel_option;
 			this.erreur = erreur;
-			this.width=453;
-			this.height=400;
+			this.width=460;
+			this.height=410;
 			this.title= "Options du dégradé :";
+			objet=null;
 			this.showCloseButton = true;
 			initialisation();
 		}
@@ -196,11 +212,12 @@ package Graphisme.PanelDegrades
 			panel_apercu.styleName = "stylePanelDegrade";
 			
 			rendu = new MGraphiqueScene();
-			rendu.width = 124;
-			rendu.height= 115;
+			
+			rendu.getObjet().setLargeur(124);
+			rendu.getObjet().setHauteur(115);
 			rendu.setTexture(degrade);
-			panel_apercu.addChild(rendu);			
-		
+			panel_apercu.addChild(rendu.getGraphique());			
+			
 			// différents panels : 	
 			panel_spread_method = new PanelSpreadMethod(this,erreur);
 			panel_type = new PanelType(this,erreur);
@@ -244,8 +261,6 @@ package Graphisme.PanelDegrades
 			space.width = 3;
 			hbox2.addChild(space);
 			hbox2.addChild(panel_interpolation);
-//			hbox2.addChild(btn_valider);
-//			hbox2.addChild(btn_annuler);
 			
 			var vBox1:VBox;
 			vBox1=new VBox();
@@ -260,14 +275,34 @@ package Graphisme.PanelDegrades
 			
 			vbox_apercu = new VBox();
 			space = new Spacer();
-			space.height = 30;
+			space.height = 10;
 			var vbox_apercu:VBox;
 			
-			vbox_apercu.addChild(space);
+			// choix de l'apercu :
+			groupe_choix = new RadioButtonGroup();
+			choix_normal = new RadioButton();
+			choix_normal.label = "Normal";
+			choix_normal.group = groupe_choix;
+			choix_normal.selected = true;
+			choix_normal.addEventListener(MouseEvent.CLICK,clicSurChoix);
+			choix_objet = new RadioButton();
+			choix_objet.label = "Objet";
+			choix_objet.group = groupe_choix;
+			choix_objet.addEventListener(MouseEvent.CLICK,clicSurChoix);
+			var hbox_choix:HBox = new HBox();
+			hbox_choix.addChild(choix_normal);
+			hbox_choix.addChild(choix_objet);
+
+			// historique de degradé : 
+			historique_degrade = new HistoriqueDegrades(this,erreur);
+			
+			//vbox_apercu.addChild(space);
 			vbox_apercu.addChild(panel_apercu);
+			vbox_apercu.addChild(hbox_choix);
+			vbox_apercu.addChild(historique_degrade);
 			
 			space = new Spacer();
-			space.width = 3;
+			space.width = 1;
 			hbox_generale.addChild(space);
 			hbox_generale.addChild(vbox_apercu);
 			
@@ -284,7 +319,7 @@ package Graphisme.PanelDegrades
 			var vbox_btn:VBox;
 			vbox_btn = new VBox();
 			space = new Spacer();
-			space.height = 15;
+			space.height = 10;
 			vbox_btn.addChild(space);
 			vbox_btn.addChild(hbox_btn);
 			
@@ -404,9 +439,7 @@ package Graphisme.PanelDegrades
 			{
 				tableau_nombre_ratio[i]=((NumericStepper)(tab_ratio[i])).value;
 			}
-			
-			
-			
+
 			determinerSpreadMethod();
 			
 			degrade.setCouleurs(tableau_couleur_uint);
@@ -446,17 +479,32 @@ package Graphisme.PanelDegrades
 		{
 			panel_option.getObjet().setTexture(degrade.clone());
 			panel_option.getPanelRenduDegrade().setTexture(degrade.clone());
+			if(!historique_degrade.estDejaDansHistorique(degrade))
+			{
+				if(historique_degrade.getTableauScene().length<8)
+				{
+					
+					historique_degrade.getTableauScene().push(rendu.clone());
+					historique_degrade.mettreAJour();
+				}
+				else
+				{
+					historique_degrade.getTableauScene().splice(0,1);
+					historique_degrade.getTableauScene().push(rendu.clone());
+					historique_degrade.mettreAJour();
+				}
+			}
 			PopUpManager.removePopUp(this);
 		}
 
 		// --------------------------------------------------------------------
 		//						mise-a-jour :
 		// --------------------------------------------------------------------
-		public function mettreAJour():void
+		public function mettreAJour(obj:MIObjetGraphique):void
 		{
-			var tab_c:Array = ((MDegrade)(panel_option.getObjet().getTexture())).getCouleurs();
-			var tab_a:Array =((MDegrade)(panel_option.getObjet().getTexture())).getAlphas();
-			var tab_r:Array = ((MDegrade)(panel_option.getObjet().getTexture())).getRatios();
+			var tab_c:Array = ((MDegrade)(obj.getTexture())).getCouleurs();
+			var tab_a:Array =((MDegrade)(obj.getTexture())).getAlphas();
+			var tab_r:Array = ((MDegrade)(obj.getTexture())).getRatios();
 			
 			if(tab_c.length==nb_couleur.value)
 			{
@@ -499,9 +547,7 @@ package Graphisme.PanelDegrades
 					color_picker = new ColorPicker();
 					color_picker.addEventListener(Event.CHANGE,changerCouleur);
 					
-					
 					tab_couleur.push(color_picker);
-					
 					
 					var ratio:NumericStepper;
 					ratio = new NumericStepper();
@@ -546,24 +592,50 @@ package Graphisme.PanelDegrades
 					((NumericStepper)(tab_ratio[i])).value = tab_r[i];
 				}
 			}
-			panel_box.mettreAJour();
-			panel_interpolation.mettreAJour();
-			panel_spread_method.mettreAJour();
-			panel_type.mettreAJour();
-			degrade = panel_option.getObjet().getTexture().clone() as MDegrade;
+			panel_box.mettreAJour(obj);
+			panel_interpolation.mettreAJour(obj);
+			panel_spread_method.mettreAJour(obj);
+			panel_type.mettreAJour(obj);
+			degrade = obj.getTexture().clone() as MDegrade;
 			rendu.setTexture(degrade);
 			rendu.redessiner();
 		}
 		
+		// --------------------------------------------------------------------
+		//						gestions des choix de l'apercu : 
+		// --------------------------------------------------------------------
+		public function clicSurChoix(event:MouseEvent):void
+		{
+			if(event.currentTarget == choix_normal)
+			{
+				rendu = new MGraphiqueScene();
+				rendu.getObjet().setLargeur(124);
+				rendu.getObjet().setHauteur(115);
+				rendu.setTexture(degrade);
+				panel_apercu.removeAllChildren();
+				panel_apercu.addChild(rendu.getGraphique());			
+			}
+			else if(event.currentTarget == choix_objet)
+			{
+				if(panel_option.getObjet() !=null)
+				{
+					rendu = panel_option.getObjet().clone();
+					rendu.setTexture(degrade);
+					panel_apercu.removeAllChildren();
+					panel_apercu.addChild(rendu.getGraphique());			
+				}
+			}
+		}
 		
 		// --------------------------------------------------------------------
 		//						accesseurs : 
 		// --------------------------------------------------------------------
 		public function getErreur():Erreur {return erreur;}
-		public function getRendu():MGraphiqueScene {return rendu;}
+		public function getRendu():MIObjetGraphique {return rendu;}
 		public function getApercu():Panel {return panel_apercu;}
 		public function getDegrade():MDegrade {return degrade;}
 		public function getPanelOption():PanelOption {return panel_option;}
+		public function setObjet(objet:MIObjetGraphique):void {this.objet = objet;}
 	}
 	
 }

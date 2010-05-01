@@ -1,5 +1,6 @@
 package Graphisme.PanelDegrades
 {
+	import Graphique.MIObjetGraphique;
 	import Graphique.Textures.Degrades.MDegrade;
 	
 	import flash.display.InterpolationMethod;
@@ -67,13 +68,13 @@ package Graphisme.PanelDegrades
 			fenetre_degrade.getRendu().redessiner();
 		}		
 		
-		public function mettreAJour():void
+		public function mettreAJour(obj:MIObjetGraphique):void
 		{
-			if(((MDegrade)(fenetre_degrade.getPanelOption().getObjet().getTexture())).getInterpolation()==InterpolationMethod.LINEAR_RGB)
+			if(((MDegrade)(obj.getTexture())).getInterpolation()==InterpolationMethod.LINEAR_RGB)
 			{
 				btn_classic.selected=true;
 			}
-			else if(((MDegrade)(fenetre_degrade.getPanelOption().getObjet().getTexture())).getInterpolation()==InterpolationMethod.RGB)
+			else if(((MDegrade)(obj.getTexture())).getInterpolation()==InterpolationMethod.RGB)
 			{
 				btn_rgb.selected=true;
 			}

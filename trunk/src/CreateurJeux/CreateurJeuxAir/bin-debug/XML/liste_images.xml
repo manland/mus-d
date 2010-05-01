@@ -28,18 +28,21 @@
 		<rond id="globe" source="Images/rond/globe.png" largeur="64" hauteur="64"/> 
 	</MGraphiqueRond>
 	<MGraphiqueTriangle>
-		<triangle id="triangle-equilateral" point1X="15" point1Y="0" point2X="0" point2Y="15" point3X="30" point3Y="15" source=""/>
-		<triangle id="triangle-rectangle-bas-gauche" point1X="0" point1Y="30" point2X="0" point2Y="0" point3X="30" point3Y="30" source="" />
-		<triangle id="triangle-rectangle-bas-gauche" point1X="0" point1Y="30" point2X="30" point2Y="0" point3X="30" point3Y="30" source=""/>
-		<triangle id="triangle-rectangle-bas-droite" point1X="0" point1Y="30" point2X="15.5" point2Y="0" point3X="30" point3Y="30" source=""/>
-		<triangle id="triangle-rectangle-bas-droite" point1X="15" point1Y="30" point2X="0" point2Y="0" point3X="30" point3Y="0" source=""/>
-	 	<triangle id="triangle-rectangle-bas-droite" point1X="0" point1Y="30" point2X="0" point2Y="0" point3X="20" point3Y="30" source=""/>
-	 	<triangle id="triangle-rectangle-bas-droite" point1X="0" point1Y="30" point2X="20" point2Y="0" point3X="20" point3Y="30" source=""/>
-	 	<triangle id="triangle-rectangle-bas-droite" point1X="0" point1Y="30" point2X="0" point2Y="0" point3X="20" point3Y="0" source=""/>
-	 	<triangle id="triangle-rectangle-bas-droite" point1X="0" point1Y="0" point2X="30" point2Y="0" point3X="30" point3Y="30" source=""/>
-	 	<triangle id="triangle-rectangle-bas-droite" point1X="0" point1Y="30" point2X="15" point2Y="0" point3X="30" point3Y="30" source="Images/triangles/avion_noir.png"/>
-	 	<triangle id="triangle-rectangle-bas-droite" point1X="0" point1Y="30" point2X="15" point2Y="0" point3X="30" point3Y="30" source="Images/triangles/avion1.png"/>
-	 	<triangle id="triangle-equilateral" point1X="0" point1Y="32" point2X="16" point2Y="0" point3X="32" point3Y="32" source="Images/triangles/spaceship.png"/>
-	 	<triangle id="triangle-rectangle-bas-droite" point1X="0" point1Y="30" point2X="15" point2Y="0" point3X="30" point3Y="30" source="Images/triangles/pyramide.png"/>
+		<triangle id="triangleEquilateral" point1X="15" point1Y="0" point2X="0" point2Y="15" point3X="30" point3Y="15" source=""/>
+		<triangle id="triangleIsoRectBasGauche" point1X="0" point1Y="30" point2X="0" point2Y="0" point3X="30" point3Y="30" source="" />
+		<triangle id="triangleIsoRectBasDroite" point1X="0" point1Y="30" point2X="30" point2Y="0" point3X="30" point3Y="30" source=""/>
+		<triangle id="triangleIsoceleHaut" point1X="0" point1Y="30" point2X="15.5" point2Y="0" point3X="30" point3Y="30" source=""/>
+		<triangle id="triangleIsoceleBas" point1X="15" point1Y="30" point2X="0" point2Y="0" point3X="30" point3Y="0" source=""/>
+	 	<triangle id="triangleRectBasGauche" point1X="0" point1Y="30" point2X="0" point2Y="0" point3X="20" point3Y="30" source=""/>
+	 	<triangle id="triangleRectBasDroite" point1X="0" point1Y="30" point2X="20" point2Y="0" point3X="20" point3Y="30" source=""/>
+	 	<triangle id="triangleRectHautGauche" point1X="0" point1Y="30" point2X="0" point2Y="0" point3X="20" point3Y="0" source=""/>
+	 	<triangle id="triangleIsoRect-haut-droite" point1X="0" point1Y="0" point2X="30" point2Y="0" point3X="30" point3Y="30" source=""/>
+	 	<triangle id="avionNoir" point1X="0" point1Y="30" point2X="15" point2Y="0" point3X="30" point3Y="30" source="Images/triangles/avion_noir.png"/>
+	 	<triangle id="avionBlanc" point1X="0" point1Y="30" point2X="15" point2Y="0" point3X="30" point3Y="30" source="Images/triangles/avion1.png"/>
+	 	<triangle id="vaisseau" point1X="0" point1Y="32" point2X="16" point2Y="0" point3X="32" point3Y="32" source="Images/triangles/spaceship.png"/>
+	 	<triangle id="pyramide" point1X="0" point1Y="30" point2X="15" point2Y="0" point3X="30" point3Y="30" source="Images/triangles/pyramide.png"/>
 	</MGraphiqueTriangle>
+	<MGraphiqueEtoile>
+		<etoile id="etoile-vide" largeur="50" rotation="0" vide="true" source=""/>
+	</MGraphiqueEtoile>
 </image>

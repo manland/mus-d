@@ -1,5 +1,6 @@
 package Graphisme.PanelDegrades
 {
+	import Graphique.MIObjetGraphique;
 	import Graphique.Textures.Degrades.MDegrade;
 	
 	import flash.events.Event;
@@ -85,10 +86,10 @@ package Graphisme.PanelDegrades
 			
 		}
 		
-		public function mettreAJour():void
+		public function mettreAJour(obj:MIObjetGraphique):void
 		{
-			angle.value = ((MDegrade)(fenetre_degrade.getPanelOption().getObjet().getTexture())).getBoxRotation();
-			point_de_fuite.value =  ((MDegrade)(fenetre_degrade.getPanelOption().getObjet().getTexture())).getFocalPtRatio();
+			angle.value = ((MDegrade)(obj.getTexture())).getBoxRotation();
+			point_de_fuite.value =  ((MDegrade)(obj.getTexture())).getFocalPtRatio();
 			fenetre_degrade.getRendu().redessiner();
 		}
 		

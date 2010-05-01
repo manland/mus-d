@@ -2,6 +2,7 @@ package Graphisme.PanelDegrades
 {
 	import Erreurs.Erreur;
 	
+	import Graphique.MIObjetGraphique;
 	import Graphique.Textures.Degrades.MDegrade;
 	
 	import flash.display.GradientType;
@@ -73,10 +74,10 @@ package Graphisme.PanelDegrades
 			fenetre_degrade.getRendu().redessiner();
 		}
 		
-		public function mettreAJour():void
+		public function mettreAJour(obj:MIObjetGraphique):void
 		{
 			var str:String;
-			str = ((MDegrade)(fenetre_degrade.getPanelOption().getObjet().getTexture())).getType();
+			str = ((MDegrade)(obj.getTexture())).getType();
 			if(str==GradientType.LINEAR)
 			{
 				btn_normal.selected=true;

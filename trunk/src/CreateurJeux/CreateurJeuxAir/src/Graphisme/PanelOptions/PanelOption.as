@@ -88,6 +88,7 @@ package Graphisme.PanelOptions
 		// color picker : 
 		private var color_picker_bordure:ColorPicker;
 		private var epaisseur_bordure:NumericStepper;
+		private var enlever_bordure:Button;
 		
 		// degrade :
 		private var btn_degrade:RadioButton;
@@ -142,7 +143,7 @@ package Graphisme.PanelOptions
 			tab_onglet = null;
 			this.height=400;
 			this.width=190;
-			this.title="Options :"
+			this.title="Options :";
 			objet=null;
 			operation=null;
 			modele_global=null;
@@ -254,6 +255,7 @@ package Graphisme.PanelOptions
 			rendu_degrade.enabled = false;
 			hbox_degrade.addChild(btn_degrade);
 			hbox_degrade.addChild(rendu_degrade);
+			rendu_degrade.addEventListener(MouseEvent.CLICK,clicSurDegrade);
 			btn_degrade.addEventListener(MouseEvent.CLICK,clicSurDegrade);
 			fenetre_degrade = new FenetreDegrade(this,erreur);
 			
@@ -309,7 +311,7 @@ package Graphisme.PanelOptions
 			color_picker_bordure.editable = true;
 			color_picker_bordure.addEventListener(MouseEvent.CLICK, afficherColorPicker);
 			epaisseur_bordure = new NumericStepper();
-			epaisseur_bordure.minimum = 0;
+			epaisseur_bordure.minimum = 0.1;
 			epaisseur_bordure.maximum = 5;
 			epaisseur_bordure.stepSize = 0.1;
 			btn_bordure = new Button();
@@ -321,7 +323,13 @@ package Graphisme.PanelOptions
 			
 			var bordure:Label = new Label();
 			bordure.text = "Bordure :"; 
-			this.addChild(bordure);
+			enlever_bordure = new Button();
+			enlever_bordure.label="Enlever";
+			enlever_bordure.addEventListener(MouseEvent.CLICK,enleverBordure);
+			var hb:HBox = new HBox();
+			hb.addChild(bordure);
+			hb.addChild(enlever_bordure);
+			this.addChild(hb);
 			this.addChild(hBox_bordure);
 			
 			
@@ -463,6 +471,8 @@ package Graphisme.PanelOptions
 			setValeurY(objet.getObjet().getY().toString());
 			setValeurHauteur(objet.getObjet().getHauteur().toString());
 			setValeurLargeur(objet.getObjet().getLargeur().toString());
+			
+			// bordure : 
 			
 			calculDesTextures(objet.getTexture());
 				
@@ -788,14 +798,18 @@ package Graphisme.PanelOptions
 		public function clicSurDegrade(event:MouseEvent):void
 		{
 			rendu_degrade.enabled = true;
+			
 			if(objet.getTexture().getNomClasse()=="MDegrade")
 			{
-				fenetre_degrade.mettreAJour();
+				fenetre_degrade.mettreAJour(objet);
 				fenetre_degrade.getRendu().redessiner();
 			}
+			
 			PopUpManager.removePopUp(fenetre_degrade);
+			fenetre_degrade.setObjet(objet);
 			PopUpManager.addPopUp(fenetre_degrade, tab_onglet.parent, false);
             PopUpManager.centerPopUp(fenetre_degrade);
+            
 		}
 		
 // ----------------------------------------------------------------
@@ -806,6 +820,14 @@ package Graphisme.PanelOptions
 			var epaisseur:Number = epaisseur_bordure.value;
 			var couleur:uint = color_picker_bordure.selectedColor;
 			objet.setBordure(new MBordure(epaisseur,couleur));
+		}
+		
+		public function enleverBordure(event:MouseEvent):void
+		{
+			if(objet.getBordure()!=null)
+			{
+				objet.setBordure(null);
+			}
 		}
 		
 // ----------------------------------------------------------------

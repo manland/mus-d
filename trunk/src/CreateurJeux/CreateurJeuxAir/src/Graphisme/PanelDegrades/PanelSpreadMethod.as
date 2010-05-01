@@ -2,6 +2,7 @@ package Graphisme.PanelDegrades
 {
 	import Erreurs.Erreur;
 	
+	import Graphique.MIObjetGraphique;
 	import Graphique.Textures.Degrades.MDegrade;
 	
 	import flash.display.SpreadMethod;
@@ -95,10 +96,10 @@ package Graphisme.PanelDegrades
 			fenetre_degrade.getRendu().redessiner();
 		}
 		
-		public function mettreAJour():void
+		public function mettreAJour(obj:MIObjetGraphique):void
 		{
 			var str:String;
-			str = ((MDegrade)(fenetre_degrade.getPanelOption().getObjet().getTexture())).getSpreadMethod();
+			str = ((MDegrade)(obj.getTexture())).getSpreadMethod();
 			if(str==SpreadMethod.PAD)
 			{
 				btn_normal.selected=true;

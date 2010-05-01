@@ -1,10 +1,10 @@
 package Graphisme.Onglets
 {
-	import Coeur.MScene;
-	
 	import Erreurs.Erreur;
 	
+	import Graphique.MGraphiqueEtoile;
 	import Graphique.MGraphiqueScene;
+	import Graphique.MGraphiqueTriangle;
 	import Graphique.MIObjetGraphique;
 	import Graphique.Textures.Degrades.MDegrade;
 	import Graphique.Textures.MCouleur;
@@ -85,12 +85,9 @@ package Graphisme.Onglets
 			cadre =new Canvas();
 			this.texture=new MCouleur(0xE2CDFF);
 			
-//			panel_opt.setObjet(this);
-//			operation.setObjet(this);
-//			this.getGraphique().setFocus();
-//			operation.afficherCadre();
-//			operation.apresDeplacement();
-//			
+			
+			panel_opt.setObjet(this);
+
 			this.id = "scene";
 			this.getObjet().setHauteur(600);
 			this.getObjet().setLargeur(600);
@@ -245,12 +242,14 @@ package Graphisme.Onglets
 		// fonction de génération de code : 
 		public function genererCodeApplicationFlex(titre:String):String
 		{
+			var code_scene:String = this.genererCodeScene();
+			var code_script:String =genererCodeScript();
 			// penser a remettre le titre du jeu et a faire le choix entre air ou flex
 			var res:String="<?xml version=\"1.0\" encoding=\"utf-8\"?> "+
 				" \n <mx:Application xmlns:mx=\"http://www.adobe.com/2006/mxml\" "+
 				"layout=\"absolute\" xmlns:TER=\"Graphique.*\" pageTitle=\""+titre+"\"> \n";
-			res+=genererCodeScript();
-			res+=this.genererCodeScene();
+			res+=code_script;
+			res+=code_scene;
 			res+="\n </mx:Application>";
 			
 			return res;
@@ -258,12 +257,15 @@ package Graphisme.Onglets
 		
 		public function genererCodeApplicationAir(titre:String):String
 		{
+			var code_scene:String = this.genererCodeScene();
+			var code_script:String =genererCodeScript();
 			// penser a remettre le titre du jeu et a faire le choix entre air ou flex
 			var res:String="<?xml version=\"1.0\" encoding=\"utf-8\"?> "+
 				" \n <mx:WindowedApplication title=\""+titre+"\" xmlns:mx=\"http://www.adobe.com/2006/mxml\" "+
 				"layout=\"absolute\" xmlns:TER=\"Graphique.*\"> \n";
-			res+=genererCodeScript();
-			res+=this.genererCodeScene();
+			res+=code_script;
+			res+=code_scene;
+			
 			res+="\n </mx:WindowedApplication>";
 			return res;
 		}
@@ -317,12 +319,27 @@ package Graphisme.Onglets
 		public function genererCodeObjet(obj:MIObjetGraphique):String
 		{
 			var str:String = "\n \t \t <TER:"+obj.getNomClasse()
-							 +" id=\""+obj.getGraphique().id+"\""
-							 +" largeur=\""+obj.getObjet().getLargeur().toString()+"\""
-							 +" hauteur=\""+obj.getObjet().getHauteur().toString()+"\""
-							 +" x=\""+obj.getObjet().getX().toString()+"\""
-							 +" y=\""+obj.getObjet().getY().toString()+"\""
-							 +" "+genererCodeTexture(obj)+" ";
+							 +" id=\""+obj.getGraphique().id+"\"";
+			if(obj.getNomClasse()=="MGraphiqueTriangle")
+			{
+				str+=" point1=\"{new MCoordonnee("+Number(((MGraphiqueTriangle)(obj)).point1.getX())+","+Number(((MGraphiqueTriangle)(obj)).point1.getY())+")}\""+
+					 " point2=\"{new MCoordonnee("+Number(((MGraphiqueTriangle)(obj)).point2.getX())+","+Number(((MGraphiqueTriangle)(obj)).point2.getY())+")}\""+
+					 " point3=\"{new MCoordonnee("+Number(((MGraphiqueTriangle)(obj)).point3.getX())+","+Number(((MGraphiqueTriangle)(obj)).point3.getY())+")}\"";
+			}
+			else
+			{
+				str+=" largeur=\""+obj.getObjet().getLargeur().toString()+"\""
+					 +" hauteur=\""+obj.getObjet().getHauteur().toString()+"\""
+					 +" x=\""+obj.getObjet().getX().toString()+"\""
+					 +" y=\""+obj.getObjet().getY().toString()+"\"";
+			}
+			if(obj.getNomClasse()=="MGraphiqueEtoile")
+			{
+				str+=" tourne=\""+((MGraphiqueEtoile)(obj)).tourne+"\" "+
+					 " vide=\"{"+((MGraphiqueEtoile)(obj)).vide+"}\"";
+			}
+			
+			str+=" "+genererCodeTexture(obj)+" ";
 			if(obj.getBordure()!=null)
 			{
 				str+=genererCodeBordure(obj);
