@@ -32,6 +32,23 @@ package Controleur
 			this.vitesse_px_s_Y = vitesse_px_s_Y;
 		}
 		
+		/**
+		 * instancie le mouvement à partir de l'angle en degré avec l'horizontal et sa vitesse en px par seconde
+		 * rappel: les angles se mesurent dans le sens contraire les aiguilles d'une montre => 30° = 30° au dessus de l'horizontale
+		 * */
+		public function instancieAvecAngleEtVitesse(objet:MIObjet, angle:Number, vitesse:Number):void
+		{
+			var x:Number;
+			var y:Number;
+			var radian:Number;
+			
+			radian = angle * Math.PI / 180;
+			x = vitesse * Math.cos(radian);
+			y = vitesse * Math.sin(radian);
+			
+			this.instancie(objet, x, y);
+		}
+		
 		public function lancer():void{
 			//remise a zéro si ce n'est pas fait
 			if(timer != null) {
