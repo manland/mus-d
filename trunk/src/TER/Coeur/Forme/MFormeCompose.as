@@ -267,7 +267,7 @@ package Coeur.Forme
 			return points;
 		}
 		
-		public function seProjeteSur(vecteur:MVecteur):Array{
+		public override function seProjeteSur(vecteur:MVecteur):Array{
 			//a revoir
 //			var pts:Array = getPointsProjection(vecteur);
 //			for(var i:uint = 0; i<pts.length; i++){
