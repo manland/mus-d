@@ -15,3 +15,33 @@
 {
 	 skin:Embed("Images/angleHautGauche.png");
 }
+
+.boutonMenuDemarrer {
+	 up-skin:Embed("boutonsMenu/DemarrerNormal.png");
+	 over-skin:Embed("boutonsMenu/DemarrerSurvol.png");
+	 skin:Embed("boutonsMenu/DemarrerClic.png");
+}
+
+.boutonMenuReprendre {
+	 up-skin:Embed("boutonsMenu/ReprendreNormal.png");
+	 over-skin:Embed("boutonsMenu/ReprendreSurvol.png");
+	 skin:Embed("boutonsMenu/ReprendreClic.png");
+}
+
+.boutonMenuCommandes {
+	 up-skin:Embed("boutonsMenu/CommandesNormal.png");
+	 over-skin:Embed("boutonsMenu/CommandesSurvol.png");
+	 skin:Embed("boutonsMenu/CommandesClic.png");
+}
+
+.boutonMenuRegles {
+	 up-skin:Embed("boutonsMenu/ReglesNormal.png");
+	 over-skin:Embed("boutonsMenu/ReglesSurvol.png");
+	 skin:Embed("boutonsMenu/ReglesClic.png");
+}
+
+.boutonMenuCredits {
+	 up-skin:Embed("boutonsMenu/CreditsNormal.png");
+	 over-skin:Embed("boutonsMenu/CreditsSurvol.png");
+	 skin:Embed("boutonsMenu/CreditsClic.png");
+}
