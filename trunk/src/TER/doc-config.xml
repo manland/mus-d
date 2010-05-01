@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flex-config>
+	<compiler>
+		<source-path>
+			<path-element>./</path-element>
+		</source-path>
+		<namespaces>
+			<namespace>
+				<uri>TER</uri>
+				<manifest>asdoc-manifest.xml</manifest>
+			</namespace>
+		</namespaces>
+	</compiler>
+	<main-title>Framework MUS-D</main-title>
+	<window-title>Framework MUS-D</window-title>
+	<footer>Framework MUS-D :: http://code.google.com/p/mus-d</footer>
+	<output>docs</output>
+	<doc-namespaces>
+		<uri>TER</uri>
+	</doc-namespaces>
+
+	<packages>
+		<package>
+			<string>Coeur</string>
+			<string>Le code métier de notre framework.</string>
+		</package>
+		<package>
+			<string>Coeur.Forme</string>
+			<string>Le code métier des différentes formes de notre framework.</string>
+		</package>
+		<package>
+			<string>Coeur.Elements</string>
+			<string>Les différents éléments que l'on peut ajouter dans les scenes de notre framework.</string>
+		</package>
+		<package>
+			<string>Controleur</string>
+			<string>Les controleurs de notre framework. Soit l'écoute du clavier, de la souris mais aussi les effets que l'on peut appliquer aux objets de notre framework.</string>
+		</package>
+		<package>
+			<string>Graphique</string>
+			<string>Les différents objets graphiques de notre framework. Ceux-ci contiennent des références vers les éléments du code métier.</string>
+		</package>
+		<package>
+			<string>Graphique.Textures</string>
+			<string>Les textures pouvant être appliquées aux objets graphiques.</string>
+		</package>
+		<package>
+			<string>Graphique.Textures.Degrades</string>
+			<string>Les dégradés pouvant être appliquées aux objets graphiques.</string>
+		</package>
+		<package>
+			<string>Utilitaires</string>
+			<string>Classes aidant à la programmation.</string>
+		</package>
+	</packages>
+
+	<metadata>
+		<title>Framework MUS-D documentation</title>
+		<description>Documentation du framework MUS-D pour la réalisation de jeux d'arcade en flex et/ou actionscript</description>
+		<publisher>MUS-D</publisher>
+		<creator>MUS-D</creator>
+		<language>FR</language>
+	</metadata>
+</flex-config>
