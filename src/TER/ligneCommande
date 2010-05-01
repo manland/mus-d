@@ -1,0 +1,5 @@
+linux :
+sudo /opt/Adobe_Flex_Builder_Linux/sdks/3.0.0/bin/asdoc -load-config+=/home/manland/workspace/TER/doc-config.xml
+
+Windob :
+c:/Program Files/Adobe/sdks/3.0.0/bin/asdoc.exe -load-config+=C:/worspace/TER/doc-config.xml
