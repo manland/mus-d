@@ -65,9 +65,6 @@ package Coeur.Forme
 			return points;
 		}
 		
-		public function seProjeteSur(vecteur:MVecteur):Array{
-			return null;
-		}
 					 
 	}
 }
