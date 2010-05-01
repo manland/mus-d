@@ -1,9 +1,13 @@
 package Model
 {
+	import mx.controls.Text;
 	import Controleur.Clavier;
+	import mx.core.UIComponent;
 	import Controleur.IClavierListener;
-	import Controleur.MIEcouteurSouris;
 	import Controleur.MSouris;
+	import Controleur.MIEcouteurClavier;
+	import Controleur.MIEcouteurSouris;
+	import flash.ui.Mouse;
 	
 	public class Barre extends Objet implements IModelObjet, IClavierListener, MIEcouteurSouris
 	{
@@ -16,8 +20,7 @@ package Model
 			var clavier:Clavier = new Clavier();
 			clavier.addIClavierListener(this);
 			//objet controlé par souris
-			var souris:MSouris = new MSouris(Jeux.getSysout());
-			souris.ajouterEcouteur(this);
+			//voir dans Jeux.run() pour démaré que quand l'utilisateur click sur démarrer
 		}
 		
 		public function toucheBas():void {
@@ -41,8 +44,8 @@ package Model
 		public function bougeDroite(x:Number):void {
 			setX(x);
 		}
-		public function bougeGauche(y:Number):void {
-			setX(y);
+		public function bougeGauche(x:Number):void {
+			setX(x);
 		}
 	}
 }
