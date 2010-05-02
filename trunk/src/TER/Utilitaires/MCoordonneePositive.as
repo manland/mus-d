@@ -34,7 +34,10 @@ package Utilitaires
 		}
 		
 		public override function clone():MCoordonnee{			
-			return new MCoordonneePositive(50,50);
+			var clone_x:Number = new Number(x);
+			var clone_y:Number = new Number(y);
+			
+			return new MCoordonneePositive(clone_x, clone_y);
 		}
 		
 	}

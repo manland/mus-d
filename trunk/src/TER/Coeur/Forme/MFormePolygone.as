@@ -163,9 +163,6 @@ package Coeur.Forme
 		}
 		
 		protected function remplirFormePolygone(miforme:MFormePolygone):void{
-			
-			trace("OOOOOOOOOOO",this.nombre_arete);
-			trace(aretes.length);
 			miforme.setAretes(aretes);
 			super.remplirForme(miforme);
 			miforme.setNombreArete(new Number(nombre_arete));

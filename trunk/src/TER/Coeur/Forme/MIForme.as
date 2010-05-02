@@ -28,7 +28,7 @@ package Coeur.Forme
 		function calculMinX():Number;
 		function calculMinY():Number;
 		function calculMaxX():Number;
-		function calculMaxY():Number;
+		function calculMaxY():Number; 
 		function getDecalage():MCoordonneePositive;
 		function setDecalage(decalage:MCoordonneePositive):void;
 	

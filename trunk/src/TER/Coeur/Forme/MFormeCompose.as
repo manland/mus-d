@@ -241,7 +241,7 @@ package Coeur.Forme
 		}
 		
 		
-		public override function axeCollision(forme:MIForme):MAxe{
+		/* public override function axeCollision(forme:MIForme):MAxe{
  				var axe:MAxe = null;
  				if(this.forme_haut != null)
  					axe = this.forme_haut.axeCollision(forme);
@@ -252,7 +252,7 @@ package Coeur.Forme
  				if(axe == null && this.forme_centre != null)
  					axe = this.forme_centre.axeCollision(forme);
  				return axe;
- 			}
+ 			} */
 		
 		public function clone():MIForme{
 			return null;
