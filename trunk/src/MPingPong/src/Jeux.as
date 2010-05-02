@@ -15,6 +15,7 @@ package
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
+	import mx.controls.Alert;
 	import mx.controls.Button;
 	import mx.controls.Image;
 	import mx.controls.Label;
@@ -190,7 +191,7 @@ package
             labelScoreJ2.setStyle("fontSize", 20);
             addChild(labelScoreJ2);
             
-            raquetteJ1 = new Raquette(this, "J1", 0, 0, 20, 50);
+            raquetteJ1 = new Raquette(this, "J1", 1, 0, 20, 50);
             addChild(raquetteJ1);
             
             raquetteJ2 = new Raquette(this, "J2", this.width-20-1, 0, 20, 50);
@@ -219,6 +220,7 @@ package
 		
 		public function recommencer(e:MouseEvent):void {
 			//leMenu.nouvellePartie(e);
+			//completeHandler(null);
 			mouv.lancer();
 		}
 
@@ -231,9 +233,39 @@ package
 
         private function completeHandler(e:TimerEvent):void {
             labelTemps.text = "Fini";
-           
+            
+            var gagnant:String = "";
+            var message:String = "";
+            var scoreGagnant:int = 0;
+            var scorePerdant:int = 0;
+            
+            if(scoreJ1<scoreJ2) {
+            	gagnant = "Joueur 2";
+            	scorePerdant = scoreJ1;
+            	scoreGagnant = scoreJ2;
+            	message = "BRAVO "+gagnant+" !\nVous avez gagné :\n\n"+scoreGagnant+" à "+scorePerdant+".";
+            }
+            else if(scoreJ1>scoreJ2) {
+            	gagnant = "Joueur 1"; 
+            	scoreGagnant = scoreJ1;
+            	scorePerdant = scoreJ2;
+            	message = "BRAVO "+gagnant+" !\nVous avez gagné :\n\n"+scoreGagnant+" à "+scorePerdant+".";
+            }
+            else {
+            	scoreGagnant = scoreJ1;
+            	scorePerdant = scoreJ2;
+            	message = "Impossible de vous départager...\nVous avez le meme niveau !\n\nScore Final: "+scoreGagnant+" - "+scorePerdant+"";
+            }
+            Alert.show(message, "Fin de Partie...", Alert.OK, null, finPartieClic, null, Alert.OK);
         }
         
+        // Action boutons Alert Fin de Partie
+		public function finPartieClic(evt_obj:Object):void {
+		 	if (evt_obj.detail == Alert.OK) {
+		  		afficheMenu(null);
+		 	}
+		}
+		
         public function relancerTimer():void {
            	leTimer.start(); 
         }
