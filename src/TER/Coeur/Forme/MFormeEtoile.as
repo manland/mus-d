@@ -6,7 +6,7 @@ package Coeur.Forme
 	
 	public class MFormeEtoile extends MFormePolygone implements MIFormePolygone
 	{
-		protected var decalage:Number;
+		protected var rotation:Number;
 		
 		public function MFormeEtoile()
 		{
@@ -14,23 +14,23 @@ package Coeur.Forme
 			this.nom_classe="MFormeEtoile";
 			this.nombre_arete = 5;
 			this.somme_angles = -1;
-			this.decalage = 0;
+			this.rotation = 0;
 		}
 		
-		public function instancie(x:Number, y:Number, largeur:Number, decalage:Number = 0):void{
+		public function instancie(x:Number, y:Number, largeur:Number, rotation:Number = 0):void{
 			this.x = x;
 			this.y = y;
 			this.largeur = largeur;
 			this.hauteur = largeur;
-			this.decalage = decalage;
+			this.rotation = rotation;
 			this.calculAretes()
 		}
 		
-		public function calculAretes():void{
+		public override function calculAretes():void{
 			var milieu_x:Number = x +largeur/2;
 			var milieu_y:Number = y +largeur/2;
 			var rayon:Number = largeur/2;
-			var angle:Number = decalage;
+			var angle:Number = rotation;
 			
 			this.aretes = new Array();
 			var point1:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos(angle)), milieu_y + (rayon * Math.sin(angle)));
@@ -60,17 +60,6 @@ package Coeur.Forme
 			this.setHauteur(largeur);
 		}
 		
-		public override function setX(x:Number):void
-		{
-			super.setX(x);
-			this.calculAretes();
-		}
-		public override function setY(y:Number):void
-		{
-			super.setY(y);
-			this.calculAretes();
-		}
-		
 		public function getAire():Number
 		{
 			return 0;
@@ -80,24 +69,24 @@ package Coeur.Forme
 		{
 		}
 		
-		public function getDecalage():Number{
-			return this.decalage;
+		public function getRotation():Number{
+			return this.rotation;
 		}
-		public function setDecalage(decalage:Number):void{
-			this.decalage = decalage;
+		public function setRotation(rotation:Number):void{
+			this.rotation = rotation;
 			this.calculAretes();
 		}
 		
 		public function clone():MIForme{
 			var clone_miforme:MIForme = new MFormeEtoile();
 			this.remplirFormePolygone(clone_miforme as MFormeEtoile);
-			(clone_miforme as MFormeEtoile).setDecalage(new Number(decalage));
+			(clone_miforme as MFormeEtoile).setRotation(new Number(rotation));
 			return clone_miforme; 
 		}
 		
 		public override function affiche():void{
 			super.affiche();
-			trace("decalage :",this.decalage);
+			trace("decalage :",this.rotation);
 		}
 		
 	}

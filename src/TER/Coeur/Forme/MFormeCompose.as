@@ -2,8 +2,7 @@ package Coeur.Forme
 {
 	import Coeur.MUtilitaire;
 	
-	import Utilitaires.MAxe;
-	import Utilitaires.MVecteur;
+	import Utilitaires.*;
 	
 	public class MFormeCompose extends MForme implements MIForme
 	{
@@ -14,6 +13,7 @@ package Coeur.Forme
 		 * 
 		 * 
 		 * */
+		
 		private var forme_droit:MIForme;
 		private var forme_gauche:MIForme;
 		private var forme_haut:MIForme;
@@ -28,6 +28,7 @@ package Coeur.Forme
 			this.forme_gauche = null;
 			this.forme_haut = null;
 			this.forme_centre = null;
+			
 		}
 		
 		public override function calculMinX():Number{
@@ -95,7 +96,7 @@ package Coeur.Forme
 		}
 		
 		public function instancie(forme_centre:MIForme):void{
-			this.forme_centre = forme_centre;
+			this.forme_centre = forme_centre.clone();
 			this.calculParametres();
 		}
 		
@@ -112,9 +113,12 @@ package Coeur.Forme
 			return this.forme_droit;
 		}
 		public function setFormeDroit(forme_droit:MIForme):void{
+			if(this.forme_centre == null)
+				throw new MErreur(this.nom_classe, "setFormeDroit", "Pas le droit de setter une forme sans la forme centrale");
 			this.forme_droit = forme_droit.clone();
 			
-			this.forme_droit.deplacement((this.x+largeur) - forme_droit.getX(), this.y - forme_droit.getY());
+			this.forme_droit.deplacement((this.forme_centre.getX()+this.forme_centre.getLargeur()) - forme_droit.getX() + this.forme_droit.getDecalage().getX(),
+									 this.forme_centre.getY() - forme_droit.getY() + this.forme_droit.getDecalage().getX());
 			this.calculParametres();
 		}
 		
@@ -144,23 +148,47 @@ package Coeur.Forme
 		}
 		public function setFormeCentre(forme_centre:MIForme):void{
 			this.forme_centre = forme_centre.clone();
+			if(this.forme_centre == null){
+				this.setFormeBas(null);
+				this.setFormeDroit(null);
+				this.setFormeHaut(null);
+				this.setFormeGauche(null);
+			}
 		}
 		
 		public function getFormeHaut():MIForme{
 			return this.forme_haut;
 		}
 		public function setFormeHaut(forme_haut:MIForme):void{
-			this.forme_haut = forme_haut.clone();
+			if(this.forme_centre == null)
+				throw new MErreur(this.nom_classe, "setFormeHaut", "Pas le droit de setter une forme sans la forme centrale");
 			
-			this.forme_gauche.deplacement(this.forme_centre.getX() - forme_haut.getX(), this.y - forme_haut.getY());
-			if(this.forme_gauche != null)
-				this.forme_gauche.deplacement(0, this.forme_haut.getHauteur());
-			if(this.forme_bas != null)
-				this.forme_bas.deplacement(0, this.forme_haut.getHauteur());
-			if(this.forme_droit != null)
-				this.forme_droit.deplacement(0, this.forme_haut.getHauteur());
-			if(this.forme_centre != null)
-				this.forme_centre.deplacement(0, this.forme_haut.getHauteur());
+			if(forme_haut != null){
+				this.forme_haut = forme_haut.clone();
+				//trace(this.forme_centre.getX()," - ",forme_haut.getX());
+				this.forme_haut.deplacement(this.forme_centre.getX() - forme_haut.getX(), this.y - forme_haut.getY());
+				
+				if(this.forme_gauche != null)
+					this.forme_gauche.deplacement(0, this.forme_haut.getHauteur());
+				if(this.forme_bas != null)
+					this.forme_bas.deplacement(0, this.forme_haut.getHauteur());
+				if(this.forme_droit != null)
+					this.forme_droit.deplacement(0, this.forme_haut.getHauteur());
+				if(this.forme_centre != null)
+					this.forme_centre.deplacement(0, this.forme_haut.getHauteur());
+			}
+			else{
+				//trace(this.forme_centre.getX()," - ",forme_haut.getX());
+				if(this.forme_gauche != null)
+					this.forme_gauche.deplacement(0, -this.forme_haut.getHauteur());
+				if(this.forme_bas != null)
+					this.forme_bas.deplacement(0, -this.forme_haut.getHauteur());
+				if(this.forme_droit != null)
+					this.forme_droit.deplacement(0, -this.forme_haut.getHauteur());
+				if(this.forme_centre != null)
+					this.forme_centre.deplacement(0, -this.forme_haut.getHauteur());
+				this.forme_haut = null;
+			}
 			this.calculParametres();
 		}
 		
@@ -168,9 +196,13 @@ package Coeur.Forme
 			return this.forme_bas;
 		}
 		public function setFormeBas(forme_bas:MIForme):void{
+			if(this.forme_centre == null)
+				throw new MErreur(this.nom_classe, "setFormeBas", "Pas le droit de setter une forme sans la forme centrale");
 			this.forme_bas = forme_bas.clone();
 			
-			this.forme_bas.deplacement(this.x - forme_bas.getX(), (this.y + hauteur) - forme_bas.getY());
+			trace(this.x - forme_bas.getX(),"-",(this.y + hauteur) - forme_bas.getY());
+			this.forme_bas.deplacement(this.forme_centre.getY() - forme_bas.getX() + this.forme_bas.getDecalage().getX(),
+									 (this.forme_centre.getY()+this.forme_centre.getHauteur()) - forme_bas.getY() + this.forme_bas.getDecalage().getY());
 			this.calculParametres();
 		}
 		
@@ -178,35 +210,49 @@ package Coeur.Forme
 			return this.forme_gauche;
 		}
 		public function setFormeGauche(forme_gauche:MIForme):void{
+			if(this.forme_centre == null)
+				throw new MErreur(this.nom_classe, "setFormeGauche", "Pas le droit de setter une forme sans la forme centrale");
 			this.forme_gauche = forme_gauche.clone();
 			
-			this.forme_gauche.deplacement(this.x - forme_gauche.getX(), this.forme_centre.getY() - forme_gauche.getY());
-			if(this.forme_haut != null)
-				this.forme_haut.deplacement(this.forme_gauche.getLargeur(), 0);
-			if(this.forme_bas != null)
-				this.forme_bas.deplacement(this.forme_gauche.getLargeur(), 0);
-			if(this.forme_droit != null)
-				this.forme_droit.deplacement(this.forme_gauche.getLargeur(), 0);
-			if(this.forme_centre != null)
-				this.forme_centre.deplacement(this.forme_gauche.getLargeur(), 0);
+			if(forme_gauche != null){
+				this.forme_gauche.deplacement(this.x - forme_gauche.getX(), this.forme_centre.getY() - forme_gauche.getY());
+				if(this.forme_haut != null)
+					this.forme_haut.deplacement(this.forme_gauche.getLargeur(), 0);
+				if(this.forme_bas != null)
+					this.forme_bas.deplacement(this.forme_gauche.getLargeur(), 0);
+				if(this.forme_droit != null)
+					this.forme_droit.deplacement(this.forme_gauche.getLargeur(), 0);
+				if(this.forme_centre != null)
+					this.forme_centre.deplacement(this.forme_gauche.getLargeur(), 0);
+			}
+			else{
+				if(this.forme_haut != null)
+					this.forme_haut.deplacement(-this.forme_gauche.getLargeur(), 0);
+				if(this.forme_bas != null)
+					this.forme_bas.deplacement(-this.forme_gauche.getLargeur(), 0);
+				if(this.forme_droit != null)
+					this.forme_droit.deplacement(-this.forme_gauche.getLargeur(), 0);
+				if(this.forme_centre != null)
+					this.forme_centre.deplacement(-this.forme_gauche.getLargeur(), 0);
+				
+				this.forme_gauche = forme_gauche;
+			}
 			this.calculParametres();
 		}
 		
 		
 		public override function axeCollision(forme:MIForme):MAxe{
-			var axe:MAxe = null;
-			
-			if(this.forme_haut != null)
-				axe = this.forme_haut.axeCollision(forme);
-			if(axe == null && this.forme_bas != null)
-				axe = this.forme_bas.axeCollision(forme);
-			if(axe == null && this.forme_droit != null)
-				axe = this.forme_droit.axeCollision(forme);
-			if(axe == null && this.forme_centre != null)
-				axe = this.forme_centre.axeCollision(forme);
-				
-			return axe;
-		}
+ 				var axe:MAxe = null;
+ 				if(this.forme_haut != null)
+ 					axe = this.forme_haut.axeCollision(forme);
+ 				if(axe == null && this.forme_bas != null)
+ 					axe = this.forme_bas.axeCollision(forme);
+ 				if(axe == null && this.forme_droit != null)
+ 					axe = this.forme_droit.axeCollision(forme);
+ 				if(axe == null && this.forme_centre != null)
+ 					axe = this.forme_centre.axeCollision(forme);
+ 				return axe;
+ 			}
 		
 		public function clone():MIForme{
 			return null;
@@ -247,36 +293,55 @@ package Coeur.Forme
 				trace("------------------------------");
 			}
 		}
-		
 		public function getAxesSeparateurs(objet:MIForme):Array{
-			var axes:Array = new Array();
-			if(forme_haut != null)
-				axes = axes.concat(forme_haut.getAxesSeparateurs(objet));
-			if(forme_centre != null)
-				axes = axes.concat(forme_centre.getAxesSeparateurs(objet));
-			if(forme_gauche != null)
-				axes = axes.concat(forme_gauche.getAxesSeparateurs(objet));
-			if(forme_droit != null)
-				axes = axes.concat(forme_droit.getAxesSeparateurs(objet));
-			if(forme_bas != null)
-				axes = axes.concat(forme_bas.getAxesSeparateurs(objet));
-			return axes;
-		}
-		
-		public function getPointsProjection(vecteur:MVecteur):Array{
-			var points:Array = new Array();
-			if(forme_haut != null)
-				points = points.concat(forme_haut.getPointsProjection(vecteur));
-			if(forme_centre != null)
-				points = points.concat(forme_centre.getPointsProjection(vecteur));
-			if(forme_gauche != null)
-				points = points.concat(forme_gauche.getPointsProjection(vecteur));
-			if(forme_droit != null)
-				points = points.concat(forme_droit.getPointsProjection(vecteur));
-			if(forme_bas != null)
-				points = points.concat(forme_bas.getPointsProjection(vecteur));
-			return points;
-		}
-		
+ 			var axes:Array = new Array();
+ 			if(forme_haut != null)
+ 				axes = axes.concat(forme_haut.getAxesSeparateurs(objet));
+ 			if(forme_centre != null)
+ 				axes = axes.concat(forme_centre.getAxesSeparateurs(objet));
+ 			if(forme_gauche != null)
+ 				axes = axes.concat(forme_gauche.getAxesSeparateurs(objet));
+ 			if(forme_droit != null)
+ 				axes = axes.concat(forme_droit.getAxesSeparateurs(objet));
+ 			if(forme_bas != null)
+ 				axes = axes.concat(forme_bas.getAxesSeparateurs(objet));
+ 			return axes;
+ 		}
+ 		public function getPointsProjection(vecteur:MVecteur):Array{
+ 			var points:Array = new Array();
+ 			if(forme_haut != null)
+ 				points = points.concat(forme_haut.getPointsProjection(vecteur));
+ 			if(forme_centre != null)
+ 				points = points.concat(forme_centre.getPointsProjection(vecteur));
+ 			if(forme_gauche != null)
+ 				points = points.concat(forme_gauche.getPointsProjection(vecteur));
+ 			if(forme_droit != null)
+ 				points = points.concat(forme_droit.getPointsProjection(vecteur));
+ 			if(forme_bas != null)
+ 				points = points.concat(forme_bas.getPointsProjection(vecteur));
+ 			return points;
+ 		}
+ 		
+ 		public override function seProjeteSur(vecteur:MVecteur):Array{
+ 			//a revoir
+ //			var pts:Array = getPointsProjection(vecteur);
+ //			for(var i:uint = 0; i<pts.length; i++){
+ //				var pt:MCoordonnee = pts[i] as MCoordonnee;
+ //				var scalaire:Number = vecteur.getX()*pt.getX() + pt.getY()*vecteur.getY();
+ //				var projection:MVecteur = new MVecteur();
+ //				projection.instancie(scalaire * vecteur.getX(),scalaire * vecteur.getY());
+ //
+ //				var val:Number = 0;
+ //             	if(projection.getX()/Math.abs(projection.getX())== vecteur.getX()/Math.abs(vecteur.getX()) && projection.getY()/Math.abs(projection.getY())== vecteur.getY()/Math.abs(vecteur.getY())){
+ //                 	val = projection.getNorme();
+ //              	}
+ //             	else{
+ //                 	val = -projection.getNorme();
+ //              	}
+ //             	min = Math.min(val, min);
+ //             	max = Math.max(val, max);
+ //			}
+ 			return null;
+ 			}
 	}
 }
