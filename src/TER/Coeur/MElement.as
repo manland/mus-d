@@ -277,9 +277,9 @@ package Coeur
 		//retourne l'axe de la collision avec l'objet passé en param ou null s'il n'y a pas collision
 		public function axeCollision(objet:MIObjet):MAxe{
 			var axe:MAxe = null;
-			axe = this.getForme().axeCollision(objet.getForme());
+			//axe = this.getForme().axeCollision(objet.getForme());
 			if(axe == null)
-				axe = objet.getForme().axeCollision(this.getForme());
+				;//axe = objet.getForme().axeCollision(this.getForme());
 			return axe;			
 		}
 

@@ -104,7 +104,7 @@ package Coeur.Forme
 		
 		public override function clone():MIForme{
 			var clone_miforme:MIForme = new MFormeRond();
-			this.remplirForme((clone_miforme as MFormeRond));
+			this.remplirForme(clone_miforme as MFormeRond);
 			return clone_miforme; 
 		}// stocke dans min et max les valeurs min et max des projections des points du polygone sur le paramètre vecteur
  
