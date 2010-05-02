@@ -29,8 +29,8 @@ package Coeur.Forme
 		function calculMinY():Number;
 		function calculMaxX():Number;
 		function calculMaxY():Number;
-		function getDecalage():MCoordonnee;
-		function setDecalage(decalage:MCoordonnee):void;
+		function getDecalage():MCoordonneePositive;
+		function setDecalage(decalage:MCoordonneePositive):void;
 	
 	}
 }

@@ -6,7 +6,7 @@ package Utilitaires
 		protected var x:Number;
 		protected var y:Number;
 		
-		public function MCoordonnee(x:Number, y:Number)
+		public function MCoordonnee(x:Number=0, y:Number=0)
 		{
 			this.x = x;
 			this.y = y;

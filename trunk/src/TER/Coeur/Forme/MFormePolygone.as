@@ -163,6 +163,9 @@ package Coeur.Forme
 		}
 		
 		protected function remplirFormePolygone(miforme:MFormePolygone):void{
+			
+			trace("OOOOOOOOOOO",this.nombre_arete);
+			trace(aretes.length);
 			miforme.setAretes(aretes);
 			super.remplirForme(miforme);
 			miforme.setNombreArete(new Number(nombre_arete));
@@ -188,9 +191,7 @@ package Coeur.Forme
 			this.calculAretes();
 		}
 		
-		public override function setDecalage(decalage:MCoordonnee):void{
-			if(decalage == null || decalage.getX() < 0 || decalage.getY()<0)
-				throw new MErreur(this.nom_classe, "setDecalage", "le decalage doit etre positif");
+		public override function setDecalage(decalage:MCoordonneePositive):void{
 			var tmp_decalage_x:Number = decalage.getX() - this.decalage.getX();
 			var tmp_decalage_y:Number = decalage.getY() - this.decalage.getY();
 			this.decalage = decalage;

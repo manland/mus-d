@@ -107,6 +107,11 @@ package Utilitaires
 			var clone_marete:MArete = new MArete(clone_depart, clone_arrivee);
 			return clone_marete;
 		}
+		
+		public function deplacement(x:Number, y:Number){
+			this.depart.deplacement(x,y);
+			this.arrivee.deplacement(x,y);
+		}
 
 	}
 }

@@ -11,7 +11,7 @@ package Coeur.Forme
 		protected var largeur:Number;
 		protected var hauteur:Number;
 		protected var nom_classe:String;
-		protected var decalage:MCoordonnee;
+		protected var decalage:MCoordonneePositive;
 		
 		public function MForme()
 		{
@@ -23,7 +23,7 @@ package Coeur.Forme
 			if(sous_classe == null) {
 				throw new MErreur(this.nom_classe, "Constructeur", "Les classes qui étendent MForme doivent implementer MIForme");
 			}
-			this.decalage = new MCoordonnee(0,0);
+			this.decalage = new MCoordonneePositive(0,0);
 		}
 		
 		public function calculMinX():Number{
@@ -42,13 +42,11 @@ package Coeur.Forme
 			return this.hauteur + this.getY();
 		}
 		
-		public function getDecalage():MCoordonnee{
-			return this.decalage.clone();
+		public function getDecalage():MCoordonneePositive{
+			return this.decalage.clone() as MCoordonneePositive;
 		}
 		
-		public function setDecalage(decalage:MCoordonnee):void{
-			if(decalage == null || decalage.getX() < 0 || decalage.getY()<0)
-				throw new MErreur(this.nom_classe, "setDecalage", "le decalage doit etre positif");
+		public function setDecalage(decalage:MCoordonneePositive):void{
 			this.decalage = decalage; 
 		}
 		
@@ -104,7 +102,7 @@ package Coeur.Forme
 		}
 		
 		protected function remplirForme(miforme:MForme):void{
-			miforme.setDecalage(this.decalage.clone());
+			miforme.setDecalage(this.decalage.clone() as MCoordonneePositive);
 			miforme.setX(new Number(x));
 			miforme.setY(new Number(y));
 			miforme.setHauteur(new Number(hauteur));
