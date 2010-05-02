@@ -41,7 +41,9 @@ package Coeur
 			this.proprietes = new Array();
 			this.enfants = new Array();
 			this.nom_classe = "MScene";
-			this.forme = null;
+			this.forme = new MFormeRectangle();
+			(this.forme as MFormeRectangle).instancie(x,y,largeur,hauteur);
+			naitre();
 		}
 		
 		public function getForme():MIForme
@@ -282,6 +284,8 @@ package Coeur
 				}
 			}
 			//collision avec les bords de la scene
+//			if((objet.getForme() as MFormeCompose) != null)
+//				sysout.text += "\n composé";
 			if(this.estProcheDe(objet)){
 				axe = this.axeCollision(objet);
 				if( axe != null){
@@ -318,15 +322,12 @@ package Coeur
 			var clone_hauteur:Number = new Number(hauteur);
 			var clone_nom_classe:String = new String(nom_classe);
 			var clone_forme:MIForme = this.forme.clone();
-			
 			var clone_mscene:MScene = new MScene();
 			clone_mscene.setHauteur(clone_hauteur);
 			clone_mscene.setLargeur(clone_largeur);
 			clone_mscene.setX(clone_x);
 			clone_mscene.setY(clone_y);
 			clone_mscene.setForme(clone_forme);
-			clone_mscene.ecouteurs = this.ecouteurs;
-			clone_mscene.setEnfants(this.enfants);
 			clone_mscene.setProprietes(this.proprietes);
 			return clone_mscene;
 		}
@@ -406,7 +407,6 @@ package Coeur
 			var forme:MIForme = objet.getForme();
 			var vecteur:MVecteur = getAxeSeparateur(objet);
 			
-			
 			//valeur minimale et maximale des projections de l'objet sur l'axe séparateur
 			var min:Number;
 			var max:Number;
@@ -433,8 +433,11 @@ package Coeur
 			var ty:Number = objet.getY();
 			var larg:Number = objet.getLargeur();
 			var haut:Number = objet.getHauteur();
-			
+//			if((objet.getForme() as MFormeCompose) != null)
+//				sysout.text += "\n x: "+tx+" y: "+ty+" lar: "+larg+" haut: "+haut;
 			return (tx <= this.x || (tx+larg) >= this.x + largeur || ty <= this.y || (ty+haut) >= this.y + hauteur);
 		}
+		
+		
 	}
 }

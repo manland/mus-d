@@ -42,11 +42,6 @@ package Coeur.Forme
 			super.affiche();
 		}
 		
-		public function axeCollision(x:Number,y:Number):MAxe{
-			//a remplir
-			return null;
-		}
-		
 		public function clone():MIForme{
 			var clone_miforme:MIForme = new MFormeEllipse();
 			this.remplirForme((clone_miforme as MFormeEllipse));
