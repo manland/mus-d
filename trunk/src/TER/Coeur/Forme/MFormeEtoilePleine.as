@@ -26,7 +26,7 @@ package Coeur.Forme
 			this.largeur = largeur;
 			this.hauteur = largeur;
 			this.petit_rayon = largeur / 4;
-			this.decalage = decalage;
+			this.rotation = decalage;
 			this.calculAretes();
 		}
 		
@@ -38,7 +38,7 @@ package Coeur.Forme
 			this.largeur = largeur;
 			this.hauteur = largeur;
 			this.petit_rayon = petit_rayon;
-			this.decalage = decalage;
+			this.rotation = decalage;
 			this.calculAretes();
 		}
 		
@@ -46,7 +46,7 @@ package Coeur.Forme
 			var milieu_x:Number = x +largeur/2;
 			var milieu_y:Number = y +largeur/2;
 			var rayon:Number = largeur/2;
-			var angle:Number = decalage + ((2*Math.PI)/10);
+			var angle:Number = rotation + ((2*Math.PI)/10);
 			
 			this.aretes = new Array();
 			var point1:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos(angle)), milieu_y + (rayon * Math.sin(angle)));
@@ -60,7 +60,7 @@ package Coeur.Forme
 			var point5:MCoordonnee = new MCoordonnee(milieu_x + (rayon * Math.cos(angle)), milieu_y + (rayon * Math.sin(angle)));
 			
 
-			angle = decalage;
+			angle = rotation;
 			var point6:MCoordonnee = new MCoordonnee(milieu_x + (petit_rayon * Math.cos(angle)), milieu_y + (petit_rayon * Math.sin(angle)));
 			angle += ((2*Math.PI)/5);
 			var point7:MCoordonnee = new MCoordonnee(milieu_x + (petit_rayon * Math.cos(angle)), milieu_y + (petit_rayon * Math.sin(angle)));
@@ -97,7 +97,7 @@ package Coeur.Forme
 		public override function clone():MIForme{
 			var clone_miforme:MIForme = new MFormeEtoilePleine();
 			this.remplirFormePolygone(clone_miforme as MFormeEtoile);
-			(clone_miforme as MFormeEtoilePleine).setDecalage(new Number(decalage));
+			(clone_miforme as MFormeEtoilePleine).setRotation(new Number(rotation));
 			(clone_miforme as MFormeEtoilePleine).setPetitRayon(new Number(this.petit_rayon));
 			return clone_miforme; 
 		}

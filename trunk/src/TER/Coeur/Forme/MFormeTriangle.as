@@ -26,6 +26,8 @@ package Coeur.Forme
 			var a1:MArete = this.aretes[0] as MArete;
 			var a2:MArete = this.aretes[1] as MArete;
 			var a3:MArete = this.aretes[2] as MArete;
+			if(a1 == null || a2 == null || a3 == null)
+				throw new MErreur(this.nom_classe,"setHauteur","Une des arêtes est nulle");
 			
 			var max:MCoordonnee = MUtilitaire.maxMCoordonneeY(a1.getDepart(), a1.getArrivee());
 			max = MUtilitaire.maxMCoordonneeY(max, MUtilitaire.maxMCoordonneeY(a2.getDepart(), a2.getArrivee()));
@@ -52,6 +54,8 @@ package Coeur.Forme
 			var a1:MArete = this.aretes[0] as MArete;
 			var a2:MArete = this.aretes[1] as MArete;
 			var a3:MArete = this.aretes[2] as MArete;
+			if(a1 == null || a2 == null || a3 == null)
+				throw new MErreur(this.nom_classe,"setLargeur","Une des arêtes est nulle");
 			
 			var max:MCoordonnee = MUtilitaire.maxMCoordonneeX(a1.getDepart(), a1.getArrivee());
 			max = MUtilitaire.maxMCoordonneeX(max, MUtilitaire.maxMCoordonneeX(a2.getDepart(), a2.getArrivee()));
@@ -87,12 +91,12 @@ package Coeur.Forme
 			this.ajouterArete(a2);
 			this.ajouterArete(a3);
 			
-			this.calculParametres();
+			this.calculAretes();
 			
 		}
 		
 		//calcul hauteur et largeur du triangle apres intanciation
-		public function calculParametres():void{
+		public override function calculAretes():void{
 			
 			var a1:MArete = this.aretes[0] as MArete;
 			var a2:MArete = this.aretes[1] as MArete;
@@ -122,6 +126,8 @@ package Coeur.Forme
 				
 				this.largeur = max_x - this.x;
 				this.hauteur = max_y - this.y;
+				this.x -= this.decalage.getX();
+				this.y -= this.decalage.getY();
 			}
 			
 		}
@@ -135,16 +141,24 @@ package Coeur.Forme
 		 
 		public override function ajouterArete(arete:MArete):Boolean
 		{
-			var b:Boolean = super.ajouterArete(arete);
-			if(aretes.length == this.nombre_arete)
-				this.calculParametres();
-			return b;
+			arete = arete.clone();
+			arete.deplacement(this.decalage.getX(), this.decalage.getY());
+			if(aretes.length < nombre_arete)
+			{
+				aretes.push(arete);
+				if(aretes.length == this.nombre_arete)
+					this.calculAretes();
+				return true;
+			}
+			else{
+				throw new MErreur(this.nom_classe, "ajouterArete", "Tableau d'aretes deja rempli");
+				return false;
+			} 
 		}
 		
-		public override function setAretes(aretes:Array):void{
-			trace("setArete",aretes.length);
-			super.setAretes(aretes);
-			this.calculParametres();
+		public override function setAretes(aretes:Array, recopie:Boolean=true):void{
+			super.setAretes(aretes,recopie);
+			this.calculAretes();
 		}
 
 
@@ -177,23 +191,23 @@ package Coeur.Forme
 		{
 		}
 		
-		//a degager??
-//		public function axeCollision(x:Number,y:Number):MAxe{
-//			var axe:MAxe = new MAxe();
-//			for(var i:uint = 0; i<nombre_arete; i++)
-//			{
-//				var arete:MArete = aretes[i] as MArete;
-//				if(arete.contient(x,y)){
-//					axe.instancie2(arete);
-//					return axe;
-//				}
-//			}
-//			return null;
-//		}
+/* 		public function axeCollision(x:Number,y:Number):MAxe{
+			var axe:MAxe = new MAxe();
+			for(var i:uint = 0; i<nombre_arete; i++)
+			{
+				var arete:MArete = aretes[i] as MArete;
+				if(arete.contient(x,y)){
+					axe.instancie2(arete);
+					return axe;
+				}
+			}
+			return null;
+		} */
 		
 		public function clone():MIForme{
 			var clone_miforme:MFormeTriangle = new MFormeTriangle();
-			this.remplirFormePolygone(clone_miforme);
+			super.remplirFormePolygone(clone_miforme);
+			clone_miforme.setAretes(aretes);
 			return clone_miforme; 
 		}
 		

@@ -20,9 +20,8 @@ package Coeur.Forme
 		function deplacement(x:Number, y:Number):void;
 		function affiche():void;
 		function getAxesSeparateurs(obj:MIForme):Array;
-		function getPointsProjection(vect:MVecteur):Array;
-		function seProjeteSur(vecteur:MVecteur):Array;
-		function axeCollision(forme:MIForme):MAxe;
+ 		function getPointsProjection(vect:MVecteur):Array;
+ 		function seProjeteSur(vecteur:MVecteur):Array;
 		
 		function clone():MIForme;
 		
@@ -30,6 +29,8 @@ package Coeur.Forme
 		function calculMinY():Number;
 		function calculMaxX():Number;
 		function calculMaxY():Number;
+		function getDecalage():MCoordonnee;
+		function setDecalage(decalage:MCoordonnee):void;
 	
 	}
 }
