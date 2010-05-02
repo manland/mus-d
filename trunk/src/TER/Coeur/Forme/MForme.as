@@ -127,7 +127,46 @@ package Coeur.Forme
 			}
 			return res;
 		}
-
+	
+		public function axeCollision(forme2:MIForme):MAxe{
+			var forme1:MIForme = this as MIForme;
+			
+			var axesSeparateur:Array = forme1.getAxesSeparateurs(forme2);
+			axesSeparateur = axesSeparateur.concat(forme2.getAxesSeparateurs(forme1));
+			
+			//valeur minimale et maximale des projections des deux figures sur les axes séparateurs
+			var min1:Number;
+			var max1:Number;
+			var min2:Number;
+			var max2:Number;
+			
+			// on stocke l'axe sur lequel l'espacement est maximum pour connaitre l'axe de collision
+			var espacement_max:Number = Number.NEGATIVE_INFINITY;
+			var vecteur_coll:MVecteur = (axesSeparateur[1] as MVecteur);
+			
+			for(var i:int = 0; i < axesSeparateur.length; i = i + 1) {
+				var vecteur:MVecteur = (axesSeparateur[i] as MVecteur);
+				var res:Array = forme1.seProjeteSur(vecteur);
+				min1 = res.pop();
+				max1 = res.pop();
+				res = forme2.seProjeteSur(vecteur);
+				min2 = res.pop();
+				max2 = res.pop();
+				var espacement:Number = (Math.max(max1, max2)-Math.min(min1, min2) )- (max2-min2+max1-min1)
+				
+				if(espacement > 0){
+					return null;
+				}
+				else if(espacement > espacement_max){
+					espacement_max = espacement;
+					vecteur_coll = vecteur;
+				}
+			}
+			var axe:MAxe = new MAxe();
+			axe.orthogonalA(vecteur_coll);
+						
+			return axe;
+		}
 
 	}
 }

@@ -84,12 +84,6 @@ package Coeur.Forme
 			this.ajouterArete(new MArete(point6, point1));
 		}
 		
-		public override function axeCollision(x:Number, y:Number):MAxe
-		{ 
-			/* a remplir*/
-			return null;
-		}
-		
 		public function getPetitRayon():Number{
 			return this.petit_rayon;
 		}

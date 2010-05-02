@@ -193,8 +193,19 @@ package Coeur.Forme
 		}
 		
 		
-		public function axeCollision(x:Number,y:Number):MAxe{
-			return null;
+		public override function axeCollision(forme:MIForme):MAxe{
+			var axe:MAxe = null;
+			
+			if(this.forme_haut != null)
+				axe = this.forme_haut.axeCollision(forme);
+			if(axe == null && this.forme_bas != null)
+				axe = this.forme_bas.axeCollision(forme);
+			if(axe == null && this.forme_droit != null)
+				axe = this.forme_droit.axeCollision(forme);
+			if(axe == null && this.forme_centre != null)
+				axe = this.forme_centre.axeCollision(forme);
+				
+			return axe;
 		}
 		
 		public function clone():MIForme{
@@ -267,29 +278,5 @@ package Coeur.Forme
 			return points;
 		}
 		
-		public override function seProjeteSur(vecteur:MVecteur):Array{
-			//a revoir
-//			var pts:Array = getPointsProjection(vecteur);
-//			for(var i:uint = 0; i<pts.length; i++){
-//				var pt:MCoordonnee = pts[i] as MCoordonnee;
-//				
-//				var scalaire:Number = vecteur.getX()*pt.getX() + pt.getY()*vecteur.getY();
-//				
-//				var projection:MVecteur = new MVecteur();
-//				projection.instancie(scalaire * vecteur.getX(),scalaire * vecteur.getY());
-//				
-//				var val:Number = 0;
-//             	if(projection.getX()/Math.abs(projection.getX())== vecteur.getX()/Math.abs(vecteur.getX()) && projection.getY()/Math.abs(projection.getY())== vecteur.getY()/Math.abs(vecteur.getY())){
-//                 	val = projection.getNorme();
-//              	}
-//             	else{
-//                 	val = -projection.getNorme();
-//              	}
-//             	min = Math.min(val, min);
-//             	max = Math.max(val, max);
-//			}
-			return null;
-		}
-
 	}
 }

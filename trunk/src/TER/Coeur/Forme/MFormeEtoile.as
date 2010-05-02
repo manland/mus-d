@@ -80,12 +80,6 @@ package Coeur.Forme
 		{
 		}
 		
-		public function axeCollision(x:Number, y:Number):MAxe
-		{ 
-			/* a remplir*/
-			return null;
-		}
-		
 		public function getDecalage():Number{
 			return this.decalage;
 		}
