@@ -98,6 +98,7 @@ package Coeur.Forme
 		public function supprimerArete(arete:MArete):void
 		{
 			aretes.splice(aretes.indexOf(arete), 1);
+			nombre_arete-=1;
 		}
 		
 		public function getAretes():Array
