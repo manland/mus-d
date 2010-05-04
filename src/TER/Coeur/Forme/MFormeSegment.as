@@ -124,6 +124,14 @@ package Coeur.Forme
 			this.calculsCoordonnees();
 		}
 		
+		public function getDepart():MCoordonnee{
+			return this.depart;
+		}
+		
+		public function getArrivee():MCoordonnee{
+			return this.arrivee;
+		}
+		
 		public function calculsCoordonnees():void{
 			this.x = MUtilitaire.min(depart.getX(), arrivee.getX());
 			this.y = MUtilitaire.min(depart.getY(), arrivee.getY());
