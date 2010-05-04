@@ -6,15 +6,13 @@ package Coeur
 	
 	public class MUtilitaire
 	{
-		//apres debuggage enlever sysout et remettre melanger tableau en static
-		var sysout : Text;
-		public function MUtilitaire(sysout : Text)
+		public function MUtilitaire()
 		{
-			this.sysout = sysout;
+			
 		}
 		
 		
-		public function melangerTableau(tab:Array):Array
+		public static function melangerTableau(tab:Array):Array
 		{
 			var taille:int = tab.length;
 			var tabRes:Array = new Array();
