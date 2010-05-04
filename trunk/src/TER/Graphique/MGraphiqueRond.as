@@ -48,6 +48,5 @@ package Graphique {
 			}
 			return graphique_temp;
 		}
-
 	}
 }
