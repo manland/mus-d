@@ -1,5 +1,7 @@
 package Coeur.Forme
 {
+	import Coeur.MIObjet;
+	
 	import Utilitaires.*;
 	
 	public class MForme
@@ -12,6 +14,7 @@ package Coeur.Forme
 		protected var hauteur:Number;
 		protected var nom_classe:String;
 		protected var decalage:MCoordonneePositive;
+		protected var objet:MIObjet;
 		
 		public function MForme()
 		{
@@ -19,6 +22,7 @@ package Coeur.Forme
 			this.y = 0;
 			this.largeur = 0;
 			this.hauteur = 0;
+			this.objet = null;
 			sous_classe = MIForme(this);
 			if(sous_classe == null) {
 				throw new MErreur(this.nom_classe, "Constructeur", "Les classes qui étendent MForme doivent implementer MIForme");
@@ -61,28 +65,46 @@ package Coeur.Forme
 			return this.x+this.decalage.getX();
 		}
 		public function setX(x:Number):void{
-			this.x = x;
+			if(x != this.x){
+				var difference:Number = x - this.x;
+				this.deplacement(difference, 0);
+				if(this.objet != null)
+					this.objet.setX(x);
+			}
 		}
 		
 		public function getY():Number{
 			return this.y + this.decalage.getY();
 		}
 		public function setY(y:Number):void{
-			this.y = y;
+			if(y != this.y){
+				var difference:Number = y - this.y;
+				this.deplacement(0, difference);
+				if(this.objet != null)
+					this.objet.setY(y);
+			}
 		}
 		
 		public function getHauteur():Number{
 			return this.hauteur;
 		}		
 		public function setHauteur(hauteur:Number):void{
-			this.hauteur = hauteur;	
+			if(hauteur != this.hauteur){
+				this.hauteur = hauteur;
+				if(this.objet != null)
+					this.objet.setHauteur(hauteur);
+			}
 		}
 		
 		public function getLargeur():Number{
 			return this.largeur;
 		}		
 		public function setLargeur(largeur:Number):void{
-			this.largeur = largeur;			
+			if(largeur != this.largeur){
+				this.largeur = largeur;
+				if(this.objet != null)
+					this.objet.setLargeur(largeur);
+			}
 		}
 		
 		public function getNomClasse():String
@@ -168,6 +190,14 @@ package Coeur.Forme
  			var axe:MAxe = new MAxe();
  			axe.orthogonalA(vecteur_coll);
  			return axe;
+ 		}
+ 		
+ 		public function getObjet():MIObjet{
+ 			return this.objet;
+ 		}
+ 		
+ 		public function setObjet(objet:MIObjet):void{
+ 			this.objet = objet;
  		}
 	}
 }

@@ -10,7 +10,6 @@ package Utilitaires
 		
 		public function MErreur(classe:String, fonction:String, message:String="", sys:Text=null, id:int=0)
 		{
-			trace("salut");
 			this.classe = classe;
 			this.sys = sys;
 			this.fonction = fonction;

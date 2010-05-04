@@ -13,14 +13,14 @@ package Coeur.Forme
 		}
 		
 		public override function setLargeur(largeur:Number):void{
-			this.largeur = largeur;
-			this.hauteur = largeur
+			super.setLargeur(largeur);
+			super.setHauteur(largeur);
 			super.calculAretes();
 		}
 		
 		public override function setHauteur(hauteur:Number):void{
-			this.hauteur = hauteur;
-			this.largeur = hauteur;
+			super.setLargeur(hauteur);
+			super.setHauteur(hauteur);
 			super.calculAretes();
 		}
 		
