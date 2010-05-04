@@ -27,17 +27,23 @@ package Graphique {
 		
 		public var sysout:Text;
 		
-		public function MGraphiqueScene() {
+		public function MGraphiqueScene(x:int=0, y:int=0, largeur:int=30, hauteur:int=10) {
 			super();
 			objet = new MScene();
 			objet.ajoutObjetEcouteur(this);
 			forme = new MFormeRectangle();
+			(forme as MFormeRectangle).instancie(x, y, largeur, hauteur);
 			objet.setForme(forme);
+			width = largeur;
+			height = hauteur;
+			this.x = x;
+			this.y = y;
 			ma_texture = new MCouleur(0xFFFFFF);
 			ma_bordure = null;
 			nom_classe = "MGraphiqueScene";
 			horizontalScrollPolicy = "auto";
 			verticalScrollPolicy = "auto";
+			addEventListener(ResizeEvent.RESIZE, resize);
 		}
 		
 		public function ajouterEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void {
@@ -73,11 +79,32 @@ package Graphique {
 				objet.ajouterEnfants(graphique.getObjet());
 			}
 			if(obj == null) {
-				throw new MErreur("MGraphiqueScene", "addChild", "l'objet retourner par super est null !!??");
+				throw new MErreur("MGraphiqueScene", "addChild", "l'objet retourner par super est null. Vous devez essayer d'ajouter un objet qui n'est pas un UIComponent ou MIObjetGraphique.");
 			}
 			return obj as UIComponent;
 		}
 		
+		override public function removeChild(child:DisplayObject):DisplayObject {
+			var obj:DisplayObject = super.removeChild(child);
+			var graphique:MIObjetGraphique = child as MIObjetGraphique;
+			if(graphique != null) {
+				objet.supprimerEnfants(graphique.getObjet());
+			}
+			if(obj == null) {
+				throw new MErreur("MGraphiqueScene", "removeChild", "l'objet retourner par super est null. Vous devez essayer de retirer un objet qui n'est pas dans cette scene.");
+			}
+			return obj as UIComponent;
+		}
+		
+		public function setObjet(objet:MScene):void {
+			if(this.objet != null) {
+				this.objet.supprimeObjetEcouteur(this);
+			}
+			this.objet = objet;
+			this.objet.ajoutObjetEcouteur(this);
+			changementTaille(objet);
+			deplacementObjet(objet);
+		}
 		public function getObjet():MIObjet {
 			return objet;
 		}
@@ -155,10 +182,7 @@ package Graphique {
 		}
 		
 		public function set largeur(largeur:Number):void {
-			super.width = largeur;
-			if(objet.getLargeur() != largeur) {
-				objet.setLargeur(largeur);
-			}
+			width = largeur;
 		}
 		
 		public function get largeur():Number {
@@ -166,10 +190,7 @@ package Graphique {
 		}
 		
 		public function set hauteur(hauteur:Number):void {
-			super.height = hauteur;
-			if(objet.getHauteur() != hauteur) {
-				objet.setHauteur(hauteur);
-			}
+			height = hauteur;
 		}
 		
 		public function get hauteur():Number {
@@ -191,23 +212,44 @@ package Graphique {
 		}
 		
 		override public function set width(width:Number):void {
-			super.width = width;
+			if(isNaN(percentWidth)) {
+				super.width = width;
+			}
 			if(objet.getLargeur() != width) {
 				objet.setLargeur(width);
 			}
 		}
 		
 		override public function set height(height:Number):void {
-			super.height = height;
+			if(isNaN(percentHeight)) {
+				super.height = height;
+			}
 			if(objet.getHauteur() != height) {
 				objet.setHauteur(height);
 			}
 		}
 		
+		override public function set measuredWidth(value:Number):void {
+			super.measuredWidth = value;
+			if(!isNaN(percentWidth)) {
+				objet.setLargeur(value);
+			}
+		}
+		
+		override public function set measuredHeight(value:Number):void {
+			super.measuredHeight = value;
+			if(!isNaN(percentHeight)) {
+				objet.setHauteur(value);
+			}
+		}
+		
+		public function resize(event:ResizeEvent):void {
+			measuredWidth = width;
+			measuredHeight = height;
+		}
+		
 		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
 			super.updateDisplayList(unscaledWidth, unscaledHeight);
-			objet.setLargeur(unscaledWidth);
-			objet.setHauteur(unscaledHeight);
 			dessiner();
 		}
 		
@@ -219,10 +261,6 @@ package Graphique {
 				ma_bordure.appliquer(graphics);
 			}
 			graphics.drawRect(0, 0, width, height);
-//			if(sysout != null) {
-//				sysout.text += "objet => x:"+forme.getX()+" y:"+forme.getY()+" largeur:"+forme.getLargeur()+" hauteur:"+forme.getHauteur()+"\n";
-//				sysout.text += "gaphique => x:"+x+" y:"+y+" largeur:"+width+" hauteur:"+height+"\n";
-//			}
 			graphics.endFill();
 		}
 		
@@ -231,15 +269,16 @@ package Graphique {
             if(forme.getAretes().length == 0) {
             	forme.instancie(x, y, width, height);
             }
-//            if(ma_texture != null) {
-//            	setTexture(texture);
-//            }
 			invalidateDisplayList();
 		}
 		
 		public function clone():MIObjetGraphique {
 			var graphique_temp:MGraphiqueScene = new MGraphiqueScene();
-//			graphique_temp.setObjet(objet.clone());
+//			graphique_temp.setObjet(objet.clone() as MScene);
+			graphique_temp.getObjet().setX(objet.getX());
+			graphique_temp.getObjet().setY(objet.getY());
+			graphique_temp.getObjet().setLargeur(objet.getLargeur());
+			graphique_temp.getObjet().setHauteur(objet.getHauteur());
 			if(ma_bordure != null) {
 				graphique_temp.setBordure(ma_bordure.clone() as MBordure);
 			}

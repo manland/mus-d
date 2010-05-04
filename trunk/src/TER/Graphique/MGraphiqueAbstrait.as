@@ -1,5 +1,4 @@
-package Graphique
-{
+package Graphique {
 	import Coeur.MIObjetEcouteur;
 	import mx.core.UIComponent;
 	import Coeur.MIObjet;
@@ -17,24 +16,105 @@ package Graphique
 	import mx.olap.aggregators.MaxAggregator;
 	import Utilitaires.MAxe;
 	
-	public class MGraphiqueAbstrait extends UIComponent implements MIObjetEcouteur
-	{
+	/**
+	 * Classe abstraite gérant les comportements généraux des <u>MIObjetGraphique</u>.
+	 * <p>Représente le plus haut élément graphique de notre framework, tous les autres sont des sous-classes.<br /> 
+	 * Cette classe permet de gérer :
+	 * <li> l'objet MIObjet du code métier (package Coeur) </li>
+	 * <li> la forme MIForme (package Coeur.Forme)</li>
+	 * <li> les déplacements du graphique vers le coeur et vice versa</li>
+	 * <li> les redimensionnements du graphique vers le coeur et vice versa</li>
+	 * <li> les textures MITexture (package Graphique.Texture) </li>
+	 * <li> la bordure MITexture (package Graphique.Texture) </li>
+	 * </p>
+	 * <p>Enfin elle se charge des écouteurs MIObjetGraphiqueEcouteur en appellant les fire apropriés.</p>
+	 * @see MIObjetGraphique
+	 * @see MIObjetGraphiqueEcouteur
+	 * @see Coeur.MIObjet
+	 * @see Coeur.Forme.MIForme
+	 * @see Graphique.Textures.MITexture
+	 */ 
+	public class MGraphiqueAbstrait extends UIComponent implements MIObjetEcouteur {
+		/**
+		 * Représente this sous forme d'un MIObjetGraphique. Permet de rendre la classe Abstraite.
+		 */
 		private var sous_classe:MIObjetGraphique;
+		/**
+		 * L'objet du code métier que représente cet objet graphique.
+		 * @see MGraphiqueAbstrait#getObjet()
+		 * @see MGraphiqueAbstrait#setObjet()
+		 */
 		protected var objet:MIObjet;
+		/**
+		 * La forme de cet objet graphique. Doit être instanciée dans les sous-classes.
+		 */
 		protected var forme:MIForme;
+		/**
+		 * La texture de cet objet graphique.
+		 * <p>Un objet peut avoir plusieurs textures en même temps, il suffit pour cela d'utiliser ajouterTexture().</p>
+		 * @see MGraphiqueAbstrait#getTexture()
+		 * @see MGraphiqueAbstrait#setTexture()
+		 * @see MGraphiqueAbstrait#texture
+		 * @see MGraphiqueAbstrait#ajouterTexture()
+		 */
 		protected var ma_texture:MITexture;
+		/**
+		 * La bordure de cet objet graphique.
+		 * <p>Un objet peut avoir plusieurs bordures en même temps, il suffit pour cela d'utiliser ajouterBordure().</p>
+		 * @see MGraphiqueAbstrait#getBordure()
+		 * @see MGraphiqueAbstrait#setBordure()
+		 * @see MGraphiqueAbstrait#bordure
+		 * @see MGraphiqueAbstrait#ajouterBordure()
+		 */
 		protected var ma_bordure:MBordure;
+		/**
+		 * Le nom de cette classe, est égale à "MGraphiqueAbstrait".
+		 * @see MIObjetGraphique#getNomClasse()
+		 */
 		protected var nom_classe:String;
+		/**
+		 * Les écouteurs de la classe.
+		 * <p>Ceux-ci sont prévenues lorsque l'objet :
+		 * <li> se dessine, graphiqueSeDessine() </li>
+		 * <li> meurt, graphiqueMeurt() </li>
+		 * <li> collisionne, graphiqueCollision() </li>
+		 * <li> se déplace, graphiqueSeDeplace() </li>
+		 * <li> se redimenssionne, graphiqueChangeTaille() </li>
+		 * </p>
+		 * @see MIObjetGraphiqueEcouteur
+		 * @see MGraphiqueAbstrait#ajouterEcouteur()
+		 * @see MGraphiqueAbstrait#fireSeDessine()
+		 * @see MGraphiqueAbstrait#fireMeurt()
+		 * @see MGraphiqueAbstrait#fireCollision()
+		 * @see MGraphiqueAbstrait#fireDeplacement()
+		 * @see MGraphiqueAbstrait#fireChangementTaille()
+		 */
 		protected var ecouteurs:Array = new Array();
 		
-		public var type:String;
-		
+		/**
+		 * @private
+		 */
 		public var sysout:Text;
 		
-		public function MGraphiqueAbstrait()
-		{
+		/**
+		 * Constructeur de la classe.
+		 * <p>Cette classe étant abstraite il ne peut pas être appelé directement mais par une sous-classe. 
+		 * Elle instancie dans cet ordre les attributs suivants :
+		 * <li> objet = MElement et s'ajoute dans la liste de ses écouteurs </li>
+		 * <li> forme = null !! Doit être instancié absolument dans la sous-classe </li>
+		 * <li> ma_texture en tant que MCouleur </li>
+		 * <li> ma_bordure = null </li>
+		 * <li> sous_classe = this casté en MIObjetGraphique </li>
+		 * </p>
+		 * @throws Utilitaires.MErreur générée si le cast de this en MIObjetGraphique n'a pas marché.
+		 * @see Coeur.MElement
+		 * @see Graphique.Textures.MCouleur
+		 * @see Graphique.MIObjetGraphique
+		 */
+		public function MGraphiqueAbstrait() {
 			objet = new MElement();
 			objet.ajoutObjetEcouteur(this);
+			forme = null;
 			ma_texture = new MCouleur();
 			ma_bordure = null;
 			nom_classe = "MGraphiqueAbstrait";
@@ -43,41 +123,121 @@ package Graphique
 				throw new MErreur(this.nom_classe, "Constructeur", "Les classes qui étendent MGraphiqueAbstrait doivent implementer MIObjetGraphique");
 			}
 		}
-	
+		
+		/**
+		 * Permet d'ajouter un écouteur à cet objet graphique.
+		 * <p>Celui-ci sera prévenue lorsque l'objet :
+		 * <li> se dessine, graphiqueSeDessine() </li>
+		 * <li> meurt, graphiqueMeurt() </li>
+		 * <li> collisionne, graphiqueCollision() </li>
+		 * <li> se déplace, graphiqueSeDeplace() </li>
+		 * <li> se redimenssionne, graphiqueChangeTaille() </li>
+		 * </p>
+		 * @param ecouteur le nouvel écouteur de cet objet graphique.
+		 * @see MIObjetGraphiqueEcouteur
+		 * @see MGraphiqueAbstrait#ecouteurs
+		 * @see MGraphiqueAbstrait#supprimerEcouteur()
+		 * @see MGraphiqueAbstrait#fireSeDessine()
+		 * @see MGraphiqueAbstrait#fireMeurt()
+		 * @see MGraphiqueAbstrait#fireCollision()
+		 * @see MGraphiqueAbstrait#fireDeplacement()
+		 * @see MGraphiqueAbstrait#fireChangementTaille()
+		 */
 		public function ajouterEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void {
 			ecouteurs.push(ecouteur);
 		}
 		
+		/**
+		 * Permet de supprimer un écouteur de cet objet graphique.
+		 * @param ecouteur l'écouteur à enlever de la liste des écouteurs de cet objet graphique.
+		 * @see MIObjetGraphiqueEcouteur
+		 * @see MGraphiqueAbstrait#ecouteurs
+		 * @see MGraphiqueAbstrait#ajouterEcouteur()
+		 */
+		public function supprimerEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void {
+			ecouteurs.slice(ecouteurs.indexOf(ecouteur), 1);
+		}
+		
+		/**
+		 * Prévient les écouteurs que cet objet graphique se déssine.
+		 * @see MGraphiqueAbstrait#ecouteurs
+		 */
 		public function fireSeDessine():void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
 				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueSeDessine(sous_classe);
 			}
 		}
 		
+		/**
+		 * Prévient les écouteurs que cet objet graphique meurt, donc disparait visuellement
+		 * @see MGraphiqueAbstrait#ecouteurs
+		 */
 		public function fireMeurt():void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
 				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueMeurt(sous_classe);
 			}
 		}
 		
+		/**
+		 * Prévient les écouteurs que cet objet graphique collisionne avec un autre objet.
+		 * @param axe l'axe suivant lequel l'objet vient collisionner l'autre objet
+		 * @see MGraphiqueAbstrait#ecouteurs
+		 */
 		public function fireCollision(axe:MAxe):void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
 				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueCollision(sous_classe, axe);
 			}
 		}
 		
-		public function objetCollision(objet:MIObjet, axe:MAxe):void {
-			fireCollision(axe);
+		/**
+		 * Prévient les écouteurs que cet objet graphique se déplace.
+		 * @see MGraphiqueAbstrait#ecouteurs
+		 */
+		public function fireDeplacement():void {
+			for(var i:int=0; i<ecouteurs.length; i++) {
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueSeDeplace(x, y);
+			}
 		}
 		
+		/**
+		 * Prévient les écouteurs que cet objet graphique se redimenssionne.
+		 * @see MGraphiqueAbstrait#ecouteurs
+		 */
+		public function fireChangementTaille():void {
+			for(var i:int=0; i<ecouteurs.length; i++) {
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueChangeTaille(sous_classe);
+			}
+		}
+		
+		/**
+		 * Retourne l'objet model que représente cet objet graphique.
+		 * @return l'objet model de cet objet graphique
+		 * @see Coeur.MIObjet
+		 */
 		public function getObjet():MIObjet {
 			return objet;
 		}
 		
+		/**
+		 * Retourne sous la forme d'un UIComponent cet objet graphique.
+		 * @return cet objet graphique sous forme d'UIComponent
+		 */
 		public function getGraphique():UIComponent {
 			return this;
 		}
 		
+		/**
+		 * Permet de positionner un nouvel objet model pour cet objet graphique.
+		 * <p>Cet objet graphique se positionne en tant qu'écouteur de ce nouvel objet model. 
+		 * De plus on appel les fonctions deplacementObjet() et changementTaille() afin que l'objet graphique se redessine correctement.</p>
+		 * <p>Si cet objet graphique avait un model alors on se supprime de ça liste de ses écouteurs.</p>
+		 * @param objet le nouvel objet model
+		 * @see Coeur.MIObjet
+		 * @see Coeur.MIObjet#supprimerObjetEcouteur()
+		 * @see Coeur.MIObjet#ajoutObjetEcouteur()
+		 * @see MGraphiqueAbstrait#changementTaille()
+		 * @see MGraphiqueAbstrait#deplacementObjet()
+		 */
 		public function setObjet(objet:MIObjet):void {
 			if(this.objet != null) {
 				this.objet.supprimeObjetEcouteur(this);
@@ -88,24 +248,65 @@ package Graphique
 			deplacementObjet(objet);
 		}
 		
+		/**
+		 * Permet de positionner une nouvelle texture à cet objet graphique.
+		 * <p>Fonction permettant d'utiliser le moyen "traditionnel" mais en réalité fait appel à la fonction set texture().</p>
+		 * @param t la nouvelle texture de cet objet graphique
+		 * @see MGraphiqueAbstrait#texture
+		 * @see MGraphiqueAbstrait#bordure
+		 */
 		public function setTexture(t:MITexture):void {
 			texture = t;
 		}
 		
+		/**
+		 * Retourne la texture cet objet graphique.
+		 * <p>Fonction permettant d'utiliser le moyen "traditionnel" mais en réalité fait appel à la fonction get texture().</p>
+		 * @return la texture de cet objet graphique
+		 * @see MGraphiqueAbstrait#texture
+		 */
 		public function getTexture():MITexture {
 			return ma_texture;
 		}
 		
+		/**
+		 * Permet de positionner une nouvelle texture à cet objet graphique.
+		 * <p>Positionne l'objet de la texture à sous_classe qui est en réalité cette classe caster en MIObjetGraphique, avant d'appeler redessiner() pour redessiner cet objet graphique.</p>
+		 * <p>Pourrait permettre d'ajouter une bordure puisque celle-ci est aussi une MITexture mais il est conseillé d'utiliser set bordure().</p>
+		 * @param texture la nouvelle texture de cet objet graphique
+		 * @see Graphique.Textures.MITexture
+		 * @see Graphique.Textures.MITexture#setObjetADessiner()
+		 * @see MGraphiqueAbstrait#redessiner()
+		 */
 		public function set texture(texture:MITexture):void {
 			ma_texture = texture;
-			ma_texture.setObjetADessiner(sous_classe);
-			invalidateDisplayList();
+			if(ma_texture != null) {
+				ma_texture.setObjetADessiner(sous_classe);
+			}
+			redessiner();
 		}
 		
+		/**
+		 * Retourne la texture cet objet graphique.
+		 * @return la texture de cet objet graphique
+		 * @see Graphique.Textures.MITexture
+		 */
 		public function get texture():MITexture {
 			return ma_texture;
 		}
 		
+		/**
+		 * Permet d'ajouter une nouvelle texture à la texture de cet objet.
+		 * <p>Si la texture était nul alors elle devient la nouvelle texture.</p>
+		 * <p>Sinon, on ajoute, par le biai d'un pattern décorator, la texture à l'ancienne texture. Puis on se positionne comme l'objet a dessiner de cette nouvelle texture. Finalement on redessine l'objet en appelant la fonction redessiner().</p>
+		 * <p>Pourrait permettre d'ajouter une bordure puisque celle-ci est aussi une MITexture mais il est conseillé d'utiliser ajouterBordure().</p>
+		 * @param texture la nouvelle texture à ajouter à l'ancienne
+		 * @see MGraphiqueAbstrait#texture
+		 * @see Graphique.Textures.MITexture#setADecorer()
+		 * @see Graphique.Textures.MITexture#setObjetADessiner()
+		 * @see MGraphiqueAbstrait#redessiner()
+		 * @see MGraphiqueAbstrait#ajouterBordure()
+		 */
 		public function ajouterTexture(texture:MITexture):void {
 			if(ma_texture == null) {
 				ma_texture = texture;
@@ -113,28 +314,66 @@ package Graphique
 			else {
 				ma_texture = texture.setADecorer(ma_texture);
 				ma_texture.setObjetADessiner(sous_classe);
-				invalidateDisplayList();
+				redessiner();
 			}
 		}
 		
+		/**
+		 * Permet de positionner une nouvelle bordure à cet objet graphique.
+		 * <p>Fonction permettant d'utiliser le moyen "traditionnel" mais en réalité fait appel à la fonction set bordure().</p>
+		 * @param b la nouvelle bordure de cet objet graphique
+		 * @see MGraphiqueAbstrait#bordure
+		 */
 		public function setBordure(b:MBordure):void {
 			bordure = b;
 		}
 		
+		/**
+		 * Retourne la bordure cet objet graphique.
+		 * <p>Fonction permettant d'utiliser le moyen "traditionnel" mais en réalité fait appel à la fonction get bordure().</p>
+		 * @return la bordure de cet objet graphique
+		 * @see MGraphiqueAbstrait#bordure
+		 */
 		public function getBordure():MBordure {
 			return ma_bordure;
 		}
 		
+		/**
+		 * Permet de positionner une nouvelle bordure à cet objet graphique.
+		 * <p>Positionne l'objet de la bordure à sous_classe qui est en réalité cette classe caster en MIObjetGraphique, avant d'appeler redessiner() pour redessiner cet objet graphique.</p>
+		 * @param bordure la nouvelle bordure de cet objet graphique
+		 * @see Graphique.Textures.MBordure
+		 * @see Graphique.Textures.MBordure#setObjetADessiner()
+		 * @see MGraphiqueAbstrait#redessiner()
+		 */
 		public function set bordure(bordure:MBordure):void {
 			ma_bordure = bordure;
-			ma_bordure.setObjetADessiner(sous_classe);
-			invalidateDisplayList();
+			if(ma_bordure != null) {
+				ma_bordure.setObjetADessiner(sous_classe);
+			}
+			redessiner();
 		}
 		
+		/**
+		 * Retourne la bordure cet objet graphique.
+		 * @return la bordure de cet objet graphique
+		 * @see Graphique.Textures.MBordure
+		 */
 		public function get bordure():MBordure {
 			return ma_bordure;
 		}
 		
+		/**
+		 * Permet d'ajouter une nouvelle bordure à la bordure de cet objet.
+		 * <p>Si la bordure était nul alors elle devient la nouvelle bordure.</p>
+		 * <p>Sinon, on ajoute, par le biai d'un pattern décorator, la bordure à l'ancienne bordure. Puis on se positionne comme l'objet a dessiner de cette nouvelle bordure. Finalement on redessine l'objet en appelant la fonction redessiner().</p>
+		 * @param bordure la nouvelle bordure à ajouter à l'ancienne
+		 * @see MGraphiqueAbstrait#bordure
+		 * @see Graphique.Textures.MITexture#setADecorer()
+		 * @see Graphique.Textures.MITexture#setObjetADessiner()
+		 * @see MGraphiqueAbstrait#redessiner()
+		 * @see MGraphiqueAbstrait#ajouterTexture()
+		 */
 		public function ajouterBordure(bordure:MBordure):void {
 			if(ma_bordure == null) {
 				ma_bordure = bordure;
@@ -143,30 +382,91 @@ package Graphique
 				var bordure_temp:MITexture = bordure.setADecorer(ma_bordure);
 				ma_bordure = bordure_temp as MBordure;
 				ma_bordure.setObjetADessiner(sous_classe);
-				invalidateDisplayList();
+				redessiner();
 			}
 		}
 		
+		/**
+		 * Appelé par l'objet model lorsque celui-ci se déplace.
+		 * <p>Cet objet graphique met à jours ses coordonnées avant d'appeler fireDeplacement() et pour finalement se redessiner.</p>
+		 * @param objet l'objet qui se déplace
+		 * @see MGraphiqueAbstrait#objet
+		 * @see Coeur.MIObjetEcouteur#deplacementObjet()
+		 * @see MGraphiqueAbstrait#x
+		 * @see MGraphiqueAbstrait#y
+		 * @see MGraphiqueAbstrait#fireDeplacement()
+		 * @see MGraphiqueAbstrait#redessiner()
+		 */
 		public function deplacementObjet(objet:MIObjet):void {
 			x = objet.getX();
 			y = objet.getY();
-			invalidateDisplayList();
+			fireDeplacement();
+			redessiner();
 		}
 		
+		/**
+		 * Appelé par l'objet model lorsque celui-ci se redimenssionne.
+		 * <p>Cet objet graphique met à jours sa taille avant d'appeler fireChangementTaille() et pour finalement se redessiner.</p>
+		 * @param objet l'objet qui se redimenssionne
+		 * @see MGraphiqueAbstrait#objet
+		 * @see Coeur.MIObjetEcouteur#changementTaille()
+		 * @see MGraphiqueAbstrait#width
+		 * @see MGraphiqueAbstrait#height
+		 * @see MGraphiqueAbstrait#fireChangementTaille()
+		 * @see MGraphiqueAbstrait#redessiner()
+		 */
 		public function changementTaille(objet:MIObjet):void {
 			width = objet.getLargeur();
 			height = objet.getHauteur();
-			invalidateDisplayList();
+			fireChangementTaille();
+			redessiner();
 		}
 		
+		/**
+		 * Appelée par l'objet du code métier lorsque l'objet model collisionne avec un otre objet model.
+		 * <p>Cette fonction ne fait rien d'autre que d'appeler fireCollision().</p>
+		 * @param objet l'autre objet collisionné
+		 * @param axe l'axe suivant lequel l'objet vient collisionner l'autre objet
+		 * @see MGraphiqueAbstrait#objet
+		 * @see Coeur.MIObjetEcouteur#objetCollision()
+		 * @see MGraphiqueAbstrait#fireCollision()
+		 */
+		public function objetCollision(objet:MIObjet, axe:MAxe):void {
+			fireCollision(axe);
+		}
+		
+		/**
+		 * Appelée par l'objet model lorsqu'il meurt, donc lorsque la fonction mourir de celui-ci est appelée.
+		 * <p>Cette fonction appel parent.removeChild() afin que cet objet graphique soit enlevé visuellement avant d'appeler fireMeurt pour prévenir ses écouteurs.</p>
+		 * @param objet l'objet qui meurt
+		 * @see MGraphiqueAbstrait#objet
+		 * @see Coeur.MIObjetEcouteur#objetMeurt()
+		 * @see MGraphiqueAbstrait#fireMeurt()
+		 */
 		public function objetMeurt(objet:MIObjet):void {
-			fireMeurt();
 			parent.removeChild(this);
+			fireMeurt();
 		}
 		
+		/**
+		 * Appelée par l'objet model lorsque celui-ci nait, autrement dit à la fin de son constructeur.
+		 * <p>Cette fonction ne fait rien, elle doit être réimplémentée par une classe fille si celle-ci en a besoins.</p>
+		 * @param objet l'objet qui nait
+		 * @see MGraphiqueAbstrait#objet
+		 * @see Coeur.MIObjetEcouteur#objetNait()
+		 */
 		public function objetNait(objet:MIObjet):void {
 		}
 		
+		/**
+		 * Permet de postionner la largeur de cet objet graphique.
+		 * <p>Fonction équivalente à set width.</p>
+		 * <p>Appelle super.width afin de se mettre en conformité avec l'API flex.</p>
+		 * <p>Puis si l'objet model à une largeur différente alors on la lui met à jour. Par le biai du mvc la fonction deplacementObjet sera alors appelée.</p>
+		 * @param largeur la nouvelle largeur de cet objet graphique
+		 * @see MGraphiqueAbstrait#objet
+		 * @see Coeur.MIObjet#setLargeur()
+		 */
 		public function set largeur(largeur:Number):void {
 			super.width = largeur;
 			if(objet.getLargeur() != largeur) {
@@ -174,10 +474,26 @@ package Graphique
 			}
 		}
 		
+		/**
+		 * Permet de récupérer la largeur de cet objet graphique en passant par l'objet model.
+		 * <p>Fonction équivalente à get width.</p>
+		 * @return la largeur de l'objet model que représente cet objet graphique
+		 * @see MGraphiqueAbstrait#objet
+		 * @see Coeur.MIObjet#getLargeur()
+		 */
 		public function get largeur():Number {
 			return objet.getLargeur();
 		}
 		
+		/**
+		 * Permet de postionner la hauteur de cet objet graphique.
+		 * <p>Fonction équivalente à set height.</p>
+		 * <p>Appelle super.height afin de se mettre en conformité avec l'API flex.</p>
+		 * <p>Puis si l'objet model à une hauteur différente alors on la lui met à jour. Par le biai du mvc la fonction changementTaille sera alors appelée.</p>
+		 * @param hauteur la nouvelle hauteur de cet objet graphique
+		 * @see MGraphiqueAbstrait#objet
+		 * @see Coeur.MIObjet#setHauteur()
+		 */
 		public function set hauteur(hauteur:Number):void {
 			super.height = hauteur;
 			if(objet.getHauteur() != hauteur) {
@@ -185,10 +501,25 @@ package Graphique
 			}
 		}
 		
+		/**
+		 * Permet de récupérer la hauteur de cet objet graphique en passant par l'objet model.
+		 * <p>Fonction équivalente à get height.</p>
+		 * @return la hauteur de l'objet model que représente cet objet graphique
+		 * @see MGraphiqueAbstrait#objet
+		 * @see Coeur.MIObjet#getLargeur()
+		 */
 		public function get hauteur():Number {
 			return objet.getHauteur();
 		}
 		
+		/**
+		 * Permet de positionner la coordoonée x de cet objet graphique.
+		 * <p>Cette fonction appelle super.x = x pour se mettre en conformité avec l'API flex.</p>
+		 * <p>Puis met à jour la coordoonée x de l'objet model que représente cet objet graphique. Par le biai du MVC cet objet graphique sera bien redessiner.</p>
+		 * @param x la nouvelle coordoonée x de cet objet graphique
+		 * @see Coeur.MIObjet#setX()
+		 * @see MGraphiqueAbstrait#objet
+		 */
 		override public function set x(x:Number):void {
 			super.x = x;
 			if(objet.getX() != x) {
@@ -196,6 +527,14 @@ package Graphique
 			}
 		}
 		
+		/**
+		 * Permet de positionner la coordoonée y de cet objet graphique.
+		 * <p>Cette fonction appelle super.y = y pour se mettre en conformité avec l'API flex.</p>
+		 * <p>Puis met à jour la coordoonée y de l'objet model que représente cet objet graphique. Par le biai du MVC cet objet graphique sera bien redessiner.</p>
+		 * @param y la nouvelle coordoonée y de cet objet graphique
+		 * @see Coeur.MIObjet#setY()
+		 * @see MGraphiqueAbstrait#objet
+		 */
 		override public function set y(y:Number):void {
 			super.y = y;
 			if(objet.getY() != y) {
@@ -203,6 +542,14 @@ package Graphique
 			}
 		}
 		
+		/**
+		 * Permet de positionner la largeur de cet objet graphique.
+		 * <p>Cette fonction appelle super.width = width pour se mettre en conformité avec l'API flex.</p>
+		 * <p>Puis met à jour la largeur de l'objet model que représente cet objet graphique. Par le biai du MVC cet objet graphique sera bien redessiner.</p>
+		 * @param width la nouvelle largeur de cet objet graphique
+		 * @see Coeur.MIObjet#setLargeur()
+		 * @see MGraphiqueAbstrait#objet
+		 */
 		override public function set width(width:Number):void {
 			super.width = width;
 			if(objet.getLargeur() != width) {
@@ -210,6 +557,14 @@ package Graphique
 			}
 		}
 		
+		/**
+		 * Permet de positionner la hauteur de cet objet graphique.
+		 * <p>Cette fonction appelle super.height = height pour se mettre en conformité avec l'API flex.</p>
+		 * <p>Puis met à jour la hauteur de l'objet model que représente cet objet graphique. Par le biai du MVC cet objet graphique sera bien redessiner.</p>
+		 * @param height la nouvelle hauteur de cet objet graphique
+		 * @see Coeur.MIObjet#setHauteur()
+		 * @see MGraphiqueAbstrait#objet
+		 */
 		override public function set height(height:Number):void {
 			super.height = height;
 			if(objet.getHauteur() != height) {
@@ -217,41 +572,57 @@ package Graphique
 			}
 		}
 		
+		/**
+		 * Fonction appelée par l'API flex à chaque fois que cet objet graphique doit se dessiner.
+		 * <p>Cette fonction appelle super.updateDisplayList pour se mettre en conformité avec l'API flex.</p>
+		 * <p>Puis appelle fireSeDessine pour prévenir les écouteurs que cet objet graphique se déssine.</p>
+		 * <p>Finalement cette fonction appelle dessiner().</p>
+		 * @param unscaledWidth la largeur de cet objet graphique sans tenir compte du scaleX
+		 * @param unscaledHeight la hauteur de cet objet graphique sans tenir compte du scaleY
+		 * @see MGraphiqueAbstrait#fireSeDessine()
+		 * @see MGraphiqueAbstrait#dessiner()
+		 */
 		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
 			super.updateDisplayList(unscaledWidth, unscaledHeight );
+			fireSeDessine();
 			dessiner();
 		}
 		
+		/**
+		 * Fonction qui dessine cet objet graphique.
+		 * <p>Cette fonction devrait être abstraite, mais ActionScript3.5 ne le permet pas. 
+		 * Son corps est donc vide, mais puisque les sous-classes de MGraphiqueAbstrait doivent implémentées MIObjetGraphique, cette fonction sera obligatoirement implémentée dans les classes-filles.</p>
+		 * @see MIObjetGraphique#dessiner()
+		 */
 		protected function dessiner():void {}
 		
-		override protected function commitProperties():void {
-            super.commitProperties();
-            if(type != null) {
-            	if(type == "MStatique") {
-            		setObjet(new MStatique());
-            	}
-            	else if(type == "MControle") {
-            		setObjet(new MControle());
-            	}
-            	else if(type == "MDynamique") {
-            		setObjet(new MDynamique());
-            	}
-            	
-            	if(forme != null) {
-            		getObjet().setForme(forme);
-            	}
-            }
-			invalidateDisplayList();
-		}
-		
+		/**
+		 * Redessine cet objet graphique.
+		 * <p>Peut être appelée avec aucun paramètre pour qu'il se redessine tout de suite. 
+		 * Ou peu être appelée régulièrement avec un timer.</p>
+		 * <p>Cette fonction appelle invelidateDisplayList() pour redessiner l'objet en conformité avec l'API flex.</p>
+		 * @param e l'évennement généré par un timer de l'API flex, ne sert à rien ici 
+		 * @see MGraphiqueAbstrait#invalidateDisplayList()
+		 */
 		public function redessiner(e:TimerEvent=null):void {
 			invalidateDisplayList();
 		}
 		
+		/**
+		 * Permet d'obtenir un clone de cet objet graphique.
+		 * <p>Cette fonction devrait être abstraite, mais ActionScript3.5 ne le permet pas. 
+		 * Elle retourne donc null, mais puisque les sous-classes de MGraphiqueAbstrait doivent implémentées MIObjetGraphique, cette fonction sera obligatoirement implémentée dans les classes-filles.</p>
+		 * @return un clone de cet objet graphique.
+		 * @see MIObjetGraphique#clone()
+		 */		
 		public function clone():MIObjetGraphique {
 			return null;
 		}
 		
+		/**
+		 * Permet d'obtenir le nom de cette classes sous forme d'un String.
+		 * @return le nom de cette classe soit "MGraphiqueAbstrait"
+		 */
 		public function getNomClasse():String {
 			return nom_classe;
 		}

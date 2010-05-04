@@ -1,18 +1,22 @@
 package Graphique {
-	import Coeur.Forme.MFormeRond;
+	import Coeur.Forme.MFormePoint;
 	import flash.display.Graphics;
-	import Graphique.Textures.MBordure;
-	import Graphique.Textures.MITexture;
 	import Coeur.Forme.MIForme;
+	import Graphique.Textures.MITexture;
+	import Graphique.Textures.MBordure;
 	import Coeur.MIObjet;
 	
-	public class MGraphiqueRond extends MGraphiqueAbstrait implements MIObjetGraphique {
+	public class MGraphiquePoint extends MGraphiqueAbstrait implements MIObjetGraphique {
+		private var taille:Number;
 		
-		public function MGraphiqueRond(x:int=0, y:int=0, largeur:int=30, hauteur:int=30) {
-			forme = new MFormeRond();
-			(forme as MFormeRond).instancie(x, y, largeur, hauteur);
+		public function MGraphiquePoint(x:int=0, y:int=0, taille:Number=1) {
+			forme = new MFormePoint();
 			objet.setForme(forme);
-			nom_classe = "MGraphiqueRond";
+			objet.setX(x);
+			objet.setY(y);
+			objet.setHauteur(taille);
+			objet.setLargeur(taille);
+			nom_classe = "MGraphiquePoint";
 		}
 		
 		override protected function dessiner():void {
@@ -22,21 +26,22 @@ package Graphique {
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
 			}
-			graphics.drawEllipse(0, 0, width, height);
+			graphics.drawRect(0, 0, forme.getLargeur(), forme.getHauteur());
 			graphics.endFill();
 		}
 		
 		static public function dessiner(graphics:Graphics, forme:MIForme, ma_texture:MITexture, ma_bordure:MBordure = null):void {
+			graphics.clear();
 			ma_texture.appliquer(graphics);
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
 			}
-			graphics.drawRect(forme.getX()-forme.getObjet().getX(), forme.getY()-forme.getObjet().getY(), forme.getLargeur(), forme.getHauteur());
+			graphics.drawRect(0, 0, forme.getLargeur(), forme.getHauteur());
 			graphics.endFill();
 		}
 		
 		override public function clone():MIObjetGraphique {
-			var graphique_temp:MGraphiqueRond = new MGraphiqueRond();
+			var graphique_temp:MGraphiquePoint = new MGraphiquePoint(objet.getX(), objet.getY());
 			graphique_temp.setObjet(objet.clone());
 			if(ma_bordure != null) {
 				graphique_temp.setBordure(ma_bordure.clone() as MBordure);
