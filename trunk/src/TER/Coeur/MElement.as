@@ -49,7 +49,7 @@ package Coeur
 		
 		public function affiche():void
 		{
-			trace("MElement : (",x,",",y,")");
+			trace("MElement : (",x,",",y,") ====> largeur=[",largeur,"] hauteur=[",hauteur,"]");
 			this.forme.affiche();
 		}
 		
@@ -66,16 +66,20 @@ package Coeur
 		{
 			return this.forme;
 		}
+		
 		public function setForme(forme:MIForme):void
 		{
-			this.forme = forme;
-			this.x = this.forme.getX();
-			this.y = this.forme.getY();
-			this.largeur = this.forme.getLargeur();
-			this.hauteur = this.forme.getHauteur();
-			
-			fireChangementTaille();
-			fireDeplacementObjet();
+			if(forme != null){
+				this.forme = forme;
+				this.x = this.forme.getX();
+				this.y = this.forme.getY();
+				this.largeur = this.forme.getLargeur();
+				this.hauteur = this.forme.getHauteur();
+				this.forme.setObjet(this);
+				
+				fireChangementTaille();
+				fireDeplacementObjet();
+			}
 		}
 		
 		public function getX():Number
@@ -84,10 +88,12 @@ package Coeur
 		}
 		public function setX(x:Number):void
 		{
-			var difference:Number = x - this.x;
-			this.x = x;
-			forme.deplacement(difference, 0);
-			fireDeplacementObjet();
+			if(x != this.x){
+				this.x = x;
+				if(forme != null)
+					forme.setX(x);
+				fireDeplacementObjet();
+			}
 		}
 		
 		public function getY():Number
@@ -96,17 +102,20 @@ package Coeur
 		}
 		public function setY(y:Number):void
 		{
-			var difference:Number = y - this.y;
-			this.y = y;
-			forme.deplacement(0, difference);
-			fireDeplacementObjet();
+			if(y != this.y){
+				this.y = y;
+				if(forme != null)
+					forme.setY(y);
+				fireDeplacementObjet();
+			}
 		}
 		
 		public function avance(x:Number,y:Number):void
 		{
 			this.x = this.x + x;
 			this.y = this.y + y;
-			forme.deplacement(x,y);
+			if(forme != null)
+				forme.deplacement(x,y);
 			fireDeplacementObjet();
 		}
 		
@@ -114,7 +123,8 @@ package Coeur
 		{
 			this.x += x;
 			this.y += y;
-			this.forme.deplacement(x, y);
+			if(forme != null)
+				this.forme.deplacement(x, y);
 			fireDeplacementObjet();
 		}
 		
@@ -124,7 +134,8 @@ package Coeur
 			var difference_x:Number = x - this.x;
 			this.x = x;
 			this.y = y;
-			this.forme.deplacement(difference_x, difference_y);
+			if(forme != null)
+				this.forme.deplacement(difference_x, difference_y);
 			fireDeplacementObjet();
 		}
 		
@@ -140,9 +151,12 @@ package Coeur
 		}
 		public function setLargeur(largeur:Number):void
 		{
-			this.largeur = largeur;
-			this.forme.setLargeur(largeur);
-			fireChangementTaille();
+			if(largeur != this.largeur){
+				this.largeur = largeur;
+				if(forme != null)
+					this.forme.setLargeur(largeur);
+				fireChangementTaille();
+			}
 		}
 		
 		public function getHauteur():Number
@@ -151,9 +165,12 @@ package Coeur
 		}
 		public function setHauteur(hauteur:Number):void
 		{
-			this.hauteur = hauteur;
-			this.forme.setHauteur(hauteur);
-			fireChangementTaille();
+			if(this.hauteur != hauteur){
+				this.hauteur = hauteur;
+				if(forme != null)
+					this.forme.setHauteur(hauteur);
+				fireChangementTaille();
+			}
 		}
 		
 		public function fireChangementTaille():void {
@@ -282,6 +299,5 @@ package Coeur
 				axe = objet.getForme().axeCollision(this.getForme());
 			return axe;			
 		}
-
 	}
 }

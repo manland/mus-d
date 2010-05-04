@@ -11,11 +11,13 @@ package Coeur.Forme
 		}
 		
 		public override function setLargeur(largeur:Number):void{
-			
+			if(objet != null)
+				objet.setLargeur(0);
 		} 
 		
 		public override function setHauteur(largeur:Number):void{
-			
+			if(objet != null)
+				objet.setHauteur(0);
 		}
 		
 		public function getAire():Number{

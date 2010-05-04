@@ -86,7 +86,7 @@ package Coeur.Forme
 		
 		public override function affiche():void{
 			super.affiche();
-			trace("decalage :",this.rotation);
+			trace("rotation :",this.rotation);
 		}
 		
 	}
