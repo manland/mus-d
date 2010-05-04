@@ -172,7 +172,6 @@ package Coeur
 		}
 		
 		public function fireCollision(axe:MAxe):void {
-			throw new MErreur("MElement", "fireCollision", "Yououuupi");
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
 				(ecouteurs[i] as MIObjetEcouteur).objetCollision(this, axe);
 			}
