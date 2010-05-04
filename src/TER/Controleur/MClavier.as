@@ -1,102 +1,168 @@
 package Controleur
 {
+	import Utilitaires.MErreur;
+	
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;
 	
-	import mx.controls.Alert;
 	import mx.core.Application;
 	
+	/*
+	 * Classe qui prévient les écouteurs de Clavier lorsque le clavier est appuyé en appellant leur fonction correspondante
+	 * Cette classe est un singleton, elle n'a qu'une instance: ne pas utiliser le constructeur mais getInstance pour l'implémenter!!
+	 * @see Controleur.MIEcouteurClavier
+ 	 */
 	public class MClavier
 	{
-			private var ecouteurs:Array;
+		/*
+		 * liste des écouteurs de clavier
+	 	 */
+		private var ecouteurs:Array;
 		
+		/*
+		 * unique instance de MClavier
+		 */
+		static private var instance:MClavier = null;
+		
+		/*
+		 * si il n'y a pas déjà d'instance crée: Crée un objet MClavier et l'inscrit comme écouteur de l'application pour être prévenu lorsque le clavier est appuyé
+		 * sinon génère une erreur
+	 	 */
 		public function MClavier() {
-			Application.application.addEventListener(KeyboardEvent.KEY_DOWN, appuis);
-			ecouteurs = new Array();
+			if(instance == null){
+				instance = this;
+				Application.application.addEventListener(KeyboardEvent.KEY_DOWN, appui);
+				ecouteurs = new Array();
+			}
+			else {
+				throw new MErreur("MClavier", "MClavier()", "Utiliser getInstance pour obtenir une instance de MClavier!!");
+			}
 		}
 		
+		/*
+		 * Crée l'unique instance de MClavier si elle n'existe pas déjà et la renvoie
+		 * @return l'unique instance de MClavier
+		 */
+		 public static function getInstance():MClavier{
+		 	if(instance == null)
+		 		instance = new MClavier();
+		 	return instance;
+		 }
+		
+		/*
+		 * ajoute un écouteur à la liste des écouteurs de clavier
+		 * @param m: nouvel écouteur de clavier
+	 	 */
 		public function ajouterEcouteur(m:MIEcouteurClavier):void {
 			ecouteurs.push(m);
 		}
+		/*
+		 * enlève un écouteur à la liste des écouteurs de clavier
+		 * @param m: écouteur de clavier à enlever
+	 	 */
 		public function enleverEcouteur(m:MIEcouteurClavier):void {
 			ecouteurs.slice(ecouteurs.indexOf(m), 1);
 		}
 		
-		private function appuis(evt:KeyboardEvent):void {
+		/*
+		 * fonction appelée lorsque le clavier est appuyé
+		 * @param evt: évenement clavier indiquant quelle touche est appuyée
+	 	 */
+		private function appui(evt:KeyboardEvent):void {
 			switch(evt.keyCode)
 			{
-				// appuis sur la fleche gauche
+				// appui sur la fleche gauche
 				case Keyboard.LEFT:
-					appuisFlecheGauche();
+					appuiFlecheGauche();
 					break;
-				// appuis sur la fleche haut
+				// appui sur la fleche haut
 				case Keyboard.UP:
-					appuisFlecheHaut();
+					appuiFlecheHaut();
 					break;
-				// appuis sur la fleche droite
+				// appui sur la fleche droite
 				case Keyboard.RIGHT:
-					appuisFlecheDroite();
+					appuiFlecheDroite();
 					break;
-				// appuis sur la fleche bas
+				// appui sur la fleche bas
 				case Keyboard.DOWN:
-					appuisFlecheBas();
+					appuiFlecheBas();
 					break;   
 					
-				// appuis sur entree
+				// appui sur entree
 				case Keyboard.ENTER:
-					appuisFlecheBas();
+					appuiFlecheBas();
 					break;
 				
-				// appuis sur espace
+				// appui sur espace
 				case Keyboard.BACKSPACE:
-					appuisFlecheBas();
-					break; 
-					
-				default:
-					appuisTouche(evt.keyCode);
-					break;                        
+					appuiFlecheBas();
+					break;                         
 			}
 		}
 		
-		private function appuisFlecheGauche():void {
+		/*
+		 * fonction appelée lorsque la flèche gauche est appuyée
+		 * <p> appelle la fonction flecheGauche des écouteurs de clavier </p>
+		 * @see Controleur.MIEcouteurClavier.flecheGauche
+	 	 */
+		private function appuiFlecheGauche():void {
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
 				(ecouteurs[i] as MIEcouteurClavier).flecheGauche();
 			}
 		}
 		
-		private function appuisFlecheDroite():void {
+		/*
+		 * fonction appelée lorsque la flèche droite est appuyée
+		 * <p> appelle la fonction flecheDroite des écouteurs de clavier </p>
+		 * @see Controleur.MIEcouteurClavier.flecheDroite
+	 	 */
+		private function appuiFlecheDroite():void {
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
 				(ecouteurs[i] as MIEcouteurClavier).flecheDroite();
 			}
 		}
 		
-		private function appuisFlecheHaut():void {
+		/*
+		 * fonction appelée lorsque la flèche haut est appuyée
+		 * <p> appelle la fonction flecheHaut des écouteurs de clavier </p>
+		 * @see Controleur.MIEcouteurClavier.flecheHaut
+	 	 */
+		private function appuiFlecheHaut():void {
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
 				(ecouteurs[i] as MIEcouteurClavier).flecheHaut();
 			}
 		}
 		
-		private function appuisFlecheBas():void {
+		/*
+		 * fonction appelée lorsque la flèche bas est appuyée
+		 * <p> appelle la fonction flecheBas des écouteurs de clavier </p>
+		 * @see Controleur.MIEcouteurClavier.flecheBas
+	 	 */
+		private function appuiFlecheBas():void {
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
 				(ecouteurs[i] as MIEcouteurClavier).flecheBas();
 			}
 		}
 		
-		private function appuisEntree():void {
+		/*
+		 * fonction appelée lorsque la touche Entrée est appuyée
+		 * <p> appelle la fonction entree des écouteurs de clavier </p>
+		 * @see Controleur.MIEcouteurClavier.entree
+	 	 */
+		private function appuiEntree():void {
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
 				(ecouteurs[i] as MIEcouteurClavier).entree();
 			}
 		}
 		
-		private function appuisEspace():void {
+		/*
+		 * fonction appelée lorsque la touche Espace est appuyée
+		 * <p> appelle la fonction espace des écouteurs de clavier </p>
+		 * @see Controleur.MIEcouteurClavier.espace
+	 	 */
+		private function appuiEspace():void {
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
 				(ecouteurs[i] as MIEcouteurClavier).espace();
-			}
-		}
-		
-		private function appuisTouche(touche:uint):void {
-			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				(ecouteurs[i] as MIEcouteurClavier).touche(touche);
 			}
 		}
 
