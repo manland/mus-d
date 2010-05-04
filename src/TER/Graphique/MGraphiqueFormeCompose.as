@@ -1,5 +1,4 @@
-package Graphique
-{
+package Graphique {
 	import Coeur.Forme.MFormeCompose;
 	import Coeur.Forme.MIForme;
 	import Coeur.Forme.MFormeRectangle;
@@ -9,10 +8,9 @@ package Graphique
 	import Utilitaires.MCoordonnee;
 	import Coeur.Forme.MFormeEtoile;
 	
-	public class MGraphiqueFormeCompose extends MGraphiqueAbstrait implements MIObjetGraphique
-	{
-		public function MGraphiqueFormeCompose()
-		{
+	public class MGraphiqueFormeCompose extends MGraphiqueAbstrait implements MIObjetGraphique {
+		
+		public function MGraphiqueFormeCompose() {
 			var rectangle:MFormeRectangle = new MFormeRectangle();
             rectangle.instancie(10,10,50,70);
             var triangle:MFormeTriangle = new MFormeTriangle();

@@ -31,9 +31,7 @@ package Graphique.Textures {
 			this.objet = null;
 			this.url_image = url_image;
 			
-			var request:URLRequest = new URLRequest(url_image);
             loader = new Loader();
-            loader.load(request);
             loader.contentLoaderInfo.addEventListener(Event.COMPLETE, finaliser);
             loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, erreur);
          
@@ -72,8 +70,8 @@ package Graphique.Textures {
 		 	
 		 	var matrix:Matrix = new Matrix();
 		 	
-		 	var MAX_WIDTH:Number = objet.getObjet().getLargeur();
-		 	var MAX_HEIGHT:Number = objet.getObjet().getHauteur();
+	 		var MAX_WIDTH:Number = objet.getObjet().getLargeur();
+	 		var MAX_HEIGHT:Number = objet.getObjet().getHauteur();
 		 	var sx:Number = 1;
 		 	var sy:Number = 1;
 		 	if (originalWidth > MAX_WIDTH || originalHeight > MAX_HEIGHT) {
@@ -89,7 +87,18 @@ package Graphique.Textures {
 		  		newHeight = MAX_HEIGHT * sy;
 		  	}
 		 	matrix.scale(sx, sy);
-		 	myBitmap = new BitmapData(newWidth, newHeight, true, 0x00FFFFFF); 
+		 	if(newWidth > 2880) {
+		 		newWidth = 2880;
+		 	}
+		 	if(newHeight > 2880) {
+		 		newHeight = 2880;
+		 	}
+		 	try {
+		 		myBitmap = new BitmapData(newWidth, newHeight, true, 0x00FFFFFF); 
+		 	}
+		 	catch(e:Error) {
+		 		throw new MErreur("MImage", "finaliser","Erreur le bitmap est invalide vous n'avez probablement, pas donné de taille à votre objet : newWidth:"+newWidth+",newHeight:"+newHeight);
+		 	}
 		 	myBitmap.draw(bmd, matrix);
 		}
 		

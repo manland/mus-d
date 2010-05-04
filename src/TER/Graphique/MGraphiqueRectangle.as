@@ -1,5 +1,4 @@
-package Graphique
-{
+package Graphique {
 	import Coeur.MIObjet;
 	import Utilitaires.MCoordonnee;
 	import Coeur.Forme.MFormeRectangle;
@@ -8,11 +7,9 @@ package Graphique
 	import Graphique.Textures.MITexture;
 	import Coeur.Forme.MIForme;
 	
-	public class MGraphiqueRectangle extends MGraphiqueAbstrait implements MIObjetGraphique
-	{
+	public class MGraphiqueRectangle extends MGraphiqueAbstrait implements MIObjetGraphique {
 		
-		public function MGraphiqueRectangle(x:int=0, y:int=0, largeur:int=30, hauteur:int=10)
-		{
+		public function MGraphiqueRectangle(x:int=0, y:int=0, largeur:int=30, hauteur:int=10) {
 			forme = new MFormeRectangle();
 			(forme as MFormeRectangle).instancie(x, y, largeur, hauteur);
 			objet.setForme(forme);
@@ -35,7 +32,7 @@ package Graphique
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
 			}
-			graphics.drawRect(forme.getX(), forme.getY(), forme.getLargeur(), forme.getHauteur());
+			graphics.drawRect(forme.getX()-forme.getObjet().getX(), forme.getY()-forme.getObjet().getY(), forme.getLargeur(), forme.getHauteur());
 			graphics.endFill();
 		}
 

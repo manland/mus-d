@@ -27,7 +27,7 @@ package Graphique.Textures.Degrades {
 		protected var ty:Number;
 		protected var type:String;
         
-		public function MDegrade(couleurs:Array=null, alphas:Array=null, ratios:Array=null, spread_method:String=SpreadMethod.PAD, interpolation:String=InterpolationMethod.LINEAR_RGB, focal_pt_ratio:Number=0, type:String=GradientType.LINEAR, box_rotation=0) {
+		public function MDegrade(couleurs:Array=null, alphas:Array=null, ratios:Array=null, spread_method:String=SpreadMethod.PAD, interpolation:String=InterpolationMethod.LINEAR_RGB, focal_pt_ratio:Number=0, type:String=GradientType.LINEAR, box_rotation:Number=0) {
 			this.objet = null;
 			
 			nom_classe = "MDegrade";
@@ -157,13 +157,13 @@ package Graphique.Textures.Degrades {
 			}
 			clone.setCouleurs(clone_couleurs);
 			var clone_alphas:Array = new Array();
-			for(var i:int=0; i<alphas.length; i++) {
-				clone_alphas[i] = new Number(alphas[i]);
+			for(var j:int=0; j<alphas.length; j++) {
+				clone_alphas[j] = new Number(alphas[j]);
 			}
 			clone.setAlphas(clone_alphas);
 			var clone_ratios:Array = new Array();
-			for(var i:int=0; i<ratios.length; i++) {
-				clone_ratios[i] = new Number(ratios[i]);
+			for(var h:int=0; h<ratios.length; h++) {
+				clone_ratios[h] = new Number(ratios[h]);
 			}
 			clone.setRatios(clone_ratios);
 			clone.setSpreadMethod(new String(spread_method));

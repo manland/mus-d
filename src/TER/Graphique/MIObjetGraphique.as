@@ -1,5 +1,4 @@
-package Graphique
-{
+package Graphique {
 	import flash.display.Graphics;
 	import Coeur.MIObjet;
 	import mx.core.UIComponent;
@@ -8,8 +7,7 @@ package Graphique
 	import Graphique.Textures.MITexture;
 	import Graphique.Textures.MBordure;
 	
-	public interface MIObjetGraphique
-	{
+	public interface MIObjetGraphique {
 		function getObjet():MIObjet;
 		function getGraphique():UIComponent;
 		function getTexture():MITexture;

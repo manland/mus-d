@@ -1,38 +1,43 @@
 package Graphique {
-	import Coeur.Forme.MFormeEtoile;
-	import Utilitaires.MArete;
-	import Controleur.MIEffet;
-	import Controleur.MMouvementFini;
-	import Controleur.MRedimensionnement;
-	import Graphique.Textures.MBordure;
-	import Graphique.Textures.MITexture;
 	import Coeur.Forme.MFormeEtoilePleine;
 	import flash.display.Graphics;
 	import Coeur.Forme.MIForme;
+	import Graphique.Textures.MITexture;
+	import Graphique.Textures.MBordure;
+	import Utilitaires.MArete;
 	
-	public class MGraphiqueEtoile extends MGraphiqueAbstrait implements MIObjetGraphique {
-
-		public function MGraphiqueEtoile(x:int=0, y:int=0, largeur:int=50, tourne:int=0) {
+	public class MGraphiqueEtoilePleine extends MGraphiqueAbstrait implements MIObjetGraphique {
+	
+		public function MGraphiqueEtoilePleine(x:int=0, y:int=0, largeur:int=50, tourne:int=0, petit_rayon:int=10) {
 			this.largeur = largeur;
-			forme = new MFormeEtoile();
-			(forme as MFormeEtoile).instancie(x, y, largeur, rotation);
+			forme = new MFormeEtoilePleine();
+			(forme as MFormeEtoilePleine).instancie2(x, y, largeur, rotation, petit_rayon);
 			objet.setForme(forme);
-			nom_classe = "MGraphiqueEtoile";
+			nom_classe = "MGraphiqueEtoilePleine";
 		}
 		
 		public function set tourne(rotation:int):void {
-			(forme as MFormeEtoile).setRotation(rotation);
+			(forme as MFormeEtoilePleine).setRotation(rotation);
 			redessiner();
 		}
 		
 		public function get tourne():int {
-			return (forme as MFormeEtoile).getRotation();
+			return (forme as MFormeEtoilePleine).getRotation();
 		}
-
+		
+		public function set petit_rayon(petit_rayon:int):void {
+			(forme as MFormeEtoilePleine).setPetitRayon(petit_rayon);
+			redessiner();
+		}
+		
+		public function get petit_rayon():int {
+			return (forme as MFormeEtoilePleine).getPetitRayon();
+		}
+		
 		override protected function dessiner():void {
 			fireSeDessine();
 			var aretes:Array = null;
-			var o:MFormeEtoile = objet.getForme() as MFormeEtoile;
+			var o:MFormeEtoilePleine = objet.getForme() as MFormeEtoilePleine;
 			aretes = o.getAretes();
 			graphics.clear();
 			ma_texture.appliquer(graphics);
@@ -50,7 +55,7 @@ package Graphique {
 		
 		static public function dessiner(graphics:Graphics, forme:MIForme, ma_texture:MITexture, est_vide:Boolean, ma_bordure:MBordure = null):void {
 			var aretes:Array = null;
-			var o:MFormeEtoile = forme as MFormeEtoile;
+			var o:MFormeEtoilePleine = forme as MFormeEtoilePleine;
 			aretes = o.getAretes();
 			ma_texture.appliquer(graphics);
 			if(ma_bordure != null) {
@@ -66,7 +71,7 @@ package Graphique {
 		}
 		
 		override public function clone():MIObjetGraphique {
-			var graphique_temp:MGraphiqueEtoile = new MGraphiqueEtoile(x, y, largeur, rotation);
+			var graphique_temp:MGraphiqueEtoilePleine = new MGraphiqueEtoilePleine(x, y, largeur, rotation);
 			graphique_temp.setObjet(objet.clone());
 			if(ma_bordure != null) {
 				graphique_temp.setBordure(ma_bordure.clone() as MBordure);
@@ -78,5 +83,6 @@ package Graphique {
 			}
 			return graphique_temp;
 		}
+
 	}
 }
