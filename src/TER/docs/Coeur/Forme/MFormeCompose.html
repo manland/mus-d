@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="MFormeCompose,Coeur.Forme.MFormeCompose,affiche,axeCollision,calculMaxX,calculMaxY,calculMinX,calculMinY,calculParametres,clone,deplacement,getAire,getAxesSeparateurs,getFormeBas,getFormeCentre,getFormeDroit,getFormeGauche,getFormeHaut,getPerimetre,getPointsProjection,instancie,seProjeteSur,setFormeBas,setFormeCentre,setFormeDroit,setFormeGauche,setFormeHaut" name="keywords">
+<meta content="MFormeCompose,Coeur.Forme.MFormeCompose,affiche,axeCollision,calculMaxX,calculMaxY,calculMinX,calculMinY,calculParametres,clone,deplacement,getAire,getAxesSeparateurs,getFormeBas,getFormeCentre,getFormeDroit,getFormeGauche,getFormeHaut,getPerimetre,getPointsProjection,instancie,setFormeBas,setFormeCentre,setFormeDroit,setFormeGauche,setFormeHaut" name="keywords">
 <title>Coeur.Forme.MFormeCompose</title>
 </head>
 <body>
@@ -65,6 +65,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="MForme.html#decalage">decalage</a> : <a href="../../Utilitaires/Utilitaires/MCoordonneePositive.html">MCoordonneePositive</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="MForme.html">MForme</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="MForme.html#hauteur">hauteur</a> : Number<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="MForme.html">MForme</a></td>
 </tr>
@@ -74,6 +79,11 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="hideInheritedProtectedProperty">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="MForme.html#nom_classe">nom_classe</a> : String<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="MForme.html">MForme</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="MForme.html#objet">objet</a> : <a href="../Coeur/MIObjet.html">MIObjet</a>
+<div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="MForme.html">MForme</a></td>
 </tr>
 <tr class="hideInheritedProtectedProperty">
@@ -123,7 +133,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#axeCollision()">axeCollision</a>(x:Number, y:Number):<a href="../../Utilitaires/Utilitaires/MAxe.html">MAxe</a>
+<a class="signatureLink" href="#axeCollision()">axeCollision</a>(forme:<a href="MIForme.html">MIForme</a>):<a href="../../Utilitaires/Utilitaires/MAxe.html">MAxe</a>
 </div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MFormeCompose</td>
@@ -192,6 +202,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MFormeCompose</td>
 </tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="MForme.html#getDecalage()">getDecalage</a>():<a href="../../Utilitaires/Utilitaires/MCoordonneePositive.html">MCoordonneePositive</a>
+</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="MForme.html">MForme</a></td>
+</tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
@@ -253,6 +271,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="MForme.html">MForme</a></td>
 </tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="MForme.html#getObjet()">getObjet</a>():<a href="../Coeur/MIObjet.html">MIObjet</a>
+</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="MForme.html">MForme</a></td>
+</tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
@@ -288,12 +314,19 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MFormeCompose</td>
 </tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#seProjeteSur()">seProjeteSur</a>(vecteur:<a href="../../Utilitaires/MVecteur.html">MVecteur</a>):Array</div>
+<a class="signatureLink" href="MForme.html#seProjeteSur()">seProjeteSur</a>(vecteur:<a href="../../Utilitaires/Utilitaires/MVecteur.html">MVecteur</a>):Array</div>
 <div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MFormeCompose</td>
+</td><td class="summaryTableOwnerCol"><a href="MForme.html">MForme</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="MForme.html#setDecalage()">setDecalage</a>(decalage:<a href="../../Utilitaires/Utilitaires/MCoordonneePositive.html">MCoordonneePositive</a>):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="MForme.html">MForme</a></td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
@@ -348,6 +381,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="MForme.html#setNomClasse()">setNomClasse</a>(nom_classe:String):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="MForme.html">MForme</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="MForme.html#setObjet()">setObjet</a>(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="MForme.html">MForme</a></td>
 </tr>
@@ -425,16 +465,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function axeCollision(x:Number, y:Number):<a href="../../Utilitaires/Utilitaires/MAxe.html">MAxe</a></code><span class="label">Parameters</span>
+<code>public override function axeCollision(forme:<a href="MIForme.html">MIForme</a>):<a href="../../Utilitaires/Utilitaires/MAxe.html">MAxe</a></code><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">x</span>:Number</code></td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">y</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">forme</span>:<a href="MIForme.html">MIForme</a></code></td>
 </tr>
 </table>
 <p></p>
@@ -719,27 +753,6 @@ showHideInherited();
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">forme_centre</span>:<a href="MIForme.html">MIForme</a></code></td>
-</tr>
-</table>
-</div>
-<a name="seProjeteSur()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">seProjeteSur</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public override function seProjeteSur(vecteur:<a href="../../Utilitaires/MVecteur.html">MVecteur</a>):Array</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">vecteur</span>:<a href="../../Utilitaires/MVecteur.html">MVecteur</a></code></td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>Array</code></td>
 </tr>
 </table>
 </div>

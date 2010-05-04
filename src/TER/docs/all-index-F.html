@@ -47,6 +47,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("F�
 <td width="20"></td><td></td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html#fireChangementTaille()">fireChangementTaille</a>() &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html">MGraphiqueAbstrait</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Prévient les écouteurs que cet objet graphique se redimenssionne.</td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MElement.html#fireCollision()">fireCollision</a>(axe:<a href="Utilitaires/MAxe.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MAxe</a>) &mdash; Method in class Coeur.<a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MElement.html">MElement</a></td>
 </tr>
 <tr>
@@ -62,13 +69,21 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("F�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html#fireCollision()">fireCollision</a>(axe:<a href="Utilitaires/MAxe.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MAxe</a>) &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html">MGraphiqueAbstrait</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   Prévient les écouteurs que cet objet graphique collisionne avec un autre objet.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html#fireCollision()">fireCollision</a>(axe:<a href="Utilitaires/MAxe.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MAxe</a>) &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html">MGraphiqueScene</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html#fireDeplacement()">fireDeplacement</a>() &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html">MGraphiqueAbstrait</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Prévient les écouteurs que cet objet graphique se déplace.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MElement.html#fireDeplacementObjet()">fireDeplacementObjet</a>() &mdash; Method in class Coeur.<a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MElement.html">MElement</a></td>
@@ -86,7 +101,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("F�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html#fireMeurt()">fireMeurt</a>() &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html">MGraphiqueAbstrait</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   Prévient les écouteurs que cet objet graphique meurt, donc disparait visuellement
+   </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html#fireMeurt()">fireMeurt</a>() &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html">MGraphiqueScene</a></td>
@@ -122,7 +139,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("F�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html#fireSeDessine()">fireSeDessine</a>() &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html">MGraphiqueAbstrait</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   Prévient les écouteurs que cet objet graphique se déssine.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html#fireSeDessine()">fireSeDessine</a>() &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html">MGraphiqueScene</a></td>
@@ -176,7 +194,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("F�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html#forme">forme</a> &mdash; Property in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html">MGraphiqueAbstrait</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   La forme de cet objet graphique.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html#forme">forme</a> &mdash; Property in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html">MGraphiqueScene</a></td>

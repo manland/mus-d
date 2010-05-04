@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../print.css" type="text/css" media="print">
-<meta content="MGraphiqueAbstrait,Graphique.MGraphiqueAbstrait,ecouteurs,forme,ma_bordure,ma_texture,nom_classe,objet,sysout,type,bordure,hauteur,largeur,texture,height,width,x,y,ajouterBordure,ajouterEcouteur,ajouterTexture,changementTaille,clone,commitProperties,deplacementObjet,dessiner,fireCollision,fireMeurt,fireSeDessine,getBordure,getGraphique,getNomClasse,getObjet,getTexture,objetCollision,objetMeurt,objetNait,redessiner,setBordure,setObjet,setTexture,updateDisplayList" name="keywords">
+<meta content="MGraphiqueAbstrait,Graphique.MGraphiqueAbstrait,ecouteurs,forme,ma_bordure,ma_texture,nom_classe,objet,bordure,hauteur,largeur,texture,height,width,x,y,ajouterBordure,ajouterEcouteur,ajouterTexture,changementTaille,clone,deplacementObjet,dessiner,fireChangementTaille,fireCollision,fireDeplacement,fireMeurt,fireSeDessine,getBordure,getGraphique,getNomClasse,getObjet,getTexture,objetCollision,objetMeurt,objetNait,redessiner,setBordure,setObjet,setTexture,supprimerEcouteur,updateDisplayList" name="keywords">
 <title>Graphique.MGraphiqueAbstrait</title>
 </head>
 <body>
@@ -49,12 +49,30 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </table>
 <p></p>
   Classe abstraite gérant les comportements généraux des <u>MIObjetGraphique</u>.
+  <p>Représente le plus haut élément graphique de notre framework, tous les autres sont des sous-classes.<br /> 
+  Cette classe permet de gérer :
+  <li> l'objet MIObjet du code métier (package Coeur) </li>
+  <li> la forme MIForme (package Coeur.Forme)</li>
+  <li> les déplacements du graphique vers le coeur et vice versa</li>
+  <li> les redimensionnements du graphique vers le coeur et vice versa</li>
+  <li> les textures MITexture (package Graphique.Texture) </li>
+  <li> la bordure MITexture (package Graphique.Texture) </li>
+  </p>
+  <p>Enfin elle se charge des écouteurs MIObjetGraphiqueEcouteur en appellant les fire apropriés.</p>
   <p></p>
 <p>
 <span class="classHeaderTableLabel">See also</span>
 </p>
 <div class="seeAlso">
 <a href="MIObjetGraphique.html" target="">MIObjetGraphique</a>
+<br>
+<a href="MIObjetGraphiqueEcouteur.html" target="">MIObjetGraphiqueEcouteur</a>
+<br>
+<a href="../Coeur/Coeur/MIObjet.html" target="">Coeur.MIObjet</a>
+<br>
+<a href="../Coeur/Forme/MIForme.html" target="">Coeur.Forme.MIForme</a>
+<br>
+<a href="Textures/MITexture.html" target="">Graphique.Textures.MITexture</a>
 </div>
 <br>
 <hr>
@@ -68,44 +86,44 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#bordure">bordure</a> : <a href="Textures/MBordure.html">MBordure</a>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Retourne la bordure cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#hauteur">hauteur</a> : Number<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#hauteur">hauteur</a> : Number<div class="summaryTableDescription">
+   Permet de récupérer la hauteur de cet objet graphique en passant par l'objet model.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#height">height</a> : Number<div class="summaryTableDescription">[write-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#height">height</a> : Number<div class="summaryTableDescription">[write-only]
+   Permet de positionner la hauteur de cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#largeur">largeur</a> : Number<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#sysout">sysout</a> : Text<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#largeur">largeur</a> : Number<div class="summaryTableDescription">
+   Permet de récupérer la largeur de cet objet graphique en passant par l'objet model.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#texture">texture</a> : <a href="Textures/MITexture.html">MITexture</a>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Retourne la texture cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#type">type</a> : String<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#width">width</a> : Number<div class="summaryTableDescription">[write-only]
+   Permet de positionner la largeur de cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#width">width</a> : Number<div class="summaryTableDescription">[write-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#x">x</a> : Number<div class="summaryTableDescription">[write-only]
+   Permet de positionner la coordoonée x de cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#x">x</a> : Number<div class="summaryTableDescription">[write-only]</div>
-</td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#y">y</a> : Number<div class="summaryTableDescription">[write-only]</div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#y">y</a> : Number<div class="summaryTableDescription">[write-only]
+   Permet de positionner la coordoonée y de cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 </table>
@@ -118,26 +136,31 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ecouteurs">ecouteurs</a> : Array<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ecouteurs">ecouteurs</a> : Array<div class="summaryTableDescription">
+   Les écouteurs de la classe.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#forme">forme</a> : <a href="../Coeur/Forme/MIForme.html">MIForme</a>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   La forme de cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ma_bordure">ma_bordure</a> : <a href="Textures/MBordure.html">MBordure</a>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   La bordure de cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ma_texture">ma_texture</a> : <a href="Textures/MITexture.html">MITexture</a>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   La texture de cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#nom_classe">nom_classe</a> : String<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#nom_classe">nom_classe</a> : String<div class="summaryTableDescription">
+   Le nom de cette classe, est égale à "MGraphiqueAbstrait".</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
@@ -159,35 +182,40 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#MGraphiqueAbstrait()">MGraphiqueAbstrait</a>()</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Constructeur de la classe.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#ajouterBordure()">ajouterBordure</a>(bordure:<a href="Textures/MBordure.html">MBordure</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Permet d'ajouter une nouvelle bordure à la bordure de cet objet.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#ajouterEcouteur()">ajouterEcouteur</a>(ecouteur:<a href="MIObjetGraphiqueEcouteur.html">MIObjetGraphiqueEcouteur</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Permet d'ajouter un écouteur à cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#ajouterTexture()">ajouterTexture</a>(texture:<a href="Textures/MITexture.html">MITexture</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Permet d'ajouter une nouvelle texture à la texture de cet objet.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#changementTaille()">changementTaille</a>(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Appelé par l'objet model lorsque celui-ci se redimenssionne.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
@@ -195,35 +223,57 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#clone()">clone</a>():<a href="Graphique/MIObjetGraphique.html">MIObjetGraphique</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Permet d'obtenir un clone de cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#deplacementObjet()">deplacementObjet</a>(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Appelé par l'objet model lorsque celui-ci se déplace.</div>
+</td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#fireChangementTaille()">fireChangementTaille</a>():void</div>
+<div class="summaryTableDescription">
+   Prévient les écouteurs que cet objet graphique se redimenssionne.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#fireCollision()">fireCollision</a>(axe:<a href="../Utilitaires/MAxe.html">MAxe</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Prévient les écouteurs que cet objet graphique collisionne avec un autre objet.</div>
+</td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#fireDeplacement()">fireDeplacement</a>():void</div>
+<div class="summaryTableDescription">
+   Prévient les écouteurs que cet objet graphique se déplace.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#fireMeurt()">fireMeurt</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Prévient les écouteurs que cet objet graphique meurt, donc disparait visuellement
+   </div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#fireSeDessine()">fireSeDessine</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Prévient les écouteurs que cet objet graphique se déssine.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
@@ -231,21 +281,24 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#getBordure()">getBordure</a>():<a href="Textures/MBordure.html">MBordure</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Retourne la bordure cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#getGraphique()">getGraphique</a>():UIComponent</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Retourne sous la forme d'un UIComponent cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#getNomClasse()">getNomClasse</a>():String</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Permet d'obtenir le nom de cette classes sous forme d'un String.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
@@ -253,7 +306,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#getObjet()">getObjet</a>():<a href="../Coeur/Coeur/MIObjet.html">MIObjet</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Retourne l'objet model que représente cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
@@ -261,56 +315,72 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#getTexture()">getTexture</a>():<a href="Textures/MITexture.html">MITexture</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Retourne la texture cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#objetCollision()">objetCollision</a>(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>, axe:<a href="../Utilitaires/MAxe.html">MAxe</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Appelée par l'objet du code métier lorsque l'objet model collisionne avec un otre objet model.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#objetMeurt()">objetMeurt</a>(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Appelée par l'objet model lorsqu'il meurt, donc lorsque la fonction mourir de celui-ci est appelée.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#objetNait()">objetNait</a>(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Appelée par l'objet model lorsque celui-ci nait, autrement dit à la fin de son constructeur.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#redessiner()">redessiner</a>(e:TimerEvent = null):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Redessine cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#setBordure()">setBordure</a>(b:<a href="Textures/MBordure.html">MBordure</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Permet de positionner une nouvelle bordure à cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#setObjet()">setObjet</a>(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Permet de positionner un nouvel objet model pour cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#setTexture()">setTexture</a>(t:<a href="Textures/MITexture.html">MITexture</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Permet de positionner une nouvelle texture à cet objet graphique.</div>
+</td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#supprimerEcouteur()">supprimerEcouteur</a>(ecouteur:<a href="MIObjetGraphiqueEcouteur.html">MIObjetGraphiqueEcouteur</a>):void</div>
+<div class="summaryTableDescription">
+   Permet de supprimer un écouteur de cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 </table>
@@ -325,22 +395,17 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#commitProperties()">commitProperties</a>():void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
 <a class="signatureLink" href="#dessiner()">dessiner</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Fonction qui dessine cet objet graphique.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#updateDisplayList()">updateDisplayList</a>(unscaledWidth:Number, unscaledHeight:Number):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   Fonction appelée par l'API flex à chaque fois que cet objet graphique doit se dessiner.</div>
 </td><td class="summaryTableOwnerCol">MGraphiqueAbstrait</td>
 </tr>
 </table>
@@ -359,12 +424,20 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>bordure:<a href="Textures/MBordure.html">MBordure</a></code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>bordure:<a href="Textures/MBordure.html">MBordure</a></code>&nbsp;&nbsp;[read-write]<p>
+   Retourne la bordure cet objet graphique.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get bordure():<a href="Textures/MBordure.html">MBordure</a></code>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set bordure(value:<a href="Textures/MBordure.html">MBordure</a>):void</code>
 <br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Textures/MBordure.html" target="">Graphique.Textures.MBordure</a>
+</div>
 </div>
 <a name="ecouteurs"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -373,7 +446,33 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var ecouteurs:Array</code>
+<code>protected var ecouteurs:Array</code><p>
+   Les écouteurs de la classe.
+   </p><p>Ceux-ci sont prévenues lorsque l'objet :
+   <li> se dessine, graphiqueSeDessine() </li>
+   <li> meurt, graphiqueMeurt() </li>
+   <li> collisionne, graphiqueCollision() </li>
+   <li> se déplace, graphiqueSeDeplace() </li>
+   <li> se redimenssionne, graphiqueChangeTaille() </li>
+   </p>
+   <p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MIObjetGraphiqueEcouteur.html" target="">MIObjetGraphiqueEcouteur</a>
+<br>
+<a href="MGraphiqueAbstrait.html#ajouterEcouteur()" target="">MGraphiqueAbstrait.ajouterEcouteur()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireSeDessine()" target="">MGraphiqueAbstrait.fireSeDessine()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireMeurt()" target="">MGraphiqueAbstrait.fireMeurt()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireCollision()" target="">MGraphiqueAbstrait.fireCollision()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireDeplacement()" target="">MGraphiqueAbstrait.fireDeplacement()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireChangementTaille()" target="">MGraphiqueAbstrait.fireChangementTaille()</a>
+</div>
 </div>
 <a name="forme"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -382,8 +481,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var forme:<a href="../Coeur/Forme/MIForme.html">MIForme</a></code>
-</div>
+<code>protected var forme:<a href="../Coeur/Forme/MIForme.html">MIForme</a></code><p>
+   La forme de cet objet graphique. Doit être instanciée dans les sous-classes.
+   </p></div>
 <a name="hauteur"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -391,12 +491,23 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>hauteur:Number</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>hauteur:Number</code>&nbsp;&nbsp;[read-write]<p>
+   Permet de récupérer la hauteur de cet objet graphique en passant par l'objet model.
+   </p><p>Fonction équivalente à get height.</p>
+   <span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get hauteur():Number</code>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set hauteur(value:Number):void</code>
 <br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#objet" target="">MGraphiqueAbstrait.objet</a>
+<br>
+<a href="../Coeur/Coeur/MIObjet.html#getLargeur()" target="">Coeur.MIObjet.getLargeur()</a>
+</div>
 </div>
 <a name="height"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -405,10 +516,22 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>height:Number</code>&nbsp;&nbsp;[write-only]<span class="label">Implementation</span>
+<code>height:Number</code>&nbsp;&nbsp;[write-only]<p>
+   Permet de positionner la hauteur de cet objet graphique.
+   </p><p>Cette fonction appelle super.height = height pour se mettre en conformité avec l'API flex.</p>
+   <p>Puis met à jour la hauteur de l'objet model que représente cet objet graphique. Par le biai du MVC cet objet graphique sera bien redessiner.</p>
+   <span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set height(value:Number):void</code>
 <br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../Coeur/Coeur/MIObjet.html#setHauteur()" target="">Coeur.MIObjet.setHauteur()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#objet" target="">MGraphiqueAbstrait.objet</a>
+</div>
 </div>
 <a name="largeur"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -417,12 +540,23 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>largeur:Number</code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>largeur:Number</code>&nbsp;&nbsp;[read-write]<p>
+   Permet de récupérer la largeur de cet objet graphique en passant par l'objet model.
+   </p><p>Fonction équivalente à get width.</p>
+   <span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get largeur():Number</code>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set largeur(value:Number):void</code>
 <br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#objet" target="">MGraphiqueAbstrait.objet</a>
+<br>
+<a href="../Coeur/Coeur/MIObjet.html#getLargeur()" target="">Coeur.MIObjet.getLargeur()</a>
+</div>
 </div>
 <a name="ma_bordure"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -431,7 +565,21 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var ma_bordure:<a href="Textures/MBordure.html">MBordure</a></code>
+<code>protected var ma_bordure:<a href="Textures/MBordure.html">MBordure</a></code><p>
+   La bordure de cet objet graphique.
+   </p><p>Un objet peut avoir plusieurs bordures en même temps, il suffit pour cela d'utiliser ajouterBordure().</p>
+   <p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#getBordure()" target="">MGraphiqueAbstrait.getBordure()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#setBordure()" target="">MGraphiqueAbstrait.setBordure()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#bordure" target="">MGraphiqueAbstrait.bordure</a>
+<br>
+<a href="MGraphiqueAbstrait.html#ajouterBordure()" target="">MGraphiqueAbstrait.ajouterBordure()</a>
+</div>
 </div>
 <a name="ma_texture"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -440,7 +588,21 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var ma_texture:<a href="Textures/MITexture.html">MITexture</a></code>
+<code>protected var ma_texture:<a href="Textures/MITexture.html">MITexture</a></code><p>
+   La texture de cet objet graphique.
+   </p><p>Un objet peut avoir plusieurs textures en même temps, il suffit pour cela d'utiliser ajouterTexture().</p>
+   <p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#getTexture()" target="">MGraphiqueAbstrait.getTexture()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#setTexture()" target="">MGraphiqueAbstrait.setTexture()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#texture" target="">MGraphiqueAbstrait.texture</a>
+<br>
+<a href="MGraphiqueAbstrait.html#ajouterTexture()" target="">MGraphiqueAbstrait.ajouterTexture()</a>
+</div>
 </div>
 <a name="nom_classe"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -449,7 +611,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var nom_classe:String</code>
+<code>protected var nom_classe:String</code><p>
+   Le nom de cette classe, est égale à "MGraphiqueAbstrait".
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MIObjetGraphique.html#getNomClasse()" target="">MIObjetGraphique.getNomClasse()</a>
+</div>
 </div>
 <a name="objet"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -465,16 +634,9 @@ showHideInherited();
 </p>
 <div class="seeAlso">
 <a href="MGraphiqueAbstrait.html#getObjet()" target="">MGraphiqueAbstrait.getObjet()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#setObjet()" target="">MGraphiqueAbstrait.setObjet()</a>
 </div>
-</div>
-<a name="sysout"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">sysout</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public var sysout:Text</code>
 </div>
 <a name="texture"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -483,21 +645,20 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>texture:<a href="Textures/MITexture.html">MITexture</a></code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<code>texture:<a href="Textures/MITexture.html">MITexture</a></code>&nbsp;&nbsp;[read-write]<p>
+   Retourne la texture cet objet graphique.
+   </p><span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function get texture():<a href="Textures/MITexture.html">MITexture</a></code>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set texture(value:<a href="Textures/MITexture.html">MITexture</a>):void</code>
 <br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Textures/MITexture.html" target="">Graphique.Textures.MITexture</a>
 </div>
-<a name="type"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">type</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public var type:String</code>
 </div>
 <a name="width"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -506,10 +667,22 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>width:Number</code>&nbsp;&nbsp;[write-only]<span class="label">Implementation</span>
+<code>width:Number</code>&nbsp;&nbsp;[write-only]<p>
+   Permet de positionner la largeur de cet objet graphique.
+   </p><p>Cette fonction appelle super.width = width pour se mettre en conformité avec l'API flex.</p>
+   <p>Puis met à jour la largeur de l'objet model que représente cet objet graphique. Par le biai du MVC cet objet graphique sera bien redessiner.</p>
+   <span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set width(value:Number):void</code>
 <br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../Coeur/Coeur/MIObjet.html#setLargeur()" target="">Coeur.MIObjet.setLargeur()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#objet" target="">MGraphiqueAbstrait.objet</a>
+</div>
 </div>
 <a name="x"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -518,10 +691,22 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>x:Number</code>&nbsp;&nbsp;[write-only]<span class="label">Implementation</span>
+<code>x:Number</code>&nbsp;&nbsp;[write-only]<p>
+   Permet de positionner la coordoonée x de cet objet graphique.
+   </p><p>Cette fonction appelle super.x = x pour se mettre en conformité avec l'API flex.</p>
+   <p>Puis met à jour la coordoonée x de l'objet model que représente cet objet graphique. Par le biai du MVC cet objet graphique sera bien redessiner.</p>
+   <span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set x(value:Number):void</code>
 <br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../Coeur/Coeur/MIObjet.html#setX()" target="">Coeur.MIObjet.setX()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#objet" target="">MGraphiqueAbstrait.objet</a>
+</div>
 </div>
 <a name="y"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -530,10 +715,22 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>y:Number</code>&nbsp;&nbsp;[write-only]<span class="label">Implementation</span>
+<code>y:Number</code>&nbsp;&nbsp;[write-only]<p>
+   Permet de positionner la coordoonée y de cet objet graphique.
+   </p><p>Cette fonction appelle super.y = y pour se mettre en conformité avec l'API flex.</p>
+   <p>Puis met à jour la coordoonée y de l'objet model que représente cet objet graphique. Par le biai du MVC cet objet graphique sera bien redessiner.</p>
+   <span class="label">Implementation</span>
 <br>
 <code>&nbsp;&nbsp;&nbsp;&nbsp;public function set y(value:Number):void</code>
 <br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../Coeur/Coeur/MIObjet.html#setY()" target="">Coeur.MIObjet.setY()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#objet" target="">MGraphiqueAbstrait.objet</a>
+</div>
 </div>
 <a name="constructorDetail"></a>
 <div class="detailSectionHeader">Constructor detail</div>
@@ -544,7 +741,34 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function MGraphiqueAbstrait()</code>
+<code>public function MGraphiqueAbstrait()</code><p>
+   Constructeur de la classe.
+   </p><p>Cette classe étant abstraite il ne peut pas être appelé directement mais par une sous-classe. 
+   Elle instancie dans cet ordre les attributs suivants :
+   <li> objet = MElement et s'ajoute dans la liste de ses écouteurs </li>
+   <li> forme = null !! Doit être instancié absolument dans la sous-classe </li>
+   <li> ma_texture en tant que MCouleur </li>
+   <li> ma_bordure = null </li>
+   <li> sous_classe = this casté en MIObjetGraphique </li>
+   </p>
+   <br>
+<span class="label">Throws</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../Utilitaires/Utilitaires/MErreur.html">MErreur</a> </code> &mdash; générée si le cast de this en MIObjetGraphique n'a pas marché.
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../Coeur/Coeur/MElement.html" target="">Coeur.MElement</a>
+<br>
+<a href="Textures/MCouleur.html" target="">Graphique.Textures.MCouleur</a>
+<br>
+<a href="Graphique/MIObjetGraphique.html" target="">Graphique.MIObjetGraphique</a>
+</div>
 </div>
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Method detail</div>
@@ -555,12 +779,31 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function ajouterBordure(bordure:<a href="Textures/MBordure.html">MBordure</a>):void</code><span class="label">Parameters</span>
+<code>public function ajouterBordure(bordure:<a href="Textures/MBordure.html">MBordure</a>):void</code><p>
+   Permet d'ajouter une nouvelle bordure à la bordure de cet objet.
+   </p><p>Si la bordure était nul alors elle devient la nouvelle bordure.</p>
+   <p>Sinon, on ajoute, par le biai d'un pattern décorator, la bordure à l'ancienne bordure. Puis on se positionne comme l'objet a dessiner de cette nouvelle bordure. Finalement on redessine l'objet en appelant la fonction redessiner().</p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">bordure</span>:<a href="Textures/MBordure.html">MBordure</a></code></td>
+<td width="20px"></td><td><code><span class="label">bordure</span>:<a href="Textures/MBordure.html">MBordure</a></code> &mdash; la nouvelle bordure à ajouter à l'ancienne
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#bordure" target="">MGraphiqueAbstrait.bordure</a>
+<br>
+<a href="Textures/MITexture.html#setADecorer()" target="">Graphique.Textures.MITexture.setADecorer()</a>
+<br>
+<a href="Textures/MITexture.html#setObjetADessiner()" target="">Graphique.Textures.MITexture.setObjetADessiner()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#redessiner()" target="">MGraphiqueAbstrait.redessiner()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#ajouterTexture()" target="">MGraphiqueAbstrait.ajouterTexture()</a>
+</div>
 </div>
 <a name="ajouterEcouteur()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -569,12 +812,42 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function ajouterEcouteur(ecouteur:<a href="MIObjetGraphiqueEcouteur.html">MIObjetGraphiqueEcouteur</a>):void</code><span class="label">Parameters</span>
+<code>public function ajouterEcouteur(ecouteur:<a href="MIObjetGraphiqueEcouteur.html">MIObjetGraphiqueEcouteur</a>):void</code><p>
+   Permet d'ajouter un écouteur à cet objet graphique.
+   </p><p>Celui-ci sera prévenue lorsque l'objet :
+   <li> se dessine, graphiqueSeDessine() </li>
+   <li> meurt, graphiqueMeurt() </li>
+   <li> collisionne, graphiqueCollision() </li>
+   <li> se déplace, graphiqueSeDeplace() </li>
+   <li> se redimenssionne, graphiqueChangeTaille() </li>
+   </p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">ecouteur</span>:<a href="MIObjetGraphiqueEcouteur.html">MIObjetGraphiqueEcouteur</a></code></td>
+<td width="20px"></td><td><code><span class="label">ecouteur</span>:<a href="MIObjetGraphiqueEcouteur.html">MIObjetGraphiqueEcouteur</a></code> &mdash; le nouvel écouteur de cet objet graphique.
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MIObjetGraphiqueEcouteur.html" target="">MIObjetGraphiqueEcouteur</a>
+<br>
+<a href="MGraphiqueAbstrait.html#ecouteurs" target="">MGraphiqueAbstrait.ecouteurs</a>
+<br>
+<a href="MGraphiqueAbstrait.html#supprimerEcouteur()" target="">MGraphiqueAbstrait.supprimerEcouteur()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireSeDessine()" target="">MGraphiqueAbstrait.fireSeDessine()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireMeurt()" target="">MGraphiqueAbstrait.fireMeurt()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireCollision()" target="">MGraphiqueAbstrait.fireCollision()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireDeplacement()" target="">MGraphiqueAbstrait.fireDeplacement()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireChangementTaille()" target="">MGraphiqueAbstrait.fireChangementTaille()</a>
+</div>
 </div>
 <a name="ajouterTexture()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -583,12 +856,32 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function ajouterTexture(texture:<a href="Textures/MITexture.html">MITexture</a>):void</code><span class="label">Parameters</span>
+<code>public function ajouterTexture(texture:<a href="Textures/MITexture.html">MITexture</a>):void</code><p>
+   Permet d'ajouter une nouvelle texture à la texture de cet objet.
+   </p><p>Si la texture était nul alors elle devient la nouvelle texture.</p>
+   <p>Sinon, on ajoute, par le biai d'un pattern décorator, la texture à l'ancienne texture. Puis on se positionne comme l'objet a dessiner de cette nouvelle texture. Finalement on redessine l'objet en appelant la fonction redessiner().</p>
+   <p>Pourrait permettre d'ajouter une bordure puisque celle-ci est aussi une MITexture mais il est conseillé d'utiliser ajouterBordure().</p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">texture</span>:<a href="Textures/MITexture.html">MITexture</a></code></td>
+<td width="20px"></td><td><code><span class="label">texture</span>:<a href="Textures/MITexture.html">MITexture</a></code> &mdash; la nouvelle texture à ajouter à l'ancienne
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#texture" target="">MGraphiqueAbstrait.texture</a>
+<br>
+<a href="Textures/MITexture.html#setADecorer()" target="">Graphique.Textures.MITexture.setADecorer()</a>
+<br>
+<a href="Textures/MITexture.html#setObjetADessiner()" target="">Graphique.Textures.MITexture.setObjetADessiner()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#redessiner()" target="">MGraphiqueAbstrait.redessiner()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#ajouterBordure()" target="">MGraphiqueAbstrait.ajouterBordure()</a>
+</div>
 </div>
 <a name="changementTaille()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -597,12 +890,32 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function changementTaille(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</code><span class="label">Parameters</span>
+<code>public function changementTaille(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</code><p>
+   Appelé par l'objet model lorsque celui-ci se redimenssionne.
+   </p><p>Cet objet graphique met à jours sa taille avant d'appeler fireChangementTaille() et pour finalement se redessiner.</p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code></td>
+<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code> &mdash; l'objet qui se redimenssionne
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#objet" target="">MGraphiqueAbstrait.objet</a>
+<br>
+<a href="../Coeur/Coeur/MIObjetEcouteur.html#changementTaille()" target="">Coeur.MIObjetEcouteur.changementTaille()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#width" target="">MGraphiqueAbstrait.width</a>
+<br>
+<a href="MGraphiqueAbstrait.html#height" target="">MGraphiqueAbstrait.height</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireChangementTaille()" target="">MGraphiqueAbstrait.fireChangementTaille()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#redessiner()" target="">MGraphiqueAbstrait.redessiner()</a>
+</div>
 </div>
 <a name="clone()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -611,23 +924,27 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function clone():<a href="Graphique/MIObjetGraphique.html">MIObjetGraphique</a></code>
-<p></p>
+<code>public function clone():<a href="Graphique/MIObjetGraphique.html">MIObjetGraphique</a></code><p>
+   Permet d'obtenir un clone de cet objet graphique.
+   </p><p>Cette fonction devrait être abstraite, mais ActionScript3.5 ne le permet pas. 
+   Elle retourne donc null, mais puisque les sous-classes de MGraphiqueAbstrait doivent implémentées MIObjetGraphique, cette fonction sera obligatoirement implémentée dans les classes-filles.</p>
+   <p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="Graphique/MIObjetGraphique.html">MIObjetGraphique</a></code></td>
+<td width="20"></td><td><code><a href="Graphique/MIObjetGraphique.html">MIObjetGraphique</a></code> &mdash; 
+                        un clone de cet objet graphique.
+   
+                        
+                     </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MIObjetGraphique.html#clone()" target="">MIObjetGraphique.clone()</a>
 </div>
-<a name="commitProperties()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">commitProperties</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected override function commitProperties():void</code>
 </div>
 <a name="deplacementObjet()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -636,12 +953,32 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function deplacementObjet(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</code><span class="label">Parameters</span>
+<code>public function deplacementObjet(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</code><p>
+   Appelé par l'objet model lorsque celui-ci se déplace.
+   </p><p>Cet objet graphique met à jours ses coordonnées avant d'appeler fireDeplacement() et pour finalement se redessiner.</p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code></td>
+<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code> &mdash; l'objet qui se déplace
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#objet" target="">MGraphiqueAbstrait.objet</a>
+<br>
+<a href="../Coeur/Coeur/MIObjetEcouteur.html#deplacementObjet()" target="">Coeur.MIObjetEcouteur.deplacementObjet()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#x" target="">MGraphiqueAbstrait.x</a>
+<br>
+<a href="MGraphiqueAbstrait.html#y" target="">MGraphiqueAbstrait.y</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireDeplacement()" target="">MGraphiqueAbstrait.fireDeplacement()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#redessiner()" target="">MGraphiqueAbstrait.redessiner()</a>
+</div>
 </div>
 <a name="dessiner()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -650,7 +987,32 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected function dessiner():void</code>
+<code>protected function dessiner():void</code><p>
+   Fonction qui dessine cet objet graphique.
+   </p><p>Cette fonction devrait être abstraite, mais ActionScript3.5 ne le permet pas. 
+   Son corps est donc vide, mais puisque les sous-classes de MGraphiqueAbstrait doivent implémentées MIObjetGraphique, cette fonction sera obligatoirement implémentée dans les classes-filles.</p>
+   <p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MIObjetGraphique.html#dessiner()" target="">MIObjetGraphique.dessiner()</a>
+</div>
+</div>
+<a name="fireChangementTaille()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">fireChangementTaille</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function fireChangementTaille():void</code><p>
+   Prévient les écouteurs que cet objet graphique se redimenssionne.
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#ecouteurs" target="">MGraphiqueAbstrait.ecouteurs</a>
+</div>
 </div>
 <a name="fireCollision()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -659,12 +1021,37 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function fireCollision(axe:<a href="../Utilitaires/MAxe.html">MAxe</a>):void</code><span class="label">Parameters</span>
+<code>public function fireCollision(axe:<a href="../Utilitaires/MAxe.html">MAxe</a>):void</code><p>
+   Prévient les écouteurs que cet objet graphique collisionne avec un autre objet.
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">axe</span>:<a href="../Utilitaires/MAxe.html">MAxe</a></code></td>
+<td width="20px"></td><td><code><span class="label">axe</span>:<a href="../Utilitaires/MAxe.html">MAxe</a></code> &mdash; l'axe suivant lequel l'objet vient collisionner l'autre objet
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#ecouteurs" target="">MGraphiqueAbstrait.ecouteurs</a>
+</div>
+</div>
+<a name="fireDeplacement()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">fireDeplacement</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function fireDeplacement():void</code><p>
+   Prévient les écouteurs que cet objet graphique se déplace.
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#ecouteurs" target="">MGraphiqueAbstrait.ecouteurs</a>
+</div>
 </div>
 <a name="fireMeurt()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -673,7 +1060,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function fireMeurt():void</code>
+<code>public function fireMeurt():void</code><p>
+   Prévient les écouteurs que cet objet graphique meurt, donc disparait visuellement
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#ecouteurs" target="">MGraphiqueAbstrait.ecouteurs</a>
+</div>
 </div>
 <a name="fireSeDessine()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -682,7 +1076,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function fireSeDessine():void</code>
+<code>public function fireSeDessine():void</code><p>
+   Prévient les écouteurs que cet objet graphique se déssine.
+   </p><p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#ecouteurs" target="">MGraphiqueAbstrait.ecouteurs</a>
+</div>
 </div>
 <a name="getBordure()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -691,14 +1092,26 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function getBordure():<a href="Textures/MBordure.html">MBordure</a></code>
-<p></p>
+<code>public function getBordure():<a href="Textures/MBordure.html">MBordure</a></code><p>
+   Retourne la bordure cet objet graphique.
+   </p><p>Fonction permettant d'utiliser le moyen "traditionnel" mais en réalité fait appel à la fonction get bordure().</p>
+   <p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="Textures/MBordure.html">MBordure</a></code></td>
+<td width="20"></td><td><code><a href="Textures/MBordure.html">MBordure</a></code> &mdash; 
+                        la bordure de cet objet graphique
+   
+                        
+                     </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#bordure" target="">MGraphiqueAbstrait.bordure</a>
+</div>
 </div>
 <a name="getGraphique()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -707,12 +1120,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function getGraphique():UIComponent</code>
-<p></p>
+<code>public function getGraphique():UIComponent</code><p>
+   Retourne sous la forme d'un UIComponent cet objet graphique.
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>UIComponent</code></td>
+<td width="20"></td><td><code>UIComponent</code> &mdash; cet objet graphique sous forme d'UIComponent
+   </td>
 </tr>
 </table>
 </div>
@@ -723,12 +1138,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function getNomClasse():String</code>
-<p></p>
+<code>public function getNomClasse():String</code><p>
+   Permet d'obtenir le nom de cette classes sous forme d'un String.
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>String</code></td>
+<td width="20"></td><td><code>String</code> &mdash; le nom de cette classe soit "MGraphiqueAbstrait"
+   </td>
 </tr>
 </table>
 </div>
@@ -739,14 +1156,25 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function getObjet():<a href="../Coeur/Coeur/MIObjet.html">MIObjet</a></code>
-<p></p>
+<code>public function getObjet():<a href="../Coeur/Coeur/MIObjet.html">MIObjet</a></code><p>
+   Retourne l'objet model que représente cet objet graphique.
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="../Coeur/Coeur/MIObjet.html">MIObjet</a></code></td>
+<td width="20"></td><td><code><a href="../Coeur/Coeur/MIObjet.html">MIObjet</a></code> &mdash; 
+                        l'objet model de cet objet graphique
+   
+                        
+                     </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../Coeur/Coeur/MIObjet.html" target="">Coeur.MIObjet</a>
+</div>
 </div>
 <a name="getTexture()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -755,14 +1183,26 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function getTexture():<a href="Textures/MITexture.html">MITexture</a></code>
-<p></p>
+<code>public function getTexture():<a href="Textures/MITexture.html">MITexture</a></code><p>
+   Retourne la texture cet objet graphique.
+   </p><p>Fonction permettant d'utiliser le moyen "traditionnel" mais en réalité fait appel à la fonction get texture().</p>
+   <p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="Textures/MITexture.html">MITexture</a></code></td>
+<td width="20"></td><td><code><a href="Textures/MITexture.html">MITexture</a></code> &mdash; 
+                        la texture de cet objet graphique
+   
+                        
+                     </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#texture" target="">MGraphiqueAbstrait.texture</a>
+</div>
 </div>
 <a name="objetCollision()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -771,18 +1211,33 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function objetCollision(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>, axe:<a href="../Utilitaires/MAxe.html">MAxe</a>):void</code><span class="label">Parameters</span>
+<code>public function objetCollision(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>, axe:<a href="../Utilitaires/MAxe.html">MAxe</a>):void</code><p>
+   Appelée par l'objet du code métier lorsque l'objet model collisionne avec un otre objet model.
+   </p><p>Cette fonction ne fait rien d'autre que d'appeler fireCollision().</p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code></td>
+<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code> &mdash; l'autre objet collisionné
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">axe</span>:<a href="../Utilitaires/MAxe.html">MAxe</a></code></td>
+<td width="20px"></td><td><code><span class="label">axe</span>:<a href="../Utilitaires/MAxe.html">MAxe</a></code> &mdash; l'axe suivant lequel l'objet vient collisionner l'autre objet
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#objet" target="">MGraphiqueAbstrait.objet</a>
+<br>
+<a href="../Coeur/Coeur/MIObjetEcouteur.html#objetCollision()" target="">Coeur.MIObjetEcouteur.objetCollision()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireCollision()" target="">MGraphiqueAbstrait.fireCollision()</a>
+</div>
 </div>
 <a name="objetMeurt()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -791,12 +1246,26 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function objetMeurt(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</code><span class="label">Parameters</span>
+<code>public function objetMeurt(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</code><p>
+   Appelée par l'objet model lorsqu'il meurt, donc lorsque la fonction mourir de celui-ci est appelée.
+   </p><p>Cette fonction appel parent.removeChild() afin que cet objet graphique soit enlevé visuellement avant d'appeler fireMeurt pour prévenir ses écouteurs.</p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code></td>
+<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code> &mdash; l'objet qui meurt
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#objet" target="">MGraphiqueAbstrait.objet</a>
+<br>
+<a href="../Coeur/Coeur/MIObjetEcouteur.html#objetMeurt()" target="">Coeur.MIObjetEcouteur.objetMeurt()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#fireMeurt()" target="">MGraphiqueAbstrait.fireMeurt()</a>
+</div>
 </div>
 <a name="objetNait()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -805,12 +1274,24 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function objetNait(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</code><span class="label">Parameters</span>
+<code>public function objetNait(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</code><p>
+   Appelée par l'objet model lorsque celui-ci nait, autrement dit à la fin de son constructeur.
+   </p><p>Cette fonction ne fait rien, elle doit être réimplémentée par une classe fille si celle-ci en a besoins.</p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code></td>
+<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code> &mdash; l'objet qui nait
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#objet" target="">MGraphiqueAbstrait.objet</a>
+<br>
+<a href="../Coeur/Coeur/MIObjetEcouteur.html#objetNait()" target="">Coeur.MIObjetEcouteur.objetNait()</a>
+</div>
 </div>
 <a name="redessiner()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -819,12 +1300,24 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function redessiner(e:TimerEvent = null):void</code><span class="label">Parameters</span>
+<code>public function redessiner(e:TimerEvent = null):void</code><p>
+   Redessine cet objet graphique.
+   </p><p>Peut être appelée avec aucun paramètre pour qu'il se redessine tout de suite. 
+   Ou peu être appelée régulièrement avec un timer.</p>
+   <p>Cette fonction appelle invelidateDisplayList() pour redessiner l'objet en conformité avec l'API flex.</p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">e</span>:TimerEvent</code> (default = <code>null</code>)<code></code></td>
+<td width="20px"></td><td><code><span class="label">e</span>:TimerEvent</code> (default = <code>null</code>)<code></code> &mdash; l'évennement généré par un timer de l'API flex, ne sert à rien ici 
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#invalidateDisplayList()" target="">MGraphiqueAbstrait.invalidateDisplayList()</a>
+</div>
 </div>
 <a name="setBordure()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -833,12 +1326,22 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function setBordure(b:<a href="Textures/MBordure.html">MBordure</a>):void</code><span class="label">Parameters</span>
+<code>public function setBordure(b:<a href="Textures/MBordure.html">MBordure</a>):void</code><p>
+   Permet de positionner une nouvelle bordure à cet objet graphique.
+   </p><p>Fonction permettant d'utiliser le moyen "traditionnel" mais en réalité fait appel à la fonction set bordure().</p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">b</span>:<a href="Textures/MBordure.html">MBordure</a></code></td>
+<td width="20px"></td><td><code><span class="label">b</span>:<a href="Textures/MBordure.html">MBordure</a></code> &mdash; la nouvelle bordure de cet objet graphique
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#bordure" target="">MGraphiqueAbstrait.bordure</a>
+</div>
 </div>
 <a name="setObjet()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -847,12 +1350,32 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function setObjet(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</code><span class="label">Parameters</span>
+<code>public function setObjet(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</code><p>
+   Permet de positionner un nouvel objet model pour cet objet graphique.
+   </p><p>Cet objet graphique se positionne en tant qu'écouteur de ce nouvel objet model. 
+   De plus on appel les fonctions deplacementObjet() et changementTaille() afin que l'objet graphique se redessine correctement.</p>
+   <p>Si cet objet graphique avait un model alors on se supprime de ça liste de ses écouteurs.</p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code></td>
+<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code> &mdash; le nouvel objet model
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../Coeur/Coeur/MIObjet.html" target="">Coeur.MIObjet</a>
+<br>
+<a href="../Coeur/Coeur/MIObjet.html#supprimerObjetEcouteur()" target="">Coeur.MIObjet.supprimerObjetEcouteur()</a>
+<br>
+<a href="../Coeur/Coeur/MIObjet.html#ajoutObjetEcouteur()" target="">Coeur.MIObjet.ajoutObjetEcouteur()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#changementTaille()" target="">MGraphiqueAbstrait.changementTaille()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#deplacementObjet()" target="">MGraphiqueAbstrait.deplacementObjet()</a>
+</div>
 </div>
 <a name="setTexture()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -861,12 +1384,51 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function setTexture(t:<a href="Textures/MITexture.html">MITexture</a>):void</code><span class="label">Parameters</span>
+<code>public function setTexture(t:<a href="Textures/MITexture.html">MITexture</a>):void</code><p>
+   Permet de positionner une nouvelle texture à cet objet graphique.
+   </p><p>Fonction permettant d'utiliser le moyen "traditionnel" mais en réalité fait appel à la fonction set texture().</p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">t</span>:<a href="Textures/MITexture.html">MITexture</a></code></td>
+<td width="20px"></td><td><code><span class="label">t</span>:<a href="Textures/MITexture.html">MITexture</a></code> &mdash; la nouvelle texture de cet objet graphique
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#texture" target="">MGraphiqueAbstrait.texture</a>
+<br>
+<a href="MGraphiqueAbstrait.html#bordure" target="">MGraphiqueAbstrait.bordure</a>
+</div>
+</div>
+<a name="supprimerEcouteur()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">supprimerEcouteur</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function supprimerEcouteur(ecouteur:<a href="MIObjetGraphiqueEcouteur.html">MIObjetGraphiqueEcouteur</a>):void</code><p>
+   Permet de supprimer un écouteur de cet objet graphique.
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">ecouteur</span>:<a href="MIObjetGraphiqueEcouteur.html">MIObjetGraphiqueEcouteur</a></code> &mdash; l'écouteur à enlever de la liste des écouteurs de cet objet graphique.
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MIObjetGraphiqueEcouteur.html" target="">MIObjetGraphiqueEcouteur</a>
+<br>
+<a href="MGraphiqueAbstrait.html#ecouteurs" target="">MGraphiqueAbstrait.ecouteurs</a>
+<br>
+<a href="MGraphiqueAbstrait.html#ajouterEcouteur()" target="">MGraphiqueAbstrait.ajouterEcouteur()</a>
+</div>
 </div>
 <a name="updateDisplayList()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -875,18 +1437,33 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected override function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void</code><span class="label">Parameters</span>
+<code>protected override function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void</code><p>
+   Fonction appelée par l'API flex à chaque fois que cet objet graphique doit se dessiner.
+   </p><p>Cette fonction appelle super.updateDisplayList pour se mettre en conformité avec l'API flex.</p>
+   <p>Puis appelle fireSeDessine pour prévenir les écouteurs que cet objet graphique se déssine.</p>
+   <p>Finalement cette fonction appelle dessiner().</p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">unscaledWidth</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">unscaledWidth</span>:Number</code> &mdash; la largeur de cet objet graphique sans tenir compte du scaleX
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">unscaledHeight</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">unscaledHeight</span>:Number</code> &mdash; la hauteur de cet objet graphique sans tenir compte du scaleY
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="MGraphiqueAbstrait.html#fireSeDessine()" target="">MGraphiqueAbstrait.fireSeDessine()</a>
+<br>
+<a href="MGraphiqueAbstrait.html#dessiner()" target="">MGraphiqueAbstrait.dessiner()</a>
+</div>
 </div>
 <br>
 <br>

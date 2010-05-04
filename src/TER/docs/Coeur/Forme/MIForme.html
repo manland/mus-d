@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="MIForme,Coeur.Forme.MIForme,affiche,calculMaxX,calculMaxY,calculMinX,calculMinY,clone,deplacement,getAire,getAxesSeparateurs,getHauteur,getLargeur,getNomClasse,getPerimetre,getPointsProjection,getX,getY,seProjeteSur,setHauteur,setLargeur,setNomClasse,setX,setY" name="keywords">
+<meta content="MIForme,Coeur.Forme.MIForme,affiche,axeCollision,calculMaxX,calculMaxY,calculMinX,calculMinY,clone,deplacement,getAire,getAxesSeparateurs,getDecalage,getHauteur,getLargeur,getNomClasse,getObjet,getPerimetre,getPointsProjection,getX,getY,seProjeteSur,setDecalage,setHauteur,setLargeur,setNomClasse,setObjet,setX,setY" name="keywords">
 <title>Coeur.Forme.MIForme</title>
 </head>
 <body>
@@ -60,6 +60,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#affiche()">affiche</a>():void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MIForme</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#axeCollision()">axeCollision</a>(forme:<a href="MIForme.html">MIForme</a>):<a href="../../Utilitaires/Utilitaires/MAxe.html">MAxe</a>
+</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MIForme</td>
 </tr>
@@ -123,6 +131,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="#getDecalage()">getDecalage</a>():<a href="../../Utilitaires/Utilitaires/MCoordonneePositive.html">MCoordonneePositive</a>
+</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MIForme</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="#getHauteur()">getHauteur</a>():Number</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MIForme</td>
@@ -138,6 +154,14 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#getNomClasse()">getNomClasse</a>():String</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MIForme</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getObjet()">getObjet</a>():<a href="../Coeur/MIObjet.html">MIObjet</a>
+</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MIForme</td>
 </tr>
@@ -179,6 +203,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="#setDecalage()">setDecalage</a>(decalage:<a href="../../Utilitaires/MCoordonneePositive.html">MCoordonneePositive</a>):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MIForme</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="#setHauteur()">setHauteur</a>(hauteur:Number):void</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MIForme</td>
@@ -194,6 +225,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#setNomClasse()">setNomClasse</a>(nom_classe:String):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MIForme</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#setObjet()">setObjet</a>(objet:<a href="../MIObjet.html">MIObjet</a>):void</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MIForme</td>
 </tr>
@@ -228,6 +266,27 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public function affiche():void</code>
+</div>
+<a name="axeCollision()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">axeCollision</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function axeCollision(forme:<a href="MIForme.html">MIForme</a>):<a href="../../Utilitaires/Utilitaires/MAxe.html">MAxe</a></code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">forme</span>:<a href="MIForme.html">MIForme</a></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Utilitaires/Utilitaires/MAxe.html">MAxe</a></code></td>
+</tr>
+</table>
 </div>
 <a name="calculMaxX()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -366,6 +425,22 @@ showHideInherited();
 </tr>
 </table>
 </div>
+<a name="getDecalage()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getDecalage</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getDecalage():<a href="../../Utilitaires/Utilitaires/MCoordonneePositive.html">MCoordonneePositive</a></code>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Utilitaires/Utilitaires/MCoordonneePositive.html">MCoordonneePositive</a></code></td>
+</tr>
+</table>
+</div>
 <a name="getHauteur()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -411,6 +486,22 @@ showHideInherited();
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20"></td><td><code>String</code></td>
+</tr>
+</table>
+</div>
+<a name="getObjet()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getObjet</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getObjet():<a href="../Coeur/MIObjet.html">MIObjet</a></code>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../Coeur/MIObjet.html">MIObjet</a></code></td>
 </tr>
 </table>
 </div>
@@ -504,6 +595,20 @@ showHideInherited();
 </tr>
 </table>
 </div>
+<a name="setDecalage()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setDecalage</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function setDecalage(decalage:<a href="../../Utilitaires/MCoordonneePositive.html">MCoordonneePositive</a>):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">decalage</span>:<a href="../../Utilitaires/MCoordonneePositive.html">MCoordonneePositive</a></code></td>
+</tr>
+</table>
+</div>
 <a name="setHauteur()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -543,6 +648,20 @@ showHideInherited();
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">nom_classe</span>:String</code></td>
+</tr>
+</table>
+</div>
+<a name="setObjet()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setObjet</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function setObjet(objet:<a href="../MIObjet.html">MIObjet</a>):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../MIObjet.html">MIObjet</a></code></td>
 </tr>
 </table>
 </div>
