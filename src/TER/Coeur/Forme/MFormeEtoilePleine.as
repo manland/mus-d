@@ -19,8 +19,6 @@ package Coeur.Forme
 		}
 		
 		public override function instancie(x:Number, y:Number, largeur:Number, decalage:Number = 0):void{
-			if(petit_rayon > largeur / 3)
-				throw new MErreur(this.nom_classe, "instancie", "Le petit rayon est trop petit");
 			this.x = x;
 			this.y = y;
 			this.largeur = largeur;
@@ -32,7 +30,9 @@ package Coeur.Forme
 		
 		public function instancie2(x:Number, y:Number, largeur:Number, decalage:Number = 0, petit_rayon:Number = 0):void{
 			if(petit_rayon > largeur / 3)
-				throw new MErreur(this.nom_classe, "instancie", "Le petit rayon est trop petit");
+				throw new MErreur(this.nom_classe, "instancie", "Le petit rayon est trop grand "+petit_rayon);
+			else if(petit_rayon <= 0)
+				throw new MErreur(this.nom_classe, "instancie", "Le petit rayon est négatif "+petit_rayon);
 			this.x = x;
 			this.y = y;
 			this.largeur = largeur;
@@ -89,7 +89,9 @@ package Coeur.Forme
 		}
 		public function setPetitRayon(petit_rayon:Number):void{
 			if(petit_rayon > largeur / 3)
-				throw new MErreur(this.nom_classe, "instancie", "Le petit rayon est trop petit");
+				throw new MErreur(this.nom_classe, "instancie", "Le petit rayon est trop grand "+petit_rayon);
+			else if(petit_rayon <= 0)
+				throw new MErreur(this.nom_classe, "instancie", "Le petit rayon est négatif "+petit_rayon);
 			this.petit_rayon = petit_rayon;
 			this.calculAretes();
 		}
