@@ -47,7 +47,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeCompose.html#seProjeteSur()">seProjeteSur</a>(vecteur:<a href="Utilitaires/MVecteur.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MVecteur</a>) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeCompose.html">MFormeCompose</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeRond.html#seProjeteSur()">seProjeteSur</a>(vecteur:<a href="Utilitaires/MVecteur.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MVecteur</a>) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeRond.html">MFormeRond</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -89,19 +89,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html#setAretes()">setAretes</a>(aretes) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html">MFormePolygone</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html#setAretes()">setAretes</a>(aretes, recopie) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html">MFormePolygone</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeTriangle.html#setAretes()">setAretes</a>(aretes) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeTriangle.html">MFormeTriangle</a></td>
-</tr>
-<tr>
-<td width="20"></td><td></td>
-</tr>
-<tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MIFormePolygone.html#setAretes()">setAretes</a>(aretes) &mdash; Method in interface Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MIFormePolygone.html">MIFormePolygone</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeTriangle.html#setAretes()">setAretes</a>(aretes, recopie) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeTriangle.html">MFormeTriangle</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -128,7 +122,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html#setBordure()">setBordure</a>(b:<a href="Graphique/Textures/MBordure.html" onclick="javascript:loadClassListFrame('Graphique/Textures./class-list.html');">Graphique.Textures:MBordure</a>) &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html">MGraphiqueAbstrait</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   Permet de positionner une nouvelle bordure Ã  cet objet graphique.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html#setBordure()">setBordure</a>(b:<a href="Graphique/Textures/MBordure.html" onclick="javascript:loadClassListFrame('Graphique/Textures./class-list.html');">Graphique.Textures:MBordure</a>) &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html">MGraphiqueScene</a></td>
@@ -191,7 +186,19 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeEtoile.html#setDecalage()">setDecalage</a>(decalage) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeEtoile.html">MFormeEtoile</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MForme.html#setDecalage()">setDecalage</a>(decalage:<a href="Utilitaires/MCoordonneePositive.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MCoordonneePositive</a>) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MForme.html">MForme</a></td>
+</tr>
+<tr>
+<td width="20"></td><td></td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html#setDecalage()">setDecalage</a>(decalage:<a href="Utilitaires/MCoordonneePositive.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MCoordonneePositive</a>) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html">MFormePolygone</a></td>
+</tr>
+<tr>
+<td width="20"></td><td></td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MIForme.html#setDecalage()">setDecalage</a>(decalage:<a href="Utilitaires/MCoordonneePositive.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MCoordonneePositive</a>) &mdash; Method in interface Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MIForme.html">MIForme</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -329,7 +336,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeRectangle.html#setHauteur()">setHauteur</a>(hauteur) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeRectangle.html">MFormeRectangle</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html#setHauteur()">setHauteur</a>(hauteur) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html">MFormePolygone</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -401,7 +408,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeRectangle.html#setLargeur()">setLargeur</a>(largeur) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeRectangle.html">MFormeRectangle</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html#setLargeur()">setLargeur</a>(largeur) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html">MFormePolygone</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -509,6 +516,18 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td width="20"></td><td></td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MForme.html#setObjet()">setObjet</a>(objet:<a href="Coeur/MIObjet.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MIObjet</a>) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MForme.html">MForme</a></td>
+</tr>
+<tr>
+<td width="20"></td><td></td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MIForme.html#setObjet()">setObjet</a>(objet:<a href="Coeur/MIObjet.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MIObjet</a>) &mdash; Method in interface Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MIForme.html">MIForme</a></td>
+</tr>
+<tr>
+<td width="20"></td><td></td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MIEffet.html#setObjet()">setObjet</a>(objet:<a href="Coeur/MIObjet.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MIObjet</a>) &mdash; Method in interface Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MIEffet.html">MIEffet</a></td>
 </tr>
 <tr>
@@ -536,7 +555,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html#setObjet()">setObjet</a>(objet:<a href="Coeur/MIObjet.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MIObjet</a>) &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html">MGraphiqueAbstrait</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   Permet de positionner un nouvel objet model pour cet objet graphique.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html#setObjet()">setObjet</a>(objet:<a href="Coeur/MScene.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MScene</a>) &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html">MGraphiqueScene</a></td>
@@ -593,6 +613,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td width="20"></td><td></td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeEtoile.html#setRotation()">setRotation</a>(rotation) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeEtoile.html">MFormeEtoile</a></td>
+</tr>
+<tr>
+<td width="20"></td><td></td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeComplexe.html#setSommeAngles()">setSommeAngles</a>(somme_angle) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeComplexe.html">MFormeComplexe</a></td>
 </tr>
 <tr>
@@ -638,7 +664,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html#setTexture()">setTexture</a>(t:<a href="Graphique/Textures/MITexture.html" onclick="javascript:loadClassListFrame('Graphique/Textures./class-list.html');">Graphique.Textures:MITexture</a>) &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html">MGraphiqueAbstrait</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   Permet de positionner une nouvelle texture Ã  cet objet graphique.</td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html#setTexture()">setTexture</a>(t:<a href="Graphique/Textures/MITexture.html" onclick="javascript:loadClassListFrame('Graphique/Textures./class-list.html');">Graphique.Textures:MITexture</a>) &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueScene.html">MGraphiqueScene</a></td>
@@ -737,13 +764,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeEtoile.html#setX()">setX</a>(x) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeEtoile.html">MFormeEtoile</a></td>
-</tr>
-<tr>
-<td width="20"></td><td></td>
-</tr>
-<tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeRectangle.html#setX()">setX</a>(x) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeRectangle.html">MFormeRectangle</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html#setX()">setX</a>(x) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html">MFormePolygone</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -762,6 +783,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MCoordonnee.html#setX()">setX</a>(x) &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MCoordonnee.html">MCoordonnee</a></td>
+</tr>
+<tr>
+<td width="20"></td><td></td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MCoordonneePositive.html#setX()">setX</a>(x) &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MCoordonneePositive.html">MCoordonneePositive</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -809,13 +836,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeEtoile.html#setY()">setY</a>(y) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeEtoile.html">MFormeEtoile</a></td>
-</tr>
-<tr>
-<td width="20"></td><td></td>
-</tr>
-<tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeRectangle.html#setY()">setY</a>(y) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeRectangle.html">MFormeRectangle</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html#setY()">setY</a>(y) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormePolygone.html">MFormePolygone</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -834,6 +855,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MCoordonnee.html#setY()">setY</a>(y) &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MCoordonnee.html">MCoordonnee</a></td>
+</tr>
+<tr>
+<td width="20"></td><td></td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MCoordonneePositive.html#setY()">setY</a>(y) &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MCoordonneePositive.html">MCoordonneePositive</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -935,6 +962,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 <td width="20"></td><td></td>
 </tr>
 <tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html#supprimerEcouteur()">supprimerEcouteur</a>(ecouteur:<a href="Graphique/MIObjetGraphiqueEcouteur.html" onclick="javascript:loadClassListFrame('Graphique./class-list.html');">Graphique:MIObjetGraphiqueEcouteur</a>) &mdash; Method in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html">MGraphiqueAbstrait</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   Permet de supprimer un Ã©couteur de cet objet graphique.</td>
+</tr>
+<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MScene.html#supprimerEnfants()">supprimerEnfants</a>(enfant:<a href="Coeur/MIObjet.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MIObjet</a>) &mdash; Method in class Coeur.<a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MScene.html">MScene</a></td>
 </tr>
 <tr>
@@ -960,12 +994,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("SÂ
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementPerpetuel.html#sysout">sysout</a> &mdash; Property in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementPerpetuel.html">MMouvementPerpetuel</a></td>
-</tr>
-<tr>
-<td width="20"></td><td></td>
-</tr>
-<tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html#sysout">sysout</a> &mdash; Property in class Graphique.<a onclick="javascript:loadClassListFrame('Graphique/class-list.html');" href="Graphique/MGraphiqueAbstrait.html">MGraphiqueAbstrait</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>

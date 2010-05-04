@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../print.css" type="text/css" media="print">
-<meta content="MIObjetGraphiqueEcouteur,Graphique.MIObjetGraphiqueEcouteur,graphiqueCollision,graphiqueMeurt,graphiqueSeDessine" name="keywords">
+<meta content="MIObjetGraphiqueEcouteur,Graphique.MIObjetGraphiqueEcouteur,graphiqueChangeTaille,graphiqueCollision,graphiqueMeurt,graphiqueSeDeplace,graphiqueSeDessine" name="keywords">
 <title>Graphique.MIObjetGraphiqueEcouteur</title>
 </head>
 <body>
@@ -53,6 +53,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="#graphiqueChangeTaille()">graphiqueChangeTaille</a>(objet:<a href="MIObjetGraphique.html">MIObjetGraphique</a>):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MIObjetGraphiqueEcouteur</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="#graphiqueCollision()">graphiqueCollision</a>(graphique:<a href="MIObjetGraphique.html">MIObjetGraphique</a>, axe:<a href="../Utilitaires/MAxe.html">MAxe</a>):void</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MIObjetGraphiqueEcouteur</td>
@@ -61,6 +68,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#graphiqueMeurt()">graphiqueMeurt</a>(graphique:<a href="MIObjetGraphique.html">MIObjetGraphique</a>):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MIObjetGraphiqueEcouteur</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#graphiqueSeDeplace()">graphiqueSeDeplace</a>(x:Number, y:Number):void</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MIObjetGraphiqueEcouteur</td>
 </tr>
@@ -80,10 +94,24 @@ showHideInherited();
 <div class="MainContent">
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Method detail</div>
+<a name="graphiqueChangeTaille()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">graphiqueChangeTaille</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function graphiqueChangeTaille(objet:<a href="MIObjetGraphique.html">MIObjetGraphique</a>):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">objet</span>:<a href="MIObjetGraphique.html">MIObjetGraphique</a></code></td>
+</tr>
+</table>
+</div>
 <a name="graphiqueCollision()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">graphiqueCollision</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+<td class="detailHeaderName">graphiqueCollision</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
 </tr>
 </table>
 <div class="detailBody">
@@ -111,6 +139,26 @@ showHideInherited();
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">graphique</span>:<a href="MIObjetGraphique.html">MIObjetGraphique</a></code></td>
+</tr>
+</table>
+</div>
+<a name="graphiqueSeDeplace()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">graphiqueSeDeplace</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function graphiqueSeDeplace(x:Number, y:Number):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">x</span>:Number</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">y</span>:Number</code></td>
 </tr>
 </table>
 </div>
