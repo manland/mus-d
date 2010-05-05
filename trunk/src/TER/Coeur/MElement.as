@@ -119,6 +119,12 @@ package Coeur
 			fireDeplacementObjet();
 		}
 		
+		public function augmente(l:Number,h:Number):void{
+			this.largeur = this.largeur + l; 
+			this.hauteur = this.hauteur + h;
+			fireChangementTaille();
+		}
+		
 		public function deplacement(x:Number, y:Number):void
 		{
 			this.x += x;
@@ -299,5 +305,6 @@ package Coeur
 				axe = objet.getForme().axeCollision(this.getForme());
 			return axe;			
 		}
+
 	}
 }
