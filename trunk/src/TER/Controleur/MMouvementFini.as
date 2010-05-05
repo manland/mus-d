@@ -5,45 +5,45 @@ package Controleur
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
-	/*
+	/**
 	 * Sert à appliquer un Mouvement Fini sur un objet
 	 */
 	public class MMouvementFini implements MIEffet
 	{
-		/*
+		/**
 		 * nom de la classe
 		 */
 		private var nom_classe:String 
-		/*
+		/**
 		 * objet sur lequel s'applique le Mouvement Fini courant
 		 */
 		private var objet:MIObjet;
-		/*
+		/**
 		 * Timer utilisé pour mesurer les unités de temps
 		 */
 		private var timer:Timer;
-		/*
+		/**
 		 * valeur en pixel ajoutée à l'abscisse de l'objet à chaque unité de temps
 		 */
 		private var unite_x:Number;
-		/*
+		/**
 		 * valeur en pixel ajoutée à l'ordonnée de l'objet à chaque unité de temps
 		 */
 		private var unite_y:Number;
-		/*
+		/**
 		 * abscisse en pixel de l'abscisse jusqu'ou doit se déplacer l'objet
 		 */
 		private var x_arrivee:Number;
-		/*
+		/**
 		 * ordonnée en pixel de l'ordonnée jusqu'ou doit se déplacer l'objet
 		 */
 		private var y_arrivee:Number;
-		/*
+		/**
 		 * temps en milliseconde que doit durer le mouvement
 		 */
 		private var temps_ms:Number;
 		
-		/*
+		/**
 		 * crée et instancie le Mouvement Fini receveur
 		 * @param objet: objet sur lequel s'applique le Mouvement Fini receveur
 		 * @param x_arrive: abscisse (en pixel) jusqu'ou doit se déplacer l'objet
@@ -60,7 +60,7 @@ package Controleur
 			this.temps_ms = temps_ms;
 		}
 		
-		/*
+		/**
 		 * effectue les calculs nécessaires et lance le Mouvement Fini receveur
 		 */
 		public function lancer():void{
@@ -79,7 +79,7 @@ package Controleur
 			lancerTimer(20, nb_unite_tp);
 		}
 		
-		/*
+		/**
 		 * crée pour l'attribut "timer" de l'objet receveur un nouveau Timer qui appelle la fonction avanceUneUnite lorsqu'il finit et le lance
 		 * @param temps: temps de durée du Timer
 		 * @param repetition: nombre de fois ou le Timer va recommencer
@@ -90,7 +90,7 @@ package Controleur
 			getTimer().start();
 		}
 		
-		/*
+		/**
 		 * fonction appelée par le Timer à chaque fois que finit une unité de temps
 		 * <p> Fait avancer l'objet sur lequel s'applique le Mouvement Fini receveur ( + unite_x sur l'abscisse et + unite_y sur l'ordonnée ) </p>		 
 		 */
@@ -98,14 +98,14 @@ package Controleur
 			getObjet().avance(unite_x, unite_y);	
 		}
 		
-		/*
+		/**
 		 * stoppe le Mouvement Fini receveur
 		 */
 		public function stopper():void{
 			getTimer().stop();
 		}
 		
-		/*
+		/**
 		 * renvoie un clone du Mouvement Fini receveur
 		 */
 		public function clone():MIEffet{
@@ -116,14 +116,14 @@ package Controleur
 		
 		// getteurs setteurs //
 				
-		/*
+		/**
 		 * renvoie le timer du Mouvement Fini receveur
 		 * @return le timer du Mouvement Fini receveur
 		 */
 		public function getTimer():Timer{
 			return this.timer;
 		}
-		/*
+		/**
 		 * remplace le timer du Mouvement Fini receveur par celui passé en paramètre
 		 * @param le nouveau timer du Mouvement Fini receveur
 		 */	
@@ -131,14 +131,14 @@ package Controleur
 			this.timer = timer;
 		}	
 		
-		/*
+		/**
 		 * renvoie l'objet sur lequel s'applique le Mouvement Fini receveur
 		 * @return l'objet sur lequel s'applique le Mouvement Fini receveur
 		 */
 		public function getObjet():MIObjet{
 			return this.objet;
 		}	
-		/*
+		/**
 		 * remplace l'objet sur lequel s'applique le Mouvement Fini receveur par celui passé en paramètre
 		 * @param le nouvel objet sur lequel on veut que s'applique le Mouvement Fini receveur
 		 */
@@ -146,7 +146,7 @@ package Controleur
 			this.objet = objet;
 		}
 			
-		/*
+		/**
 		 * renvoie la chaine qui représente le nom de la classe du Mouvement Fini receveur
 		 * @return la chaine qui représente le nom de la classe du Mouvement Fini receveur
 		 */

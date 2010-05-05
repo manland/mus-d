@@ -6,45 +6,45 @@ package Controleur
 	import flash.utils.Timer;
 	
 	
-	/*
+	/**
 	 * Sert à effectuer un Redimentionnement progressif sur un objet 
 	 */
 	public class MRedimensionnement implements MIEffet
 	{
-		/*
+		/**
 		 * nom de la classe
 		 */
 		private var nom_classe:String 
-		/*
+		/**
 		 * objet sur lequel s'applique le Redimensionnement courant
 		 */
 		private var objet:MIObjet;
-		/*
+		/**
 		 * Timer utilisé pour mesurer les unités de temps
 		 */
 		private var timer:Timer;
-		/*
+		/**
 		 * valeur en pixel ajoutée à la largeur de l'objet à chaque unité de temps
 		 */
 		private var unite_largeur:Number;
-		/*
+		/**
 		 * valeur en pixel ajoutée à la hauteur de l'objet à chaque unité de temps
 		 */
 		private var unite_hauteur:Number;
-		/*
+		/**
 		 * valeur en pixel de la largeur que doit atteindre l'objet à la fin du Redimensionnement
 		 */
 		private var largeur_arrivee:Number;
-		/*
+		/**
 		 * valeur en pixel de la hauteur que doit atteindre l'objet à la fin du Redimensionnement
 		 */
 		private var hauteur_arrivee:Number;
-		/*
+		/**
 		 * temps en milliseconde que doit durer le redimensionnement
 		 */
 		private var temps_ms:Number;
 		
-		/*
+		/**
 		 * crée et instancie le Redimensionnement receveur
 		 * @param objet: objet sur lequel s'applique le Redimensionnement receveur
 		 * @param largeur_arrivee: valeur (en pixel) de la largeur que doit atteindre l'objet à la fin du Redimensionnement
@@ -59,7 +59,7 @@ package Controleur
 			this.temps_ms = temps_ms;
 		}
 		
-		/*
+		/**
 		 * effectue les calculs nécessaires et lance le Redimensionnement receveur
 		 */
 		public function lancer():void{
@@ -80,7 +80,7 @@ package Controleur
 			timer.start();
 		}
 		
-		/*
+		/**
 		 * fonction appelée par le Timer à chaque fois que finit une unité de temps
 		 * <p> redimensionne l'objet sur lequel s'applique le Redimensionnement receveur ( + unite_largeur en largeur et + unite_hauteur en hauteur ) </p>		 
 		 */		
@@ -88,14 +88,14 @@ package Controleur
 			objet.augmente( unite_largeur, unite_hauteur);
 		}
 		
-		/*
+		/**
 		 * stoppe le Redimensionnement receveur
 		 */		
 		public function stopper():void{
 			timer.stop();
 		}
 		
-		/*
+		/**
 		 * renvoie un clone du Redimensionnement receveur
 		 */
 		public function clone():MIEffet{
@@ -105,14 +105,14 @@ package Controleur
 		
 		// getteurs setteurs //
 				
-		/*
+		/**
 		 * renvoie le timer du Redimensionnement receveur
 		 * @return le timer du Redimensionnement receveur
 		 */
 		public function getTimer():Timer{
 			return this.timer;
 		}
-		/*
+		/**
 		 * remplace le timer du Redimensionnement receveur par celui passé en paramètre
 		 * @param le nouveau timer du Redimensionnement receveur
 		 */	
@@ -120,14 +120,14 @@ package Controleur
 			this.timer = timer;
 		}	
 		
-		/*
+		/**
 		 * renvoie l'objet sur lequel s'applique le Redimensionnement receveur
 		 * @return l'objet sur lequel s'applique le Redimensionnement receveur
 		 */
 		public function getObjet():MIObjet{
 			return this.objet;
 		}	
-		/*
+		/**
 		 * remplace l'objet sur lequel s'applique le Redimensionnement receveur par celui passé en paramètre
 		 * @param le nouvel objet sur lequel on veut que s'applique le Redimensionnement receveur
 		 */
@@ -135,7 +135,7 @@ package Controleur
 			this.objet = objet;
 		}
 			
-		/*
+		/**
 		 * renvoie la chaine qui représente le nom de la classe du Redimensionnement receveur
 		 * @return la chaine qui représente le nom de la classe du Redimensionnement receveur
 		 */

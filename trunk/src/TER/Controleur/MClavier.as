@@ -7,24 +7,24 @@ package Controleur
 	
 	import mx.core.Application;
 	
-	/*
+	/**
 	 * Classe qui prévient les écouteurs de Clavier lorsque le clavier est appuyé en appellant leur fonction correspondante
 	 * Cette classe est un singleton, elle n'a qu'une instance: ne pas utiliser le constructeur mais getInstance pour l'implémenter!!
 	 * @see Controleur.MIEcouteurClavier
  	 */
 	public class MClavier
 	{
-		/*
+		/**
 		 * liste des écouteurs de clavier
 	 	 */
 		private var ecouteurs:Array;
 		
-		/*
+		/**
 		 * unique instance de MClavier
 		 */
 		static private var instance:MClavier = null;
 		
-		/*
+		/**
 		 * si il n'y a pas déjà d'instance crée: Crée un objet MClavier et l'inscrit comme écouteur de l'application pour être prévenu lorsque le clavier est appuyé
 		 * sinon génère une erreur
 	 	 */
@@ -39,7 +39,7 @@ package Controleur
 			}
 		}
 		
-		/*
+		/**
 		 * Crée l'unique instance de MClavier si elle n'existe pas déjà et la renvoie
 		 * @return l'unique instance de MClavier
 		 */
@@ -49,14 +49,14 @@ package Controleur
 		 	return instance;
 		 }
 		
-		/*
+		/**
 		 * ajoute un écouteur à la liste des écouteurs de clavier
 		 * @param m: nouvel écouteur de clavier
 	 	 */
 		public function ajouterEcouteur(m:MIEcouteurClavier):void {
 			ecouteurs.push(m);
 		}
-		/*
+		/**
 		 * enlève un écouteur à la liste des écouteurs de clavier
 		 * @param m: écouteur de clavier à enlever
 	 	 */
@@ -64,7 +64,7 @@ package Controleur
 			ecouteurs.slice(ecouteurs.indexOf(m), 1);
 		}
 		
-		/*
+		/**
 		 * fonction appelée lorsque le clavier est appuyé
 		 * @param evt: évenement clavier indiquant quelle touche est appuyée
 	 	 */
@@ -96,11 +96,15 @@ package Controleur
 				// appui sur espace
 				case Keyboard.BACKSPACE:
 					appuiFlecheBas();
-					break;                         
+					break; 
+				
+				default:
+                    appuiTouche(evt.keyCode);
+                    break;                                 
 			}
 		}
 		
-		/*
+		/**
 		 * fonction appelée lorsque la flèche gauche est appuyée
 		 * <p> appelle la fonction flecheGauche des écouteurs de clavier </p>
 		 * @see Controleur.MIEcouteurClavier.flecheGauche
@@ -111,7 +115,7 @@ package Controleur
 			}
 		}
 		
-		/*
+		/**
 		 * fonction appelée lorsque la flèche droite est appuyée
 		 * <p> appelle la fonction flecheDroite des écouteurs de clavier </p>
 		 * @see Controleur.MIEcouteurClavier.flecheDroite
@@ -122,7 +126,7 @@ package Controleur
 			}
 		}
 		
-		/*
+		/**
 		 * fonction appelée lorsque la flèche haut est appuyée
 		 * <p> appelle la fonction flecheHaut des écouteurs de clavier </p>
 		 * @see Controleur.MIEcouteurClavier.flecheHaut
@@ -133,7 +137,7 @@ package Controleur
 			}
 		}
 		
-		/*
+		/**
 		 * fonction appelée lorsque la flèche bas est appuyée
 		 * <p> appelle la fonction flecheBas des écouteurs de clavier </p>
 		 * @see Controleur.MIEcouteurClavier.flecheBas
@@ -144,7 +148,7 @@ package Controleur
 			}
 		}
 		
-		/*
+		/**
 		 * fonction appelée lorsque la touche Entrée est appuyée
 		 * <p> appelle la fonction entree des écouteurs de clavier </p>
 		 * @see Controleur.MIEcouteurClavier.entree
@@ -155,7 +159,7 @@ package Controleur
 			}
 		}
 		
-		/*
+		/**
 		 * fonction appelée lorsque la touche Espace est appuyée
 		 * <p> appelle la fonction espace des écouteurs de clavier </p>
 		 * @see Controleur.MIEcouteurClavier.espace
@@ -165,6 +169,19 @@ package Controleur
 				(ecouteurs[i] as MIEcouteurClavier).espace();
 			}
 		}
+		
+		/**
+		 * fonction appelée lorsque une touche autre que celle repérée est appuyée
+		 * <p> appelle la fonction touche des écouteurs de clavier </p>
+		 * @param touche: code de la touche appuyée
+		 * @see Controleur.MIEcouteurClavier.touche
+	 	 */
+		private function appuiTouche(touche:uint):void {
+            for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
+                    (ecouteurs[i] as MIEcouteurClavier).touche(touche);
+            }
+        }
+
 
 	}
 }

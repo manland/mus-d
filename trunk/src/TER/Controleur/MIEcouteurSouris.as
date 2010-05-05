@@ -1,7 +1,7 @@
 package Controleur
 {
 	
-	/*
+	/**
 	 * interface que doit implémenter un objet qui écoute la souris
 	 * <p> il y a un prototype pour les actions de la souris les plus fréquemment utilisée dans les jeux </p>
 	 * @see Controleur.MSouris
@@ -45,27 +45,27 @@ package Controleur
  	 */
 	public interface MIEcouteurSouris
 	{
-		/*
+		/**
 		 * fonction appelée lors d'un clic de la souris
 	 	 */
 		function clic():void;
-		/*
+		/**
 		 * fonction appelée lors d'un double clic de la souris
 	 	 */
 		function doubleClic():void;
-		/*
+		/**
 		 * fonction appelée lorsque la souris se déplace vers la droite
 	 	 */
 		function bougeDroite():void;
-		/*
+		/**
 		 * fonction appelée lorsque la souris se déplace vers la gauche
 	 	 */
 		function bougeGauche():void;
-		/*
+		/**
 		 * fonction appelée lorsque la souris se déplace vers le haut
 	 	 */
 		function bougeHaut():void;
-		/*
+		/**
 		 * fonction appelée lorsque la souris se déplace vers le bas
 	 	 */
 		function bougeBas():void;
