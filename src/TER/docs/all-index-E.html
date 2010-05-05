@@ -69,31 +69,41 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("E�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MClavier.html#enleverEcouteur()">enleverEcouteur</a>(m:<a href="Controleur/MIEcouteurClavier.html" onclick="javascript:loadClassListFrame('Controleur./class-list.html');">Controleur:MIEcouteurClavier</a>) &mdash; Method in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MClavier.html">MClavier</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   enlève un écouteur à la liste des écouteurs de clavier
+   </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MSouris.html#enleverEcouteur()">enleverEcouteur</a>(ecouteur:<a href="Controleur/MIEcouteurSouris.html" onclick="javascript:loadClassListFrame('Controleur./class-list.html');">Controleur:MIEcouteurSouris</a>) &mdash; Method in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MSouris.html">MSouris</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   enlève un écouteur à la liste des écouteurs de souris
+   </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MVecteur.html#entreDeuxPoint()">entreDeuxPoint</a>(pt_a:<a href="Utilitaires/MCoordonnee.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MCoordonnee</a>, pt_b:<a href="Utilitaires/MCoordonnee.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MCoordonnee</a>) &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MVecteur.html">MVecteur</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   modifie les coordonnées du vecteur receveur pour qu'il aille du point pt_a au point pt_b
+   </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MIEcouteurClavier.html#entree()">entree</a>() &mdash; Method in interface Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MIEcouteurClavier.html">MIEcouteurClavier</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   fonction appelée lorsque l'utilisateur appuie sur Entrée
+    </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MIEcouteurClavier.html#espace()">espace</a>() &mdash; Method in interface Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MIEcouteurClavier.html">MIEcouteurClavier</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   fonction appelée lorsque l'utilisateur appuie sur Espace
+    </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MArete.html#estEgal()">estEgal</a>(arete:<a href="Utilitaires/MArete.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MArete</a>) &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MArete.html">MArete</a></td>
@@ -111,19 +121,25 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("E�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html#estHorizontal()">estHorizontal</a>() &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html">MAxe</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   retourne vrai si l'axe est horizontal c'est-à-dire parallèle à l'axe d'abscisse
+   </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html#estObliqueDescendant()">estObliqueDescendant</a>() &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html">MAxe</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   retourne vrai si l'axe est oblique descendant c'est-à-dire parallèle à la droite d'équation y = -x
+   </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html#estObliqueMontant()">estObliqueMontant</a>() &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html">MAxe</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   retourne vrai si l'axe est oblique montant c'est-à-dire parallèle à la droite d'équation y = x
+   </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MElement.html#estProcheDe()">estProcheDe</a>(objet:<a href="Coeur/MIObjet.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MIObjet</a>) &mdash; Method in class Coeur.<a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MElement.html">MElement</a></td>
@@ -147,7 +163,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("E�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html#estVertical()">estVertical</a>() &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html">MAxe</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   retourne vrai si l'axe est vertical c'est-à-dire parallèle à l'axe d'ordonnée
+   </td>
 </tr>
 <tr>
 <td style="padding-bottom:20px" colspan="2"></td>

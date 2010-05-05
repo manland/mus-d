@@ -95,7 +95,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("M�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html#MAxe()">MAxe</a>() &mdash; Constructor in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html">MAxe</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   crée un objet de type MAxe
+   </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MUtilitaire.html#maxMCoordonneeX()">maxMCoordonneeX</a>(m1:<a href="Utilitaires/MCoordonnee.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MCoordonnee</a>, m2:<a href="Utilitaires/MCoordonnee.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MCoordonnee</a>) &mdash; Static method in class Coeur.<a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MUtilitaire.html">MUtilitaire</a></td>
@@ -137,13 +139,19 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("M�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MClavier.html">MClavier</a> &mdash; Class in package <a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+  Classe qui prévient les écouteurs de Clavier lorsque le clavier est appuyé en appellant leur fonction correspondante
+  Cette classe est un singleton, elle n'a qu'une instance: ne pas utiliser le constructeur mais getInstance pour l'implémenter!!
+  </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MClavier.html#MClavier()">MClavier</a>() &mdash; Constructor in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MClavier.html">MClavier</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   si il n'y a pas déjà d'instance crée: Crée un objet MClavier et l'inscrit comme écouteur de l'application pour être prévenu lorsque le clavier est appuyé
+   sinon génère une erreur
+    </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MControle.html">MControle</a> &mdash; Class in package <a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/package-detail.html">Coeur</a></td>
@@ -290,7 +298,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("M�
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MUtilitaire.html#melangerTableau()">melangerTableau</a>(tab) &mdash; Method in class Coeur.<a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MUtilitaire.html">MUtilitaire</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MUtilitaire.html#melangerTableau()">melangerTableau</a>(tab) &mdash; Static method in class Coeur.<a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MUtilitaire.html">MUtilitaire</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -545,19 +553,27 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("M�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MIEcouteurClavier.html"><i>MIEcouteurClavier</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+  interface que doit implémenter un objet qui écoute le clavier pour être prévenu par MClavier
+  <p> il y a un prototype pour les touches les plus fréquemment utilisée dans les jeux </p>
+  </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MIEcouteurSouris.html"><i>MIEcouteurSouris</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+  interface que doit implémenter un objet qui écoute la souris
+  <p> il y a un prototype pour les actions de la souris les plus fréquemment utilisée dans les jeux </p>
+  </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MIEffet.html"><i>MIEffet</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+  Sert à appliquer un Effet (mouvement, redimensionnement...) sur un objet
+  </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MIForme.html"><i>MIForme</i></a> &mdash; Interface in package <a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/package-detail.html">Coeur.Forme</a></td>
@@ -623,25 +639,33 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("M�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementFini.html">MMouvementFini</a> &mdash; Class in package <a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+  Sert à appliquer un Mouvement Fini sur un objet
+  </td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementFini.html#MMouvementFini()">MMouvementFini</a>() &mdash; Constructor in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementFini.html">MMouvementFini</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementFini.html#MMouvementFini()">MMouvementFini</a>(objet:<a href="Coeur/MIObjet.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MIObjet</a>, x_arrivee, y_arrivee, temps_ms) &mdash; Constructor in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementFini.html">MMouvementFini</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   crée et instancie le Mouvement Fini receveur
+   </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementPerpetuel.html">MMouvementPerpetuel</a> &mdash; Class in package <a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+  Sert à appliquer un Mouvement Perpétuel sur un objet
+  </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementPerpetuel.html#MMouvementPerpetuel()">MMouvementPerpetuel</a>() &mdash; Constructor in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementPerpetuel.html">MMouvementPerpetuel</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   crée le Mouvement Perpétuel receveur
+   </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MElement.html#mourir()">mourir</a>() &mdash; Method in class Coeur.<a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MElement.html">MElement</a></td>
@@ -685,13 +709,17 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("M�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MRedimensionnement.html">MRedimensionnement</a> &mdash; Class in package <a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+  Sert à effectuer un Redimentionnement progressif sur un objet 
+  </td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MRedimensionnement.html#MRedimensionnement()">MRedimensionnement</a>() &mdash; Constructor in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MRedimensionnement.html">MRedimensionnement</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MRedimensionnement.html#MRedimensionnement()">MRedimensionnement</a>(objet:<a href="Coeur/MIObjet.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MIObjet</a>, largeur_arrivee, hauteur_arrivee, temps_ms) &mdash; Constructor in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MRedimensionnement.html">MRedimensionnement</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   crée et instancie le Redimensionnement receveur
+   </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MScene.html">MScene</a> &mdash; Class in package <a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/package-detail.html">Coeur</a></td>
@@ -721,13 +749,19 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("M�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MSouris.html">MSouris</a> &mdash; Class in package <a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+  Classe qui prévient les écouteurs de Souris lorsque la souris effectue une action en appelant la fonction correspondante
+  Cette classe est un singleton, elle n'a qu'une instance: ne pas utiliser le constructeur mais getInstance pour l'implémenter!!
+  </td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MSouris.html#MSouris()">MSouris</a>(s) &mdash; Constructor in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MSouris.html">MSouris</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MSouris.html#MSouris()">MSouris</a>() &mdash; Constructor in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MSouris.html">MSouris</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   si il n'y a pas déjà d'instance crée: Crée un objet MSouris et l'inscrit comme écouteur de l'application pour être prévenu lorsque la souris effectue une action
+    sinon génère une erreur
+    </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MStatique.html">MStatique</a> &mdash; Class in package <a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/package-detail.html">Coeur</a></td>
@@ -778,7 +812,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("M�
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MUtilitaire.html#MUtilitaire()">MUtilitaire</a>(sysout) &mdash; Constructor in class Coeur.<a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MUtilitaire.html">MUtilitaire</a></td>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MUtilitaire.html#MUtilitaire()">MUtilitaire</a>() &mdash; Constructor in class Coeur.<a onclick="javascript:loadClassListFrame('Coeur/class-list.html');" href="Coeur/MUtilitaire.html">MUtilitaire</a></td>
 </tr>
 <tr>
 <td width="20"></td><td></td>
@@ -787,13 +821,17 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("M�
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MVecteur.html">MVecteur</a> &mdash; Class in package <a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/package-detail.html">Utilitaires</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+  Classe représentant un vecteur géométrique
+  </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MVecteur.html#MVecteur()">MVecteur</a>() &mdash; Constructor in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MVecteur.html">MVecteur</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   crée un vecteur null
+    </td>
 </tr>
 <tr>
 <td style="padding-bottom:20px" colspan="2"></td>

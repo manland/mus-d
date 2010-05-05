@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../print.css" type="text/css" media="print">
-<meta content="MMouvementPerpetuel,Controleur.MMouvementPerpetuel,sysout,avanceUneUnite,clone,getNomClasse,getObjet,getTimer,getUnite_x,getUnite_y,instancie,instancieAvecAngleEtVitesse,lancer,lancerTimer,rebondir,setNomClasse,setObjet,setTimer,setUnite_x,setUnite_y,stopper" name="keywords">
+<meta content="MMouvementPerpetuel,Controleur.MMouvementPerpetuel,avanceUneUnite,clone,getNomClasse,getObjet,getTimer,instancieAvecAngleEtVitesse,instancieAvecVitesse,lancer,lancerTimer,rebondir,setObjet,setTimer,stopper" name="keywords">
 <title>Controleur.MMouvementPerpetuel</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
 <td align="left" class="titleTableTitle">Framework MUS-D</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../all-classes.html')" href="../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../all-classes.html')" href="../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../index-list.html')" href="../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../index.html?Controleur/MMouvementPerpetuel.html&amp;Controleur/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../images/logo.jpg"></td>
 </tr>
 <tr class="titleTableRow2">
-<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;MMouvementPerpetuel</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;MMouvementPerpetuel</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#methodSummary">Methods</a></td>
 </tr>
 <tr class="titleTableRow3">
 <td colspan="2">&nbsp;</td>
@@ -27,7 +27,7 @@
 </table>
 <script type="text/javascript" language="javascript">
 <!--
-if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class MMouvementPerpetuel"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class MMouvementPerpetuel"); titleBar_setSubNav(false,false,false,false,false,false,true,false,false,false,false,false,false,false);}
 --></script>
 <div class="MainContent">
 <table cellspacing="0" cellpadding="0" class="classHeaderTable">
@@ -42,22 +42,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 </table>
 <p></p>
-<p></p>
+  Sert à appliquer un Mouvement Perpétuel sur un objet
+  <p></p>
 <br>
 <hr>
-</div>
-<a name="propertySummary"></a>
-<div class="summarySection">
-<div class="summaryTableTitle">Public Properties</div>
-<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
-<tr>
-<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#sysout">sysout</a> : Text<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
-</tr>
-</table>
 </div>
 <a name="methodSummary"></a>
 <div class="summarySection">
@@ -70,7 +58,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#MMouvementPerpetuel()">MMouvementPerpetuel</a>()</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   crée le Mouvement Perpétuel receveur
+   </div>
 </td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
 </tr>
 <tr class="">
@@ -78,14 +68,18 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#clone()">clone</a>():<a href="Controleur/MIEffet.html">MIEffet</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   renvoie un clone du Mouvement Perpétuel receveur
+   </div>
 </td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#getNomClasse()">getNomClasse</a>():String</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   renvoie la chaine qui représente le nom de la classe du Mouvement Perpétuel receveur
+   </div>
 </td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
 </tr>
 <tr class="">
@@ -93,35 +87,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#getObjet()">getObjet</a>():<a href="../Coeur/Coeur/MIObjet.html">MIObjet</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   renvoie l'objet sur lequel s'applique le Mouvement Perpétuel receveur
+   </div>
 </td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#getTimer()">getTimer</a>():Timer</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#getUnite_x()">getUnite_x</a>():Number</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#getUnite_y()">getUnite_y</a>():Number</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#instancie()">instancie</a>(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>, vitesse_px_s_X:Number, vitesse_px_s_Y:Number):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription"> getteurs et setteurs </div>
 </td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
 </tr>
 <tr class="">
@@ -129,8 +104,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#instancieAvecAngleEtVitesse()">instancieAvecAngleEtVitesse</a>(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>, angle:Number, vitesse:Number):void</div>
 <div class="summaryTableDescription">
-   instancie le mouvement à partir de l'angle en degré avec l'horizontal et sa vitesse en px par seconde
-   rappel: les angles se mesurent dans le sens contraire les aiguilles d'une montre => 30° = 30° au dessus de l'horizontale
+   instancie le Mouvement Perpétuel receveur
+   </div>
+</td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#instancieAvecVitesse()">instancieAvecVitesse</a>(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>, vitesse_px_s_X:Number, vitesse_px_s_Y:Number):void</div>
+<div class="summaryTableDescription">
+   instancie le Mouvement Perpétuel receveur
    </div>
 </td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
 </tr>
@@ -138,56 +121,45 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#lancer()">lancer</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   effectue les calculs nécessaires et lance le Mouvement Perpétuel receveur
+   </div>
 </td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#rebondir()">rebondir</a>(axe_obstacle:<a href="../Utilitaires/MAxe.html">MAxe</a>):void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#setNomClasse()">setNomClasse</a>(nom_classe:String):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   modifie le Mouvement de manière à faire rebondir l'objet selon l'axe passé en paramètre
+   </div>
 </td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#setObjet()">setObjet</a>(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   remplace l'objet sur lequel s'applique le Mouvement Perpétuel receveur par celui passé en paramètre
+   </div>
 </td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#setTimer()">setTimer</a>(timer:Timer):void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#setUnite_x()">setUnite_x</a>(unite_x:Number):void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#setUnite_y()">setUnite_y</a>(unite_y:Number):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   remplace le timer du Mouvement Perpétuel receveur par celui passé en paramètre
+   </div>
 </td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#stopper()">stopper</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   stoppe le Mouvement Perpétuel receveur
+   </div>
 </td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
 </tr>
 </table>
@@ -203,14 +175,19 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#avanceUneUnite()">avanceUneUnite</a>(e:TimerEvent):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   fonction appelée par le Timer à chaque fois que finit une unité de temps
+   <p> Fait avancer l'objet sur lequel s'applique le Mouvement Perpétuel receveur ( + unite_x sur l'abscisse et + unite_y sur l'ordonnée ) </p>   
+   </div>
 </td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#lancerTimer()">lancerTimer</a>(temps:Number, repetition:Number):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   crée pour l'attribut "timer" de l'objet receveur un nouveau Timer qui appelle la fonction avanceUneUnite lorsqu'il finit et le lance
+   </div>
 </td><td class="summaryTableOwnerCol">MMouvementPerpetuel</td>
 </tr>
 </table>
@@ -220,17 +197,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 showHideInherited();
 --></script>
 <div class="MainContent">
-<a name="propertyDetail"></a>
-<div class="detailSectionHeader">Property detail</div>
-<a name="sysout"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">sysout</td><td class="detailHeaderType">property</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public var sysout:Text</code>
-</div>
 <a name="constructorDetail"></a>
 <div class="detailSectionHeader">Constructor detail</div>
 <a name="MMouvementPerpetuel()"></a>
@@ -240,8 +206,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function MMouvementPerpetuel()</code>
-</div>
+<code>public function MMouvementPerpetuel()</code><p>
+   crée le Mouvement Perpétuel receveur
+   </p></div>
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Method detail</div>
 <a name="avanceUneUnite()"></a>
@@ -251,7 +218,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected function avanceUneUnite(e:TimerEvent):void</code><span class="label">Parameters</span>
+<code>protected function avanceUneUnite(e:TimerEvent):void</code><p>
+   fonction appelée par le Timer à chaque fois que finit une unité de temps
+   </p><p> Fait avancer l'objet sur lequel s'applique le Mouvement Perpétuel receveur ( + unite_x sur l'abscisse et + unite_y sur l'ordonnée ) </p>   
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">e</span>:TimerEvent</code></td>
@@ -265,8 +235,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function clone():<a href="Controleur/MIEffet.html">MIEffet</a></code>
-<p></p>
+<code>public function clone():<a href="Controleur/MIEffet.html">MIEffet</a></code><p>
+   renvoie un clone du Mouvement Perpétuel receveur
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
@@ -281,12 +252,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function getNomClasse():String</code>
-<p></p>
+<code>public function getNomClasse():String</code><p>
+   renvoie la chaine qui représente le nom de la classe du Mouvement Perpétuel receveur
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>String</code></td>
+<td width="20"></td><td><code>String</code> &mdash; la chaine qui représente le nom de la classe du Mouvement Perpétuel receveur
+   </td>
 </tr>
 </table>
 </div>
@@ -297,12 +270,17 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function getObjet():<a href="../Coeur/Coeur/MIObjet.html">MIObjet</a></code>
-<p></p>
+<code>public function getObjet():<a href="../Coeur/Coeur/MIObjet.html">MIObjet</a></code><p>
+   renvoie l'objet sur lequel s'applique le Mouvement Perpétuel receveur
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="../Coeur/Coeur/MIObjet.html">MIObjet</a></code></td>
+<td width="20"></td><td><code><a href="../Coeur/Coeur/MIObjet.html">MIObjet</a></code> &mdash; 
+                        l'objet sur lequel s'applique le Mouvement Perpétuel receveur
+   
+                        
+                     </td>
 </tr>
 </table>
 </div>
@@ -313,70 +291,11 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function getTimer():Timer</code>
-<p></p>
+<code>public function getTimer():Timer</code><p> getteurs et setteurs </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20"></td><td><code>Timer</code></td>
-</tr>
-</table>
-</div>
-<a name="getUnite_x()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">getUnite_x</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function getUnite_x():Number</code>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>Number</code></td>
-</tr>
-</table>
-</div>
-<a name="getUnite_y()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">getUnite_y</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function getUnite_y():Number</code>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>Number</code></td>
-</tr>
-</table>
-</div>
-<a name="instancie()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">instancie</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function instancie(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>, vitesse_px_s_X:Number, vitesse_px_s_Y:Number):void</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code></td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">vitesse_px_s_X</span>:Number</code></td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">vitesse_px_s_Y</span>:Number</code></td>
 </tr>
 </table>
 </div>
@@ -388,24 +307,57 @@ showHideInherited();
 </table>
 <div class="detailBody">
 <code>public function instancieAvecAngleEtVitesse(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>, angle:Number, vitesse:Number):void</code><p>
-   instancie le mouvement à partir de l'angle en degré avec l'horizontal et sa vitesse en px par seconde
-   rappel: les angles se mesurent dans le sens contraire les aiguilles d'une montre => 30° = 30° au dessus de l'horizontale
+   instancie le Mouvement Perpétuel receveur
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code></td>
+<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code> &mdash; objet sur lequel s'applique le Mouvement Perpétuel receveur
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">angle</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">angle</span>:Number</code> &mdash; angle de la trajectoire (en degré) par rapport à l'horizontal (rappel: les angles se mesurent dans le sens contraire des aiguilles d'une montre ex: 30° => 30° au dessus de l'horizontale)
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">vitesse</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">vitesse</span>:Number</code> &mdash; vitesse de déplacement (en pixel par seconde)
+   </td>
+</tr>
+</table>
+</div>
+<a name="instancieAvecVitesse()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">instancieAvecVitesse</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function instancieAvecVitesse(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>, vitesse_px_s_X:Number, vitesse_px_s_Y:Number):void</code><p>
+   instancie le Mouvement Perpétuel receveur
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code> &mdash; objet sur lequel s'applique le Mouvement Perpétuel receveur
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">vitesse_px_s_X</span>:Number</code> &mdash; : vitesse de déplacement (en pixel par seconde) sur l'abscisse
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">vitesse_px_s_Y</span>:Number</code> &mdash; : vitesse de déplacement (en pixel par seconde) sur l'ordonnée
+   </td>
 </tr>
 </table>
 </div>
@@ -416,8 +368,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function lancer():void</code>
-</div>
+<code>public function lancer():void</code><p>
+   effectue les calculs nécessaires et lance le Mouvement Perpétuel receveur
+   </p></div>
 <a name="lancerTimer()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -425,16 +378,20 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected function lancerTimer(temps:Number, repetition:Number):void</code><span class="label">Parameters</span>
+<code>protected function lancerTimer(temps:Number, repetition:Number):void</code><p>
+   crée pour l'attribut "timer" de l'objet receveur un nouveau Timer qui appelle la fonction avanceUneUnite lorsqu'il finit et le lance
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">temps</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">temps</span>:Number</code> &mdash; temps de durée du Timer
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">repetition</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">repetition</span>:Number</code> &mdash; nombre de fois ou le Timer va recommencer
+   </td>
 </tr>
 </table>
 </div>
@@ -445,24 +402,12 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function rebondir(axe_obstacle:<a href="../Utilitaires/MAxe.html">MAxe</a>):void</code><span class="label">Parameters</span>
+<code>public function rebondir(axe_obstacle:<a href="../Utilitaires/MAxe.html">MAxe</a>):void</code><p>
+   modifie le Mouvement de manière à faire rebondir l'objet selon l'axe passé en paramètre
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">axe_obstacle</span>:<a href="../Utilitaires/MAxe.html">MAxe</a></code></td>
-</tr>
-</table>
-</div>
-<a name="setNomClasse()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">setNomClasse</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function setNomClasse(nom_classe:String):void</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">nom_classe</span>:String</code></td>
 </tr>
 </table>
 </div>
@@ -473,10 +418,13 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function setObjet(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</code><span class="label">Parameters</span>
+<code>public function setObjet(objet:<a href="../Coeur/MIObjet.html">MIObjet</a>):void</code><p>
+   remplace l'objet sur lequel s'applique le Mouvement Perpétuel receveur par celui passé en paramètre
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code></td>
+<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../Coeur/MIObjet.html">MIObjet</a></code> &mdash; nouvel objet sur lequel on veut que s'applique le Mouvement Perpétuel receveur
+   </td>
 </tr>
 </table>
 </div>
@@ -487,38 +435,13 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function setTimer(timer:Timer):void</code><span class="label">Parameters</span>
+<code>public function setTimer(timer:Timer):void</code><p>
+   remplace le timer du Mouvement Perpétuel receveur par celui passé en paramètre
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">timer</span>:Timer</code></td>
-</tr>
-</table>
-</div>
-<a name="setUnite_x()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">setUnite_x</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function setUnite_x(unite_x:Number):void</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">unite_x</span>:Number</code></td>
-</tr>
-</table>
-</div>
-<a name="setUnite_y()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">setUnite_y</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function setUnite_y(unite_y:Number):void</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">unite_y</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">timer</span>:Timer</code> &mdash; nouveau timer du Mouvement Perpétuel receveur
+   </td>
 </tr>
 </table>
 </div>
@@ -529,8 +452,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function stopper():void</code>
-</div>
+<code>public function stopper():void</code><p>
+   stoppe le Mouvement Perpétuel receveur
+   </p></div>
 <br>
 <br>
 <hr>

@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../print.css" type="text/css" media="print">
-<meta content="MClavier,Controleur.MClavier,ajouterEcouteur,enleverEcouteur" name="keywords">
+<meta content="MClavier,Controleur.MClavier,ajouterEcouteur,enleverEcouteur,getInstance" name="keywords">
 <title>Controleur.MClavier</title>
 </head>
 <body>
@@ -39,7 +39,15 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 </table>
 <p></p>
-<p></p>
+  Classe qui prévient les écouteurs de Clavier lorsque le clavier est appuyé en appellant leur fonction correspondante
+  Cette classe est un singleton, elle n'a qu'une instance: ne pas utiliser le constructeur mais getInstance pour l'implémenter!!
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Controleur/MIEcouteurClavier.html" target="">Controleur.MIEcouteurClavier</a>
+</div>
 <br>
 <hr>
 </div>
@@ -54,21 +62,38 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#MClavier()">MClavier</a>()</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   si il n'y a pas déjà d'instance crée: Crée un objet MClavier et l'inscrit comme écouteur de l'application pour être prévenu lorsque le clavier est appuyé
+   sinon génère une erreur
+    </div>
 </td><td class="summaryTableOwnerCol">MClavier</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#ajouterEcouteur()">ajouterEcouteur</a>(m:<a href="MIEcouteurClavier.html">MIEcouteurClavier</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   ajoute un écouteur à la liste des écouteurs de clavier
+   </div>
 </td><td class="summaryTableOwnerCol">MClavier</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#enleverEcouteur()">enleverEcouteur</a>(m:<a href="MIEcouteurClavier.html">MIEcouteurClavier</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   enlève un écouteur à la liste des écouteurs de clavier
+   </div>
+</td><td class="summaryTableOwnerCol">MClavier</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getInstance()">getInstance</a>():<a href="Controleur/MClavier.html">MClavier</a>
+</div>
+<div class="summaryTableDescription">[static]
+   Crée l'unique instance de MClavier si elle n'existe pas déjà et la renvoie
+   </div>
 </td><td class="summaryTableOwnerCol">MClavier</td>
 </tr>
 </table>
@@ -87,8 +112,10 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function MClavier()</code>
-</div>
+<code>public function MClavier()</code><p>
+   si il n'y a pas déjà d'instance crée: Crée un objet MClavier et l'inscrit comme écouteur de l'application pour être prévenu lorsque le clavier est appuyé
+   sinon génère une erreur
+    </p></div>
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Method detail</div>
 <a name="ajouterEcouteur()"></a>
@@ -98,10 +125,13 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function ajouterEcouteur(m:<a href="MIEcouteurClavier.html">MIEcouteurClavier</a>):void</code><span class="label">Parameters</span>
+<code>public function ajouterEcouteur(m:<a href="MIEcouteurClavier.html">MIEcouteurClavier</a>):void</code><p>
+   ajoute un écouteur à la liste des écouteurs de clavier
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">m</span>:<a href="MIEcouteurClavier.html">MIEcouteurClavier</a></code></td>
+<td width="20px"></td><td><code><span class="label">m</span>:<a href="MIEcouteurClavier.html">MIEcouteurClavier</a></code> &mdash; nouvel écouteur de clavier
+    </td>
 </tr>
 </table>
 </div>
@@ -112,10 +142,34 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function enleverEcouteur(m:<a href="MIEcouteurClavier.html">MIEcouteurClavier</a>):void</code><span class="label">Parameters</span>
+<code>public function enleverEcouteur(m:<a href="MIEcouteurClavier.html">MIEcouteurClavier</a>):void</code><p>
+   enlève un écouteur à la liste des écouteurs de clavier
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">m</span>:<a href="MIEcouteurClavier.html">MIEcouteurClavier</a></code></td>
+<td width="20px"></td><td><code><span class="label">m</span>:<a href="MIEcouteurClavier.html">MIEcouteurClavier</a></code> &mdash; écouteur de clavier à enlever
+    </td>
+</tr>
+</table>
+</div>
+<a name="getInstance()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getInstance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function getInstance():<a href="Controleur/MClavier.html">MClavier</a></code><p>
+   Crée l'unique instance de MClavier si elle n'existe pas déjà et la renvoie
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="Controleur/MClavier.html">MClavier</a></code> &mdash; 
+                        l'unique instance de MClavier
+   
+                        
+                     </td>
 </tr>
 </table>
 </div>

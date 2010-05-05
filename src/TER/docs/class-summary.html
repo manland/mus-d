@@ -60,7 +60,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Al
 <tr class="prow1">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Controleur/MClavier.html">MClavier</a>
 <br>
-</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">&nbsp;</td>
+</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">
+  Classe qui prévient les écouteurs de Clavier lorsque le clavier est appuyé en appellant leur fonction correspondante
+  Cette classe est un singleton, elle n'a qu'une instance: ne pas utiliser le constructeur mais getInstance pour l'implémenter!!
+  </td>
 </tr>
 <tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Coeur/MControle.html">MControle</a>
@@ -221,17 +224,25 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Al
 <tr class="prow1">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Controleur/MIEcouteurClavier.html"><i>MIEcouteurClavier</i></a>
 <br>
-</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">&nbsp;</td>
+</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">
+  interface que doit implémenter un objet qui écoute le clavier pour être prévenu par MClavier
+  <p> il y a un prototype pour les touches les plus fréquemment utilisée dans les jeux </p>
+  </td>
 </tr>
 <tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Controleur/MIEcouteurSouris.html"><i>MIEcouteurSouris</i></a>
 <br>
-</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">&nbsp;</td>
+</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">
+  interface que doit implémenter un objet qui écoute la souris
+  <p> il y a un prototype pour les actions de la souris les plus fréquemment utilisée dans les jeux </p>
+  </td>
 </tr>
 <tr class="prow1">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Controleur/MIEffet.html"><i>MIEffet</i></a>
 <br>
-</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">&nbsp;</td>
+</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">
+  Sert à appliquer un Effet (mouvement, redimensionnement...) sur un objet
+  </td>
 </tr>
 <tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Coeur/Forme/MIForme.html"><i>MIForme</i></a>
@@ -276,12 +287,16 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Al
 <tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Controleur/MMouvementFini.html">MMouvementFini</a>
 <br>
-</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">&nbsp;</td>
+</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">
+  Sert à appliquer un Mouvement Fini sur un objet
+  </td>
 </tr>
 <tr class="prow1">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Controleur/MMouvementPerpetuel.html">MMouvementPerpetuel</a>
 <br>
-</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">&nbsp;</td>
+</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">
+  Sert à appliquer un Mouvement Perpétuel sur un objet
+  </td>
 </tr>
 <tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Coeur/MPropriete.html">MPropriete</a>
@@ -291,7 +306,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Al
 <tr class="prow1">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Controleur/MRedimensionnement.html">MRedimensionnement</a>
 <br>
-</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">&nbsp;</td>
+</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">
+  Sert à effectuer un Redimentionnement progressif sur un objet 
+  </td>
 </tr>
 <tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Coeur/MScene.html">MScene</a>
@@ -306,7 +323,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Al
 <tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Controleur/MSouris.html">MSouris</a>
 <br>
-</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">&nbsp;</td>
+</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/package-detail.html">Controleur</a></td><td class="summaryTableLastCol">
+  Classe qui prévient les écouteurs de Souris lorsque la souris effectue une action en appelant la fonction correspondante
+  Cette classe est un singleton, elle n'a qu'une instance: ne pas utiliser le constructeur mais getInstance pour l'implémenter!!
+  </td>
 </tr>
 <tr class="prow1">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Coeur/MStatique.html">MStatique</a>
@@ -336,7 +356,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Al
 <tr class="prow0">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Utilitaires/MVecteur.html">MVecteur</a>
 <br>
-</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/package-detail.html">Utilitaires</a></td><td class="summaryTableLastCol">&nbsp;</td>
+</td><td class="summaryTableCol"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/package-detail.html">Utilitaires</a></td><td class="summaryTableLastCol">
+  Classe représentant un vecteur géométrique
+  </td>
 </tr>
 <tr class="prow1">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="Coeur/Elements/Obstacle.html">Obstacle</a>

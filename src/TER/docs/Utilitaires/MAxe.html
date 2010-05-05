@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../print.css" type="text/css" media="print">
-<meta content="MAxe,Utilitaires.MAxe,estHorizontal,estObliqueDescendant,estObliqueMontant,estVertical,instancie,instancie2,orthogonalA,perpendiculaireA,setAxe" name="keywords">
+<meta content="MAxe,Utilitaires.MAxe,estHorizontal,estObliqueDescendant,estObliqueMontant,estVertical,getNomClasse,instancieAvecArete,instancieAvecCoeffiscientDroite,orthogonalA,perpendiculaireA,setAxe" name="keywords">
 <title>Utilitaires.MAxe</title>
 </head>
 <body>
@@ -55,74 +55,99 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#MAxe()">MAxe</a>()</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   crée un objet de type MAxe
+   </div>
 </td><td class="summaryTableOwnerCol">MAxe</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#estHorizontal()">estHorizontal</a>():Boolean</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   retourne vrai si l'axe est horizontal c'est-à-dire parallèle à l'axe d'abscisse
+   </div>
 </td><td class="summaryTableOwnerCol">MAxe</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#estObliqueDescendant()">estObliqueDescendant</a>():Boolean</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   retourne vrai si l'axe est oblique descendant c'est-à-dire parallèle à la droite d'équation y = -x
+   </div>
 </td><td class="summaryTableOwnerCol">MAxe</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#estObliqueMontant()">estObliqueMontant</a>():Boolean</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   retourne vrai si l'axe est oblique montant c'est-à-dire parallèle à la droite d'équation y = x
+   </div>
 </td><td class="summaryTableOwnerCol">MAxe</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#estVertical()">estVertical</a>():Boolean</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MAxe</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#instancie()">instancie</a>(a:Number, b:Number):void</div>
 <div class="summaryTableDescription">
-   droite caractérisée par l'équation y = ax + b
+   retourne vrai si l'axe est vertical c'est-à-dire parallèle à l'axe d'ordonnée
    </div>
 </td><td class="summaryTableOwnerCol">MAxe</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#instancie2()">instancie2</a>(arete:<a href="MArete.html">MArete</a>):void</div>
+<a class="signatureLink" href="#getNomClasse()">getNomClasse</a>():String</div>
 <div class="summaryTableDescription">
-   collision avec une arete
+   renvoie la chaine qui représente le nom de la classe de l'objet receveur ici "MAxe"
    </div>
 </td><td class="summaryTableOwnerCol">MAxe</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#orthogonalA()">orthogonalA</a>(vecteur:<a href="MVecteur.html">MVecteur</a>):*</div>
-<div class="summaryTableDescription"></div>
+<a class="signatureLink" href="#instancieAvecArete()">instancieAvecArete</a>(arete:<a href="MArete.html">MArete</a>):void</div>
+<div class="summaryTableDescription">
+   modifie l'axe pour qu'il soit approximativement parallèle à l'arête passée en paramètre
+   </div>
+</td><td class="summaryTableOwnerCol">MAxe</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#instancieAvecCoeffiscientDroite()">instancieAvecCoeffiscientDroite</a>(a:Number, b:Number):void</div>
+<div class="summaryTableDescription">
+   modifie l'axe pour qu'il soit approximativement parallèle à la droite d'équation y = ax + b
+   </div>
+</td><td class="summaryTableOwnerCol">MAxe</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#orthogonalA()">orthogonalA</a>(vecteur:<a href="MVecteur.html">MVecteur</a>):void</div>
+<div class="summaryTableDescription">
+   modifie l'axe pour qu'il soit approximativement perpendiculaire au vecteur passé en paramètre
+   </div>
 </td><td class="summaryTableOwnerCol">MAxe</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#perpendiculaireA()">perpendiculaireA</a>(arete:<a href="MArete.html">MArete</a>):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   modifie l'axe pour qu'il soit approximativement perpendiculaire à l'arête passée en paramètre
+   </div>
 </td><td class="summaryTableOwnerCol">MAxe</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#setAxe()">setAxe</a>(axe:int):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   modifie la valeur de l'inclinaison de l'axe par celle passée en paramètre
+   </div>
 </td><td class="summaryTableOwnerCol">MAxe</td>
 </tr>
 </table>
@@ -141,8 +166,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function MAxe()</code>
-</div>
+<code>public function MAxe()</code><p>
+   crée un objet de type MAxe
+   </p></div>
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Method detail</div>
 <a name="estHorizontal()"></a>
@@ -152,12 +178,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function estHorizontal():Boolean</code>
-<p></p>
+<code>public function estHorizontal():Boolean</code><p>
+   retourne vrai si l'axe est horizontal c'est-à-dire parallèle à l'axe d'abscisse
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>Boolean</code></td>
+<td width="20"></td><td><code>Boolean</code> &mdash; vrai si l'axe est horizontal
+   </td>
 </tr>
 </table>
 </div>
@@ -168,12 +196,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function estObliqueDescendant():Boolean</code>
-<p></p>
+<code>public function estObliqueDescendant():Boolean</code><p>
+   retourne vrai si l'axe est oblique descendant c'est-à-dire parallèle à la droite d'équation y = -x
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>Boolean</code></td>
+<td width="20"></td><td><code>Boolean</code> &mdash; vrai si l'axe est oblique descendant
+   </td>
 </tr>
 </table>
 </div>
@@ -184,12 +214,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function estObliqueMontant():Boolean</code>
-<p></p>
+<code>public function estObliqueMontant():Boolean</code><p>
+   retourne vrai si l'axe est oblique montant c'est-à-dire parallèle à la droite d'équation y = x
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>Boolean</code></td>
+<td width="20"></td><td><code>Boolean</code> &mdash; vrai si l'axe est oblique montant
+   </td>
 </tr>
 </table>
 </div>
@@ -200,52 +232,81 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function estVertical():Boolean</code>
-<p></p>
+<code>public function estVertical():Boolean</code><p>
+   retourne vrai si l'axe est vertical c'est-à-dire parallèle à l'axe d'ordonnée
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>Boolean</code></td>
+<td width="20"></td><td><code>Boolean</code> &mdash; vrai si l'axe est vertical
+   </td>
 </tr>
 </table>
 </div>
-<a name="instancie()"></a>
+<a name="getNomClasse()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">instancie</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+<td class="detailHeaderName">getNomClasse</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>public function instancie(a:Number, b:Number):void</code><p>
-   droite caractérisée par l'équation y = ax + b
+<code>public function getNomClasse():String</code><p>
+   renvoie la chaine qui représente le nom de la classe de l'objet receveur ici "MAxe"
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; la chaine qui représente le nom de la classe de l'objet receveur ici "MAxe"
+   </td>
+</tr>
+</table>
+</div>
+<a name="instancieAvecArete()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">instancieAvecArete</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function instancieAvecArete(arete:<a href="MArete.html">MArete</a>):void</code><p>
+   modifie l'axe pour qu'il soit approximativement parallèle à l'arête passée en paramètre
    </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">a</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">arete</span>:<a href="MArete.html">MArete</a></code> &mdash; arete auquelle on veut que l'axe soit parallèle
+   </td>
+</tr>
+</table>
+</div>
+<a name="instancieAvecCoeffiscientDroite()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">instancieAvecCoeffiscientDroite</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function instancieAvecCoeffiscientDroite(a:Number, b:Number):void</code><p>
+   modifie l'axe pour qu'il soit approximativement parallèle à la droite d'équation y = ax + b
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">a</span>:Number</code> &mdash; coeffiscient directeur de la droite auquelle on veut que l'axe soit parallèle
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">b</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">b</span>:Number</code> &mdash; ordonnée à l'origine de la droite auquelle on veut que l'axe soit parallèle
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="http://fr.wikipedia.org/wiki/Fonction_affine#Repr.C3.A9sentation_graphique" target="mm_external">http://fr.wikipedia.org/wiki/Fonction_affine#Repr.C3.A9sentation_graphique</a>
 </div>
-<a name="instancie2()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">instancie2</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function instancie2(arete:<a href="MArete.html">MArete</a>):void</code><p>
-   collision avec une arete
-   </p><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">arete</span>:<a href="MArete.html">MArete</a></code></td>
-</tr>
-</table>
 </div>
 <a name="orthogonalA()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -254,17 +315,13 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function orthogonalA(vecteur:<a href="MVecteur.html">MVecteur</a>):*</code><span class="label">Parameters</span>
+<code>public function orthogonalA(vecteur:<a href="MVecteur.html">MVecteur</a>):void</code><p>
+   modifie l'axe pour qu'il soit approximativement perpendiculaire au vecteur passé en paramètre
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">vecteur</span>:<a href="MVecteur.html">MVecteur</a></code></td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>*</code></td>
+<td width="20px"></td><td><code><span class="label">vecteur</span>:<a href="MVecteur.html">MVecteur</a></code> &mdash; vecteur auquel on veut que l'axe soit perpendiculaire
+   </td>
 </tr>
 </table>
 </div>
@@ -275,10 +332,13 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function perpendiculaireA(arete:<a href="MArete.html">MArete</a>):void</code><span class="label">Parameters</span>
+<code>public function perpendiculaireA(arete:<a href="MArete.html">MArete</a>):void</code><p>
+   modifie l'axe pour qu'il soit approximativement perpendiculaire à l'arête passée en paramètre
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">arete</span>:<a href="MArete.html">MArete</a></code></td>
+<td width="20px"></td><td><code><span class="label">arete</span>:<a href="MArete.html">MArete</a></code> &mdash; arete auquelle on veut que l'axe soit perpendiculaire
+   </td>
 </tr>
 </table>
 </div>
@@ -289,10 +349,13 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function setAxe(axe:int):void</code><span class="label">Parameters</span>
+<code>public function setAxe(axe:int):void</code><p>
+   modifie la valeur de l'inclinaison de l'axe par celle passée en paramètre
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">axe</span>:int</code></td>
+<td width="20px"></td><td><code><span class="label">axe</span>:int</code> &mdash; nouvelle valeur de l'inclinaison de l'axe
+   </td>
 </tr>
 </table>
 </div>
