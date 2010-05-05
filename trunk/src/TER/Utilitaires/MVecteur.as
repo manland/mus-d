@@ -1,24 +1,24 @@
 package Utilitaires
 {
-	/*
+	/**
 	 * Classe représentant un vecteur géométrique
 	 */
 	public class MVecteur
 	{
-		/*
+		/**
 		 * nom de la classe
 	 	 */
 		protected var nom_classe:String;
-		/*
+		/**
 		 * abscisse du vecteur
 	 	 */
 		protected var x:Number;
-		/*
+		/**
 		 * ordonnée du vecteur
 	 	 */
 		protected var y:Number;
 		
-		/*
+		/**
 		 * crée un vecteur null
 	 	 */
 		public function MVecteur()
@@ -28,7 +28,7 @@ package Utilitaires
 			this.nom_classe = "MVecteur";
 		}
 		
-	    /*
+	    /**
 		 * instancie le vecteur avec les coordonnées passées en paramètre
 		 * @param x: abscisse à donner au vecteur
 		 * @param y: ordonnée à donner au vecteur
@@ -39,7 +39,7 @@ package Utilitaires
 			this.y = y;
 		}
 		
-		/*
+		/**
 		 * retourne la valeur d'abscisse du vecteur receveur
 		 * @return valeur d'abscisse du vecteur receveur
 		 */
@@ -47,7 +47,7 @@ package Utilitaires
 		{
 			return this.x;
 		}
-		/*
+		/**
 		 * remplace la valeur d'abscisse du vecteur receveur par celle passée en paramètre
 		 * @param x: nouvelle valeur d'abscisse du vecteur receveur
 		 */
@@ -56,7 +56,7 @@ package Utilitaires
 			this.x = x;
 		}
 		
-		/*
+		/**
 		 * retourne la valeur d'ordonnée du vecteur receveur
 		 * @return valeur d'ordonnée du vecteur receveur
 		 */
@@ -64,7 +64,7 @@ package Utilitaires
 		{
 			return this.y;
 		}
-		/*
+		/**
 		 * remplace la valeur d'ordonnée du vecteur receveur par celle passée en paramètre
 		 * @param y: nouvelle valeur d'ordonnée du vecteur receveur
 		 */
@@ -73,7 +73,7 @@ package Utilitaires
 			this.y = y;
 		}
 		
-		/*
+		/**
 		 * renvoie la chaine qui représente le nom de la classe MVecteur
 		 * @return la chaine qui représente le nom de la classe MVecteur : "MVecteur"
 		 */
@@ -82,7 +82,7 @@ package Utilitaires
 			return nom_classe;
 		}
 		
-		/*
+		/**
 		 * retourne la norme du vecteur receveur (sa longueur)
 		 * @return la norme du vecteur receveur
 		 * @see http://fr.wikipedia.org/wiki/Norme_%28math%C3%A9matiques%29
@@ -90,7 +90,7 @@ package Utilitaires
 		public function getNorme():Number{
 			return Math.sqrt( getX() * getX() + getY() * getY());
 		}	
-		 /*
+		 /**
 		  * retourne un clone du vecteur receveur donc un vecteur ayant les mêmes coordonnées
 		  * @return une copie du vecteur receveur
 		  */
@@ -103,7 +103,7 @@ package Utilitaires
 			return clone;
 		}
 		
-		/*
+		/**
 		 * modifie les coordonnées du vecteur receveur pour qu'il aille du point pt_a au point pt_b
 		 * @param pt_a: point de départ du vecteur receveur
 		 * @param pt_b: point d'arrivée du vecteur receveur
@@ -112,7 +112,7 @@ package Utilitaires
 			this.instancie(pt_b.getX() - pt_a.getX(), pt_b.getY() - pt_a.getY());
 		}
 		
-		 /*
+		 /**
 		  * retourne un vecteur normal (orthogonal) au vecteur receveur
 		  * @return un vecteur normal (orthogonal) au vecteur receveur
 		  */
@@ -122,7 +122,7 @@ package Utilitaires
 			return normal;
 		}
 		
-		/*
+		/**
 		 * normalise le vecteur receveur c'est-à-dire le redimensionne pour que sa norme soit de 1 mais en gardant la même direction et le même sens
 		 */
 		public function normalise():void{
