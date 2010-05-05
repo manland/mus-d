@@ -101,36 +101,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("I�
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementFini.html#instancie()">instancie</a>(objet:<a href="Coeur/MIObjet.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MIObjet</a>, x_arrivee, y_arrivee, temps_ms) &mdash; Method in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementFini.html">MMouvementFini</a></td>
-</tr>
-<tr>
-<td width="20"></td><td></td>
-</tr>
-<tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementPerpetuel.html#instancie()">instancie</a>(objet:<a href="Coeur/MIObjet.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MIObjet</a>, vitesse_px_s_X, vitesse_px_s_Y) &mdash; Method in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementPerpetuel.html">MMouvementPerpetuel</a></td>
-</tr>
-<tr>
-<td width="20"></td><td></td>
-</tr>
-<tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MRedimensionnement.html#instancie()">instancie</a>(objet:<a href="Coeur/MIObjet.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MIObjet</a>, largeur_arrivee, hauteur_arrivee, temps_ms) &mdash; Method in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MRedimensionnement.html">MRedimensionnement</a></td>
-</tr>
-<tr>
-<td width="20"></td><td></td>
-</tr>
-<tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html#instancie()">instancie</a>(a, b) &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html">MAxe</a></td>
-</tr>
-<tr>
-<td width="20"></td><td>
-   droite caractérisée par l'équation y = ax + b
-   </td>
-</tr>
-<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MVecteur.html#instancie()">instancie</a>(x, y) &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MVecteur.html">MVecteur</a></td>
 </tr>
 <tr>
-<td width="20"></td><td></td>
+<td width="20"></td><td>
+   instancie le vecteur avec les coordonnées passées en paramètre
+   </td>
 </tr>
 <tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeEtoilePleine.html#instancie2()">instancie2</a>(x, y, largeur, decalage, petit_rayon) &mdash; Method in class Coeur.Forme.<a onclick="javascript:loadClassListFrame('Coeur/Forme/class-list.html');" href="Coeur/Forme/MFormeEtoilePleine.html">MFormeEtoilePleine</a></td>
@@ -139,20 +115,35 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("I�
 <td width="20"></td><td></td>
 </tr>
 <tr>
-<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html#instancie2()">instancie2</a>(arete:<a href="Utilitaires/MArete.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MArete</a>) &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html">MAxe</a></td>
-</tr>
-<tr>
-<td width="20"></td><td>
-   collision avec une arete
-   </td>
-</tr>
-<tr>
 <td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementPerpetuel.html#instancieAvecAngleEtVitesse()">instancieAvecAngleEtVitesse</a>(objet:<a href="Coeur/MIObjet.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MIObjet</a>, angle, vitesse) &mdash; Method in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementPerpetuel.html">MMouvementPerpetuel</a></td>
 </tr>
 <tr>
 <td width="20"></td><td>
-   instancie le mouvement à partir de l'angle en degré avec l'horizontal et sa vitesse en px par seconde
-   rappel: les angles se mesurent dans le sens contraire les aiguilles d'une montre => 30° = 30° au dessus de l'horizontale
+   instancie le Mouvement Perpétuel receveur
+   </td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html#instancieAvecArete()">instancieAvecArete</a>(arete:<a href="Utilitaires/MArete.html" onclick="javascript:loadClassListFrame('Utilitaires./class-list.html');">Utilitaires:MArete</a>) &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html">MAxe</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   modifie l'axe pour qu'il soit approximativement parallèle à l'arête passée en paramètre
+   </td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html#instancieAvecCoeffiscientDroite()">instancieAvecCoeffiscientDroite</a>(a, b) &mdash; Method in class Utilitaires.<a onclick="javascript:loadClassListFrame('Utilitaires/class-list.html');" href="Utilitaires/MAxe.html">MAxe</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   modifie l'axe pour qu'il soit approximativement parallèle à la droite d'équation y = ax + b
+   </td>
+</tr>
+<tr>
+<td colspan="2" class="idxrow"><a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementPerpetuel.html#instancieAvecVitesse()">instancieAvecVitesse</a>(objet:<a href="Coeur/MIObjet.html" onclick="javascript:loadClassListFrame('Coeur./class-list.html');">Coeur:MIObjet</a>, vitesse_px_s_X, vitesse_px_s_Y) &mdash; Method in class Controleur.<a onclick="javascript:loadClassListFrame('Controleur/class-list.html');" href="Controleur/MMouvementPerpetuel.html">MMouvementPerpetuel</a></td>
+</tr>
+<tr>
+<td width="20"></td><td>
+   instancie le Mouvement Perpétuel receveur
    </td>
 </tr>
 <tr>

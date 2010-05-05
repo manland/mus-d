@@ -39,7 +39,53 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 </tr>
 </table>
 <p></p>
-<p></p>
+  interface que doit implémenter un objet qui écoute la souris
+  <p> il y a un prototype pour les actions de la souris les plus fréquemment utilisée dans les jeux </p>
+  <p></p>
+<br>
+<span class="label">Example</span>
+<br>Exemple d'implémentation de MIEcouteurSouris:
+  <div class='listing'><pre> 
+       public class MonEcouteur implements MIEcouteurSouris
+    {
+     public function MonEcouteur()
+    {
+     var souris:MSouris = MSouris.getInstance();
+     souris.ajouterEcouteur(this);
+    }
+    
+    public function bougeGauche():void{
+     //code qui doit être executé lorsque la souris se déplace vers la gauche est appuyée
+    }
+    
+    public function bougeDroite():void{
+     //code qui doit être executé lorsque la souris se déplace vers la droite est appuyée
+    }
+    
+    public function bougeHaut():void{
+     //code qui doit être executé lorsque la souris se déplace vers la haut est appuyée
+    }
+    
+    public function bougeBas():void{
+     //code qui doit être executé lorsque la souris se déplace vers la bas est appuyée
+    }
+    
+    public function clic():void{
+     //code qui doit être executé lorsque la souris est cliqué
+    }
+    
+    public function doubleClic():void{
+     //code qui doit être executé lorsque la souris est double-cliqué
+    }
+   }
+    </pre></div>
+   <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">
+<a href="Controleur/MSouris.html" target="">Controleur.MSouris</a>
+</div>
 <br>
 <hr>
 </div>
@@ -54,42 +100,54 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#bougeBas()">bougeBas</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   fonction appelée lorsque la souris se déplace vers le bas
+    </div>
 </td><td class="summaryTableOwnerCol">MIEcouteurSouris</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#bougeDroite()">bougeDroite</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   fonction appelée lorsque la souris se déplace vers la droite
+    </div>
 </td><td class="summaryTableOwnerCol">MIEcouteurSouris</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#bougeGauche()">bougeGauche</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   fonction appelée lorsque la souris se déplace vers la gauche
+    </div>
 </td><td class="summaryTableOwnerCol">MIEcouteurSouris</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#bougeHaut()">bougeHaut</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   fonction appelée lorsque la souris se déplace vers le haut
+    </div>
 </td><td class="summaryTableOwnerCol">MIEcouteurSouris</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#clic()">clic</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   fonction appelée lors d'un clic de la souris
+    </div>
 </td><td class="summaryTableOwnerCol">MIEcouteurSouris</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#doubleClic()">doubleClic</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   fonction appelée lors d'un double clic de la souris
+    </div>
 </td><td class="summaryTableOwnerCol">MIEcouteurSouris</td>
 </tr>
 </table>
@@ -108,8 +166,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function bougeBas():void</code>
-</div>
+<code>public function bougeBas():void</code><p>
+   fonction appelée lorsque la souris se déplace vers le bas
+    </p></div>
 <a name="bougeDroite()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -117,8 +176,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function bougeDroite():void</code>
-</div>
+<code>public function bougeDroite():void</code><p>
+   fonction appelée lorsque la souris se déplace vers la droite
+    </p></div>
 <a name="bougeGauche()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -126,8 +186,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function bougeGauche():void</code>
-</div>
+<code>public function bougeGauche():void</code><p>
+   fonction appelée lorsque la souris se déplace vers la gauche
+    </p></div>
 <a name="bougeHaut()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -135,8 +196,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function bougeHaut():void</code>
-</div>
+<code>public function bougeHaut():void</code><p>
+   fonction appelée lorsque la souris se déplace vers le haut
+    </p></div>
 <a name="clic()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -144,8 +206,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function clic():void</code>
-</div>
+<code>public function clic():void</code><p>
+   fonction appelée lors d'un clic de la souris
+    </p></div>
 <a name="doubleClic()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -153,8 +216,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function doubleClic():void</code>
-</div>
+<code>public function doubleClic():void</code><p>
+   fonction appelée lors d'un double clic de la souris
+    </p></div>
 <br>
 <br>
 <hr>

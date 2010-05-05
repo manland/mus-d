@@ -39,7 +39,8 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </tr>
 </table>
 <p></p>
-<p></p>
+  Classe représentant un vecteur géométrique
+  <p></p>
 <br>
 <hr>
 </div>
@@ -51,15 +52,21 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#nom_classe">nom_classe</a> : String<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#nom_classe">nom_classe</a> : String<div class="summaryTableDescription">
+   nom de la classe
+    </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#x">x</a> : Number<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#x">x</a> : Number<div class="summaryTableDescription">
+   abscisse du vecteur
+    </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#y">y</a> : Number<div class="summaryTableDescription"></div>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#y">y</a> : Number<div class="summaryTableDescription">
+   ordonnée du vecteur
+    </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 </table>
@@ -75,7 +82,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#MVecteur()">MVecteur</a>()</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   crée un vecteur null
+    </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 <tr class="">
@@ -83,21 +92,27 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#clone()">clone</a>():<a href="Utilitaires/MVecteur.html">MVecteur</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+    retourne un clone du vecteur receveur donc un vecteur ayant les mêmes coordonnées
+    </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#entreDeuxPoint()">entreDeuxPoint</a>(pt_a:<a href="MCoordonnee.html">MCoordonnee</a>, pt_b:<a href="MCoordonnee.html">MCoordonnee</a>):*</div>
-<div class="summaryTableDescription"></div>
+<a class="signatureLink" href="#entreDeuxPoint()">entreDeuxPoint</a>(pt_a:<a href="MCoordonnee.html">MCoordonnee</a>, pt_b:<a href="MCoordonnee.html">MCoordonnee</a>):void</div>
+<div class="summaryTableDescription">
+   modifie les coordonnées du vecteur receveur pour qu'il aille du point pt_a au point pt_b
+   </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#getNomClasse()">getNomClasse</a>():String</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   renvoie la chaine qui représente le nom de la classe MVecteur
+   </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 <tr class="">
@@ -105,56 +120,72 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#getNormal()">getNormal</a>():<a href="Utilitaires/MVecteur.html">MVecteur</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+    retourne un vecteur normal (orthogonal) au vecteur receveur
+    </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#getNorme()">getNorme</a>():Number</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   retourne la norme du vecteur receveur (sa longueur)
+   </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#getX()">getX</a>():Number</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   retourne la valeur d'abscisse du vecteur receveur
+   </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#getY()">getY</a>():Number</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   retourne la valeur d'ordonnée du vecteur receveur
+   </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#instancie()">instancie</a>(x:Number, y:Number):*</div>
-<div class="summaryTableDescription"></div>
+<a class="signatureLink" href="#instancie()">instancie</a>(x:Number, y:Number):void</div>
+<div class="summaryTableDescription">
+   instancie le vecteur avec les coordonnées passées en paramètre
+   </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#normalise()">normalise</a>():void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   normalise le vecteur receveur c'est-à-dire le redimensionne pour que sa norme soit de 1 mais en gardant la même direction et le même sens
+   </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#setX()">setX</a>(x:Number):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   remplace la valeur d'abscisse du vecteur receveur par celle passée en paramètre
+   </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#setY()">setY</a>(y:Number):void</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   remplace la valeur d'ordonnée du vecteur receveur par celle passée en paramètre
+   </div>
 </td><td class="summaryTableOwnerCol">MVecteur</td>
 </tr>
 </table>
@@ -173,8 +204,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var nom_classe:String</code>
-</div>
+<code>protected var nom_classe:String</code><p>
+   nom de la classe
+    </p></div>
 <a name="x"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -182,8 +214,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var x:Number</code>
-</div>
+<code>protected var x:Number</code><p>
+   abscisse du vecteur
+    </p></div>
 <a name="y"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -191,8 +224,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>protected var y:Number</code>
-</div>
+<code>protected var y:Number</code><p>
+   ordonnée du vecteur
+    </p></div>
 <a name="constructorDetail"></a>
 <div class="detailSectionHeader">Constructor detail</div>
 <a name="MVecteur()"></a>
@@ -202,8 +236,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function MVecteur()</code>
-</div>
+<code>public function MVecteur()</code><p>
+   crée un vecteur null
+    </p></div>
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Method detail</div>
 <a name="clone()"></a>
@@ -213,12 +248,17 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function clone():<a href="Utilitaires/MVecteur.html">MVecteur</a></code>
-<p></p>
+<code>public function clone():<a href="Utilitaires/MVecteur.html">MVecteur</a></code><p>
+    retourne un clone du vecteur receveur donc un vecteur ayant les mêmes coordonnées
+    </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="Utilitaires/MVecteur.html">MVecteur</a></code></td>
+<td width="20"></td><td><code><a href="Utilitaires/MVecteur.html">MVecteur</a></code> &mdash; 
+                        une copie du vecteur receveur
+    
+                        
+                     </td>
 </tr>
 </table>
 </div>
@@ -229,23 +269,20 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function entreDeuxPoint(pt_a:<a href="MCoordonnee.html">MCoordonnee</a>, pt_b:<a href="MCoordonnee.html">MCoordonnee</a>):*</code><span class="label">Parameters</span>
+<code>public function entreDeuxPoint(pt_a:<a href="MCoordonnee.html">MCoordonnee</a>, pt_b:<a href="MCoordonnee.html">MCoordonnee</a>):void</code><p>
+   modifie les coordonnées du vecteur receveur pour qu'il aille du point pt_a au point pt_b
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">pt_a</span>:<a href="MCoordonnee.html">MCoordonnee</a></code></td>
+<td width="20px"></td><td><code><span class="label">pt_a</span>:<a href="MCoordonnee.html">MCoordonnee</a></code> &mdash; point de départ du vecteur receveur
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">pt_b</span>:<a href="MCoordonnee.html">MCoordonnee</a></code></td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>*</code></td>
+<td width="20px"></td><td><code><span class="label">pt_b</span>:<a href="MCoordonnee.html">MCoordonnee</a></code> &mdash; point d'arrivée du vecteur receveur
+   </td>
 </tr>
 </table>
 </div>
@@ -256,12 +293,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function getNomClasse():String</code>
-<p></p>
+<code>public function getNomClasse():String</code><p>
+   renvoie la chaine qui représente le nom de la classe MVecteur
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>String</code></td>
+<td width="20"></td><td><code>String</code> &mdash; la chaine qui représente le nom de la classe MVecteur : "MVecteur"
+   </td>
 </tr>
 </table>
 </div>
@@ -272,12 +311,17 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function getNormal():<a href="Utilitaires/MVecteur.html">MVecteur</a></code>
-<p></p>
+<code>public function getNormal():<a href="Utilitaires/MVecteur.html">MVecteur</a></code><p>
+    retourne un vecteur normal (orthogonal) au vecteur receveur
+    </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="Utilitaires/MVecteur.html">MVecteur</a></code></td>
+<td width="20"></td><td><code><a href="Utilitaires/MVecteur.html">MVecteur</a></code> &mdash; 
+                        un vecteur normal (orthogonal) au vecteur receveur
+    
+                        
+                     </td>
 </tr>
 </table>
 </div>
@@ -288,14 +332,22 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function getNorme():Number</code>
-<p></p>
+<code>public function getNorme():Number</code><p>
+   retourne la norme du vecteur receveur (sa longueur)
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>Number</code></td>
+<td width="20"></td><td><code>Number</code> &mdash; la norme du vecteur receveur
+   </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="http://fr.wikipedia.org/wiki/Norme_%28math%C3%A9matiques%29" target="mm_external">http://fr.wikipedia.org/wiki/Norme_%28math%C3%A9matiques%29</a>
+</div>
 </div>
 <a name="getX()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -304,12 +356,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function getX():Number</code>
-<p></p>
+<code>public function getX():Number</code><p>
+   retourne la valeur d'abscisse du vecteur receveur
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>Number</code></td>
+<td width="20"></td><td><code>Number</code> &mdash; valeur d'abscisse du vecteur receveur
+   </td>
 </tr>
 </table>
 </div>
@@ -320,12 +374,14 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function getY():Number</code>
-<p></p>
+<code>public function getY():Number</code><p>
+   retourne la valeur d'ordonnée du vecteur receveur
+   </p><p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>Number</code></td>
+<td width="20"></td><td><code>Number</code> &mdash; valeur d'ordonnée du vecteur receveur
+   </td>
 </tr>
 </table>
 </div>
@@ -336,23 +392,20 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function instancie(x:Number, y:Number):*</code><span class="label">Parameters</span>
+<code>public function instancie(x:Number, y:Number):void</code><p>
+   instancie le vecteur avec les coordonnées passées en paramètre
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">x</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">x</span>:Number</code> &mdash; abscisse à donner au vecteur
+   </td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">y</span>:Number</code></td>
-</tr>
-</table>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code>*</code></td>
+<td width="20px"></td><td><code><span class="label">y</span>:Number</code> &mdash; ordonnée à donner au vecteur
+   </td>
 </tr>
 </table>
 </div>
@@ -363,8 +416,9 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function normalise():void</code>
-</div>
+<code>public function normalise():void</code><p>
+   normalise le vecteur receveur c'est-à-dire le redimensionne pour que sa norme soit de 1 mais en gardant la même direction et le même sens
+   </p></div>
 <a name="setX()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -372,10 +426,13 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function setX(x:Number):void</code><span class="label">Parameters</span>
+<code>public function setX(x:Number):void</code><p>
+   remplace la valeur d'abscisse du vecteur receveur par celle passée en paramètre
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">x</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">x</span>:Number</code> &mdash; nouvelle valeur d'abscisse du vecteur receveur
+   </td>
 </tr>
 </table>
 </div>
@@ -386,10 +443,13 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function setY(y:Number):void</code><span class="label">Parameters</span>
+<code>public function setY(y:Number):void</code><p>
+   remplace la valeur d'ordonnée du vecteur receveur par celle passée en paramètre
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">y</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">y</span>:Number</code> &mdash; nouvelle valeur d'ordonnée du vecteur receveur
+   </td>
 </tr>
 </table>
 </div>

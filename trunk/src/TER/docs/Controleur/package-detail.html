@@ -40,13 +40,21 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Pa
 <th>&nbsp;</th><th width="30%">Interface</th><th width="70%">Description</th>
 </tr>
 <tr class="prow1">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><i><a href="MIEcouteurClavier.html">MIEcouteurClavier</a></i></td><td class="summaryTableLastCol">&nbsp;</td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><i><a href="MIEcouteurClavier.html">MIEcouteurClavier</a></i></td><td class="summaryTableLastCol">
+  interface que doit implémenter un objet qui écoute le clavier pour être prévenu par MClavier
+  <p> il y a un prototype pour les touches les plus fréquemment utilisée dans les jeux </p>
+  </td>
 </tr>
 <tr class="prow0">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><i><a href="MIEcouteurSouris.html">MIEcouteurSouris</a></i></td><td class="summaryTableLastCol">&nbsp;</td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><i><a href="MIEcouteurSouris.html">MIEcouteurSouris</a></i></td><td class="summaryTableLastCol">
+  interface que doit implémenter un objet qui écoute la souris
+  <p> il y a un prototype pour les actions de la souris les plus fréquemment utilisée dans les jeux </p>
+  </td>
 </tr>
 <tr class="prow1">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><i><a href="MIEffet.html">MIEffet</a></i></td><td class="summaryTableLastCol">&nbsp;</td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><i><a href="MIEffet.html">MIEffet</a></i></td><td class="summaryTableLastCol">
+  Sert à appliquer un Effet (mouvement, redimensionnement...) sur un objet
+  </td>
 </tr>
 </table>
 <a name="classSummary"></a>
@@ -56,19 +64,31 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Pa
 <th>&nbsp;</th><th width="30%">Class</th><th width="70%">Description</th>
 </tr>
 <tr class="prow1">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="MClavier.html">MClavier</a></td><td class="summaryTableLastCol">&nbsp;</td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="MClavier.html">MClavier</a></td><td class="summaryTableLastCol">
+  Classe qui prévient les écouteurs de Clavier lorsque le clavier est appuyé en appellant leur fonction correspondante
+  Cette classe est un singleton, elle n'a qu'une instance: ne pas utiliser le constructeur mais getInstance pour l'implémenter!!
+  </td>
 </tr>
 <tr class="prow0">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="MMouvementFini.html">MMouvementFini</a></td><td class="summaryTableLastCol">&nbsp;</td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="MMouvementFini.html">MMouvementFini</a></td><td class="summaryTableLastCol">
+  Sert à appliquer un Mouvement Fini sur un objet
+  </td>
 </tr>
 <tr class="prow1">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="MMouvementPerpetuel.html">MMouvementPerpetuel</a></td><td class="summaryTableLastCol">&nbsp;</td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="MMouvementPerpetuel.html">MMouvementPerpetuel</a></td><td class="summaryTableLastCol">
+  Sert à appliquer un Mouvement Perpétuel sur un objet
+  </td>
 </tr>
 <tr class="prow0">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="MRedimensionnement.html">MRedimensionnement</a></td><td class="summaryTableLastCol">&nbsp;</td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="MRedimensionnement.html">MRedimensionnement</a></td><td class="summaryTableLastCol">
+  Sert à effectuer un Redimentionnement progressif sur un objet 
+  </td>
 </tr>
 <tr class="prow1">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="MSouris.html">MSouris</a></td><td class="summaryTableLastCol">&nbsp;</td>
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableSecondCol"><a href="MSouris.html">MSouris</a></td><td class="summaryTableLastCol">
+  Classe qui prévient les écouteurs de Souris lorsque la souris effectue une action en appelant la fonction correspondante
+  Cette classe est un singleton, elle n'a qu'une instance: ne pas utiliser le constructeur mais getInstance pour l'implémenter!!
+  </td>
 </tr>
 </table>
 <p></p>
