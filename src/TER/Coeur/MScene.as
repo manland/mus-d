@@ -82,6 +82,12 @@ package Coeur
 			fireDeplacementObjet();
 		}
 		
+		public function augmente(l:Number,h:Number):void{
+			this.largeur = this.largeur + l; 
+			this.hauteur = this.hauteur + h;
+			fireChangementTaille();
+		}
+		
 		public function fireDeplacementObjet():void {
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
 				(ecouteurs[i] as MIObjetEcouteur).deplacementObjet(this);
@@ -282,12 +288,12 @@ package Coeur
 					}
 				}
 			}
-			//collision avec les bords de la scene
-//			if((objet.getForme() as MFormeCompose) != null)
-//				sysout.text += "\n composé";
+			//collision avec les bords de la scene	
 			if(this.estProcheDe(objet)){
 				axe = this.axeCollision(objet);
+				sysout.text += "\n proche";
 				if( axe != null){
+					sysout.text += "\n collision";
 					collision(objet, this, axe);
 				}
 			}
@@ -432,8 +438,7 @@ package Coeur
 			var ty:Number = objet.getY();
 			var larg:Number = objet.getLargeur();
 			var haut:Number = objet.getHauteur();
-//			if((objet.getForme() as MFormeCompose) != null)
-//				sysout.text += "\n x: "+tx+" y: "+ty+" lar: "+larg+" haut: "+haut;
+			sysout.text += "\n x: "+tx+" y: "+ty+" lar: "+larg+" haut: "+haut;
 			return (tx <= this.x || (tx+larg) >= this.x + largeur || ty <= this.y || (ty+haut) >= this.y + hauteur);
 		}
 		
