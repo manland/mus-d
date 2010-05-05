@@ -16,7 +16,7 @@ package
 			this.joueur = joueur;
 			sceneParent = parent;
 			
-			var ecouteurJ:MClavier = new MClavier();
+			var ecouteurJ:MClavier = MClavier.getInstance();
 			ecouteurJ.ajouterEcouteur(this);
 		}
 	

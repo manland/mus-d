@@ -2,6 +2,7 @@ package
 {
 	import Controleur.MMouvementPerpetuel;
 	
+	import Graphique.MGraphiqueRectangle;
 	import Graphique.MGraphiqueRond;
 	import Graphique.MGraphiqueScene;
 	import Graphique.MIObjetGraphique;
@@ -20,7 +21,7 @@ package
 	import mx.controls.Image;
 	import mx.controls.Label;
 	
-	public class Jeux extends MGraphiqueScene implements MIObjetGraphiqueEcouteur
+	public class Jeux extends MGraphiqueScene
 	{
 		
 		public var filletImage:Image;
@@ -65,15 +66,14 @@ package
         private var leTimer:Timer;
         
         // Score
-        private var scoreJ1:uint;
-		private var scoreJ2:uint;
-        private var labelScoreJ1:Label;
-		private var labelScoreJ2:Label;
+        public var scoreJ1:uint;
+		public var scoreJ2:uint;
+        public var labelScoreJ1:Label;
+		public var labelScoreJ2:Label;
 		
 		private var raquetteJ1:Raquette;
 		private var raquetteJ2:Raquette;
-		private var balle:MGraphiqueRond;
-		private var mouv:MMouvementPerpetuel;
+		private var balle:Balle;
 		
 		public function Jeux(menu:Menu)
 		{
@@ -191,28 +191,21 @@ package
             labelScoreJ2.setStyle("fontSize", 20);
             addChild(labelScoreJ2);
             
-            raquetteJ1 = new Raquette(this, "J1", 1, 0, 20, 50);
+            raquetteJ1 = new Raquette(this, "J1", 2, 0, 20, 50);
             addChild(raquetteJ1);
             
-            raquetteJ2 = new Raquette(this, "J2", this.width-20-1, 0, 20, 50);
+            raquetteJ2 = new Raquette(this, "J2", this.width-20-2, 0, 20, 50);
             addChild(raquetteJ2);
            
            
-           	balle = new MGraphiqueRond;
-           	balle.x = 40;
-           	balle.y=40;
-           	mouv = new MMouvementPerpetuel();
-           	mouv.instancieAvecAngleEtVitesse(balle.getObjet(), 5, 100);
+           	balle = new Balle(this);
            	addChild(balle);
-           	
-           	balle.ajouterEcouteur(this);
-           	
-           	
 		}
 		
 		public function afficheMenu(e:MouseEvent):void {
 			this.setVisible(false);
 			this.leTimer.stop();
+			balle.mouv.stopper();
 			leMenu.menuBoutonDemarrer.setVisible(false);
 			leMenu.menuBoutonReprendre.setVisible(true);
 			leMenu.setVisible(true);
@@ -221,7 +214,7 @@ package
 		public function recommencer(e:MouseEvent):void {
 			//leMenu.nouvellePartie(e);
 			//completeHandler(null);
-			mouv.lancer();
+			balle.mouv.lancer();
 		}
 
        	private function timerHandler(e:TimerEvent):void{
@@ -272,29 +265,6 @@ package
         
 		public function getLeMenu():Menu { return leMenu; }
         
-        public function graphiqueSeDessine(graphique:MIObjetGraphique):void {
-        	
-        }
-                
-        public function graphiqueMeurt(graphique:MIObjetGraphique):void {
-        	
-        }
-        
-        public function graphiqueCollision(graphique:MIObjetGraphique, axe:MAxe):void {
-        	mouv.rebondir(axe);
-        }
-        
-        public function graphiqueSeDeplace(x:Number, y:Number):void {
-        	var b:Number = this.height-120;
-        	if(y+balle.hauteur>this.height-120) {
-        		var axe:MAxe = new MAxe;
-        		axe.instancie2(new MArete(new MCoordonnee(0, b), new MCoordonnee(this.width, b)));
-        		mouv.rebondir(axe);
-        	}
-        }
-        
-        public function graphiqueChangeTaille(objet:MIObjetGraphique):void {
-        	
-        }
+     
 	}
 }
