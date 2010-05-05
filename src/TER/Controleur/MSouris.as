@@ -6,32 +6,32 @@ package Controleur
 	
 	import mx.core.Application;
 
-	/*
+	/**
 	 * Classe qui prévient les écouteurs de Souris lorsque la souris effectue une action en appelant la fonction correspondante
 	 * Cette classe est un singleton, elle n'a qu'une instance: ne pas utiliser le constructeur mais getInstance pour l'implémenter!!
 	 * @see Controleur.MIEcouteurSouris
 	 */
 	public class MSouris
 	{
-		/*
+		/**
 		 * unique instance de MSouris
 	 	 */
 		private static var instance:MSouris = null;
-		/*
+		/**
 		 * ancienne abscisse de la souris
 	 	 */
 		private var ancienX:Number;
-		/*
+		/**
 		 * ancienne ordonnée de la souris
 	 	 */
 		private var ancienY:Number;
 		
-		/*
+		/**
 		 * liste des écouteurs de souris
 	 	 */
 		private var ecouteurs:Array;
 		
-		/*
+		/**
 		 * si il n'y a pas déjà d'instance crée: Crée un objet MSouris et l'inscrit comme écouteur de l'application pour être prévenu lorsque la souris effectue une action
 	 	 * sinon génère une erreur
 	 	 */
@@ -51,7 +51,7 @@ package Controleur
 			}			
 		}
 		
-		/*
+		/**
 		 * Crée l'unique instance de MSouris si elle n'existe pas déjà et la renvoie
 		 * @return l'unique instance de MSouris
 		 */
@@ -61,7 +61,7 @@ package Controleur
 		 	return instance;
 		 }
 		
-		/*
+		/**
 		 * ajoute un écouteur à la liste des écouteurs de souris
 		 * @param ecouteur: nouvel écouteur de souris
 	 	 */
@@ -69,7 +69,7 @@ package Controleur
 		{
 			ecouteurs.push(ecouteur);
 		}
-		/*
+		/**
 		 * enlève un écouteur à la liste des écouteurs de souris
 		 * @param ecouteur: écouteur de souris à enlever
 	 	 */
@@ -78,7 +78,7 @@ package Controleur
 			ecouteurs.slice(ecouteurs.indexOf(ecouteur), 1);
 		}
 		
-		/*
+		/**
 		 * fonction appelée lorsque la souris est cliquée
 		 * @param evt: évenement souris contenant des informations sur le clic
 	 	 */
@@ -89,7 +89,7 @@ package Controleur
 			}
 		}
 		
-		/*
+		/**
 		 * fonction appelée lorsque la souris se déplace
 		 * @param evt: évenement souris contenant des informations sur le déplacement
 	 	 */
@@ -125,7 +125,7 @@ package Controleur
 			ancienY = y;		
 		}
 		
-		/*
+		/***
 		 * fonction appelée lorsque la souris est doucble-cliquée
 		 * @param evt: évenement souris contenant des informations sur le double-clic
 	 	 */

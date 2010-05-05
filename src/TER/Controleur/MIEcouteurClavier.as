@@ -3,7 +3,7 @@ package Controleur
 	import mx.core.Application;
 	
 	
-	/*
+	/**
 	 * interface que doit implémenter un objet qui écoute le clavier pour être prévenu par MClavier
 	 * <p> il y a un prototype pour les touches les plus fréquemment utilisée dans les jeux </p>
 	 * @see Controleur.MClavier
@@ -49,30 +49,34 @@ package Controleur
  	
 	public interface MIEcouteurClavier
 	{
-		/*
+		/**
 		 * fonction appelée lorsque l'utilisateur appuie sur la flèche du bas
 	 	 */
 		function flecheBas():void;
-		/*
+		/**
 		 * fonction appelée lorsque l'utilisateur appuie sur la flèche du haut
 	 	 */
 		function flecheHaut():void;
-		/*
+		/**
 		 * fonction appelée lorsque l'utilisateur appuie sur la flèche de gauche
 	 	 */
 		function flecheGauche():void;
-		/*
+		/**
 		 * fonction appelée lorsque l'utilisateur appuie sur la flèche de droite
 	 	 */
 		function flecheDroite():void;
-		/*
+		/**
 		 * fonction appelée lorsque l'utilisateur appuie sur Entrée
 	 	 */
 		function entree():void;
-		/*
-		 * fonction appelée lorsque l'utilisateur appuie Espace
+		/**
+		 * fonction appelée lorsque l'utilisateur appuie sur Espace
 	 	 */
 		function espace():void;
-
+		/**
+		 * fonction appelée lorsque l'utilisateur appuie une touche autre que celles repérées
+		 * param touche: code de la touche appuyée 
+	 	 */
+		function touche(touche:uint):void;
 	}
 }
