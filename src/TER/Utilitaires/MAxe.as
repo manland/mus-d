@@ -5,11 +5,11 @@ package Utilitaires
 	 */
 	public class MAxe
 	{
-		/*
+		/**
 		 * nom de la classe ici "MAxe"
 		 */ 
 		private var nom_classe:String;
-		/*
+		/**
 		 * valeur représentant l'inclinaison de l'axe:
 		 * <p> axe est égale à 
 		 * 0 si l'axe est parallèle à l'axe d'abscisse
@@ -19,14 +19,14 @@ package Utilitaires
 		 */
 		private var axe:int;
 		
-		/*
+		/**
 		 * crée un objet de type MAxe
 		 */ 
 		public function MAxe(){
 			nom_classe = "MAxe";
 		}
 		
-		/*
+		/**
 		 * renvoie la chaine qui représente le nom de la classe de l'objet receveur ici "MAxe"
 		 * @return la chaine qui représente le nom de la classe de l'objet receveur ici "MAxe"
 		 */
@@ -34,7 +34,7 @@ package Utilitaires
 			return nom_classe;
 		}
 		
-		/*
+		/**
 		 * modifie l'axe pour qu'il soit approximativement parallèle à la droite d'équation y = ax + b
 		 * @see http://fr.wikipedia.org/wiki/Fonction_affine#Repr.C3.A9sentation_graphique
 		 * @param a: coeffiscient directeur de la droite auquelle on veut que l'axe soit parallèle
@@ -64,7 +64,7 @@ package Utilitaires
 		}
 		
 		
-		/*
+		/**
 		 * modifie l'axe pour qu'il soit approximativement parallèle à l'arête passée en paramètre
 		 * @param arete: arete auquelle on veut que l'axe soit parallèle
 		 */
@@ -85,7 +85,7 @@ package Utilitaires
 				axe = 1;
 		}
 		
-		/*
+		/**
 		 * modifie l'axe pour qu'il soit approximativement perpendiculaire à l'arête passée en paramètre
 		 * @param arete: arete auquelle on veut que l'axe soit perpendiculaire
 		 */
@@ -106,7 +106,7 @@ package Utilitaires
 			}
 		}
 		
-		/*
+		/**
 		 * modifie l'axe pour qu'il soit approximativement perpendiculaire au vecteur passé en paramètre
 		 * @param vecteur: vecteur auquel on veut que l'axe soit perpendiculaire
 		 */
@@ -115,7 +115,7 @@ package Utilitaires
 			this.perpendiculaireA(arete);			
 		}
 		
-		/*
+		/**
 		 * modifie la valeur de l'inclinaison de l'axe par celle passée en paramètre
 		 * @param axe: nouvelle valeur de l'inclinaison de l'axe
 		 */
@@ -125,28 +125,28 @@ package Utilitaires
 			}
 		}
 		
-		/*
+		/**
 		 * retourne vrai si l'axe est horizontal c'est-à-dire parallèle à l'axe d'abscisse
 		 * @return vrai si l'axe est horizontal
 		 */
 		public function estHorizontal():Boolean{
 			return axe == 0;
 		}
-		/*
+		/**
 		 * retourne vrai si l'axe est vertical c'est-à-dire parallèle à l'axe d'ordonnée
 		 * @return vrai si l'axe est vertical
 		 */
 		public function estVertical():Boolean{
 			return axe == 1;
 		}
-		/*
+		/**
 		 * retourne vrai si l'axe est oblique montant c'est-à-dire parallèle à la droite d'équation y = x
 		 * @return vrai si l'axe est oblique montant
 		 */
 		public function estObliqueMontant():Boolean{
 			return axe == 2;
 		}
-		/*
+		/**
 		 * retourne vrai si l'axe est oblique descendant c'est-à-dire parallèle à la droite d'équation y = -x
 		 * @return vrai si l'axe est oblique descendant
 		 */
