@@ -151,7 +151,7 @@ Tout ce passe dans le fichier du squelette donc rien à faire pour vous.
 == Descriptions ==
 
 {{{
-/*
+/**
  * Description de la classe, fonction ou attribut.
  * <p>Description secondaire de la classe, fonction ou attribut</p>//optionnel
 */
@@ -162,7 +162,7 @@ Tout ce passe dans le fichier du squelette donc rien à faire pour vous.
 En mettre partout et dans tous les sens car je pense que ça permet de bien comprendre à quoi fait références la fonction ou classe et à quoi elle touche dans notre framework.
 
 {{{
-/*
+/**
  * Description...
  * @see Package.Classe#fonction
  * @see http://code.google.com/p/mus-d //permet de renvoyer vers un site internet
@@ -176,7 +176,7 @@ Info : J'ai remarqué un petit bug si on fait que #fonction pour une fonction de
 Cette balise permet de mettre des examples dans vos commentaires, je vous encourage également à en mettre a foison.
 
 {{{
-/*
+/**
  * Description...
  * @see ...
  * @example description de l'example : 
@@ -194,7 +194,7 @@ Info : la balise <listing> permet en fait de déplacer le code tout en bas de la
 Une autre petites balises très pratique !! Elle permet en effet de récupérer les commentaires du parent en regardant dans l'ordre : les interfaces, les classes mères.
 
 {{{
-/*
+/**
  * @inheritDoc
  */
 }}}
@@ -205,7 +205,7 @@ Cette balise permet de ne pas afficher une classe, une fonction ou un attribut d
 Ne devrait pas servir dans notre framework puisque l'asDoc ne détecte pas les attributs privée !!
 
 {{{
-/*
+/**
  * @private
  */
 }}}
@@ -215,7 +215,7 @@ Ne devrait pas servir dans notre framework puisque l'asDoc ne détecte pas les a
 Voici les balises pour décrire vos fonctions, c'est identique à la javaDoc.
 
 {{{
-/*
+/**
  * @param nom_parametre description parametre
  * @return description de ce qu'on retourne
  */
@@ -226,7 +226,7 @@ Voici les balises pour décrire vos fonctions, c'est identique à la javaDoc.
 Une autre fonctionnalité très utilie qui permet de spécifier la valeur par défaut d'un attribut.
 
 {{{
-/*
+/**
  * @default value
  */
 }}}
@@ -236,7 +236,7 @@ Une autre fonctionnalité très utilie qui permet de spécifier la valeur par d�
 Les exceptions ou erreurs que peuvent générer vos fonctions.
 
 {{{
-/*
+/**
  * @throws MError Erreur généré par... ou ...
  */
 }}}
