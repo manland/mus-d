@@ -210,38 +210,39 @@ package Coeur.Forme
 		public function getPointsProjection(vecteur:MVecteur):Array{
  				return getSommet();
  			}
- 			public function getSommet():Array{
- 				var points:Array = new Array();
+ 			
+ 		public function getSommet():Array{
+ 			var points:Array = new Array();
+ 			for(var i:int = 0; i<nombre_arete; i++)
+ 			{
+ 				var arete:MArete = aretes[i] as MArete;
+ 				if(points.indexOf(arete.getArrivee()) == -1){
+ 					points.push(arete.getArrivee());
+ 				}
+ 				if(points.indexOf(arete.getDepart()) == -1){
+ 					points.push(arete.getDepart());
+ 				}
+ 			}
+ 			return points;
+ 		}
+ 		
+ 		public function getAxesSeparateurs(objet:MIForme):Array{
+ 			var axes:Array = new Array();
+ 			if((objet as MFormeRond) == null){
  				for(var i:int = 0; i<nombre_arete; i++)
  				{
- 					var arete:MArete = aretes[i] as MArete;
- 					if(points.indexOf(arete.getArrivee()) == -1){
- 						points.push(arete.getArrivee());
- 					}
- 					if(points.indexOf(arete.getDepart()) == -1){
- 						points.push(arete.getDepart());
- 					}
+ 					var a:MArete = aretes[i] as MArete;
+ 					var pt_a:MCoordonnee = a.getDepart();
+ 	       			var pt_b:MCoordonnee = a.getArrivee();
+ 	        		var axe:MVecteur = new MVecteur();
+ 	        		axe.entreDeuxPoint(pt_a,pt_b);
+ 	        		axe = axe.getNormal();
+ 	        		axe.normalise();
+ 					axes.push(axe);
  				}
- 				return points;
  			}
- 			
- 			public function getAxesSeparateurs(objet:MIForme):Array{
- 				var axes:Array = new Array();
- 				if((objet as MFormeRond) == null){
- 					for(var i:int = 0; i<nombre_arete; i++)
- 					{
- 						var a:MArete = aretes[i] as MArete;
- 						var pt_a:MCoordonnee = a.getDepart();
- 		       			var pt_b:MCoordonnee = a.getArrivee();
- 		        		var axe:MVecteur = new MVecteur();
- 		        		axe.entreDeuxPoint(pt_a,pt_b);
- 		        		axe = axe.getNormal();
- 		        		axe.normalise();
- 						axes.push(axe);
- 					}
- 				}
- 				return axes;
- 			}
+ 			return axes;
+ 		}
 
 	}
 }

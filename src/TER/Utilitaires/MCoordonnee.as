@@ -53,6 +53,10 @@ package Utilitaires
 			
 			return new MCoordonnee(clone_x, clone_y);
 		}
+		
+		public function affiche():void{
+			trace(this.nom_classe,": (",this.x,",",this.y,")");
+		}
 
 	}
 }

@@ -6,12 +6,61 @@ package Coeur.Forme
 	
 	public class MFormeTriangle extends MFormePolygone implements MIFormePolygone
 	{
+		private var point1:MCoordonnee;
+		private var point2:MCoordonnee;
+		private var point3:MCoordonnee;
 		
 		public function MFormeTriangle()
 		{
 			this.nom_classe = "MFormeTriangle";
 			this.nombre_arete = 3;
 			this.somme_angles = 180;
+		}
+		
+		private function remplitPoint():void{
+			var points:Array = new Array();
+			
+			for(var i:uint=0; i<this.aretes.length; i++){
+				var arete:MArete = aretes[i] as MArete;
+				if(arete == null)
+					throw new MErreur(this.nom_classe, "remplitPoint", "une arete est nulle");
+				
+				var ajouter_depart:Boolean = true;
+				var ajouter_arrivee:Boolean = true;
+				for(var j:uint=0; j < points.length; j++){
+					var point:MCoordonnee = points[j] as MCoordonnee;
+					if(point == null)
+						throw new MErreur(this.nom_classe, "remplitPoint", "Erreur complètement inattendue sur un MCoordonnee....");
+					
+					if(point.estEgal(arete.getDepart()))
+						ajouter_depart = false;
+					if(point.estEgal(arete.getArrivee()))
+						ajouter_arrivee = false;
+				}
+				if(ajouter_depart){
+					points.push(arete.getDepart());
+				}
+				if(ajouter_arrivee){
+					points.push(arete.getArrivee());
+				}
+			}
+			if(points.length != 3)
+				throw new MErreur(this.nom_classe, "remplitPoint", "Il y a un probleme sur le nombre de points différents");
+			else{
+				this.point1 = points[0];
+				this.point2 = points[1];
+				this.point3 = points[2];
+			}
+		}
+		
+		public function getPoint1():MCoordonnee{
+			return this.point1;
+		}
+		public function getPoint2():MCoordonnee{
+			return this.point2;
+		}
+		public function getPoint3():MCoordonnee{
+			return this.point3;
 		}
 		
 		public override function setX(x:Number):void{
@@ -92,6 +141,11 @@ package Coeur.Forme
 			this.ajouterArete(a3);
 			
 			this.calculAretes();
+			this.remplitPoint();
+		
+			point1.affiche();
+			point2.affiche();
+			point3.affiche();
 			
 		}
 		
