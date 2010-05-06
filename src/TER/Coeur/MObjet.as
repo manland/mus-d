@@ -11,12 +11,6 @@ package Coeur
 		protected var nom_classe:String;
 		
 		protected var forme:MIForme;
-		
-		protected var x:Number;
-		protected var y:Number;
-		protected var largeur:Number;
-		protected var hauteur:Number;
-
 		protected var ecouteurs:Array;
 		
 		public function MObjet()
@@ -42,11 +36,6 @@ package Coeur
 		{
 			if(forme != null){
 				this.forme = forme;
-				this.x = this.forme.getX();
-				this.y = this.forme.getY();
-				this.largeur = this.forme.getLargeur();
-				this.hauteur = this.forme.getHauteur();
-				this.forme.setObjet(this as MIObjet);
 				
 				fireChangementTaille();
 				fireDeplacementObjet();
@@ -62,8 +51,6 @@ package Coeur
 		
 		public function deplacement(x:Number, y:Number):void
 		{
-			this.x += x;
-			this.y += y;
 			if(forme != null)
 				this.forme.deplacement(x, y);
 			fireDeplacementObjet();
@@ -71,28 +58,28 @@ package Coeur
 		
 		public function getX():Number
 		{
-			return this.x;
+			if(forme != null)
+				return forme.getX();
+			else throw new MErreur(this.nom_classe, "getX", "pas de forme encore définie");
 		}
 		public function setX(x:Number):void
 		{
-			if(x != this.x){
-				this.x = x;
-				if(forme != null)
-					forme.setX(x);
+			if(forme != null){
+				forme.setX(x);
 				fireDeplacementObjet();
 			}
 		}
 		
 		public function getY():Number
 		{
-			return this.y;
+			if(forme != null)
+				return forme.getY();
+			else throw new MErreur(this.nom_classe, "getY", "pas de forme encore définie");
 		}
 		public function setY(y:Number):void
 		{
-			if(y != this.y){
-				this.y = y;
-				if(forme != null)
-					forme.setY(y);
+			if(forme != null){
+				forme.setY(y);
 				fireDeplacementObjet();
 			}
 		}
@@ -104,29 +91,39 @@ package Coeur
 		}		
 		
 		public function redimensionnement(l:Number,h:Number):void{
-			this.largeur = this.largeur + l; 
-			this.hauteur = this.hauteur + h;
-			fireChangementTaille();
+			if(forme != null){
+				forme.setLargeur(forme.getLargeur() + l);
+				forme.setHauteur(forme.getHauteur() + h);
+				fireChangementTaille();
+			}
 		}
 				
 		public function getLargeur():Number
 		{
-			return this.largeur;
+			if(forme != null)
+				return forme.getLargeur();
+			else throw new MErreur(this.nom_classe, "getLargeur", "pas de forme encore définie");
 		}
 		public function setLargeur(largeur:Number):void
 		{
-			this.largeur = largeur;
-			fireChangementTaille();
+			if(forme != null){
+				this.forme.setLargeur(largeur);
+				fireChangementTaille();
+			}
 		}
 		
 		public function getHauteur():Number
 		{
-			return this.hauteur;
+			if(forme != null)
+				return forme.getHauteur();
+			else throw new MErreur(this.nom_classe, "getHauteur", "pas de forme encore définie");
 		}
 		public function setHauteur(hauteur:Number):void
 		{
-			this.hauteur = hauteur;
-			fireChangementTaille();
+			if(forme != null){
+				this.forme.setHauteur(hauteur);
+				fireChangementTaille();
+			}
 		}
 		
 		//écouteurs:
@@ -177,7 +174,8 @@ package Coeur
 			var h2:Number = objet.getHauteur();
 			var l2:Number = objet.getLargeur();
 				
-			if(x2+l2 < x || x2 > x+largeur || y2+h2 < y || y2 > y+hauteur)
+			if(x2+l2 < this.getX() || x2 > this.getX()+this.getLargeur()
+			|| y2+h2 < this.getY() || y2 > this.getY()+this.getHauteur())
 				return false
 			else				
 				return true;
