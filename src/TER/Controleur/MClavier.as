@@ -5,7 +5,7 @@ package Controleur
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;
 	
-	import mx.core.Application;
+	import mx.core.Application; 
 	
 	/**
 	 * Classe qui prévient les écouteurs de Clavier lorsque le clavier est appuyé en appellant leur fonction correspondante

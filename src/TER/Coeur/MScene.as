@@ -9,7 +9,7 @@ package Coeur
 	
 	import mx.controls.Text;
 	
-	public class MScene implements MIObjet, MIObjetEcouteur
+	public class MScene extends MObjet implements MIObjet, MIObjetEcouteur
 	{
 		/**
 		 * 
@@ -17,17 +17,7 @@ package Coeur
 		 * 
 		 * */
 		
-		
-		protected var x:Number;
-		protected var y:Number;
-		protected var largeur:Number;
-		protected var hauteur:Number;
-		protected var ecouteurs:Array;
-		protected var forme:MIForme;
-		
-		protected var nom_classe:String;
 		protected var enfants:Array;
-		protected var proprietes:Array;
 		
 		public var sysout:Text;
 		
@@ -38,195 +28,16 @@ package Coeur
 			this.largeur = 300;
 			this.hauteur = 300;
 			this.ecouteurs = new Array();
-			this.proprietes = new Array();
 			this.enfants = new Array();
 			this.nom_classe = "MScene";
 			this.forme = new MFormeRectangle();
 			(this.forme as MFormeRectangle).instancie(x,y,largeur,hauteur);
 			naitre();
 		}
-		
-		public function getForme():MIForme
-		{
-			return this.forme;
-		}
-		public function setForme(forme:MIForme):void
-		{
-			this.forme = forme;
-		}
+	
 		
 		public function affiche():void{
 			
-		}
-		
-		public function getX():Number
-		{
-			return this.x;
-		}
-		public function setX(x:Number):void
-		{
-			this.x = x;
-			fireDeplacementObjet();
-		}
-		
-		public function getY():Number
-		{
-			return this.y;
-		}
-		public function setY(y:Number):void
-		{
-			this.y = y;
-			fireDeplacementObjet();
-		}
-		
-		public function avance(x:Number,y:Number):void
-		{
-			this.x = this.x + x;
-			this.y = this.y + y;
-			fireDeplacementObjet();
-		}
-		
-		public function redimensionnement(l:Number,h:Number):void{
-			this.largeur = this.largeur + l; 
-			this.hauteur = this.hauteur + h;
-			fireChangementTaille();
-		}
-		
-		public function fireDeplacementObjet():void {
-			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				(ecouteurs[i] as MIObjetEcouteur).deplacementObjet(this);
-			}
-		}
-		
-		public function getLargeur():Number
-		{
-			return this.largeur;
-		}
-		public function setLargeur(largeur:Number):void
-		{
-			this.largeur = largeur;
-			fireChangementTaille();
-		}
-		
-		public function getHauteur():Number
-		{
-			return this.hauteur;
-		}
-		public function setHauteur(hauteur:Number):void
-		{
-			this.hauteur = hauteur;
-			fireChangementTaille();
-		}
-		
-		public function fireChangementTaille():void {
-			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				(ecouteurs[i] as MIObjetEcouteur).changementTaille(this);
-			}
-		}
-		
-		public function getNomClasse():String
-		{
-			return this.nom_classe;
-		}
-		public function setNomClasse(nom_classe:String):void
-		{
-			this.nom_classe = nom_classe;
-		}
-		
-		public function getEcouteurs():Array
-		{
-			return this.ecouteurs;
-		}
-		public function setEcouteurs(ecouteurs:Array):void
-		{
-			var tableau_tmp:Array = this.ecouteurs;//en cas ou le tableau que l'on passe est mauvais, on sauvegarde l'ancien pour le remettre ensuite
-			
-			for(var i:uint=0; i<ecouteurs.length; i++)
-			{
-				var ecouteur:MIObjetEcouteur = ecouteurs[i] as MIObjetEcouteur;
-				if(ecouteur == null)
-				{
-					this.ecouteurs = tableau_tmp;
-					throw new MErreur(this.nom_classe, "setEcouteurs", " Donnée du tableau "+i+" incohérente");
-					return;
-				}
-				this.ecouteurs[i] = ecouteur;
-			}
-				
-		}
-		
-		public function ajoutObjetEcouteur(objet:MIObjetEcouteur):void {
-			ecouteurs.push(objet);
-		}
-		public function supprimeObjetEcouteur(objet:MIObjetEcouteur):void {
-			ecouteurs.slice(ecouteurs.indexOf(objet), 1);
-		}
-		
-		
-		public function mourir():void {
-			fireMourir();
-		}
-		public function fireMourir():void {
-			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				(ecouteurs[i] as MIObjetEcouteur).objetMeurt(this);
-			}
-		}
-		
-		public function naitre():void {
-			fireNaitre();
-		}
-		public function fireNaitre():void {
-			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				(ecouteurs[i] as MIObjetEcouteur).objetNait(this);
-			}
-		}
-		
-		public function fireCollision(axe:MAxe):void {
-			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				(ecouteurs[i] as MIObjetEcouteur).objetCollision(this, axe);
-			}
-		}
-		
-		public function actionCollision(objet:MIObjet,axe:MAxe):void {
-			//a réimplanté ou à écouter
-			fireCollision(axe);
-		}
-				
-		public function drag():void
-		{
-		}
-		
-		public function getProprietes():Array
-		{
-			return this.proprietes;
-		}
-		public function setProprietes(proprietes:Array):void
-		{
-			var tableau_tmp:Array = this.proprietes;//en cas ou le tableau que l'on passe est mauvais, on sauvegarde l'ancien pour le remettre ensuite
-			
-			for(var i:uint=0; i<proprietes.length; i++)
-			{
-				var propriete:MPropriete = proprietes[i] as MPropriete;
-				if(propriete == null)
-				{
-					this.proprietes = tableau_tmp;
-					throw new MErreur(this.nom_classe, "setProprietes", " Donnée du tableau "+i+" incohérente");
-					return;
-				}
-				this.proprietes[i] = propriete.clone();
-			}
-		}
-		public function ajoutPropriete(propriete:MPropriete) :void
-		{
-			this.proprietes.push(propriete);
-		}
-		public function supprimePropriete(propriete:MPropriete) :void
-		{
-			proprietes.slice(proprietes.indexOf(propriete), 1);
-		}
-		
-		public function drop():void
-		{
 		}
 		
 		public function objetCollision(objet:MIObjet, axe:MAxe):void {
@@ -251,35 +62,6 @@ package Coeur
 		public function getEnfants():Array{
 			return this.enfants;
 		}
-		public function setEnfants(enfants:Array):void{
-			var tableau_tmp:Array = this.enfants;//en cas ou le tableau que l'on passe est mauvais, on sauvegarde l'ancien pour le remettre ensuite
-			
-			for(var i:uint=0; i<enfants.length; i++)
-			{
-				var enfant:MIObjet = enfants[i] as MIObjet;
-				if(enfant == null)
-				{
-					this.enfants = tableau_tmp;
-					throw new MErreur(this.nom_classe, "setEnfants", " Donnée du tableau "+i+" incohérente");
-					return;
-				}
-				this.enfants[i] = enfant.clone();
-			}
-		}
-		
-		
-		public function deplacement(x:Number, y:Number):void
-		{
-			this.x += x;
-			this.y += y;
-			if(forme != null)
-				this.forme.deplacement(x, y);
-			fireDeplacementObjet();
-		}
-		public function setCoordonnees(x:Number, y:Number):void
-		{
-			trace("Il y a un deplacement");
-		}
 		
 		public function deplacementObjet(objet:MIObjet):void
 		{
@@ -297,8 +79,8 @@ package Coeur
 				}
 			}
 			//collision avec les bords de la scene	
-			if(this.estProcheDe(objet)){
-				axe = this.axeCollision(objet);
+			if(this.procheBord(objet)){
+				axe = this.axeCollisionBord(objet);
 				if( axe != null){
 					collision(objet, this, axe);
 				}
@@ -333,7 +115,6 @@ package Coeur
 			clone_mscene.setX(clone_x);
 			clone_mscene.setY(clone_y);
 			clone_mscene.setForme(clone_forme);
-			clone_mscene.setProprietes(this.proprietes);
 			return clone_mscene;
 		}
 		
@@ -425,14 +206,11 @@ package Coeur
           	}
 		}
 		
-		/**
- 		 * @inheritDoc
- 		 */
-		public function axeCollision(objet:MIObjet):MAxe{
+		
+		public function axeCollisionBord(objet:MIObjet):MAxe{
 			var forme:MIForme = objet.getForme();
 			var vecteur:MVecteur = getAxeSeparateur(objet);
-			
-			
+						
 			//valeur minimale et maximale des projections de l'objet sur l'axe séparateur
 			var min:Number;
 			var max:Number;
@@ -460,7 +238,7 @@ package Coeur
 		 * @param objet: objet dont on veut savoir s'il est près d'un bord de la scène
 		 * @return vrai si l'objet passé en paramètre est proche d'un bord de la scène
 		 */
-		public function estProcheDe(objet:MIObjet):Boolean{
+		public function procheBord(objet:MIObjet):Boolean{
 			var tx:Number = objet.getX();
 			var ty:Number = objet.getY();
 			var larg:Number = objet.getLargeur();
