@@ -95,7 +95,7 @@ package Controleur
 		 * <p> Fait avancer l'objet sur lequel s'applique le Mouvement Fini receveur ( + unite_x sur l'abscisse et + unite_y sur l'ordonnée ) </p>		 
 		 */
 		protected function avanceUneUnite(e:TimerEvent):void{
-			getObjet().avance(unite_x, unite_y);	
+			getObjet().deplacement(unite_x, unite_y);	
 		}
 		
 		/**
