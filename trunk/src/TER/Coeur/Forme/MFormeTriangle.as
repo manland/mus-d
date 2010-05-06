@@ -1,7 +1,5 @@
 package Coeur.Forme
 {
-	import Coeur.MUtilitaire;
-	
 	import Utilitaires.*;
 	
 	public class MFormeTriangle extends MFormePolygone implements MIFormePolygone
@@ -212,22 +210,22 @@ package Coeur.Forme
 				throw new MErreur(this.nom_classe, "calculParametres", "Une arete est vide");
 			else
 			{
-				this.x = MUtilitaire.min(a1.getDepart().getX(), a1.getArrivee().getX());
-				this.x = MUtilitaire.min(this.x , MUtilitaire.min(a2.getDepart().getX(), a2.getArrivee().getX()));
-				this.x = MUtilitaire.min(this.x , MUtilitaire.min(a3.getDepart().getX(), a3.getArrivee().getX()));
-				this.y = MUtilitaire.min(a1.getDepart().getY(), a1.getArrivee().getY());
-				this.y = MUtilitaire.min(this.y , MUtilitaire.min(a2.getDepart().getY(), a2.getArrivee().getY()));
-				this.y = MUtilitaire.min(this.y , MUtilitaire.min(a3.getDepart().getY(), a3.getArrivee().getY()));
+				this.x = Math.min(a1.getDepart().getX(), a1.getArrivee().getX());
+				this.x = Math.min(this.x , Math.min(a2.getDepart().getX(), a2.getArrivee().getX()));
+				this.x = Math.min(this.x , Math.min(a3.getDepart().getX(), a3.getArrivee().getX()));
+				this.y = Math.min(a1.getDepart().getY(), a1.getArrivee().getY());
+				this.y = Math.min(this.y , Math.min(a2.getDepart().getY(), a2.getArrivee().getY()));
+				this.y = Math.min(this.y , Math.min(a3.getDepart().getY(), a3.getArrivee().getY()));
 				
 				
 				
-				var max_x:Number = MUtilitaire.max(a1.getDepart().getX(), a1.getArrivee().getX());
-				max_x = MUtilitaire.max(max_x , MUtilitaire.max(a2.getDepart().getX(), a2.getArrivee().getX()));
-				max_x = MUtilitaire.max(max_x , MUtilitaire.max(a3.getDepart().getX(), a3.getArrivee().getX()));
+				var max_x:Number = Math.max(a1.getDepart().getX(), a1.getArrivee().getX());
+				max_x = Math.max(max_x , Math.max(a2.getDepart().getX(), a2.getArrivee().getX()));
+				max_x = Math.max(max_x , Math.max(a3.getDepart().getX(), a3.getArrivee().getX()));
 				
-				var max_y:Number = MUtilitaire.max(a1.getDepart().getY(), a1.getArrivee().getY());
-				max_y = MUtilitaire.max(max_y , MUtilitaire.max(a2.getDepart().getY(), a2.getArrivee().getY()));
-				max_y = MUtilitaire.max(max_y , MUtilitaire.max(a3.getDepart().getY(), a3.getArrivee().getY()));
+				var max_y:Number = Math.max(a1.getDepart().getY(), a1.getArrivee().getY());
+				max_y = Math.max(max_y , Math.max(a2.getDepart().getY(), a2.getArrivee().getY()));
+				max_y = Math.max(max_y , Math.max(a3.getDepart().getY(), a3.getArrivee().getY()));
 				
 				this.largeur = max_x - this.x;
 				this.hauteur = max_y - this.y;
@@ -253,10 +251,26 @@ package Coeur.Forme
 		 
 		public override function ajouterArete(arete:MArete):Boolean
 		{
-			return false;
+			arete = arete.clone();
+			arete.deplacement(this.decalage.getX(), this.decalage.getY());
+			if(aretes.length < nombre_arete)
+			{
+				aretes.push(arete);
+				if(aretes.length == this.nombre_arete){
+					this.calculAretes();
+					this.remplitPoint()
+				}
+				return true;
+			}
+			else{
+				throw new MErreur(this.nom_classe, "ajouterArete", "Tableau d'aretes deja rempli");
+				return false;
+			} 
 		}
 		
 		public override function setAretes(aretes:Array, recopie:Boolean=true):void{
+			super.setAretes(aretes,recopie);
+			this.calculAretes();
 		}
 
 

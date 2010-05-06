@@ -125,14 +125,8 @@ package Controleur
 		
 		/**
 		 * modifie le Mouvement de manière à faire rebondir l'objet selon l'axe passé en paramètre
-		 * <p> les coefficients servent à obtenir un angle de rebond plus ouvert ou plus fermé que l'habituel
-		 * exemple : si on rebondie selon un axe horizontal, en mettant un coeff_x supérieur à 1 on agrandit l'angle de rebond, s'il est inférieur à un on le diminue
-		 * </p>
-		 * @param axe: axe selon lequel doit rebondir l'objet
-		 * @param coeff_x: coefficient à appliquer sur la vitesse sur l'abscisse
-		 * @param coeff_y: coefficient à appliquer sur la vitesse sur l'abscisse
 		 */		
-		public function rebondir(axe_obstacle:MAxe, coeff_x:Number = 1, coeff_y:Number = 1):void{
+		public function rebondir(axe_obstacle:MAxe ):void{
 			var i:Number = 0;
 			if(axe_obstacle.estHorizontal()){ //rebond sur un axe parallèle à l'abscisse
 				unite_y = -1 * unite_y;
@@ -150,8 +144,6 @@ package Controleur
 				unite_x = - unite_y;
 				unite_y = -i;
 			}
-			unite_x = unite_x * coeff_x;
-			unite_y = unite_y * coeff_y;
 		}
 		
 		/**
@@ -202,30 +194,5 @@ package Controleur
 		{
 			return this.nom_classe;
 		}	
-		
-		/**
-		 * renvoie un nombre compris entre 0 et 360° qui représente la valeur de l'angle entre la trajectoire du mouvement
-		 * et l'horizontal (rappel: les angles se mesurent dans le sens contraire des aiguilles d'une montre ex: 30° => 30° au dessus de l'horizontale)
-		 * @return valeur de l'angle entre la trajectoire du mouvement et l'horizontal (compris entre 0 et 360 sauf si le mouvement est null, dans ce cas -1)
-		 */
-		public function getAngle():Number{
-			var angle:Number;
-			var x:Number = unite_x;
-			var y:Number = unite_y;
-			if(x > 0 && y >= 0){
-				angle = Math.atan(unite_y/unite_x);
-			} else if(x > 0 && y < 0){
-				angle = Math.atan(unite_y/unite_x) + 2*Math.PI;
-			} else if(x < 0){
-				angle = Math.atan(unite_y/unite_x) + Math.PI;
-			}else if(x == 0 && y > 0){
-				angle = Math.PI/2;
-			}else if(x == 0 && y < 0){
-				angle = 3*Math.PI/2;
-			}else{
-				return -1;
-			}
-			return angle * 180 / Math.PI;
-		}
 	}
 }

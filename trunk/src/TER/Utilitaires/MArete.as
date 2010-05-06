@@ -108,7 +108,7 @@ package Utilitaires
 			return clone_marete;
 		}
 		
-		public function deplacement(x:Number, y:Number){
+		public function deplacement(x:Number, y:Number):void {
 			this.depart.deplacement(x,y);
 			this.arrivee.deplacement(x,y);
 		}

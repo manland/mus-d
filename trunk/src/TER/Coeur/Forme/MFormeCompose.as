@@ -1,7 +1,5 @@
 package Coeur.Forme
 {
-	import Coeur.MUtilitaire;
-	
 	import Utilitaires.*;
 	
 	public class MFormeCompose extends MForme implements MIForme
@@ -34,15 +32,15 @@ package Coeur.Forme
 		public override function calculMinX():Number{
 			var min:Number = Number.MAX_VALUE;
 			if(forme_haut != null)
-				min = MUtilitaire.min(min, forme_haut.calculMinX());
+				min = Math.min(min, forme_haut.calculMinX());
 			if(forme_centre != null)
-				min = MUtilitaire.min(min, forme_centre.calculMinX());
+				min = Math.min(min, forme_centre.calculMinX());
 			if(forme_gauche != null)
-				min = MUtilitaire.min(min, forme_gauche.calculMinX());
+				min = Math.min(min, forme_gauche.calculMinX());
 			if(forme_droit != null)
-				min = MUtilitaire.min(min, forme_droit.calculMinX());
+				min = Math.min(min, forme_droit.calculMinX());
 			if(forme_bas != null)
-				min = MUtilitaire.min(min, forme_bas.calculMinX());
+				min = Math.min(min, forme_bas.calculMinX());
 			
 			return min;
 		}
@@ -50,15 +48,15 @@ package Coeur.Forme
 		public override function calculMinY():Number{
 			var min:Number = Number.MAX_VALUE;
 			if(forme_haut != null)
-				min = MUtilitaire.min(min, forme_haut.calculMinY());
+				min = Math.min(min, forme_haut.calculMinY());
 			if(forme_centre != null)
-				min = MUtilitaire.min(min, forme_centre.calculMinY());
+				min = Math.min(min, forme_centre.calculMinY());
 			if(forme_gauche != null)
-				min = MUtilitaire.min(min, forme_gauche.calculMinY());
+				min = Math.min(min, forme_gauche.calculMinY());
 			if(forme_droit != null)
-				min = MUtilitaire.min(min, forme_droit.calculMinY());
+				min = Math.min(min, forme_droit.calculMinY());
 			if(forme_bas != null)
-				min = MUtilitaire.min(min, forme_bas.calculMinY());
+				min = Math.min(min, forme_bas.calculMinY());
 			
 			return min;
 		}
@@ -66,15 +64,15 @@ package Coeur.Forme
 		public override function calculMaxX():Number{
 			var max:Number = Number.MIN_VALUE;
 			if(forme_haut != null)
-				max = MUtilitaire.max(max, forme_haut.calculMaxX());
+				max = Math.max(max, forme_haut.calculMaxX());
 			if(forme_centre != null)
-				max = MUtilitaire.max(max, forme_centre.calculMaxX());
+				max = Math.max(max, forme_centre.calculMaxX());
 			if(forme_gauche != null)
-				max = MUtilitaire.max(max, forme_gauche.calculMaxX());
+				max = Math.max(max, forme_gauche.calculMaxX());
 			if(forme_droit != null)
-				max = MUtilitaire.max(max, forme_droit.calculMaxX());
+				max = Math.max(max, forme_droit.calculMaxX());
 			if(forme_bas != null)
-				max = MUtilitaire.max(max, forme_bas.calculMaxX());
+				max = Math.max(max, forme_bas.calculMaxX());
 			
 			return max;
 		}
@@ -82,15 +80,15 @@ package Coeur.Forme
 		public override function calculMaxY():Number{
 			var max:Number = Number.MIN_VALUE;
 			if(forme_haut != null)
-				max = MUtilitaire.max(max, forme_haut.calculMaxY());
+				max = Math.max(max, forme_haut.calculMaxY());
 			if(forme_centre != null)
-				max = MUtilitaire.max(max, forme_centre.calculMaxY());
+				max = Math.max(max, forme_centre.calculMaxY());
 			if(forme_gauche != null)
-				max = MUtilitaire.max(max, forme_gauche.calculMaxY());
+				max = Math.max(max, forme_gauche.calculMaxY());
 			if(forme_droit != null)
-				max = MUtilitaire.max(max, forme_droit.calculMaxY());
+				max = Math.max(max, forme_droit.calculMaxY());
 			if(forme_bas != null)
-				max = MUtilitaire.max(max, forme_bas.calculMaxY());
+				max = Math.max(max, forme_bas.calculMaxY());
 			
 			return max;
 		}

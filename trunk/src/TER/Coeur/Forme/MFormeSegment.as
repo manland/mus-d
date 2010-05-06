@@ -1,7 +1,5 @@
 package Coeur.Forme
 {
-	import Coeur.MUtilitaire;
-	
 	import Utilitaires.MCoordonnee;
 	import Utilitaires.MErreur;
 	import Utilitaires.MVecteur;
@@ -19,7 +17,7 @@ package Coeur.Forme
 			arrivee = new MCoordonnee(0,0);
 		}
 		
-		public function instancie(depart:MCoordonnee, arrivee:MCoordonnee){
+		public function instancie(depart:MCoordonnee, arrivee:MCoordonnee):void {
 			if(depart  == null || arrivee == null){
 				throw new MErreur(this.nom_classe, "instancie", "depart ou arrivee incorrect");
 			}
@@ -108,8 +106,8 @@ package Coeur.Forme
 		
 		public function clone():MIForme{
 			var clone_miforme:MIForme = new MFormeSegment();
-			(clone_miforme as MFormeSegment).setDepart(depart.clone());
-			(clone_miforme as MFormeSegment).setArrivee(arrivee.clone());
+			(clone_miforme as MFormeSegment).setDepart(depart);
+			(clone_miforme as MFormeSegment).setArrivee(arrivee);
 			this.remplirForme(clone_miforme as MFormeSegment);
 			return clone_miforme; 
 		}
@@ -133,10 +131,10 @@ package Coeur.Forme
 		}
 		
 		public function calculsCoordonnees():void{
-			this.x = MUtilitaire.min(depart.getX(), arrivee.getX());
-			this.y = MUtilitaire.min(depart.getY(), arrivee.getY());
-			var max_x:Number = MUtilitaire.max(depart.getX(), arrivee.getX());
-			var max_y:Number = MUtilitaire.max(depart.getY(), arrivee.getY());
+			this.x = Math.min(depart.getX(), arrivee.getX());
+			this.y = Math.min(depart.getY(), arrivee.getY());
+			var max_x:Number = Math.max(depart.getX(), arrivee.getX());
+			var max_y:Number = Math.max(depart.getY(), arrivee.getY());
 			
 			this.largeur = max_x - this.x;
 			this.hauteur = max_y - this.y;

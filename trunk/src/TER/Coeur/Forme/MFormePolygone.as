@@ -1,8 +1,7 @@
 package Coeur.Forme
 {
-	import Coeur.MUtilitaire;
-	
 	import Utilitaires.*;
+	
 	public class MFormePolygone extends MForme
 	{
 		protected var somme_angles:Number;
@@ -91,15 +90,15 @@ package Coeur.Forme
 					else
 						this.aretes[i] = arete.deplacement(this.decalage.getX(), this.decalage.getY());
 					
-					min_x = MUtilitaire.min(min_x, arete.getDepart().getX());
-					min_x = MUtilitaire.min(min_x, arete.getArrivee().getX());
-					min_y = MUtilitaire.min(min_y, arete.getDepart().getY());
-					min_y = MUtilitaire.min(min_y, arete.getArrivee().getY());
+					min_x = Math.min(min_x, arete.getDepart().getX());
+					min_x = Math.min(min_x, arete.getArrivee().getX());
+					min_y = Math.min(min_y, arete.getDepart().getY());
+					min_y = Math.min(min_y, arete.getArrivee().getY());
 					
-					max_x = MUtilitaire.max(max_x, arete.getDepart().getX());
-					max_x = MUtilitaire.max(max_x, arete.getArrivee().getX());
-					max_y = MUtilitaire.max(max_y, arete.getDepart().getY());
-					max_y = MUtilitaire.max(max_y, arete.getArrivee().getY());
+					max_x = Math.max(max_x, arete.getDepart().getX());
+					max_x = Math.max(max_x, arete.getArrivee().getX());
+					max_y = Math.max(max_y, arete.getDepart().getY());
+					max_y = Math.max(max_y, arete.getArrivee().getY());
 				}
 			}	
 			else
