@@ -57,6 +57,13 @@ package Coeur
 		 * @return vrai si l'objet passé en paramètre est proche de l'objet receveur
 		 */
 		function estProcheDe(objet:MIObjet):Boolean;
+		
+		function fireChangementTaille():void;
+		function fireDeplacementObjet():void;
 		 
+		function debut():void;
+		function fin():void;
+		function fireDebutJeu():void;
+		function fireFinJeu():void;
 	}
 }

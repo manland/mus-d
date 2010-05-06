@@ -234,6 +234,34 @@ package Coeur
 			return (tx <= getX() || (tx+larg) >= getX() + getLargeur() || ty <= this.getY() || (ty+haut) >= this.getY()+getHauteur());
 		}
 		
+		public function debut():void{
+			for(var i:uint=0; i<enfants.length; i++){
+				var objet:MIObjet = enfants[i] as MIObjet;
+				if(objet == null){
+					throw new MErreur(this.nom_classe, "debut", "un enfant de la scène n'est pas un objet");
+				}
+				objet.debut();
+			}
+		}
+		
+		public function fin():void{
+			for(var i:uint=0; i<enfants.length; i++){
+				var objet:MIObjet = enfants[i] as MIObjet;
+				if(objet == null){
+					throw new MErreur(this.nom_classe, "fin", "un enfant de la scène n'est pas un objet");
+				}
+				objet.fin();
+			}
+		}
+		
+		public function fireDebutJeu():void{
+			
+		}
+		
+		public function fireFinJeu():void{
+			
+		}
+		
 		
 	}
 }
