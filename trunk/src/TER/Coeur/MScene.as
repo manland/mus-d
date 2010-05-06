@@ -291,9 +291,9 @@ package Coeur
 			//collision avec les bords de la scene	
 			if(this.estProcheDe(objet)){
 				axe = this.axeCollision(objet);
-				sysout.text += "\n proche";
+				//sysout.text += "\n proche";
 				if( axe != null){
-					sysout.text += "\n collision";
+					//sysout.text += "\n collision";
 					collision(objet, this, axe);
 				}
 			}
@@ -438,7 +438,7 @@ package Coeur
 			var ty:Number = objet.getY();
 			var larg:Number = objet.getLargeur();
 			var haut:Number = objet.getHauteur();
-			sysout.text += "\n x: "+tx+" y: "+ty+" lar: "+larg+" haut: "+haut;
+			//sysout.text += "\n x: "+tx+" y: "+ty+" lar: "+larg+" haut: "+haut;
 			return (tx <= this.x || (tx+larg) >= this.x + largeur || ty <= this.y || (ty+haut) >= this.y + hauteur);
 		}
 		

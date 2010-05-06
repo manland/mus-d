@@ -42,8 +42,8 @@ package Coeur
 			this.forme = null;
 			this.bonus = null;
 			this.mouv = new MMouvementPerpetuel();
-			mouv.instancie(this, 100, 100);
-			mouv.lancer();
+			mouv.instancieAvecVitesse(this, 100, 100);
+			//mouv.lancer();
 			naitre();
 		}
 		
