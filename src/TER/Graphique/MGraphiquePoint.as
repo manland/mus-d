@@ -7,7 +7,6 @@ package Graphique {
 	import Coeur.MIObjet;
 	
 	public class MGraphiquePoint extends MGraphiqueAbstrait implements MIObjetGraphique {
-		private var taille:Number;
 		
 		public function MGraphiquePoint(x:int=0, y:int=0, taille:Number=1) {
 			forme = new MFormePoint();

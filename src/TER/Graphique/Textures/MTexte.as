@@ -69,7 +69,14 @@ package Graphique.Textures
 		}
 		
 		public function clone():MITexture {
-			return null;
+			var clone:MTexte = new MTexte(texte);
+			if(a_decorer != null) {
+				clone.setADecorer(a_decorer.clone());
+			}
+			if(texte_est_centre) {
+				clone.centrerText();
+			}
+			return clone;
 		}
 
 	}
