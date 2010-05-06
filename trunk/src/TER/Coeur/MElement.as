@@ -41,9 +41,6 @@ package Coeur
 			this.ecouteurs = new Array();
 			this.forme = null;
 			this.bonus = null;
-			this.mouv = new MMouvementPerpetuel();
-			mouv.instancieAvecVitesse(this, 100, 100);
-			//mouv.lancer();
 			naitre();
 		}
 		
@@ -278,26 +275,24 @@ package Coeur
 			return clone_mscene;
 		}
 		
-		
+		/**
+ 		 * @inheritDoc
+ 		 */
 		public function estProcheDe(objet:MIObjet):Boolean{
 			var x2:Number = objet.getX();
 			var y2:Number = objet.getY();
 			var h2:Number = objet.getHauteur();
 			var l2:Number = objet.getLargeur();
-			
-			if(x2 >= x && x2 <= x+largeur && y2 >= y && y2 <= y+hauteur)
-				return true;
-			else if(x2+l2 >= x && x2+l2 <= x+largeur && y2 >= y && y2 <= y+hauteur)
-				return true;
-			else if(x2 >= x && x2 <= x+largeur && y2+h2 >= y && y2+h2 <= y+hauteur)
-				return true;	
-			else if(x2+l2 >= x && x2+l2 <= x+largeur && y2+h2 >= y && y2+h2 <= y+hauteur)
-				return true;
+				
+			if(x2+l2 < x || x2 > x+largeur || y2+h2 < y || y2 > y+hauteur)
+				return false
 			else				
-				return false;
+				return true;
 		}
 		
-		//retourne l'axe de la collision avec l'objet passé en param ou null s'il n'y a pas collision
+		/**
+ 		 * @inheritDoc
+ 		 */
 		public function axeCollision(objet:MIObjet):MAxe{
 			var axe:MAxe = null;
 			axe = this.getForme().axeCollision(objet.getForme());
