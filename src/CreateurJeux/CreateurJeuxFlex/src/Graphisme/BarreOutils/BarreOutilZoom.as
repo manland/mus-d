@@ -1,5 +1,7 @@
 package Graphisme.BarreOutils
 {
+	import Graphique.MIObjetGraphique;
+	
 	import Graphisme.Onglets.TabOnglet;
 	
 	import flash.events.Event;

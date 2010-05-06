@@ -4,11 +4,8 @@ package Graphisme.BarreMenus
 	
 	import Graphisme.NouvelOnglets.NouvelOnglet;
 	import Graphisme.Onglets.TabOnglet;
+	import Graphisme.PanelOptions.OptionJeu;
 	import Graphisme.PanelOptions.PanelOption;
-	
-	import flash.events.KeyboardEvent;
-	import flash.net.FileReference;
-	import flash.net.URLRequest;
 	
 	import mx.controls.MenuBar;
 	import mx.events.MenuEvent;
@@ -22,15 +19,17 @@ package Graphisme.BarreMenus
 		private var fenetre_nouvel_onglet:NouvelOnglet;
 		private var erreur:Erreur; 
 		private var panel_option:PanelOption;
+		private var option_jeu:OptionJeu;
 		
 
-		public function BarreMenu(tab_onglet:TabOnglet,panel_opt:PanelOption,erreur:Erreur)
+		public function BarreMenu(tab_onglet:TabOnglet,panel_opt:PanelOption,option_jeu:OptionJeu,erreur:Erreur)
 		{
 			super();
 			this.percentWidth=100;
 			this.height=25;
 			this.erreur = erreur;
 			this.panel_option = panel_opt;
+			this.option_jeu = option_jeu;
 			this.tab_onglet = tab_onglet;
 			fenetre_nouvel_onglet=new NouvelOnglet(tab_onglet,panel_opt,erreur);
 			initialisation();

@@ -5,7 +5,6 @@ package Graphisme.PanelOptions
 	
 	import Erreurs.Erreur;
 	
-	import Graphique.MGraphiqueAbstrait;
 	import Graphique.MGraphiqueScene;
 	import Graphique.MIObjetGraphique;
 	import Graphique.Textures.Degrades.MDegrade;
@@ -14,10 +13,10 @@ package Graphisme.PanelOptions
 	import Graphique.Textures.MITexture;
 	import Graphique.Textures.MImage;
 	
-	import Graphisme.Onglets.Onglet;
 	import Graphisme.Onglets.OperationSurObjet;
 	import Graphisme.Onglets.TabOnglet;
 	import Graphisme.PanelDegrades.FenetreDegrade;
+	import Graphisme.PanelMouvements.FenetreMouvement;
 	
 	import Modele.Objets.Objet;
 	
@@ -38,6 +37,7 @@ package Graphisme.PanelOptions
 	import mx.controls.ColorPicker;
 	import mx.controls.HRule;
 	import mx.controls.Label;
+	import mx.controls.LinkButton;
 	import mx.controls.NumericStepper;
 	import mx.controls.RadioButton;
 	import mx.controls.RadioButtonGroup;
@@ -89,6 +89,7 @@ package Graphisme.PanelOptions
 		// color picker : 
 		private var color_picker_bordure:ColorPicker;
 		private var epaisseur_bordure:NumericStepper;
+		private var enlever_bordure:Button;
 		
 		// degrade :
 		private var btn_degrade:RadioButton;
@@ -104,28 +105,7 @@ package Graphisme.PanelOptions
 		// bouton permettant de valider la texture : 
 		private var btn_valider_texture:Button;
 		
-		// pour le jeu : 
-				// nom du jeu :
-		private var hBox_nom_jeu:HBox;
-		private var label_nom_jeu:Label;
-		private var valeur_nom_jeu:TextInput;
 		
-		// nom de l'auteur :
-		private var hBox_nom_auteur:HBox;
-		private var label_nom_auteur:Label;
-		private var valeur_nom_auteur:TextInput;
-		
-		// type du jeu : 
-		private var label_type_jeu:Label;
-		private var groupe_bouton_type_jeu:RadioButtonGroup;
-		// flex :
-		private var btn_flex:RadioButton;
-		// air :
-		private var btn_air:RadioButton;
-		// valider les changements sur le jeu :
-		private var btn_valider_jeu;
-		
-
 		private var erreur:Erreur;
 
 		private var modele_global:Objet;
@@ -133,6 +113,10 @@ package Graphisme.PanelOptions
 		// objet sur lequel on fait des actions :
 		private var objet:MIObjetGraphique;
 		private var operation:OperationSurObjet;
+		
+		// permet d'afficher le panel des mouvements : 
+		private var afficher_mouvement:LinkButton;
+		private var fenetre_mouvement:FenetreMouvement;
 		
 		private var tab_onglet:TabOnglet;
 		
@@ -143,12 +127,13 @@ package Graphisme.PanelOptions
 			tab_onglet = null;
 			this.height=400;
 			this.width=190;
-			this.title="Options :"
+			this.styleName = "PanelsOption";
+			this.title="Options :";
 			objet=null;
 			operation=null;
 			modele_global=null;
+			fenetre_mouvement = new FenetreMouvement(this,erreur);
 			initialisationGenerale();
-			initialisationJeu();
 		}
 		
 		public function initialisationGenerale():void
@@ -157,6 +142,8 @@ package Graphisme.PanelOptions
 			hBox_id = new HBox();
 			id_objet = new TextInput();
 			label_id = new Label();
+			id_objet.width = 150;
+			id_objet.height = 20; 
 			label_id.text = "id : ";
 			id_objet.addEventListener(Event.CHANGE,changerIdObjet);
 			hBox_id.addChild(label_id);
@@ -197,6 +184,7 @@ package Graphisme.PanelOptions
 			valeur_hauteur.addEventListener(FlexEvent.ENTER,redimensionner);
 			maintenir_ratio=new CheckBox();
 			maintenir_ratio.label="ratio";
+			maintenir_ratio.selected = true;
 			valeur_hauteur.height=20;
 			valeur_hauteur.width=40;
 			valeur_largeur.height=20;
@@ -224,7 +212,7 @@ package Graphisme.PanelOptions
 			
 			// couleur :
 			hBox_couleur=new HBox();
-			hBox_couleur.width = 95;
+			hBox_couleur.width = 105;
 			hBox_couleur.height=30;
 			btn_couleur= new RadioButton();
 			btn_couleur.group=groupe_bouton_texture;
@@ -243,7 +231,7 @@ package Graphisme.PanelOptions
 			// degrade :
 			var hbox_degrade:HBox;
 			hbox_degrade = new HBox();
-			hbox_degrade.width = 95;
+			hbox_degrade.width = 105;
 			hbox_degrade.height=30;
 			btn_degrade= new RadioButton();
 			btn_degrade.label="Degradé";
@@ -255,6 +243,7 @@ package Graphisme.PanelOptions
 			rendu_degrade.enabled = false;
 			hbox_degrade.addChild(btn_degrade);
 			hbox_degrade.addChild(rendu_degrade);
+			rendu_degrade.addEventListener(MouseEvent.CLICK,clicSurDegrade);
 			btn_degrade.addEventListener(MouseEvent.CLICK,clicSurDegrade);
 			fenetre_degrade = new FenetreDegrade(this,erreur);
 			
@@ -310,7 +299,7 @@ package Graphisme.PanelOptions
 			color_picker_bordure.editable = true;
 			color_picker_bordure.addEventListener(MouseEvent.CLICK, afficherColorPicker);
 			epaisseur_bordure = new NumericStepper();
-			epaisseur_bordure.minimum = 0;
+			epaisseur_bordure.minimum = 0.1;
 			epaisseur_bordure.maximum = 5;
 			epaisseur_bordure.stepSize = 0.1;
 			btn_bordure = new Button();
@@ -322,68 +311,31 @@ package Graphisme.PanelOptions
 			
 			var bordure:Label = new Label();
 			bordure.text = "Bordure :"; 
-			this.addChild(bordure);
+			enlever_bordure = new Button();
+			enlever_bordure.label="Enlever";
+			enlever_bordure.addEventListener(MouseEvent.CLICK,enleverBordure);
+			var hb:HBox = new HBox();
+			hb.addChild(bordure);
+			hb.addChild(enlever_bordure);
+			this.addChild(hb);
 			this.addChild(hBox_bordure);
 			
 			
 			var separateur3:HRule = new HRule();
 			separateur3.percentWidth=80;
 			separateur3.styleName="separateur";
-
+			
 			this.addChild(separateur3);
 			
-
+			afficher_mouvement = new LinkButton();
+			afficher_mouvement.label = "mouvement";
+			afficher_mouvement.addEventListener(MouseEvent.CLICK,afficherPanelMouvement);
+			this.addChild(afficher_mouvement);
+			
+			// rajouter pour le texte 
 		}
 		
-		public function initialisationJeu():void
-		{
-			// nom du jeu :
-			hBox_nom_jeu=new HBox();
-			label_nom_jeu= new Label();
-			valeur_nom_jeu=new TextInput();
-			valeur_nom_jeu.text="";	
-			label_nom_jeu.text="Nom du jeu";
-			valeur_nom_jeu.height=20;
-			valeur_nom_jeu.width=80;
-			hBox_nom_jeu.addChild(label_nom_jeu);
-			hBox_nom_jeu.addChild(valeur_nom_jeu);
-			
 		
-			// nom de l'auteur :
-			hBox_nom_auteur=new HBox();
-			label_nom_auteur= new Label();
-			valeur_nom_auteur=new TextInput();	
-			valeur_nom_auteur.text="";
-			label_nom_auteur.text="Nom de l'auteur";
-			valeur_nom_auteur.height=20;
-			valeur_nom_auteur.width=70;
-			hBox_nom_auteur.addChild(label_nom_auteur);
-			hBox_nom_auteur.addChild(valeur_nom_auteur);
-
-			// type du jeu : 
-			label_type_jeu=new Label();
-			groupe_bouton_type_jeu= new RadioButtonGroup();
-			btn_flex= new RadioButton();
-			btn_air=new RadioButton();
-			label_type_jeu.text="Type de jeu :"
-			btn_flex.label = "Flex (web)";
-			btn_flex.group=groupe_bouton_type_jeu;
-			btn_air.label="Air (bureau)";
-			btn_air.group=groupe_bouton_type_jeu;
-			
-			// bouton valider jeu :
-			btn_valider_jeu = new Button();
-			btn_valider_jeu.label= "Valider changement";
-			btn_valider_jeu.toolTip= "appliquer tous les changements concernant le nom du jeu, son type et l'auteur.";
-			btn_valider_jeu.addEventListener(MouseEvent.CLICK,validerOptionJeu);
-
-			this.addChild(hBox_nom_jeu);
-			this.addChild(hBox_nom_auteur);
-			this.addChild(label_type_jeu);
-			this.addChild(btn_flex);
-			this.addChild(btn_air);
-			this.addChild(btn_valider_jeu);
-		}
 		
 // ------------------------------------------------------------------------------------------------
 // 							ACCESSEURS :
@@ -425,25 +377,17 @@ package Graphisme.PanelOptions
 		public function setValeurHauteur(s:String):void { valeur_hauteur.text=s; }
 		public function setAdresseImage(s:String):void { adresse_image.text=s;}
 		
-		// accesseur pour le jeu :
-		public function getNomJeu():String { return valeur_nom_jeu.text; }		
-		public function getNomAuteur():String { return valeur_nom_auteur.text; }		
-		
-		public function setTypeFlex(b:Boolean):void {btn_flex.selected=b;}
-		public function setTypeAir(b:Boolean):void {btn_air.selected=b;}
-			
-		public function setNomJeu(s:String):void { valeur_nom_jeu.text=s; }		
-		public function setNomAuteur(s:String):void { valeur_nom_auteur.text=s; }
-		
 		// accesseurs à l'objet :
 		public function getObjet():MIObjetGraphique{ return objet; }
 		
 		// accesseurs aux tab_onglet : 
 		public function setTabOnglet(tab_onglet:TabOnglet):void {
 			 this.tab_onglet = tab_onglet; 
-			 tab_onglet.addEventListener(Event.CHANGE,miseAJour);
 		}
 		public function getTabOnglet():TabOnglet { return tab_onglet; }
+		
+		// accesseur au panel de rendu degradé : 
+		public function getPanelRenduDegrade():MGraphiqueScene {return rendu_degrade;}
 
 // -----------------------------------------------------------------------------
 // 	  initialisation du panel des options en fonction de l'objet en parametre
@@ -462,10 +406,9 @@ package Graphisme.PanelOptions
 			setValeurHauteur(objet.getObjet().getHauteur().toString());
 			setValeurLargeur(objet.getObjet().getLargeur().toString());
 			
+			// bordure : 
+			
 			calculDesTextures(objet.getTexture());
-				
-			
-			
 		}
 		
 		public function calculDesTextures(texture:MITexture):void
@@ -503,9 +446,11 @@ package Graphisme.PanelOptions
 				btn_couleur.selected=false;
 				color_picker.enabled = false;
 			}
-			if(exp_reg.test(texture.getNomClasse()))
+			if(exp_reg.test(texture.getNomClasse()))		// cas du degradé :
 			{
 				btn_degrade.selected=true;
+				rendu_degrade.setTexture(objet.getTexture().clone());
+				rendu_degrade.redessiner();
 			}
 			else
 			{
@@ -521,30 +466,9 @@ package Graphisme.PanelOptions
 		}
 		
 		
-		public function setOperation(operation:OperationSurObjet):void
-		{
-			this.operation=operation;
-		}
-		
+		public function setOperation(operation:OperationSurObjet):void  { this.operation=operation; } 		
 		public function getColorPicker():ColorPicker { return color_picker; }
 		
-// ------------------------------------------------------------------------------		
-//		mise a jour du panel des jeux en fonction de l'onglet qui change 
-// ------------------------------------------------------------------------------
-		public function miseAJour(event:Event):void
-		{
-			this.setNomJeu(tab_onglet.getOnglet().getNomJeu());
-			this.setNomAuteur(tab_onglet.getOnglet().getNomAuteur());
-			if(tab_onglet.getOnglet().getTypeJeu() == "Flex")
-			{
-				this.setTypeFlex(true);
-			}
-			else if(tab_onglet.getOnglet().getTypeJeu()=="Air")
-			{
-				this.setTypeAir(true);
-			}
-		}
-			
 		
 // ------------------------------------------------------------------------------		
 //				changement de l'id
@@ -721,7 +645,7 @@ package Graphisme.PanelOptions
 		public function finaliserChangementImage(event:Event):void
 		{
 			var temp_img:MImage = new MImage(adresse_image.text);
-			((MGraphiqueAbstrait)(objet)).setTexture(temp_img);
+			objet.setTexture(temp_img);
 			//objet.ajouterTexture(temp_img);
 		}
 		
@@ -763,7 +687,7 @@ package Graphisme.PanelOptions
 		
 		public function changerCouleur(event:ColorPickerEvent):void
 		{
-			((MGraphiqueAbstrait)(objet)).setTexture(new MCouleur(color_picker.selectedColor));
+			((MIObjetGraphique)(objet)).setTexture(new MCouleur(color_picker.selectedColor));
 		}
 		
 // ----------------------------------------------------------------
@@ -784,8 +708,18 @@ package Graphisme.PanelOptions
 		public function clicSurDegrade(event:MouseEvent):void
 		{
 			rendu_degrade.enabled = true;
+			
+			if(objet.getTexture().getNomClasse()=="MDegrade")
+			{
+				fenetre_degrade.mettreAJour(objet);
+				fenetre_degrade.getRendu().redessiner();
+			}
+			
+			PopUpManager.removePopUp(fenetre_degrade);
+			fenetre_degrade.setObjet(objet);
 			PopUpManager.addPopUp(fenetre_degrade, tab_onglet.parent, false);
             PopUpManager.centerPopUp(fenetre_degrade);
+            
 		}
 		
 // ----------------------------------------------------------------
@@ -798,28 +732,24 @@ package Graphisme.PanelOptions
 			objet.setBordure(new MBordure(epaisseur,couleur));
 		}
 		
-// ----------------------------------------------------------------
-// 			Valider option du jeu :
-// -----------------------------------------------------------------
-		public function validerOptionJeu(event:MouseEvent):void
+		public function enleverBordure(event:MouseEvent):void
 		{
-			
-			var ong:Onglet = tab_onglet.getOnglet();
-			ong.setNomJeu(this.getNomJeu());
-			ong.setNomAuteur(this.getNomAuteur());
-			ong.setTitreOnglet(this.getNomJeu());
-			if(btn_air.selected)
+			if(objet.getBordure()!=null)
 			{
-				ong.setTypeJeu("Air");
+				objet.setBordure(null);
 			}
-			else if(btn_flex.selected)
-			{
-				ong.setTypeJeu("Flex");
-			}
-			
-			
 		}
 		
-	
+// ----------------------------------------------------------------
+// 						afficher panel mouvement
+// -----------------------------------------------------------------			
+		public function afficherPanelMouvement(event:MouseEvent):void
+		{
+			PopUpManager.removePopUp(fenetre_mouvement);
+//			fenetre_degrade.setObjet(objet);
+			PopUpManager.addPopUp(fenetre_mouvement, tab_onglet.parent, false);
+            PopUpManager.centerPopUp(fenetre_mouvement);
+		}
+		
 	}
 }
