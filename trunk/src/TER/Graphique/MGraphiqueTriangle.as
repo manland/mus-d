@@ -100,19 +100,16 @@ package Graphique {
 		
 		override protected function dessiner():void {
 			fireSeDessine();
-			var o:MFormeTriangle = objet.getForme() as MFormeTriangle;
-			var sommets:Array = o.getSommet();
 			graphics.clear();
 			ma_texture.appliquer(graphics);
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
 			}
-			var elem:MCoordonnee = sommets[0] as MCoordonnee;
-			graphics.moveTo(0, 0);
-			for(var i:Number=0; i<o.getSommet().length; i++) {
-				elem = sommets[i] as MCoordonnee;
-				graphics.lineTo(elem.getX()-objet.getX(), elem.getY()-objet.getY());
-			}
+			var o:MFormeTriangle = objet.getForme() as MFormeTriangle;
+			graphics.moveTo(o.getPoint1().getX()-o.getX(), o.getPoint1().getY()-o.getY());
+			graphics.lineTo(o.getPoint2().getX()-o.getX(), o.getPoint2().getY()-o.getY());
+			graphics.lineTo(o.getPoint3().getX()-o.getX(), o.getPoint3().getY()-o.getY());
+			graphics.lineTo(o.getPoint1().getX()-o.getX(), o.getPoint1().getY()-o.getY());
 			graphics.endFill();
 		}
 		
