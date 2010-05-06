@@ -106,8 +106,6 @@ package Coeur.Forme
 			{
 				var difference:Number = x - this.x;
 				this.deplacement(difference, 0);
-				if(objet != null)
-					objet.setX(x);
 			}
 		}
 		public override function setY(y:Number):void{
@@ -115,8 +113,6 @@ package Coeur.Forme
 			{
 				var difference:Number = y - this.y;
 				this.deplacement(0, difference);
-				if(objet != null)
-					objet.setY(y);
 			}
 		}
 		public override function setSommeAngles(somme_angle:Number):void{
@@ -153,6 +149,7 @@ package Coeur.Forme
 		}
 		
 		public override function setLargeur(largeur:Number):void{
+			trace(largeur);
 			var a1:MArete = this.aretes[0] as MArete;
 			var a2:MArete = this.aretes[1] as MArete;
 			var a3:MArete = this.aretes[2] as MArete;
@@ -231,13 +228,6 @@ package Coeur.Forme
 				this.hauteur = max_y - this.y;
 				this.x -= this.decalage.getX();
 				this.y -= this.decalage.getY();
-				
-				if(objet != null){
-					objet.setX(x);
-					objet.setY(y);
-					objet.setLargeur(largeur);
-					objet.setHauteur(hauteur);
-				}
 			}
 			
 		}

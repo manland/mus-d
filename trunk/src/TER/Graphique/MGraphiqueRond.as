@@ -31,7 +31,7 @@ package Graphique {
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
 			}
-			graphics.drawRect(forme.getX()-forme.getObjet().getX(), forme.getY()-forme.getObjet().getY(), forme.getLargeur(), forme.getHauteur());
+			graphics.drawRect(forme.getX()-forme.getX(), forme.getY()-forme.getY(), forme.getLargeur(), forme.getHauteur());
 			graphics.endFill();
 		}
 		

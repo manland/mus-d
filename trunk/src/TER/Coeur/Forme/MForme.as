@@ -14,7 +14,6 @@ package Coeur.Forme
 		protected var hauteur:Number;
 		protected var nom_classe:String;
 		protected var decalage:MCoordonneePositive;
-		protected var objet:MIObjet;
 		
 		public function MForme()
 		{
@@ -22,7 +21,6 @@ package Coeur.Forme
 			this.y = 0;
 			this.largeur = 0;
 			this.hauteur = 0;
-			this.objet = null;
 			sous_classe = MIForme(this);
 			if(sous_classe == null) {
 				throw new MErreur(this.nom_classe, "Constructeur", "Les classes qui étendent MForme doivent implementer MIForme");
@@ -68,8 +66,6 @@ package Coeur.Forme
 			if(x != this.x){
 				var difference:Number = x - this.x;
 				this.deplacement(difference, 0);
-				if(this.objet != null)
-					this.objet.setX(x);
 			}
 		}
 		
@@ -80,8 +76,6 @@ package Coeur.Forme
 			if(y != this.y){
 				var difference:Number = y - this.y;
 				this.deplacement(0, difference);
-				if(this.objet != null)
-					this.objet.setY(y);
 			}
 		}
 		
@@ -91,8 +85,6 @@ package Coeur.Forme
 		public function setHauteur(hauteur:Number):void{
 			if(hauteur != this.hauteur){
 				this.hauteur = hauteur;
-				if(this.objet != null)
-					this.objet.setHauteur(hauteur);
 			}
 		}
 		
@@ -102,8 +94,6 @@ package Coeur.Forme
 		public function setLargeur(largeur:Number):void{
 			if(largeur != this.largeur){
 				this.largeur = largeur;
-				if(this.objet != null)
-					this.objet.setLargeur(largeur);
 			}
 		}
 		
@@ -190,14 +180,6 @@ package Coeur.Forme
  			var axe:MAxe = new MAxe();
  			axe.orthogonalA(vecteur_coll);
  			return axe;
- 		}
- 		
- 		public function getObjet():MIObjet{
- 			return this.objet;
- 		}
- 		
- 		public function setObjet(objet:MIObjet):void{
- 			this.objet = objet;
  		}
 	}
 }

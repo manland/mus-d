@@ -34,8 +34,6 @@ package Coeur.Forme
 				if(arrivee != null)
 					arrivee.deplacement(difference, 0);
 				this.x = x;
-				if(objet != null)
-					this.objet.setX(x);
 			}
 		}
 		
@@ -47,8 +45,6 @@ package Coeur.Forme
 				if(arrivee != null)
 					arrivee.deplacement(0, difference);
 				this.y = y;
-				if(objet != null)
-					this.objet.setY(y);
 			}
 		}
 		
@@ -64,8 +60,6 @@ package Coeur.Forme
 					throw new MErreur(this.nom_classe, "setHauteur", "depart ou arrivee null");
 					
 				this.largeur = largeur;
-				if(objet != null)
-					objet.setLargeur(largeur);
 			}
 		}
 		
@@ -80,8 +74,6 @@ package Coeur.Forme
 				else
 					throw new MErreur(this.nom_classe, "setHauteur", "depart ou arrivee null");
 				this.hauteur = hauteur;
-				if(objet != null)
-					objet.setHauteur(hauteur);
 			}
 		}
 		
@@ -138,13 +130,6 @@ package Coeur.Forme
 			
 			this.largeur = max_x - this.x;
 			this.hauteur = max_y - this.y;
-			
-			if(objet != null){
-				this.objet.setX(x);
-				this.objet.setY(y);
-				this.objet.setLargeur(largeur);
-				this.objet.setHauteur(hauteur);
-			}
 		}
 		
 		public function getAire():Number{
