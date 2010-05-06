@@ -54,9 +54,9 @@ package Coeur.Forme
 			if(points.length != 3)
 				throw new MErreur(this.nom_classe, "remplitPoint", "Il y a un probleme sur le nombre de points différents");
 			else{
-				this.point1 = points[0];
-				this.point2 = points[1];
-				this.point3 = points[2];
+				this.point1 = points[0].clone();
+				this.point2 = points[1].clone();
+				this.point3 = points[2].clone();
 			}
 		}
 		
@@ -104,8 +104,22 @@ package Coeur.Forme
 		}
 		
 		public override function setX(x:Number):void{
+			if(x != this.x)
+			{
+				var difference:Number = x - this.x;
+				this.deplacement(difference, 0);
+				if(objet != null)
+					objet.setX(x);
+			}
 		}
 		public override function setY(y:Number):void{
+			if(y != this.y)
+			{
+				var difference:Number = y - this.y;
+				this.deplacement(0, difference);
+				if(objet != null)
+					objet.setY(y);
+			}
 		}
 		public override function setSommeAngles(somme_angle:Number):void{
 		}
@@ -166,7 +180,7 @@ package Coeur.Forme
 					arete.getDepart().setX( (arete.getDepart().getX() * pourcentageAugmentation) / 100);
 			}
 			this.remplitPoint();
-			super.setLargeur(largeur);		
+			super.setLargeur(largeur);
 		}
 		
 		public function instancie(m1:MCoordonnee, m2:MCoordonnee, m3:MCoordonnee) : void
@@ -198,7 +212,7 @@ package Coeur.Forme
 				throw new MErreur(this.nom_classe, "calculParametres", "Une arete est vide");
 			else
 			{
-			
+				trace("ici");
 				this.x = MUtilitaire.min(a1.getDepart().getX(), a1.getArrivee().getX());
 				this.x = MUtilitaire.min(this.x , MUtilitaire.min(a2.getDepart().getX(), a2.getArrivee().getX()));
 				this.x = MUtilitaire.min(this.x , MUtilitaire.min(a3.getDepart().getX(), a3.getArrivee().getX()));
@@ -220,6 +234,13 @@ package Coeur.Forme
 				this.hauteur = max_y - this.y;
 				this.x -= this.decalage.getX();
 				this.y -= this.decalage.getY();
+				
+				if(objet != null){
+					objet.setX(x);
+					objet.setY(y);
+					objet.setLargeur(largeur);
+					objet.setHauteur(hauteur);
+				}
 			}
 			
 		}
@@ -292,19 +313,6 @@ package Coeur.Forme
 		public override function setNombreArete(nombre_arete:Number):void
 		{
 		}
-		
-/* 		public function axeCollision(x:Number,y:Number):MAxe{
-			var axe:MAxe = new MAxe();
-			for(var i:uint = 0; i<nombre_arete; i++)
-			{
-				var arete:MArete = aretes[i] as MArete;
-				if(arete.contient(x,y)){
-					axe.instancie2(arete);
-					return axe;
-				}
-			}
-			return null;
-		} */
 		
 		public function clone():MIForme{
 			var clone_miforme:MFormeTriangle = new MFormeTriangle();
