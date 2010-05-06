@@ -17,6 +17,10 @@ package Graphisme.PanelOptions
 	import Graphisme.Onglets.TabOnglet;
 	import Graphisme.PanelDegrades.FenetreDegrade;
 	import Graphisme.PanelMouvements.FenetreMouvement;
+	import Graphisme.PanelMouvements.HBoxGeneraleMvt;
+	import Graphisme.PanelMouvements.HBoxMouvementFini;
+	import Graphisme.PanelMouvements.HBoxMouvementPerpetuel;
+	import Graphisme.PanelMouvements.HBoxRedimensionnement;
 	
 	import Modele.Objets.Objet;
 	
@@ -27,6 +31,7 @@ package Graphisme.PanelOptions
 	import flash.events.IOErrorEvent;
 	import flash.events.MouseEvent;
 	import flash.net.URLRequest;
+	import flash.utils.Dictionary;
 	
 	import mx.containers.HBox;
 	import mx.containers.Panel;
@@ -118,6 +123,14 @@ package Graphisme.PanelOptions
 		private var afficher_mouvement:LinkButton;
 		private var fenetre_mouvement:FenetreMouvement;
 		
+		
+		// tableau contenant les mouvements ou le controle clavier;
+		private var tableau_mvt:Array;
+		private var tableau_hbox:Array;
+		
+		// hashmap contenant un objet et son tableau de mouvement associé :
+		private var dico_mvt:Dictionary;
+		
 		private var tab_onglet:TabOnglet;
 		
 		public function PanelOption(erreur:Erreur)
@@ -132,7 +145,10 @@ package Graphisme.PanelOptions
 			objet=null;
 			operation=null;
 			modele_global=null;
+			tableau_mvt = new Array();
+			dico_mvt = new Dictionary();
 			fenetre_mouvement = new FenetreMouvement(this,erreur);
+			
 			initialisationGenerale();
 		}
 		
@@ -388,6 +404,9 @@ package Graphisme.PanelOptions
 		
 		// accesseur au panel de rendu degradé : 
 		public function getPanelRenduDegrade():MGraphiqueScene {return rendu_degrade;}
+		
+		// accesseur à la table de hashage et au tableau de mouvement : 
+		public function getDicoMvt():Dictionary {return dico_mvt;}
 
 // -----------------------------------------------------------------------------
 // 	  initialisation du panel des options en fonction de l'objet en parametre
@@ -566,8 +585,9 @@ package Graphisme.PanelOptions
 					}
 					else
 					{
+						erreur.sysout.text+=Number(getValeurHauteur());
 						objet.getObjet().setHauteur(Number(getValeurHauteur()));
-	      				objet.getObjet().setLargeur(Number(getValeurLargeur()));
+	      				//objet.getObjet().setLargeur(Number(getValeurLargeur()));
 					}
 	      		}
 	      		else if(text_input==valeur_largeur)
@@ -579,8 +599,10 @@ package Graphisme.PanelOptions
 					}
 					else
 					{
-						objet.getObjet().setHauteur(Number(getValeurHauteur()));
+						
+						//objet.getObjet().setHauteur(Number(getValeurHauteur()));
 	      				objet.getObjet().setLargeur(Number(getValeurLargeur()));
+	      				erreur.sysout.text+=objet.getObjet().getLargeur();
 					}
 	      		}
           	}
@@ -745,11 +767,69 @@ package Graphisme.PanelOptions
 // -----------------------------------------------------------------			
 		public function afficherPanelMouvement(event:MouseEvent):void
 		{
+			fenetre_mouvement = new FenetreMouvement(this,erreur);
 			PopUpManager.removePopUp(fenetre_mouvement);
-//			fenetre_degrade.setObjet(objet);
+//			fenetre_mouvement.setObjet(objet);
 			PopUpManager.addPopUp(fenetre_mouvement, tab_onglet.parent, false);
             PopUpManager.centerPopUp(fenetre_mouvement);
 		}
+		
+		
+		public function effectuerChangement(tab:Array):void
+		{
+			tableau_mvt = new Array();
+			// on rempli le tableau de mouvement : 
+			for(var i:int=0;i<tab.length;i++)
+			{
+				var hbox_temp:HBoxGeneraleMvt = tab[i] as HBoxGeneraleMvt;
+				var check_box:CheckBox = tab[i] as CheckBox; 
+				if(hbox_temp!=null)
+				{
+					if(hbox_temp.getType() == "perpetuel")
+					{
+						tableau_mvt[i] = {mvt:"perpetuel", 
+										  angle:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementPerpetuel).getAngle(), 
+										  vitesse:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementPerpetuel).getVitesse()};
+					}
+					else if(hbox_temp.getType() == "fini")
+					{ 
+						tableau_mvt[i] = {mvt:"fini", 
+										  x_arrivee:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementFini).getXArrivee(), 
+										  y_arrivee:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementFini).getYArrivee(), 
+										  temps:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementFini).getTemps()};
+					}
+					else if(hbox_temp.getType() == "redimensionnement")
+					{
+						tableau_mvt[i] = {mvt:"redimensionnement", 
+										  largeur_finale:(hbox_temp.getHbox().getChildAt(0) as HBoxRedimensionnement).getLargeur(), 
+										  hauteur_finale:(hbox_temp.getHbox().getChildAt(0) as HBoxRedimensionnement).getHauteur(), 
+										  temps:(hbox_temp.getHbox().getChildAt(0) as HBoxRedimensionnement).getTemps()};
+					}
+				}
+				if(check_box!=null)
+				{
+					if(check_box == fenetre_mouvement.getClavier())
+					{
+						tableau_mvt[i] = {mvt:"clavier"};
+					}
+					if(check_box == fenetre_mouvement.getSouris())
+					{
+						tableau_mvt[i] = {mvt:"souris"};
+					}
+				}
+			}
+			dico_mvt[objet] = tableau_mvt;
+			for (var key:Object in dico_mvt) 
+			{
+				erreur.sysout.text+="mon objet :"+(key as MIObjetGraphique).getNomClasse()+"\n";
+				for(var i:int=0;i<(dico_mvt[key] as Array).length;i++)
+				{
+					erreur.sysout.text+=(key as MIObjetGraphique).getGraphique().id+"   "+(dico_mvt[key] as Array)[i].vitesse+"\n";
+				}	
+			}
+			
+		}
+		
 		
 	}
 }

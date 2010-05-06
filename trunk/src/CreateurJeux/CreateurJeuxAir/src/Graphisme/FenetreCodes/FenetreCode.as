@@ -13,14 +13,14 @@ package Graphisme.FenetreCodes
 		private var vBox:VBox;
 		private var tab_onglet_code:TabOngletCode;
 		
-		public function FenetreCode(tab_onglet_code:TabOngletCode)
+		public function FenetreCode()
 		{
 			
 			// avant le constructeur contenait : code:TextaeraCode
 			super();
 //			this.code=code;
 			
-			this.tab_onglet_code = tab_onglet_code;
+			this.tab_onglet_code =null;
 			this.title="Code généré : ";
 			this.showCloseButton = true;
 			this.height=400;
@@ -28,7 +28,8 @@ package Graphisme.FenetreCodes
 			vBox=new VBox();
 			vBox.percentHeight=100;
 			vBox.percentWidth=100;
-			hBox_btn=new HBoxBouton(tab_onglet_code);
+			hBox_btn=new HBoxBouton();
+			
 		}
 		
 		
@@ -52,6 +53,7 @@ package Graphisme.FenetreCodes
 //	   		tab_onglet_code.getOnglet().text=s;
 //	   }
 //
+		public function setTabOnglet(t:TabOngletCode):void { tab_onglet_code = t; hBox_btn.setTabOngletCode(tab_onglet_code);}
 		public function getTabOngletCode():TabOngletCode {return tab_onglet_code;}
 		public function getHboxBtn():HBoxBouton {return hBox_btn;}
 	}

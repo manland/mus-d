@@ -148,6 +148,11 @@ package Graphisme.Onglets
 		{
 			if(objet!=null)
 			{
+				if(panel_opt.getDicoMvt()[objet]!=null)
+				{
+					delete panel_opt.getDicoMvt()[objet];
+					panel_opt.getTabOnglet().getOnglet().genererCodeMouvement(objet);
+				}
 				onglet.removeChild(objet.getGraphique());
 				onglet.enleverCadres();
 				objet=null;

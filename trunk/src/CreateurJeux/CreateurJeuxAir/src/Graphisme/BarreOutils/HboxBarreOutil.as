@@ -33,7 +33,7 @@ package Graphisme.BarreOutils
 			barre_outil_ed=new BarreOutilEdition(tab_onglet);
 			barre_outil_an = new BarreOutilAnnuler(tab_onglet);
 			barre_outil_zoom = new BarreOutilZoom(tab_onglet);
-			barre_outil_code = new BarreOutilCode(tab_onglet,panel_opt);		
+			barre_outil_code = new BarreOutilCode(tab_onglet,panel_opt,erreur);		
 				
 			this.addChild(barre_outil_fic);	
 			this.addChild(barre_outil_ed);

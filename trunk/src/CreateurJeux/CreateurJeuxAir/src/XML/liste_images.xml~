@@ -15,8 +15,8 @@
 		<carre id="carre_rouge" source="Images/carres/rouge.png" largeur="64" hauteur="64"/>
 		<carre id="mur_h_marron" source="Images/carres/mur_h_marron.png" largeur="64" hauteur="32"/>
 		<carre id="mur_v_marron" source="Images/carres/mur_v_marron.png" largeur="32" hauteur="64"/>
-		<carre id="bonhomme_carre" source="Images/carres/bonhome_carre.png" largeur="64" hauteur="64"/>
-		<carre id="voiture" source="Images/carres/voiture.png" largeur="64" hauteur="64"/>
+		<carre id="bonhomme_carre" source="Images/carres/bonhome_carre.png" largeur="32" hauteur="64"/>
+		<carre id="voiture" source="Images/carres/voiture.png" largeur="32" hauteur="64"/>
 	</MGraphiqueRectangle>
 	<MGraphiqueRond>
 		<rond id="bomb" source="Images/rond/bomb.png" largeur="48" hauteur="48"/>
@@ -30,7 +30,6 @@
 		<rond id="globe" source="Images/rond/globe.png" largeur="64" hauteur="64"/>
 		<rond id="rond_violet" source="Images/rond/rond_violet.png" largeur="64" hauteur="64"/>  
 		<rond id="bouee" source="Images/rond/bouee.png" largeur="64" hauteur="64"/> 
-		<rond id="champi" source="Images/rond/champi.png" largeur="64" hauteur="64"/> 
 	</MGraphiqueRond>
 	<MGraphiqueTriangle>
 		<triangle id="triangleEquilateral" point1X="15" point1Y="0" point2X="0" point2Y="15" point3X="30" point3Y="15" source=""/>

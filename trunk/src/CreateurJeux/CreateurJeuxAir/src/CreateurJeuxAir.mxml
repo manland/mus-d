@@ -79,7 +79,7 @@
 				hBoxCentrale.percentHeight=100;
 				this.addChild(hBoxCentrale);
 				
-				erreur.visible = false;
+		//		erreur.visible = false;
 				application.addEventListener(KeyboardEvent.KEY_UP,controleClavier);
 			}
 			

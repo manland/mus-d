@@ -1,5 +1,7 @@
 package Graphisme.Onglets
 {
+	import Coeur.Forme.MFormeTriangle;
+	
 	import Erreurs.Erreur;
 	
 	import Graphique.MGraphiqueEtoile;
@@ -66,6 +68,12 @@ package Graphisme.Onglets
 		
 		// dictionnaire contenant pour chaque clé l'import a réalisé, utilisé dans la génération de code:
 		private var dico:Dictionary; 
+		
+		// booeleen qui dit qu'il y a eu au moins un mouvement et donc on peut déclancher la génération 
+		// de code pour la classe de l'écouteur :
+		private var code_mouvement_generer:Boolean = false; 
+		private var souris:Boolean = false;
+		private var clavier:Boolean = false;
 		
 		private var option_jeu:OptionJeu;
 		
@@ -253,7 +261,9 @@ package Graphisme.Onglets
         public function getTypeJeu():String { return type_jeux;}
         public function setTypeJeu(type_jeu:String):void {this.type_jeux = type_jeu;}
         public function getIdObjet():String {return id_objet;}
-
+		public function getCodeMouvementGenerer():Boolean { return code_mouvement_generer;}
+		public function getCodeClavier():Boolean {return clavier;}
+		public function getCodeSouris():Boolean {return souris;}
 
 		// fonction de génération de code : 
 		public function genererCodeApplicationFlex(titre:String):String
@@ -262,7 +272,7 @@ package Graphisme.Onglets
 			var code_script:String =genererCodeScript();
 			var res:String="<?xml version=\"1.0\" encoding=\"utf-8\"?> "+
 				" \n <mx:Application xmlns:mx=\"http://www.adobe.com/2006/mxml\" "+
-				"layout=\"absolute\" xmlns:TER=\"Graphique.*\" pageTitle=\""+titre+"\"> \n";
+				"layout=\"absolute\" xmlns:TER=\"Graphique.*\" pageTitle=\""+titre+"\" creationComplete=\"init()\"> \n";
 			res+=code_script;
 			res+=code_scene;
 			res+="\n </mx:Application>";
@@ -276,7 +286,7 @@ package Graphisme.Onglets
 			var code_script:String =genererCodeScript();
 			var res:String="<?xml version=\"1.0\" encoding=\"utf-8\"?> "+
 				" \n <mx:WindowedApplication title=\""+titre+"\" xmlns:mx=\"http://www.adobe.com/2006/mxml\" "+
-				"layout=\"absolute\" xmlns:TER=\"Graphique.*\"> \n";
+				"layout=\"absolute\" xmlns:TER=\"Graphique.*\" creationComplete=\"init()\"> \n";
 			res+=code_script;
 			res+=code_scene;
 			
@@ -296,6 +306,7 @@ package Graphisme.Onglets
 			{
 				str+="\t \t"+dico[key].toString()+"\n";	
 			}
+		
 			str+="\t ]]> \n"+
 					"</mx:Script> \n";
 						
@@ -332,13 +343,14 @@ package Graphisme.Onglets
 		
 		public function genererCodeObjet(obj:MIObjetGraphique):String
 		{
+			genererCodeMouvement(obj);
 			var str:String = "\n \t \t <TER:"+obj.getNomClasse()
 							 +" id=\""+obj.getGraphique().id+"\"";
 			if(obj.getNomClasse()=="MGraphiqueTriangle")
 			{
-				str+=" point1=\"{new MCoordonnee("+Number(((MGraphiqueTriangle)(obj)).point1.getX())+","+Number(((MGraphiqueTriangle)(obj)).point1.getY())+")}\""+
-					 " point2=\"{new MCoordonnee("+Number(((MGraphiqueTriangle)(obj)).point2.getX())+","+Number(((MGraphiqueTriangle)(obj)).point2.getY())+")}\""+
-					 " point3=\"{new MCoordonnee("+Number(((MGraphiqueTriangle)(obj)).point3.getX())+","+Number(((MGraphiqueTriangle)(obj)).point3.getY())+")}\"";
+				str+=" point1=\"{new MCoordonnee("+Number((((MGraphiqueTriangle)(obj)).getObjet().getForme() as MFormeTriangle).getPoint1().getX())+","+Number((((MGraphiqueTriangle)(obj)).getObjet().getForme() as MFormeTriangle).getPoint1().getY())+")}\""+
+					 " point2=\"{new MCoordonnee("+Number((((MGraphiqueTriangle)(obj)).getObjet().getForme() as MFormeTriangle).getPoint2().getX())+","+Number((((MGraphiqueTriangle)(obj)).getObjet().getForme() as MFormeTriangle).getPoint2().getY())+")}\""+
+					 " point3=\"{new MCoordonnee("+Number((((MGraphiqueTriangle)(obj)).getObjet().getForme() as MFormeTriangle).getPoint3().getX())+","+Number((((MGraphiqueTriangle)(obj)).getObjet().getForme() as MFormeTriangle).getPoint3().getY())+")}\"";
 			}
 			else
 			{
@@ -362,6 +374,7 @@ package Graphisme.Onglets
 				str+=genererCodeBordure(obj);
 			}
 			str+=" />";
+			
 			return str;
 		}
 		
@@ -433,6 +446,240 @@ package Graphisme.Onglets
 			str+="GradientType."+degrade.getType().toUpperCase()+",";
 			str+=degrade.getBoxRotation()+")}\"";	
 			return str;
+		}
+		
+		
+		// generation de code pour le mouvement : 
+		public function genererCodeMouvement(obj:MIObjetGraphique):void
+		{
+		//	code_mouvement_generer =true;
+			var n:Number = 0;
+			var m:Number = 0;
+			var str:String = "";
+			str+="\nprivate function init():void \n";
+			str+="\t \t{\n";
+			for (var key:Object in panel_opt.getDicoMvt()) 
+			{
+				str+="\t \t \tvar mon_ecouteur"+m+":MonEcouteur = new MonEcouteur(); \n";
+				for(var i:int=0;i<(panel_opt.getDicoMvt()[key] as Array).length;i++)
+				{
+					if((panel_opt.getDicoMvt()[key] as Array)[i].mvt == "perpetuel")
+					{
+						code_mouvement_generer =true;
+						str+="\n\t \t \tvar mouv"+n+":MMouvementPerpetuel = new MMouvementPerpetuel(); \n";
+						str+="\t \t \tmouv"+n+".instancieAvecAngleEtVitesse("+(key as MIObjetGraphique).getGraphique().id+".getObjet(),"+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].angle +","+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].vitesse +"); \n";
+						
+						str+="\t \t \tmon_ecouteur"+m+".ajouterMouvement(mouv"+n+"); \n"; 
+						dico["MMouvementPerpetuel"]="import Controleur.MMouvementPerpetuel;";
+					}
+					else if((panel_opt.getDicoMvt()[key] as Array)[i].mvt == "fini")
+					{
+						code_mouvement_generer =true;
+						str+="\n\t \t \tvar mouv"+n+":MMouvementFini = new MMouvementFini("+(key as MIObjetGraphique).getGraphique().id+".getObjet(),"+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].x_arrivee+","+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].y_arrivee+","+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].temps+
+							 "); \n";
+						str+="\t \t \tmon_ecouteur"+m+".ajouterMouvement(mouv"+n+"); \n";
+						dico["MMouvementFini"]="import Controleur.MMouvementFini;";
+					}
+					else if((panel_opt.getDicoMvt()[key] as Array)[i].mvt == "redimensionnement")
+					{
+						code_mouvement_generer =true;
+						str+="\n\t \t \tvar mouv"+n+":MRedimensionnement = new MRedimensionnement("+(key as MIObjetGraphique).getGraphique().id+".getObjet(),"+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].largeur_finale+","+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].hauteur_finale+","+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].temps+
+							 "); \n";
+						str+="\t \t \tmon_ecouteur"+m+".ajouterMouvement(mouv"+n+"); \n"; 
+						dico["MRedimensionnement"]="import Controleur.MRedimensionnement;";
+					}
+					else if((panel_opt.getDicoMvt()[key] as Array)[i].mvt == "clavier")
+					{
+						clavier = true;
+						dico["Clavier"]="import Controleur.MClavier;";
+						str +="// Mise en place de l'écouteur clavier \n"+
+						      "\t \t \tvar ecouteur_clavier:MonEcouteurClavier=new MonEcouteurClavier("+obj.getGraphique().id+"); \n"+
+							  "\t \t \tMClavier.getInstance().ajouterEcouteur(ecouteur_clavier); \n";
+							  // faire tableau d'objet et setter l'objet courant
+					}
+					else if((panel_opt.getDicoMvt()[key] as Array)[i].mvt == "souris")
+					{
+						souris = true;
+						dico["Souris"]="import Controleur.MSouris;";
+						str +="\n // Mise en place de l'écouteur souris \n"+
+						      "\t \t \tvar ecouteur_souris:MonEcouteurSouris=new MonEcouteurSouris("+obj.getGraphique().id+"); \n"+
+							  "\t \t \tMSouris.getInstance().ajouterEcouteur(ecouteur_souris); \n";
+							  // faire tableau d'objet et setter l'objet courant
+					}
+					n++;
+				}	
+				
+				str+="\t \t \t"+(key as MIObjetGraphique).getGraphique().id+".ajouterEcouteur(mon_ecouteur"+m+"); \n";
+				
+				m++;
+			}
+			str+="\t \t} \n";
+			dico["init"] = str;
+		}
+		
+		
+		// fonction generant la classe d'ecouteur : 
+		public function genererClasseEcouteur():String
+		{
+			var str:String = "";
+			str+="package \n"+
+				 "{ \n"+
+				 "\t import Graphique.MIObjetGraphiqueEcouteur; \n" +
+				 "\t import Utilitaires.MAxe; \n"+
+				 "\t import Graphique.MIObjetGraphique; \n"+
+				 "\t import Controleur.MIEffet; \n"+
+				 "\n \n" +
+				 "\t public class MonEcouteur implements MIObjetGraphiqueEcouteur \n"+
+				 "\t { \n "+
+				 "\t \t private var tab_mvt:Array; \n \n"+
+				 "\t \t public function MonEcouteur() \n"+
+				 "\t \t { \n" + 
+				 "\t \t \t tab_mvt = new Array(); \n"+
+				 "\t \t } \n \n"+
+				 "\t \t // Fonctions de l'interface MIObjetGraphiqueEcouteur à réimplémenter : \n"+
+				 "\t \t public function graphiqueSeDessine(graphique:MIObjetGraphique):void \n"+
+				 "\t \t { \n"+
+				 "\t \t } \n \n"+
+				 "\t \t public function graphiqueMeurt(graphique:MIObjetGraphique):void \n"+
+				 "\t \t { \n"+
+				 "\t \t } \n \n"+
+				 "\t \t public function graphiqueCollision(graphique:MIObjetGraphique, axe:MAxe):void \n"+
+				 "\t \t { \n"+
+				 "\t \t } \n \n"+
+				 "\t \t public function graphiqueSeDeplace(x:Number, y:Number):void \n"+
+				 "\t \t { \n"+
+				 "\t \t } \n \n"+
+				 "\t \t public function graphiqueChangeTaille(objet:MIObjetGraphique):void \n"+
+				 "\t \t { \n"+
+				 "\t \t } \n \n"+
+				 "\t \t public function ajouterMouvement(m:MIEffet):void \n"+
+				 "\t \t { \n"+
+				 "\t \t \t tab_mvt.push(m); \n"+
+				 "\t \t } \n \n"+
+				 "\t } \n"+ 	 
+				 "}";
+			return str;
+		}
+		
+		
+		// generation de la classe qui implemente MIEcouteurClavier :
+		public function genererClasseEcouteurClavier():String
+		{
+			var str:String = "";
+			str+="package \n"+
+				 "{ \n"+
+				 "\timport Controleur.MClavier; \n"+
+				 "\timport Controleur.MIEcouteurClavier; \n"+
+				 "\timport Graphique.MIObjetGraphique; \n"+
+				 "\n \n" +
+				 "\t public class MonEcouteurClavier implements MIEcouteurClavier \n"+
+				 "\t { \n" + 
+				 "\t \t private var objet:MIObjetGraphique; \n"+
+				 "\t \t public function MonEcouteurClavier(objet:MIObjetGraphique)\n" + 
+				 "\t \t {\n" + 
+				 "\t \t \t this.objet=objet; \n"+
+				 "\t \t \t objet.getGraphique().setFocus(); \n"+
+				 "\t \t }\n"+
+				 "\n \n "+
+				 "\t \t public function flecheBas():void \n"+
+				 "\t \t { \n" + 
+				 "\t \t  \t // code qui doit être executé lorsque la flèche bas est appuyée \n" + 
+				 "\t \t } \n" + 
+				 "\n" + 
+				 "\t \t public function flecheHaut():void \n" + 
+				 "\t \t { \n" + 
+				 "\t \t \t // code qui doit être executé lorsque la flèche haut est appuyée \n" + 
+				 "\t \t } \n" + 
+				 "\n"+
+				 "\t \t public function flecheGauche():void \n" + 
+				 "\t \t { \n" + 
+				 "\t \t \t // code qui doit être executé lorsque la flèche gauche est appuyée \n" + 
+				 "\t \t } \n" + 
+				 "\n"+
+				 "\t \t public function flecheDroite():void \n" + 
+				 "\t \t { \n" + 
+				 "\t \t  \t // code qui doit être executé lorsque la flèche droite est appuyée \n" + 
+				 "\t \t } \n" + 
+				 "\n"+
+				 "\t \t public function entree():void \n" + 
+				 "\t \t { \n" + 
+				 "\t \t  \t // code qui doit être executé lorsque la touche Entrée est appuyée \n" + 
+				 "\t \t } \n" + 
+				 "\n"+
+				 "\t \t public function espace():void \n" + 
+				 "\t \t { \n" + 
+				 "\t \t  \t // code qui doit être executé lorsque la touche espace est appuyée \n" +
+				 "\t \t } \n" +
+				 "\n"+
+				  "\t \t public function touche(touche:uint):void \n" + 
+				 "\t \t { \n" + 
+				 "\t \t  \t // fonction appelée lorsque l'utilisateur appuie une touche autre que celles repérées param touche: code de la touche appuyée \n"+ 
+				 "\t \t } \n" +
+				 "\n"+
+				 "\t } \n";
+			str+="}";
+			return str;
+		}
+
+
+		// fonction permettant de gerer le controle de la souris : 
+		public function genererCodeEcouteurSouris():String
+		{
+			var str:String = "";
+			str+="package \n"+
+				 "{ \n"+
+				 "\timport Controleur.MSouris; \n"+
+				 "\timport Controleur.MIEcouteurSouris \n"+
+				 "\timport Graphique.MIObjetGraphique; \n"+
+				 "\n \n" +
+				 "\t public class MonEcouteurSouris implements MIEcouteurSouris \n"+
+				 "\t { \n"+
+				 "\t \t private var objet:MIObjetGraphique; \n"+
+				 "\t \t public function MonEcouteurSouris(objet:MIObjetGraphique)\n" + 
+				 "\t \t {\n"+
+				 "\t \t \t this.objet = objet; \n"+
+				 "\t \t }\n"+
+				 "\n"+
+				 "\t \t public function bougeGauche():void \n" + 
+				 "\t \t { \n" + 
+				 "\t \t  \t // code qui doit être executé lorsque la souris se déplace vers la gauche est appuyée \n" +
+				 "\t \t } \n" + 
+				 "\n"+
+				 "\t \t public function bougeDroite():void \n" + 
+				 "\t \t { \n" + 
+				 "\t \t  \t // code qui doit être executé lorsque la souris se déplace vers la droite est appuyée \n"+ 
+				 "\t \t } \n" + 
+				 "\n"+
+				 "\t \t public function bougeHaut():void \n" + 
+				 "\t \t { \n" + 
+				 "\t \t  \t // code qui doit être executé lorsque la souris se déplace vers la haut est appuyée \n"+ 
+				 "\t \t } \n" + 
+				 "\n"+
+				 "\t \t public function bougeBas():void \n" + 
+				 "\t \t { \n" + 
+				 "\t \t  \t // code qui doit être executé lorsque la souris se déplace vers la bas est appuyée \n" + 
+				 "\t \t } \n" + 
+				 "\n"+
+				 "\t \t public function clic():void \n" + 
+				 "\t \t { \n" + 
+				 "\t \t  \t // code qui doit être executé lorsque la souris est cliqué \n" + 
+				 "\t \t } \n" + 
+				  "\n"+
+				 "\t \t public function doubleClic():void \n" + 
+				 "\t \t { \n" + 
+				 "\t \t  \t // code qui doit être executé lorsque la souris est double-cliqué \n" + 
+				 "\t \t } \n" + 
+				 "\t } \n"+
+				 "}";
+				 return str;
 		}
 		
 		// fonction permettant de transformer un uint en hexadecimal :
