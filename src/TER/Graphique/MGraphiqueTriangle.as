@@ -56,30 +56,27 @@ package Graphique {
 		}
 		
 		public function get point1():MCoordonnee {
-			return mon_pt1;
+			return (forme as MFormeTriangle).getPoint1();
 		}
 		public function set point1(point1:MCoordonnee):void {
+			(forme as MFormeTriangle).setPoint(mon_pt1, point1);
 			mon_pt1 = point1;
-			(forme as MFormeTriangle).instancie(mon_pt1, mon_pt2, mon_pt3);
-			objet.setForme(forme);
 		}
 		
 		public function get point2():MCoordonnee {
-			return mon_pt2;
+			return (forme as MFormeTriangle).getPoint2();
 		}
 		public function set point2(point2:MCoordonnee):void {
+			(forme as MFormeTriangle).setPoint(mon_pt2, point2);
 			mon_pt2 = point2;
-			(forme as MFormeTriangle).instancie(mon_pt1, mon_pt2, mon_pt3);
-			objet.setForme(forme);
 		}
 		
 		public function get point3():MCoordonnee {
-			return mon_pt3;
+			return (forme as MFormeTriangle).getPoint3();
 		}
 		public function set point3(point3:MCoordonnee):void {
+			(forme as MFormeTriangle).setPoint(mon_pt3, point3);
 			mon_pt3 = point3;
-			(forme as MFormeTriangle).instancie(mon_pt1, mon_pt2, mon_pt3);
-			objet.setForme(forme);
 		}
 		
 		override public function deplacementObjet(objet:MIObjet):void {
