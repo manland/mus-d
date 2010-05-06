@@ -280,7 +280,7 @@ package Coeur
 			for(var i:uint=0; i<this.enfants.length; i++){
 				var obj2:MIObjet = (enfants[i] as MIObjet);
 				if(objet != obj2){
-					if(objet.estProcheDe(obj2)){					
+					if(objet.estProcheDe(obj2) || obj2.estProcheDe(objet)){				
 						axe = objet.axeCollision(obj2);
 						if(axe != null){
 							collision(objet, (enfants[i] as MIObjet), axe);
@@ -291,9 +291,7 @@ package Coeur
 			//collision avec les bords de la scene	
 			if(this.estProcheDe(objet)){
 				axe = this.axeCollision(objet);
-				//sysout.text += "\n proche";
 				if( axe != null){
-					//sysout.text += "\n collision";
 					collision(objet, this, axe);
 				}
 			}
@@ -341,6 +339,12 @@ package Coeur
 			return this.clone() as MIObjetEcouteur;
 		}
 		
+		/**
+		 * renvoie l'axe sur lequel effectuer la projection pour savoir s'il y a collision avec l'objet passé en paramètre
+		 * <p>renvoie l'axe perpendiculaire au coté de la scène d'ou est proche l'objet</p>
+		 * @param objet: objet avec lequel on cherche à trouver la collision
+		 * @return l'axe sur lequel effectuer la projection pour savoir s'il y a collision avec l'objet passé en paramètre
+		 */
 		public function getAxeSeparateur(objet:MIObjet):MVecteur{
 			var vecteur:MVecteur = new MVecteur();
 			
@@ -371,6 +375,12 @@ package Coeur
         	return vecteur;
 		}
 		
+		/**
+		 * renvoie le point à projeter pour effectuer la projection de la scène sur l'axe séparateur
+		 * <p>renvoie les coordonnées d'un point du coté de la scène d'ou est proche l'objet</p>
+		 * @param objet: objet avec lequel on cherche à trouver la collision
+		 * @return le point à projeter pour effectuer la projection de la scène sur l'axe séparateur
+		 */
 		public function getPointProjection(objet:MIObjet):MCoordonnee{
 			var pt:MCoordonnee;
 			
@@ -391,6 +401,11 @@ package Coeur
 			return pt;
 		}
 		
+		/**
+		 * renvoie dans un tableau la valeurs minimale et la valeur maximale de la projection de la scene receveur sur le vecteur passé en paramètre
+		 * @param vecteur: vecteur sur lequel on veut projeter la scene
+		 * @return un tableau contenant la valeur minimale de projection à l'indice 0 et la valeur maximale de projection à l'indice 1
+		 */
 		public function seProjeteSur(vecteur:MVecteur, objet:MIObjet):Number{
 			var pt:MCoordonnee = getPointProjection(objet);
 			
@@ -408,9 +423,13 @@ package Coeur
           	}
 		}
 		
+		/**
+ 		 * @inheritDoc
+ 		 */
 		public function axeCollision(objet:MIObjet):MAxe{
 			var forme:MIForme = objet.getForme();
 			var vecteur:MVecteur = getAxeSeparateur(objet);
+			
 			
 			//valeur minimale et maximale des projections de l'objet sur l'axe séparateur
 			var min:Number;
@@ -420,7 +439,7 @@ package Coeur
 			
 			min = res.pop();
 			max = res.pop();
-		
+			
 			var val:Number = this.seProjeteSur(vecteur,objet);
 			var espacement:Number = (Math.max(max,val)-Math.min(min,val) )- (max-min);
 				
@@ -433,12 +452,17 @@ package Coeur
 			return axe;
 		}
 		
+		/**
+		 * vérifie si l'objet passé en paramètre est proche d'un bord de la scène
+		 *<p>retourne vrai si les coordonnés de l'enveloppe rectangulaire de l'objet chevauchent les coordonnées d'un bord de la scène </p>
+		 * @param objet: objet dont on veut savoir s'il est près d'un bord de la scène
+		 * @return vrai si l'objet passé en paramètre est proche d'un bord de la scène
+		 */
 		public function estProcheDe(objet:MIObjet):Boolean{
 			var tx:Number = objet.getX();
 			var ty:Number = objet.getY();
 			var larg:Number = objet.getLargeur();
 			var haut:Number = objet.getHauteur();
-			//sysout.text += "\n x: "+tx+" y: "+ty+" lar: "+larg+" haut: "+haut;
 			return (tx <= this.x || (tx+larg) >= this.x + largeur || ty <= this.y || (ty+haut) >= this.y + hauteur);
 		}
 		
