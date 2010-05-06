@@ -120,3 +120,10 @@ FenetreDegrade
    borderThicknessRight: 3;
    headerHeight: 19;
 }
+
+.boutonClose
+{
+ 	up-skin: Embed("Images/RecycleBin Empty-32.png");
+	over-skin: Embed("Images/RecycleBin Empty-32.png");
+	skin:Embed("Images/RecycleBin Empty-32.png");
+}

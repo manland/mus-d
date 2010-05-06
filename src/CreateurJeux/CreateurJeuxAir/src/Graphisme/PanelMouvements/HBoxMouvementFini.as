@@ -56,6 +56,7 @@ package Graphisme.PanelMouvements
 			
 			this.addChild(hbox_x);
 			this.addChild(hbox_y);
+			this.addChild(hbox_temps);
 		}
 		
 		// accesseurs : 

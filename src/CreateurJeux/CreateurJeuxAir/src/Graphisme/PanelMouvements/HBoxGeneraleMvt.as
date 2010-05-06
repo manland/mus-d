@@ -3,8 +3,10 @@ package Graphisme.PanelMouvements
 	import Erreurs.Erreur;
 	
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	
 	import mx.containers.HBox;
+	import mx.controls.Button;
 	import mx.controls.ComboBox;
 
 	public class HBoxGeneraleMvt extends HBox
@@ -13,11 +15,17 @@ package Graphisme.PanelMouvements
 		private var choix_mouvement:ComboBox;
 		private var hBox:HBox;
 		
+		// bouton permettant d'annuler le mouvement
+		private var btn_close:Button;
+		
 		private var hbox_mvt_perpetuel:HBoxMouvementPerpetuel;
 		private var hbox_mvt_fini:HBoxMouvementFini;
 		private var hbox_mvt_redim:HBoxRedimensionnement;
 		private var choix_deja_fait:Boolean=false;
 		
+		// type de hbox en string :
+		private var type:String;	
+	
 		private var erreur:Erreur;
 		
 		public function HBoxGeneraleMvt(erreur:Erreur)
@@ -47,6 +55,16 @@ package Graphisme.PanelMouvements
 			choix_mouvement.addEventListener(Event.CHANGE,choixEffectue);
 			
 			this.addChild(choix_mouvement);
+			
+			// pour annuler le mouvement : 
+			btn_close = new Button();
+			btn_close.width = 20;
+			btn_close.height = 20;
+			btn_close.styleName = "boutonClose";
+			btn_close.addEventListener(MouseEvent.CLICK,effacerHbox);
+			
+			// type : 
+			type ="";
 		}
 		
 		// ----------------------------------------------------------
@@ -64,25 +82,48 @@ package Graphisme.PanelMouvements
 			{
 				hBox.removeAllChildren();
 				hBox.addChild(hbox_mvt_perpetuel);
+				type = "perpetuel";
 			}
 			else if(choix_mouvement.selectedLabel=="Fini")
 			{
 				hBox.removeAllChildren();
 				hBox.addChild(hbox_mvt_fini);
+				type = "fini";
 			}
 			else if(choix_mouvement.selectedLabel=="Redimensionnement")
 			{
 				hBox.removeAllChildren();
 				hBox.addChild(hbox_mvt_redim);
+				type = "redimensionnement";
 			}
 			
 			if(!choix_deja_fait )
 			{
-				((FenetreMouvement)(this.parent)).addChildAt(new HBoxGeneraleMvt(erreur),((FenetreMouvement)(this.parent)).getChildren().length-1);
-		
+				((FenetreMouvement)(this.parent)).addChildAt(new HBoxGeneraleMvt(erreur),((FenetreMouvement)(this.parent)).getChildren().length-2);
+				((FenetreMouvement)(this.parent)).getTableauHbox().push(this);
 				this.addChild(hBox);
 				choix_deja_fait = true;
+				this.addChild(btn_close);
 			}
 		}
+		
+		// ----------------------------------------------------------
+		//			evenements du bouton close :  
+		// ----------------------------------------------------------
+		public function effacerHbox(event:MouseEvent):void
+		{
+			var indice:Number = ((FenetreMouvement)(this.parent)).getChildIndex(((event.currentTarget as Button).parent as HBoxGeneraleMvt)).toString();
+			var indice_dans_tab:Number =  ((FenetreMouvement)(this.parent)).getTableauHbox().indexOf(((event.currentTarget as Button).parent as HBoxGeneraleMvt),0);
+
+			((FenetreMouvement)(this.parent)).getTableauHbox().splice(indice_dans_tab,1);
+			((FenetreMouvement)(this.parent)).removeChildAt(indice);		
+			
+		}
+		
+		// ----------------------------------------------------------
+		//			accesseurs : 
+		// ----------------------------------------------------------
+		public function getType():String {return type; }
+		public function getHbox():HBox {return hBox;}
 	}
 }

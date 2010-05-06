@@ -2,6 +2,8 @@ package Graphisme.PanelMouvements
 {
 	import Erreurs.Erreur;
 	
+	import Graphique.MIObjetGraphique;
+	
 	import Graphisme.PanelOptions.PanelOption;
 	
 	import flash.events.Event;
@@ -33,9 +35,13 @@ package Graphisme.PanelMouvements
 		
 		// tableau contenant les mouvements ou le controle clavier;
 		private var tableau_mvt:Array;
+		private var tableau_hbox:Array;
 		
 		// hashmap contenant un objet et son tableau de mouvement associé :
 		private var dico_mvt:Dictionary;
+		
+		// objet :
+		private var objet:MIObjetGraphique;
 		
 		private var panel_option:PanelOption;
 		private var erreur:Erreur;
@@ -48,7 +54,10 @@ package Graphisme.PanelMouvements
 			this.width=600;
 			this.height=410;
 			this.title= "Mouvements :";
-//			objet=null;
+			tableau_mvt = new Array();
+			tableau_hbox = new Array();
+			dico_mvt = new Dictionary();
+			objet=null;
 			this.showCloseButton = true;
 			initialisation();
 			
@@ -60,13 +69,15 @@ package Graphisme.PanelMouvements
 								
 			clavier = new CheckBox();
 			clavier.label = "Clavier";
+			clavier.addEventListener(MouseEvent.CLICK,choixControle);
 			souris = new CheckBox();
 			souris.label = "Souris";
+			souris.addEventListener(MouseEvent.CLICK,choixControle);
 			
 			var vbox_controle:VBox = new VBox();
 			
 			separator = new HRule();
-			separator.percentWidth = 80;
+			separator.width = 570;
 			separator.x = 10;
 			vbox_controle.addChild(separator);
 			var label_controle:Label = new Label();
@@ -74,8 +85,6 @@ package Graphisme.PanelMouvements
 			vbox_controle.addChild(label_controle);
 			vbox_controle.addChild(souris);
 			vbox_controle.addChild(clavier);
-				
-			this.addChild(vbox_controle);
 			
 			// bouton valider et annuler :
 			var hbox_btn:HBox = new HBox();
@@ -87,8 +96,9 @@ package Graphisme.PanelMouvements
 			btn_annuler.addEventListener(MouseEvent.CLICK,clicSurBouton);
 			hbox_btn.addChild(btn_valider);
 			hbox_btn.addChild(btn_annuler);
-											
+										
 			this.addChild(hBox_generale1);
+			this.addChild(vbox_controle);
 			this.addChild(hbox_btn);
 		}
 		
@@ -115,7 +125,7 @@ package Graphisme.PanelMouvements
 		{
 			if(event.currentTarget == btn_valider)
 			{
-				erreur.sysout.text+="valider";	
+				panel_option.effectuerChangement(tableau_hbox);
 			}
 			else if (event.currentTarget == btn_annuler)
 			{
@@ -123,5 +133,24 @@ package Graphisme.PanelMouvements
 			}
 		}
 		
+		
+		public function choixControle(event:MouseEvent):void
+		{
+			if(clavier.selected==true)
+			{
+				tableau_hbox.push(clavier);
+			}
+			if(souris.selected == true)
+			{
+				tableau_hbox.push(souris);
+			}
+		}
+		
+		// ----------------------------------------------------------
+		//						accesseurs : 
+		// ----------------------------------------------------------
+		public function getTableauHbox():Array {return tableau_hbox;}
+		public function getClavier():CheckBox {return clavier;}
+		public function getSouris():CheckBox {return souris;}
 	}
 }
