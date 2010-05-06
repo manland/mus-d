@@ -1,9 +1,14 @@
 package Graphisme.PanelOptions
 {
+	import Graphisme.Onglets.Onglet;
 	import Graphisme.Onglets.TabOnglet;
+	
+	import flash.events.Event;
+	import flash.events.MouseEvent;
 	
 	import mx.containers.HBox;
 	import mx.containers.Panel;
+	import mx.controls.Button;
 	import mx.controls.Label;
 	import mx.controls.RadioButton;
 	import mx.controls.RadioButtonGroup;
@@ -21,30 +26,35 @@ package Graphisme.PanelOptions
 		private var label_nom_auteur:Label;
 		private var valeur_nom_auteur:TextInput;
 		
+	
+		
+		private var tab_onglet:TabOnglet;
+		
 		// type du jeu : 
 		private var label_type_jeu:Label;
-		private var groupe_bouton:RadioButtonGroup;
+		private var groupe_bouton_type_jeu:RadioButtonGroup;
 		// flex :
 		private var btn_flex:RadioButton;
 		// air :
 		private var btn_air:RadioButton;
+		// valider les changements sur le jeu :
+		private var btn_valider_jeu;
 		
-		private var flex_selectionne:Boolean;
-		private var air_selectionne:Boolean;
 		
-		private var tab_onglet:TabOnglet;
 		
 		public function OptionJeu()
 		{
 			super();
+			tab_onglet = null;
 			this.layout="vertical";
 			this.title="Options du jeu";
-			flex_selectionne=false;
-			air_selectionne=false;
-			initialisation();
+			this.styleName = "PanelsOption";
+//			valeur_nom_jeu.text = tab_onglet.getOnglet().getNomJeu();	
+		
+			initialisationJeu();
 		}
 		
-		public function initialisation():void
+		public function initialisationJeu():void
 		{
 			// nom du jeu :
 			hBox_nom_jeu=new HBox();
@@ -71,68 +81,79 @@ package Graphisme.PanelOptions
 
 			// type du jeu : 
 			label_type_jeu=new Label();
-			groupe_bouton= new RadioButtonGroup();
+			groupe_bouton_type_jeu= new RadioButtonGroup();
 			btn_flex= new RadioButton();
 			btn_air=new RadioButton();
 			label_type_jeu.text="Type de jeu :"
 			btn_flex.label = "Flex (web)";
-			btn_flex.group=groupe_bouton;
+			btn_flex.group=groupe_bouton_type_jeu;
 			btn_air.label="Air (bureau)";
-			btn_air.group=groupe_bouton;
+			btn_air.group=groupe_bouton_type_jeu;
+			
+			// bouton valider jeu :
+			btn_valider_jeu = new Button();
+			btn_valider_jeu.label= "Valider changement";
+			btn_valider_jeu.toolTip= "appliquer tous les changements concernant le nom du jeu, son type et l'auteur.";
+			btn_valider_jeu.addEventListener(MouseEvent.CLICK,validerOptionJeu);
 
 			this.addChild(hBox_nom_jeu);
 			this.addChild(hBox_nom_auteur);
 			this.addChild(label_type_jeu);
 			this.addChild(btn_flex);
 			this.addChild(btn_air);
+			this.addChild(btn_valider_jeu);
+		}
+		
+		
+			// accesseur pour le jeu :
+		public function getNomJeu():String { return valeur_nom_jeu.text; }		
+		public function getNomAuteur():String { return valeur_nom_auteur.text; }		
+		
+		public function setTypeFlex(b:Boolean):void {btn_flex.selected=b;}
+		public function setTypeAir(b:Boolean):void {btn_air.selected=b;}
 			
-		}
+		public function setNomJeu(s:String):void { valeur_nom_jeu.text=s; }		
+		public function setNomAuteur(s:String):void { valeur_nom_auteur.text=s; }
 		
-		public function getNomJeu():String
-		{
-			return valeur_nom_jeu.text;
-		}
 		
-		public function getNomAuteur():String
+// ----------------------------------------------------------------
+// 			Valider option du jeu :
+// -----------------------------------------------------------------
+		public function validerOptionJeu(event:MouseEvent):void
 		{
-			return valeur_nom_auteur.text;
-		}
-		
-		public function estDeTypeFlex():Boolean
-		{
-			if(btn_flex.selected)
-			{
-				flex_selectionne=true;
-			}
-			else
-			{
-				flex_selectionne=false;
-			}
-			return flex_selectionne;
-		}
-		
-		public function estDeTypeAir():Boolean
-		{
+			
+			var ong:Onglet = tab_onglet.getOnglet();
+			ong.setNomJeu(this.getNomJeu());
+			ong.setNomAuteur(this.getNomAuteur());
+			ong.setTitreOnglet(this.getNomJeu());
 			if(btn_air.selected)
 			{
-				air_selectionne=true;
+				ong.setTypeJeu("Air");
 			}
-			else
+			else if(btn_flex.selected)
 			{
-				air_selectionne=false;
+				ong.setTypeJeu("Flex");
 			}
-			return flex_selectionne;
 		}
 		
-		
-		public function setNomJeu(s:String):void
+		// ------------------------------------------------------------------------------		
+//		mise a jour du panel des jeux en fonction de l'onglet qui change 
+// ------------------------------------------------------------------------------
+		public function miseAJour(event:Event):void
 		{
-			valeur_nom_jeu.text=s;
+			this.setNomJeu(tab_onglet.getOnglet().getNomJeu());
+			this.setNomAuteur(tab_onglet.getOnglet().getNomAuteur());
+			if(tab_onglet.getOnglet().getTypeJeu() == "Flex")
+			{
+				this.setTypeFlex(true);
+			}
+			else if(tab_onglet.getOnglet().getTypeJeu()=="Air")
+			{
+				this.setTypeAir(true);
+			}
 		}
 		
-		public function setValeurAuteur(s:String):void
-		{
-			valeur_nom_auteur.text=s;
-		}
+		public function setTabOnglet(t:TabOnglet):void { tab_onglet = t; 	tab_onglet.addEventListener(Event.CHANGE,miseAJour);}
+		
 	}
 }

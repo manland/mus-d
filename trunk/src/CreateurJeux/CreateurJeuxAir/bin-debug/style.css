@@ -25,9 +25,10 @@ Onglet
 
 .hBoxCentrale
 {
-	padding-bottom:10;
+	horizontal-align:center;
 	padding-left:10;
 	padding-right:10;
+	padding-bottom:100;
 	padding-top:80;
 }
 
@@ -63,6 +64,7 @@ TextArea
 {
 	stroke-width:2;
 	stroke-color:#909090;
+	horizontal-align:center;
 }
 
 FenetreDegrade
@@ -99,4 +101,22 @@ FenetreDegrade
 	label-offset:1;
 	tickColor:"black";
 	tick-offset:2;
+}
+
+.hSliderAngle
+{
+	fontSize: 9;
+	label-offset:1;
+	tickColor:"black";
+	tick-offset:2;
+	data-tip-offset:0;
+}
+
+
+.PanelsOption
+{
+   borderThicknessLeft: 3;
+   borderThicknessBottom: 3;
+   borderThicknessRight: 3;
+   headerHeight: 19;
 }

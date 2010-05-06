@@ -9,14 +9,18 @@ package Graphisme.FenetreCodes
 
 	public class FenetreCode extends TitleWindow
 	{
-		private var code:TextAeraCode;
 		private var hBox_btn:HBoxBouton;
 		private var vBox:VBox;
+		private var tab_onglet_code:TabOngletCode;
 		
-		public function FenetreCode(code:TextAeraCode)
+		public function FenetreCode(tab_onglet_code:TabOngletCode)
 		{
+			
+			// avant le constructeur contenait : code:TextaeraCode
 			super();
-			this.code=code;
+//			this.code=code;
+			
+			this.tab_onglet_code = tab_onglet_code;
 			this.title="Code généré : ";
 			this.showCloseButton = true;
 			this.height=400;
@@ -24,7 +28,7 @@ package Graphisme.FenetreCodes
 			vBox=new VBox();
 			vBox.percentHeight=100;
 			vBox.percentWidth=100;
-			hBox_btn=new HBoxBouton(code);
+			hBox_btn=new HBoxBouton(tab_onglet_code);
 		}
 		
 		
@@ -38,14 +42,17 @@ package Graphisme.FenetreCodes
         	super.createChildren();
         	this.addEventListener(Event.CLOSE, closeEventHandler);
   	        vBox.addChild(hBox_btn);
-	        vBox.addChild(code);
+	        vBox.addChild(tab_onglet_code);
+	        hBox_btn.setTitreBouton(tab_onglet_code.getOnglet().getNomOnglet());
         	addChild(vBox);
        }
 
-	   public function changerCode(s:String):void
-	   {
-	   		code.text=s;
-	   }
-		
+//	   public function changerCode(s:String):void
+//	   {
+//	   		tab_onglet_code.getOnglet().text=s;
+//	   }
+//
+		public function getTabOngletCode():TabOngletCode {return tab_onglet_code;}
+		public function getHboxBtn():HBoxBouton {return hBox_btn;}
 	}
 }
