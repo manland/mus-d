@@ -17,6 +17,13 @@ package Coeur.Forme
 			this.somme_angles = 180;
 		}
 		
+		public override function affiche():void{
+			super.affiche();
+			point1.affiche();
+			point2.affiche();
+			point3.affiche();
+		}
+		
 		private function remplitPoint():void{
 			var points:Array = new Array();
 			
@@ -76,39 +83,22 @@ package Coeur.Forme
 		public function setPoint(ancien_point:MCoordonnee, nouveau_point:MCoordonnee):void{
 			ancien_point = ancien_point.clone();
 			nouveau_point = nouveau_point.clone();
-			trace("-----------------------------");
-			this.affiche();
-			trace("-----------------------------");
 			if(aretes.length != 3){
 				throw new MErreur(this.nom_classe, "setPoint", "Pas assez de points pour setter le nouveau point");
 			}
-			trace("-----------------------------");
 			for(var i:uint=0; i < aretes.length; i++){
 				var arete:MArete = aretes[i] as MArete;
 				if(arete == null)
 					throw new MErreur(this.nom_classe, "remplitPoint", "Ceci n'est pas une arete ....");
-				
-				trace("avant");
-				ancien_point.affiche();
 				if(ancien_point.estEgal(arete.getDepart())){
-					trace(ancien_point);
-					trace(arete.getDepart());
 					arete.getDepart().setX(new Number(nouveau_point.getX()));
 					arete.getDepart().setY(new Number(nouveau_point.getY()));
 				}
-				trace("milieu");
-				ancien_point.affiche();
 				if(ancien_point.estEgal(arete.getArrivee())){
 					arete.getArrivee().setX(new Number(nouveau_point.getX()));
 					arete.getArrivee().setY(new Number(nouveau_point.getY()));
 				}
-				trace("apres");
-				ancien_point.affiche();
 			}
-			trace("-----------------------------");
-			trace("-----------------------------");
-			this.affiche();
-			trace("-----------------------------");
 			this.calculAretes();
 			this.remplitPoint();
 		}
