@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="MFormeTriangle,Coeur.Forme.MFormeTriangle,ajouterArete,calculAretes,clone,getAire,instancie,setAretes,setHauteur,setLargeur,setNombreArete,setSommeAngles,setX,setY" name="keywords">
+<meta content="MFormeTriangle,Coeur.Forme.MFormeTriangle,affiche,ajouterArete,calculAretes,clone,deplacement,getAire,getPoint1,getPoint2,getPoint3,instancie,setAretes,setHauteur,setLargeur,setNombreArete,setPoint,setSommeAngles,setX,setY" name="keywords">
 <title>Coeur.Forme.MFormeTriangle</title>
 </head>
 <body>
@@ -135,12 +135,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MFormeTriangle</td>
 </tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="MFormePolygone.html#affiche()">affiche</a>():void</div>
+<a class="signatureLink" href="#affiche()">affiche</a>():void</div>
 <div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="MFormePolygone.html">MFormePolygone</a></td>
+</td><td class="summaryTableOwnerCol">MFormeTriangle</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
@@ -203,12 +203,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MFormeTriangle</td>
 </tr>
-<tr class="hideInheritedMethod">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="MFormePolygone.html#deplacement()">deplacement</a>(x:Number, y:Number):void</div>
+<a class="signatureLink" href="#deplacement()">deplacement</a>(x:Number, y:Number):void</div>
 <div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol"><a href="MFormePolygone.html">MFormePolygone</a></td>
+</td><td class="summaryTableOwnerCol">MFormeTriangle</td>
 </tr>
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
@@ -281,6 +281,30 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <a class="signatureLink" href="MFormePolygone.html#getPerimetre()">getPerimetre</a>():Number</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol"><a href="MFormePolygone.html">MFormePolygone</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getPoint1()">getPoint1</a>():<a href="../../Utilitaires/Utilitaires/MCoordonnee.html">MCoordonnee</a>
+</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MFormeTriangle</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getPoint2()">getPoint2</a>():<a href="../../Utilitaires/Utilitaires/MCoordonnee.html">MCoordonnee</a>
+</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MFormeTriangle</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getPoint3()">getPoint3</a>():<a href="../../Utilitaires/Utilitaires/MCoordonnee.html">MCoordonnee</a>
+</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MFormeTriangle</td>
 </tr>
 <tr class="hideInheritedMethod">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
@@ -383,6 +407,13 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
+<a class="signatureLink" href="#setPoint()">setPoint</a>(ancien_point:<a href="../../Utilitaires/MCoordonnee.html">MCoordonnee</a>, nouveau_point:<a href="../../Utilitaires/MCoordonnee.html">MCoordonnee</a>):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">MFormeTriangle</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
 <a class="signatureLink" href="#setSommeAngles()">setSommeAngles</a>(somme_angle:Number):void</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MFormeTriangle</td>
@@ -459,10 +490,19 @@ showHideInherited();
 </div>
 <a name="methodDetail"></a>
 <div class="detailSectionHeader">Method detail</div>
+<a name="affiche()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">affiche</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function affiche():void</code>
+</div>
 <a name="ajouterArete()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">ajouterArete</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+<td class="detailHeaderName">ajouterArete</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
 </tr>
 </table>
 <div class="detailBody">
@@ -510,6 +550,26 @@ showHideInherited();
 </tr>
 </table>
 </div>
+<a name="deplacement()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">deplacement</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function deplacement(x:Number, y:Number):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">x</span>:Number</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">y</span>:Number</code></td>
+</tr>
+</table>
+</div>
 <a name="getAire()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -523,6 +583,54 @@ showHideInherited();
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20"></td><td><code>Number</code></td>
+</tr>
+</table>
+</div>
+<a name="getPoint1()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getPoint1</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getPoint1():<a href="../../Utilitaires/Utilitaires/MCoordonnee.html">MCoordonnee</a></code>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Utilitaires/Utilitaires/MCoordonnee.html">MCoordonnee</a></code></td>
+</tr>
+</table>
+</div>
+<a name="getPoint2()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getPoint2</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getPoint2():<a href="../../Utilitaires/Utilitaires/MCoordonnee.html">MCoordonnee</a></code>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Utilitaires/Utilitaires/MCoordonnee.html">MCoordonnee</a></code></td>
+</tr>
+</table>
+</div>
+<a name="getPoint3()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getPoint3</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getPoint3():<a href="../../Utilitaires/Utilitaires/MCoordonnee.html">MCoordonnee</a></code>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../../Utilitaires/Utilitaires/MCoordonnee.html">MCoordonnee</a></code></td>
 </tr>
 </table>
 </div>
@@ -611,6 +719,26 @@ showHideInherited();
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">nombre_arete</span>:Number</code></td>
+</tr>
+</table>
+</div>
+<a name="setPoint()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">setPoint</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function setPoint(ancien_point:<a href="../../Utilitaires/MCoordonnee.html">MCoordonnee</a>, nouveau_point:<a href="../../Utilitaires/MCoordonnee.html">MCoordonnee</a>):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">ancien_point</span>:<a href="../../Utilitaires/MCoordonnee.html">MCoordonnee</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">nouveau_point</span>:<a href="../../Utilitaires/MCoordonnee.html">MCoordonnee</a></code></td>
 </tr>
 </table>
 </div>
