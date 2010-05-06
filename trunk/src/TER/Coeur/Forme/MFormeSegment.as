@@ -108,8 +108,8 @@ package Coeur.Forme
 		
 		public function clone():MIForme{
 			var clone_miforme:MIForme = new MFormeSegment();
-			(clone_miforme as MFormeSegment).setDepart(depart);
-			(clone_miforme as MFormeSegment).setArrivee(arrivee);
+			(clone_miforme as MFormeSegment).setDepart(depart.clone());
+			(clone_miforme as MFormeSegment).setArrivee(arrivee.clone());
 			this.remplirForme(clone_miforme as MFormeSegment);
 			return clone_miforme; 
 		}
