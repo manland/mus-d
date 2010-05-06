@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?> 
 <mx:WindowedApplication xmlns:TER="Graphique.*" xmlns:mx="http://www.adobe.com/2006/mxml" title="Créateur de jeux" layout="absolute" creationComplete="initialisation()">
 	<!--<mx:Style source="Images/skins/moxy/style/moxy.css"/>-->
 	<mx:Style source="style.css"/>
 	<mx:Script>
 		<![CDATA[
+			import Graphisme.PanelOptions.OptionJeu;
 			import mx.containers.Panel;
 			import Graphique.Textures.MCouleur;
 			import Graphique.MGraphiqueScene;
@@ -24,7 +25,8 @@
 			private var tab_onglet:TabOnglet;
 			
 			private var panel_option:PanelOption;
-			
+			private var option_jeu:OptionJeu;
+
 			private var erreur:Erreur;
 			private var vBox:VBox; // boite contenant le panel d'erreur et le menu accordeon
 
@@ -32,7 +34,7 @@
 				
 			private function initialisation():void
 			{
-				
+				this.verticalScrollPolicy="off";
 				vBox = new VBox();
 				// construction du panel d'erreur :
 				erreur = new Erreur();
@@ -40,19 +42,24 @@
 							
 				// construction du panel des options:
 				panel_option= new PanelOption(erreur);
+				option_jeu = new OptionJeu();
+				
 				// construction des onglets : 
-				tab_onglet = new TabOnglet(panel_option,erreur);
+				tab_onglet = new TabOnglet(panel_option,option_jeu,erreur);
 				panel_option.setTabOnglet(tab_onglet);
+				option_jeu.setTabOnglet(tab_onglet);
+
+				// construction de la barre de menu
+				barre_menu= new BarreMenu(tab_onglet,panel_option,option_jeu,erreur);
+				addChild(barre_menu);
+				
 				
 				// construction de la barre d'outil
 				panel_barre_outil= new HboxBarreOutil(tab_onglet,panel_option,erreur);
 				this.addChild(panel_barre_outil);
 				
 				
-				// construction de la barre de menu
-				barre_menu= new BarreMenu(tab_onglet,panel_option,erreur);
-				addChild(barre_menu);
-				
+
 				// construction du menu accordeon contenant les objets
 			//	menu_accordeon = new MenuAccordeon(erreur);
 				menu_accordeon = new ConteneurObjets(erreur);
@@ -63,13 +70,16 @@
 				hBoxCentrale = new HBox();
 				hBoxCentrale.addChild(vBox);
 				hBoxCentrale.addChild(tab_onglet);
-				hBoxCentrale.addChild(panel_option);
-				
+				var vBox_option:VBox = new VBox();
+				vBox_option.addChild(panel_option);
+				vBox_option.addChild(option_jeu);
+				hBoxCentrale.addChild(vBox_option);
 				hBoxCentrale.styleName="hBoxCentrale";
 				hBoxCentrale.percentWidth=100;
 				hBoxCentrale.percentHeight=100;
 				this.addChild(hBoxCentrale);
 				
+				erreur.visible = false;
 				application.addEventListener(KeyboardEvent.KEY_UP,controleClavier);
 			}
 			

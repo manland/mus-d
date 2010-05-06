@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <image>
-	<MGraphiqueScene>
+<MGraphiqueScene>
 		<scene id="espace" source="Images/scenes/espace.png" largeur="1024" hauteur="768"/>
 		<scene id="espace2" source="Images/scenes/espace2.png" largeur="1024" hauteur="768"/>
 		<scene id="mario" source="Images/scenes/mario.png" largeur="722" hauteur="451"/>
@@ -43,6 +43,9 @@
 	 	<triangle id="pyramide" point1X="0" point1Y="30" point2X="15" point2Y="0" point3X="30" point3Y="30" source="Images/triangles/pyramide.png"/>
 	</MGraphiqueTriangle>
 	<MGraphiqueEtoile>
-		<etoile id="etoile-vide" largeur="50" rotation="0" vide="true" source=""/>
+		<etoile id="etoile-vide" largeur="50" rotation="1" source=""/>
 	</MGraphiqueEtoile>
+	<MGraphiqueEtoilePleine>
+		<etoile id="etoile-pleine" largeur="50" rotation="0" petitRayon="10" source=""/>
+	</MGraphiqueEtoilePleine> 
 </image>

@@ -3,6 +3,7 @@ package Graphisme.Onglets
 	import Erreurs.Erreur;
 	
 	import Graphique.MGraphiqueEtoile;
+	import Graphique.MGraphiqueEtoilePleine;
 	import Graphique.MGraphiqueScene;
 	import Graphique.MGraphiqueTriangle;
 	import Graphique.MIObjetGraphique;
@@ -10,6 +11,7 @@ package Graphisme.Onglets
 	import Graphique.Textures.MCouleur;
 	import Graphique.Textures.MImage;
 	
+	import Graphisme.PanelOptions.OptionJeu;
 	import Graphisme.PanelOptions.PanelOption;
 	
 	import Modele.Objets.MApplication;
@@ -65,9 +67,12 @@ package Graphisme.Onglets
 		// dictionnaire contenant pour chaque clé l'import a réalisé, utilisé dans la génération de code:
 		private var dico:Dictionary; 
 		
-		public function Onglet(panel_opt:PanelOption,erreur:Erreur)
+		private var option_jeu:OptionJeu;
+		
+		public function Onglet(panel_opt:PanelOption,option_jeu:OptionJeu,erreur:Erreur)
 		{
 			super();
+			this.option_jeu = option_jeu;
 			this.label="jeu";
 			this.erreur = erreur;
 			this.panel_opt=panel_opt;
@@ -100,9 +105,9 @@ package Graphisme.Onglets
 			nom_jeu = this.label;
 			nom_auteur = "";
 			type_jeux = "Flex";
-			panel_opt.setNomJeu(nom_jeu);
-			panel_opt.setNomAuteur(nom_auteur);
-			panel_opt.setTypeFlex(true);
+			option_jeu.setNomJeu(nom_jeu);
+			option_jeu.setNomAuteur(nom_auteur);
+			option_jeu.setTypeFlex(true);
 			
 			// --------------------------------
 			// 			Dictionnaire contenant les différents imports par rapport au type
@@ -187,8 +192,11 @@ package Graphisme.Onglets
 		    if(dragInitiator!=this)
 		    {
             	DragManager.doDrag(dragInitiator.getGraphique(), ds, event, imageProxy);
+            	option_jeu.visible = false;	
       		}
+      		
         }
+        
         
         private function enregistrerPosition(event:MouseEvent):void
         {        	
@@ -198,6 +206,14 @@ package Graphisme.Onglets
         	 	xInit=event.localX;
         		yInit=event.localY;
         		panel_opt.setObjet(graph_temp);
+        		if(graph_temp.getNomClasse() == "MGraphiqueScene")
+      			{
+      				option_jeu.setVisible(true);
+      			}
+      			else
+      			{
+	      			option_jeu.setVisible(false);
+      			}
         	}
         }
         
@@ -244,7 +260,6 @@ package Graphisme.Onglets
 		{
 			var code_scene:String = this.genererCodeScene();
 			var code_script:String =genererCodeScript();
-			// penser a remettre le titre du jeu et a faire le choix entre air ou flex
 			var res:String="<?xml version=\"1.0\" encoding=\"utf-8\"?> "+
 				" \n <mx:Application xmlns:mx=\"http://www.adobe.com/2006/mxml\" "+
 				"layout=\"absolute\" xmlns:TER=\"Graphique.*\" pageTitle=\""+titre+"\"> \n";
@@ -259,7 +274,6 @@ package Graphisme.Onglets
 		{
 			var code_scene:String = this.genererCodeScene();
 			var code_script:String =genererCodeScript();
-			// penser a remettre le titre du jeu et a faire le choix entre air ou flex
 			var res:String="<?xml version=\"1.0\" encoding=\"utf-8\"?> "+
 				" \n <mx:WindowedApplication title=\""+titre+"\" xmlns:mx=\"http://www.adobe.com/2006/mxml\" "+
 				"layout=\"absolute\" xmlns:TER=\"Graphique.*\"> \n";
@@ -335,8 +349,11 @@ package Graphisme.Onglets
 			}
 			if(obj.getNomClasse()=="MGraphiqueEtoile")
 			{
-				str+=" tourne=\""+((MGraphiqueEtoile)(obj)).tourne+"\" "+
-					 " vide=\"{"+((MGraphiqueEtoile)(obj)).vide+"}\"";
+				str+=" tourne=\""+((MGraphiqueEtoile)(obj)).tourne+"\" ";
+			}
+			if(obj.getNomClasse()=="MGraphiqueEtoilePleine")
+			{
+				str+=" tourne=\""+((MGraphiqueEtoilePleine)(obj)).tourne+"\" ";
 			}
 			
 			str+=" "+genererCodeTexture(obj)+" ";

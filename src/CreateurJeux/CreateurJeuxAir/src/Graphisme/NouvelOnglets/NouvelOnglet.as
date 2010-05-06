@@ -4,6 +4,7 @@ package Graphisme.NouvelOnglets
 	
 	import Graphisme.Onglets.Onglet;
 	import Graphisme.Onglets.TabOnglet;
+	import Graphisme.PanelOptions.OptionJeu;
 	import Graphisme.PanelOptions.PanelOption;
 	
 	import flash.events.MouseEvent;
@@ -49,11 +50,14 @@ package Graphisme.NouvelOnglets
 		
 		private var erreur:Erreur;
 		
+		private var option_jeu:OptionJeu;
+		
 		public function NouvelOnglet(tab_onglet:TabOnglet,panel_opt:PanelOption, erreur:Erreur)
 		{
 			this.erreur=erreur;
 			this.panel_opt=panel_opt;
 			this.tab_onglet=tab_onglet;
+			this.option_jeu =tab_onglet.getOptionJeu();
 			this.title="Nouvel onglet :";
 			this.initialisation();
 		}
@@ -127,9 +131,9 @@ package Graphisme.NouvelOnglets
 		{	
 			if(text_nom_onglet.text!="")
 			{
-				var nouvel_onglet:Onglet = new Onglet(panel_opt,erreur);
+				var nouvel_onglet:Onglet = new Onglet(panel_opt,option_jeu,erreur);
 				nouvel_onglet.label=text_nom_onglet.text;
-				panel_opt.setNomJeu(text_nom_onglet.text);
+//				panel_opt.setNomJeu(text_nom_onglet.text);
 				tab_onglet.addChild(nouvel_onglet);
 				tab_onglet.selectedChild=nouvel_onglet;
 				mettreAJourPanelOption();
@@ -142,7 +146,7 @@ package Graphisme.NouvelOnglets
 		{	
 			if(text_nom_onglet.text!="")
 			{
-				var nouvel_onglet:Onglet = new Onglet(panel_opt,erreur);
+				var nouvel_onglet:Onglet = new Onglet(panel_opt,option_jeu,erreur);
 				nouvel_onglet.label=text_nom_onglet.text;
 				tab_onglet.addChild(nouvel_onglet);
 				tab_onglet.selectedChild=nouvel_onglet;
