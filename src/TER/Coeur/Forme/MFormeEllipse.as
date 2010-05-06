@@ -46,19 +46,27 @@ package Coeur.Forme
 			this.remplirForme((clone_miforme as MFormeEllipse));
 			return clone_miforme as MIForme; 
 		}
-		
+		//collision:
+		/**
+		 * @inheritDoc
+		 */
 		public function getAxesSeparateurs(objet:MIForme):Array{
  			//a revoir??
  			var axes:Array = new Array();
  
  			return axes;
  		}
+ 		/**
+		 * @inheritDoc
+		 */
  		public function getPointsProjection(vecteur:MVecteur):Array{
  			//a revoir??
  			var points:Array = new Array();
  			return points;
  		}
- 		
+ 		/**
+		 * @inheritDoc
+		 */
  		public function getPointsParticuliers():Array{
  			var points:Array = new Array();
  			return points;

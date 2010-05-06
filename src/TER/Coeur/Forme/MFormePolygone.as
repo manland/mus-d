@@ -205,10 +205,6 @@ package Coeur.Forme
 		public function calculAretes():void{
 			
 		}
-		
-		public function getPointsProjection(vecteur:MVecteur):Array{
- 				return getSommet();
- 			}
  			
  		public function getSommet():Array{
  			var points:Array = new Array();
@@ -225,27 +221,37 @@ package Coeur.Forme
  			return points;
  		}
  		
- 		public function getPointsParticuliers():Array{
- 			return getSommet();
- 		}
- 		
+ 		//collision:
+ 		/**
+		 * @inheritDoc
+		 */
  		public function getAxesSeparateurs(objet:MIForme):Array{
  			var axes:Array = new Array();
- 			//if((objet as MFormeRond) == null){
- 				for(var i:int = 0; i<nombre_arete; i++)
- 				{
- 					var a:MArete = aretes[i] as MArete;
- 					var pt_a:MCoordonnee = a.getDepart();
- 	       			var pt_b:MCoordonnee = a.getArrivee();
- 	        		var axe:MVecteur = new MVecteur();
- 	        		axe.entreDeuxPoint(pt_a,pt_b);
- 	        		axe = axe.getNormal();
- 	        		axe.normalise();
- 					axes.push(axe);
- 				}
- 			//}
+ 			for(var i:int = 0; i<nombre_arete; i++)
+ 			{//pour chaque arrête
+ 				var a:MArete = aretes[i] as MArete;
+ 				var pt_a:MCoordonnee = a.getDepart();
+        			var pt_b:MCoordonnee = a.getArrivee();
+         		var axe:MVecteur = new MVecteur();
+         		//l'axe séparateur potentiel est perpendiculaire à l'arrête
+         		axe.entreDeuxPoint(pt_a,pt_b);
+         		axe = axe.getNormal();
+         		axe.normalise();
+ 				axes.push(axe);
+ 			}
  			return axes;
  		}
-
+ 		/**
+		 * @inheritDoc
+		 */
+		public function getPointsParticuliers():Array{
+ 			return getSommet();
+ 		}
+ 		/**
+		 * @inheritDoc
+		 */
+ 		public function getPointsProjection(vecteur:MVecteur):Array{
+ 			return getSommet();
+ 		}
 	}
 }

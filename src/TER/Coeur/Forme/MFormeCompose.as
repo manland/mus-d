@@ -238,20 +238,6 @@ package Coeur.Forme
 			this.calculParametres();
 		}
 		
-		
-		 public override function axeCollision(forme:MIForme):MAxe{
-			 var axe:MAxe = null;
-			 if(this.forme_haut != null)
-				 axe = this.forme_haut.axeCollision(forme);
-			 if(axe == null && this.forme_bas != null)
-				 axe = this.forme_bas.axeCollision(forme);
-			 if(axe == null && this.forme_droit != null)
-				 axe = this.forme_droit.axeCollision(forme);
-			 if(axe == null && this.forme_centre != null)
-			 	axe = this.forme_centre.axeCollision(forme);
-			 return axe;
-		 }
-		
 		public function clone():MIForme{
 			return null;
 		}
@@ -291,6 +277,26 @@ package Coeur.Forme
 				trace("------------------------------");
 			}
 		}
+		
+		//collision:
+		/**
+		 * @inheritDoc
+		 */
+		 public override function axeCollision(forme:MIForme):MAxe{
+			 var axe:MAxe = null;
+			 if(this.forme_haut != null)
+				 axe = this.forme_haut.axeCollision(forme);
+			 if(axe == null && this.forme_bas != null)
+				 axe = this.forme_bas.axeCollision(forme);
+			 if(axe == null && this.forme_droit != null)
+				 axe = this.forme_droit.axeCollision(forme);
+			 if(axe == null && this.forme_centre != null)
+			 	axe = this.forme_centre.axeCollision(forme);
+			 return axe;
+		 }
+		/**
+		 * @inheritDoc
+		 */
 		public function getAxesSeparateurs(objet:MIForme):Array{
  			var axes:Array = new Array();
  			if(forme_haut != null)
@@ -305,6 +311,9 @@ package Coeur.Forme
  				axes = axes.concat(forme_bas.getAxesSeparateurs(objet));
  			return axes;
  		}
+ 		/**
+		 * @inheritDoc
+		 */
  		public function getPointsProjection(vecteur:MVecteur):Array{
  			var points:Array = new Array();
  			if(forme_haut != null)
@@ -319,7 +328,9 @@ package Coeur.Forme
  				points = points.concat(forme_bas.getPointsProjection(vecteur));
  			return points;
  		}
- 		
+ 		/**
+		 * @inheritDoc
+		 */
  		public function getPointsParticuliers():Array{
  			var points:Array = new Array();
  			if(forme_haut != null)

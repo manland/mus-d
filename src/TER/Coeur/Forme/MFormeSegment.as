@@ -85,31 +85,6 @@ package Coeur.Forme
 			trace(this.nom_classe,": largeur = ",this.largeur,", hauteur=",hauteur);
 		}
 		
-		
-		
- 		public function getPointsProjection(vecteur:MVecteur):Array{
-			var points:Array = new Array();
-			points.push(depart,arrivee);
-			return points;
- 		}
- 		
- 		public function getPointsParticuliers():Array{
-			var points:Array = new Array();
-			points.push(depart,arrivee);
-			return points;
- 		}
- 		
- 		//retourne la liste des axes séparateurs pour les deux objects
- 		public function getAxesSeparateurs(objet:MIForme):Array{
- 			var axes:Array = new Array();
- 			var axe:MVecteur = new MVecteur();
- 			axe.entreDeuxPoint(depart,arrivee);
-     		axe = axe.getNormal();
-     		axe.normalise();
- 			axes.push(axe);
- 			return axes;
- 		}
-		
 		public function clone():MIForme{
 			var clone_miforme:MIForme = new MFormeSegment();
 			(clone_miforme as MFormeSegment).setDepart(depart);
@@ -154,5 +129,34 @@ package Coeur.Forme
 			return 0;
 		}
 		
+		//collision:
+		/**
+		 * @inheritDoc
+		 */
+ 		public function getPointsProjection(vecteur:MVecteur):Array{
+			var points:Array = new Array();
+			points.push(depart,arrivee);
+			return points;
+ 		}
+ 		/**
+		 * @inheritDoc
+		 */
+ 		public function getPointsParticuliers():Array{
+			var points:Array = new Array();
+			points.push(depart,arrivee);
+			return points;
+ 		}
+ 		/**
+		 * @inheritDoc
+		 */
+ 		public function getAxesSeparateurs(objet:MIForme):Array{
+ 			var axes:Array = new Array();
+ 			var axe:MVecteur = new MVecteur();
+ 			axe.entreDeuxPoint(depart,arrivee);
+     		axe = axe.getNormal();
+     		axe.normalise();
+ 			axes.push(axe);
+ 			return axes;
+ 		}		
 	}
 }

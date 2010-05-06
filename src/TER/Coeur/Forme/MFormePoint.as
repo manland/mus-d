@@ -22,16 +22,12 @@ package Coeur.Forme
 		
 		public function getPerimetre():Number{
 			return 0;
-		}
+		}		
 		
-		
- 		public function getPointsProjection(vecteur:MVecteur):Array{
-			var points:Array = new Array();
-			points.push(new MCoordonnee(getX(),getY()));
-			return points;
- 		}
- 		
- 		//retourne la liste des axes séparateurs pour les deux objects
+ 		//collision
+ 		/**
+		 * @inheritDoc
+		 */
  		public function getAxesSeparateurs(objet:MIForme):Array{
  			var axes:Array = new Array();
  			var axe:MVecteur = new MVecteur();
@@ -44,7 +40,17 @@ package Coeur.Forme
  			}
  			return axes;
  		}
-		
+ 		/**
+		 * @inheritDoc
+		 */
+ 		public function getPointsProjection(vecteur:MVecteur):Array{
+			var points:Array = new Array();
+			points.push(new MCoordonnee(getX(),getY()));
+			return points;
+ 		}
+		/**
+		 * @inheritDoc
+		 */
 		public function getPointsParticuliers():Array{
 			var points:Array = new Array();
 			points.push(new MCoordonnee(getX(),getY()));
