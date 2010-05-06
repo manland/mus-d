@@ -16,5 +16,6 @@ package Coeur.Forme
 		function getNombreArete():Number;
 		function setNombreArete(nombre_arete:Number):void;
 		function calculAretes():void;
+		function getSommet():Array;
 	}
 }

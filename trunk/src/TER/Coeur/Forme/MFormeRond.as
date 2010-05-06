@@ -37,6 +37,18 @@ package Coeur.Forme
  			return new MCoordonnee(this.getX()+getRayon(),this.getY()+getRayon());
  		}
  		
+		public override function getPerimetre():Number
+		{
+			return 2 * Math.PI * this.getHauteur();
+		}
+		
+		public override function clone():MIForme{
+			var clone_miforme:MIForme = new MFormeRond();
+			this.remplirForme(clone_miforme as MFormeRond);
+			return clone_miforme; 
+		}
+		
+		//collision
  		/**
  		 * @inheritDoc
  		 */
@@ -49,13 +61,14 @@ package Coeur.Forme
  			res.push(pt_b,pt_a);
  			return res;
  		}
- 		
+ 		/**
+		 * @inheritDoc
+		 */
  		public override function getPointsParticuliers():Array{
  			var points:Array = new Array();
  			points.push(getCentre());
  			return points;
- 		}
- 		
+ 		} 		
  		/**
  		 * @inheritDoc
  		 */
@@ -71,17 +84,5 @@ package Coeur.Forme
  			}
  			return axes;
  		}
-		
-		public override function getPerimetre():Number
-		{
-			return 2 * Math.PI * this.getHauteur();
-		}
-		
-		public override function clone():MIForme{
-			var clone_miforme:MIForme = new MFormeRond();
-			this.remplirForme(clone_miforme as MFormeRond);
-			return clone_miforme; 
-		}// stocke dans min et max les valeurs min et max des projections des points du polygone sur le paramètre vecteur
- 
 	}
 }
