@@ -3,7 +3,6 @@
 <includeClasses>
 <classEntry path="Coeur.Forme.MForme"/>
 <classEntry path="Coeur.Forme.MFormeCarre"/>
-<classEntry path="Coeur.Forme.MFormeComplexe"/>
 <classEntry path="Coeur.Forme.MFormeCompose"/>
 <classEntry path="Coeur.Forme.MFormeEllipse"/>
 <classEntry path="Coeur.Forme.MFormeEtoile"/>
@@ -16,17 +15,11 @@
 <classEntry path="Coeur.Forme.MFormeTriangle"/>
 <classEntry path="Coeur.Forme.MIForme"/>
 <classEntry path="Coeur.Forme.MIFormePolygone"/>
-<classEntry path="Coeur.MBonus"/>
-<classEntry path="Coeur.MControle"/>
-<classEntry path="Coeur.MDynamique"/>
 <classEntry path="Coeur.MElement"/>
 <classEntry path="Coeur.MIObjet"/>
 <classEntry path="Coeur.MIObjetEcouteur"/>
-<classEntry path="Coeur.MPropriete"/>
 <classEntry path="Coeur.MScene"/>
 <classEntry path="Coeur.MScore"/>
-<classEntry path="Coeur.MStatique"/>
-<classEntry path="Coeur.MUtilitaire"/>
 <classEntry path="Controleur.MClavier"/>
 <classEntry path="Controleur.MIEcouteurClavier"/>
 <classEntry path="Controleur.MIEcouteurSouris"/>
@@ -57,7 +50,6 @@
 <classEntry path="Graphique.Textures.MTexte"/>
 <classEntry path="Graphique.Textures.MTextureAbstraite"/>
 <classEntry path="Graphique.Textures.MTextureUtilitaire"/>
-<classEntry path="Utilitaires.Fabrique"/>
 <classEntry path="Utilitaires.MArete"/>
 <classEntry path="Utilitaires.MAxe"/>
 <classEntry path="Utilitaires.MCoordonnee"/>

@@ -126,53 +126,59 @@ package Coeur.Forme
 			if(a1 == null || a2 == null || a3 == null)
 				throw new MErreur(this.nom_classe,"setHauteur","Une des arêtes est nulle");
 			
-			var max:MCoordonnee = MUtilitaire.maxMCoordonneeY(a1.getDepart(), a1.getArrivee());
-			max = MUtilitaire.maxMCoordonneeY(max, MUtilitaire.maxMCoordonneeY(a2.getDepart(), a2.getArrivee()));
-			max = MUtilitaire.maxMCoordonneeY(max, MUtilitaire.maxMCoordonneeY(a3.getDepart(), a3.getArrivee()));
-			
-			var pourcentageAugmentation:Number = ((this.y + hauteur) * 100) / max.getY();
-			
+			var pourcentageAugmentation:Number = hauteur/ this.hauteur;
 			for(var i:uint = 0; i<nombre_arete; i++)
-			{
+		 	{
 				var arete:MArete = aretes[i] as MArete;
 				if(arete == null){
 					throw new MErreur(this.nom_classe, "setHauteur", "Une arete est vide");
 					return ;
 				}
-				if(arete.getArrivee().getY() > this.y)
-					arete.getArrivee().setY( (arete.getArrivee().getY() * pourcentageAugmentation) / 100);
-				if(arete.getDepart().getY() > this.y)
-					arete.getDepart().setY( (arete.getDepart().getY() * pourcentageAugmentation) / 100);
+				if(arete.getArrivee().getY() > this.y){	
+					var z:Number = arete.getArrivee().getY() - this.y;
+					z *= pourcentageAugmentation;
+					arete.getArrivee().setY(z+this.y)// / 100);
+				}
+				if(arete.getDepart().getY() > this.y){
+					z = arete.getDepart().getY() - this.y;
+					z *= pourcentageAugmentation;
+					arete.getDepart().setY(z+this.y)
+				}	//arete.getDepart().setX( (arete.getDepart().getX() * pourcentageAugmentation))// / 100);
 			}
 			this.remplitPoint();
 			super.setHauteur(hauteur);
 		}
 		
 		public override function setLargeur(largeur:Number):void{
-			trace(largeur);
 			var a1:MArete = this.aretes[0] as MArete;
 			var a2:MArete = this.aretes[1] as MArete;
 			var a3:MArete = this.aretes[2] as MArete;
 			if(a1 == null || a2 == null || a3 == null)
 				throw new MErreur(this.nom_classe,"setLargeur","Une des arêtes est nulle");
 			
-			var max:MCoordonnee = MUtilitaire.maxMCoordonneeX(a1.getDepart(), a1.getArrivee());
+			/* var max:MCoordonnee = MUtilitaire.maxMCoordonneeX(a1.getDepart(), a1.getArrivee());
 			max = MUtilitaire.maxMCoordonneeX(max, MUtilitaire.maxMCoordonneeX(a2.getDepart(), a2.getArrivee()));
 			max = MUtilitaire.maxMCoordonneeX(max, MUtilitaire.maxMCoordonneeX(a3.getDepart(), a3.getArrivee()));
-			
-			var pourcentageAugmentation:Number = ((this.x + largeur) * 100) / max.getX();
-			
+			 */
+			//var pourcentageAugmentation:Number = ((this.x + largeur)) / max.getX();
+			var pourcentageAugmentation:Number = largeur/ this.largeur;
 			for(var i:uint = 0; i<nombre_arete; i++)
-			{
+		 	{
 				var arete:MArete = aretes[i] as MArete;
 				if(arete == null){
 					throw new MErreur(this.nom_classe, "setHauteur", "Une arete est vide");
 					return ;
 				}
-				if(arete.getArrivee().getX() > this.x)
-					arete.getArrivee().setX( (arete.getArrivee().getX() * pourcentageAugmentation) / 100);
-				if(arete.getDepart().getX() > this.x)
-					arete.getDepart().setX( (arete.getDepart().getX() * pourcentageAugmentation) / 100);
+				if(arete.getArrivee().getX() > this.x){	
+					var z:Number = arete.getArrivee().getX() - this.x;
+					z *= pourcentageAugmentation;
+					arete.getArrivee().setX(z+this.x)// / 100);
+				}
+				if(arete.getDepart().getX() > this.x){
+					var z:Number = arete.getDepart().getX() - this.x;
+					z *= pourcentageAugmentation;
+					arete.getDepart().setX(z+this.x)
+				}	//arete.getDepart().setX( (arete.getDepart().getX() * pourcentageAugmentation))// / 100);
 			}
 			this.remplitPoint();
 			super.setLargeur(largeur);
