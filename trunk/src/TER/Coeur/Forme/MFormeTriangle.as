@@ -91,6 +91,7 @@ package Coeur.Forme
 					arete.getArrivee().setY( new Number(nouveau_point.getY()));
 				}
 			}
+			this.calculAretes();
 			this.remplitPoint();
 		}
 		
@@ -305,7 +306,7 @@ package Coeur.Forme
 			var clone_miforme:MFormeTriangle = new MFormeTriangle();
 			clone_miforme.setPoint1(this.point1.clone());
 			clone_miforme.setPoint2(this.point2.clone());
-			clone_miforme.setPoint3(this.point31.clone());
+			clone_miforme.setPoint3(this.point3.clone());
 			super.remplirFormePolygone(clone_miforme);
 			clone_miforme.setAretes(aretes);
 			return clone_miforme; 
