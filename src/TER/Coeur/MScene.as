@@ -137,7 +137,7 @@ package Coeur
 				pt_b = new MCoordonnee(getX()+this.getLargeur(), getY());
 			}else if (ty+this.getHauteur() >= this.getY() + this.getHauteur()){
 				pt_a = new MCoordonnee(getX(), getY()+this.getHauteur());
-				pt_b = new MCoordonnee(getX()+this.getLargeur(), getY()+this.getLargeur());
+				pt_b = new MCoordonnee(getX()+this.getLargeur(), getY()+getHauteur());
 			}
 			
 			vecteur.entreDeuxPoint(pt_a,pt_b);	
@@ -160,14 +160,14 @@ package Coeur
 			var larg:Number = objet.getLargeur();
 			var haut:Number = objet.getHauteur();
 						
-			if(tx <= this.getX()){
+			if(tx <= getX()){
 				pt = new MCoordonnee(getX(),getY());
-			}else if( tx+larg >= this.getX() + this.getLargeur()){
-				pt = new MCoordonnee(getX()+this.getLargeur(),getY());
-			}else if(ty <= this.getY()){
+			}else if( tx+larg >= getX() + getLargeur()){
+				pt = new MCoordonnee(getX()+getLargeur(),getY());
+			}else if(ty <= getY()){
 				pt = new MCoordonnee(getX(),getY());
-			}else if (ty+haut >= this.getY() + this.getHauteur()){
-				pt = new MCoordonnee(this.getX(),this.getY()+getHauteur());
+			}else if (ty+haut >= getY() + getHauteur()){
+				pt = new MCoordonnee(this.getX(), getY()+getHauteur());
 			}
 			return pt;
 		}
@@ -231,7 +231,7 @@ package Coeur
 			var ty:Number = objet.getY();
 			var larg:Number = objet.getLargeur();
 			var haut:Number = objet.getHauteur();
-			return (tx <= this.getX() || (tx+larg) >= this.getX() + getLargeur() || ty <= this.getY() || (ty+haut) >= this.getY() + getHauteur());
+			return (tx <= getX() || (tx+larg) >= getX() + getLargeur() || ty <= this.getY() || (ty+haut) >= this.getY()+getHauteur());
 		}
 		
 		
