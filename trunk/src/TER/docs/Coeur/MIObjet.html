@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../print.css" type="text/css" media="print">
-<meta content="MIObjet,Coeur.MIObjet,actionCollision,affiche,ajoutObjetEcouteur,augmente,avance,axeCollision,clone,deplacement,drag,estProcheDe,getEcouteurs,getForme,getHauteur,getLargeur,getNomClasse,getX,getY,mourir,naitre,setCoordonnees,setEcouteurs,setForme,setHauteur,setLargeur,setNomClasse,setX,setY,supprimeObjetEcouteur" name="keywords">
+<meta content="MIObjet,Coeur.MIObjet,actionCollision,affiche,ajoutObjetEcouteur,axeCollision,clone,deplacement,estProcheDe,getEcouteurs,getForme,getHauteur,getLargeur,getNomClasse,getX,getY,mourir,naitre,redimensionnement,setForme,setHauteur,setLargeur,setX,setY,supprimeObjetEcouteur" name="keywords">
 <title>Coeur.MIObjet</title>
 </head>
 <body>
@@ -77,23 +77,12 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#augmente()">augmente</a>(l:Number, h:Number):void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MIObjet</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#avance()">avance</a>(x:Number, y:Number):void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MIObjet</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
 <a class="signatureLink" href="#axeCollision()">axeCollision</a>(objet:<a href="MIObjet.html">MIObjet</a>):<a href="../Utilitaires/Utilitaires/MAxe.html">MAxe</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+    retourne l'axe selon lequel collisionne l'objet receveur et celui passé en paramètre ou null si ils ne collisionnent pas
+    <p> cette fonction appelle la fonction d'axeCollision de sa forme</p>
+    </div>
 </td><td class="summaryTableOwnerCol">MIObjet</td>
 </tr>
 <tr class="">
@@ -108,16 +97,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#deplacement()">deplacement</a>(x:Number, y:Number):void</div>
-<div class="summaryTableDescription">
-   Il faut représenter l'objet graphique egalement :)
-   
-   </div>
-</td><td class="summaryTableOwnerCol">MIObjet</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#drag()">drag</a>():void</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MIObjet</td>
 </tr>
@@ -125,7 +104,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#estProcheDe()">estProcheDe</a>(objet:<a href="MIObjet.html">MIObjet</a>):Boolean</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   vérifie si l'objet passé en paramètre est proche de l'objet receveur
+   <p>retourne vrai si les coordonnés de l'enveloppe rectangulaire de l'objet receveur chevauchent celles de l'objet passé en paramètre </p>
+   </div>
 </td><td class="summaryTableOwnerCol">MIObjet</td>
 </tr>
 <tr class="">
@@ -197,14 +179,7 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#setCoordonnees()">setCoordonnees</a>(x:Number, y:Number):void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MIObjet</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#setEcouteurs()">setEcouteurs</a>(ecouteurs:Array):void</div>
+<a class="signatureLink" href="#redimensionnement()">redimensionnement</a>(l:Number, h:Number):void</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MIObjet</td>
 </tr>
@@ -226,13 +201,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("In
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#setLargeur()">setLargeur</a>(largeur:Number):void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MIObjet</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#setNomClasse()">setNomClasse</a>(nom_classe:String):void</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MIObjet</td>
 </tr>
@@ -309,46 +277,6 @@ showHideInherited();
 </tr>
 </table>
 </div>
-<a name="augmente()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">augmente</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function augmente(l:Number, h:Number):void</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">l</span>:Number</code></td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">h</span>:Number</code></td>
-</tr>
-</table>
-</div>
-<a name="avance()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">avance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function avance(x:Number, y:Number):void</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">x</span>:Number</code></td>
-</tr>
-<tr>
-<td class="paramSpacer">&nbsp;</td>
-</tr>
-<tr>
-<td width="20px"></td><td><code><span class="label">y</span>:Number</code></td>
-</tr>
-</table>
-</div>
 <a name="axeCollision()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -356,19 +284,31 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function axeCollision(objet:<a href="MIObjet.html">MIObjet</a>):<a href="../Utilitaires/Utilitaires/MAxe.html">MAxe</a></code><span class="label">Parameters</span>
+<code>public function axeCollision(objet:<a href="MIObjet.html">MIObjet</a>):<a href="../Utilitaires/Utilitaires/MAxe.html">MAxe</a></code><p>
+    retourne l'axe selon lequel collisionne l'objet receveur et celui passé en paramètre ou null si ils ne collisionnent pas
+    </p><p> cette fonction appelle la fonction d'axeCollision de sa forme</p>
+    <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">objet</span>:<a href="MIObjet.html">MIObjet</a></code></td>
+<td width="20px"></td><td><code><span class="label">objet</span>:<a href="MIObjet.html">MIObjet</a></code> &mdash; objet pour lequel on cherche l'axe de collision
+    </td>
 </tr>
 </table>
 <p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="../Utilitaires/Utilitaires/MAxe.html">MAxe</a></code></td>
+<td width="20"></td><td><code><a href="../Utilitaires/Utilitaires/MAxe.html">MAxe</a></code> &mdash; 
+                        axe selon lequelle a lieu la collision entre l'objet receveur et celui passé en paramètre ou null s'il n'y a pas collision
+    
+                        
+                     </td>
 </tr>
 </table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">Coeur.MForme.axeCollision</div>
 </div>
 <a name="clone()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
@@ -393,10 +333,7 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function deplacement(x:Number, y:Number):void</code><p>
-   Il faut représenter l'objet graphique egalement :)
-   
-   </p><span class="label">Parameters</span>
+<code>public function deplacement(x:Number, y:Number):void</code><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">x</span>:Number</code></td>
@@ -409,15 +346,6 @@ showHideInherited();
 </tr>
 </table>
 </div>
-<a name="drag()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">drag</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function drag():void</code>
-</div>
 <a name="estProcheDe()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -425,17 +353,22 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function estProcheDe(objet:<a href="MIObjet.html">MIObjet</a>):Boolean</code><span class="label">Parameters</span>
+<code>public function estProcheDe(objet:<a href="MIObjet.html">MIObjet</a>):Boolean</code><p>
+   vérifie si l'objet passé en paramètre est proche de l'objet receveur
+   </p><p>retourne vrai si les coordonnés de l'enveloppe rectangulaire de l'objet receveur chevauchent celles de l'objet passé en paramètre </p>
+   <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">objet</span>:<a href="MIObjet.html">MIObjet</a></code></td>
+<td width="20px"></td><td><code><span class="label">objet</span>:<a href="MIObjet.html">MIObjet</a></code> &mdash; objet dont on veut savoir s'il est près de l'objet receveur
+   </td>
 </tr>
 </table>
 <p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>Boolean</code></td>
+<td width="20"></td><td><code>Boolean</code> &mdash; vrai si l'objet passé en paramètre est proche de l'objet receveur
+   </td>
 </tr>
 </table>
 </div>
@@ -570,37 +503,23 @@ showHideInherited();
 <div class="detailBody">
 <code>public function naitre():void</code>
 </div>
-<a name="setCoordonnees()"></a>
+<a name="redimensionnement()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
-<td class="detailHeaderName">setCoordonnees</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+<td class="detailHeaderName">redimensionnement</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
 </tr>
 </table>
 <div class="detailBody">
-<code>public function setCoordonnees(x:Number, y:Number):void</code><span class="label">Parameters</span>
+<code>public function redimensionnement(l:Number, h:Number):void</code><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">x</span>:Number</code></td>
+<td width="20px"></td><td><code><span class="label">l</span>:Number</code></td>
 </tr>
 <tr>
 <td class="paramSpacer">&nbsp;</td>
 </tr>
 <tr>
-<td width="20px"></td><td><code><span class="label">y</span>:Number</code></td>
-</tr>
-</table>
-</div>
-<a name="setEcouteurs()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">setEcouteurs</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function setEcouteurs(ecouteurs:Array):void</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">ecouteurs</span>:Array</code></td>
+<td width="20px"></td><td><code><span class="label">h</span>:Number</code></td>
 </tr>
 </table>
 </div>
@@ -643,20 +562,6 @@ showHideInherited();
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">largeur</span>:Number</code></td>
-</tr>
-</table>
-</div>
-<a name="setNomClasse()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">setNomClasse</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function setNomClasse(nom_classe:String):void</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">nom_classe</span>:String</code></td>
 </tr>
 </table>
 </div>
