@@ -58,6 +58,11 @@ package Coeur.Forme
  			var points:Array = new Array();
  			return points;
  		}
+ 		
+ 		public function getPointsParticuliers():Array{
+ 			var points:Array = new Array();
+ 			return points;
+ 		}
 		 
 	}
 }

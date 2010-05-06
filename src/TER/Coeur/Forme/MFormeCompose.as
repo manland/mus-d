@@ -319,5 +319,20 @@ package Coeur.Forme
  				points = points.concat(forme_bas.getPointsProjection(vecteur));
  			return points;
  		}
+ 		
+ 		public function getPointsParticuliers():Array{
+ 			var points:Array = new Array();
+ 			if(forme_haut != null)
+ 				points = points.concat(forme_haut.getPointsParticuliers());
+ 			if(forme_centre != null)
+ 				points = points.concat(forme_centre.getPointsParticuliers());
+ 			if(forme_gauche != null)
+ 				points = points.concat(forme_gauche.getPointsParticuliers());
+ 			if(forme_droit != null)
+ 				points = points.concat(forme_droit.getPointsParticuliers());
+ 			if(forme_bas != null)
+ 				points = points.concat(forme_bas.getPointsParticuliers());
+ 			return points;
+ 		}
 	}
 }
