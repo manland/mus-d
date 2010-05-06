@@ -13,10 +13,10 @@ package Graphique {
 	public class MGraphiqueEtoile extends MGraphiqueAbstrait implements MIObjetGraphique {
 
 		public function MGraphiqueEtoile(x:int=0, y:int=0, largeur:int=50, tourne:int=0) {
-			this.largeur = largeur;
 			forme = new MFormeEtoile();
 			(forme as MFormeEtoile).instancie(x, y, largeur, rotation);
 			objet.setForme(forme);
+			this.largeur = largeur;
 			nom_classe = "MGraphiqueEtoile";
 		}
 		
