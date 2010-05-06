@@ -33,7 +33,6 @@ package Coeur
 		
 		public override function actionCollision(objet:MIObjet,axe:MAxe):void {
 			fireCollision(axe);	
-			mouv.rebondir(axe);		
 		}
 			
 		public function clone():MIObjet{
