@@ -5,7 +5,6 @@ package Coeur
 	import Controleur.MMouvementPerpetuel;
 	
 	import Utilitaires.MAxe;
-	import Utilitaires.MErreur;
 	
 	import mx.controls.Text;
 	
@@ -16,11 +15,13 @@ package Coeur
 		
 		public var mouv:MMouvementPerpetuel;
 		public var sysout:Text;
+		public var effets:Array;
 		
 		public function MElement()
 		{
 			this.nom_classe = "MElement";
 			this.ecouteurs = new Array();
+			this.effets = new Array();
 			this.forme = null;
 			naitre();
 		}
@@ -43,6 +44,24 @@ package Coeur
 			clone_mscene.setForme(clone_forme);
 			
 			return clone_mscene;
+		}
+		
+		
+		
+		
+		public function debut():void{
+		}
+		
+		public function fin():void{
+			
+		}
+		
+		public function fireDebutJeu():void{
+			
+		}
+		
+		public function fireFinJeu():void{
+			
 		}
 
 	}

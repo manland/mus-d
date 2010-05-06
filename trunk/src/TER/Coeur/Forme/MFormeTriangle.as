@@ -1,5 +1,7 @@
 package Coeur.Forme
 {
+	import Coeur.MIObjet;
+	
 	import Utilitaires.*;
 	
 	public class MFormeTriangle extends MFormePolygone implements MIFormePolygone
@@ -78,7 +80,7 @@ package Coeur.Forme
 			this.point3 = point3;
 		}
 		
-		public function setPoint(ancien_point:MCoordonnee, nouveau_point:MCoordonnee):void{
+		public function setPoint(ancien_point:MCoordonnee, nouveau_point:MCoordonnee, objet:MIObjet):void{
 			ancien_point = ancien_point.clone();
 			nouveau_point = nouveau_point.clone();
 			if(aretes.length != 3){
@@ -99,6 +101,8 @@ package Coeur.Forme
 			}
 			this.calculAretes();
 			this.remplitPoint();
+			objet.fireChangementTaille();
+			objet.fireDeplacementObjet();
 		}
 		
 		public override function setX(x:Number):void{
