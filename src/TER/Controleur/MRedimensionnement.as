@@ -85,7 +85,7 @@ package Controleur
 		 * <p> redimensionne l'objet sur lequel s'applique le Redimensionnement receveur ( + unite_largeur en largeur et + unite_hauteur en hauteur ) </p>		 
 		 */		
 		private function redimentionneUneUnite(e:TimerEvent):void{
-			objet.augmente( unite_largeur, unite_hauteur);
+			objet.redimensionnement( unite_largeur, unite_hauteur);
 		}
 		
 		/**
