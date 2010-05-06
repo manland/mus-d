@@ -3,13 +3,13 @@ package Graphisme.BarreOutils
 	import Erreurs.Erreur;
 	
 	import Graphisme.FenetreCodes.FenetreCode;
-	import Graphisme.FenetreCodes.TextAeraCode;
+	import Graphisme.FenetreCodes.TabOngletCode;
 	import Graphisme.Onglets.TabOnglet;
 	import Graphisme.PanelOptions.PanelOption;
 	
 	import flash.net.*;
 	
-	import mx.controls.TextArea;
+	import mx.controls.Button;
 	import mx.events.ItemClickEvent;
 	import mx.managers.PopUpManager;
 	
@@ -17,10 +17,11 @@ package Graphisme.BarreOutils
 	{
 		private var tab_onglet:TabOnglet;
 		private var fenetre_code:FenetreCode;
-		private var code:TextAeraCode;
-		private var myPopUp:TextArea;
 		private var erreur:Erreur;
 		private var panel_opt:PanelOption;
+		private var tab_onglet_code:TabOngletCode;
+		private var nom_onglet:String;
+		
 		
 		public function BarreOutilCode(tab_onglet:TabOnglet,panel_opt:PanelOption)
 		{
@@ -29,28 +30,44 @@ package Graphisme.BarreOutils
 			this.percentHeight=100;
 			this.erreur=erreur;
 			this.tab_onglet=tab_onglet;
-			code=new TextAeraCode();
-			fenetre_code=new FenetreCode(code);
+			tab_onglet_code = new TabOngletCode();
+			fenetre_code=new FenetreCode(tab_onglet_code);
 			liste_bouton.push({id:"genererCode", label:"Générer Code"});
-			
+			liste_bouton.push({id:"afficherOptionJeu", label:"Options du jeu"});
+
 			this.addEventListener(ItemClickEvent.ITEM_CLICK,clicItem);
 		}
 		
 		public function clicItem(event:ItemClickEvent):void
 		{	
-			var nom_jeu:String = tab_onglet.getOnglet().getNomJeu();
-			var type_jeu:String = tab_onglet.getOnglet().getTypeJeu();
-			if(type_jeu=="Flex")
+			if(event.index == 0)
 			{
-				fenetre_code.changerCode(tab_onglet.getOnglet().genererCodeApplicationFlex(nom_jeu).toString());
-			}
-			else if(type_jeu=="Air")
-			{
-				fenetre_code.changerCode(tab_onglet.getOnglet().genererCodeApplicationAir(nom_jeu).toString());
-			}
-            PopUpManager.addPopUp(fenetre_code, tab_onglet.parent, false);
-            PopUpManager.centerPopUp(fenetre_code);
+				var nom_jeu:String = tab_onglet.getOnglet().getNomJeu();
+				var type_jeu:String = tab_onglet.getOnglet().getTypeJeu();
+				nom_onglet = nom_jeu+"_"+type_jeu+".mxml";
+				fenetre_code.getTabOngletCode().getOnglet().setNomOnglet(nom_onglet);
+				fenetre_code.getHboxBtn().setTitreBouton(nom_onglet);
+				if(type_jeu=="Flex")
+				{
+					fenetre_code.getTabOngletCode().getOnglet().getCode().text=tab_onglet.getOnglet().genererCodeApplicationFlex(nom_jeu).toString();
+				}
+				else if(type_jeu=="Air")
+				{
+					fenetre_code.getTabOngletCode().getOnglet().getCode().text=tab_onglet.getOnglet().genererCodeApplicationAir(nom_jeu).toString();
+				}
+				PopUpManager.removePopUp(fenetre_code);
+	            PopUpManager.addPopUp(fenetre_code, tab_onglet.parent, false);
+	            PopUpManager.centerPopUp(fenetre_code);
+	  		}
+	  		else if(event.index == 1)
+	  		{
+	  			tab_onglet.getOptionJeu().visible=true;
+	  		}
+	  
 		}
-		
+	
+		// accesseurs : 
+		public function getNomOnglet():String {return nom_onglet;}
+		public function setNomOnglet(s:String):void { nom_onglet = s;}	
 	}
 }

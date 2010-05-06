@@ -1,5 +1,7 @@
 package Graphisme.PanelDegrades
 {
+	import Graphique.Textures.Degrades.MDegrade;
+	
 	import mx.containers.HBox;
 	import mx.containers.Panel;
 	import mx.containers.VBox;
@@ -19,9 +21,12 @@ package Graphisme.PanelDegrades
 		private var label_posY:Label;
 		private var posY:TextArea;
 		
-		public function PanelPositionDansBox()
+		private var degrade:MDegrade;
+		
+		public function PanelPositionDansBox(degrade:MDegrade)
 		{
 			super();
+			this.degrade=degrade;
 			this.styleName = "stylePanelDegrade";
 			this.title="Positionnement";
 			this.width = 114;
@@ -57,6 +62,15 @@ package Graphisme.PanelDegrades
 			
 			this.addChild(vBox);
 		}
+		
+		// accesseurs : 
+		public function getPosX():TextArea {return posX;}
+		public function getPosY():TextArea {return posY;}
+		
+		
+		//----------------------------------------------------------------------
+		//							Evenements :
+		//----------------------------------------------------------------------
 		
 	}
 }
