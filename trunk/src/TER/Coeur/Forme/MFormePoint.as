@@ -1,6 +1,6 @@
 package Coeur.Forme
 {
-	import Utilitaires.MVecteur;
+	import Utilitaires.*;
 	
 	public class MFormePoint extends MForme implements MIForme
 	{
@@ -26,13 +26,30 @@ package Coeur.Forme
 		
 		
  		public function getPointsProjection(vecteur:MVecteur):Array{
-			return null;
+			var points:Array = new Array();
+			points.push(new MCoordonnee(getX(),getY()));
+			return points;
  		}
  		
  		//retourne la liste des axes séparateurs pour les deux objects
  		public function getAxesSeparateurs(objet:MIForme):Array{
- 			return null;
+ 			var axes:Array = new Array();
+ 			var axe:MVecteur = new MVecteur();
+ 			var pts:Array = objet.getPointsParticuliers();
+ 			for(var i:int = 0; i < pts.length; i = i + 1) {
+ 				var pt:MCoordonnee = (pts[i] as MCoordonnee);
+ 				axe.entreDeuxPoint(new MCoordonnee(getX(),getY()),pt);
+ 				axe.normalise();
+ 				axes.push(axe.clone());
+ 			}
+ 			return axes;
  		}
+		
+		public function getPointsParticuliers():Array{
+			var points:Array = new Array();
+			points.push(new MCoordonnee(getX(),getY()));
+			return points;
+		}
 		
 		public function clone():MIForme{
 			var clone_miforme:MIForme = new MFormePoint();

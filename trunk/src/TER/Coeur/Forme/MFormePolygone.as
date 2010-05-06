@@ -225,9 +225,13 @@ package Coeur.Forme
  			return points;
  		}
  		
+ 		public function getPointsParticuliers():Array{
+ 			return getSommet();
+ 		}
+ 		
  		public function getAxesSeparateurs(objet:MIForme):Array{
  			var axes:Array = new Array();
- 			if((objet as MFormeRond) == null){
+ 			//if((objet as MFormeRond) == null){
  				for(var i:int = 0; i<nombre_arete; i++)
  				{
  					var a:MArete = aretes[i] as MArete;
@@ -239,7 +243,7 @@ package Coeur.Forme
  	        		axe.normalise();
  					axes.push(axe);
  				}
- 			}
+ 			//}
  			return axes;
  		}
 

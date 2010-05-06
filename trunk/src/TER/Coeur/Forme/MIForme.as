@@ -1,7 +1,5 @@
 package Coeur.Forme
 {
-	import Coeur.MIObjet;
-	
 	import Utilitaires.*;
 	
 	public interface MIForme
@@ -25,6 +23,7 @@ package Coeur.Forme
  		function getPointsProjection(vect:MVecteur):Array;
  		function seProjeteSur(vecteur:MVecteur):Array;
  		function axeCollision(forme:MIForme):MAxe;
+ 		function getPointsParticuliers():Array;
 		
 		function clone():MIForme;
 		

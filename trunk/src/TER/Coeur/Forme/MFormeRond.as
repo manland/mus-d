@@ -50,27 +50,24 @@ package Coeur.Forme
  			return res;
  		}
  		
+ 		public override function getPointsParticuliers():Array{
+ 			var points:Array = new Array();
+ 			points.push(getCentre());
+ 			return points;
+ 		}
+ 		
  		/**
  		 * @inheritDoc
  		 */
  		public override function getAxesSeparateurs(objet:MIForme):Array{
  			var axes:Array = new Array();
  			var axe:MVecteur = new MVecteur();
- 			if((objet as MFormeRond) != null){
- 			//l'autre objet est un rond, l'axe est alors la droite entre les deux centres
- 				axe.entreDeuxPoint(this.getCentre(),(objet as MFormeRond).getCentre());
+ 			var pts:Array = objet.getPointsParticuliers();
+ 			for(var i:int = 0; i < pts.length; i = i + 1) {
+ 				var pt:MCoordonnee = (pts[i] as MCoordonnee);
+ 				axe.entreDeuxPoint(this.getCentre(),pt);
  				axe.normalise();
- 				axes.push(axe);
- 			}
- 			else if(objet as MFormePolygone != null){
- 			// si l'autre objet est un polygone les axes sont alors les droites entre chaque sommet du polygone et le centre
- 				var pts:Array = (objet as MFormePolygone).getSommet();
- 				for(var i:int = 0; i < pts.length; i = i + 1) {
- 					var pt:MCoordonnee = (pts[i] as MCoordonnee);
- 					axe.entreDeuxPoint(this.getCentre(),pt);
- 					axe.normalise();
- 					axes.push(axe.clone());
- 				}
+ 				axes.push(axe.clone());
  			}
  			return axes;
  		}
