@@ -60,8 +60,8 @@ package Graphique {
 				ma_bordure.appliquer(graphics);
 			}
 			var f:MFormeSegment = forme as MFormeSegment;
-			graphics.moveTo(f.getDepart().getX()-f.getObjet().getX(), f.getDepart().getY()-f.getObjet().getY());
-			graphics.lineTo(f.getArrivee().getX()-f.getObjet().getX(), f.getArrivee().getY()-f.getObjet().getY());
+			graphics.moveTo(f.getDepart().getX()-f.getX(), f.getDepart().getY()-f.getY());
+			graphics.lineTo(f.getArrivee().getX()-f.getX(), f.getArrivee().getY()-f.getY());
 			graphics.endFill();
 		}
 		
