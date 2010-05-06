@@ -29,13 +29,17 @@ package Coeur.Forme
 		
 		public function getRayon():Number
 		{
-			return this.getHauteur();
+			return this.getHauteur()/2;
 		}
 		
 		public function getCentre():MCoordonnee
  		{
  			return new MCoordonnee(this.getX()+getRayon(),this.getY()+getRayon());
  		}
+ 		
+ 		/**
+ 		 * @inheritDoc
+ 		 */
  		public override function getPointsProjection(vecteur:MVecteur):Array{
  			var res:Array = new Array();
  			var vecteur_unite :MVecteur = vecteur.clone();
@@ -46,7 +50,9 @@ package Coeur.Forme
  			return res;
  		}
  		
- 		//retourne la liste des axes séparateurs pour les deux objects
+ 		/**
+ 		 * @inheritDoc
+ 		 */
  		public override function getAxesSeparateurs(objet:MIForme):Array{
  			var axes:Array = new Array();
  			var axe:MVecteur = new MVecteur();
@@ -80,30 +86,5 @@ package Coeur.Forme
 			return clone_miforme; 
 		}// stocke dans min et max les valeurs min et max des projections des points du polygone sur le paramètre vecteur
  
- 
- 		public override function seProjeteSur(vecteur:MVecteur):Array{
- 			var pts:Array = (this as MIForme).getPointsProjection(vecteur);
- 			var res:Array = new Array();
- 			var min:Number = Number.POSITIVE_INFINITY;
- 			var max:Number = Number.NEGATIVE_INFINITY;
- 			for(var i:int = 0; i<pts.length; i++){
- 				var pt:MCoordonnee = pts[i] as MCoordonnee;
- 				var scalaire:Number = vecteur.getX()*pt.getX() + pt.getY()*vecteur.getY();
- 				var projection:MVecteur = new MVecteur();
- 				projection.instancie(scalaire * vecteur.getX(),scalaire * vecteur.getY());
- 				var val:Number = 0;
-              	if(projection.getX()*vecteur.getX() >= 0 && projection.getY() * vecteur.getY() >= 0){
-                  	val = projection.getNorme();
-               	}
-              	else{
-                  	val = -projection.getNorme();
-               	}
-              	min = Math.min(val, min);
-              	max = Math.max(val, max);
-              	res.push(max,min);
- 			}
- 			return res;
- 		}
-		 
 	}
 }
