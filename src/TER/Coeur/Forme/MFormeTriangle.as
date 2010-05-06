@@ -63,6 +63,37 @@ package Coeur.Forme
 			return this.point3;
 		}
 		
+		private function setPoint1(point1:MCoordonnee):void{
+			this.point1 = point1;
+		}
+		private function setPoint2(point2:MCoordonnee):void{
+			this.point2 = point2;
+		}
+		private function setPoint3(point3:MCoordonnee):void{
+			this.point3 = point3;
+		}
+		
+		public function setPoint(ancien_point:MCoordonnee, nouveau_point:MCoordonnee):void{
+			if(aretes.length != 3){
+				throw new MErreur(this.nom_classe, "setPoint", "Pas assez de points pour setter le nouveau point");
+			}
+			for(var i:uint=0; i < aretes.length; i++){
+				var arete:MArete = aretes[i] as MArete;
+				if(arete == null)
+					throw new MErreur(this.nom_classe, "remplitPoint", "Ceci n'est pas une arete ....");
+				
+				if(ancien_point.estEgal(arete.getDepart())){
+					arete.getDepart().setX(new Number(nouveau_point.getX()));
+					arete.getDepart().setY( new Number(nouveau_point.getY()));
+				}
+				if(ancien_point.estEgal(arete.getArrivee())){
+					arete.getArrivee().setX(new Number(nouveau_point.getX()));
+					arete.getArrivee().setY( new Number(nouveau_point.getY()));
+				}
+			}
+			this.remplitPoint();
+		}
+		
 		public override function setX(x:Number):void{
 		}
 		public override function setY(y:Number):void{
@@ -96,6 +127,7 @@ package Coeur.Forme
 				if(arete.getDepart().getY() > this.y)
 					arete.getDepart().setY( (arete.getDepart().getY() * pourcentageAugmentation) / 100);
 			}
+			this.remplitPoint();
 			super.setHauteur(hauteur);
 		}
 		
@@ -124,6 +156,7 @@ package Coeur.Forme
 				if(arete.getDepart().getX() > this.x)
 					arete.getDepart().setX( (arete.getDepart().getX() * pourcentageAugmentation) / 100);
 			}
+			this.remplitPoint();
 			super.setLargeur(largeur);		
 		}
 		
@@ -200,8 +233,10 @@ package Coeur.Forme
 			if(aretes.length < nombre_arete)
 			{
 				aretes.push(arete);
-				if(aretes.length == this.nombre_arete)
+				if(aretes.length == this.nombre_arete){
 					this.calculAretes();
+					this.remplitPoint()
+				}
 				return true;
 			}
 			else{
@@ -241,6 +276,14 @@ package Coeur.Forme
 			return Math.sqrt(aire);
 		}
 		
+		public override function deplacement(x:Number,y:Number):void
+		{
+			super.deplacement(x,y);
+			point1.deplacement(x,y);
+			point2.deplacement(x,y);
+			point3.deplacement(x,y);
+		}
+		
 		public override function setNombreArete(nombre_arete:Number):void
 		{
 		}
@@ -260,6 +303,9 @@ package Coeur.Forme
 		
 		public function clone():MIForme{
 			var clone_miforme:MFormeTriangle = new MFormeTriangle();
+			clone_miforme.setPoint1(this.point1.clone());
+			clone_miforme.setPoint2(this.point2.clone());
+			clone_miforme.setPoint3(this.point31.clone());
 			super.remplirFormePolygone(clone_miforme);
 			clone_miforme.setAretes(aretes);
 			return clone_miforme; 
