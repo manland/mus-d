@@ -22,7 +22,6 @@ package Graphique {
 	import Graphique.Textures.Degrades.MDegradeVertical;
 	import Coeur.MIObjetEcouteur;
 	import mx.events.MoveEvent;
-	import Coeur.MDynamique;
 	import Controleur.MMouvementFini;
 	import Controleur.MRedimensionnement;
 	import Controleur.MMouvementPerpetuel;
@@ -79,14 +78,6 @@ package Graphique {
 			mon_pt3 = point3;
 		}
 		
-		override public function deplacementObjet(objet:MIObjet):void {
-			super.deplacementObjet(objet);
-			var aretes:Array = (objet.getForme() as MFormeTriangle).getAretes();
-			mon_pt1 = (aretes[0] as MArete).getDepart();
-			mon_pt2 = (aretes[1] as MArete).getDepart();
-			mon_pt3 = (aretes[2] as MArete).getDepart();
-		}
-		
 		override public function changementTaille(objet:MIObjet):void {
 			super.changementTaille(objet);
 			var aretes:Array = (objet.getForme() as MFormeTriangle).getAretes();
@@ -130,6 +121,9 @@ package Graphique {
 		override public function clone():MIObjetGraphique {
 			var graphique_temp:MGraphiqueTriangle = new MGraphiqueTriangle();
 			graphique_temp.setObjet(objet.clone());
+			graphique_temp.point1 = mon_pt1.clone();
+			graphique_temp.point2 = mon_pt2.clone();
+			graphique_temp.point3 = mon_pt3.clone();
 			if(ma_bordure != null) {
 				graphique_temp.setBordure(ma_bordure.clone() as MBordure);
 			}

@@ -4,9 +4,6 @@ package Graphique {
 	import Coeur.MIObjet;
 	import Graphique.Textures.MITexture;
 	import Coeur.MElement;
-	import Coeur.MStatique;
-	import Coeur.MControle;
-	import Coeur.MDynamique;
 	import Graphique.Textures.MCouleur;
 	import mx.controls.Text;
 	import Coeur.Forme.MIForme;
