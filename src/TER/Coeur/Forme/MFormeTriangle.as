@@ -212,7 +212,6 @@ package Coeur.Forme
 				throw new MErreur(this.nom_classe, "calculParametres", "Une arete est vide");
 			else
 			{
-				trace("ici");
 				this.x = MUtilitaire.min(a1.getDepart().getX(), a1.getArrivee().getX());
 				this.x = MUtilitaire.min(this.x , MUtilitaire.min(a2.getDepart().getX(), a2.getArrivee().getX()));
 				this.x = MUtilitaire.min(this.x , MUtilitaire.min(a3.getDepart().getX(), a3.getArrivee().getX()));
@@ -254,26 +253,10 @@ package Coeur.Forme
 		 
 		public override function ajouterArete(arete:MArete):Boolean
 		{
-			arete = arete.clone();
-			arete.deplacement(this.decalage.getX(), this.decalage.getY());
-			if(aretes.length < nombre_arete)
-			{
-				aretes.push(arete);
-				if(aretes.length == this.nombre_arete){
-					this.calculAretes();
-					this.remplitPoint()
-				}
-				return true;
-			}
-			else{
-				throw new MErreur(this.nom_classe, "ajouterArete", "Tableau d'aretes deja rempli");
-				return false;
-			} 
+			return false;
 		}
 		
 		public override function setAretes(aretes:Array, recopie:Boolean=true):void{
-			super.setAretes(aretes,recopie);
-			this.calculAretes();
 		}
 
 
