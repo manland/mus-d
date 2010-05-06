@@ -55,6 +55,10 @@ package Coeur
 			this.forme = forme;
 		}
 		
+		public function affiche():void{
+			
+		}
+		
 		public function getX():Number
 		{
 			return this.x;
@@ -82,7 +86,7 @@ package Coeur
 			fireDeplacementObjet();
 		}
 		
-		public function augmente(l:Number,h:Number):void{
+		public function redimensionnement(l:Number,h:Number):void{
 			this.largeur = this.largeur + l; 
 			this.hauteur = this.hauteur + h;
 			fireChangementTaille();
@@ -266,7 +270,11 @@ package Coeur
 		
 		public function deplacement(x:Number, y:Number):void
 		{
-			trace("Il y a un deplacement");
+			this.x += x;
+			this.y += y;
+			if(forme != null)
+				this.forme.deplacement(x, y);
+			fireDeplacementObjet();
 		}
 		public function setCoordonnees(x:Number, y:Number):void
 		{
@@ -295,7 +303,6 @@ package Coeur
 					collision(objet, this, axe);
 				}
 			}
-			trace("Mscene : deplacementObjet");
 		}
 		
 		
@@ -311,11 +318,6 @@ package Coeur
 		public function objetNait(objet:MIObjet):void
 		{
 			this.ajouterEnfants(objet);
-		}
-		
-		public function affiche():void
-		{
-			trace("MScene");
 		}
 		
 		public function clone():MIObjet{
