@@ -24,7 +24,8 @@ package
            	this.y = 40;
            	
            	mouv = new MMouvementPerpetuel();
-           	mouv.instancieAvecAngleEtVitesse(this.getObjet(), 50, 100);
+           	mouv.instancieAvecAngleEtVitesse(this.getObjet(), 30, 200);
+           	
            	
            	this.ajouterEcouteur(this);
 		}
@@ -47,11 +48,15 @@ package
         		sceneParent.scoreJ2 = sceneParent.scoreJ2+1;
        			sceneParent.labelScoreJ2.text = ""+sceneParent.scoreJ2;
        			mouv.stopper();
+       			sceneParent.leTimer.stop();
+       			sceneParent.replacerBalle("J2");
         	}
         	else if(x+this.width>sceneParent.width) { 
         		sceneParent.scoreJ1 = sceneParent.scoreJ1+1;
        			sceneParent.labelScoreJ1.text = ""+sceneParent.scoreJ1;
        			mouv.stopper();
+       			sceneParent.leTimer.stop();
+       			sceneParent.replacerBalle("J1");
         	}
         	
         	var b:Number = sceneParent.height-120;

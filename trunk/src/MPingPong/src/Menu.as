@@ -17,7 +17,6 @@ package
 		[Embed(source="Images/titre.png")]
 			private var imageClass:Class;
 
-		
 		var leJeu:Jeux;
 		var lesCommandes:Commandes;
 		
@@ -117,8 +116,14 @@ package
             alertCSS.setStyle("modalTransparencyDuration", 100);
             
             var a:Alert = new Alert;
-			a = Alert.show("Démarrer", "", Alert.OK, this, alerteOK);
-			
+			a = Alert.show("Démarrer", "", Alert.OK, leJeu, alertClicOK, null, Alert.OK);
+		}
+		
+		public function alertClicOK(evt_obj:Object):void {
+			if (evt_obj.detail == Alert.OK) {
+		  		leJeu.balle.mouv.lancer();
+		  		leJeu.relancerTimer();
+		 	}
 		}
 		
 		public function retour(e:MouseEvent):void {
@@ -128,6 +133,7 @@ package
 		
 		public function alerteOK(e:CloseEvent):void {
 			leJeu.relancerTimer();
+			leJeu.balle.mouv.lancer();
 		}
 		
 		public function afficheCommandes(e:MouseEvent):void {
