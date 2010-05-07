@@ -3,7 +3,6 @@ package
 	import Controleur.MMouvementPerpetuel;
 	
 	import Graphique.MGraphiqueRond;
-	import Graphique.MGraphiqueScene;
 	import Graphique.MIObjetGraphique;
 	import Graphique.MIObjetGraphiqueEcouteur;
 	
@@ -24,8 +23,7 @@ package
            	this.y = 40;
            	
            	mouv = new MMouvementPerpetuel();
-           	mouv.instancieAvecAngleEtVitesse(this.getObjet(), 30, 200);
-           	
+           	mouv.instancieAvecAngleEtVitesse(this.getObjet(), 30, 150);
            	
            	this.ajouterEcouteur(this);
 		}
@@ -39,24 +37,30 @@ package
         }
         
         public function graphiqueCollision(graphique:MIObjetGraphique, axe:MAxe):void {
+        	//this.y = graphique.getObjet().getY()+graphique.getObjet().getHauteur();
+			//this.x = graphique.getObjet().getX()+graphique.getObjet().getLargeur();
         	this.mouv.rebondir(axe);
         }
         
         public function graphiqueSeDeplace(x:Number, y:Number):void {
 
         	if(x<=0) {
+        		trace("x<=0 : "+x)
         		sceneParent.scoreJ2 = sceneParent.scoreJ2+1;
        			sceneParent.labelScoreJ2.text = ""+sceneParent.scoreJ2;
        			mouv.stopper();
        			sceneParent.leTimer.stop();
-       			sceneParent.replacerBalle("J2");
+				sceneParent.replacerBalle("J2")
+       			mouv.lancer();
         	}
         	else if(x+this.width>sceneParent.width) { 
+        		trace("x+this.width : "+x+this.width)
         		sceneParent.scoreJ1 = sceneParent.scoreJ1+1;
        			sceneParent.labelScoreJ1.text = ""+sceneParent.scoreJ1;
        			mouv.stopper();
        			sceneParent.leTimer.stop();
        			sceneParent.replacerBalle("J1");
+       			mouv.lancer();
         	}
         	
         	var b:Number = sceneParent.height-120;

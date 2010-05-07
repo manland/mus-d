@@ -256,16 +256,19 @@ package
         
         public function replacerBalle(joueur:String):void {
         	if(joueur=="J1") {
+        		trace("J1 -- ici");
         		var aleatoireY:Number = Math.random()*(this.height-120-raquetteJ2.height);
         		this.raquetteJ1.y = aleatoireY;
-        		this.balle.x = this.raquetteJ1.x+raquetteJ1.largeur;
+        		this.balle.x = this.raquetteJ1.x+raquetteJ1.largeur+2;
         		this.balle.y = this.raquetteJ1.y+(raquetteJ1.height/2)-(this.balle.hauteur/2);
         	}
         	else if(joueur=="J2"){
+        		trace("J2 -- la");
         		var aleatoireY:Number = Math.random()*(this.height-120-raquetteJ2.height);
         		this.raquetteJ2.y = aleatoireY;
-        		this.balle.x = this.raquetteJ2.x-(raquetteJ2.largeur+(this.balle.largeur/2));
-        		this.balle.y = this.raquetteJ2.y+(raquetteJ2.height/2)-(this.balle.hauteur/2);
+        		this.balle.mouv.setAngle(200);
+        		this.balle.x = this.raquetteJ2.x-(raquetteJ2.largeur)-30;
+        		this.balle.y = this.raquetteJ2.y+(raquetteJ2.height/2);
         	}
         }
      
