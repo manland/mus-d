@@ -126,7 +126,7 @@ package Controleur
 		/**
 		 * modifie le Mouvement de manière à faire rebondir l'objet selon l'axe passé en paramètre
 		 */		
-		public function rebondir(axe_obstacle:MAxe ):void{
+		public function rebondir(axe_obstacle:MAxe, coeff_x:Number = 1, coeff_y:Number = 1):void{
 			var i:Number = 0;
 			if(axe_obstacle.estHorizontal()){ //rebond sur un axe parallèle à l'abscisse
 				unite_y = -1 * unite_y;
@@ -144,6 +144,9 @@ package Controleur
 				unite_x = - unite_y;
 				unite_y = -i;
 			}
+			avanceUneUnite(null);
+			unite_x = unite_x * coeff_x;
+			unite_y = unite_y * coeff_y;
 		}
 		
 		/**
@@ -194,5 +197,46 @@ package Controleur
 		{
 			return this.nom_classe;
 		}	
+		
+		/**
+		 * 
+		 */
+		 public function getAngle():Number{
+		 	var x:Number = unite_x;
+		 	var y:Number = unite_y;
+		 	var angle:Number;
+		 	
+		 	if(x > 0 && y >= 0){
+		 		angle = Math.atan(y/x);
+		 	}else if(x > 0 && y < 0){
+		 		angle = Math.atan(y/x) + 2*Math.PI;
+		 	}else if(x < 0){
+		 		angle = Math.atan(y/x) + Math.PI;
+		 	}else if(x == 0 && y > 0){
+		 		angle = Math.atan(y/x) + Math.PI/2;
+		 	}else if(x == 0 && y < 0){
+		 		angle = Math.atan(y/x) + 3*Math.PI/2;
+		 	}else
+		 		return 0;
+		 		
+		 	return angle * 180 / Math.PI;		 	
+		 }
+		 
+		 /**
+		 * 
+		 */
+		 public function setAngle(angle:Number):void{
+		 	var x:Number;
+			var y:Number;
+			var radian:Number;
+			var vitesse:Number;
+			
+			radian = angle * Math.PI / 180;
+			vitesse = Math.sqrt(unite_x * unite_x + unite_y * unite_y);
+			x = vitesse * Math.cos(radian);
+			y = vitesse * Math.sin(radian);
+			
+			this.instancieAvecVitesse(objet, x, y);
+		 }
 	}
 }
