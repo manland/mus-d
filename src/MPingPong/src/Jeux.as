@@ -1,16 +1,6 @@
 package
 {
-	import Controleur.MMouvementPerpetuel;
-	
-	import Graphique.MGraphiqueRectangle;
-	import Graphique.MGraphiqueRond;
 	import Graphique.MGraphiqueScene;
-	import Graphique.MIObjetGraphique;
-	import Graphique.MIObjetGraphiqueEcouteur;
-	
-	import Utilitaires.MArete;
-	import Utilitaires.MAxe;
-	import Utilitaires.MCoordonnee;
 	
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
@@ -63,7 +53,7 @@ package
         private var labelTemps:Label;
         private var delai:uint; // toutes les secondes
         private var tempsRestant:uint;
-        private var leTimer:Timer;
+        public var leTimer:Timer;
         
         // Score
         public var scoreJ1:uint;
@@ -73,7 +63,7 @@ package
 		
 		private var raquetteJ1:Raquette;
 		private var raquetteJ2:Raquette;
-		private var balle:Balle;
+		public var balle:Balle;
 		
 		public function Jeux(menu:Menu)
 		{
@@ -212,8 +202,7 @@ package
 		}
 		
 		public function recommencer(e:MouseEvent):void {
-			//leMenu.nouvellePartie(e);
-			//completeHandler(null);
+			leMenu.nouvellePartie(e);
 			balle.mouv.lancer();
 		}
 
@@ -265,6 +254,20 @@ package
         
 		public function getLeMenu():Menu { return leMenu; }
         
+        public function replacerBalle(joueur:String):void {
+        	if(joueur=="J1") {
+        		var aleatoireY:Number = Math.random()*(this.height-120-raquetteJ2.height);
+        		this.raquetteJ1.y = aleatoireY;
+        		this.balle.x = this.raquetteJ1.x+raquetteJ1.largeur;
+        		this.balle.y = this.raquetteJ1.y+(raquetteJ1.height/2)-(this.balle.hauteur/2);
+        	}
+        	else if(joueur=="J2"){
+        		var aleatoireY:Number = Math.random()*(this.height-120-raquetteJ2.height);
+        		this.raquetteJ2.y = aleatoireY;
+        		this.balle.x = this.raquetteJ2.x-(raquetteJ2.largeur+(this.balle.largeur/2));
+        		this.balle.y = this.raquetteJ2.y+(raquetteJ2.height/2)-(this.balle.hauteur/2);
+        	}
+        }
      
 	}
 }
