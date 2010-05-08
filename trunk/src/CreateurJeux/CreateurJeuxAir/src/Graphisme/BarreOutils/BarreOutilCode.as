@@ -65,11 +65,7 @@ package Graphisme.BarreOutils
 					onglet_classe.name = "onglet_mvt";
 					onglet_classe.setNomOnglet("MonEcouteur.as");
 					fenetre_code.getTabOngletCode().addChild(onglet_classe);
-					if(onglet_classe==null)
-					{
-						erreur.sysout.text+="ici";
-					}
-					(fenetre_code.getTabOngletCode().getChildByName("onglet_classe") as CanvasCode).getCode().text = tab_onglet.getOnglet().genererClasseEcouteur().toString();
+					(fenetre_code.getTabOngletCode().getChildByName("onglet_mvt") as CanvasCode).getCode().text = tab_onglet.getOnglet().genererClasseEcouteur().toString();
 					
 				}
 				if(tab_onglet.getOnglet().getCodeClavier() && !deja_ouvert_ecouteur_clavier)
