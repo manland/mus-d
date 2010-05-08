@@ -1,25 +1,34 @@
-window_sizes 1270 720 300 964 582 64
+window_sizes 1280 726 256 1018 1 658
 diagrams
   classdiagram_ref 128214 // DiagrammeClasse
-    478 91 80 4 0 0
+    329 91 80 4 0 0
   classdiagram_ref 128342 // Diagramme
-    964 582 100 4 515 0
+    329 91 100 4 0 0
   classdiagram_ref 128470 // Diagramme
-    478 91 100 4 0 0
+    329 91 100 4 0 0
   classdiagram_ref 129622 // Diagramme
-    478 91 100 4 360 0
-  active  sequencediagram_ref 130774 // DiagSeqCollision
-    974 586 100 4 120 0
+    329 91 100 4 360 0
+  sequencediagram_ref 130774 // DiagSeqCollision
+    329 91 100 4 120 0
+  classdiagram_ref 131926 // Diagramme
+    329 91 100 4 0 0
+  active  classdiagram_ref 133078 // diagramme
+    1018 91 100 4 240 0
 end
 show_stereotypes
-selected sequencediagram_ref 130774 // DiagSeqCollision
+selected attribute_ref 140758 // matrix
 open
-  classview_ref 128342 // VueClasses
+  classview_ref 132310 // VueClasse
+  operation_ref 143318 // supprimerEcouteur
+  class_ref 130006 // MCouleur
+  class_ref 129750 // MImage
+  class_ref 144854 // MTexte
+  class_ref 144982 // MITexture
+  class_ref 145110 // MBordure
+  class_ref 129878 // MDegrade
   
-package_ref 128342 // Graphique
+  package_ref 128598 // Utilitaire
   
-package_ref 128598 // Utilitaire
-  
-package_ref 131158 // Controleur
+  package_ref 131158 // Controleur
 end
 end
