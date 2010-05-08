@@ -85,7 +85,7 @@ package Controleur
 		private function clic(evenement : MouseEvent):void
 		{
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				ecouteurs[i].clic();
+				ecouteurs[i].clic(evenement);
 			}
 		}
 		
@@ -132,7 +132,7 @@ package Controleur
 		private function doubleClic(evenement : MouseEvent):void
 		{
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				ecouteurs[i].doubleClic();
+				ecouteurs[i].doubleClic(evenement);
 			}
 		}
 		
