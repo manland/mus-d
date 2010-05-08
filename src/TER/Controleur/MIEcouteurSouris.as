@@ -1,5 +1,7 @@
 package Controleur
 {
+	import flash.events.MouseEvent;
+	
 	
 	/**
 	 * interface que doit implémenter un objet qui écoute la souris
@@ -48,11 +50,11 @@ package Controleur
 		/**
 		 * fonction appelée lors d'un clic de la souris
 	 	 */
-		function clic():void;
+		function clic(e:MouseEvent):void;
 		/**
 		 * fonction appelée lors d'un double clic de la souris
 	 	 */
-		function doubleClic():void;
+		function doubleClic(e:MouseEvent):void;
 		/**
 		 * fonction appelée lorsque la souris se déplace vers la droite
 	 	 */
