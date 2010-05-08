@@ -1,6 +1,6 @@
 format 66
 "Coeur" // Coeur
-  revision 9
+  revision 11
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -241,10 +241,10 @@ ${members}};
 	relation_ref 132438 // <association>
       end
 
-      classrelation 133718 // (< contient)
+      classrelation 133718 // objet (< contient)
 	relation 132694 ---- name "< contient"
-	  a role_name "" private
-	    classrelation_ref 133718 // (< contient)
+	  a role_name "objet" private
+	    classrelation_ref 133718 // objet (< contient)
 	  b role_name "" private
 	    classrelation_ref 133846 // (< contient)
       end

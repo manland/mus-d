@@ -1,6 +1,6 @@
 format 66
-"Degrades" // Graphique::Degrades
-  revision 3
+"Degrades" // Graphique::Textures::Degrades
+  revision 4
   modified_by 86 "manland"
   // class settings
   //class diagram settings
@@ -55,9 +55,71 @@ format 66
 	relation 130006 ---|>
 	  a public
 	    classrelation_ref 130646 // <generalisation>
-	  b parent class_ref 129366 // MTexture
+	  b parent class_ref 129366 // MTextureAbstraite
       end
 
+      attribute 139990 "couleurs"
+	private explicit_type "array"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140118 "alphas"
+	private explicit_type "array"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140246 "ratios"
+	private explicit_type "array"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140374 "spread_method"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140502 "interpolation"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140630 "focal_pt_ratio"
+	private explicit_type "Number"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 140758 "matrix"
+	private explicit_type "Matrix"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
     end
 
     class 130646 "MDegadeRadial"
