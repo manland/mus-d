@@ -5,6 +5,8 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import Graphique.Textures.MImage;
+			
 			function init():void {
 				var leMenu:Menu = new Menu();
 				addChild(leMenu);

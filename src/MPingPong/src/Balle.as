@@ -5,6 +5,8 @@ package
 	import Graphique.MGraphiqueRond;
 	import Graphique.MIObjetGraphique;
 	import Graphique.MIObjetGraphiqueEcouteur;
+	import Graphique.Textures.MBordure;
+	import Graphique.Textures.MImage;
 	
 	import Utilitaires.MArete;
 	import Utilitaires.MAxe;
@@ -22,7 +24,13 @@ package
 			this.x = 40;
            	this.y = 40;
            	
-           	mouv = new MMouvementPerpetuel();
+           	this.id = "rond_jaune0";
+           	this.hauteur = 25;
+           	this.largeur = 25;
+           	this.setTexture(new MImage("Images/rond/rond-jaune.png"));
+           	this.setBordure(new MBordure(0.5,0x0));
+           	
+          	mouv = new MMouvementPerpetuel();
            	mouv.instancieAvecAngleEtVitesse(this.getObjet(), 30, 150);	
            	this.ajouterEcouteur(this);
 		}

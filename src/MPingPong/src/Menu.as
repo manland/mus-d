@@ -1,6 +1,7 @@
 package
 {
 	import Graphique.MGraphiqueScene;
+	import Graphique.Textures.MImage;
 	
 	import flash.events.MouseEvent;
 	
@@ -17,8 +18,8 @@ package
 		[Embed(source="Images/titre.png")]
 			private var imageClass:Class;
 
-		var leJeu:Jeux;
-		var lesCommandes:Commandes;
+		public var leJeu:Jeux;
+		public var lesCommandes:Commandes;
 		
 		// Boutons
 		public var menuBoutonDemarrer:Button;
@@ -29,13 +30,13 @@ package
 				
 		public function Menu()
 		{
+			
 			// Scene
 			this.x = 0;
 			this.y = 0;
-	
 			this.width = 614; 
 			this.height = 372;
-			
+						
 			// Titre
 			titreImage = new Image();
 			titreImage.x = 200;
@@ -44,7 +45,6 @@ package
 			this.addChild(titreImage);
 			
 			leJeu = null;
-			
 
 			// Bouton Menu
 			menuBoutonDemarrer = new Button();
