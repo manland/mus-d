@@ -25,6 +25,7 @@ package Graphique {
 	 * <li> la bordure MITexture (package Graphique.Texture) </li>
 	 * </p>
 	 * <p>Enfin elle se charge des écouteurs MIObjetGraphiqueEcouteur en appellant les fire apropriés.</p>
+	 * <p>Atention ! Si vous réimplentez cette classe vous ne devez surtout pas écouter un objet model. Vous devez utiliser setObjet pour positionner votre objet personnalisé.</p>
 	 * @see MIObjetGraphique
 	 * @see MIObjetGraphiqueEcouteur
 	 * @see Coeur.MIObjet
@@ -192,7 +193,7 @@ package Graphique {
 		 */
 		public function fireDeplacement():void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
-				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueSeDeplace(x, y);
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueSeDeplace(sous_classe);
 			}
 		}
 		
@@ -213,6 +214,15 @@ package Graphique {
 		 */
 		public function getObjet():MIObjet {
 			return objet;
+		}
+		
+		/**
+		 * Permet de faire "mourir" cet objet graphique.
+		 * <p>Autrement dit cela permet de retirer cet objet du visuel, et donc l'objet du model de la scene model.</p>
+		 * @see Coeur.MIObjet#mourir()
+		 */
+		public function mourir():void {
+			objet.mourir();
 		}
 		
 		/**
@@ -580,7 +590,7 @@ package Graphique {
 		 * @see MGraphiqueAbstrait#dessiner()
 		 */
 		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
-			super.updateDisplayList(unscaledWidth, unscaledHeight );
+			super.updateDisplayList(unscaledWidth, unscaledHeight);
 			fireSeDessine();
 			dessiner();
 		}

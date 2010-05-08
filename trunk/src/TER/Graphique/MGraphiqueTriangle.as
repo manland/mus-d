@@ -58,7 +58,7 @@ package Graphique {
 			return (forme as MFormeTriangle).getPoint1();
 		}
 		public function set point1(point1:MCoordonnee):void {
-			(forme as MFormeTriangle).setPoint(mon_pt1, point1);
+			(forme as MFormeTriangle).setPoint(mon_pt1, point1, objet);
 			mon_pt1 = point1;
 		}
 		
@@ -66,7 +66,7 @@ package Graphique {
 			return (forme as MFormeTriangle).getPoint2();
 		}
 		public function set point2(point2:MCoordonnee):void {
-			(forme as MFormeTriangle).setPoint(mon_pt2, point2);
+			(forme as MFormeTriangle).setPoint(mon_pt2, point2, objet);
 			mon_pt2 = point2;
 		}
 		
@@ -74,7 +74,7 @@ package Graphique {
 			return (forme as MFormeTriangle).getPoint3();
 		}
 		public function set point3(point3:MCoordonnee):void {
-			(forme as MFormeTriangle).setPoint(mon_pt3, point3);
+			(forme as MFormeTriangle).setPoint(mon_pt3, point3, objet);
 			mon_pt3 = point3;
 		}
 		
@@ -119,11 +119,8 @@ package Graphique {
 		}
 		
 		override public function clone():MIObjetGraphique {
-			var graphique_temp:MGraphiqueTriangle = new MGraphiqueTriangle();
+			var graphique_temp:MGraphiqueTriangle = new MGraphiqueTriangle(mon_pt1.clone(), mon_pt2.clone(), mon_pt3.clone());
 			graphique_temp.setObjet(objet.clone());
-			graphique_temp.point1 = mon_pt1.clone();
-			graphique_temp.point2 = mon_pt2.clone();
-			graphique_temp.point3 = mon_pt3.clone();
 			if(ma_bordure != null) {
 				graphique_temp.setBordure(ma_bordure.clone() as MBordure);
 			}
