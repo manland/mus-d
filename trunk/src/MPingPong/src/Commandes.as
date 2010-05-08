@@ -1,6 +1,7 @@
 package
 {
 	import Graphique.MGraphiqueScene;
+	import Graphique.Textures.MImage;
 	
 	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
@@ -120,6 +121,7 @@ package
 			menuBoutonGauche.styleName = "boutonMenuGauche";
 			menuBoutonGauche.label = "Defaut";
 			menuBoutonGauche.setStyle("fontSize", 20);
+			menuBoutonGauche.setStyle("color", "WHITE");
 			menuBoutonGauche.x = 0;
 			menuBoutonGauche.y = 321;
 			
@@ -132,6 +134,7 @@ package
 			menuBoutonDroite.styleName = "boutonMenuDroite";
 			menuBoutonDroite.label = "Menu";
 			menuBoutonDroite.setStyle("fontSize", 20);
+			menuBoutonDroite.setStyle("color", "WHITE");
 			menuBoutonDroite.x = 305;
 			menuBoutonDroite.y = 321;
 			
@@ -229,6 +232,7 @@ package
 			labelBasJ2.addEventListener(KeyboardEvent.KEY_UP, pressJ2B);
 			this.addChild(labelBasJ2);
 			
+			this.setTexture(new MImage("Images/desert.jpg"));
 			commandesParDefaut(null);
 		}
 		

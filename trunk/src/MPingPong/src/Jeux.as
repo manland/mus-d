@@ -1,6 +1,7 @@
 package
 {
 	import Graphique.MGraphiqueScene;
+	import Graphique.Textures.MImage;
 	
 	import flash.events.MouseEvent;
 	import flash.events.TimerEvent;
@@ -130,6 +131,7 @@ package
 			menuBoutonGauche.styleName = "boutonMenuGauche";
 			menuBoutonGauche.label = "Menu";
 			menuBoutonGauche.setStyle("fontSize", 20);
+			menuBoutonGauche.setStyle("color", "WHITE");
 			menuBoutonGauche.x = 0;
 			menuBoutonGauche.y = 321;
 			
@@ -142,7 +144,7 @@ package
 			menuBoutonDroite.styleName = "boutonMenuDroite";
 			menuBoutonDroite.label = "Recommencer";
 			menuBoutonDroite.setStyle("fontSize", 20);
-			//menuBoutonDroite.setStyle("fontColor", 0xFF0000);
+			menuBoutonDroite.setStyle("color", "WHITE");
 			menuBoutonDroite.x = 305;
 			menuBoutonDroite.y = 321;
 			
@@ -170,7 +172,8 @@ package
             labelScoreJ1.y = 290;
             scoreJ1 = 0;
             labelScoreJ1.text = ""+scoreJ1;
-            labelScoreJ1.setStyle("fontSize", 20);;
+            labelScoreJ1.setStyle("fontSize", 20);
+            labelScoreJ1.setStyle("color", "WHITE");
             addChild(labelScoreJ1);
             
             labelScoreJ2 = new Label();
@@ -179,6 +182,7 @@ package
             scoreJ2 = 0;
             labelScoreJ2.text = ""+scoreJ2;
             labelScoreJ2.setStyle("fontSize", 20);
+            labelScoreJ2.setStyle("color", "WHITE");
             addChild(labelScoreJ2);
             
             raquetteJ1 = new Raquette(this, "J1", 2, 0, 20, 50);
@@ -189,6 +193,8 @@ package
 
            	balle = new Balle(this);
            	addChild(balle);
+           	
+           	this.setTexture(new MImage("Images/desert.jpg"));
 		}
 		
 		public function afficheMenu(e:MouseEvent):void {

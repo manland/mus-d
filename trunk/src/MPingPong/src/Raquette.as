@@ -4,6 +4,7 @@ package
 	import Controleur.MIEcouteurClavier;
 	
 	import Graphique.MGraphiqueRectangle;
+	import Graphique.Textures.MImage;
 	
 	public class Raquette extends MGraphiqueRectangle implements MIEcouteurClavier
 	{
@@ -16,6 +17,11 @@ package
 			this.joueur = joueur;
 			sceneParent = parent;
 			
+			this.id = "carre_rouge1";
+           	this.hauteur = 65;
+           	this.largeur = 20;
+           	this.setTexture(new MImage('Images/carres/rouge.png'));
+           	
 			var ecouteurJ:MClavier = MClavier.getInstance();
 			ecouteurJ.ajouterEcouteur(this);
 		}
