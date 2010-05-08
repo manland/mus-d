@@ -12,6 +12,15 @@ package Graphique {
 		function getObjet():MIObjet;
 		function mourir():void;
 		
+		function get x():Number;
+		function set x(x:Number):void;
+		function get y():Number;
+		function set y(y:Number):void;
+		function get width():Number;
+		function set width(width:Number):void;
+		function get height():Number;
+		function set height(height:Number):void;
+		
 		function getTexture():MITexture;
 		function setTexture(texture:MITexture):void;
 		function getBordure():MBordure;
