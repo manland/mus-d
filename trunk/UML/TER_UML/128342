@@ -1,10 +1,10 @@
-format 66
+format 71
 "Graphique" // Graphique
-  revision 11
-  modified_by 86 "manland"
+  revision 10
+  modified_by 27 "Lolo"
   // class settings
   //class diagram settings
-  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
   //use case diagram settings
   package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
   //sequence diagram settings
@@ -29,7 +29,7 @@ format 66
   associated_diagram classdiagram_ref 128214 // DiagrammeClasse
   classview 128470 "VueClasses"
     //class diagram settings
-    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
     //collaboration diagram settings
     show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
     //object diagram settings
@@ -44,7 +44,7 @@ format 66
     package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
     show_infonote default drawing_language default show_stereotype_properties default
     classdiagram 128342 "Diagramme"
-      draw_all_relations no hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
       size A4
     end
 
@@ -71,6 +71,16 @@ ${members}};
 	relation_ref 132694 // < contient
       end
 
+      operation 130262 "getObjet"
+	public return_type class_ref 128342 // MIObjet
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
       operation 135382 "getGraphique"
 	public return_type class_ref 132438 // UIComponent
 	nparams 0
@@ -81,128 +91,67 @@ ${members}};
 	
       end
 
+      classrelation 145366 // <association>
+	relation_ref 142806 // <association>
+      end
+
       classrelation 146902 // <generalisation>
 	relation 144214 ---|>
 	  a public
 	    classrelation_ref 146902 // <generalisation>
 	  b parent class_ref 134614 // MIObjetEcouteur
       end
+    end
 
-      operation 142294 "mourir"
-	public explicit_return_type "void"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      attribute 136406 "texture"
-	private explicit_type "MITexture"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      attribute 136534 "bordure"
-	private explicit_type "MBordure"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      operation 142678 "ajouterTexture"
-	public explicit_return_type "void"
-	nparams 1
-	  param in name "texture" explicit_type "MITexture"
-	
-	
-	
-	
-	
-      end
-
-      operation 142806 "redessiner"
-	public explicit_return_type "void"
-	nparams 1
-	  param in name "e" explicit_type "TimerEvent"
-	    defaultvalue "null"
-	
-	
-	
-	
-	
-      end
-
-      operation 142934 "ajouterEcouteur"
-	public explicit_return_type "void"
-	nparams 1
-	  param in name "ecouteur" type class_ref 140374 // MIObjetGraphiqueEcouteur
-	
-	
-	
-	
-	
-      end
-
-      operation 143318 "supprimerEcouteur"
-	public return_type class_ref 140374 // MIObjetGraphiqueEcouteur
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      operation 143062 "getNomClasse"
-	public explicit_return_type "string"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      operation 143190 "clone"
-	public return_type class_ref 129238 // MIObjetGraphique
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      attribute 136662 "forme"
-	private type class_ref 132694 // MIForme
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      classrelation 151510 // ecouteurs (<aggregation>)
-	relation 148694 o---
-	  a role_name "ecouteurs" multiplicity "*" private
-	    classrelation_ref 151510 // ecouteurs (<aggregation>)
+    class 129366 "MTexture"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 145238 // <association>
+	relation 142806 ----
+	  a role_name "" private
+	    classrelation_ref 145238 // <association>
 	  b role_name "" private
-	    classrelation_ref 151638 // <aggregation>
+	    classrelation_ref 145366 // <association>
       end
+    end
 
-      classrelation 153942 // objet (<association>)
-	relation 150614 ----
-	  a role_name "objet" multiplicity "1" private
-	    classrelation_ref 153942 // objet (<association>)
-	  b role_name "texture" multiplicity "1" private
-	    classrelation_ref 154070 // texture (<association>)
+    class 129750 "MImage"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 130518 // <generalisation>
+	relation 129878 ---|>
+	  a public
+	    classrelation_ref 130518 // <generalisation>
+	  b parent class_ref 129366 // MTexture
+      end
+    end
+
+    class 130006 "MCouleur"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 130774 // <generalisation>
+	relation 130134 ---|>
+	  a public
+	    classrelation_ref 130774 // <generalisation>
+	  b parent class_ref 129366 // MTexture
       end
     end
 
@@ -215,40 +164,11 @@ ${members}};
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 150742 // <generalisation>
-	relation 147926 ---|>
+      classrelation 147158 // <generalisation>
+	relation 144470 ---|>
 	  a public
-	    classrelation_ref 150742 // <generalisation>
-	  b parent class_ref 143190 // MGraphiqueAbstrait
-      end
-
-      operation 144342 "clone"
-	public return_type class_ref 129238 // MIObjetGraphique
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      operation 144470 "dessiner"
-	protected explicit_return_type "void"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      attribute 138070 "forme"
-	private explicit_type "MFormeRond"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
+	    classrelation_ref 147158 // <generalisation>
+	  b parent class_ref 140246 // MGraphiqueEllipse
       end
     end
 
@@ -261,40 +181,11 @@ ${members}};
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 151382 // <generalisation>
-	relation 148566 ---|>
+      classrelation 148822 // <generalisation>
+	relation 146006 ---|>
 	  a public
-	    classrelation_ref 151382 // <generalisation>
-	  b parent class_ref 143190 // MGraphiqueAbstrait
-      end
-
-      operation 145110 "clone"
-	public return_type class_ref 129238 // MIObjetGraphique
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      operation 145238 "dessiner"
-	protected explicit_return_type "void"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      attribute 138582 "forme"
-	private explicit_type "MFormeRectangle"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
+	    classrelation_ref 148822 // <generalisation>
+	  b parent class_ref 141910 // MGraphiquePolygone
       end
     end
 
@@ -331,6 +222,24 @@ ${members}};
 	  b parent class_ref 129238 // MIObjetGraphique
       end
 
+      attribute 134486 "objet"
+	private type class_ref 128214 // MScene
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 134614 "graphique"
+	private type class_ref 132566 // Canvas
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
       classrelation 147286 // <realization>
 	relation 144598 -_-|>
 	  a public
@@ -338,10 +247,10 @@ ${members}};
 	  b parent class_ref 140374 // MIObjetGraphiqueEcouteur
       end
 
-      operation 139094 "addChild"
-	public explicit_return_type "DisplayObject"
+      operation 139094 "ajouterEnfant"
+	public explicit_return_type "void"
 	nparams 1
-	  param in name "child" explicit_type "displayObject"
+	  param in name "objet" type class_ref 129238 // MIObjetGraphique
 	
 	
 	
@@ -349,39 +258,10 @@ ${members}};
 	
       end
 
-      operation 139222 "removeChild"
-	public explicit_return_type "displayObject"
+      operation 139222 "supprimerEnfant"
+	public explicit_return_type "void"
 	nparams 1
-	  param in name "child" explicit_type "displayObject"
-	
-	
-	
-	
-	
-      end
-
-      classrelation 150486 // <generalisation>
-	relation 147670 ---|>
-	  a public
-	    classrelation_ref 150486 // <generalisation>
-	  b parent class_ref 132566 // Canvas
-      end
-
-      operation 143574 "updateDisplayList"
-	protected explicit_return_type "void"
-	nparams 2
-	  param in name "unscaledWidth" explicit_type "Number"
-	  param in name "unscaledHeight" explicit_type "Number"
-	
-	
-	
-	
-	
-      end
-
-      operation 143702 "dessiner"
-	protected explicit_return_type "void"
-	nparams 0
+	  param in name "objet" type class_ref 129238 // MIObjetGraphique
 	
 	
 	
@@ -399,6 +279,12 @@ ${members}};
       idl_decl ""
       explicit_switch_type ""
       
+      classrelation 147030 // <realization>
+	relation 144342 -_-|>
+	  a public
+	    classrelation_ref 147030 // <realization>
+	  b parent class_ref 129238 // MIObjetGraphique
+      end
     end
 
     class 140374 "MIObjetGraphiqueEcouteur"
@@ -416,21 +302,10 @@ ${members}};
 "
       explicit_switch_type ""
       
-      operation 146006 "graphiqueSeDessine"
-	public explicit_return_type "void"
-	nparams 1
-	  param in name "graphique" type class_ref 129238 // MIObjetGraphique
-	
-	
-	
-	
-	
-      end
-
       operation 139350 "graphiqueMeurt"
 	public explicit_return_type "void"
 	nparams 1
-	  param in name "graphique" type class_ref 129238 // MIObjetGraphique
+	  param in name "objet" type class_ref 129238 // MIObjetGraphique
 	
 	
 	
@@ -438,45 +313,19 @@ ${members}};
 	
       end
 
-      operation 146134 "graphiqueCollision"
+      operation 139478 "graphiqueNait"
 	public explicit_return_type "void"
 	nparams 1
-	  param in name "graphique" type class_ref 129238 // MIObjetGraphique
+	  param in name "objet" type class_ref 129238 // MIObjetGraphique
 	
 	
 	
 	
 	
-      end
-
-      operation 145878 "graphiqueseDeplace"
-	public explicit_return_type "void"
-	nparams 1
-	  param in name "graphique" type class_ref 129238 // MIObjetGraphique
-	
-	
-	
-	
-	
-      end
-
-      operation 146262 "graphiqueChangeTaille"
-	public explicit_return_type "void"
-	nparams 1
-	  param in name "graphique" type class_ref 129238 // MIObjetGraphique
-	
-	
-	
-	
-	
-      end
-
-      classrelation 151638 // <aggregation>
-	relation_ref 148694 // <aggregation>
       end
     end
 
-    class 142038 "MGraphiqueTriangle"
+    class 140502 "MGraphiquePolymorphe"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -485,91 +334,15 @@ ${members}};
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 150870 // <generalisation>
-	relation 148054 ---|>
+      classrelation 147414 // <realization>
+	relation 144726 -_-|>
 	  a public
-	    classrelation_ref 150870 // <generalisation>
-	  b parent class_ref 143190 // MGraphiqueAbstrait
-      end
-
-      operation 144854 "clone"
-	public return_type class_ref 129238 // MIObjetGraphique
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      operation 144982 "dessiner"
-	protected explicit_return_type "void"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      attribute 138710 "forme"
-	private type class_ref 133078 // MFormeTriangle
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-    end
-
-    class 143190 "MGraphiqueAbstrait"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 150230 // <realization>
-	relation 147414 -_-|>
-	  a public
-	    classrelation_ref 150230 // <realization>
+	    classrelation_ref 147414 // <realization>
 	  b parent class_ref 129238 // MIObjetGraphique
       end
-
-      classrelation 150358 // <generalisation>
-	relation 147542 ---|>
-	  a public
-	    classrelation_ref 150358 // <generalisation>
-	  b parent class_ref 132438 // UIComponent
-      end
-
-      operation 143830 "updateDisplayList"
-	protected explicit_return_type "void"
-	nparams 2
-	  param in name "unscaledWidth" explicit_type "Number"
-	  param in name "unscaledHeight" explicit_type "Number"
-	
-	
-	
-	
-	
-      end
-
-      operation 143958 "dessiner"
-	protected explicit_return_type "void"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
     end
 
-    class 143318 "MGraphiquePoint"
+    class 141910 "MGraphiquePolygone"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -578,44 +351,15 @@ ${members}};
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 150614 // <generalisation>
-	relation 147798 ---|>
+      classrelation 148950 // <realization>
+	relation 146134 -_-|>
 	  a public
-	    classrelation_ref 150614 // <generalisation>
-	  b parent class_ref 143190 // MGraphiqueAbstrait
-      end
-
-      operation 144086 "clone"
-	public return_type class_ref 129238 // MIObjetGraphique
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      operation 144214 "dessiner"
-	protected explicit_return_type "void"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      attribute 137942 "forme"
-	private explicit_type "MFormePoint"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
+	    classrelation_ref 148950 // <realization>
+	  b parent class_ref 129238 // MIObjetGraphique
       end
     end
 
-    class 143446 "MGraphiqueSegment"
+    class 142038 "MTriangle"
       visibility package 
       cpp_decl ""
       java_decl ""
@@ -624,409 +368,14 @@ ${members}};
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 151254 // <generalisation>
-	relation 148438 ---|>
+      classrelation 149078 // <generalisation>
+	relation 146262 ---|>
 	  a public
-	    classrelation_ref 151254 // <generalisation>
-	  b parent class_ref 143190 // MGraphiqueAbstrait
-      end
-
-      operation 145366 "clone"
-	public return_type class_ref 129238 // MIObjetGraphique
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      operation 145494 "dessiner"
-	protected explicit_return_type "void"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      attribute 138454 "forme"
-	private explicit_type "MFormeSegment"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-    end
-
-    class 143574 "MGraphiqueEtoile"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 150998 // <generalisation>
-	relation 148182 ---|>
-	  a public
-	    classrelation_ref 150998 // <generalisation>
-	  b parent class_ref 143190 // MGraphiqueAbstrait
-      end
-
-      operation 144598 "clone"
-	public return_type class_ref 129238 // MIObjetGraphique
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      operation 144726 "dessiner"
-	protected explicit_return_type "void"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      attribute 138198 "forme"
-	private explicit_type "MFormeEtoile"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-    end
-
-    class 143702 "MGraphiqueEtoilePleine"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 151126 // <generalisation>
-	relation 148310 ---|>
-	  a public
-	    classrelation_ref 151126 // <generalisation>
-	  b parent class_ref 143190 // MGraphiqueAbstrait
-      end
-
-      operation 145622 "clone"
-	public return_type class_ref 129238 // MIObjetGraphique
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      operation 145750 "dessiner"
-	protected explicit_return_type "void"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      attribute 138326 "forme"
-	private explicit_type "MFormeEtoilePleine"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
+	    classrelation_ref 149078 // <generalisation>
+	  b parent class_ref 141910 // MGraphiquePolygone
       end
     end
   end
 
-  classview 133590 "API flex"
-    //class diagram settings
-    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
-    //collaboration diagram settings
-    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
-    //object diagram settings
-     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
-    //sequence diagram settings
-    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
-    //state diagram settings
-    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
-    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
-    //class settings
-    //activity diagram settings
-    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
-    show_infonote default drawing_language default show_stereotype_properties default
-    classdiagram 131926 "Diagramme"
-      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
-      size A4
-    end
-  end
-
-  classview 134742 "Textures"
-    //class diagram settings
-    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
-    //collaboration diagram settings
-    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
-    //object diagram settings
-     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
-    //sequence diagram settings
-    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
-    //state diagram settings
-    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
-    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
-    //class settings
-    //activity diagram settings
-    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
-    show_infonote default drawing_language default show_stereotype_properties default
-    classdiagram 133078 "diagramme"
-      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
-      size A4
-    end
-
-    class 130006 "MCouleur"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 130774 // <generalisation>
-	relation 130134 ---|>
-	  a public
-	    classrelation_ref 130774 // <generalisation>
-	  b parent class_ref 129366 // MTextureAbstraite
-      end
-
-      attribute 138966 "couleur"
-	private explicit_type "uint"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      attribute 139094 "alpha"
-	private explicit_type "int"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-    end
-
-    class 129750 "MImage"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 130518 // <generalisation>
-	relation 129878 ---|>
-	  a public
-	    classrelation_ref 130518 // <generalisation>
-	  b parent class_ref 129366 // MTextureAbstraite
-      end
-
-      attribute 138838 "url_image"
-	private explicit_type "string"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      attribute 139862 "myBitmap"
-	private explicit_type "BitmapData"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-    end
-
-    class 129366 "MTextureAbstraite"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 153046 // <realization>
-	relation 150102 -_-|>
-	  a public
-	    classrelation_ref 153046 // <realization>
-	  b parent class_ref 144982 // MITexture
-      end
-
-    end
-
-    class 144854 "MTexte"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 152790 // <generalisation>
-	relation 149846 ---|>
-	  a public
-	    classrelation_ref 152790 // <generalisation>
-	  b parent class_ref 129366 // MTextureAbstraite
-      end
-
-      attribute 139222 "texte"
-	private explicit_type "string"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      attribute 139350 "couleur"
-	private explicit_type "uint"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      attribute 139478 "label"
-	private explicit_type "Label"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-    end
-
-    class 144982 "MITexture"
-      visibility package stereotype "interface"
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
-${members}}
-"
-      php_decl "${comment}${visibility}interface ${name} {
-${members}}
-"
-      python_2_2 python_decl ""
-      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
-${members}};
-"
-      explicit_switch_type ""
-      
-      classrelation 153430 // a_decorer (<composition>)
-	relation 150358 *---
-	  a role_name "a_decorer" multiplicity "1" private
-	    classrelation_ref 153430 // a_decorer (<composition>)
-	  b role_name "" private
-	    classrelation_ref 153558 // <composition>
-      end
-
-      classrelation 153558 // <composition>
-	relation_ref 150358 // <composition>
-      end
-
-      operation 147414 "appliquer"
-	public explicit_return_type "void"
-	nparams 1
-	  param in name "graphics" explicit_type "Graphics"
-	
-	
-	
-	
-	
-      end
-
-      operation 147542 "getNomClasse"
-	public explicit_return_type "string"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      operation 147670 "clone"
-	public return_type class_ref 144982 // MITexture
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      classrelation 154070 // texture (<association>)
-	relation_ref 150614 // <association>
-      end
-    end
-
-    class 145110 "MBordure"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 152918 // <generalisation>
-	relation 149974 ---|>
-	  a public
-	    classrelation_ref 152918 // <generalisation>
-	  b parent class_ref 129366 // MTextureAbstraite
-      end
-
-      attribute 139606 "epaisseur"
-	private explicit_type "int"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      attribute 139734 "couleur"
-	private explicit_type "uint"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-    end
-  end
-
-  package_ref 133462 // Textures
+  package_ref 128470 // Degrades
 end

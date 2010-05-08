@@ -1,10 +1,10 @@
-format 66
+format 71
 "Coeur" // Coeur
-  revision 11
-  modified_by 86 "manland"
+  revision 10
+  modified_by 27 "Lolo"
   // class settings
   //class diagram settings
-  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
   //use case diagram settings
   package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
   //sequence diagram settings
@@ -28,7 +28,7 @@ format 66
   
   classview 128342 "VueClasses"
     //class diagram settings
-    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
     //collaboration diagram settings
     show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
     //object diagram settings
@@ -43,136 +43,8 @@ format 66
     package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
     show_infonote default drawing_language default show_stereotype_properties default
     classdiagram 128214 "DiagrammeClasse"
-      draw_all_relations no hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_infonote default shadow default show_stereotype_properties default
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
       size A4
-    end
-
-    class 129110 "MPropriete"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 129622 // <association>
-	relation_ref 129238 // <association>
-      end
-    end
-
-    class 128982 "MBonus"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 129238 // <association>
-	relation 129110 ----
-	  a role_name "" private
-	    classrelation_ref 129238 // <association>
-	  b role_name "" private
-	    classrelation_ref 129366 // <association>
-      end
-
-      classrelation 133206 // <association>
-	relation 132438 ----
-	  a role_name "" private
-	    classrelation_ref 133206 // <association>
-	  b role_name "" private
-	    classrelation_ref 133334 // <association>
-      end
-
-      classrelation 134998 // <association>
-	relation 133462 ----
-	  a role_name "" private
-	    classrelation_ref 134998 // <association>
-	  b role_name "" private
-	    classrelation_ref 135126 // <association>
-      end
-    end
-
-    class 128854 "MControle"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 129110 // <generalisation>
-	relation 128982 ---|>
-	  a public
-	    classrelation_ref 129110 // <generalisation>
-	  b parent class_ref 128470 // MElement
-      end
-
-      classrelation 133078 // <generalisation>
-	relation 132310 ---|>
-	  a public
-	    classrelation_ref 133078 // <generalisation>
-	  b parent class_ref 128342 // MIObjet
-      end
-    end
-
-    class 128726 "MDynamique"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 128982 // <generalisation>
-	relation 128854 ---|>
-	  a public
-	    classrelation_ref 128982 // <generalisation>
-	  b parent class_ref 128470 // MElement
-      end
-
-      classrelation 132950 // <generalisation>
-	relation 132182 ---|>
-	  a public
-	    classrelation_ref 132950 // <generalisation>
-	  b parent class_ref 128342 // MIObjet
-      end
-
-      classrelation 141782 // (< s'applique sur)
-	relation 139990 ---- name "< s'applique sur"
-	  a role_name "" private
-	    classrelation_ref 141782 // (< s'applique sur)
-	  b role_name "" private
-	    classrelation_ref 141910 // (< s'applique sur)
-      end
-    end
-
-    class 128598 "MStatique"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 128854 // <generalisation>
-	relation 128726 ---|>
-	  a public
-	    classrelation_ref 128854 // <generalisation>
-	  b parent class_ref 128470 // MElement
-      end
-
-      classrelation 132822 // <generalisation>
-	relation 132054 ---|>
-	  a public
-	    classrelation_ref 132822 // <generalisation>
-	  b parent class_ref 128342 // MIObjet
-      end
     end
 
     class 128470 "MElement"
@@ -184,14 +56,6 @@ format 66
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 129366 // <association>
-	relation_ref 129110 // <association>
-      end
-
-      classrelation 135126 // <association>
-	relation_ref 133462 // <association>
-      end
-
       classrelation 135382 // <generalisation>
 	relation 133718 ---|>
 	  a public
@@ -204,6 +68,13 @@ format 66
 	  a public
 	    classrelation_ref 137814 // <realization>
 	  b parent class_ref 128342 // MIObjet
+      end
+
+      classrelation 129307 // <generalisation>
+	relation 128795 ---|>
+	  a public
+	    classrelation_ref 129307 // <generalisation>
+	  b parent class_ref 128027 // MObjet
       end
     end
 
@@ -227,24 +98,10 @@ ${members}};
 	relation_ref 128598 // <aggregation>
       end
 
-      operation 128214 "drag"
-	public explicit_return_type ""
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      classrelation 133334 // <association>
-	relation_ref 132438 // <association>
-      end
-
-      classrelation 133718 // objet (< contient)
+      classrelation 133718 // (< contient)
 	relation 132694 ---- name "< contient"
-	  a role_name "objet" private
-	    classrelation_ref 133718 // objet (< contient)
+	  a role_name "" private
+	    classrelation_ref 133718 // (< contient)
 	  b role_name "" private
 	    classrelation_ref 133846 // (< contient)
       end
@@ -254,18 +111,6 @@ ${members}};
 	  a public
 	    classrelation_ref 134358 // <generalisation>
 	  b parent class_ref 132438 // UIComponent
-      end
-
-      operation 131798 "estTouchePar"
-	public explicit_return_type "bool"
-	nparams 2
-	  param in name "x" explicit_type "Number"
-	  param in name "y" explicit_type "Number"
-	
-	
-	
-	
-	
       end
 
       operation 132054 "mourir"
@@ -300,61 +145,6 @@ ${members}};
 	
       end
 
-      operation 132438 "actionCollisionBord"
-	public explicit_return_type "void"
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
-      attribute 129622 "coordonnee"
-	private type class_ref 140630 // MCoordonnee
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      attribute 129878 "ecouteurs"
-	private explicit_type "Array"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      attribute 130006 "nom_classe"
-	private explicit_type "String"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      attribute 130134 "largeur"
-	private explicit_type "Number"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      attribute 130262 "hauteur"
-	private explicit_type "Number"
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
       classrelation 146774 // < est represente par
 	relation_ref 144086 // < est represente par
       end
@@ -363,6 +153,70 @@ ${members}};
 	public explicit_return_type "void"
 	nparams 1
 	  param in name "objet" type class_ref 134614 // MIObjetEcouteur
+	
+	
+	
+	
+	
+      end
+
+      classrelation 128027 // <association>
+	relation 128027 ----
+	  a role_name "" private
+	    classrelation_ref 128027 // <association>
+	  b role_name "" private
+	    classrelation_ref 128155 // <association>
+      end
+
+      operation 128027 "axeCollision"
+	public explicit_return_type "MAxe"
+	nparams 1
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      operation 128155 "estProcheDe"
+	public explicit_return_type "boolean"
+	nparams 1
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      operation 128283 "deplacement"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "x" explicit_type "Number"
+	  param in name "y" explicit_type "Number"
+	
+	
+	
+	
+	
+      end
+
+      operation 128411 "redimensionnement"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "largeur" explicit_type "Number"
+	  param in name "hauteur" explicit_type "Number"
+	
+	
+	
+	
+	
+      end
+
+      operation 128539 "debut"
+	public explicit_return_type "void"
+	nparams 0
 	
 	
 	
@@ -397,24 +251,6 @@ ${members}};
 	    classrelation_ref 128726 // <aggregation>
       end
 
-      classrelation 129494 // <association>
-	relation 129238 ----
-	  a role_name "" private
-	    classrelation_ref 129494 // <association>
-	  b role_name "" private
-	    classrelation_ref 129622 // <association>
-      end
-
-      operation 128342 "drop"
-	public explicit_return_type ""
-	nparams 0
-	
-	
-	
-	
-	
-      end
-
       classrelation 133462 // <association>
 	relation 132566 ----
 	  a role_name "" private
@@ -432,9 +268,10 @@ ${members}};
 
       operation 131414 "collision"
 	public explicit_return_type "void"
-	nparams 2
+	nparams 3
 	  param in name "objet1" type class_ref 128342 // MIObjet
 	  param in name "objet2" type class_ref 128342 // MIObjet
+	  param in name "axe" explicit_type "MAxe"
 	
 	
 	
@@ -442,8 +279,8 @@ ${members}};
 	
       end
 
-      operation 131542 "collisionBord"
-	public explicit_return_type "void"
+      operation 131542 "axeCollisionBord"
+	public explicit_return_type "MAxe"
 	nparams 1
 	  param in name "objet" type class_ref 128342 // MIObjet
 	
@@ -498,6 +335,75 @@ ${members}};
 	python_decl ""
 	idl_decl ""
       end
+
+      classrelation 129179 // <generalisation>
+	relation 128667 ---|>
+	  a public
+	    classrelation_ref 129179 // <generalisation>
+	  b parent class_ref 128027 // MObjet
+      end
+
+      attribute 128411 "enfants"
+	private explicit_type "array"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 128795 "getAxeSeparateur"
+	public explicit_return_type "MVecteur"
+	nparams 1
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      operation 128923 "getPointProjection"
+	public return_type class_ref 140630 // MCoordonnee
+	nparams 1
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      operation 129051 "seProjeteSur"
+	public explicit_return_type "Number"
+	nparams 2
+	  param in name "vecteur" explicit_type "MVecteur"
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      operation 129179 "procheBord"
+	public explicit_return_type "boolean"
+	nparams 1
+	  param in name "objet" type class_ref 128342 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      classrelation 130459 // <association>
+	relation 129947 ----
+	  a role_name "" private
+	    classrelation_ref 130459 // <association>
+	  b role_name "contient" private
+	    classrelation_ref 130587 // contient (<association>)
+      end
     end
 
     class 134614 "MIObjetEcouteur"
@@ -515,7 +421,7 @@ ${members}};
 "
       explicit_switch_type ""
       
-      operation 132566 "deplacementModel"
+      operation 132566 "deplacementObjet"
 	public explicit_return_type "void"
 	nparams 1
 	  param in name "objet" type class_ref 128342 // MIObjet
@@ -526,7 +432,7 @@ ${members}};
 	
       end
 
-      operation 132694 "changementTailleModel"
+      operation 132694 "changementTaille"
 	public explicit_return_type "void"
 	nparams 1
 	  param in name "objet" type class_ref 128342 // MIObjet
@@ -537,7 +443,7 @@ ${members}};
 	
       end
 
-      operation 132822 "modelMeurt"
+      operation 132822 "objetMeurt"
 	public explicit_return_type "void"
 	nparams 1
 	  param in name "objet" type class_ref 128342 // MIObjet
@@ -548,7 +454,7 @@ ${members}};
 	
       end
 
-      operation 132950 "modelNait"
+      operation 132950 "objetNait"
 	public explicit_return_type "void"
 	nparams 1
 	  param in name "objet" type class_ref 128342 // MIObjet
@@ -558,158 +464,206 @@ ${members}};
 	
 	
       end
-    end
 
-    class 135510 "MControleClavier"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 139478 // <generalisation>
-	relation 137686 ---|>
-	  a public
-	    classrelation_ref 139478 // <generalisation>
-	  b parent class_ref 128854 // MControle
-      end
-
-      classrelation 139990 // <realization>
-	relation 138198 -_-|>
-	  a public
-	    classrelation_ref 139990 // <realization>
-	  b parent class_ref 131030 // MIEcouteurClavier
-      end
-
-      classrelation 143830 // (>)
-	relation 141910 ---- name ">"
-	  a role_name "" private
-	    classrelation_ref 143830 // (>)
-	  b role_name "" private
-	    classrelation_ref 143958 // (>)
-      end
-
-      attribute 132950 "clavier"
-	private type class_ref 135382 // MClavier
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-    end
-
-    class 135638 "MControlerSouris"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 139606 // <generalisation>
-	relation 137814 ---|>
-	  a public
-	    classrelation_ref 139606 // <generalisation>
-	  b parent class_ref 128854 // MControle
-      end
-
-      classrelation 140118 // <realization>
-	relation 138326 -_-|>
-	  a public
-	    classrelation_ref 140118 // <realization>
-	  b parent class_ref 131158 // MIEcouteurSouris
-      end
-
-      classrelation 144086 // (>)
-	relation 142038 ---- name ">"
-	  a role_name "" private
-	    classrelation_ref 144086 // (>)
-	  b role_name "" private
-	    classrelation_ref 144214 // (>)
-      end
-
-      attribute 133334 "souris"
-	private type class_ref 135254 // MSouris
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-    end
-
-    class 135766 "MControleSourisClavier"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 140374 // <generalisation>
-	relation 138582 ---|>
-	  a public
-	    classrelation_ref 140374 // <generalisation>
-	  b parent class_ref 128854 // MControle
-      end
-
-      classrelation 140502 // <realization>
-	relation 138710 -_-|>
-	  a public
-	    classrelation_ref 140502 // <realization>
-	  b parent class_ref 131158 // MIEcouteurSouris
-      end
-
-      classrelation 140630 // <realization>
-	relation 138838 -_-|>
-	  a public
-	    classrelation_ref 140630 // <realization>
-	  b parent class_ref 131030 // MIEcouteurClavier
-      end
-
-      classrelation 144342 // (>)
-	relation 142166 ---- name ">"
-	  a role_name "" private
-	    classrelation_ref 144342 // (>)
-	  b role_name "" private
-	    classrelation_ref 144470 // (>)
-      end
-
-      classrelation 144598 // (>)
-	relation 142294 ---- name ">"
-	  a role_name "" private
-	    classrelation_ref 144598 // (>)
-	  b role_name "" private
-	    classrelation_ref 144726 // (>)
-      end
-
-      attribute 133078 "clavier"
-	private type class_ref 135382 // MClavier
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      attribute 133206 "souris"
-	private type class_ref 135254 // MSouris
-	cpp_decl ""
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
+      operation 128667 "objetCollision"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "objet" type class_ref 128342 // MIObjet
+	  param in name "axe" explicit_type "MAxe"
+	
+	
+	
+	
+	
       end
     end
 
     sequencediagram 130774 "DiagSeqCollision"
       show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
       overlapping_bars size A4
+    end
+
+    class 128027 "MObjet"
+      abstract visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128155 // <association>
+	relation_ref 128027 // <association>
+      end
+
+      classrelation 128283 // <association>
+	relation 128155 ----
+	  a role_name "" private
+	    classrelation_ref 128283 // <association>
+	  b role_name "" private
+	    classrelation_ref 128411 // <association>
+      end
+
+      classrelation 128667 // est_represente_par (<association>)
+	relation_ref 128283 // <association>
+      end
+
+      attribute 128155 "ecouteurs"
+	private explicit_type "array"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128283 "nom_classe"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 129051 // <realization>
+	relation 128539 -_-|>
+	  a public
+	    classrelation_ref 129051 // <realization>
+	  b parent class_ref 128342 // MIObjet
+      end
+    end
+
+    class 128283 "MScore"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 128539 "total"
+	private explicit_type "Number"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 129307 // get_total
+      end
+
+      operation 129307 "get_total"
+	force_body_gen const cpp_inline public explicit_return_type "Number"
+	nparams 0
+	
+	cpp_name_spec "get_${name}"
+	final 
+	java_name_spec "get${Name}"
+	php_final 
+	php_name_spec "get${Name}"
+	
+	python_name_spec "get${Name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 128539 // total
+      end
+
+      operation 129435 "incrementer"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "i" explicit_type "Number"
+	
+	
+	
+	
+	
+      end
+
+      operation 129563 "decrementer"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "i" explicit_type "Number"
+	
+	
+	
+	
+	
+      end
+
+      operation 129691 "remiseAZero"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 130843 // <association>
+	relation_ref 130075 // <association>
+      end
+    end
+
+    class 128411 "MJeu"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 130203 "scores"
+	private explicit_type "array"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 130331 "scene"
+	private type class_ref 128214 // MScene
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      classrelation 130587 // contient (<association>)
+	relation_ref 129947 // <association>
+      end
+
+      classrelation 130715 // tab_scores (<association>)
+	relation 130075 ----
+	  a role_name "tab_scores" multiplicity "*" private
+	    classrelation_ref 130715 // tab_scores (<association>)
+	  b role_name "" private
+	    classrelation_ref 130843 // <association>
+      end
+
+      operation 130459 "debut"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 130587 "fin"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
     end
   end
 
