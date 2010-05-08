@@ -6,10 +6,13 @@ package Graphique {
 	import flash.events.TimerEvent;
 	import Graphique.Textures.MITexture;
 	import Graphique.Textures.MBordure;
+	import Coeur.MIObjetEcouteur;
+	import Coeur.Forme.MIForme;
 	
-	public interface MIObjetGraphique {
+	public interface MIObjetGraphique extends MIObjetEcouteur {
 		function getGraphique():UIComponent;
 		function getObjet():MIObjet;
+		function setObjet(objet:MIObjet):void;
 		function mourir():void;
 		
 		function get x():Number;
@@ -21,6 +24,7 @@ package Graphique {
 		function get height():Number;
 		function set height(height:Number):void;
 		
+		function getForme():MIForme;
 		function getTexture():MITexture;
 		function setTexture(texture:MITexture):void;
 		function getBordure():MBordure;
@@ -29,6 +33,7 @@ package Graphique {
 		
 		function redessiner(e:TimerEvent=null):void;
 		function ajouterEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void;
+		function supprimerEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void;
 		
 		function getNomClasse():String;
 		function clone():MIObjetGraphique;

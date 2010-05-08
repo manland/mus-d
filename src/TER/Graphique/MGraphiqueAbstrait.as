@@ -208,6 +208,15 @@ package Graphique {
 		}
 		
 		/**
+		 * Retourne la forme de cet objet graphique.
+		 * @return la forme de cet objet graphique
+		 * @see Coeur.Forme.MIForme
+		 */
+		public function getForme():MIForme {
+			return forme;
+		}
+		
+		/**
 		 * Retourne l'objet model que représente cet objet graphique.
 		 * @return l'objet model de cet objet graphique
 		 * @see Coeur.MIObjet
@@ -238,10 +247,12 @@ package Graphique {
 		 * <p>Cet objet graphique se positionne en tant qu'écouteur de ce nouvel objet model. 
 		 * De plus on appel les fonctions deplacementObjet() et changementTaille() afin que l'objet graphique se redessine correctement.</p>
 		 * <p>Si cet objet graphique avait un model alors on se supprime de ça liste de ses écouteurs.</p>
+		 * <p>Enfin on repositionne la forme de l'objet à la forme de cet objet graphique, afin de ne pas pouvoir se retrouver avec un rond dans un MGraphiqueRectangle, par exemple.</p>
 		 * @param objet le nouvel objet model
 		 * @see Coeur.MIObjet
 		 * @see Coeur.MIObjet#supprimerObjetEcouteur()
 		 * @see Coeur.MIObjet#ajoutObjetEcouteur()
+		 * @see Coeur.MIObjet#setForme()
 		 * @see MGraphiqueAbstrait#changementTaille()
 		 * @see MGraphiqueAbstrait#deplacementObjet()
 		 */
@@ -251,6 +262,7 @@ package Graphique {
 			}
 			this.objet = objet;
 			this.objet.ajoutObjetEcouteur(this);
+			this.objet.setForme(forme);
 			changementTaille(objet);
 			deplacementObjet(objet);
 		}
