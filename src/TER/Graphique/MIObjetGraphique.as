@@ -8,16 +8,20 @@ package Graphique {
 	import Graphique.Textures.MBordure;
 	
 	public interface MIObjetGraphique {
-		function getObjet():MIObjet;
 		function getGraphique():UIComponent;
+		function getObjet():MIObjet;
+		function mourir():void;
+		
 		function getTexture():MITexture;
 		function setTexture(texture:MITexture):void;
 		function getBordure():MBordure;
 		function setBordure(bordure:MBordure):void;
 		function ajouterTexture(texture:MITexture):void;
+		
 		function redessiner(e:TimerEvent=null):void;
+		function ajouterEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void;
+		
 		function getNomClasse():String;
 		function clone():MIObjetGraphique;
-		function ajouterEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void;
 	}
 }

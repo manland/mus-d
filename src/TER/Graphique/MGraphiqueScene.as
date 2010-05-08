@@ -15,8 +15,9 @@ package Graphique {
 	import mx.core.IUIComponent;
 	import Utilitaires.MErreur;
 	import mx.events.ResizeEvent;
+	import mx.core.Container;
 	
-	public class MGraphiqueScene extends Canvas implements MIObjetGraphique, MIObjetEcouteur {
+	public class MGraphiqueScene extends Container implements MIObjetGraphique, MIObjetEcouteur {
 		protected var objet:MScene;
 		protected var forme:MFormeRectangle;
 		protected var ma_texture:MITexture;
@@ -41,8 +42,8 @@ package Graphique {
 			ma_texture = new MCouleur(0xFFFFFF);
 			ma_bordure = null;
 			nom_classe = "MGraphiqueScene";
-			horizontalScrollPolicy = "auto";
-			verticalScrollPolicy = "auto";
+			horizontalScrollPolicy = "off";
+			verticalScrollPolicy = "off";
 			addEventListener(ResizeEvent.RESIZE, resize);
 		}
 		
@@ -66,6 +67,15 @@ package Graphique {
 			for(var i:int=0; i<ecouteurs.length; i++) {
 				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueCollision(this, axe);
 			}
+		}
+		
+		/**
+		 * Permet de faire "mourir" cette scene.
+		 * <p>Autrement dit cela permet de retirer cet objet du visuel, et donc appelle mourir de l'objet model.</p>
+		 * @see Coeur.MIObjet#mourir()
+		 */
+		public function mourir():void {
+			objet.mourir();
 		}
 		
 		public function objetCollision(objet:MIObjet, axe:MAxe):void {
