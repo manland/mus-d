@@ -17,7 +17,7 @@ package Graphique {
 	import mx.events.ResizeEvent;
 	import mx.core.Container;
 	
-	public class MGraphiqueScene extends Container implements MIObjetGraphique, MIObjetEcouteur {
+	public class MGraphiqueScene extends Canvas implements MIObjetGraphique, MIObjetEcouteur {
 		protected var objet:MScene;
 		protected var forme:MFormeRectangle;
 		protected var ma_texture:MITexture;
