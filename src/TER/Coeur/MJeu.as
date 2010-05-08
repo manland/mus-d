@@ -8,12 +8,13 @@ package Coeur
 		private var nom_classe:String;
 		private var scene:MScene;
 		private var scores:Array;
-		private int nombre_participant;
+		private var estCommence:Boolean;
 		
 		public function MJeu()
 		{
 			scene = null;
 			scores = new Array();
+			estCommence = false;
 			if(instance == null){
 				instance = this;
 			}
@@ -72,16 +73,24 @@ package Coeur
 			return this.scene;
 		}
 		
+		public function getEstCommence():Boolean{
+			return this.estCommence;
+		}
+		
 		public function debut():void{
-			if(scene != null)
-				scene.debut()
+			if(scene != null){
+				scene.debut();
+				estCommence = true;
+			}
 			else
 				throw new MErreur(this.nom_classe, "debut", "Il n'y a pas de scene sur laquelle lancer le jeu");
 		}
 		
 		public function fin():void{
-			if(scene != null)
+			if(scene != null){
 				scene.fin()
+				estCommence = false;
+			}
 			else
 				throw new MErreur(this.nom_classe, "fin", "Il n'y a pas de scene sur laquelle lancer le jeu");
 		}
