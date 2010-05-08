@@ -51,6 +51,17 @@ package Graphique {
 			ecouteurs.push(ecouteur);
 		}
 		
+		/**
+		 * Permet de supprimer un écouteur de cet objet graphique.
+		 * @param ecouteur l'écouteur à enlever de la liste des écouteurs de cet objet graphique.
+		 * @see MIObjetGraphiqueEcouteur
+		 * @see MGraphiqueAbstrait#ecouteurs
+		 * @see MGraphiqueAbstrait#ajouterEcouteur()
+		 */
+		public function supprimerEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void {
+			ecouteurs.slice(ecouteurs.indexOf(ecouteur), 1);
+		}
+		
 		public function fireSeDessine():void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
 				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueSeDessine(this);
@@ -106,21 +117,33 @@ package Graphique {
 			return obj as UIComponent;
 		}
 		
-		public function setObjet(objet:MScene):void {
-			if(this.objet != null) {
-				this.objet.supprimeObjetEcouteur(this);
+		public function setObjet(objet:MIObjet):void {
+			var nouvel_scene:MScene = objet as MScene;
+			if(nouvel_scene != null) {
+				if(this.objet != null) {
+					this.objet.supprimeObjetEcouteur(this);
+				}
+				this.objet = nouvel_scene;
+				this.objet.ajoutObjetEcouteur(this);
+				this.objet.setForme(forme);
+				changementTaille(nouvel_scene);
+				deplacementObjet(nouvel_scene);
 			}
-			this.objet = objet;
-			this.objet.ajoutObjetEcouteur(this);
-			changementTaille(objet);
-			deplacementObjet(objet);
+			else {
+				throw new MErreur(nom_classe, "setObjet", "Vous ne pouvez pas positionner un objet qui n'est pas une MScene.");
+			}
 		}
+		
 		public function getObjet():MIObjet {
 			return objet;
 		}
 		
 		public function getGraphique():UIComponent {
 			return this;
+		}
+		
+		public function getForme():MIForme {
+			return forme;
 		}
 		
 		public function setTexture(t:MITexture):void {
