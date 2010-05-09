@@ -14,7 +14,7 @@ package Coeur.Elements {
 			this.tireur = tireur;
 			this.direction = direction;
 			this.vitesse = vitesse;
-			angle = 0;//direction == "est"
+			angle = 180;//direction == "est"
 			if(direction == "nord") {
 				angle = 90;
 			}
@@ -22,14 +22,13 @@ package Coeur.Elements {
 				angle = 270;
 			}
 			else if(direction == "ouest") {
-				angle = 180;
+				angle = 0;
 			}
 			mouvement = new MMouvementPerpetuel();
 			setPointVie(0);
 			setPointDegat(point_degat);
 			
-//			setEtatDestructible(new MEtatDestructibleProjectile(this));
-			setEtatDestructible(new MEtatIndestructible(this));
+			setEtatDestructible(new MEtatDestructibleProjectile(this));
 			
 			setEtatDeplacable(new MEtatDeplacable(this));
 			nom_classe = "MProjectile";
@@ -45,11 +44,11 @@ package Coeur.Elements {
 				setY(tireur.getY()+tireur.getHauteur());
 			}
 			else if(direction == "ouest") {
-				setX(tireur.getX()+tireur.getLargeur());
+				setX(tireur.getX()+tireur.getLargeur()+5);
 				setY(tireur.getY()+(tireur.getHauteur()/2));
 			}
 			else {//est
-				setX(tireur.getX());
+				setX(tireur.getX()+tireur.getLargeur()+5);
 				setY(tireur.getY()+(tireur.getHauteur()/2));
 			}
 			mouvement.instancieAvecAngleEtVitesse(this, angle, vitesse);
