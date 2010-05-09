@@ -1,6 +1,6 @@
 format 71
 "Graphique" // Graphique
-  revision 12
+  revision 13
   modified_by 27 "Lolo"
   // class settings
   //class diagram settings
@@ -374,4 +374,10 @@ ${members}};
   end
 
   package_ref 128470 // Degrades
+
+  simplerelation 128283
+    ---|>
+      on 
+      package_ref 128214 // Coeur
+  end
 end
