@@ -56,33 +56,19 @@ format 71
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 135382 // <generalisation>
-	relation 133718 ---|>
+      classrelation 145819 // <generalisation>
+	relation 144283 ---|>
 	  a public
-	    classrelation_ref 135382 // <generalisation>
-	  b parent class_ref 132438 // UIComponent
-      end
-
-      classrelation 137814 // <realization>
-	relation 136022 -_-|>
-	  a public
-	    classrelation_ref 137814 // <realization>
-	  b parent class_ref 128342 // MIObjet
-      end
-
-      classrelation 129307 // <generalisation>
-	relation 128795 ---|>
-	  a public
-	    classrelation_ref 129307 // <generalisation>
+	    classrelation_ref 145819 // <generalisation>
 	  b parent class_ref 128027 // MObjet
       end
 
-      classrelation 138779 // possede (<association>)
-	relation 137371 ----
-	  a role_name "possede" multiplicity "1..*" private
-	    classrelation_ref 138779 // possede (<association>)
+      classrelation 147227 // possede (<association>)
+	relation 145051 ----
+	  a role_name "possede" multiplicity "*" private
+	    classrelation_ref 147227 // possede (<association>)
 	  b role_name "" private
-	    classrelation_ref 138907 // <association>
+	    classrelation_ref 147355 // <association>
       end
     end
 
@@ -102,21 +88,6 @@ ${members}};
       explicit_switch_type ""
       
       associated_diagram classdiagram_ref 128214 // DiagrammeClasse
-      classrelation 133718 // (< contient)
-	relation 132694 ---- name "< contient"
-	  a role_name "" private
-	    classrelation_ref 133718 // (< contient)
-	  b role_name "" private
-	    classrelation_ref 133846 // (< contient)
-      end
-
-      classrelation 134358 // <generalisation>
-	relation 133078 ---|>
-	  a public
-	    classrelation_ref 134358 // <generalisation>
-	  b parent class_ref 132438 // UIComponent
-      end
-
       operation 132054 "mourir"
 	stereotype "evenement"
 	public explicit_return_type "void"
@@ -149,10 +120,6 @@ ${members}};
 	
       end
 
-      classrelation 146774 // < est represente par
-	relation_ref 144086 // < est represente par
-      end
-
       operation 141142 "ajouterEcouteur"
 	public explicit_return_type "void"
 	nparams 1
@@ -162,14 +129,6 @@ ${members}};
 	
 	
 	
-      end
-
-      classrelation 128027 // <association>
-	relation 128027 ----
-	  a role_name "" private
-	    classrelation_ref 128027 // <association>
-	  b role_name "" private
-	    classrelation_ref 128155 // <association>
       end
 
       operation 128027 "axeCollision"
@@ -228,8 +187,16 @@ ${members}};
 	
       end
 
-      classrelation 138139 // <aggregation>
-	relation_ref 136987 // <aggregation>
+      classrelation 146843 // <aggregation>
+	relation_ref 144795 // <aggregation>
+      end
+
+      classrelation 146971 // (< contient)
+	relation 144923 ---- name "< contient"
+	  a role_name "" private
+	    classrelation_ref 146971 // (< contient)
+	  b role_name "" private
+	    classrelation_ref 147099 // (< contient)
       end
     end
 
@@ -264,20 +231,6 @@ ${members}};
 	
 	
 	
-      end
-
-      classrelation 137686 // <realization>
-	relation 135894 -_-|>
-	  a public
-	    classrelation_ref 137686 // <realization>
-	  b parent class_ref 128342 // MIObjet
-      end
-
-      classrelation 137942 // <realization>
-	relation 136150 -_-|>
-	  a public
-	    classrelation_ref 137942 // <realization>
-	  b parent class_ref 134614 // MIObjetEcouteur
       end
 
       operation 133078 "ajouterEnfant"
@@ -366,27 +319,30 @@ ${members}};
 	
       end
 
-      classrelation 137883 // <generalisation>
-	relation 136859 ---|>
+      classrelation 145563 // <realization>
+	relation 144027 -_-|>
 	  a public
-	    classrelation_ref 137883 // <generalisation>
+	    classrelation_ref 145563 // <realization>
+	  b parent class_ref 134614 // MIObjetEcouteur
+      end
+
+      classrelation 145691 // <generalisation>
+	relation 144155 ---|>
+	  a public
+	    classrelation_ref 145691 // <generalisation>
 	  b parent class_ref 128027 // MObjet
       end
 
-      classrelation 138011 // <aggregation>
-	relation 136987 o---
-	  a role_name "" private
-	    classrelation_ref 138011 // <aggregation>
-	  b role_name "" private
-	    classrelation_ref 138139 // <aggregation>
+      classrelation 146331 // <association>
+	relation_ref 144539 // <association>
       end
 
-      classrelation 138523 // <association>
-	relation 137243 ----
+      classrelation 146715 // <aggregation>
+	relation 144795 o---
 	  a role_name "" private
-	    classrelation_ref 138523 // <association>
-	  b role_name "contient" private
-	    classrelation_ref 138651 // contient (<association>)
+	    classrelation_ref 146715 // <aggregation>
+	  b role_name "" private
+	    classrelation_ref 146843 // <aggregation>
       end
     end
 
@@ -476,22 +432,6 @@ ${members}};
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 128155 // <association>
-	relation_ref 128027 // <association>
-      end
-
-      classrelation 128283 // <association>
-	relation 128155 ----
-	  a role_name "" private
-	    classrelation_ref 128283 // <association>
-	  b role_name "" private
-	    classrelation_ref 128411 // <association>
-      end
-
-      classrelation 128667 // <association>
-	relation_ref 128283 // <association>
-      end
-
       attribute 128155 "ecouteurs"
 	private explicit_type "array"
 	cpp_decl ""
@@ -510,11 +450,19 @@ ${members}};
 	idl_decl ""
       end
 
-      classrelation 129051 // <realization>
-	relation 128539 -_-|>
+      classrelation 145435 // <realization>
+	relation 143899 -_-|>
 	  a public
-	    classrelation_ref 129051 // <realization>
+	    classrelation_ref 145435 // <realization>
 	  b parent class_ref 128342 // MIObjet
+      end
+
+      classrelation 145947 // est_represente_par (<association>)
+	relation 144411 ----
+	  a role_name "est_represente_par" private
+	    classrelation_ref 145947 // est_represente_par (<association>)
+	  b role_name "" private
+	    classrelation_ref 146075 // <association>
       end
     end
 
@@ -585,8 +533,8 @@ ${members}};
 	
       end
 
-      classrelation 130843 // <association>
-	relation_ref 130075 // <association>
+      classrelation 146587 // <association>
+	relation_ref 144667 // <association>
       end
     end
 
@@ -617,14 +565,6 @@ ${members}};
 	idl_decl ""
       end
 
-      classrelation 130715 // tab_scores (<association>)
-	relation 130075 ----
-	  a role_name "tab_scores" multiplicity "*" private
-	    classrelation_ref 130715 // tab_scores (<association>)
-	  b role_name "" private
-	    classrelation_ref 130843 // <association>
-      end
-
       operation 130459 "debut"
 	public explicit_return_type "void"
 	nparams 0
@@ -645,10 +585,6 @@ ${members}};
 	
       end
 
-      classrelation 138651 // contient (<association>)
-	relation_ref 137243 // <association>
-      end
-
       attribute 136859 "estCommence"
 	private explicit_type "boolean"
 	cpp_decl ""
@@ -656,6 +592,22 @@ ${members}};
 	php_decl ""
 	python_decl ""
 	idl_decl ""
+      end
+
+      classrelation 146203 // contient (<association>)
+	relation 144539 ----
+	  a role_name "contient" multiplicity "1" private
+	    classrelation_ref 146203 // contient (<association>)
+	  b role_name "" private
+	    classrelation_ref 146331 // <association>
+      end
+
+      classrelation 146459 // tab_scores (<association>)
+	relation 144667 ----
+	  a role_name "tab_scores" multiplicity "*" private
+	    classrelation_ref 146459 // tab_scores (<association>)
+	  b role_name "" private
+	    classrelation_ref 146587 // <association>
       end
     end
   end

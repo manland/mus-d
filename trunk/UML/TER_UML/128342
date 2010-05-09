@@ -1,6 +1,6 @@
 format 71
 "Graphique" // Graphique
-  revision 11
+  revision 12
   modified_by 27 "Lolo"
   // class settings
   //class diagram settings
@@ -63,10 +63,6 @@ ${members}};
 "
       explicit_switch_type ""
       
-      classrelation 133846 // (< contient)
-	relation_ref 132694 // < contient
-      end
-
       operation 130262 "getObjet"
 	public return_type class_ref 128342 // MIObjet
 	nparams 0
@@ -96,6 +92,10 @@ ${members}};
 	  a public
 	    classrelation_ref 146902 // <generalisation>
 	  b parent class_ref 134614 // MIObjetEcouteur
+      end
+
+      classrelation 147099 // (< contient)
+	relation_ref 144923 // < contient
       end
     end
 

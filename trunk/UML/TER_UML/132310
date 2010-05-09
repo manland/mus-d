@@ -1,6 +1,6 @@
 format 71
 "Effets" // Controleur::Effets
-  revision 3
+  revision 4
   modified_by 27 "Lolo"
   // class settings
   //class diagram settings
@@ -145,8 +145,8 @@ ${members}};
 	
       end
 
-      classrelation 138907 // <association>
-	relation_ref 137371 // <association>
+      classrelation 147355 // <association>
+	relation_ref 145051 // <association>
       end
     end
   end
