@@ -101,12 +101,20 @@ package Coeur.Elements {
 			this.etat_redimensionnable = etat_redimensionnable;
 		}
 		
+		override public function deplacement(x:Number, y:Number):void {
+			etat_deplacable.deplacement(x, y);
+		}
+		
 		override public function setX(x:Number):void {
 			etat_deplacable.setX(x);
 		}
 		
 		override public function setY(y:Number):void {
 			etat_deplacable.setY(y);
+		}
+		
+		override public function redimensionnement(l:Number, h:Number):void {
+			etat_redimensionnable.redimensionnement(l, h);
 		}
 		
 		override public function setHauteur(hauteur:Number):void {

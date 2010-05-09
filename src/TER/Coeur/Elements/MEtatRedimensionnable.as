@@ -6,6 +6,14 @@ package Coeur.Elements {
 			super(element);
 		}
 		
+		public function redimensionnement(l:Number, h:Number):void {
+			if(element.getForme() != null) {
+				element.getForme().setLargeur(l);
+				element.getForme().setHauteur(h);
+				element.fireChangementTaille();
+			}
+		}
+		
 		public function setHauteur(hauteur:Number):void {
 			if(element.getForme() != null) {
 				element.getForme().setHauteur(hauteur);

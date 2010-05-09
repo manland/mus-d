@@ -51,8 +51,9 @@ package Coeur
 		
 		public function deplacement(x:Number, y:Number):void
 		{
-			setX(x);
-			setY(y);
+			if(forme != null)
+				forme.deplacement(x, y);
+			fireDeplacementObjet();
 		}
 		
 		public function getX():Number
@@ -90,8 +91,11 @@ package Coeur
 		}		
 		
 		public function redimensionnement(l:Number,h:Number):void{
-			setLargeur(l);
-			setHauteur(h);
+			if(forme != null){
+				forme.setLargeur(forme.getLargeur() + l);
+				forme.setHauteur(forme.getHauteur() + h);
+				fireChangementTaille();
+			}
 		}
 				
 		public function getLargeur():Number
