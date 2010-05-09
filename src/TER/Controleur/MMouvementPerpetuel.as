@@ -126,7 +126,7 @@ package Controleur
 		
 		/* accesseurs */
 		/**
-		 * 
+		 * retourne l'angle en degré entre le vecteur du mouvement et l'axe des abscisses
 		 */
 		 public function getAngle():Number{
 		 	var x:Number = unite_x;
@@ -149,16 +149,17 @@ package Controleur
 		 	return angle * 180 / Math.PI;		 	
 		 }
 		 
-		 /**
-		 * 
+		/**
+		 * change le mouvement pour que son vecteur forme un angle en degré égal à celui passé en paramètre
+		 * @param angle degré: nouvel angle en degré entre le vecteur de ce mouvement et l'axe des abscisses
 		 */
-		 public function setAngle(angle:Number):void{
+		 public function setAngle(angle_degre:Number):void{
 		 	var x:Number;
 			var y:Number;
 			var radian:Number;
 			var vitesse:Number;
 			
-			radian = angle * Math.PI / 180;
+			radian = angle_degre * Math.PI / 180;
 			vitesse = Math.sqrt(unite_x * unite_x + unite_y * unite_y);
 			x = vitesse * Math.cos(radian);
 			y = vitesse * Math.sin(radian);

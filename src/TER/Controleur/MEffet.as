@@ -7,6 +7,10 @@ package Controleur
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
+	/**
+	 * classe abstraite représentant un effet appliqué à un objet, les sous classes de cette classe doivent implémenter MIEffet
+	 * @see Controleur.MIEffet
+	 */
 	public class MEffet
 	{
 		protected var sous_classe:MIEffet;
@@ -23,6 +27,9 @@ package Controleur
 		 */
 		protected var objet:MIObjet;
 		
+		/**
+		 * Constructeur qui interdit l'instanciation directe et oblige les sous classes de MEffet à implémenter MIEffet
+		 */
 		public function MEffet()
 		{
 			nom_classe = "MEffet";
@@ -75,7 +82,7 @@ package Controleur
 		}	
 		
 		/**
-		 * crée pour l'attribut "timer" de l'objet receveur un nouveau Timer qui appelle la fonction avanceUneUnite lorsqu'il finit et le lance
+		 * crée pour l'attribut "timer" de l'objet receveur un nouveau Timer qui appelle la fonction appliqueUnite lorsqu'il finit et le lance
 		 * @param temps: temps de durée du Timer
 		 * @param repetition: nombre de fois ou le Timer va recommencer
 		 */	
