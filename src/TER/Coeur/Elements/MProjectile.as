@@ -14,7 +14,7 @@ package Coeur.Elements {
 			this.tireur = tireur;
 			this.direction = direction;
 			this.vitesse = vitesse;
-			angle = 180;//direction == "est"
+			angle = 0;//direction == "est"
 			if(direction == "nord") {
 				angle = 90;
 			}
@@ -22,7 +22,7 @@ package Coeur.Elements {
 				angle = 270;
 			}
 			else if(direction == "ouest") {
-				angle = 0;
+				angle = 180;
 			}
 			mouvement = new MMouvementPerpetuel();
 			setPointVie(0);
@@ -37,14 +37,14 @@ package Coeur.Elements {
 		public function lancer():void {
 			if(direction == "nord") {
 				setX(tireur.getX()+(tireur.getLargeur()/2));
-				setY(tireur.getY());
+				setY(tireur.getY()-5);
 			}
 			else if(direction == "sud") {
 				setX(tireur.getX()+(tireur.getLargeur()/2));
-				setY(tireur.getY()+tireur.getHauteur());
+				setY(tireur.getY()+tireur.getHauteur()+5);
 			}
 			else if(direction == "ouest") {
-				setX(tireur.getX()+tireur.getLargeur()+5);
+				setX(tireur.getX()-5);
 				setY(tireur.getY()+(tireur.getHauteur()/2));
 			}
 			else {//est
@@ -53,6 +53,10 @@ package Coeur.Elements {
 			}
 			mouvement.instancieAvecAngleEtVitesse(this, angle, vitesse);
 			mouvement.lancer();
+		}
+		
+		public function stopper():void {
+			mouvement.stopper();
 		}
 	}
 }

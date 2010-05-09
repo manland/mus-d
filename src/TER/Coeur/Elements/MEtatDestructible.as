@@ -2,6 +2,7 @@ package Coeur.Elements {
 	import Coeur.MIObjet;
 	import Utilitaires.MAxe;
 	import Coeur.MJeu;
+	import Utilitaires.MErreur;
 	
 	
 	public class MEtatDestructible extends MEtatAbstrait implements MIEtatDestructible {

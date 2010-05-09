@@ -1,4 +1,6 @@
 package Coeur.Elements {
+	import Utilitaires.MErreur;
+	
 	
 	public class MEtatDestructibleTireurMouvementPerpetuel extends MEtatDestructible {
 		
