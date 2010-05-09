@@ -12,7 +12,10 @@ package Coeur.Elements {
 		}
 		
 		override public function actionCollision(objet_collisionne:MIObjet, axe:MAxe):void {
-			throw new MErreur("MEtatDestructibleProjectile", "actionCollision", objet_collisionne.getNomClasse());
+			var projectile:MProjectile = (objet_collisionne as MProjectile);
+			if(projectile != null) {
+				return;
+			}
 			var element_a_etat_collisionne:MElementAEtat = (objet_collisionne as MElementAEtat);
 			if(element_a_etat_collisionne != null) {
 				element.setPointVie(element.getPointVie()-element_a_etat_collisionne.getPointDegat());
