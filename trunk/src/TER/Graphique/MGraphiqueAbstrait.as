@@ -220,7 +220,7 @@ package Graphique {
 		 */
 		public function fireDebutDuJeu():void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
-				(ecouteurs[i] as MIObjetGraphiqueEcouteur).debutDuJeu(sous_classe);
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).debutDuJeuGraphique(sous_classe);
 			}
 		}
 		
@@ -230,7 +230,7 @@ package Graphique {
 		 */
 		public function fireFinDuJeu():void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
-				(ecouteurs[i] as MIObjetGraphiqueEcouteur).finDuJeu(sous_classe);
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).finDuJeuGraphique(sous_classe);
 			}
 		}
 		
@@ -495,6 +495,8 @@ package Graphique {
 		public function objetMeurt(objet:MIObjet):void {
 			if(parent != null)
 				parent.removeChild(this);
+//			else
+//				throw new MErreur("MGraphiqueAbstrait", "objetMeurt", "l'objet"+objet.getNomClasse()+" n'est plus dans la classe");
 			fireMeurt();
 		}
 		

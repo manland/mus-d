@@ -39,6 +39,8 @@ package Graphique {
 		override public function clone():MIObjetGraphique {
 			var graphique_temp:MGraphiqueRectangle = new MGraphiqueRectangle();
 			graphique_temp.setObjet(objet.clone());
+			graphique_temp.width = objet.getLargeur();
+			graphique_temp.height = objet.getHauteur();
 			if(ma_bordure != null) {
 				graphique_temp.setBordure(ma_bordure.clone() as MBordure);
 			}
