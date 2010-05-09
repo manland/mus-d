@@ -13,7 +13,7 @@ package Coeur.Elements {
 		public function MTireur(point_vie:int, point_degat:int, degat_projectile:int, scene:MGraphiqueScene) {
 			this.degat_projectile = degat_projectile;
 			this.scene = scene;
-			setEtatDestructible(new MEtatDestructibleProjectile(this));
+			setEtatDestructible(new MEtatDestructible(this));
 			setEtatDeplacable(new MEtatDeplacable(this));
 			setPointVie(point_vie);
 			setPointDegat(point_degat);
