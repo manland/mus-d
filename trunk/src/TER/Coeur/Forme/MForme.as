@@ -1,8 +1,8 @@
 package Coeur.Forme
 {
-	import Coeur.MIObjet;
-	
 	import Utilitaires.*;
+	
+	import mx.controls.Text;
 	
 	public class MForme
 	{
@@ -117,6 +117,13 @@ package Coeur.Forme
 			miforme.setY(new Number(y));
 			miforme.setHauteur(new Number(hauteur));
 			miforme.setLargeur(new Number(largeur));
+		}
+		
+		public function deplacementCirculaire(centre:MCoordonnee,angle_degre:Number):void{
+			var pt:MCoordonnee = new MCoordonnee(getX()+getLargeur()/2 , getY()+getHauteur()/2);
+			pt.tourne(centre,angle_degre);
+			setX(pt.getX() - getLargeur()/2);
+			setY(pt.getY() - getHauteur()/2);	
 		}
 		
 		//collision:

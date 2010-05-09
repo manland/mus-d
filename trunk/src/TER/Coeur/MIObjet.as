@@ -3,6 +3,7 @@ package Coeur
 	import Coeur.Forme.*;
 	
 	import Utilitaires.MAxe;
+	import Utilitaires.MCoordonnee;
 	
 	public interface MIObjet
 	{	
@@ -17,6 +18,7 @@ package Coeur
 		function setForme(forme:MIForme):void;
 		//coordonnées:
 		function deplacement(x:Number, y:Number):void;
+		function deplacementCirculaire(centre:MCoordonnee, angle_degre:Number):void;
 		function getX():Number;
 		function setX(x:Number):void;
 		function getY():Number;

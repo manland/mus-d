@@ -112,6 +112,11 @@ package Utilitaires
 			this.depart.deplacement(x,y);
 			this.arrivee.deplacement(x,y);
 		}
+		
+		public function tourne(centre:MCoordonnee, angle_degre:Number):void{
+			this.getArrivee().tourne(centre, angle_degre);
+			this.getDepart().tourne(centre, angle_degre);
+		}
 
 	}
 }

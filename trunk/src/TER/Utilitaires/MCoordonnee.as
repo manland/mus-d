@@ -1,5 +1,7 @@
 package Utilitaires
 {
+	import mx.effects.easing.Sine;
+	
 	public class MCoordonnee
 	{
 		protected var nom_classe:String;
@@ -56,6 +58,20 @@ package Utilitaires
 		
 		public function affiche():void{
 			trace(this.nom_classe,": (",this.x,",",this.y,")");
+		}
+		
+		/**
+		 * effectue une rotation de centre et d'angle passés en paramètre de l'arête receveuse
+		 * @see http://fr.wikipedia.org/wiki/Rotation_plane#Formules_de_changement_d.27axes_de_coordonn.C3.A9es
+		 * @param centre: coordonnée du centre de la rotation
+		 * @param angle_degre: angle en degré de la rotation
+		 */
+		public function tourne(centre:MCoordonnee, angle_degre:Number):void{
+			var x:Number = getX() - centre.getX();
+			var y:Number = getY() - centre.getY();
+			var angle_radian:Number = angle_degre * Math.PI / 180;
+			setX( centre.getX() + x*Math.cos(angle_radian) - y *Math.sin(angle_radian));
+			setY( centre.getY() + x*Math.sin(angle_radian) + y *Math.cos(angle_radian));
 		}
 
 	}
