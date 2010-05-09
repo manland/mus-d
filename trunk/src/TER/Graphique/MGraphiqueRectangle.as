@@ -6,6 +6,7 @@ package Graphique {
 	import Graphique.Textures.MBordure;
 	import Graphique.Textures.MITexture;
 	import Coeur.Forme.MIForme;
+	import Utilitaires.MArete;
 	
 	public class MGraphiqueRectangle extends MGraphiqueAbstrait implements MIObjetGraphique {
 		
@@ -17,13 +18,19 @@ package Graphique {
 		}
 		
 		override protected function dessiner():void {
-			fireSeDessine();
-			graphics.clear();
+			var aretes:Array = null;
+			var o:MFormeRectangle = forme as MFormeRectangle;
+			aretes = o.getAretes();
 			ma_texture.appliquer(graphics);
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
 			}
-			graphics.drawRect(0, 0, width, height);
+			var elem:MArete = aretes[0] as MArete;
+			graphics.moveTo(elem.getDepart().getX()-forme.getX(), elem.getDepart().getY()-forme.getY());
+			for(var i:Number=0; i<aretes.length; i++) {
+				elem = aretes[i] as MArete;
+				graphics.lineTo(elem.getArrivee().getX()-forme.getX(), elem.getArrivee().getY()-forme.getY());
+			}
 			graphics.endFill();
 		}
 		
