@@ -46,6 +46,8 @@ package Coeur.Forme
 			this.remplirForme((clone_miforme as MFormeEllipse));
 			return clone_miforme as MIForme; 
 		}
+		
+		
 		//collision:
 		/**
 		 * @inheritDoc

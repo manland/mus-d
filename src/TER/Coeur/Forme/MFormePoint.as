@@ -22,7 +22,14 @@ package Coeur.Forme
 		
 		public function getPerimetre():Number{
 			return 0;
-		}		
+		}	
+		
+//		public function tourne(centre:MCoordonnee, angle_degre:Number):void{
+//			var pt:MCoordonnee = new MCoordonnee(getX(), getY());
+//			pt.tourne(centre,angle_degre);
+//			setX(pt.getX());
+//			setY(pt.getY());			
+//		}	
 		
  		//collision
  		/**
