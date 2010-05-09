@@ -146,7 +146,7 @@ relationcanvas 132566 relation_ref 130902 // <generalisation>
 end
 relationcanvas 136790 relation_ref 132694 // < contient
   decenter_begin 71
-  from ref 130902 z 2012 label "< contient" italic xyz 328 329.5 2012 to ref 128214
+  from ref 130902 z 2012 label "< contient" italic xyz 328 329 2012 to ref 128214
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end

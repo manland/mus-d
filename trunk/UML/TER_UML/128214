@@ -1,6 +1,6 @@
 format 71
 "Coeur" // Coeur
-  revision 10
+  revision 12
   modified_by 27 "Lolo"
   // class settings
   //class diagram settings
@@ -76,6 +76,14 @@ format 71
 	    classrelation_ref 129307 // <generalisation>
 	  b parent class_ref 128027 // MObjet
       end
+
+      classrelation 138779 // possede (<association>)
+	relation 137371 ----
+	  a role_name "possede" multiplicity "1..*" private
+	    classrelation_ref 138779 // possede (<association>)
+	  b role_name "" private
+	    classrelation_ref 138907 // <association>
+      end
     end
 
     class 128342 "MIObjet"
@@ -94,10 +102,6 @@ ${members}};
       explicit_switch_type ""
       
       associated_diagram classdiagram_ref 128214 // DiagrammeClasse
-      classrelation 128726 // <aggregation>
-	relation_ref 128598 // <aggregation>
-      end
-
       classrelation 133718 // (< contient)
 	relation 132694 ---- name "< contient"
 	  a role_name "" private
@@ -223,6 +227,10 @@ ${members}};
 	
 	
       end
+
+      classrelation 138139 // <aggregation>
+	relation_ref 136987 // <aggregation>
+      end
     end
 
     class 128214 "MScene"
@@ -234,38 +242,6 @@ ${members}};
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 128470 // <directional aggregation>
-	relation 128470 o-->
-	  a role_name "" private
-	    classrelation_ref 128470 // <directional aggregation>
-	  b parent class_ref 128342 // MIObjet
-      end
-
-      classrelation 128598 // <aggregation>
-	relation 128598 o---
-	  a role_name "" private
-	    comment "Enfants
-"
-	    classrelation_ref 128598 // <aggregation>
-	  b role_name "" private
-	    classrelation_ref 128726 // <aggregation>
-      end
-
-      classrelation 133462 // <association>
-	relation 132566 ----
-	  a role_name "" private
-	    classrelation_ref 133462 // <association>
-	  b role_name "" private
-	    classrelation_ref 133590 // <association>
-      end
-
-      classrelation 134230 // <generalisation>
-	relation 132950 ---|>
-	  a public
-	    classrelation_ref 134230 // <generalisation>
-	  b parent class_ref 132566 // Canvas
-      end
-
       operation 131414 "collision"
 	public explicit_return_type "void"
 	nparams 3
@@ -336,13 +312,6 @@ ${members}};
 	idl_decl ""
       end
 
-      classrelation 129179 // <generalisation>
-	relation 128667 ---|>
-	  a public
-	    classrelation_ref 129179 // <generalisation>
-	  b parent class_ref 128027 // MObjet
-      end
-
       attribute 128411 "enfants"
 	private explicit_type "array"
 	cpp_decl ""
@@ -397,12 +366,27 @@ ${members}};
 	
       end
 
-      classrelation 130459 // <association>
-	relation 129947 ----
+      classrelation 137883 // <generalisation>
+	relation 136859 ---|>
+	  a public
+	    classrelation_ref 137883 // <generalisation>
+	  b parent class_ref 128027 // MObjet
+      end
+
+      classrelation 138011 // <aggregation>
+	relation 136987 o---
 	  a role_name "" private
-	    classrelation_ref 130459 // <association>
+	    classrelation_ref 138011 // <aggregation>
+	  b role_name "" private
+	    classrelation_ref 138139 // <aggregation>
+      end
+
+      classrelation 138523 // <association>
+	relation 137243 ----
+	  a role_name "" private
+	    classrelation_ref 138523 // <association>
 	  b role_name "contient" private
-	    classrelation_ref 130587 // contient (<association>)
+	    classrelation_ref 138651 // contient (<association>)
       end
     end
 
@@ -504,7 +488,7 @@ ${members}};
 	    classrelation_ref 128411 // <association>
       end
 
-      classrelation 128667 // est_represente_par (<association>)
+      classrelation 128667 // <association>
 	relation_ref 128283 // <association>
       end
 
@@ -633,10 +617,6 @@ ${members}};
 	idl_decl ""
       end
 
-      classrelation 130587 // contient (<association>)
-	relation_ref 129947 // <association>
-      end
-
       classrelation 130715 // tab_scores (<association>)
 	relation 130075 ----
 	  a role_name "tab_scores" multiplicity "*" private
@@ -663,6 +643,19 @@ ${members}};
 	
 	
 	
+      end
+
+      classrelation 138651 // contient (<association>)
+	relation_ref 137243 // <association>
+      end
+
+      attribute 136859 "estCommence"
+	private explicit_type "boolean"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
       end
     end
   end
