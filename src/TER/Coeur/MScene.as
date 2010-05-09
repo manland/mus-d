@@ -8,6 +8,7 @@ package Coeur
 	import Utilitaires.MVecteur;
 	
 	import mx.controls.Text;
+	import Utilitaires.MUtilitaire;
 	
 	public class MScene extends MObjet implements MIObjet, MIObjetEcouteur
 	{
@@ -53,7 +54,8 @@ package Coeur
 		public function supprimerEnfants(enfant:MIObjet):void 
 		{
 			enfant.supprimeObjetEcouteur(this);
-			enfants.slice(enfants.indexOf(enfant), 1);
+			var temp:Array = MUtilitaire.enlever(enfants,enfant);
+			enfants = temp;
 		}
 		public function getEnfants():Array{
 			return this.enfants;

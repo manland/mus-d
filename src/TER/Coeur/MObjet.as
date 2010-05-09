@@ -192,7 +192,8 @@ package Coeur
 			ecouteurs.push(objet);
 		}
 		public function supprimeObjetEcouteur(objet:MIObjetEcouteur):void {
-			ecouteurs.slice(ecouteurs.indexOf(objet), 1);
+			var temp:Array = MUtilitaire.enlever(ecouteurs,objet);
+			ecouteurs = temp;
 		}	
 		
 		//mort:
