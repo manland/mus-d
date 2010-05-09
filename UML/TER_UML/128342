@@ -1,6 +1,6 @@
 format 71
 "Graphique" // Graphique
-  revision 10
+  revision 11
   modified_by 27 "Lolo"
   // class settings
   //class diagram settings
@@ -63,10 +63,6 @@ ${members}};
 "
       explicit_switch_type ""
       
-      classrelation 133590 // <association>
-	relation_ref 132566 // <association>
-      end
-
       classrelation 133846 // (< contient)
 	relation_ref 132694 // < contient
       end
