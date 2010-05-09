@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="horizontal" 
+	xmlns:TER="Graphique.*"
+	applicationComplete="init()" xmlns:Vaisseaux="Vaisseaux.*">
+	<mx:Script>
+		<![CDATA[
+			import Graphique.Textures.MBordure;
+			import Graphique.Textures.MCouleur;
+		
+			public function init():void {
+				
+			}
+		]]>
+	</mx:Script>
+	
+	<TER:MGraphiqueScene id="scene" width="800" height="600" bordure="{new MBordure(3, 0x00FF00)}" >
+		<Vaisseaux:Hero scene="{scene}" texture="{new MCouleur(0x000000)}" bordure="{new MBordure()}" />
+		<Vaisseaux:Ennemis texture="{new MCouleur()}" bordure="{new MBordure()}" />
+	</TER:MGraphiqueScene>
+		
+</mx:WindowedApplication>
