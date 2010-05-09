@@ -114,6 +114,7 @@ package Graphique {
 			if(obj == null) {
 				throw new MErreur("MGraphiqueScene", "removeChild", "l'objet retourner par super est null. Vous devez essayer de retirer un objet qui n'est pas dans cette scene.");
 			}
+			redessiner();
 			return obj as UIComponent;
 		}
 		
