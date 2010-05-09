@@ -1,6 +1,6 @@
 format 71
 "Controleur" // Controleur
-  revision 5
+  revision 6
   modified_by 27 "Lolo"
   // class settings
   //class diagram settings
@@ -248,7 +248,6 @@ format 71
 	
 	
       end
-
     end
 
     class 135382 "MClavier"
@@ -341,9 +340,20 @@ format 71
 	
 	
       end
-
     end
   end
 
   package_ref 132310 // Effets
+
+  simplerelation 128027
+    ---|>
+      on 
+      package_ref 128214 // Coeur
+  end
+
+  simplerelation 128155
+    ---|>
+      on 
+      package_ref 128342 // Graphique
+  end
 end
