@@ -35,21 +35,21 @@ package Coeur
 			return this.scores;
 		}
 		
-		public function augmenterScore(numero_score:Number, point:Number){
+		public function augmenterScore(numero_score:Number, point:Number):void {
 			var score:MScore = scores[numero_score] as MScore;
 			if(score == null)
 				throw new MErreur(this.nom_classe, "augmenterScore", "MScore inexistant ou incorrect");
 			score.incrementer(point);
 		} 
 		
-		public function baisserScore(numero_score:Number, point:Number){
+		public function baisserScore(numero_score:Number, point:Number):void {
 			var score:MScore = scores[numero_score] as MScore;
 			if(score == null)
 				throw new MErreur(this.nom_classe, "baisserScore", "MScore inexistant ou incorrect");
 			score.decrementer(point);
 		} 
 		
-		public function remettreAZeroScore(numero_score:Number){
+		public function remettreAZeroScore(numero_score:Number):void {
 			var score:MScore = scores[numero_score] as MScore;
 			if(score == null)
 				throw new MErreur(this.nom_classe, "remettreAZeroScore", "MScore inexistant ou incorrect");

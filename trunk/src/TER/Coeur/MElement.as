@@ -46,23 +46,8 @@ package Coeur
 			return clone_mscene;
 		}
 		
-		
-		
-		
-		public function debut():void{
-		}
-		
-		public function fin():void{
-			
-		}
-		
-		public function fireDebutJeu():void{
-			
-		}
-		
-		public function fireFinJeu():void{
-			
-		}
-
+		//Pas besoins de remplir ici se sera au programmeur en réimplentant ou en écoutant de faire quelque chose quand ça commence
+		public function debut():void {}
+		public function fin():void {}
 	}
 }

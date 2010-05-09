@@ -51,9 +51,8 @@ package Coeur
 		
 		public function deplacement(x:Number, y:Number):void
 		{
-			if(forme != null)
-				this.forme.deplacement(x, y);
-			fireDeplacementObjet();
+			setX(x);
+			setY(y);
 		}
 		
 		public function getX():Number
@@ -91,11 +90,8 @@ package Coeur
 		}		
 		
 		public function redimensionnement(l:Number,h:Number):void{
-			if(forme != null){
-				forme.setLargeur(forme.getLargeur() + l);
-				forme.setHauteur(forme.getHauteur() + h);
-				fireChangementTaille();
-			}
+			setLargeur(l);
+			setHauteur(h);
 		}
 				
 		public function getLargeur():Number
@@ -148,6 +144,7 @@ package Coeur
 				(ecouteurs[i] as MIObjetEcouteur).objetMeurt(this as MIObjet);
 			}
 		}
+		
 		//création:
 		public function naitre():void {
 			fireNaitre();
@@ -189,7 +186,20 @@ package Coeur
 			return axe;			
 		}
 		
+		//Début et fin du jeu
+		public function fireDebutJeu():void {
+			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
+				(ecouteurs[i] as MIObjetEcouteur).debutDuJeu(sous_classe);
+			}
+		}
 		
-
+		public function fireFinJeu():void {
+			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
+				(ecouteurs[i] as MIObjetEcouteur).finDuJeu(sous_classe);
+			}
+		}
+		
+		public function debutDuJeu(objet:MIObjet):void {}
+		public function finDuJeu(objet:MIObjet):void {}
 	}
 }
