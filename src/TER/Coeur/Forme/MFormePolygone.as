@@ -65,7 +65,8 @@ package Coeur.Forme
 		
 		public function supprimerArete(arete:MArete):void
 		{
-			aretes.splice(aretes.indexOf(arete), 1);
+			var temp:Array = MUtilitaire.enlever(aretes,arete);
+			aretes = temp;
 		}
 		
 		public function getAretes():Array
