@@ -493,8 +493,8 @@ package Graphique {
 		 * @see MGraphiqueAbstrait#fireMeurt()
 		 */
 		public function objetMeurt(objet:MIObjet):void {
-			throw new MErreur("MGraphiqueAbstraot", "objetMeurt", objet.getNomClasse());
-			parent.removeChild(this);
+			if(parent != null)
+				parent.removeChild(this);
 			fireMeurt();
 		}
 		
