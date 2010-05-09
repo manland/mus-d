@@ -11,20 +11,8 @@ package Controleur
 	/**
 	 * Sert à appliquer un Mouvement Perpétuel sur un objet
 	 */
-	public class MMouvementPerpetuel implements MIEffet
+	public class MMouvementPerpetuel extends MEffet implements MIEffet
 	{
-		/**
-		 * nom de la classe
-		 */
-		private var nom_classe:String 
-		/**
-		 * objet sur lequel s'applique le Mouvement Perpétuel courant
-		 */
-		private var objet:MIObjet;
-		/**
-		 * Timer utilisé pour mesurer les unités de temps
-		 */
-		private var timer:Timer;
 		/**
 		 * valeur en pixel ajoutée sur l'abscisse à chaque unité de temps
 		 */
@@ -85,10 +73,6 @@ package Controleur
 		 * effectue les calculs nécessaires et lance le Mouvement Perpétuel receveur
 		 */
 		public function lancer():void{
-			//remise a zéro si ce n'est pas fait
-			if(timer != null) {
-				stopper();
-			}
 			//calcul du déplacement à faire en une unité de temps
 			unite_x = vitesse_px_s_X * 0.02;
 			unite_y = vitesse_px_s_Y * 0.02;
@@ -98,29 +82,11 @@ package Controleur
 		}
 		
 		/**
-		 * crée pour l'attribut "timer" de l'objet receveur un nouveau Timer qui appelle la fonction avanceUneUnite lorsqu'il finit et le lance
-		 * @param temps: temps de durée du Timer
-		 * @param repetition: nombre de fois ou le Timer va recommencer
-		 */	
-		protected function lancerTimer(temps:Number, repetition:Number):void{
-			setTimer(new Timer(temps, repetition));
-			getTimer().addEventListener(TimerEvent.TIMER, avanceUneUnite);
-			getTimer().start();
-		}
-		
-		/**
 		 * fonction appelée par le Timer à chaque fois que finit une unité de temps
 		 * <p> Fait avancer l'objet sur lequel s'applique le Mouvement Perpétuel receveur ( + unite_x sur l'abscisse et + unite_y sur l'ordonnée ) </p>		 
 		 */
-		protected function avanceUneUnite(e:TimerEvent):void{
+		public function appliqueUnite(e:TimerEvent):void{
 			getObjet().deplacement(unite_x, unite_y);			
-		}
-		
-		/**
-		 * stoppe le Mouvement Perpétuel receveur
-		 */		
-		public function stopper():void{
-			getTimer().stop();
 		}
 		
 		/**
@@ -144,7 +110,7 @@ package Controleur
 				unite_x = - unite_y;
 				unite_y = -i;
 			}
-			avanceUneUnite(null);
+			appliqueUnite(null);
 			unite_x = unite_x * coeff_x;
 			unite_y = unite_y * coeff_y;
 		}
@@ -158,46 +124,7 @@ package Controleur
 			return mouv;
 		}
 		
-		/** getteurs et setteurs */
-		/**
-		 * renvoie le timer du Mouvement Perpétuel receveur
-		 * @return le timer du Mouvement Perpétuel receveur
-		 */
-		public function getTimer():Timer{
-			return this.timer;
-		}
-		/**
-		 * remplace le timer du Mouvement Perpétuel receveur par celui passé en paramètre
-		 * @param le nouveau timer du Mouvement Perpétuel receveur
-		 */	
-		public function setTimer(timer:Timer):void{
-			this.timer = timer;
-		}	
-		
-		/**
-		 * renvoie l'objet sur lequel s'applique le Mouvement Perpétuel receveur
-		 * @return l'objet sur lequel s'applique le Mouvement Perpétuel receveur
-		 */
-		public function getObjet():MIObjet{
-			return this.objet;
-		}	
-		/**
-		 * remplace l'objet sur lequel s'applique le Mouvement Perpétuel receveur par celui passé en paramètre
-		 * @param le nouvel objet sur lequel on veut que s'applique le Mouvement Perpétuel receveur
-		 */
-		public function setObjet(objet:MIObjet):void{
-			this.objet = objet;
-		}
-			
-		/**
-		 * renvoie la chaine qui représente le nom de la classe du Mouvement Perpétuel receveur
-		 * @return la chaine qui représente le nom de la classe du Mouvement Perpétuel receveur
-		 */
-		public function getNomClasse():String
-		{
-			return this.nom_classe;
-		}	
-		
+		/* accesseurs */
 		/**
 		 * 
 		 */

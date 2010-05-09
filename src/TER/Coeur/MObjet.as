@@ -4,8 +4,11 @@ package Coeur
 	
 	import Utilitaires.*;
 	
+	import mx.controls.Text;
+	
 	public class MObjet
 	{
+		public var sysout:Text;
 		protected var sous_classe:MIObjet;
 		
 		protected var nom_classe:String;
@@ -53,6 +56,12 @@ package Coeur
 		{
 			if(forme != null)
 				forme.deplacement(x, y);
+			fireDeplacementObjet();
+		}
+		
+		public function deplacementCirculaire(centre:MCoordonnee, angle_degre:Number):void{
+			if(forme != null)
+				forme.deplacementCirculaire(centre, angle_degre);
 			fireDeplacementObjet();
 		}
 		

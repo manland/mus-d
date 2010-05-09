@@ -2,6 +2,7 @@ package Controleur
 {
 	import Coeur.MIObjet;
 	
+	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
 	
@@ -39,8 +40,7 @@ package Controleur
 		function getNomClasse():String; 
 				
 		
-		//vrai fonctions//
-		
+		//vrais fonctions//		
 		/**
 		 * effectue les calculs nécessaires et lance l'effet receveur
 		 */
@@ -53,6 +53,10 @@ package Controleur
 		 * renvoie un clone de l'effet receveur
 		 */
 		function clone():MIEffet;
+		/**
+		 * fonction appelée par le Timer à chaque fois que finit une unité de temps		 
+		 */		
+		function appliqueUnite(e:TimerEvent):void
 		
 	}
 }
