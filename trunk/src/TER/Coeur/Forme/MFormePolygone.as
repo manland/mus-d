@@ -47,6 +47,13 @@ package Coeur.Forme
 			else throw new MErreur(this.nom_classe, "deplacement", "Pas assez d'aretes");
 		}
 		
+//		public function tourne(centre:MCoordonnee, angle_degre:Number):void{
+//			var pt:MCoordonnee = new MCoordonnee(getX(),getY());
+//			pt.tourne(centre,angle_degre);
+//			setX(pt.getX());
+//			setY(pt.getY());
+//		}
+		
 		public function getSommeAngles():Number
 		{
 			return somme_angles;
@@ -211,14 +218,47 @@ package Coeur.Forme
  			for(var i:int = 0; i<nombre_arete; i++)
  			{
  				var arete:MArete = aretes[i] as MArete;
- 				if(points.indexOf(arete.getArrivee()) == -1){
+ 				var contient_d:Boolean = false;
+ 				var contient_a:Boolean = false;
+ 				for(var i:int = 0; i<points.length; i++){
+ 					var pt:MCoordonnee = points[i] as MCoordonnee;
+ 					if(pt.estEgal(arete.getArrivee()))
+ 						contient_a = true;
+ 					if(pt.estEgal(arete.getDepart()))
+ 						contient_d = true;
+ 				}
+ 				if(!contient_a)
  					points.push(arete.getArrivee());
- 				}
- 				if(points.indexOf(arete.getDepart()) == -1){
+ 				if(!contient_d)
  					points.push(arete.getDepart());
- 				}
  			}
  			return points;
+ 		}
+ 		
+ 		public function recalculeCoordonneeTaille():void{
+ 			var minX:Number = Number.POSITIVE_INFINITY;
+ 			var minY:Number = Number.POSITIVE_INFINITY;
+ 			var maxX:Number = Number.NEGATIVE_INFINITY;
+ 			var maxY:Number = Number.NEGATIVE_INFINITY;
+ 			for(var i:int = 0; i<nombre_arete; i++)
+ 			{
+ 				var arete:MArete = aretes[i] as MArete;
+ 				if(arete != null)
+				{
+						minX = Math.min(arete.getArrivee().getX(), minX);
+						minY = Math.min(arete.getArrivee().getY(), minY);
+						maxX = Math.max(arete.getArrivee().getX(), maxX);
+						maxY = Math.max(arete.getArrivee().getY(), maxY);
+						minX = Math.min(arete.getDepart().getX(), minX);
+						minY = Math.min(arete.getDepart().getY(), minY);
+						maxX = Math.max(arete.getDepart().getX(), maxX);
+						maxY = Math.max(arete.getDepart().getY(), maxY);
+				}				
+ 			}
+ 			this.setX(minX);
+ 			this.setY(minY);
+ 			this.setLargeur(maxX - minX);
+ 			this.setHauteur(maxY - minY);		
  		}
  		
  		//collision:

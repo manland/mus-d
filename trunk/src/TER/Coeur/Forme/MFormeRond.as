@@ -2,8 +2,11 @@ package Coeur.Forme
 {
 	import Utilitaires.*;
 	
+	import mx.controls.Text;
+	
 	public class MFormeRond extends MFormeEllipse
 	{
+		
 		public function MFormeRond()
 		{
 			super();
@@ -47,6 +50,14 @@ package Coeur.Forme
 			this.remplirForme(clone_miforme as MFormeRond);
 			return clone_miforme; 
 		}
+		
+//		public override function tourne(centre:MCoordonnee, angle_degre:Number):void{
+//			var pt:MCoordonnee = this.getCentre();
+//			pt.tourne(centre,angle_degre);
+//			//sysout.text +="\n tourne rond: "+pt.getX()+" - "+pt.getY();
+//			setX(pt.getX() - this.getRayon());
+//			setY(pt.getY() - this.getRayon());			
+//		}	
 		
 		//collision
  		/**

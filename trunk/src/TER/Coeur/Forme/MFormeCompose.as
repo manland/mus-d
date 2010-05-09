@@ -278,6 +278,7 @@ package Coeur.Forme
 			}
 		}
 		
+		
 		//collision:
 		/**
 		 * @inheritDoc
