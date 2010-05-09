@@ -235,11 +235,24 @@ package Coeur.Forme
  			return points;
  		}
  		
+ 		public override function tourne(centre:MCoordonnee,angle_degre:Number):void{
+ 			for(var i:int = 0; i<nombre_arete; i++)
+ 			{
+ 				var arete:MArete = aretes[i] as MArete;
+ 				if(arete != null)
+				{
+					arete.tourne(centre,angle_degre);
+				}
+ 			}
+ 		}
+ 		
  		public function recalculeCoordonneeTaille():void{
  			var minX:Number = Number.POSITIVE_INFINITY;
  			var minY:Number = Number.POSITIVE_INFINITY;
  			var maxX:Number = Number.NEGATIVE_INFINITY;
  			var maxY:Number = Number.NEGATIVE_INFINITY;
+ 			this.sysout.text += "\n recalcule: "+x+" - "+y;
+ 			
  			for(var i:int = 0; i<nombre_arete; i++)
  			{
  				var arete:MArete = aretes[i] as MArete;
@@ -255,10 +268,12 @@ package Coeur.Forme
 						maxY = Math.max(arete.getDepart().getY(), maxY);
 				}				
  			}
- 			this.setX(minX);
- 			this.setY(minY);
- 			this.setLargeur(maxX - minX);
- 			this.setHauteur(maxY - minY);		
+ 			this.sysout.text += "\n recalcule: "+minX+" - "+minY;
+ 			super.setX( minX);
+ 			super.setY( minY);
+ 			this.sysout.text += "\n recalcule: "+x+" - "+y;
+ 			super.setLargeur(maxX - minX);
+ 			super.setHauteur(maxY - minY);	 			
  		}
  		
  		//collision:

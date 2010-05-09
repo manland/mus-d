@@ -129,11 +129,11 @@ package Coeur.Forme
 			return 0;
 		}
 		
-//		public function tourne(centre:MCoordonnee, angle_degre:Number):void{
-//			this.getArrivee().tourne(centre, angle_degre);
-//			this.getDepart().tourne(centre, angle_degre);
-//			calculsCoordonnees();
-//		}
+		public override function tourne(centre:MCoordonnee, angle_degre:Number):void{
+			this.getArrivee().tourne(centre, angle_degre);
+			this.getDepart().tourne(centre, angle_degre);
+			calculsCoordonnees();
+		}
 		
 		//collision:
 		/**

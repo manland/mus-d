@@ -19,6 +19,7 @@ package Coeur
 		//coordonnées:
 		function deplacement(x:Number, y:Number):void;
 		function deplacementCirculaire(centre:MCoordonnee, angle_degre:Number):void;
+		function tourne(centre:MCoordonnee,angle_degre:Number):void;
 		function getX():Number;
 		function setX(x:Number):void;
 		function getY():Number;

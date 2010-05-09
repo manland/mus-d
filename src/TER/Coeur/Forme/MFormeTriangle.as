@@ -321,5 +321,10 @@ package Coeur.Forme
 			return clone_miforme; 
 		}
 		
+		public override function tourne(centre:MCoordonnee,angle_degre:Number):void{
+ 			super.tourne(centre,angle_degre);
+ 			remplitPoint();
+ 		}
+		
 	}
 }
