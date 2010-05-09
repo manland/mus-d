@@ -9,6 +9,7 @@ package Coeur
 		function objetMeurt(objet:MIObjet):void;
 		function objetNait(objet:MIObjet):void;
 		function objetCollision(objet:MIObjet, axe:MAxe):void;
-		
+		function debutDuJeu(objet:MIObjet):void;
+		function finDuJeu(objet:MIObjet):void;
 	}
 }

@@ -214,6 +214,12 @@ package Graphique {
 		public function objetNait(objet:MIObjet):void {
 		}
 		
+		public function debutDuJeu(objet:MIObjet):void {
+		}
+		
+		public function finDuJeu(objet:MIObjet):void {
+		}
+		
 		public function set largeur(largeur:Number):void {
 			width = largeur;
 		}

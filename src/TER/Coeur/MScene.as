@@ -253,15 +253,5 @@ package Coeur
 				objet.fin();
 			}
 		}
-		
-		public function fireDebutJeu():void{
-			
-		}
-		
-		public function fireFinJeu():void{
-			
-		}
-		
-		
 	}
 }

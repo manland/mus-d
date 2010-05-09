@@ -7,5 +7,7 @@ package Graphique {
 		function graphiqueCollision(graphique:MIObjetGraphique, axe:MAxe):void;
 		function graphiqueSeDeplace(graphique:MIObjetGraphique):void;
 		function graphiqueChangeTaille(graphique:MIObjetGraphique):void;
+		function debutDuJeu(graphique:MIObjetGraphique):void;
+		function finDuJeu(graphique:MIObjetGraphique):void;
 	}
 }

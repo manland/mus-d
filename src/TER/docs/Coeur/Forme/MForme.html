@@ -4,7 +4,7 @@
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../print.css" type="text/css" media="print">
-<meta content="MForme,Coeur.Forme.MForme,decalage,hauteur,largeur,nom_classe,objet,sous_classe,x,y,affiche,axeCollision,calculMaxX,calculMaxY,calculMinX,calculMinY,deplacement,getDecalage,getHauteur,getLargeur,getNomClasse,getObjet,getX,getY,remplirForme,seProjeteSur,setDecalage,setHauteur,setLargeur,setNomClasse,setObjet,setX,setY" name="keywords">
+<meta content="MForme,Coeur.Forme.MForme,decalage,hauteur,largeur,nom_classe,sous_classe,x,y,affiche,axeCollision,calculMaxX,calculMaxY,calculMinX,calculMinY,deplacement,getDecalage,getHauteur,getLargeur,getNomClasse,getX,getY,remplirForme,seProjeteSur,setDecalage,setHauteur,setLargeur,setX,setY" name="keywords">
 <title>Coeur.Forme.MForme</title>
 </head>
 <body>
@@ -71,11 +71,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 </td><td class="summaryTableOwnerCol">MForme</td>
 </tr>
 <tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#objet">objet</a> : <a href="../Coeur/MIObjet.html">MIObjet</a>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MForme</td>
-</tr>
-<tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#sous_classe">sous_classe</a> : <a href="../Forme/MIForme.html">MIForme</a>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MForme</td>
@@ -116,7 +111,10 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <div class="summarySignature">
 <a class="signatureLink" href="#axeCollision()">axeCollision</a>(forme2:<a href="MIForme.html">MIForme</a>):<a href="../../Utilitaires/Utilitaires/MAxe.html">MAxe</a>
 </div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+    retourne l'axe selon lequel collisionne la forme receveur et la forme passée en paramètre ou null si elles ne collisionnent pas
+    <p> cette fonction utilise la méthode des axes séparateurs pour detecter la collision</p>
+    </div>
 </td><td class="summaryTableOwnerCol">MForme</td>
 </tr>
 <tr class="">
@@ -186,14 +184,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <tr class="">
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
-<a class="signatureLink" href="#getObjet()">getObjet</a>():<a href="../Coeur/MIObjet.html">MIObjet</a>
-</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MForme</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
 <a class="signatureLink" href="#getX()">getX</a>():Number</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MForme</td>
@@ -209,7 +199,9 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#seProjeteSur()">seProjeteSur</a>(vecteur:<a href="../../Utilitaires/MVecteur.html">MVecteur</a>):Array</div>
-<div class="summaryTableDescription"></div>
+<div class="summaryTableDescription">
+   renvoie dans un tableau la valeurs minimale et la valeur maximale de la projection de la forme receveur sur le vecteur passé en paramètre
+   </div>
 </td><td class="summaryTableOwnerCol">MForme</td>
 </tr>
 <tr class="">
@@ -230,20 +222,6 @@ if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Cl
 <td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
 <div class="summarySignature">
 <a class="signatureLink" href="#setLargeur()">setLargeur</a>(largeur:Number):void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MForme</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#setNomClasse()">setNomClasse</a>(nom_classe:String):void</div>
-<div class="summaryTableDescription"></div>
-</td><td class="summaryTableOwnerCol">MForme</td>
-</tr>
-<tr class="">
-<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
-<div class="summarySignature">
-<a class="signatureLink" href="#setObjet()">setObjet</a>(objet:<a href="../MIObjet.html">MIObjet</a>):void</div>
 <div class="summaryTableDescription"></div>
 </td><td class="summaryTableOwnerCol">MForme</td>
 </tr>
@@ -322,15 +300,6 @@ showHideInherited();
 <div class="detailBody">
 <code>protected var nom_classe:String</code>
 </div>
-<a name="objet"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">objet</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>protected var objet:<a href="../Coeur/MIObjet.html">MIObjet</a></code>
-</div>
 <a name="sous_classe"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -387,17 +356,25 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function axeCollision(forme2:<a href="MIForme.html">MIForme</a>):<a href="../../Utilitaires/Utilitaires/MAxe.html">MAxe</a></code><span class="label">Parameters</span>
+<code>public function axeCollision(forme2:<a href="MIForme.html">MIForme</a>):<a href="../../Utilitaires/Utilitaires/MAxe.html">MAxe</a></code><p>
+    retourne l'axe selon lequel collisionne la forme receveur et la forme passée en paramètre ou null si elles ne collisionnent pas
+    </p><p> cette fonction utilise la méthode des axes séparateurs pour detecter la collision</p>
+    <span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">forme2</span>:<a href="MIForme.html">MIForme</a></code></td>
+<td width="20px"></td><td><code><span class="label">forme2</span>:<a href="MIForme.html">MIForme</a></code> &mdash; forme pour laquelle on cherche l'axe de collision
+    </td>
 </tr>
 </table>
 <p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code><a href="../../Utilitaires/Utilitaires/MAxe.html">MAxe</a></code></td>
+<td width="20"></td><td><code><a href="../../Utilitaires/Utilitaires/MAxe.html">MAxe</a></code> &mdash; 
+                        axe selon laquelle a lieu la collision entre la forme receveur et celle passée en paramètre ou null s'il n'y a pas collision
+    
+                        
+                     </td>
 </tr>
 </table>
 </div>
@@ -549,22 +526,6 @@ showHideInherited();
 </tr>
 </table>
 </div>
-<a name="getObjet()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">getObjet</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function getObjet():<a href="../Coeur/MIObjet.html">MIObjet</a></code>
-<p></p>
-<span class="label">Returns</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20"></td><td><code><a href="../Coeur/MIObjet.html">MIObjet</a></code></td>
-</tr>
-</table>
-</div>
 <a name="getX()"></a>
 <table cellspacing="0" cellpadding="0" class="detailHeader">
 <tr>
@@ -618,17 +579,21 @@ showHideInherited();
 </tr>
 </table>
 <div class="detailBody">
-<code>public function seProjeteSur(vecteur:<a href="../../Utilitaires/MVecteur.html">MVecteur</a>):Array</code><span class="label">Parameters</span>
+<code>public function seProjeteSur(vecteur:<a href="../../Utilitaires/MVecteur.html">MVecteur</a>):Array</code><p>
+   renvoie dans un tableau la valeurs minimale et la valeur maximale de la projection de la forme receveur sur le vecteur passé en paramètre
+   </p><span class="label">Parameters</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20px"></td><td><code><span class="label">vecteur</span>:<a href="../../Utilitaires/MVecteur.html">MVecteur</a></code></td>
+<td width="20px"></td><td><code><span class="label">vecteur</span>:<a href="../../Utilitaires/MVecteur.html">MVecteur</a></code> &mdash; vecteur sur lequel on veut projeter la forme
+   </td>
 </tr>
 </table>
 <p></p>
 <span class="label">Returns</span>
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="20"></td><td><code>Array</code></td>
+<td width="20"></td><td><code>Array</code> &mdash; un tableau contenant la valeur minimale de projection à l'indice 1 et la valeur maximale de projection à l'indice 0
+   </td>
 </tr>
 </table>
 </div>
@@ -671,34 +636,6 @@ showHideInherited();
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="20px"></td><td><code><span class="label">largeur</span>:Number</code></td>
-</tr>
-</table>
-</div>
-<a name="setNomClasse()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">setNomClasse</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function setNomClasse(nom_classe:String):void</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">nom_classe</span>:String</code></td>
-</tr>
-</table>
-</div>
-<a name="setObjet()"></a>
-<table cellspacing="0" cellpadding="0" class="detailHeader">
-<tr>
-<td class="detailHeaderName">setObjet</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
-</tr>
-</table>
-<div class="detailBody">
-<code>public function setObjet(objet:<a href="../MIObjet.html">MIObjet</a>):void</code><span class="label">Parameters</span>
-<table border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td width="20px"></td><td><code><span class="label">objet</span>:<a href="../MIObjet.html">MIObjet</a></code></td>
 </tr>
 </table>
 </div>

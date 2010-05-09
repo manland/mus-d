@@ -12,6 +12,7 @@ package Graphique {
 	import Utilitaires.MErreur;
 	import mx.olap.aggregators.MaxAggregator;
 	import Utilitaires.MAxe;
+	import Coeur.Elements.MTireurMouvementPerpetuel;
 	
 	/**
 	 * Classe abstraite gérant les comportements généraux des <u>MIObjetGraphique</u>.
@@ -78,6 +79,8 @@ package Graphique {
 		 * <li> collisionne, graphiqueCollision() </li>
 		 * <li> se déplace, graphiqueSeDeplace() </li>
 		 * <li> se redimenssionne, graphiqueChangeTaille() </li>
+		 * <li> est prévenue que le jeu débute, debutDuJeu() </li>
+		 * <li> est prévenue que le jeu se termine, finDuJeu() </li>
 		 * </p>
 		 * @see MIObjetGraphiqueEcouteur
 		 * @see MGraphiqueAbstrait#ajouterEcouteur()
@@ -86,6 +89,8 @@ package Graphique {
 		 * @see MGraphiqueAbstrait#fireCollision()
 		 * @see MGraphiqueAbstrait#fireDeplacement()
 		 * @see MGraphiqueAbstrait#fireChangementTaille()
+		 * @see MGraphiqueAbstrait#fireDebutDuJeu()
+		 * @see MGraphiqueAbstrait#fireFinDuJeu()
 		 */
 		protected var ecouteurs:Array = new Array();
 		
@@ -130,16 +135,18 @@ package Graphique {
 		 * <li> collisionne, graphiqueCollision() </li>
 		 * <li> se déplace, graphiqueSeDeplace() </li>
 		 * <li> se redimenssionne, graphiqueChangeTaille() </li>
+		 * <li> est prévenue que le jeu débute, debutDuJeu() </li>
+		 * <li> est prévenue que le jeu se termine, finDuJeu() </li>
 		 * </p>
-		 * @param ecouteur le nouvel écouteur de cet objet graphique.
 		 * @see MIObjetGraphiqueEcouteur
-		 * @see MGraphiqueAbstrait#ecouteurs
-		 * @see MGraphiqueAbstrait#supprimerEcouteur()
+		 * @see MGraphiqueAbstrait#ajouterEcouteur()
 		 * @see MGraphiqueAbstrait#fireSeDessine()
 		 * @see MGraphiqueAbstrait#fireMeurt()
 		 * @see MGraphiqueAbstrait#fireCollision()
 		 * @see MGraphiqueAbstrait#fireDeplacement()
 		 * @see MGraphiqueAbstrait#fireChangementTaille()
+		 * @see MGraphiqueAbstrait#fireDebutDuJeu()
+		 * @see MGraphiqueAbstrait#fireFinDuJeu()
 		 */
 		public function ajouterEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void {
 			ecouteurs.push(ecouteur);
@@ -204,6 +211,26 @@ package Graphique {
 		public function fireChangementTaille():void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
 				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueChangeTaille(sous_classe);
+			}
+		}
+		
+		/**
+		 * Prévient les écouteurs que cet objet graphique a été prévenue du début du jeu.
+		 * @see MGraphiqueAbstrait#ecouteurs
+		 */
+		public function fireDebutDuJeu():void {
+			for(var i:int=0; i<ecouteurs.length; i++) {
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).debutDuJeu(sous_classe);
+			}
+		}
+		
+		/**
+		 * Prévient les écouteurs que cet objet graphique a été prévenue de la fin du jeu.
+		 * @see MGraphiqueAbstrait#ecouteurs
+		 */
+		public function fireFinDuJeu():void {
+			for(var i:int=0; i<ecouteurs.length; i++) {
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).finDuJeu(sous_classe);
 			}
 		}
 		
@@ -407,7 +434,8 @@ package Graphique {
 		
 		/**
 		 * Appelé par l'objet model lorsque celui-ci se déplace.
-		 * <p>Cet objet graphique met à jours ses coordonnées avant d'appeler fireDeplacement() et pour finalement se redessiner.</p>
+		 * <p>Cette fonction appelle super.x = x et super.y = y pour se mettre en conformité avec l'API flex.</p>
+		 * <p>Puis cet objet graphique met à jours ses coordonnées avant d'appeler fireDeplacement() et pour finalement se redessiner.</p>
 		 * @param objet l'objet qui se déplace
 		 * @see MGraphiqueAbstrait#objet
 		 * @see Coeur.MIObjetEcouteur#deplacementObjet()
@@ -417,6 +445,8 @@ package Graphique {
 		 * @see MGraphiqueAbstrait#redessiner()
 		 */
 		public function deplacementObjet(objet:MIObjet):void {
+			super.x = objet.getX();
+			super.y = objet.getY();
 			x = objet.getX();
 			y = objet.getY();
 			fireDeplacement();
@@ -463,6 +493,7 @@ package Graphique {
 		 * @see MGraphiqueAbstrait#fireMeurt()
 		 */
 		public function objetMeurt(objet:MIObjet):void {
+			throw new MErreur("MGraphiqueAbstraot", "objetMeurt", objet.getNomClasse());
 			parent.removeChild(this);
 			fireMeurt();
 		}
@@ -475,6 +506,34 @@ package Graphique {
 		 * @see Coeur.MIObjetEcouteur#objetNait()
 		 */
 		public function objetNait(objet:MIObjet):void {
+		}
+		
+		/**
+		 * Appelée par l'objet model lorsque le jeu commence.
+		 * <p>Le modèle est lui même lancé lorsque le jeu représenté par MJeu est lancé.</p>
+		 * <p>Cette fonction ne fait rien d'autre que d'appeler fireDebutDuJeu, elle doit être réimplémentée par une classe fille si celle-ci en a besoins.</p>
+		 * @param objet l'objet qui est appelé par MJeu ou la scene du jeu
+		 * @see MGraphiqueAbstrait#objet
+		 * @see MGraphiqueAbstrait#fireDebutDuJeu()
+		 * @see Coeur.MIObjetEcouteur#debutDuJeu()
+		 * @see Coeur.MJeu#debut()
+		 */
+		public function debutDuJeu(objet:MIObjet):void {
+			fireDebutDuJeu();
+		}
+		
+		/**
+		 * Appelée par l'objet model lorsque le jeu fini.
+		 * <p>Le modèle est lui même lancé lorsque le jeu représenté par MJeu est terminé.</p>
+		 * <p>Cette fonction ne fait rien d'autre que d'appeler fireFinDuJeu, elle doit être réimplémentée par une classe fille si celle-ci en a besoins.</p>
+		 * @param objet l'objet qui est appelé par MJeu ou la scene du jeu
+		 * @see MGraphiqueAbstrait#objet
+		 * @see MGraphiqueAbstrait#fireFinDuJeu()
+		 * @see Coeur.MIObjetEcouteur#finDuJeu()
+		 * @see Coeur.MJeu#fin()
+		 */
+		public function finDuJeu(objet:MIObjet):void {
+			fireFinDuJeu();
 		}
 		
 		/**
@@ -533,14 +592,12 @@ package Graphique {
 		
 		/**
 		 * Permet de positionner la coordoonée x de cet objet graphique.
-		 * <p>Cette fonction appelle super.x = x pour se mettre en conformité avec l'API flex.</p>
 		 * <p>Puis met à jour la coordoonée x de l'objet model que représente cet objet graphique. Par le biai du MVC cet objet graphique sera bien redessiner.</p>
 		 * @param x la nouvelle coordoonée x de cet objet graphique
 		 * @see Coeur.MIObjet#setX()
 		 * @see MGraphiqueAbstrait#objet
 		 */
 		override public function set x(x:Number):void {
-			super.x = x;
 			if(objet.getX() != x) {
 				objet.setX(x);
 			}
@@ -548,14 +605,12 @@ package Graphique {
 		
 		/**
 		 * Permet de positionner la coordoonée y de cet objet graphique.
-		 * <p>Cette fonction appelle super.y = y pour se mettre en conformité avec l'API flex.</p>
 		 * <p>Puis met à jour la coordoonée y de l'objet model que représente cet objet graphique. Par le biai du MVC cet objet graphique sera bien redessiner.</p>
 		 * @param y la nouvelle coordoonée y de cet objet graphique
 		 * @see Coeur.MIObjet#setY()
 		 * @see MGraphiqueAbstrait#objet
 		 */
 		override public function set y(y:Number):void {
-			super.y = y;
 			if(objet.getY() != y) {
 				objet.setY(y);
 			}
