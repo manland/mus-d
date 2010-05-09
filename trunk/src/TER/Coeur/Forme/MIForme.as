@@ -14,6 +14,7 @@ package Coeur.Forme
 		function getY():Number;
 		function deplacement(x:Number, y:Number):void;
 		function deplacementCirculaire(centre:MCoordonnee, angle_degre:Number):void;
+		function tourne(centre:MCoordonnee,angle_degre:Number):void;
 		function calculMinX():Number;
 		function calculMinY():Number;
 		function calculMaxX():Number;

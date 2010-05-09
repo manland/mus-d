@@ -19,7 +19,7 @@ package Coeur
 		
 		protected var enfants:Array;
 		
-		public var sysout:Text;
+		//public var sysout:Text;
 		
 		public function MScene()
 		{

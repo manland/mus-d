@@ -14,7 +14,6 @@ package Coeur
 		//clone setEcouteur...
 		
 		public var mouv:MMouvementPerpetuel;
-		public var sysout:Text;
 		public var effets:Array;
 		
 		public function MElement()
@@ -33,6 +32,8 @@ package Coeur
 		}
 		
 		public override function actionCollision(objet:MIObjet,axe:MAxe):void {
+			if(mouv != null)
+				mouv.rebondir(axe);
 			fireCollision(axe);	
 		}
 			

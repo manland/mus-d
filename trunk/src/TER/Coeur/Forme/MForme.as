@@ -6,6 +6,8 @@ package Coeur.Forme
 	
 	public class MForme
 	{
+		public var sysout:Text;
+		
 		protected var sous_classe:MIForme;
 		
 		protected var x:Number;
@@ -123,7 +125,11 @@ package Coeur.Forme
 			var pt:MCoordonnee = new MCoordonnee(getX()+getLargeur()/2 , getY()+getHauteur()/2);
 			pt.tourne(centre,angle_degre);
 			setX(pt.getX() - getLargeur()/2);
-			setY(pt.getY() - getHauteur()/2);	
+			setY(pt.getY() - getHauteur()/2);
+		}
+		
+		public function tourne(centre:MCoordonnee,angle_degre:Number):void{
+			deplacementCirculaire(centre,angle_degre);
 		}
 		
 		//collision:

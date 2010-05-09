@@ -75,7 +75,7 @@ package Coeur.Forme
 		public function setRotation(rotation:Number):void{
 			this.rotation = rotation;
 			this.calculAretes();
-		}
+		}	
 		
 		public function clone():MIForme{
 			var clone_miforme:MIForme = new MFormeEtoile();

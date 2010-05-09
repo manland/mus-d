@@ -10,12 +10,22 @@ package Coeur
 	{
 		public var sysout:Text;
 		protected var sous_classe:MIObjet;
-		
+		/**
+		 * nom de la classe
+		 */
 		protected var nom_classe:String;
-		
+		/**
+		 * forme de l'objet
+		 */
 		protected var forme:MIForme;
+		/**
+		 * écouteurs de l'objet
+		 */
 		protected var ecouteurs:Array;
 		
+		/**
+		 * Constructeur qui empeche l'instanciation directe et oblige les sous classes de celle ci à implémenter MIObjet
+		 */
 		public function MObjet()
 		{
 			this.nom_classe = "MObjet";
@@ -25,16 +35,28 @@ package Coeur
 			}
 		}
 		//nom:
+		/**
+		 * renvoie la chaine qui représente le nom de la classe de l'objet receveur
+		 * @return la chaine qui représente le nom de la classe de l'objet receveur
+		 */
 		public function getNomClasse():String
 		{
 			return this.nom_classe;
 		}
 		
 		// forme:
+		/**
+		 * renvoie la forme de l'objet receveur
+		 * @return la forme de l'objet receveur
+		 */
 		public function getForme():MIForme
 		{
 			return this.forme;
-		}		
+		}	
+		/**
+		 * change la forme de l'objet receveur par celle passée en paramètre
+		 * @param forme: nouvelle forme de l'objet receveur
+		 */	
 		public function setForme(forme:MIForme):void
 		{
 			if(forme != null){
@@ -46,31 +68,56 @@ package Coeur
 		}
 		
 		//coordonnées:
+		/**
+		 * préviens les écouteurs de l'objet receveur que celui-ci vient de se déplacer. Cette fonction est appelée dès que l'objet
+		 * change de position
+		 */
 		public function fireDeplacementObjet():void {
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
 				(ecouteurs[i] as MIObjetEcouteur).deplacementObjet(this as MIObjet);
 			}
 		}
-		
+		/**
+		 * déplace l'objet receveur des valeurs passées en paramètre
+		 * @param x: valeur d'abscisse qu'il faut ajouter à l'abscisse de l'objet
+		 * @param y: valeur d'ordonnée qu'il faut ajouter à l'ordonnée de l'objet
+		 */
 		public function deplacement(x:Number, y:Number):void
 		{
 			if(forme != null)
 				forme.deplacement(x, y);
 			fireDeplacementObjet();
 		}
-		
+		/**
+		 * déplace l'objet receveur selon le mouvement circulaire dont les valeurs sont passées en paramètre
+		 * @param centre: centre du mouvement circulaire
+		 * @param angle_degre : angle en degré du mouvement circulaire
+		 */
 		public function deplacementCirculaire(centre:MCoordonnee, angle_degre:Number):void{
 			if(forme != null)
 				forme.deplacementCirculaire(centre, angle_degre);
 			fireDeplacementObjet();
 		}
-		
+		public function tourne(centre:MCoordonnee,angle_degre:Number):void{
+			getForme().tourne(centre, angle_degre);
+			//sysout.text += "\n tourne objet: "+getX()+" - "+getY();
+			fireDeplacementObjet();
+			fireChangementTaille();
+		}
+		/**
+		 * retourne la valeur d'abscisse de l'objet receveur
+		 * @return valeur d'abscisse de l'objet receveur
+		 */
 		public function getX():Number
 		{
 			if(forme != null)
 				return forme.getX();
 			else throw new MErreur(this.nom_classe, "getX", "pas de forme encore définie");
 		}
+		/**
+		 * retourne la valeur d'abscisse de l'objet receveur
+		 * @return valeur d'abscisse de l'objet receveur
+		 */
 		public function setX(x:Number):void
 		{
 			if(forme != null){
