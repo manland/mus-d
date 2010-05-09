@@ -1,6 +1,6 @@
 format 71
 "Formes" // Coeur::Formes
-  revision 6
+  revision 7
   modified_by 27 "Lolo"
   // class settings
   //class diagram settings
@@ -42,38 +42,9 @@ format 71
     //activity diagram settings
     package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
     show_infonote default drawing_language default show_stereotype_properties default
-    class 135126 "MFormeTriangleRegulier"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 138198 // <generalisation>
-	relation 136406 ---|>
-	  a public
-	    classrelation_ref 138198 // <generalisation>
-	  b parent class_ref 134998 // MFormeTriangleIsocele
-      end
-    end
-
-    class 134998 "MFormeTriangleIsocele"
-      visibility package 
-      cpp_decl ""
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 138070 // <generalisation>
-	relation 136278 ---|>
-	  a public
-	    classrelation_ref 138070 // <generalisation>
-	  b parent class_ref 133078 // MFormeTriangle
-      end
+    classdiagram 128027 "Forme"
+      draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
     end
 
     class 134870 "MFormePolygone"
@@ -155,7 +126,6 @@ ${members}};
 	    classrelation_ref 138966 // <realization>
 	  b parent class_ref 132694 // MIForme
       end
-
     end
 
     class 132694 "MIForme"
@@ -221,7 +191,7 @@ ${members}};
 	  a role_name "" private
 	    classrelation_ref 128539 // <association>
 	  b role_name "est_represente_par" private
-	    classrelation_ref 128667 // est_represente_par (<association>)
+	    classrelation_ref 128667 // <association>
       end
 
       operation 129947 "getAxesSeparateur"
@@ -277,13 +247,6 @@ ${members}};
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 138838 // <realization>
-	relation 137046 -_-|>
-	  a public
-	    classrelation_ref 138838 // <realization>
-	  b parent class_ref 132694 // MIForme
-      end
-
       classrelation 129691 // <generalisation>
 	relation 129179 ---|>
 	  a public
@@ -335,13 +298,6 @@ ${members}};
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 138326 // <realization>
-	relation 136534 -_-|>
-	  a public
-	    classrelation_ref 138326 // <realization>
-	  b parent class_ref 134742 // MIFormePolygone
-      end
-
       classrelation 129819 // <generalisation>
 	relation 129307 ---|>
 	  a public
