@@ -9,6 +9,13 @@ package Coeur.Elements {
 			super(element);
 		}
 		
+		public function deplacement(x:Number, y:Number):void {
+			if(element.getForme() != null){
+				element.getForme().deplacement(x, y);
+				element.fireDeplacementObjet();
+			}
+		}
+		
 		public function setX(x:Number):void {
 			if(element.getForme() != null){
 				element.getForme().setX(x);
