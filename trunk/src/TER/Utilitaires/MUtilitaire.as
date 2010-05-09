@@ -54,6 +54,14 @@ package Utilitaires
 				return m1;
 			return m2;
 		}		
+		/**
+		 * supprime l'élément passé en paramètre
+		 */
+		public static function enlever(tab:Array, objet):Array
+		{
+			tab.splice(tab.indexOf(objet),1);
+			return tab;
+		}
 
 	}
 }

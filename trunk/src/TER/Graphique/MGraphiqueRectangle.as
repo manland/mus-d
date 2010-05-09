@@ -21,6 +21,7 @@ package Graphique {
 			var aretes:Array = null;
 			var o:MFormeRectangle = forme as MFormeRectangle;
 			aretes = o.getAretes();
+			graphics.clear();
 			ma_texture.appliquer(graphics);
 			if(ma_bordure != null) {
 				ma_bordure.appliquer(graphics);
