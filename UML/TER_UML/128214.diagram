@@ -22,7 +22,7 @@ classcanvas 129819 class_ref 128283 // MScore
 end
 classcanvas 129947 class_ref 128411 // MJeu
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 496 507 2000
+  xyz 466 507 2000
 end
 packagecanvas 130262 
   package_ref 128214 // Coeur
@@ -180,8 +180,8 @@ relationcanvas 131739 relation_ref 129819 // <generalisation>
 end
 relationcanvas 132123 relation_ref 130075 // <association>
   from ref 129947 z 2001 to ref 129819
-  role_a_pos 541 425 3000 no_role_b
-  multiplicity_a_pos 517 425 3000 no_multiplicity_b
+  role_a_pos 531 425 3000 no_role_b
+  multiplicity_a_pos 507 425 3000 no_multiplicity_b
 end
 relationcanvas 133019 relation_ref 136859 // <generalisation>
   decenter_end 75
