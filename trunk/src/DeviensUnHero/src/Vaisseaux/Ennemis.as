@@ -2,6 +2,7 @@ package Vaisseaux {
 	import Graphique.MGraphiqueTriangle;
 	import Utilitaires.MCoordonnee;
 	import Coeur.Elements.MTireurMouvementPerpetuel;
+	import Controleur.MMouvementCirculairePerpetuel;
 	
 	
 	public class Ennemis extends MGraphiqueTriangle {
@@ -11,7 +12,7 @@ package Vaisseaux {
 			setObjet(new MTireurMouvementPerpetuel(10, 5, 180, 100, 5));
 			x = 700;
 			y = Math.round(Math.random() * (600 - 0)) + 0;
-//			(getObjet() as MTireurMouvementPerpetuel).lancer();
+			(getObjet() as MTireurMouvementPerpetuel).lancer();
 		}
 
 	}

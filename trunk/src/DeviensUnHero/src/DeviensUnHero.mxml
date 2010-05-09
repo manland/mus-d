@@ -6,11 +6,14 @@
 	applicationComplete="init()" xmlns:Vaisseaux="Vaisseaux.*">
 	<mx:Script>
 		<![CDATA[
+			import Coeur.MScene;
+			import Coeur.MJeu;
 			import Graphique.Textures.MBordure;
 			import Graphique.Textures.MCouleur;
 		
 			public function init():void {
-				
+				MJeu.getInstance().setScene(scene.getObjet() as MScene);
+				MJeu.getInstance().debut();
 			}
 		]]>
 	</mx:Script>
