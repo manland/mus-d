@@ -17,7 +17,7 @@ package Controleur
 		/**
 		 * liste des écouteurs de clavier
 	 	 */
-		private var ecouteurs:Array;
+		protected var ecouteurs:Array;
 		
 		/**
 		 * unique instance de MClavier
@@ -90,12 +90,12 @@ package Controleur
 					
 				// appui sur entree
 				case Keyboard.ENTER:
-					appuiFlecheBas();
+					appuiEntree();
 					break;
 				
 				// appui sur espace
-				case Keyboard.BACKSPACE:
-					appuiFlecheBas();
+				case Keyboard.SPACE:
+					appuiEspace();
 					break; 
 				
 				default:
