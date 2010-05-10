@@ -16,12 +16,12 @@ package Coeur.Elements {
 				var element_a_etat_collisionne:MElementAEtat = (objet_collisionne as MElementAEtat);
 				if(element_a_etat_collisionne != null) {
 					element.setPointVie(element.getPointVie()-element_a_etat_collisionne.getPointDegat());
-					element.fireCollision(axe);
 					if(element.getPointVie() <= 0) {
 						element.mourir();
 					}
 				}
 			}
+			element.fireCollision(axe);
 		}
 		
 		public function mourir():void {
