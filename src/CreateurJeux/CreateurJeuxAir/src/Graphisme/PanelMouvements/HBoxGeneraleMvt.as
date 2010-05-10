@@ -124,6 +124,8 @@ package Graphisme.PanelMouvements
 		//			accesseurs : 
 		// ----------------------------------------------------------
 		public function getType():String {return type; }
+		public function setType(s:String) {type=s;}
 		public function getHbox():HBox {return hBox;}
+		public function getChoixMouvement():ComboBox {return choix_mouvement;}
 	}
 }

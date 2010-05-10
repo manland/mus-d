@@ -1,5 +1,7 @@
 package Graphisme.PanelMouvements
 {
+	import Graphique.MIObjetGraphique;
+	
 	import mx.containers.HBox;
 	import mx.controls.Label;
 	import mx.controls.TextInput;
@@ -54,6 +56,9 @@ package Graphisme.PanelMouvements
 			this.addChild(hbox_hauteur_finale);
 			this.addChild(hbox_temps);
 		}
+	
+		
+		
 		
 		// accesseurs : 
 		public function getLargeur():String {return largeur_finale.text;}
