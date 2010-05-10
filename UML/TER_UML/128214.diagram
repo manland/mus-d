@@ -6,7 +6,7 @@ classcanvas 129947 class_ref 128411 // MJeu
 end
 packagecanvas 130262 
   package_ref 128214 // Coeur
-    xyzwh 4 0 0 639 1185
+    xyzwh 4 -1 0 619 929
 end
 packagecanvas 131030 
   package_ref 128342 // Graphique
@@ -97,10 +97,10 @@ relationcanvas 135835 relation_ref 144795 // <aggregation>
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
-relationcanvas 135963 relation_ref 144923 // < contient
-  from ref 133915 z 2012 label "< contient" italic xyz 607 261.5 2012 to ref 132182
-  no_role_a no_role_b
-  no_multiplicity_a no_multiplicity_b
+relationcanvas 135963 relation_ref 144923 // 
+  from ref 133915 z 2012 to ref 132182
+  role_a_pos 598 284 3000 role_b_pos 598 256 3000
+  multiplicity_a_pos 651 259 3000 multiplicity_b_pos 589 245 3000
 end
 relationcanvas 136347 relation_ref 145051 // <association>
   from ref 135195 z 2006 to ref 148566

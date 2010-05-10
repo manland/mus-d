@@ -1,0 +1,30 @@
+format 71
+
+packagecanvas 128027 
+  package_ref 128214 // Coeur
+    xyzwh 99 122 2000 91 65
+end
+packagecanvas 128155 
+  package_ref 128342 // Graphique
+    xyzwh 430 123 2000 143 65
+end
+packagecanvas 128283 
+  package_ref 131158 // Controleur
+    xyzwh 241 25 2000 141 65
+end
+simplerelationcanvas 128411 simplerelation_ref 128027
+  decenter_end 164
+  from ref 128283 z 2001 to ref 128027
+end
+simplerelationcanvas 128539 simplerelation_ref 128155
+  from ref 128283 z 2001 to ref 128155
+end
+simplerelationcanvas 128667 simplerelation_ref 128283
+  decenter_begin 861
+  decenter_end 861
+  from ref 128155 z 2001 to ref 128027
+end
+simplerelationcanvas 128795 simplerelation_ref 128411
+  from ref 128027 z 2001 to ref 128155
+end
+end
