@@ -16,6 +16,7 @@ package Graphique {
 	import Utilitaires.MErreur;
 	import mx.events.ResizeEvent;
 	import mx.core.Container;
+	import Utilitaires.MUtilitaire;
 	
 	public class MGraphiqueScene extends Canvas implements MIObjetGraphique, MIObjetEcouteur {
 		protected var objet:MScene;
@@ -59,7 +60,8 @@ package Graphique {
 		 * @see MGraphiqueAbstrait#ajouterEcouteur()
 		 */
 		public function supprimerEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void {
-			ecouteurs.slice(ecouteurs.indexOf(ecouteur), 1);
+			var temp:Array = MUtilitaire.enlever(ecouteurs,ecouteur);
+			ecouteurs = temp;
 		}
 		
 		public function fireSeDessine():void {
