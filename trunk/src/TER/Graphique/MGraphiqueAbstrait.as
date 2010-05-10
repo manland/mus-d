@@ -13,6 +13,7 @@ package Graphique {
 	import mx.olap.aggregators.MaxAggregator;
 	import Utilitaires.MAxe;
 	import Coeur.Elements.MTireurMouvementPerpetuel;
+	import Utilitaires.MUtilitaire;
 	
 	/**
 	 * Classe abstraite gérant les comportements généraux des <u>MIObjetGraphique</u>.
@@ -160,7 +161,8 @@ package Graphique {
 		 * @see MGraphiqueAbstrait#ajouterEcouteur()
 		 */
 		public function supprimerEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void {
-			ecouteurs.slice(ecouteurs.indexOf(ecouteur), 1);
+			var temp:Array = MUtilitaire.enlever(ecouteurs,ecouteur);
+			ecouteurs = temp;
 		}
 		
 		/**

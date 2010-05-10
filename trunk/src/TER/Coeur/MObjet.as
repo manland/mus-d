@@ -260,7 +260,7 @@ package Coeur
 			}
 		}
 		
-		public function debutDuJeu(objet:MIObjet):void {}
-		public function finDuJeu(objet:MIObjet):void {}
+		public function debutDuJeu(objet:MIObjet):void {fireDebutJeu();}
+		public function finDuJeu(objet:MIObjet):void {fireFinJeu();}
 	}
 }

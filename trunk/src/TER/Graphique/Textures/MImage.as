@@ -22,6 +22,7 @@ package Graphique.Textures {
 		private var myBitmap:BitmapData;
 		private var newWidth:Number;
 		private var newHeight:Number;
+		private var rotation:int = 0;
 		
 		private var timer:Timer;
 		
@@ -43,6 +44,10 @@ package Graphique.Textures {
             loader.load(new URLRequest(url_image));
 		}
 		
+		public function setRotation(rotation_en_degre:int):void {
+			this.rotation = (rotation_en_degre/180) * Math.PI;
+		}
+		
 		public function appliquer(graphics:Graphics):void {
 			if(a_decorer != null) {
 				a_decorer.appliquer(graphics);
@@ -50,6 +55,7 @@ package Graphique.Textures {
 			if(myBitmap != null) {
 				finaliser();
 				var m:Matrix = new Matrix();
+				m.rotate(rotation);
             	graphics.beginBitmapFill(myBitmap, m, false);
    			}
    			else {
