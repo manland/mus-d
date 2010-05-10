@@ -2,6 +2,8 @@ package Coeur
 {
 	import Coeur.Forme.*;
 	
+	import Graphique.MIObjetGraphique;
+	
 	import Utilitaires.*;
 	
 	import mx.controls.Text;
@@ -22,6 +24,8 @@ package Coeur
 		 * écouteurs de l'objet
 		 */
 		protected var ecouteurs:Array;
+		
+		protected var objet_graphique:MIObjetGraphique;
 		
 		/**
 		 * Constructeur qui empeche l'instanciation directe et oblige les sous classes de celle ci à implémenter MIObjet
@@ -262,5 +266,13 @@ package Coeur
 		
 		public function debutDuJeu(objet:MIObjet):void {fireDebutJeu();}
 		public function finDuJeu(objet:MIObjet):void {fireFinJeu();}
+		
+		public function getObjetGraphique():MIObjetGraphique{
+			return this.objet_graphique;
+		}
+		
+		public function setObjetGraphique(objet_graphique:MIObjetGraphique):void{
+			this.objet_graphique = objet_graphique;
+		}
 	}
 }
