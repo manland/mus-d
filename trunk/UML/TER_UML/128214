@@ -1,6 +1,6 @@
 format 71
 "Coeur" // Coeur
-  revision 16
+  revision 17
   modified_by 27 "Lolo"
   // class settings
   //class diagram settings
@@ -191,12 +191,12 @@ ${members}};
 	relation_ref 144795 // <aggregation>
       end
 
-      classrelation 146971 // (< contient)
-	relation 144923 ---- name "< contient"
-	  a role_name "" private
-	    classrelation_ref 146971 // (< contient)
-	  b role_name "" private
-	    classrelation_ref 147099 // (< contient)
+      classrelation 146971 // objet_graphique ()
+	relation 144923 ---- name ""
+	  a role_name "objet_graphique" multiplicity "0..1" private
+	    classrelation_ref 146971 // objet_graphique ()
+	  b role_name "objet" multiplicity "0..1" private
+	    classrelation_ref 147099 // objet ()
       end
     end
 

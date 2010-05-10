@@ -1,6 +1,6 @@
 format 71
 "Graphique" // Graphique
-  revision 13
+  revision 14
   modified_by 27 "Lolo"
   // class settings
   //class diagram settings
@@ -94,8 +94,8 @@ ${members}};
 	  b parent class_ref 134614 // MIObjetEcouteur
       end
 
-      classrelation 147099 // (< contient)
-	relation_ref 144923 // < contient
+      classrelation 147099 // objet ()
+	relation_ref 144923 // 
       end
     end
 
