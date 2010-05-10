@@ -2,6 +2,8 @@ package Coeur
 {
 	import Coeur.Forme.*;
 	
+	import Graphique.MIObjetGraphique;
+	
 	import Utilitaires.MAxe;
 	import Utilitaires.MCoordonnee;
 	
@@ -68,5 +70,8 @@ package Coeur
 		function fin():void;
 		function fireDebutJeu():void;
 		function fireFinJeu():void;
+		
+		function setObjetGraphique(objet_graphique:MIObjetGraphique):void ;
+		function getObjetGraphique():MIObjetGraphique;
 	}
 }
