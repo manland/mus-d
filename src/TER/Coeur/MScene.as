@@ -237,6 +237,7 @@ package Coeur
 		}
 		
 		public function debut():void{
+			fireDebutJeu();
 			for(var i:uint=0; i<enfants.length; i++){
 				var objet:MIObjet = enfants[i] as MIObjet;
 				if(objet == null){
@@ -247,6 +248,7 @@ package Coeur
 		}
 		
 		public function fin():void{
+			fireFinJeu();
 			for(var i:uint=0; i<enfants.length; i++){
 				var objet:MIObjet = enfants[i] as MIObjet;
 				if(objet == null){

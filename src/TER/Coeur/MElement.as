@@ -48,7 +48,7 @@ package Coeur
 		}
 		
 		//Pas besoins de remplir ici se sera au programmeur en réimplentant ou en écoutant de faire quelque chose quand ça commence
-		public function debut():void {}
-		public function fin():void {}
+		public function debut():void {fireDebutJeu();}
+		public function fin():void {fireFinJeu();}
 	}
 }

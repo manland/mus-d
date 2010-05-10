@@ -57,7 +57,7 @@ package Controleur
 		 * fonction appelée par le Timer à chaque fois que finit une unité de temps
 		 * @param e: evenement du timer qui annonce la fin d'un compte à rebours		 		 
 		 */		
-		function appliqueUnite(e:TimerEvent):void
+		function appliqueUnite(e:TimerEvent):void;
 		
 	}
 }

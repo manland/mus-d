@@ -12,7 +12,6 @@ package Coeur.Elements {
 		
 		public function actionCollision(objet_collisionne:MIObjet,axe:MAxe):void {
 			element.fireCollision(axe);
-//			throw new MErreur("MEtatIndestrcutible", "actionCollision", "Collision avec "+objet_collisionne.getNomClasse());
 			return;
 		}
 		

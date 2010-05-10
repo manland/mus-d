@@ -99,8 +99,10 @@ package Controleur
 		/**
 		 * stoppe l'effet receveur
 		 */
-		public function stopper():void{
-			getTimer().stop();
+		public function stopper():void {
+			if(timer != null) {
+				getTimer().stop();
+			}
 		}
 
 	}

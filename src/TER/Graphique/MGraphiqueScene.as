@@ -81,6 +81,26 @@ package Graphique {
 		}
 		
 		/**
+		 * Prévient les écouteurs que cet objet graphique a été prévenue du début du jeu.
+		 * @see MGraphiqueAbstrait#ecouteurs
+		 */
+		public function fireDebutDuJeu():void {
+			for(var i:int=0; i<ecouteurs.length; i++) {
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).debutDuJeuGraphique(this);
+			}
+		}
+		
+		/**
+		 * Prévient les écouteurs que cet objet graphique a été prévenue de la fin du jeu.
+		 * @see MGraphiqueAbstrait#ecouteurs
+		 */
+		public function fireFinDuJeu():void {
+			for(var i:int=0; i<ecouteurs.length; i++) {
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).finDuJeuGraphique(this);
+			}
+		}
+		
+		/**
 		 * Permet de faire "mourir" cette scene.
 		 * <p>Autrement dit cela permet de retirer cet objet du visuel, et donc appelle mourir de l'objet model.</p>
 		 * @see Coeur.MIObjet#mourir()
@@ -216,9 +236,11 @@ package Graphique {
 		}
 		
 		public function debutDuJeu(objet:MIObjet):void {
+			fireDebutDuJeu();
 		}
 		
 		public function finDuJeu(objet:MIObjet):void {
+			fireFinDuJeu();
 		}
 		
 		public function set largeur(largeur:Number):void {
