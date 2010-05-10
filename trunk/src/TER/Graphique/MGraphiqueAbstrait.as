@@ -12,7 +12,6 @@ package Graphique {
 	import Utilitaires.MErreur;
 	import mx.olap.aggregators.MaxAggregator;
 	import Utilitaires.MAxe;
-	import Coeur.Elements.MTireurMouvementPerpetuel;
 	import Utilitaires.MUtilitaire;
 	
 	/**

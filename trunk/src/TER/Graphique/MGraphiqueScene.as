@@ -32,8 +32,6 @@ package Graphique {
 		public function MGraphiqueScene(x:int=0, y:int=0, largeur:int=30, hauteur:int=10) {
 			super();
 			objet = new MScene();
-			var a:Array = new Array();
-			a.push(objet);
 			callLater(mettreObjetGraphiqueDansObjetModele);
 			objet.ajoutObjetEcouteur(this);
 			forme = new MFormeRectangle();
