@@ -76,7 +76,7 @@ package Graphique {
 			}
 		}
 		
-		public function fireCollision(objet:MIObjet, axe:MAxe):void {
+		public function fireCollision(objet:MIObjetGraphique, axe:MAxe):void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
 				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueCollision(objet, axe);
 			}
@@ -112,7 +112,7 @@ package Graphique {
 		}
 		
 		public function objetCollision(objet:MIObjet, axe:MAxe):void {
-			fireCollision(objet, axe);
+			fireCollision(objet.getObjetGraphique(), axe);
 		}
 		
 		override public function addChild(child:DisplayObject):DisplayObject {
