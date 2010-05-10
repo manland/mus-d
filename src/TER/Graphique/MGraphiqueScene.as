@@ -32,6 +32,9 @@ package Graphique {
 		public function MGraphiqueScene(x:int=0, y:int=0, largeur:int=30, hauteur:int=10) {
 			super();
 			objet = new MScene();
+			var a:Array = new Array();
+			a.push(objet);
+			callLater(mettreObjetGraphiqueDansObjetModele);
 			objet.ajoutObjetEcouteur(this);
 			forme = new MFormeRectangle();
 			(forme as MFormeRectangle).instancie(x, y, largeur, hauteur);
@@ -46,6 +49,10 @@ package Graphique {
 			horizontalScrollPolicy = "off";
 			verticalScrollPolicy = "off";
 			addEventListener(ResizeEvent.RESIZE, resize);
+		}
+		
+		private function mettreObjetGraphiqueDansObjetModele():void {
+			this.objet.setObjetGraphique(this);
 		}
 		
 		public function ajouterEcouteur(ecouteur:MIObjetGraphiqueEcouteur):void {
@@ -147,6 +154,7 @@ package Graphique {
 					this.objet.supprimeObjetEcouteur(this);
 				}
 				this.objet = nouvel_scene;
+				this.objet.setObjetGraphique(this);
 				this.objet.ajoutObjetEcouteur(this);
 				this.objet.setForme(forme);
 				changementTaille(nouvel_scene);
