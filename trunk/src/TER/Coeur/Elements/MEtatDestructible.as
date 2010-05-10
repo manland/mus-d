@@ -21,7 +21,7 @@ package Coeur.Elements {
 					}
 				}
 			}
-			element.fireCollision(axe);
+			element.fireCollision(objet_collisionne, axe);
 		}
 		
 		public function mourir():void {

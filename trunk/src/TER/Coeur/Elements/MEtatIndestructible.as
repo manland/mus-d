@@ -11,7 +11,7 @@ package Coeur.Elements {
 		}
 		
 		public function actionCollision(objet_collisionne:MIObjet,axe:MAxe):void {
-			element.fireCollision(axe);
+			element.fireCollision(objet_collisionne, axe);
 			return;
 		}
 		
