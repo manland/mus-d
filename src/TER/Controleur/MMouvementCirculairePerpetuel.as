@@ -17,15 +17,15 @@ package Controleur
 		/**
 		 * vitesse en degre par seconde du mouvement circulaire
 		 */
-		private var vitesse_degre_seconde:Number;
+		protected var vitesse_degre_seconde:Number;
 		/**
 		 * angle selon lequel doit tourner l'objet toutes les unités de temps
 		 */
-		private var unite_angle_degre:Number;
+		protected var unite_angle_degre:Number;
 		/**
 		 * centre du mouvement circulaire
 		 */
-		 private var centre:MCoordonnee;
+		 protected var centre:MCoordonnee;
 		 
 		/**
 		 * construit un mouvement circulaire perpétuel de centre passé en paramètre ayant comme angle celui passé en paramètre

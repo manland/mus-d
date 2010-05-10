@@ -29,7 +29,7 @@ package Controleur
 		/**
 		 * liste des écouteurs de souris
 	 	 */
-		private var ecouteurs:Array;
+		protected var ecouteurs:Array;
 		
 		/**
 		 * si il n'y a pas déjà d'instance crée: Crée un objet MSouris et l'inscrit comme écouteur de l'application pour être prévenu lorsque la souris effectue une action
