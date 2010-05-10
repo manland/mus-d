@@ -216,14 +216,14 @@ package Coeur
 			}
 		}
 		//collision
-		public function fireCollision(axe:MAxe):void {
+		public function fireCollision(objet:MIObjet, axe:MAxe):void {
 			for(var i:int = 0; i < ecouteurs.length; i = i + 1) {
-				(ecouteurs[i] as MIObjetEcouteur).objetCollision(this as MIObjet, axe);
+				(ecouteurs[i] as MIObjetEcouteur).objetCollision(objet, axe);
 			}
 		}
 		
 		public function actionCollision(objet:MIObjet,axe:MAxe):void {
-			fireCollision(axe);			
+			fireCollision(objet, axe);			
 		}
 		
 		public function estProcheDe(objet:MIObjet):Boolean{
