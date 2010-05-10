@@ -18,6 +18,8 @@ package Graphisme.PanelOptions
 	import Graphisme.PanelDegrades.FenetreDegrade;
 	import Graphisme.PanelMouvements.FenetreMouvement;
 	import Graphisme.PanelMouvements.HBoxGeneraleMvt;
+	import Graphisme.PanelMouvements.HBoxMouvementCirculaireFini;
+	import Graphisme.PanelMouvements.HBoxMouvementCirculairePerpetuel;
 	import Graphisme.PanelMouvements.HBoxMouvementFini;
 	import Graphisme.PanelMouvements.HBoxMouvementPerpetuel;
 	import Graphisme.PanelMouvements.HBoxRedimensionnement;
@@ -413,9 +415,9 @@ package Graphisme.PanelOptions
 // -----------------------------------------------------------------------------
 		public function setObjet(objet:MIObjetGraphique):void 
 		{ 
-			if(objet!=null)
+			if(this.objet!=null)
 			{
-				objet.getObjet().supprimeObjetEcouteur(this);
+				this.objet.getObjet().supprimeObjetEcouteur(this);
 			}
 			this.objet = objet;
 			objet.getObjet().ajoutObjetEcouteur(this);
@@ -814,7 +816,28 @@ package Graphisme.PanelOptions
 										  hauteur_finale:(hbox_temp.getHbox().getChildAt(0) as HBoxRedimensionnement).getHauteur(), 
 										  temps:(hbox_temp.getHbox().getChildAt(0) as HBoxRedimensionnement).getTemps()};
 					}
-					erreur.sysout.text+="apres valider "+tableau_mvt[i].mvt+"\n";
+					else if(hbox_temp.getType() == "circulaire_fini")
+					{
+						tableau_mvt[i] = {mvt:"circulaire_fini", 
+										  centre_x:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculaireFini).getCentreX(), 
+										  centre_y:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculaireFini).getCentreY(),
+										  angle:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculaireFini).getAngle(), 
+										  temps:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculaireFini).getTemps()};
+					}
+					else if(hbox_temp.getType() == "circulaire_perpet")
+					{
+						tableau_mvt[i] = {mvt:"circulaire_perpet", 
+										  centre_x:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculairePerpetuel).getCentreX(), 
+										  centre_y:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculairePerpetuel).getCentreY(),
+										  tour_par_sec:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculairePerpetuel).getTourParSeconde()}; 
+					}
+					else if(hbox_temp.getType() == "rotation_perpet")
+					{
+						tableau_mvt[i] = {mvt:"rotation_perpet", 
+										  centre_x:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculairePerpetuel).getCentreX(), 
+										  centre_y:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculairePerpetuel).getCentreY(),
+										  tour_par_sec:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculairePerpetuel).getTourParSeconde()}; 
+					}
 				}
 				if(check_box!=null)
 				{
@@ -881,6 +904,52 @@ package Graphisme.PanelOptions
 						hbox_mvt_general.getChoixMouvement().selectedIndex=2;
 						hbox_mvt_general.addChild(hbox);
 						hbox_mvt_general.setType("redimensionnement");
+													
+						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
+						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
+					}
+					if(tab[i].mvt=="circulaire_fini")
+					{
+						var hbox_mvt_circ_fini:HBoxMouvementCirculaireFini = new HBoxMouvementCirculaireFini();
+						
+						hbox_mvt_circ_fini.setCentreX(tab[i].centre_x);
+						hbox_mvt_circ_fini.setCentreY(tab[i].centre_y);
+						hbox_mvt_circ_fini.setAngle(tab[i].angle);
+						hbox_mvt_circ_fini.setTemps(tab[i].temps);
+						hbox.addChild(hbox_mvt_circ_fini);
+						hbox_mvt_general.getChoixMouvement().selectedIndex=3;
+						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.setType("circulaire_fini");
+													
+						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
+						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
+					}
+					if(tab[i].mvt=="circulaire_perpet")
+					{
+						var hbox_mvt_circ_perpet:HBoxMouvementCirculairePerpetuel = new HBoxMouvementCirculairePerpetuel();
+						
+						hbox_mvt_circ_perpet.setCentreX(tab[i].centre_x);
+						hbox_mvt_circ_perpet.setCentreY(tab[i].centre_y);
+						hbox_mvt_circ_perpet.setTourParSeconde(tab[i].tour_par_sec);
+						hbox.addChild(hbox_mvt_circ_perpet);
+						hbox_mvt_general.getChoixMouvement().selectedIndex=4;
+						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.setType("circulaire_perpet");
+													
+						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
+						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
+					}
+					if(tab[i].mvt=="rotation_perpet")
+					{
+						var hbox_rotation:HBoxMouvementCirculairePerpetuel = new HBoxMouvementCirculairePerpetuel();
+						
+						hbox_rotation.setCentreX(tab[i].centre_x);
+						hbox_rotation.setCentreY(tab[i].centre_y);
+						hbox_rotation.setTourParSeconde(tab[i].tour_par_sec);
+						hbox.addChild(hbox_rotation);
+						hbox_mvt_general.getChoixMouvement().selectedIndex=5;
+						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.setType("rotation_perpet");
 													
 						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
 						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
