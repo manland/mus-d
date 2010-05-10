@@ -6,21 +6,30 @@
 	applicationComplete="init()" xmlns:Vaisseaux="Vaisseaux.*">
 	<mx:Script>
 		<![CDATA[
+			import Coeur.MScore;
+			import Utilitaires.MCoordonnee;
+			import Jeux.PicBas;
+			import Graphique.Textures.MImage;
+			import Vaisseaux.Ennemis;
+			import Jeux.Pic;
 			import Coeur.MScene;
 			import Coeur.MJeu;
 			import Graphique.Textures.MBordure;
 			import Graphique.Textures.MCouleur;
 		
 			public function init():void {
+				scene.addChild(new Pic(scene, new MCoordonnee(0, 0), new MCoordonnee(20, 0), new MCoordonnee(10, 20)));
+				scene.addChild(new PicBas(scene));
+				scene.addChild(new Ennemis(scene));
+				MJeu.getInstance().ajouterScore(new MScore());
 				MJeu.getInstance().setScene(scene.getObjet() as MScene);
 				MJeu.getInstance().debut();
 			}
 		]]>
 	</mx:Script>
 	
-	<TER:MGraphiqueScene id="scene" width="800" height="600" bordure="{new MBordure(3, 0x00FF00)}" >
-		<Vaisseaux:Hero scene="{scene}" texture="{new MCouleur(0x000000)}" bordure="{new MBordure()}" />
-		<Vaisseaux:Ennemis texture="{new MCouleur()}" bordure="{new MBordure()}" />
+	<TER:MGraphiqueScene id="scene" width="800" height="600" >
+		<Vaisseaux:Hero scene="{scene}" />
 	</TER:MGraphiqueScene>
 		
 </mx:WindowedApplication>
