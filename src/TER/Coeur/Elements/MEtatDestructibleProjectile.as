@@ -21,7 +21,7 @@ package Coeur.Elements {
 				var element_a_etat_collisionne:MElementAEtat = (objet_collisionne as MElementAEtat);
 				if(element_a_etat_collisionne != null) {
 					element.setPointVie(element.getPointVie()-element_a_etat_collisionne.getPointDegat());
-					element.fireCollision(axe);
+					element.fireCollision(objet_collisionne, axe);
 					if(element.getPointVie() <= 0) {
 						this_projectile.stopper();
 						element.mourir();
@@ -31,7 +31,7 @@ package Coeur.Elements {
 					var scene:MScene = (objet_collisionne as MScene);
 					if(scene != null) {
 						element.setPointVie(element.getPointVie()-1);
-						element.fireCollision(axe);
+						element.fireCollision(objet_collisionne, axe);
 						if(element.getPointVie() <= 0) {
 							this_projectile.stopper();
 							element.mourir();
