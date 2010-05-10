@@ -123,6 +123,7 @@ package Graphique {
 			ma_bordure = null;
 			nom_classe = "MGraphiqueAbstrait";
 			sous_classe = MIObjetGraphique(this);
+			objet.setObjetGraphique(this);
 			if(sous_classe == null) {
 				throw new MErreur(this.nom_classe, "Constructeur", "Les classes qui étendent MGraphiqueAbstrait doivent implementer MIObjetGraphique");
 			}
@@ -190,7 +191,7 @@ package Graphique {
 		 * @param axe l'axe suivant lequel l'objet vient collisionner l'autre objet
 		 * @see MGraphiqueAbstrait#ecouteurs
 		 */
-		public function fireCollision(objet:MIObjet, axe:MAxe):void {
+		public function fireCollision(objet:MIObjetGraphique, axe:MAxe):void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
 				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueCollision(objet, axe);
 			}
@@ -290,6 +291,7 @@ package Graphique {
 				this.objet.supprimeObjetEcouteur(this);
 			}
 			this.objet = objet;
+			this.objet.setObjetGraphique(this);
 			this.objet.ajoutObjetEcouteur(this);
 			this.objet.setForme(forme);
 			changementTaille(objet);
@@ -483,7 +485,7 @@ package Graphique {
 		 * @see MGraphiqueAbstrait#fireCollision()
 		 */
 		public function objetCollision(objet:MIObjet, axe:MAxe):void {
-			fireCollision(objet, axe);
+			fireCollision(objet.getObjetGraphique(), axe);
 		}
 		
 		/**
