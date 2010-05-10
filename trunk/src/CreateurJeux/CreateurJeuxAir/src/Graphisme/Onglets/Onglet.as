@@ -99,14 +99,14 @@ package Graphisme.Onglets
 			this.texture=new MCouleur(0xE2CDFF);
 			
 			
-			panel_opt.setObjet(this);
+		
 
 			this.id = "scene";
 			this.getObjet().setHauteur(600);
 			this.getObjet().setLargeur(600);
 			this.x=0;
 			this.y=0;
-			
+			panel_opt.setObjet(this);			
 
 			// ----------------------------------
 			
@@ -139,8 +139,6 @@ package Graphisme.Onglets
 		
 		private function dragDropHandler(event:DragEvent):void
         {
-        	
-        	
        		if(!this.contains((MIObjetGraphique)(event.dragInitiator)))
        		{
        			 var clone:MIObjetGraphique = ((MIObjetGraphique)(event.dragInitiator)).clone();
@@ -495,6 +493,43 @@ package Graphisme.Onglets
 							 "); \n";
 						str+="\t \t \tmon_ecouteur"+m+".ajouterMouvement(mouv"+n+"); \n"; 
 						dico["MRedimensionnement"]="import Controleur.MRedimensionnement;";
+					}
+					else if((panel_opt.getDicoMvt()[key] as Array)[i].mvt == "circulaire_fini")
+					{
+						code_mouvement_generer =true;
+						str+="\n\t \t \tvar mouv"+n+":MMouvementCirculaireFini = new MMouvementCirculaireFini("+(key as MIObjetGraphique).getGraphique().id+".getObjet(),"+
+							 "new MCoordonnee("+(panel_opt.getDicoMvt()[key] as Array)[i].centre_x+","+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].centre_y+"),"+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].angle+","+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].temps+
+							 "); \n";
+						str+="\t \t \tmon_ecouteur"+m+".ajouterMouvement(mouv"+n+"); \n"; 
+						dico["MMouvementCirculaireFini"]="import Controleur.MMouvementCirculaireFini;";
+						dico["MCoordonnee"] = "import Utilitaires.MCoordonnee;";
+					}
+					else if((panel_opt.getDicoMvt()[key] as Array)[i].mvt == "circulaire_perpet")
+					{
+						code_mouvement_generer =true;
+						str+="\n\t \t \tvar mouv"+n+":MMouvementCirculairePerpetuel = new MMouvementCirculairePerpetuel("+(key as MIObjetGraphique).getGraphique().id+".getObjet(),"+
+							 "new MCoordonnee("+(panel_opt.getDicoMvt()[key] as Array)[i].centre_x+","+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].centre_y+"),"+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].tour_par_sec+
+							 "); \n";
+						str+="\t \t \tmon_ecouteur"+m+".ajouterMouvement(mouv"+n+"); \n"; 
+						dico["MMouvementCirculairePerpetuel"]="import Controleur.MMouvementCirculairePerpetuel;";
+						dico["MCoordonnee"] = "import Utilitaires.MCoordonnee;";
+					}
+					else if((panel_opt.getDicoMvt()[key] as Array)[i].mvt == "rotation_perpet")
+					{
+						code_mouvement_generer =true;
+						str+="\n\t \t \tvar mouv"+n+":MRotationPerpetuelle = new MRotationPerpetuelle("+(key as MIObjetGraphique).getGraphique().id+".getObjet(),"+
+							 "new MCoordonnee("+(panel_opt.getDicoMvt()[key] as Array)[i].centre_x+","+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].centre_y+"),"+
+							 (panel_opt.getDicoMvt()[key] as Array)[i].tour_par_sec+
+							 "); \n";
+						str+="\t \t \tmon_ecouteur"+m+".ajouterMouvement(mouv"+n+"); \n"; 
+						dico["MRotationPerpetuelle"]="import Controleur.MRotationPerpetuelle;";
+						dico["MCoordonnee"] = "import Utilitaires.MCoordonnee;";
 					}
 					else if((panel_opt.getDicoMvt()[key] as Array)[i].mvt == "clavier")
 					{

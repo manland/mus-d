@@ -21,6 +21,9 @@ package Graphisme.PanelMouvements
 		private var hbox_mvt_perpetuel:HBoxMouvementPerpetuel;
 		private var hbox_mvt_fini:HBoxMouvementFini;
 		private var hbox_mvt_redim:HBoxRedimensionnement;
+		private var hbox_mvt_circ_fini:HBoxMouvementCirculaireFini;
+		private var hbox_mvt_circ_perpet:HBoxMouvementCirculairePerpetuel;
+		private var hbox_rotation_perpet:HBoxMouvementCirculairePerpetuel;
 		private var choix_deja_fait:Boolean=false;
 		
 		// type de hbox en string :
@@ -42,15 +45,20 @@ package Graphisme.PanelMouvements
 			hbox_mvt_fini = new HBoxMouvementFini();
 			hbox_mvt_perpetuel = new HBoxMouvementPerpetuel();
 			hbox_mvt_redim = new HBoxRedimensionnement();
-		
+			hbox_mvt_circ_fini = new HBoxMouvementCirculaireFini();
+			hbox_mvt_circ_perpet = new HBoxMouvementCirculairePerpetuel();
+			hbox_rotation_perpet = new HBoxMouvementCirculairePerpetuel();
 			
 			// combobox : 
 			choix_mouvement = new ComboBox();
 			choix_mouvement.prompt = "Type de mouvement";
 			choix_mouvement.dataProvider = [
-												{data:1, label:"Perpetuel"},
-												{data:1, label:"Fini"},
-												{data:1, label:"Redimensionnement"}
+												{label:"Perpetuel"},
+												{label:"Fini"},
+												{label:"Redimensionnement"},
+												{label:"Circulaire fini"},
+												{label:"Circulaire perpetuel"},
+												{label:"Rotation perpetuelle"}
 											];
 			choix_mouvement.addEventListener(Event.CHANGE,choixEffectue);
 			
@@ -96,7 +104,24 @@ package Graphisme.PanelMouvements
 				hBox.addChild(hbox_mvt_redim);
 				type = "redimensionnement";
 			}
-			
+			else if(choix_mouvement.selectedLabel=="Circulaire fini")
+			{
+				hBox.removeAllChildren();
+				hBox.addChild(hbox_mvt_circ_fini);
+				type = "circulaire_fini";
+			}
+			else if(choix_mouvement.selectedLabel=="Circulaire perpetuel")
+			{
+				hBox.removeAllChildren();
+				hBox.addChild(hbox_mvt_circ_perpet);
+				type = "circulaire_perpet";
+			}
+			else if(choix_mouvement.selectedLabel=="Rotation perpetuelle")
+			{
+				hBox.removeAllChildren();
+				hBox.addChild(hbox_rotation_perpet);
+				type = "rotation_perpet";
+			}
 			if(!choix_deja_fait )
 			{
 				((FenetreMouvement)(this.parent)).addChildAt(new HBoxGeneraleMvt(erreur),((FenetreMouvement)(this.parent)).getChildren().length-2);

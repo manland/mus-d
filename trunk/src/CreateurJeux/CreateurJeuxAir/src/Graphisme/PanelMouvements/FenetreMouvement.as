@@ -126,6 +126,7 @@ package Graphisme.PanelMouvements
 			if(event.currentTarget == btn_valider)
 			{
 				panel_option.effectuerChangement(tableau_hbox);
+				PopUpManager.removePopUp(this);
 			}
 			else if (event.currentTarget == btn_annuler)
 			{
