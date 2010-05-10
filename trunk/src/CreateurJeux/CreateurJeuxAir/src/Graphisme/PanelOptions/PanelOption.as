@@ -696,6 +696,10 @@ package Graphisme.PanelOptions
 		
 		public function objetCollision(objet:MIObjet, axe:MAxe):void {}
 		
+		public function debutDuJeu(objet:MIObjet):void {}
+		
+		public function finDuJeu(objet:MIObjet):void {}
+		
 		
 // ----------------------------------------------------------------
 // 				evenement du color picker 
@@ -768,6 +772,10 @@ package Graphisme.PanelOptions
 		public function afficherPanelMouvement(event:MouseEvent):void
 		{
 			fenetre_mouvement = new FenetreMouvement(this,erreur);
+			if(dico_mvt[objet]!=null)
+			{
+				mettreAJourPanelMouvement(dico_mvt[objet] as Array);
+			}
 			PopUpManager.removePopUp(fenetre_mouvement);
 //			fenetre_mouvement.setObjet(objet);
 			PopUpManager.addPopUp(fenetre_mouvement, tab_onglet.parent, false);
@@ -787,6 +795,7 @@ package Graphisme.PanelOptions
 				{
 					if(hbox_temp.getType() == "perpetuel")
 					{
+						erreur.sysout.text+="perpet";
 						tableau_mvt[i] = {mvt:"perpetuel", 
 										  angle:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementPerpetuel).getAngle(), 
 										  vitesse:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementPerpetuel).getVitesse()};
@@ -805,6 +814,7 @@ package Graphisme.PanelOptions
 										  hauteur_finale:(hbox_temp.getHbox().getChildAt(0) as HBoxRedimensionnement).getHauteur(), 
 										  temps:(hbox_temp.getHbox().getChildAt(0) as HBoxRedimensionnement).getTemps()};
 					}
+					erreur.sysout.text+="apres valider "+tableau_mvt[i].mvt+"\n";
 				}
 				if(check_box!=null)
 				{
@@ -819,17 +829,72 @@ package Graphisme.PanelOptions
 				}
 			}
 			dico_mvt[objet] = tableau_mvt;
-			for (var key:Object in dico_mvt) 
-			{
-				erreur.sysout.text+="mon objet :"+(key as MIObjetGraphique).getNomClasse()+"\n";
-				for(var i:int=0;i<(dico_mvt[key] as Array).length;i++)
-				{
-					erreur.sysout.text+=(key as MIObjetGraphique).getGraphique().id+"   "+(dico_mvt[key] as Array)[i].vitesse+"\n";
-				}	
-			}
-			
 		}
 		
-		
+		public function mettreAJourPanelMouvement(tab:Array):void
+		{
+			if(tab!=null)
+			{
+				for(var i:int=0;i<tab.length;i++)
+				{
+					var hbox_mvt_general:HBoxGeneraleMvt = new HBoxGeneraleMvt(erreur);
+					var hbox:HBox = hbox_mvt_general.getHbox();
+					
+					if(tab[i].mvt=="perpetuel")
+					{
+						var hbox_mvt_perpetuel:HBoxMouvementPerpetuel = new HBoxMouvementPerpetuel();
+						hbox_mvt_general.getChoixMouvement().selectedIndex=0;
+						hbox_mvt_general.setType("perpetuel");
+						
+						hbox_mvt_perpetuel.setAngle(Number(tab[i].angle));
+						hbox_mvt_perpetuel.setVitesse(tab[i].vitesse);
+					
+						hbox.addChild(hbox_mvt_perpetuel);
+						hbox_mvt_general.addChild(hbox);
+						
+						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
+						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
+					}
+					if(tab[i].mvt=="fini")
+					{
+						var hbox_mvt_fini:HBoxMouvementFini = new HBoxMouvementFini();
+						
+						hbox_mvt_fini.setXArrivee(tab[i].x_arrivee);
+						hbox_mvt_fini.setYArrivee(tab[i].y_arrivee);
+						hbox_mvt_fini.setTemps(tab[i].temps);
+						hbox.addChild(hbox_mvt_fini);
+						hbox_mvt_general.getChoixMouvement().selectedIndex=1;
+						hbox_mvt_general.setType("fini");
+						hbox_mvt_general.addChild(hbox);
+						
+						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
+						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
+					}
+					if(tab[i].mvt=="redimensionnement")
+					{
+						var hbox_mvt_redim:HBoxRedimensionnement = new HBoxRedimensionnement();
+						
+						hbox_mvt_redim.setLargeur(tab[i].largeur_finale);
+						hbox_mvt_redim.setHauteur(tab[i].hauteur_finale);
+						hbox_mvt_redim.setTemps(tab[i].temps);
+						hbox.addChild(hbox_mvt_redim);
+						hbox_mvt_general.getChoixMouvement().selectedIndex=2;
+						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.setType("redimensionnement");
+													
+						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
+						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
+					}
+					if(tab[i].mvt=="souris")
+					{
+						fenetre_mouvement.getSouris().selected=true;
+					}
+					if(tab[i].mvt=="clavier")
+					{
+						fenetre_mouvement.getClavier().selected=true;	
+					}
+				}
+			}
+		}
 	}
 }

@@ -69,7 +69,7 @@ package Graphisme.Onglets
 		// dictionnaire contenant pour chaque clé l'import a réalisé, utilisé dans la génération de code:
 		private var dico:Dictionary; 
 		
-		// booeleen qui dit qu'il y a eu au moins un mouvement et donc on peut déclancher la génération 
+		// booleen qui dit qu'il y a eu au moins un mouvement et donc on peut déclancher la génération 
 		// de code pour la classe de l'écouteur :
 		private var code_mouvement_generer:Boolean = false; 
 		private var souris:Boolean = false;
@@ -456,7 +456,7 @@ package Graphisme.Onglets
 			var n:Number = 0;
 			var m:Number = 0;
 			var str:String = "";
-			str+="\nprivate function init():void \n";
+			str+="\n  \t \tprivate function init():void \n";
 			str+="\t \t{\n";
 			for (var key:Object in panel_opt.getDicoMvt()) 
 			{
@@ -554,10 +554,16 @@ package Graphisme.Onglets
 				 "\t \t public function graphiqueCollision(graphique:MIObjetGraphique, axe:MAxe):void \n"+
 				 "\t \t { \n"+
 				 "\t \t } \n \n"+
-				 "\t \t public function graphiqueSeDeplace(x:Number, y:Number):void \n"+
+				 "\t \t public function graphiqueSeDeplace(graphique:MIObjetGraphique):void \n"+
 				 "\t \t { \n"+
 				 "\t \t } \n \n"+
 				 "\t \t public function graphiqueChangeTaille(objet:MIObjetGraphique):void \n"+
+				 "\t \t { \n"+
+				 "\t \t } \n \n"+
+				 "\t \t public function debutDuJeuGraphique(graphique:MIObjetGraphique):void \n"+
+				 "\t \t { \n"+
+				 "\t \t } \n \n"+
+				 "\t \t public function finDuJeuGraphique(graphique:MIObjetGraphique):void \n"+
 				 "\t \t { \n"+
 				 "\t \t } \n \n"+
 				 "\t \t public function ajouterMouvement(m:MIEffet):void \n"+
