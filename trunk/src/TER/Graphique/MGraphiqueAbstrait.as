@@ -123,10 +123,10 @@ package Graphique {
 			ma_bordure = null;
 			nom_classe = "MGraphiqueAbstrait";
 			sous_classe = MIObjetGraphique(this);
-			objet.setObjetGraphique(this);
 			if(sous_classe == null) {
 				throw new MErreur(this.nom_classe, "Constructeur", "Les classes qui étendent MGraphiqueAbstrait doivent implementer MIObjetGraphique");
 			}
+			objet.setObjetGraphique(sous_classe);
 		}
 		
 		/**
@@ -291,7 +291,7 @@ package Graphique {
 				this.objet.supprimeObjetEcouteur(this);
 			}
 			this.objet = objet;
-			this.objet.setObjetGraphique(this);
+			this.objet.setObjetGraphique(sous_classe);
 			this.objet.ajoutObjetEcouteur(this);
 			this.objet.setForme(forme);
 			changementTaille(objet);
