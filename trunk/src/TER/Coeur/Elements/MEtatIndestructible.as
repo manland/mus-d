@@ -10,8 +10,8 @@ package Coeur.Elements {
 			super(element);
 		}
 		
-		public function actionCollision(objet_collisionne:MIObjet,axe:MAxe):void {
-			element.fireCollision(objet_collisionne, axe);
+		public function actionCollision(objet:MIObjet,axe:MAxe):void {
+			element.fireCollision(objet, axe);
 			return;
 		}
 		

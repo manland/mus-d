@@ -2,56 +2,37 @@ package Coeur.Elements {
 	import Controleur.MMouvementPerpetuel;
 	import Coeur.MIObjet;
 	import Utilitaires.MErreur;
+	import Graphique.MGraphiqueScene;
+	import Graphique.MIObjetGraphique;
 	
 	public class MProjectile extends MElementAEtat {
-		private var mouvement:MMouvementPerpetuel;
-		private var tireur:MIObjet;
-		private var direction:String;
-		private var angle:Number;
-		private var vitesse:Number;
+		protected var mouvement:MMouvementPerpetuel;
+		protected var tireur:MIObjet;
+		protected var angle:Number;
+		protected var vitesse:Number;
+		protected var mon_graphique:MIObjetGraphique;
+		protected var scene:MGraphiqueScene;
 		
-		public function MProjectile(tireur:MIObjet, direction:String, vitesse:Number=200, point_degat:Number=1) {
-			this.tireur = tireur;
-			this.direction = direction;
-			this.vitesse = vitesse;
-			angle = 0;//direction == "est"
-			if(direction == "nord") {
-				angle = 90;
-			}
-			else if(direction == "sud") {
-				angle = 270;
-			}
-			else if(direction == "ouest") {
-				angle = 180;
-			}
-			mouvement = new MMouvementPerpetuel();
-			setPointVie(0);
-			setPointDegat(point_degat);
-			
+		public function MProjectile(point_vie:int, point_degat:Number, tireur:MIObjet, angle:Number, vitesse:Number, mon_graphique:MIObjetGraphique, scene:MGraphiqueScene) {
+			super(point_vie, point_degat);
 			setEtatDestructible(new MEtatDestructibleProjectile(this));
-			
 			setEtatDeplacable(new MEtatDeplacable(this));
+			this.tireur = tireur;
+			this.angle = angle;
+			this.vitesse = vitesse;
+			this.mon_graphique = mon_graphique;
+			this.scene = scene;
+			mouvement = new MMouvementPerpetuel();
 			nom_classe = "MProjectile";
 		}
 		
+		public function getAngle():Number {
+			return angle;
+		}
+		
 		public function lancer():void {
-			if(direction == "nord") {
-				setX(tireur.getX()+(tireur.getLargeur()/2));
-				setY(tireur.getY()-5);
-			}
-			else if(direction == "sud") {
-				setX(tireur.getX()+(tireur.getLargeur()/2));
-				setY(tireur.getY()+tireur.getHauteur()+5);
-			}
-			else if(direction == "ouest") {
-				setX(tireur.getX()-5);
-				setY(tireur.getY()+(tireur.getHauteur()/2));
-			}
-			else {//est
-				setX(tireur.getX()+tireur.getLargeur()+5);
-				setY(tireur.getY()+(tireur.getHauteur()/2));
-			}
 			mouvement.instancieAvecAngleEtVitesse(this, angle, vitesse);
+			scene.addChild(mon_graphique.getGraphique());
 			mouvement.lancer();
 		}
 		
