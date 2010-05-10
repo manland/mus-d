@@ -190,9 +190,9 @@ package Graphique {
 		 * @param axe l'axe suivant lequel l'objet vient collisionner l'autre objet
 		 * @see MGraphiqueAbstrait#ecouteurs
 		 */
-		public function fireCollision(axe:MAxe):void {
+		public function fireCollision(objet:MIObjet, axe:MAxe):void {
 			for(var i:int=0; i<ecouteurs.length; i++) {
-				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueCollision(sous_classe, axe);
+				(ecouteurs[i] as MIObjetGraphiqueEcouteur).graphiqueCollision(objet, axe);
 			}
 		}
 		
@@ -483,7 +483,7 @@ package Graphique {
 		 * @see MGraphiqueAbstrait#fireCollision()
 		 */
 		public function objetCollision(objet:MIObjet, axe:MAxe):void {
-			fireCollision(axe);
+			fireCollision(objet, axe);
 		}
 		
 		/**
