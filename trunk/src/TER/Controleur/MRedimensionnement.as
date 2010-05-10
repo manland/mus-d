@@ -3,7 +3,8 @@ package Controleur
 	import Coeur.MIObjet;
 	
 	import flash.events.TimerEvent;
-	import flash.utils.Timer;
+	
+	import mx.controls.Text;
 	
 	
 	/**
@@ -14,23 +15,23 @@ package Controleur
 		/**
 		 * valeur en pixel ajoutée à la largeur de l'objet à chaque unité de temps
 		 */
-		private var unite_largeur:Number;
+		protected var unite_largeur:Number;
 		/**
 		 * valeur en pixel ajoutée à la hauteur de l'objet à chaque unité de temps
 		 */
-		private var unite_hauteur:Number;
+		protected var unite_hauteur:Number;
 		/**
 		 * valeur en pixel de la largeur que doit atteindre l'objet à la fin du Redimensionnement
 		 */
-		private var largeur_arrivee:Number;
+		protected var largeur_arrivee:Number;
 		/**
 		 * valeur en pixel de la hauteur que doit atteindre l'objet à la fin du Redimensionnement
 		 */
-		private var hauteur_arrivee:Number;
+		protected var hauteur_arrivee:Number;
 		/**
 		 * temps en milliseconde que doit durer le redimensionnement
 		 */
-		private var temps_ms:Number;
+		protected var temps_ms:Number;
 		
 		/**
 		 * crée et instancie le Redimensionnement receveur
@@ -58,8 +59,8 @@ package Controleur
 			//calcul du nombre d'unité de temps pour le mouvement pour avoir 50 images/sec => 1 image / 20 ms
 			var nb_unite_tp:int = temps_ms /20;
 			//calcul du déplacement à faire en une unité de temps
-			unite_largeur = largeur_arrivee/ nb_unite_tp;
-			unite_hauteur = hauteur_arrivee/ nb_unite_tp;
+			unite_largeur = (largeur_arrivee - objet.getLargeur())/ nb_unite_tp;
+			unite_hauteur = (hauteur_arrivee - objet.getHauteur())/ nb_unite_tp;
 			
 			lancerTimer(20,nb_unite_tp);
 		}
