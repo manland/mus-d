@@ -16,19 +16,19 @@ package Controleur
 		/**
 		 * valeur en pixel ajoutée sur l'abscisse à chaque unité de temps
 		 */
-		private var unite_x:Number;
+		protected var unite_x:Number;
 		/**
 		 * valeur en pixel ajoutée sur l'ordonnée à chaque unité de temps
 		 */
-		private var unite_y:Number;
+		protected var unite_y:Number;
 		/**
 		 * vitesse sur l'abscisse en pixel par seconde
 		 */
-		private var vitesse_px_s_X:Number;
+		protected var vitesse_px_s_X:Number;
 		/**
 		 * vitesse sur l'ordonnée en pixel par seconde
 		 */
-		private var vitesse_px_s_Y:Number;
+		protected var vitesse_px_s_Y:Number;
 		
 		/**
 		 * crée le Mouvement Perpétuel receveur

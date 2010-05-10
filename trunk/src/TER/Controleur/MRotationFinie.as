@@ -5,30 +5,30 @@ package Controleur
 	import Utilitaires.MCoordonnee;
 	
 	import flash.events.TimerEvent;
-	
-	import mx.controls.Text;
 
-	public class MRotationPerpetuelle extends MEffet implements MIEffet
+	public class MRotationFinie extends MEffet implements MIEffet
 	{
-		public var sysout:Text;
 		protected var centre:MCoordonnee;
-		protected var vitesse_degre_seconde:Number;
+		protected var angle_degre:Number;
+		protected var temps_ms:Number
 		protected var unite_angle_degre:Number;
 		
-		public function MRotationPerpetuelle(objet:MIObjet, centre:MCoordonnee, vitesse_degre_seconde:Number)
+		public function MRotationFinie(objet:MIObjet, centre:MCoordonnee, angle_degre:Number, temps_ms:Number)
 		{
 			this.objet = objet;
 			this.centre = centre;
-			this.vitesse_degre_seconde = vitesse_degre_seconde;			
+			this.angle_degre = angle_degre;
+			this.temps_ms = temps_ms		
 		}
 		
 		public function lancer():void
 		{
+			//calcul du nombre d'unité de temps pour le Mouvement pour avoir 50 images/sec => 1 image / 20 ms
+			var nb_unite_tp:int = temps_ms /20;
 			//calcul du déplacement à faire en une unité de temps
-			unite_angle_degre = vitesse_degre_seconde * 0.02;
+			unite_angle_degre = angle_degre/ nb_unite_tp;
 			
-			//on lance le timer toutes les 20 ms indéfiniment
-			lancerTimer(20, 0);
+			lancerTimer(20, nb_unite_tp);
 		}
 		
 		public function clone():MIEffet
@@ -38,7 +38,6 @@ package Controleur
 		
 		public function appliqueUnite(e:TimerEvent):void
 		{
-			//sysout.text +="\n tourne: "+unite_angle_degre;
 			objet.tourne(centre, unite_angle_degre);
 		}
 		

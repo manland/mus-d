@@ -18,19 +18,19 @@ package Controleur
 		/**
 		 * temps en milliseconde que doit durer le mouvement
 		 */
-		private var temps_ms:Number;		
+		protected var temps_ms:Number;		
 		/**
 		 * angle selon lequel doit tourner l'objet toutes les unités de temps
 		 */
-		private var unite_angle_degre:Number;
+		protected var unite_angle_degre:Number;
 		/**
 		 * angle en degre de la rotation que doit effectuer l'objet
 		 */
-		private var angle_degre:Number;
+		protected var angle_degre:Number;
 		/**
 		 * centre de la rotation
 		 */
-		 private var centre:MCoordonnee;
+		 protected var centre:MCoordonnee;
 		
 		/**
 		 * construit un mouvement circulaire fini autour du point passé en paramètre, ayant comme angle celui passé en paramètre s'appliquant sur l'objet passé en paramètre

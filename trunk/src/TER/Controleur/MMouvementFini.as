@@ -13,23 +13,23 @@ package Controleur
 		/**
 		 * valeur en pixel ajoutée à l'abscisse de l'objet à chaque unité de temps
 		 */
-		private var unite_x:Number;
+		protected var unite_x:Number;
 		/**
 		 * valeur en pixel ajoutée à l'ordonnée de l'objet à chaque unité de temps
 		 */
-		private var unite_y:Number;
+		protected var unite_y:Number;
 		/**
 		 * abscisse en pixel de l'abscisse jusqu'ou doit se déplacer l'objet
 		 */
-		private var x_arrivee:Number;
+		protected var x_arrivee:Number;
 		/**
 		 * ordonnée en pixel de l'ordonnée jusqu'ou doit se déplacer l'objet
 		 */
-		private var y_arrivee:Number;
+		protected var y_arrivee:Number;
 		/**
 		 * temps en milliseconde que doit durer le mouvement
 		 */
-		private var temps_ms:Number;
+		protected var temps_ms:Number;
 		
 		/**
 		 * crée et instancie le Mouvement Fini receveur
