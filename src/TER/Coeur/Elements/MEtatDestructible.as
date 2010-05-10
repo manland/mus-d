@@ -11,9 +11,9 @@ package Coeur.Elements {
 			super(element);
 		}
 		
-		public function actionCollision(objet_collisionne:MIObjet,axe:MAxe):void {
+		public function actionCollision(objet:MIObjet,axe:MAxe):void {
 			if(MJeu.getInstance().getEstCommence()) {
-				var element_a_etat_collisionne:MElementAEtat = (objet_collisionne as MElementAEtat);
+				var element_a_etat_collisionne:MElementAEtat = (objet as MElementAEtat);
 				if(element_a_etat_collisionne != null) {
 					element.setPointVie(element.getPointVie()-element_a_etat_collisionne.getPointDegat());
 					if(element.getPointVie() <= 0) {
@@ -21,7 +21,7 @@ package Coeur.Elements {
 					}
 				}
 			}
-			element.fireCollision(objet_collisionne, axe);
+			element.fireCollision(objet, axe);
 		}
 		
 		public function mourir():void {

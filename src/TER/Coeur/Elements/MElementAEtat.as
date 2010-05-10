@@ -3,23 +3,41 @@ package Coeur.Elements {
 	import Coeur.MElement;
 	import Coeur.MIObjet;
 	import Utilitaires.MAxe;
+	import Coeur.Elements.ElementsAActions.MElementAActionAbstrait;
+	import Coeur.Elements.ElementsAActions.MIElementAAction;
 	
 	
 	public class MElementAEtat extends MElement {
 		
-		private var point_degat:int;
 		private var point_vie:int;
+		private var point_degat:int;
 		private var etat_destruction:MIEtatDestructible;
 		private var etat_deplacable:MIEtatDeplacable;
 		private var etat_redimensionnable:MIEtatRedimensionnable;
+		protected var element_a_action:MIElementAAction;
 		
-		public function MElementAEtat() {
-			point_degat = 0;
-			point_vie = 1;
+		public function MElementAEtat(point_vie:int=1, point_degat:int=0) {
+			this.point_vie = point_vie;
+			this.point_degat = point_degat;
 			etat_destruction = new MEtatDestructible(this);
 			etat_deplacable = new MEtatDeplacable(this);
-			etat_redimensionnable = null;
+			etat_redimensionnable = new MEtatRedimensionnable(this);
 			nom_classe = "MElementAEtat";
+		}
+		
+		public function ajouterElementAAction(element:MIElementAAction):void {
+			if(element_a_action == null) {
+				element_a_action = element;
+			}
+			else {
+				element_a_action.ajouterElementAAction(element);
+			}
+		}
+		
+		public function lancerAction(nom:String):void {
+			if(element_a_action != null) {
+				element_a_action.action(nom);
+			}
 		}
 		
 		public function getPointDegat():int {
@@ -37,20 +55,7 @@ package Coeur.Elements {
 		public function setPointVie(point_vie:int):void {
 			this.point_vie = point_vie;
 		}
-		
-		public function estDestructible():Boolean {
-			return (etat_destruction as MEtatDestructible) != null;
-		}
-		
-		public function setEstDestructible(est_destructible:Boolean):void {
-			if(est_destructible) {
-				etat_destruction = new MEtatDestructible(this);
-			}
-			else {
-				etat_destruction = new MEtatIndestructible(this);
-			}
-		}
-		
+				
 		public function getEtatDestructible():MIEtatDestructible {
 			return etat_destruction;
 		}
@@ -59,38 +64,12 @@ package Coeur.Elements {
 			this.etat_destruction = etat_destructible;
 		}
 		
-		public function estDeplacable():Boolean {
-			return (etat_deplacable as MEtatDeplacable) != null;
-		}
-		
-		public function setEstDeplacable(est_deplacable:Boolean):void {
-			if(est_deplacable) {
-				etat_deplacable = new MEtatDeplacable(this);
-			}
-			else {
-				etat_deplacable = new MEtatIndeplacable(this);
-			}
-		}
-		
 		public function getEtatDeplacable():MIEtatDeplacable {
 			return etat_deplacable;
 		}
 		
 		public function setEtatDeplacable(etat_deplacable:MIEtatDeplacable):void {
 			this.etat_deplacable = etat_deplacable;
-		}
-		
-		public function estRedimensionnable():Boolean {
-			return (etat_redimensionnable as MEtatRedimensionnable) != null;
-		}
-		
-		public function setEstRedimensionnable(est_redimensionnable:Boolean):void {
-			if(est_redimensionnable) {
-				etat_redimensionnable = new MEtatRedimensionnable(this);
-			}
-			else {
-				etat_redimensionnable = new MEtatNonRedimensionnable(this);
-			}
 		}
 		
 		public function getEtatRedimensionnable():MIEtatRedimensionnable {
@@ -129,8 +108,8 @@ package Coeur.Elements {
 			etat_destruction.mourir();
 		}
 		
-		override public function actionCollision(objet_collisionne:MIObjet,axe:MAxe):void {
-			etat_destruction.actionCollision(objet_collisionne,axe);
+		override public function actionCollision(objet:MIObjet,axe:MAxe):void {
+			etat_destruction.actionCollision(objet,axe);
 		}
 
 	}
