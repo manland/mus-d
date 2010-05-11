@@ -32,6 +32,7 @@ package Controleur.action
 		 */
 		public function MSaut(objet:MIObjet, hauteur_saut_px:Number = 20, duree_saut_ms:Number = 1000)
 		{
+			this.nom_classe = "MSaut";
 			this.hauteur_saut_px = hauteur_saut_px;
 			this.duree_saut_ms = duree_saut_ms;
 			super(objet, objet.getX(), objet.getY()-hauteur_saut_px, duree_saut_ms/2);

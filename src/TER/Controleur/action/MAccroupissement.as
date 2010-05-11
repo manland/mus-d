@@ -34,6 +34,7 @@ package Controleur.action
 		 */
 		public function MAccroupissement(objet:MIObjet,pourcentage_accroupissement:Number = 0.5,temps_accroupis_ms:Number = 500, temps_descente_monte_ms:Number = 500)
 		{
+			this.nom_classe = "MAccroupissement";
 			this.pourcentage = pourcentage_accroupissement;
 			this.temps_accroupi = temps_accroupis_ms;
 			this.temps_redim = temps_descente_monte_ms;

@@ -37,6 +37,7 @@ package Controleur
 		 */
 		public function MRotationFinie(objet:MIObjet, centre:MCoordonnee, angle_degre:Number, temps_ms:Number)
 		{
+			this.nom_classe = "MRotationFinie";
 			this.objet = objet;
 			this.centre = centre;
 			this.angle_degre = angle_degre;
