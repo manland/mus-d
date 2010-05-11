@@ -13,12 +13,12 @@ package Jeux {
 	import Coeur.Elements.MElementAEtat;
 	import Controleur.MEffet;
 	import Controleur.MIEffet;
-	import Coeur.Elements.MTireurMouvementPerpetuel;
 	import Coeur.Elements.MEtatIndestructible;
 	import flash.display.SpreadMethod;
 	import flash.display.InterpolationMethod;
 	import flash.display.GradientType;
 	import Graphique.Textures.Degrades.MDegrade;
+	import Coeur.Elements.MControleMouvementPerpetuel;
 	
 	
 	public class Pic extends MGraphiqueTriangle implements MIObjetGraphiqueEcouteur {
@@ -34,7 +34,7 @@ package Jeux {
 			height = Math.round(Math.random() * (150 - 50)) + 50;
 			mouvement_pic = new MMouvementPerpetuel();
 			mouvement_pic.instancieAvecAngleEtVitesse(getObjet(), 180, 500);
-			var obstacle:MTireurMouvementPerpetuel = new MTireurMouvementPerpetuel(100, 1000, 180, 10);
+			var obstacle:MControleMouvementPerpetuel = new MControleMouvementPerpetuel(100, 1000, 180, 10);
 			obstacle.setEtatDestructible(new MEtatIndestructible(obstacle));
 			setObjet(obstacle);
 			obstacle.lancer();
