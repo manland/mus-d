@@ -40,8 +40,8 @@ package Vaisseaux {
 		}
 		
 		public function graphiqueMeurt(graphique:MIObjetGraphique):void {
-			MJeu.getInstance().augmenterScore(0, 1);
 			scene.addChild(new Ennemis(scene));
+			MJeu.getInstance().augmenterScore(0, 1);
 			(scene.getTexture().getADecorer() as MTexte).getLabel().text = "Score : "+(MJeu.getInstance().getScores()[0] as MScore).getTotal();
 		}
 		

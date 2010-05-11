@@ -34,7 +34,7 @@ package Jeux {
 			height = Math.round(Math.random() * (150 - 50)) + 50;
 			mouvement_pic = new MMouvementPerpetuel();
 			mouvement_pic.instancieAvecAngleEtVitesse(getObjet(), 180, 500);
-			var obstacle:MControleMouvementPerpetuel = new MControleMouvementPerpetuel(100, 1000, 180, 10);
+			var obstacle:MControleMouvementPerpetuel = new MControleMouvementPerpetuel(100, 1000, 180, 50);
 			obstacle.setEtatDestructible(new MEtatIndestructible(obstacle));
 			setObjet(obstacle);
 			obstacle.lancer();
