@@ -8,6 +8,7 @@ package Graphisme.BarreMenus
 	import Graphisme.PanelOptions.PanelOption;
 	
 	import mx.controls.MenuBar;
+	import mx.core.WindowedApplication;
 	import mx.events.MenuEvent;
 	import mx.managers.PopUpManager;
 	
@@ -73,7 +74,7 @@ package Graphisme.BarreMenus
 				
 		public function nouvelOnglet():void
 		{
-			PopUpManager.addPopUp(fenetre_nouvel_onglet, tab_onglet.parent, false);
+			PopUpManager.addPopUp(fenetre_nouvel_onglet, tab_onglet.parentApplication as WindowedApplication, false);
 			fenetre_nouvel_onglet.getTextInput().setFocus();
             PopUpManager.centerPopUp(fenetre_nouvel_onglet);	
 		}

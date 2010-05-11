@@ -139,7 +139,6 @@ package Graphisme.MenuAccordeons
 								else
 								{
 									obj_vide.texture = new MImage(fils.@source);
-									obj_vide.setBordure(new MBordure(1,0x000000));
 								} 
 								obj_vide.addEventListener(MouseEvent.MOUSE_MOVE,drag);
 								mon_conteneur.addChild(obj_vide);

@@ -49,6 +49,7 @@ package Graphisme.PanelOptions
 	import mx.controls.RadioButton;
 	import mx.controls.RadioButtonGroup;
 	import mx.controls.TextInput;
+	import mx.core.WindowedApplication;
 	import mx.events.ColorPickerEvent;
 	import mx.events.FlexEvent;
 	import mx.managers.PopUpManager;
@@ -745,7 +746,7 @@ package Graphisme.PanelOptions
 			
 			PopUpManager.removePopUp(fenetre_degrade);
 			fenetre_degrade.setObjet(objet);
-			PopUpManager.addPopUp(fenetre_degrade, tab_onglet.parent, false);
+			PopUpManager.addPopUp(fenetre_degrade, tab_onglet.parentApplication as WindowedApplication, false);
             PopUpManager.centerPopUp(fenetre_degrade);
             
 		}
@@ -780,7 +781,7 @@ package Graphisme.PanelOptions
 			}
 			PopUpManager.removePopUp(fenetre_mouvement);
 //			fenetre_mouvement.setObjet(objet);
-			PopUpManager.addPopUp(fenetre_mouvement, tab_onglet.parent, false);
+			PopUpManager.addPopUp(fenetre_mouvement, tab_onglet.parentApplication as WindowedApplication, false);
             PopUpManager.centerPopUp(fenetre_mouvement);
 		}
 		
@@ -862,6 +863,7 @@ package Graphisme.PanelOptions
 				{
 					var hbox_mvt_general:HBoxGeneraleMvt = new HBoxGeneraleMvt(erreur);
 					var hbox:HBox = hbox_mvt_general.getHbox();
+					var btn:Button = hbox_mvt_general.getBtnClose();
 					
 					if(tab[i].mvt=="perpetuel")
 					{
@@ -874,6 +876,7 @@ package Graphisme.PanelOptions
 					
 						hbox.addChild(hbox_mvt_perpetuel);
 						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.addChild(btn);
 						
 						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
 						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
@@ -889,6 +892,7 @@ package Graphisme.PanelOptions
 						hbox_mvt_general.getChoixMouvement().selectedIndex=1;
 						hbox_mvt_general.setType("fini");
 						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.addChild(btn);
 						
 						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
 						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
@@ -903,6 +907,7 @@ package Graphisme.PanelOptions
 						hbox.addChild(hbox_mvt_redim);
 						hbox_mvt_general.getChoixMouvement().selectedIndex=2;
 						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.addChild(btn);
 						hbox_mvt_general.setType("redimensionnement");
 													
 						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
@@ -919,6 +924,7 @@ package Graphisme.PanelOptions
 						hbox.addChild(hbox_mvt_circ_fini);
 						hbox_mvt_general.getChoixMouvement().selectedIndex=3;
 						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.addChild(btn);
 						hbox_mvt_general.setType("circulaire_fini");
 													
 						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
@@ -934,6 +940,7 @@ package Graphisme.PanelOptions
 						hbox.addChild(hbox_mvt_circ_perpet);
 						hbox_mvt_general.getChoixMouvement().selectedIndex=4;
 						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.addChild(btn);
 						hbox_mvt_general.setType("circulaire_perpet");
 													
 						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
@@ -949,10 +956,12 @@ package Graphisme.PanelOptions
 						hbox.addChild(hbox_rotation);
 						hbox_mvt_general.getChoixMouvement().selectedIndex=5;
 						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.addChild(btn);
 						hbox_mvt_general.setType("rotation_perpet");
 													
 						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
 						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
+						
 					}
 					if(tab[i].mvt=="souris")
 					{

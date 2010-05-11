@@ -80,6 +80,9 @@ package Graphisme.Onglets
 		public function Onglet(panel_opt:PanelOption,option_jeu:OptionJeu,erreur:Erreur)
 		{
 			super();
+			this.verticalScrollPolicy = "auto";
+			this.horizontalScrollPolicy = "auto";
+			
 			this.option_jeu = option_jeu;
 			this.label="jeu";
 			this.erreur = erreur;
@@ -98,9 +101,6 @@ package Graphisme.Onglets
 			cadre =new Canvas();
 			this.texture=new MCouleur(0xE2CDFF);
 			
-			
-		
-
 			this.id = "scene";
 			this.getObjet().setHauteur(600);
 			this.getObjet().setLargeur(600);
@@ -314,9 +314,9 @@ package Graphisme.Onglets
 		// fonction permettant de generer le code pour la scene
 		public function genererCodeScene():String
 		{
-			var str:String = "\t <TER:MGraphiqueScene" +
-							// +" id=\""+this.id+"\""
-							 " largeur=\""+this.getObjet().getLargeur()+"\""
+			var str:String = "\t <TER:MGraphiqueScene"
+							 +" id=\""+this.getGraphique().id+"\""
+							 +" largeur=\""+this.getObjet().getLargeur()+"\""
 							 +" hauteur=\""+this.getObjet().getHauteur()+"\""
 							 +" x=\""+this.getObjet().getX().toString()+"\""
 							 +" y=\""+this.getObjet().getY().toString()+"\" "
@@ -458,9 +458,15 @@ package Graphisme.Onglets
 			str+="\t \t{\n";
 			for (var key:Object in panel_opt.getDicoMvt()) 
 			{
-				str+="\t \t \tvar mon_ecouteur"+m+":MonEcouteur = new MonEcouteur(); \n";
+				
+				//str+="\t \t \tvar mon_ecouteur"+m+":MonEcouteur = new MonEcouteur(); \n";
 				for(var i:int=0;i<(panel_opt.getDicoMvt()[key] as Array).length;i++)
 				{
+					var s:String= (panel_opt.getDicoMvt()[key] as Array)[i].mvt;
+					if(s!="clavier" && s!="souris")
+					{
+						str+="\t \t \tvar mon_ecouteur"+m+":MonEcouteur = new MonEcouteur(); \n";	
+					}
 					if((panel_opt.getDicoMvt()[key] as Array)[i].mvt == "perpetuel")
 					{
 						code_mouvement_generer =true;
@@ -536,7 +542,7 @@ package Graphisme.Onglets
 						clavier = true;
 						dico["Clavier"]="import Controleur.MClavier;";
 						str +="// Mise en place de l'écouteur clavier \n"+
-						      "\t \t \tvar ecouteur_clavier:MonEcouteurClavier=new MonEcouteurClavier("+obj.getGraphique().id+"); \n"+
+						      "\t \t \tvar ecouteur_clavier:MonEcouteurClavier=new MonEcouteurClavier("+(key as MIObjetGraphique).getGraphique().id+"); \n"+
 							  "\t \t \tMClavier.getInstance().ajouterEcouteur(ecouteur_clavier); \n";
 							  // faire tableau d'objet et setter l'objet courant
 					}
@@ -545,14 +551,16 @@ package Graphisme.Onglets
 						souris = true;
 						dico["Souris"]="import Controleur.MSouris;";
 						str +="\n // Mise en place de l'écouteur souris \n"+
-						      "\t \t \tvar ecouteur_souris:MonEcouteurSouris=new MonEcouteurSouris("+obj.getGraphique().id+"); \n"+
+						      "\t \t \tvar ecouteur_souris:MonEcouteurSouris=new MonEcouteurSouris("+(key as MIObjetGraphique).getGraphique().id+"); \n"+
 							  "\t \t \tMSouris.getInstance().ajouterEcouteur(ecouteur_souris); \n";
 							  // faire tableau d'objet et setter l'objet courant
 					}
 					n++;
 				}	
-				
-				str+="\t \t \t"+(key as MIObjetGraphique).getGraphique().id+".ajouterEcouteur(mon_ecouteur"+m+"); \n";
+				if(s!="souris" && s!="clavier")
+				{
+					str+="\t \t \t"+(key as MIObjetGraphique).getGraphique().id+".ajouterEcouteur(mon_ecouteur"+m+"); \n";
+				}
 				
 				m++;
 			}
@@ -627,7 +635,7 @@ package Graphisme.Onglets
 				 "\t \t public function MonEcouteurClavier(objet:MIObjetGraphique)\n" + 
 				 "\t \t {\n" + 
 				 "\t \t \t this.objet=objet; \n"+
-				 "\t \t \t objet.getGraphique().setFocus(); \n"+
+				 "\t \t \t //objet.getGraphique().setFocus(); \n"+
 				 "\t \t }\n"+
 				 "\n \n "+
 				 "\t \t public function flecheBas():void \n"+

@@ -69,17 +69,29 @@
 				// creation de la barre centrale
 				hBoxCentrale = new HBox();
 				hBoxCentrale.addChild(vBox);
-				hBoxCentrale.addChild(tab_onglet);
+				var vb:VBox = new VBox();
+				vb.percentHeight = 100;
+				vb.percentWidth = 100;
+				vb.addChild(tab_onglet);
+				//vb.verticalScrollPolicy = "on";
+				hBoxCentrale.addChild(vb);
 				var vBox_option:VBox = new VBox();
+				
+				vBox_option.height = panel_option.height + option_jeu.height; 
+				vBox_option.width = panel_option.width + 10;
 				vBox_option.addChild(panel_option);
 				vBox_option.addChild(option_jeu);
+				
 				hBoxCentrale.addChild(vBox_option);
 				hBoxCentrale.styleName="hBoxCentrale";
-				hBoxCentrale.percentWidth=100;
-				hBoxCentrale.percentHeight=100;
+				hBoxCentrale.percentHeight = 100;
+				hBoxCentrale.percentWidth = 100;
+				hBoxCentrale.x=0;
+				hBoxCentrale.y=80;
 				this.addChild(hBoxCentrale);
-				
-		//		erreur.visible = false;
+				vBox_option.verticalScrollPolicy="auto";
+				vBox_option.horizontalScrollPolicy = "off";
+				erreur.visible = false;
 				application.addEventListener(KeyboardEvent.KEY_UP,controleClavier);
 			}
 			

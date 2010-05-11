@@ -84,7 +84,6 @@ package Graphisme.PanelMouvements
 			{
 				this.removeChild(hBox);
 			}	
-			
 				
 			if(choix_mouvement.selectedLabel=="Perpetuel")
 			{
@@ -152,5 +151,6 @@ package Graphisme.PanelMouvements
 		public function setType(s:String) {type=s;}
 		public function getHbox():HBox {return hBox;}
 		public function getChoixMouvement():ComboBox {return choix_mouvement;}
+		public function getBtnClose():Button {return btn_close;}
 	}
 }

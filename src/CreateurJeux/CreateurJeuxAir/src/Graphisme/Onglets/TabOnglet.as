@@ -18,13 +18,15 @@ package Graphisme.Onglets
 		public function TabOnglet(panel_opt:PanelOption,option_jeu:OptionJeu,erreur:Erreur)
 		{
 			super();
+			
 			this.erreur=erreur;
 			this.panel_opt=panel_opt;
 			this.option_jeu = option_jeu;
 			onglet= new Onglet(panel_opt,option_jeu,erreur);
-//			this.width=800;
-//			this.height=600;
-			this.percentHeight=100;
+//			this.width=400;
+//			this.height=400;
+
+			this.height= 600;
 			this.percentWidth=100;
 			this.addChild(onglet);
 		}
@@ -40,7 +42,7 @@ package Graphisme.Onglets
              tabBar.setStyle("borderStyle", "none");
              tabBar.setStyle("paddingTop", 0);
              tabBar.setStyle("paddingBottom", 0);
-                
+            
              rawChildren.addChild(tabBar);
                 
             }
