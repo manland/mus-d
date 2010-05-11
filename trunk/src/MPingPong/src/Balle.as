@@ -47,8 +47,11 @@ package
         	this.mouv.rebondir(axe);
         }
         
-        public function graphiqueSeDeplace(x:Number, y:Number):void {
+        public function graphiqueSeDeplace(graphique:MIObjetGraphique):void {
 
+			var x:Number = graphique.getObjet().getX();
+			var y:Number = graphique.getObjet().getY();
+			
         	if(x<=0) {
         		sceneParent.scoreJ2 = sceneParent.scoreJ2+1;
        			sceneParent.labelScoreJ2.text = ""+sceneParent.scoreJ2;
@@ -77,6 +80,14 @@ package
         public function graphiqueChangeTaille(objet:MIObjetGraphique):void {
         	
         }
+        
+        public function debutDuJeuGraphique(graphique:MIObjetGraphique):void {
+
+        }
+        
+		public function finDuJeuGraphique(graphique:MIObjetGraphique):void {
+			
+		}
 
 	}
 }

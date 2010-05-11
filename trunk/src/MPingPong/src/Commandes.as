@@ -268,22 +268,10 @@ package
 			
 		}
 		
-		/*public function reportKeyDown(event:KeyboardEvent):void
-		{
-		    if (event.keyCode == Keyboard.SHIFT)
-		    { textfieldHautJ1.setStyle("borderColor", 0xFF0000); }
-		    
-		    textfieldHautJ1.text = String.fromCharCode(event.charCode);
-		}*/
 		
 		public function pressJ1H(event:KeyboardEvent):void
 		{
-		    /*
-		    trace("Key Released: " + String.fromCharCode(event.charCode) + 
-		        " (key code: " + event.keyCode + " character code: " + 
-		        event.charCode + ")");
-		    */
-		        
+		    
 		    if (event.keyCode == Keyboard.SHIFT)
 		    { textfieldHautJ1.setStyle("borderColor", 0x000000); }
 		    
