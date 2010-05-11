@@ -1,6 +1,6 @@
 format 71
 "Coeur" // Coeur
-  revision 17
+  revision 18
   modified_by 27 "Lolo"
   // class settings
   //class diagram settings
@@ -343,6 +343,13 @@ ${members}};
 	    classrelation_ref 146715 // <aggregation>
 	  b role_name "" private
 	    classrelation_ref 146843 // <aggregation>
+      end
+
+      classrelation 153883 // <realization>
+	relation 151579 -_-|>
+	  a public
+	    classrelation_ref 153883 // <realization>
+	  b parent class_ref 128342 // MIObjet
       end
     end
 

@@ -98,8 +98,8 @@ classcanvas 140630 class_ref 142038 // MTriangle
 end
 relationcanvas 128027 relation_ref 144923 // 
   from ref 130902 z 2012 to ref 128214
-  role_a_pos 364 322 3000 role_b_pos 197 365 3000
-  multiplicity_a_pos 447 317 3000 multiplicity_b_pos 197 388 3000
+  role_a_pos 383 315 3000 role_b_pos 197 365 3000
+  multiplicity_a_pos 441 338 3000 multiplicity_b_pos 197 388 3000
 end
 relationcanvas 130390 relation_ref 129878 // <generalisation>
   from ref 130006 z 2006 to ref 128342
