@@ -2,7 +2,7 @@ package Controleur.action
 {
 	import Coeur.MIObjet;
 	
-	import Controleur.MRedimensionnement;
+	import Controleur.*;
 	
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
