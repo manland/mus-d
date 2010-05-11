@@ -20,84 +20,28 @@
 			import Graphique.Textures.MCouleur;
 		
 			public function init():void {
-				var nombre_ennemi:Number = 2;
-				var ennemis:Array = new Array();
-				scene.setTexture(new MCouleur(0x000000));
-				
-				var coordonnee_pacman_x:Number;
-				var coordonnee_pacman_y:Number;
-				var pacman_ok:Boolean = false;
-				
-				while(!pacman_ok){
-					coordonnee_pacman_x = Math.round(Math.random()*22 - 1);
-					coordonnee_pacman_y = Math.round(Math.random()*21 - 1);
-					if(coordonnee_pacman_x%2 ==0)
-						pacman_ok = true;
-				}
-				
-				for(var i:uint =0; i< nombre_ennemi; i++){
-					var coordonnee_ennemi_x:Number;
-					var coordonnee_ennemi_y:Number;
-					var ennemi_ok:Boolean = false;
-					while(!ennemi_ok){
-						coordonnee_ennemi_x = Math.round(Math.random()*22 - 1);
-						coordonnee_ennemi_y = Math.round(Math.random()*21 - 1);
-						if(coordonnee_ennemi_x != coordonnee_pacman_x && coordonnee_ennemi_y != coordonnee_pacman_y
-						 && coordonnee_ennemi_x%2 ==0){
-							var taille_tableau:Number = ennemis.length;
-							ennemi_ok = true;
-							for(var i:uint=0; i<taille_tableau; i++){
-								var ennemi_tmp:Ennemi = ennemis[i] as Ennemi;
-								if(ennemi_tmp == null)
-									trace("Erreur");
-								else if(ennemi_tmp.x == coordonnee_ennemi_x && ennemi_tmp.y == coordonnee_ennemi_y)
-									ennemi_ok = false;
-							}
-						}
-					}
-					ennemis.push(new Ennemi(scene, coordonnee_ennemi_x, coordonnee_ennemi_y));
-				}
 				
 				
-				
-				
-				for( var i:uint=0; i<21; i++){
-					var random1:Number = Math.round(Math.random() * 17 + 1);
-					var random2:Number = Math.round(Math.random() * 17 + 1);
-					for( var j:uint=0; j<20; j++){
-						if( (i%2 == 1) && (j>0) && (j<19) && j!= random1 && j!= random2 ){
-							scene.addChild(new Mur(scene,i*20, j * 20));
-						}
-						else if(coordonnee_pacman_x == i && coordonnee_pacman_y == j){
-							scene.addChild(new MPacman(scene, coordonnee_pacman_x*20+4, coordonnee_pacman_y*20+4));
-						}
-						else{
-							var ajout:Boolean = true;
-							for(var a:uint = 0; a<nombre_ennemi; a++){
-								var ennemi_tmp:Ennemi = ennemis[a] as Ennemi;
-								if(ennemi_tmp == null)
-									trace("Erreur");
-								if(ennemi_tmp.x == i && ennemi_tmp.y == j){
-									scene.addChild(new Ennemi(scene, i*20+4, j*20+4));
-									ajout=false;
-								}
-							}
-							if(ajout)
-								scene.addChild(new Nourriture(scene,i*20+7.5, j * 20+7.5));
-						}
-					}	
-				}
-				
-				
+				scene.creerScene(score, etat);
 				MJeu.getInstance().ajouterScore(new MScore());
 				MJeu.getInstance().setScene(scene.getObjet() as MScene);
 				MJeu.getInstance().debut();
+				score.text = "0";
+				etat.text = "En cours";
 				
 			}
 		]]>
 	</mx:Script>
+	<mx:Panel>
+		<mx:Text id="score" />
+		<mx:Spacer height="50" width="100"/>
+	</mx:Panel>
+	<mx:Panel>
+		<mx:Text id="etat" />
+		<mx:Spacer height="50" width="100"/>
+	</mx:Panel>
 	
-	<Pacman:MaGraphiqueScene id="scene" width="420" height="400" >
+	<Pacman:MaGraphiqueScene id="scene" width="120" height="100" nombreEnnemi="2" >
 	</Pacman:MaGraphiqueScene>
 		
 </mx:WindowedApplication>
