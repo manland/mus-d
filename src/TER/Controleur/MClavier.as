@@ -1,6 +1,6 @@
 package Controleur
 {
-	import Utilitaires.MErreur;
+	import Utilitaires.*;
 	
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;

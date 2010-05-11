@@ -1,6 +1,6 @@
 package Controleur
 {
-	import Utilitaires.MErreur;
+	import Utilitaires.*;
 	
 	import flash.events.MouseEvent;
 	
@@ -75,7 +75,7 @@ package Controleur
 	 	 */
 		public function enleverEcouteur( ecouteur:MIEcouteurSouris):void
 		{
-			var temp:Array = MUtilitaire.enlever(ecouteurs,m);
+			var temp:Array = MUtilitaire.enlever(ecouteurs,ecouteur);
 			ecouteurs = temp;
 		}
 		
