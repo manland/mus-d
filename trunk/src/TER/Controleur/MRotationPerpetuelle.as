@@ -32,6 +32,7 @@ package Controleur
 		 */
 		public function MRotationPerpetuelle(objet:MIObjet, centre:MCoordonnee, vitesse_degre_seconde:Number)
 		{
+			this.nom_classe = "MRotationPerpetuelle";
 			this.objet = objet;
 			this.centre = centre;
 			this.vitesse_degre_seconde = vitesse_degre_seconde;			
