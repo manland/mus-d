@@ -75,7 +75,8 @@ package Controleur
 	 	 */
 		public function enleverEcouteur( ecouteur:MIEcouteurSouris):void
 		{
-			ecouteurs.slice(ecouteurs.indexOf(ecouteur), 1);
+			var temp:Array = MUtilitaire.enlever(ecouteurs,m);
+			ecouteurs = temp;
 		}
 		
 		/**
