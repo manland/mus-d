@@ -21,6 +21,9 @@ package Vaisseaux {
 	import Controleur.action.MSaut;
 	import Coeur.Elements.ElementsAActions.MSauteur;
 	import Fabrique.MFabriqueProjectileRond;
+	import Graphique.MGraphiqueRond;
+	import Fabrique.MFabriqueProjectileEtoile;
+	import Coeur.Elements.ElementsAActions.MElementAccroupi;
 	
 	
 	public class Hero extends MGraphiqueTriangle implements MIEcouteurClavier {
@@ -37,7 +40,7 @@ package Vaisseaux {
 		
 		public function set scene(s:MGraphiqueScene):void {
 			controle_clavier = new MControleClavier(100, 5);
-			controle_clavier.ajouterElementAAction(new MTireur(controle_clavier, "tirer", new MFabriqueProjectileRond(1, 5, 0, 200, s))); 
+			controle_clavier.ajouterElementAAction(new MTireur(controle_clavier, "tirer", new MFabriqueProjectileEtoile(1, 5, 0, 200, s))); 
 			controle_clavier.ajouterElementAAction(new MSauteur(controle_clavier, "saut", 30, 1000)); 
 			setObjet(controle_clavier);
 		}
