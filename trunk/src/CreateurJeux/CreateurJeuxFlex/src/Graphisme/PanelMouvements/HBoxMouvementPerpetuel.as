@@ -48,8 +48,12 @@ package Graphisme.PanelMouvements
 		}
 		
 		// accesseur : 
-		public function getAngle():Number {return angle.value;}
-		public function getVitesse():TextInput {return vitesse;}
+		public function getAngle():String {
+		var str:String = angle.value.toString();
+		var new_str:String = str.substr(0,6);
+		return new_str;}
+		
+		public function getVitesse():String {return vitesse.text;}
 		
 		public function setAngle(n:Number):void {angle.value = n;}
 		public function setVitesse(s:String):void {vitesse.text = s;}

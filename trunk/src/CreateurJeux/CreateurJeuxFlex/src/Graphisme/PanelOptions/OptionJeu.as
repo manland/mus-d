@@ -49,6 +49,8 @@ package Graphisme.PanelOptions
 			this.layout="vertical";
 			this.title="Options du jeu";
 			this.styleName = "PanelsOption";
+			this.width = 190;
+			this.height = 200;
 //			valeur_nom_jeu.text = tab_onglet.getOnglet().getNomJeu();	
 		
 			initialisationJeu();

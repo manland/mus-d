@@ -47,8 +47,6 @@ package Graphisme.Onglets
         	{
         		afficherCadre();
         	}
-
-			
         }
         
         public function afficherCadre():void
@@ -94,14 +92,6 @@ package Graphisme.Onglets
 			{
 				supprimerObjet();
 			}
-//			else if(event.controlKey && event.keyCode==Keyboard.C)
-//			{
-//				copier();
-//			}
-//			else if(event.controlKey && event.keyCode==Keyboard.V)
-//			{
-//				coller();
-//			}
 			else if(event.keyCode==Keyboard.UP)
 			{
 				objet.getObjet().setY(objet.getObjet().getY()-1);
@@ -133,24 +123,37 @@ package Graphisme.Onglets
 		
 		public function coller():void
 		{
-			var id_objet:String = onglet.getIdObjet();
-			var id_onglet:Number = onglet.getNbId();
-			clone.getGraphique().id= id_objet+onglet.getNbId();
-			onglet.setNbId(id_onglet+1); 
-			clone.getObjet().setX(pos_x+10);
-			clone.getObjet().setY(pos_y+10);
-			this.setObjet(clone);
-			clone.getGraphique().setFocus();
-			onglet.addChild(clone.getGraphique());
+			if(clone != null)
+			{
+				var c:MIObjetGraphique = clone.clone();
+				pos_x +=10;
+				pos_y +=10;
+				var id_objet:String = onglet.getIdObjet();
+				var id_onglet:Number = onglet.getNbId();
+				c.getGraphique().id= id_objet+onglet.getNbId();
+				onglet.setNbId(id_onglet+1); 
+				c.getObjet().setX(pos_x);
+				c.getObjet().setY(pos_y);
+				this.setObjet(c);
+				c.getGraphique().setFocus();
+				onglet.addChild(c.getGraphique());
+			}
 		}
 		
 		public function supprimerObjet():void
 		{
 			if(objet!=null)
 			{
+				if(panel_opt.getDicoMvt()[objet]!=null)
+				{
+					delete panel_opt.getDicoMvt()[objet];
+					panel_opt.getTabOnglet().getOnglet().genererCodeMouvement(objet);
+				}
 				onglet.removeChild(objet.getGraphique());
 				onglet.enleverCadres();
 				objet=null;
+				onglet.setFocus();
+				panel_opt.setObjet(onglet);
 			}
 		}
 		
