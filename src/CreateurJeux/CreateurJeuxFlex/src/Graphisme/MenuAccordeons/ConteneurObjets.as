@@ -48,7 +48,7 @@ package Graphisme.MenuAccordeons
 			super();
 			this.erreur=erreur;
 		
-			this.height=200;
+			this.height=400;
 			this.width=145;
 			
 			chargementXML = new URLLoader();
@@ -72,8 +72,9 @@ package Graphisme.MenuAccordeons
 				place_y=5;
 				
 				var mon_conteneur:MGraphiqueScene = new MGraphiqueScene();
-				mon_conteneur.height=200;
+				mon_conteneur.height=400;
 				mon_conteneur.width=140;
+				mon_conteneur.verticalScrollPolicy = "auto";
 				mon_conteneur.texture = new MCouleur(0xFFFFFF);
 				var exp_reg:RegExp = new RegExp(/MGraphique/);
 				var resultat:Array = ((String)(noeud.name())).split(/MGraphique/);
@@ -138,7 +139,6 @@ package Graphisme.MenuAccordeons
 								else
 								{
 									obj_vide.texture = new MImage(fils.@source);
-									obj_vide.setBordure(new MBordure(1,0x000000));
 								} 
 								obj_vide.addEventListener(MouseEvent.MOUSE_MOVE,drag);
 								mon_conteneur.addChild(obj_vide);

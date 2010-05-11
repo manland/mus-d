@@ -36,7 +36,7 @@ package Graphisme.BarreOutils
 		{	
 			if(event.index==0)
 			{
-				PopUpManager.addPopUp(fenetre_nouvel_onglet, tab_onglet.parent, false);
+				PopUpManager.addPopUp(fenetre_nouvel_onglet, tab_onglet.getOnglet(), false);
 				fenetre_nouvel_onglet.getTextInput().setFocus();
                 PopUpManager.centerPopUp(fenetre_nouvel_onglet);
 			}

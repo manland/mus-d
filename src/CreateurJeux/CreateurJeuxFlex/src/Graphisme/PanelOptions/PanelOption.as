@@ -17,6 +17,12 @@ package Graphisme.PanelOptions
 	import Graphisme.Onglets.TabOnglet;
 	import Graphisme.PanelDegrades.FenetreDegrade;
 	import Graphisme.PanelMouvements.FenetreMouvement;
+	import Graphisme.PanelMouvements.HBoxGeneraleMvt;
+	import Graphisme.PanelMouvements.HBoxMouvementCirculaireFini;
+	import Graphisme.PanelMouvements.HBoxMouvementCirculairePerpetuel;
+	import Graphisme.PanelMouvements.HBoxMouvementFini;
+	import Graphisme.PanelMouvements.HBoxMouvementPerpetuel;
+	import Graphisme.PanelMouvements.HBoxRedimensionnement;
 	
 	import Modele.Objets.Objet;
 	
@@ -27,6 +33,7 @@ package Graphisme.PanelOptions
 	import flash.events.IOErrorEvent;
 	import flash.events.MouseEvent;
 	import flash.net.URLRequest;
+	import flash.utils.Dictionary;
 	
 	import mx.containers.HBox;
 	import mx.containers.Panel;
@@ -118,6 +125,14 @@ package Graphisme.PanelOptions
 		private var afficher_mouvement:LinkButton;
 		private var fenetre_mouvement:FenetreMouvement;
 		
+		
+		// tableau contenant les mouvements ou le controle clavier;
+		private var tableau_mvt:Array;
+		private var tableau_hbox:Array;
+		
+		// hashmap contenant un objet et son tableau de mouvement associé :
+		private var dico_mvt:Dictionary;
+		
 		private var tab_onglet:TabOnglet;
 		
 		public function PanelOption(erreur:Erreur)
@@ -132,7 +147,10 @@ package Graphisme.PanelOptions
 			objet=null;
 			operation=null;
 			modele_global=null;
+			tableau_mvt = new Array();
+			dico_mvt = new Dictionary();
 			fenetre_mouvement = new FenetreMouvement(this,erreur);
+			
 			initialisationGenerale();
 		}
 		
@@ -388,15 +406,18 @@ package Graphisme.PanelOptions
 		
 		// accesseur au panel de rendu degradé : 
 		public function getPanelRenduDegrade():MGraphiqueScene {return rendu_degrade;}
+		
+		// accesseur à la table de hashage et au tableau de mouvement : 
+		public function getDicoMvt():Dictionary {return dico_mvt;}
 
 // -----------------------------------------------------------------------------
 // 	  initialisation du panel des options en fonction de l'objet en parametre
 // -----------------------------------------------------------------------------
 		public function setObjet(objet:MIObjetGraphique):void 
 		{ 
-			if(objet!=null)
+			if(this.objet!=null)
 			{
-				objet.getObjet().supprimeObjetEcouteur(this);
+				this.objet.getObjet().supprimeObjetEcouteur(this);
 			}
 			this.objet = objet;
 			objet.getObjet().ajoutObjetEcouteur(this);
@@ -566,8 +587,9 @@ package Graphisme.PanelOptions
 					}
 					else
 					{
+						erreur.sysout.text+=Number(getValeurHauteur());
 						objet.getObjet().setHauteur(Number(getValeurHauteur()));
-	      				objet.getObjet().setLargeur(Number(getValeurLargeur()));
+	      				//objet.getObjet().setLargeur(Number(getValeurLargeur()));
 					}
 	      		}
 	      		else if(text_input==valeur_largeur)
@@ -579,8 +601,10 @@ package Graphisme.PanelOptions
 					}
 					else
 					{
-						objet.getObjet().setHauteur(Number(getValeurHauteur()));
+						
+						//objet.getObjet().setHauteur(Number(getValeurHauteur()));
 	      				objet.getObjet().setLargeur(Number(getValeurLargeur()));
+	      				erreur.sysout.text+=objet.getObjet().getLargeur();
 					}
 	      		}
           	}
@@ -674,6 +698,10 @@ package Graphisme.PanelOptions
 		
 		public function objetCollision(objet:MIObjet, axe:MAxe):void {}
 		
+		public function debutDuJeu(objet:MIObjet):void {}
+		
+		public function finDuJeu(objet:MIObjet):void {}
+		
 		
 // ----------------------------------------------------------------
 // 				evenement du color picker 
@@ -717,7 +745,7 @@ package Graphisme.PanelOptions
 			
 			PopUpManager.removePopUp(fenetre_degrade);
 			fenetre_degrade.setObjet(objet);
-			PopUpManager.addPopUp(fenetre_degrade, tab_onglet.parent, false);
+			PopUpManager.addPopUp(fenetre_degrade, tab_onglet.getOnglet(), false);
             PopUpManager.centerPopUp(fenetre_degrade);
             
 		}
@@ -745,11 +773,205 @@ package Graphisme.PanelOptions
 // -----------------------------------------------------------------			
 		public function afficherPanelMouvement(event:MouseEvent):void
 		{
+			fenetre_mouvement = new FenetreMouvement(this,erreur);
+			if(dico_mvt[objet]!=null)
+			{
+				mettreAJourPanelMouvement(dico_mvt[objet] as Array);
+			}
 			PopUpManager.removePopUp(fenetre_mouvement);
-//			fenetre_degrade.setObjet(objet);
-			PopUpManager.addPopUp(fenetre_mouvement, tab_onglet.parent, false);
+//			fenetre_mouvement.setObjet(objet);
+			PopUpManager.addPopUp(fenetre_mouvement, tab_onglet.getOnglet(), false);
             PopUpManager.centerPopUp(fenetre_mouvement);
 		}
 		
+		
+		public function effectuerChangement(tab:Array):void
+		{
+			tableau_mvt = new Array();
+			// on rempli le tableau de mouvement : 
+			for(var i:int=0;i<tab.length;i++)
+			{
+				var hbox_temp:HBoxGeneraleMvt = tab[i] as HBoxGeneraleMvt;
+				var check_box:CheckBox = tab[i] as CheckBox; 
+				if(hbox_temp!=null)
+				{
+					if(hbox_temp.getType() == "perpetuel")
+					{
+						erreur.sysout.text+="perpet";
+						tableau_mvt[i] = {mvt:"perpetuel", 
+										  angle:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementPerpetuel).getAngle(), 
+										  vitesse:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementPerpetuel).getVitesse()};
+					}
+					else if(hbox_temp.getType() == "fini")
+					{ 
+						tableau_mvt[i] = {mvt:"fini", 
+										  x_arrivee:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementFini).getXArrivee(), 
+										  y_arrivee:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementFini).getYArrivee(), 
+										  temps:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementFini).getTemps()};
+					}
+					else if(hbox_temp.getType() == "redimensionnement")
+					{
+						tableau_mvt[i] = {mvt:"redimensionnement", 
+										  largeur_finale:(hbox_temp.getHbox().getChildAt(0) as HBoxRedimensionnement).getLargeur(), 
+										  hauteur_finale:(hbox_temp.getHbox().getChildAt(0) as HBoxRedimensionnement).getHauteur(), 
+										  temps:(hbox_temp.getHbox().getChildAt(0) as HBoxRedimensionnement).getTemps()};
+					}
+					else if(hbox_temp.getType() == "circulaire_fini")
+					{
+						tableau_mvt[i] = {mvt:"circulaire_fini", 
+										  centre_x:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculaireFini).getCentreX(), 
+										  centre_y:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculaireFini).getCentreY(),
+										  angle:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculaireFini).getAngle(), 
+										  temps:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculaireFini).getTemps()};
+					}
+					else if(hbox_temp.getType() == "circulaire_perpet")
+					{
+						tableau_mvt[i] = {mvt:"circulaire_perpet", 
+										  centre_x:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculairePerpetuel).getCentreX(), 
+										  centre_y:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculairePerpetuel).getCentreY(),
+										  tour_par_sec:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculairePerpetuel).getTourParSeconde()}; 
+					}
+					else if(hbox_temp.getType() == "rotation_perpet")
+					{
+						tableau_mvt[i] = {mvt:"rotation_perpet", 
+										  centre_x:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculairePerpetuel).getCentreX(), 
+										  centre_y:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculairePerpetuel).getCentreY(),
+										  tour_par_sec:(hbox_temp.getHbox().getChildAt(0) as HBoxMouvementCirculairePerpetuel).getTourParSeconde()}; 
+					}
+				}
+				if(check_box!=null)
+				{
+					if(check_box == fenetre_mouvement.getClavier())
+					{
+						tableau_mvt[i] = {mvt:"clavier"};
+					}
+					if(check_box == fenetre_mouvement.getSouris())
+					{
+						tableau_mvt[i] = {mvt:"souris"};
+					}
+				}
+			}
+			dico_mvt[objet] = tableau_mvt;
+		}
+		
+		public function mettreAJourPanelMouvement(tab:Array):void
+		{
+			if(tab!=null)
+			{
+				for(var i:int=0;i<tab.length;i++)
+				{
+					var hbox_mvt_general:HBoxGeneraleMvt = new HBoxGeneraleMvt(erreur);
+					var hbox:HBox = hbox_mvt_general.getHbox();
+					var btn:Button = hbox_mvt_general.getBtnClose();
+					
+					if(tab[i].mvt=="perpetuel")
+					{
+						var hbox_mvt_perpetuel:HBoxMouvementPerpetuel = new HBoxMouvementPerpetuel();
+						hbox_mvt_general.getChoixMouvement().selectedIndex=0;
+						hbox_mvt_general.setType("perpetuel");
+						
+						hbox_mvt_perpetuel.setAngle(Number(tab[i].angle));
+						hbox_mvt_perpetuel.setVitesse(tab[i].vitesse);
+					
+						hbox.addChild(hbox_mvt_perpetuel);
+						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.addChild(btn);
+						
+						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
+						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
+					}
+					if(tab[i].mvt=="fini")
+					{
+						var hbox_mvt_fini:HBoxMouvementFini = new HBoxMouvementFini();
+						
+						hbox_mvt_fini.setXArrivee(tab[i].x_arrivee);
+						hbox_mvt_fini.setYArrivee(tab[i].y_arrivee);
+						hbox_mvt_fini.setTemps(tab[i].temps);
+						hbox.addChild(hbox_mvt_fini);
+						hbox_mvt_general.getChoixMouvement().selectedIndex=1;
+						hbox_mvt_general.setType("fini");
+						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.addChild(btn);
+						
+						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
+						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
+					}
+					if(tab[i].mvt=="redimensionnement")
+					{
+						var hbox_mvt_redim:HBoxRedimensionnement = new HBoxRedimensionnement();
+						
+						hbox_mvt_redim.setLargeur(tab[i].largeur_finale);
+						hbox_mvt_redim.setHauteur(tab[i].hauteur_finale);
+						hbox_mvt_redim.setTemps(tab[i].temps);
+						hbox.addChild(hbox_mvt_redim);
+						hbox_mvt_general.getChoixMouvement().selectedIndex=2;
+						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.addChild(btn);
+						hbox_mvt_general.setType("redimensionnement");
+													
+						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
+						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
+					}
+					if(tab[i].mvt=="circulaire_fini")
+					{
+						var hbox_mvt_circ_fini:HBoxMouvementCirculaireFini = new HBoxMouvementCirculaireFini();
+						
+						hbox_mvt_circ_fini.setCentreX(tab[i].centre_x);
+						hbox_mvt_circ_fini.setCentreY(tab[i].centre_y);
+						hbox_mvt_circ_fini.setAngle(tab[i].angle);
+						hbox_mvt_circ_fini.setTemps(tab[i].temps);
+						hbox.addChild(hbox_mvt_circ_fini);
+						hbox_mvt_general.getChoixMouvement().selectedIndex=3;
+						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.addChild(btn);
+						hbox_mvt_general.setType("circulaire_fini");
+													
+						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
+						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
+					}
+					if(tab[i].mvt=="circulaire_perpet")
+					{
+						var hbox_mvt_circ_perpet:HBoxMouvementCirculairePerpetuel = new HBoxMouvementCirculairePerpetuel();
+						
+						hbox_mvt_circ_perpet.setCentreX(tab[i].centre_x);
+						hbox_mvt_circ_perpet.setCentreY(tab[i].centre_y);
+						hbox_mvt_circ_perpet.setTourParSeconde(tab[i].tour_par_sec);
+						hbox.addChild(hbox_mvt_circ_perpet);
+						hbox_mvt_general.getChoixMouvement().selectedIndex=4;
+						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.addChild(btn);
+						hbox_mvt_general.setType("circulaire_perpet");
+													
+						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
+						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
+					}
+					if(tab[i].mvt=="rotation_perpet")
+					{
+						var hbox_rotation:HBoxMouvementCirculairePerpetuel = new HBoxMouvementCirculairePerpetuel();
+						
+						hbox_rotation.setCentreX(tab[i].centre_x);
+						hbox_rotation.setCentreY(tab[i].centre_y);
+						hbox_rotation.setTourParSeconde(tab[i].tour_par_sec);
+						hbox.addChild(hbox_rotation);
+						hbox_mvt_general.getChoixMouvement().selectedIndex=5;
+						hbox_mvt_general.addChild(hbox);
+						hbox_mvt_general.addChild(btn);
+						hbox_mvt_general.setType("rotation_perpet");
+													
+						fenetre_mouvement.getTableauHbox().push(hbox_mvt_general);
+						fenetre_mouvement.addChildAt(hbox_mvt_general,i);
+						
+					}
+					if(tab[i].mvt=="souris")
+					{
+						fenetre_mouvement.getSouris().selected=true;
+					}
+					if(tab[i].mvt=="clavier")
+					{
+						fenetre_mouvement.getClavier().selected=true;	
+					}
+				}
+			}
+		}
 	}
 }

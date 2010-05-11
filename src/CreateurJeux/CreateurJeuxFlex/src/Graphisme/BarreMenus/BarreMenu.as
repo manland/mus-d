@@ -73,7 +73,7 @@ package Graphisme.BarreMenus
 				
 		public function nouvelOnglet():void
 		{
-			PopUpManager.addPopUp(fenetre_nouvel_onglet, tab_onglet.parent, false);
+			PopUpManager.addPopUp(fenetre_nouvel_onglet, tab_onglet.getOnglet(), false);
 			fenetre_nouvel_onglet.getTextInput().setFocus();
             PopUpManager.centerPopUp(fenetre_nouvel_onglet);	
 		}

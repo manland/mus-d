@@ -42,18 +42,21 @@ package Graphisme.PanelDegrades
 		private var nb_couleur:NumericStepper;
 		private var tab_couleur:Array;
 		private var color_picker1:ColorPicker;
+		private var color_picker2:ColorPicker;
 		
 		// alpha :
 		private var ligne_alpha:GridRow;  
 		private var label_alpha:Label;
 		private var tab_alpha:Array;
 		private var alpha1:NumericStepper;
+		private var alpha2:NumericStepper;
 		
 		// ratio :
 		private var ligne_ratio:GridRow;  
 		private var label_ratio:Label;
 		private var tab_ratio:Array;
 		private var ratio1:NumericStepper;
+		private var ratio2:NumericStepper;
 		
 		// panel spread method :
 		private var panel_spread_method:PanelSpreadMethod;
@@ -121,20 +124,32 @@ package Graphisme.PanelDegrades
 			nb_couleur.minimum = 1;
 			nb_couleur.maximum = 5;
 			nb_couleur.stepSize = 1;
+			nb_couleur.value = 2;
 			nb_couleur.width=40;
 			nb_couleur.height=20;
 			nb_couleur.addEventListener(Event.CHANGE,afficherColorPicker);
 			color_picker1 = new ColorPicker();
 			color_picker1.addEventListener(Event.CHANGE,changerCouleur);
+			color_picker2 = new ColorPicker();
+			color_picker2.addEventListener(Event.CHANGE,changerCouleur);
+			
+			color_picker1.selectedColor = 0xFF0000;
+			color_picker2.selectedColor = 0x000000;
+			
 			var item_nbCouleur:GridItem;
 			item_nbCouleur = new GridItem();
 			item_nbCouleur.addChild(nb_couleur)
 			tab_couleur = new Array();
 			tab_couleur.push(color_picker1);
+			tab_couleur.push(color_picker2);
 			
 			var item_color_picker:GridItem;
 			item_color_picker = new GridItem();
 			item_color_picker.addChild(color_picker1);
+			var item_color_picker2:GridItem;
+			item_color_picker2 = new GridItem();
+			item_color_picker2.addChild(color_picker2);
+			
 			
 			var item_label_couleur:GridItem;
 			item_label_couleur = new GridItem();
@@ -143,6 +158,7 @@ package Graphisme.PanelDegrades
 			ligne_couleur.addChild(item_label_couleur);
 			ligne_couleur.addChild(item_nbCouleur);
 			ligne_couleur.addChild(item_color_picker);
+			ligne_couleur.addChild(item_color_picker2);
 			
 			// alpha : 
 			ligne_alpha = new GridRow();
@@ -157,6 +173,15 @@ package Graphisme.PanelDegrades
 			alpha1.height=20;
 			alpha1.addEventListener(Event.CHANGE,changerCouleur);
 			
+			alpha2 = new NumericStepper();
+			alpha2.minimum = 0;
+			alpha2.maximum = 1;
+			alpha2.value=1;
+			alpha2.stepSize = 0.1;
+			alpha2.width=43;
+			alpha2.height=20;
+			alpha2.addEventListener(Event.CHANGE,changerCouleur);
+			
 			var item_label_alpha:GridItem;
 			item_label_alpha = new GridItem();
 			item_label_alpha.addChild(label_alpha);
@@ -165,12 +190,18 @@ package Graphisme.PanelDegrades
 			item_alpha = new GridItem();
 			item_alpha.addChild(alpha1);
 			
+			var item_alpha2:GridItem;
+			item_alpha2 = new GridItem();
+			item_alpha2.addChild(alpha2);
+			
 			tab_alpha = new Array();
 			tab_alpha.push(alpha1);
+			tab_alpha.push(alpha2);
 			
 			ligne_alpha.addChild(item_label_alpha);
 			ligne_alpha.addChild(new GridItem());
 			ligne_alpha.addChild(item_alpha);
+			ligne_alpha.addChild(item_alpha2);
 
 
 			// ratio : 
@@ -183,21 +214,38 @@ package Graphisme.PanelDegrades
 			ratio1.stepSize = 1;
 			ratio1.width=45;
 			ratio1.height=20;
+			ratio1.value = 0;
 			ratio1.addEventListener(Event.CHANGE,changerCouleur);
 			var item_label_ratio:GridItem;
 			item_label_ratio = new GridItem();
 			item_label_ratio.addChild(label_ratio);
 			
+			ratio2 = new NumericStepper();
+			ratio2.minimum = 0;
+			ratio2.maximum = 255;
+			ratio2.stepSize = 1;
+			ratio2.value= 255;
+			ratio2.width=45;
+			ratio2.height=20;
+			ratio2.addEventListener(Event.CHANGE,changerCouleur);
+
+			
 			var item_ratio:GridItem;
 			item_ratio = new GridItem();
 			item_ratio.addChild(ratio1);
+			
+			var item_ratio2:GridItem;
+			item_ratio2 = new GridItem();
+			item_ratio2.addChild(ratio2);
 
 			tab_ratio = new Array();
 			tab_ratio.push(ratio1);
+			tab_ratio.push(ratio2);
 			
 			ligne_ratio.addChild(item_label_ratio);
 			ligne_ratio.addChild(new GridItem());
 			ligne_ratio.addChild(item_ratio);			
+			ligne_ratio.addChild(item_ratio2);	
 			
 			grille.addChild(ligne_couleur);
 			grille.addChild(ligne_alpha);
