@@ -10,6 +10,7 @@ package Graphisme.BarreOutils
 	
 	import flash.net.*;
 	
+	import mx.core.WindowedApplication;
 	import mx.events.ItemClickEvent;
 	import mx.managers.PopUpManager;
 	
@@ -87,7 +88,7 @@ package Graphisme.BarreOutils
 					(fenetre_code.getTabOngletCode().getChildByName("onglet_souris") as CanvasCode).getCode().text = tab_onglet.getOnglet().genererCodeEcouteurSouris().toString();
 				}
 				PopUpManager.removePopUp(fenetre_code);
-	            PopUpManager.addPopUp(fenetre_code, tab_onglet.parent, false);
+	            PopUpManager.addPopUp(fenetre_code, tab_onglet.parentApplication as WindowedApplication, false);
 	            PopUpManager.centerPopUp(fenetre_code);
 	  		}
 	  		else if(event.index == 1)

@@ -28,8 +28,6 @@ Onglet
 	horizontal-align:center;
 	padding-left:10;
 	padding-right:10;
-	padding-bottom:100;
-	padding-top:80;
 }
 
 .imageGlobale
@@ -69,7 +67,7 @@ TextArea
 
 FenetreDegrade
 {
-	borderColor: #99ff33;
+	
 }
 
 .stylePanelDegrade

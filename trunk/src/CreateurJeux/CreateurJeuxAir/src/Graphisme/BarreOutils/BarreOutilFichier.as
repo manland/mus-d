@@ -6,6 +6,7 @@ package Graphisme.BarreOutils
 	import Graphisme.Onglets.TabOnglet;
 	import Graphisme.PanelOptions.PanelOption;
 	
+	import mx.core.WindowedApplication;
 	import mx.events.ItemClickEvent;
 	import mx.managers.PopUpManager;
 	
@@ -36,7 +37,7 @@ package Graphisme.BarreOutils
 		{	
 			if(event.index==0)
 			{
-				PopUpManager.addPopUp(fenetre_nouvel_onglet, tab_onglet.parent, false);
+				PopUpManager.addPopUp(fenetre_nouvel_onglet, tab_onglet.parentApplication as WindowedApplication, false);
 				fenetre_nouvel_onglet.getTextInput().setFocus();
                 PopUpManager.centerPopUp(fenetre_nouvel_onglet);
 			}
