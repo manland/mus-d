@@ -3,7 +3,6 @@ package Coeur.Elements {
 	import Controleur.MSouris;
 	import Controleur.MIEcouteurSouris;
 	
-	
 	public class MControleSouris extends MElementAEtat implements MIEcouteurSouris {
 		
 		public function MControleSouris(point_vie:int, point_degat:int) {
