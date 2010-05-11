@@ -11,6 +11,7 @@ package
 	import mx.controls.Button;
 	import mx.controls.Image;
 	import mx.controls.Label;
+	import mx.managers.FocusManager;
 	
 	public class Jeux extends MGraphiqueScene
 	{
@@ -208,7 +209,10 @@ package
 		
 		public function recommencer(e:MouseEvent):void {
 			leMenu.nouvellePartie(e);
+			this.setFocus();
+			balle.setFocus();
 			balle.mouv.lancer();
+			
 		}
 
        	private function timerHandler(e:TimerEvent):void{

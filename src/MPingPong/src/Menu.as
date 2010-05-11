@@ -1,7 +1,6 @@
 package
 {
 	import Graphique.MGraphiqueScene;
-	import Graphique.Textures.MImage;
 	
 	import flash.events.MouseEvent;
 	
@@ -104,6 +103,7 @@ package
 			if(leJeu!=null) {
 				this.removeChild(leJeu);
 			}
+			
 			leJeu = new Jeux(this);
 			addChild(leJeu);
 			var alertCSS:CSSStyleDeclaration;
