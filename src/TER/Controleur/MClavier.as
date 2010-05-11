@@ -1,6 +1,7 @@
 package Controleur
 {
 	import Utilitaires.MErreur;
+	import Utilitaires.MUtilitaire;
 	
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;
@@ -61,7 +62,9 @@ package Controleur
 		 * @param m: écouteur de clavier à enlever
 	 	 */
 		public function enleverEcouteur(m:MIEcouteurClavier):void {
-			ecouteurs.slice(ecouteurs.indexOf(m), 1);
+			//ecouteurs.slice(ecouteurs.indexOf(m), 1);
+			var temp:Array = MUtilitaire.enlever(ecouteurs,m);
+			ecouteurs = temp;
 		}
 		
 		/**
