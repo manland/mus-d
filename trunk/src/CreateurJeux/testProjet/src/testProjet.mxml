@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>  
+ <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:TER="Graphique.*" pageTitle="jeu" creationComplete="init()"> 
+	<mx:Script> 
+	 <![CDATA[
+	 	import Coeur.MScene;
+	 	import Coeur.MJeu; 
+ 	 	import Graphique.Textures.Degrades.MDegrade;
+	 	import Graphique.Textures.MCouleur;
+	 	import Controleur.MClavier;
+	 	import Controleur.MMouvementPerpetuel;
+	 	import Graphique.Textures.MImage;
+	 	
+  	 	private function init():void 
+	 	{
+	 	 	var mon_ecouteur0:MonEcouteur = new MonEcouteur(); 
+
+	 	 	var mouv0:MMouvementPerpetuel = new MMouvementPerpetuel(); 
+	 	 	mouv0.instancieAvecAngleEtVitesse(rond_violet6.getObjet(),100,120); 
+	 	 	mon_ecouteur0.ajouterMouvement(mouv0); 
+	 	 	rond_violet6.ajouterEcouteur(mon_ecouteur0); 
+	 	 	var mon_ecouteur1:MonEcouteur = new MonEcouteur(); 
+// Mise en place de l'écouteur clavier 
+	 	 	var ecouteur_clavier:MonEcouteurClavier=new MonEcouteurClavier(Rectangle_vide0); 
+	 	 	MClavier.getInstance().ajouterEcouteur(ecouteur_clavier); 
+	 	 	Rectangle_vide0.ajouterEcouteur(mon_ecouteur1); 
+	 	 	
+	 	 	Rectangle_vide0.getGraphique().setFocus();
+	 	 	
+	 	 	MJeu.getInstance().setScene(scene.getObjet() as MScene);
+	 	 	MJeu.getInstance().debut();
+	 	} 
+
+	 ]]> 
+</mx:Script> 
+	 <TER:MGraphiqueScene id="scene" largeur="600" hauteur="600" x="0" y="0" texture="{new MCouleur(0xE2CDFF)}" >
+ 	 	 <TER:MGraphiqueRectangle id="Rectangle_vide0" largeur="90" hauteur="20" x="138" y="486" texture="{new MDegrade([0xFF0000,0x9999,0xFF9900],[1,1,1],[0,156,255],SpreadMethod.PAD,InterpolationMethod.LINEAR_RGB,0,GradientType.LINEAR,1.021656147508876)}" bordure="{new MBordure(1,0x0)}" />
+ 	 	 <TER:MGraphiqueRectangle id="carre_bleu1" largeur="30" hauteur="30" x="87" y="113" texture="{new MImage('Images/carres/bleu.png')}"  />
+ 	 	 <TER:MGraphiqueRectangle id="carre_rouge2" largeur="60" hauteur="60" x="261" y="131" texture="{new MImage('Images/carres/rouge.png')}"  />
+ 	 	 <TER:MGraphiqueEtoile id="Etoile_vide3" largeur="50" hauteur="50" x="403" y="213" tourne="0"  texture="{new MCouleur(0xFFFFFF)}" bordure="{new MBordure(1,0x0)}" />
+ 	 	 <TER:MGraphiqueEtoilePleine id="EtoilePleine_vide4" largeur="50" hauteur="50" x="72" y="173" tourne="0"  texture="{new MCouleur(0xFFCC00)}" bordure="{new MBordure(1,0x0)}" />
+ 	 	 <TER:MGraphiqueTriangle id="pyramide5" point1="{new MCoordonnee(434,156)}" point2="{new MCoordonnee(454,116)}" point3="{new MCoordonnee(474,156)}" texture="{new MImage('Images/triangles/pyramide.png')}"  />
+ 	 	 <TER:MGraphiqueRond id="rond_violet6" largeur="30" hauteur="30" x="257" y="417" texture="{new MImage('Images/rond/rond_violet.png')}"  />
+ </TER:MGraphiqueScene>
+ </mx:Application>
