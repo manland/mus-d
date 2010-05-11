@@ -1,0 +1,327 @@
+/*
+///////////////////////////////////////////////////////////////////////////////
+//
+//  Moxy CSS theme by Juan Sanchez. Based on instructions from Adobe.
+//
+//  Image background image from http://www.sxc.hu.
+//
+///////////////////////////////////////////////////////////////////////////////
+*/
+
+Application { 
+   backgroundColor: #cccccc;
+   backgroundGradientColors: #ffffff, #cccccc;
+   themeColor: #ff66ff;
+   color: #333333;
+   backgroundImage: Embed(source='roughedUp.jpg');
+   backgroundSize:"100%";
+}
+
+Panel { 
+   cornerRadius: 0;
+   borderThickness: 7;
+   dropShadowColor: #999999;
+   borderThicknessLeft: 0;
+   borderThicknessRight: 0;
+   borderThicknessTop: 0;
+   highlightAlphas: 0.34, 0.33;
+   borderStyle: solid;
+   headerColors: #ff66ff, #ff33ff;
+   footerColors: #666666, #000000;
+   borderColor: #000000;
+   titleStyleName: "myTitleStyle";
+} 
+
+.myTitleStyle {
+   color: #333333;
+   }
+
+TabNavigator { 
+   tabHeight: 27;
+   horizontalGap: 5;
+   paddingLeft: 0;
+   backgroundAlpha: 1;
+   borderStyle: solid;
+   borderThickness: 1;
+   color: #333333;
+   tabStyleName: "myTabs";
+}
+
+.myTabs {
+   cornerRadius: 0;
+   highlightAlphas: 0, 0.34;
+   fillColors: #ff66ff, #ff33ff;
+   color: #333333;
+   textRollOverColor: #333333;
+   themeColor: #999999;
+}
+
+Accordion { 
+   headerHeight: 30;
+   borderThickness: 4;
+   highlightAlphas: 0, 0.34;
+   fillAlphas: 0.58, 0.38, 0.62, 0.41;
+   fillColors: #ffffff, #cccccc, #ff66ff, #ff33ff;
+   selectedFillColors: #ff33ff, #ff66ff;
+   themeColor: #999999;
+   color: #333333;
+   textRollOverColor: #333333;
+   textSelectedColor: #333333;
+   textIndent: 3;
+}
+
+LinkBar { 
+   separatorWidth: 1;
+   borderStyle: solid;
+   cornerRadius: 7;
+   borderThickness: 0;
+   backgroundColor: #ffffff;
+   backgroundAlpha: 0.1;
+   borderColor: #b7babc;
+   separatorColor: #cccccc;
+   rollOverColor: #ff99ff;
+   selectionColor: #ff66ff;
+   color: #333333;
+   textRollOverColor: #ffffff;
+   textSelectedColor: #ffffff;
+   disabledColor: #ff33ff;
+}
+
+ApplicationControlBar {
+   cornerRadius: 0;
+   shadowDistance: 2;
+   shadowDirection: center;
+   dropShadowColor: #999999;
+   borderStyle: solid;
+   borderThickness: 4;
+   highlightAlphas: 0, 0.33;
+   fillAlphas: 0.59, 0.41;
+   fillColors: #ff66ff, #ff33ff;
+   backgroundAlpha: 1;
+   borderColor: #999999;
+}
+
+ControlBar {
+   cornerRadius: 0;
+   fillColors: #444444, #000000;
+   backgroundAlpha: 1;
+}
+
+List { 
+   rollOverColor: #eeeeee;
+   textRollOverColor: #333333;
+   borderStyle: solid;
+   borderThickness: 4;
+   borderColor: #999999;
+   selectionColor: #ff99ff;
+   color: #333333;
+   textSelectedColor: #ffffff;
+}
+
+DataGrid {
+   headerColors: #ffffff, #cccccc;
+   rollOverColor: #eeeeee;
+   textRollOverColor: #333333;
+   borderThickness: 4;
+   borderColor: #999999;
+   selectionColor: #ff99ff;
+   color: #333333;
+   textSelectedColor: #ffffff;
+}
+
+Tree {
+   rollOverColor: #eeeeee;
+   textRollOverColor: #333333;
+   borderThickness: 4;
+   borderColor: #999999;
+   selectionColor: #ff99ff;
+   color: #333333;
+   textSelectedColor: #ffffff;
+}
+
+TextInput { 
+   backgroundColor: #ffffff;
+   color: #333333;
+   borderStyle: solid;
+   borderColor: #999999;
+   borderThickness: 1;
+}
+
+NumericStepper {
+   backgroundColor: #ffffff;
+   color: #333333;
+   borderStyle: inset;
+   borderColor: #999999;
+   borderThickness: 1;
+   highlightAlphas: 0.59, 0.4;
+   fillColors: #ff66ff, #ff33ff, #ff99ff, #ff66ff;
+   themeColor: #999999;
+}
+
+ComboBox {
+   color: #333333;
+   borderColor: #999999;
+   cornerRadius: 0;
+   fillColors: #ff66ff, #ff33ff, #ff66ff, #ff99ff;
+   selectionColor: #ffccff;
+   textSelectedColor: #333333;
+   rollOverColor: #eeeeee;
+   themeColor: #999999;
+}
+
+CheckBox {
+   highlightAlphas: 0.3, 0.4;
+   fillColors: #ff66ff, #ff33ff, #ff66ff, #ff33ff;
+   color: #333333;
+   textRollOverColor: #333333;
+   textSelectedColor: #333333;
+   themeColor: #999999;
+}
+
+RadioButton {
+   highlightAlphas: 0.3, 0.4;
+   fillColors: #ff66ff, #ff33ff, #ff66ff, #ff33ff;
+   color: #333333;
+   textRollOverColor: #333333;
+   textSelectedColor: #333333;
+   themeColor: #999999;
+}
+
+HSlider {
+   tickLength: 2;
+   tickColor: #333333;
+   showTrackHighlight: true;
+   borderColor: #999999;
+   trackColors: #ff99ff, #ff33ff;
+   color: #333333;
+   themeColor: #ff99ff;
+   fillAlphas: 0.68, 0.4, 0.75, 0.65;
+   fillColors: #cccccc, #666666, #ff66ff, #ff33ff;
+}
+
+Button { 
+   cornerRadius: 0;
+   highlightAlphas: 0.6, 0.41;
+   fillColors: #ff66ff, #ff33ff, #ff66ff, #ff33ff;
+   color: #333333;
+   textRollOverColor: #333333;
+   textSelectedColor: #ffffff;
+   borderColor: #ff66ff;
+   themeColor: #ff99ff;
+}
+
+PopUpButton {
+   cornerRadius: 0;
+   arrowButtonWidth: 15;
+   highlightAlphas: 0.61, 0.39;
+   fillColors: #cccccc, #666666, #ff66ff, #ff33ff;
+   color: #333333;
+   textRollOverColor: #333333;
+   textSelectedColor: #333333;
+   borderColor: #ff66ff;
+   themeColor: #ff99ff;
+}
+
+ButtonBar {
+   color: #333333;
+   textRollOverColor: #333333;
+   textSelectedColor: #333333;
+   themeColor: #ff99ff;
+   buttonStyleName:"barButton";
+}
+
+.barButton {
+   cornerRadius: 0;
+   highlightAlphas: 0.6, 0.38;
+   fillColors: #cccccc, #666666, #ff66ff, #ff33ff;
+   borderColor: #ff66ff;
+}
+
+VScrollBar { 
+   cornerRadius: 0;
+   borderColor: #999999;
+   highlightAlphas: 0.29, 0.08;
+   fillColors: #cccccc, #666666, #ff66ff, #ff33ff;
+   themeColor: #ff99ff;
+   trackColors: #cccccc, #ffffff;
+}
+HScrollBar { 
+   cornerRadius: 0;
+   borderColor: #999999;
+   highlightAlphas: 0.29, 0.08;
+   fillColors: #cccccc, #666666, #ff66ff, #ff33ff;
+   themeColor: #ff99ff;
+   trackColors: #cccccc, #ffffff;
+}
+
+DateChooser { 
+   cornerRadius: 0;
+   borderThickness: 1;
+   headerColors: #ffffff, #cccccc;
+   highlightAlphas: 0.61, 0.42;
+   fillColors: #ffffff, #cccccc, #ff66ff, #ff33ff;
+   todayColor: #999999;
+   rollOverColor: #ff99ff;
+   selectionColor: #ff66ff;
+   color: #333333;
+   borderColor: #999999;
+   themeColor: #ff99ff;
+}
+MenuBar { 
+   backgroundAlpha: 1;
+   backgroundColor: #ffffff;
+   borderColor: #999999;
+   highlightAlphas: 0.61, 0.42;
+   fillAlphas: 1, 1;
+   fillColors: #ffffff, #cccccc;
+   rollOverColor: #ff99ff;
+   selectionColor: #ff66ff;
+   color: #333333;
+   textRollOverColor: #333333;
+   textSelectedColor: #333333;
+   themeColor: #ff66ff;
+}
+
+HRule {
+   strokeColor: #cccccc;
+   shadowColor: #ffffff;
+   strokeWidth: 2;
+}
+
+VRule {
+   strokeColor: #cccccc;
+   shadowColor: #ffffff;
+   strokeWidth: 2;
+}
+
+LinkButton {
+   cornerRadius: 0;
+   rollOverColor: #ffccff;
+   selectionColor: #ff99ff;
+   color: #333333;
+   textRollOverColor: #333333;
+   textSelectedColor: #333333;
+}
+
+ProgressBar {
+   borderColor: #999999;
+   barColor: #ff66ff;
+   trackColors: #cccccc, #ffffff;
+   color: #333333;
+   trackHeight: 20;
+   verticalGap: 4;
+}
+
+TitleWindow { 
+   cornerRadius: 0;
+   borderThickness: 7;
+   dropShadowColor: #999999;
+   borderThicknessLeft: 0;
+   borderThicknessRight: 0;
+   borderThicknessTop: 0;
+   borderStyle: solid;
+   headerColors: #ff66ff, #ff33ff;
+   footerColors: #444444, #000000;
+   borderColor: #000000;
+   titleStyleName: "myTitleStyle";
+} 
