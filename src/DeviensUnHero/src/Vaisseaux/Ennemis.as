@@ -1,7 +1,6 @@
 package Vaisseaux {
 	import Graphique.MGraphiqueTriangle;
 	import Utilitaires.MCoordonnee;
-	import Coeur.Elements.MTireurMouvementPerpetuel;
 	import Controleur.MMouvementCirculairePerpetuel;
 	import Graphique.MGraphiqueScene;
 	import Graphique.MIObjetGraphiqueEcouteur;
@@ -14,6 +13,10 @@ package Vaisseaux {
 	import Coeur.MJeu;
 	import Graphique.Textures.MTexte;
 	import Coeur.MScore;
+	import Coeur.Elements.MControleMouvementPerpetuel;
+	import Coeur.Elements.ElementsAActions.MTireur;
+	import Fabrique.MFabriqueProjectileRectangle;
+	import Utilitaires.MErreur;
 	
 	
 	public class Ennemis extends MGraphiqueTriangle implements MIObjetGraphiqueEcouteur {
@@ -23,10 +26,12 @@ package Vaisseaux {
 			super(new MCoordonnee(40, 40), new MCoordonnee(40, 0), new MCoordonnee(0, 20));
 			this.scene = scene;
 			texture = new MDegrade([0xFF0000,0xFF6600,0xFFFF00],[1,1,1],[100,150,255],SpreadMethod.PAD,InterpolationMethod.LINEAR_RGB,0,GradientType.LINEAR,0);
-			setObjet(new MTireurMouvementPerpetuel(10, 5, 180, 100, 5));
+			var ennemis:MControleMouvementPerpetuel = new MControleMouvementPerpetuel(10, 5, 180, 100);
+			ennemis.ajouterElementAAction(new MTireur(ennemis, "tirer", new MFabriqueProjectileRectangle(1, 5, 180, 200, scene)));
+			setObjet(ennemis);
 			x = 800;
 			y = Math.round(Math.random() * (550 - 50)) + 50;
-			(getObjet() as MTireurMouvementPerpetuel).lancer();
+			ennemis.lancer();
 			ajouterEcouteur(this);
 		}
 		
@@ -36,12 +41,8 @@ package Vaisseaux {
 		
 		public function graphiqueMeurt(graphique:MIObjetGraphique):void {
 			MJeu.getInstance().augmenterScore(0, 1);
-			for(var i:int=0; i<Math.round(Number(MJeu.getInstance().getScores()[0])%5); i++) {
-				scene.addChild(new Ennemis(scene));
-			}
 			scene.addChild(new Ennemis(scene));
-			scene.setTexture(new MTexte("Score : "+(MJeu.getInstance().getScores()[0] as MScore).getTotal()));
-			(scene.texture as MTexte).centrerText();
+			(scene.getTexture().getADecorer() as MTexte).getLabel().text = "Score : "+(MJeu.getInstance().getScores()[0] as MScore).getTotal();
 		}
 		
 		public function graphiqueCollision(graphique:MIObjetGraphique, axe:MAxe):void {
