@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" backgroundImage="bg.gif" 
+	layout="absolute" width="850" height="600" >
+	
+	<mx:Style source="edding.css"/>
+	
+	<mx:Label text="Edding by fleksray.org" fontFamily="eddi" fontSize="30" letterSpacing="5"   x="208.5" y="12"/>
+	
+	<mx:HDividedBox  top="60" left="8" right="8" bottom="8" >
+		 
+	<mx:VDividedBox width="30%" height="100%"> 
+		<mx:Panel layout="horizontal" title="Panel" width="100%" height="40%" >
+			<mx:Canvas height="100%" width="100%">
+				<mx:Label x="10" y="94" text="Background:"/>
+				<mx:Label x="10" y="10" text="Background alpha:"/>
+				<mx:Label x="10" y="38" text="Panel alpha"/>
+				<mx:Label x="10" y="66" text="Font color:"/>
+			</mx:Canvas>
+			<mx:ControlBar>
+			</mx:ControlBar>
+		</mx:Panel>
+		
+		<mx:Panel layout="absolute" title="Tree" width="100%" height="60%">
+			<mx:Tree left="15" right="15" 
+				 showRoot="false" labelField="@label" >
+				<mx:dataProvider>
+					<mx:XML xmlns="">
+						<nodes>
+							<node label="Lorem Ipsum">
+								<node label="Dolor sit amet"/>
+								<node label="Consectetuer adipiscing elit"/>
+							</node>
+							<node label="Quisque eget lorem">
+								<node label="Ac sapien rutrum vehicula"/>
+								<node label="Etiam euismod"/>
+								<node label="Vestibulum erat"/>
+							</node>
+							<node label="Aenean arcu">
+								<node label="Phasellus condimentum"/>
+								<node label="Augue ac orci"/>
+								<node label="Ut sapien felis"/>
+							</node>
+							<node label="Rhoncus non"/>
+							<node label="Gravida vestibulum"/>
+							<node label="Vehicula non massa"/>
+							<node label="Etiam eget lorem"/>
+							<node label="Congue massa aliquet semper"/>
+							<node label="Cras at arcu"/>
+							<node label="Sed magna porttitor nonummy"/>
+							<node label="Aliquam quis ipsum"/>
+							<node label="In blandit"/>
+							<node label="Venenatis justo"/>
+							<node label="Vestibulum varius"/>
+							<node label="Interdum libero"/>
+							<node label="Nullam lorem nisl"/>
+							<node label="Vulputate nec"/>
+						</nodes>
+					</mx:XML>
+				</mx:dataProvider>
+			</mx:Tree>
+		</mx:Panel>
+	</mx:VDividedBox>	
+
+	<mx:Panel height="100%" width="70%"
+			layout="absolute" 
+			title="Panel">
+			
+			
+			<mx:TabNavigator height="100%" 
+				borderThickness="0" 
+				paddingTop="0" horizontalGap="0" left="10" right="14">
+				
+				<mx:Canvas label="Form Elements" width="100%" height="100%" styleName="canvasopen"> 
+			<mx:ToggleButtonBar id="tBBar" selectedIndex="1" y="371" width="501" horizontalCenter="0">
+				<mx:dataProvider>
+					<mx:String>Button 1</mx:String>
+					<mx:String>Button 2</mx:String>
+					<mx:String>Button 3</mx:String>
+					<mx:String>Button 4</mx:String>
+				</mx:dataProvider>
+			</mx:ToggleButtonBar>
+			
+			<mx:RadioButtonGroup id="radioGroup"/>
+			<mx:RadioButton x="43" y="177" label="Radio Button 1"
+				 selected="true" group="{radioGroup}"/>
+			<mx:RadioButton x="43" y="207" label="Radio Button 2" 
+				group="{radioGroup}"/>
+			<mx:TextArea x="128" y="53" height="80" width="183"/>
+			<mx:TextInput x="128" y="10" width="183"/>
+			<mx:CheckBox x="272" y="177" label="Checkbox"/>
+			<mx:CheckBox x="272" y="207" label="Checkbox"/>
+			<mx:CheckBox x="272" y="237" label="Checkbox"/>
+			<mx:Label x="25" y="10" text="TextInput:"/>
+			<mx:Label x="25" y="53" text="TextArea:"/>
+			<mx:Button label="Cancel" cornerRadius="0" x="250" y="284.2"/>
+			<mx:Button label="Submit" x="128" y="284.2"/>
+			<mx:ComboBox x="342" y="12">
+					<mx:dataProvider>
+						<mx:String>choice 1</mx:String>
+						<mx:String>choice 2</mx:String>
+						<mx:String>choice 3</mx:String>
+						<mx:String>choice 4</mx:String>
+					</mx:dataProvider>
+			</mx:ComboBox>
+			<mx:HSlider x="342" y="101" width="144"/>
+			
+							</mx:Canvas>
+				<mx:Canvas label="Accordion"  width="100%" height="100%">
+				<mx:Accordion textAlign="center" width="100%" top="0" bottom="0" backgroundAlpha="0" borderThickness="0" >
+			<mx:Canvas backgroundAlpha="0" textAlign="left"  label="Accordion" styleName="canvasopen" width="100%" height="100%">
+				<mx:TextArea  styleName="nonEditText" left="0" right="0" top="1" bottom="1" >
+					<mx:text><![CDATA[Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Quisque eget lorem ac sapien rutrum vehicula. Etiam euismod vestibulum erat. Aenean arcu. Phasellus condimentum augue ac orci. Ut sapien felis, rhoncus non, gravida vestibulum, vehicula non, massa. Etiam eget lorem congue massa aliquet semper. Cras at arcu sed magna porttitor nonummy. Aliquam quis ipsum. In blandit venenatis justo. Vestibulum varius interdum libero. Nullam lorem nisl, vulputate nec, commodo vel, feugiat vel, erat. Suspendisse at lacus. Ut aliquet molestie mauris. 
+
+Fusce iaculis molestie tortor. Nulla ipsum nibh, tincidunt venenatis, pulvinar ut, vehicula eu, massa. Pellentesque blandit. Praesent metus augue, dapibus et, porttitor eu, porta tristique, orci. Proin est turpis, tristique dignissim, porttitor sit amet, sodales vitae, felis. Aenean venenatis, mauris ac ultrices varius, arcu purus accumsan justo, at sollicitudin risus libero id pede. Donec semper tellus in lacus. Nunc eget sapien at nisi blandit cursus. Nunc tristique libero. Duis consequat dignissim justo. Nam et risus. Donec quam. Integer scelerisque, felis nec mollis sagittis, erat tellus facilisis nulla, tempus adipiscing felis nulla quis justo. Cras pulvinar. Ut lacinia ligula ac felis. Nulla magna. Phasellus eu erat. Nullam euismod lobortis odio. Nunc elit nisl, rhoncus vitae, rhoncus tincidunt, molestie vel, massa.
+
+Donec posuere nonummy lacus. Praesent hendrerit, pede vel nonummy sodales, ipsum ante bibendum lacus, sed fringilla ipsum sapien eget velit. Duis vestibulum sollicitudin leo. Donec interdum tellus. Sed turpis. Nulla fermentum pharetra nulla. Fusce accumsan. Vivamus aliquet. Aenean id magna aliquam turpis molestie adipiscing. Aenean non ligula quis sem consequat porttitor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ornare elit. Quisque rutrum eros. Curabitur pharetra risus et mauris. Vivamus at nisl. In massa est, imperdiet vel, dignissim at, posuere vitae, lacus. Fusce tincidunt, metus eu iaculis pulvinar, lacus pede ullamcorper nisi, ut posuere velit ligula vel lorem. In accumsan dignissim felis. Praesent dui. Cras non felis non pede viverra dignissim.]]></mx:text>
+				</mx:TextArea>
+			</mx:Canvas>
+			<mx:Canvas label="Lorem"  width="100%" height="100%">
+			</mx:Canvas>
+			<mx:Canvas label="Ipsum" width="100%" height="100%">
+			</mx:Canvas>
+		</mx:Accordion>
+				</mx:Canvas>
+				<mx:Canvas label="Text" styleName="canvasopen" width="100%" height="100%">
+						<mx:TextArea left="0" right="0" top="0" bottom="0" styleName="canvasopen"
+						borderStyle="none" 
+						paddingLeft="10" 
+						paddingRight="5">
+					 
+					<mx:text><![CDATA[Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+Quisque eget lorem ac sapien rutrum vehicula. 
+Etiam euismod vestibulum erat. Aenean arcu. Phasellus condimentum augue ac orci. Ut sapien felis, rhoncus non, gravida vestibulum,
+vehicula non, massa. 
+Etiam eget lorem congue massa aliquet semper. Cras at arcu sed magna porttitor nonummy. 
+Aliquam quis ipsum. In blandit venenatis justo. Vestibulum varius interdum libero. 
+Nullam lorem nisl, vulputate nec, commodo vel, feugiat vel, erat. Suspendisse at lacus. 
+Ut aliquet molestie mauris. 
+
+ ]]></mx:text>
+					</mx:TextArea>
+
+			
+				</mx:Canvas>
+				<mx:Canvas label="Calendar" width="100%" height="100%" styleName="canvasopen">
+					<mx:DateChooser x="27" y="10" width="485" height="392" blendMode="multiply"/>
+				</mx:Canvas>
+			</mx:TabNavigator> 
+			
+			
+		</mx:Panel>
+		
+	</mx:HDividedBox>
+		
+
+</mx:Application>
