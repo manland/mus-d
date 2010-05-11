@@ -15,18 +15,14 @@ package Fabrique {
 		protected var scene:MGraphiqueScene;
 		
 		public function MFabriqueAbstraiteProjectile(point_vie:int, point_degat:int, angle:Number, vitesse:Number, scene:MGraphiqueScene) {
-			//rendre abstraite avec MIFabrique --> function creer:MIObjetGraphique
+			if((this as MIFabriqueProjectile) == null) {
+				throw new MErreur("MFabriqueAbstraiteProjectile", "constructeur", "Classe abstraite. Merci d'utiliser une sous classe.");
+			}
 			this.point_vie = point_vie;
 			this.point_degat = point_degat;
 			this.angle = angle;
 			this.vitesse = vitesse;
 			this.scene = scene;
 		}
-		
-		public function creer(tireur:MElementAEtat):MIObjetGraphique {
-			throw new MErreur("MFabriqueAbstraiteProjectile", "creer", "fonction abstraite");
-			return null;
-		}
-
 	}
 }
