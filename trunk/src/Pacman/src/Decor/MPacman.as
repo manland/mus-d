@@ -1,7 +1,9 @@
 package Decor
 {
 	import Coeur.Elements.MDeplacementClavier;
-	import Coeur.MIObjet;
+	import Coeur.MJeu;
+	
+	import Controleur.MClavier;
 	
 	import Graphique.MGraphiqueRond;
 	import Graphique.MGraphiqueScene;
@@ -17,21 +19,19 @@ package Decor
 	{
 		protected var scene:MGraphiqueScene;
 		protected var etat:Text;
+		private var taille:Number;
 		
-		public function MPacman(scene:MGraphiqueScene, x:int, y:int, etat:Text)
+		public function MPacman(scene:MGraphiqueScene, x:int, y:int, etat:Text, taille:Number)
 		{
-			super(x, y,10,10);
+			super(x, y,taille, taille);
 			this.etat = etat;
 			this.scene = scene;
 			setFocus();
+			this.taille = taille;
 			super.setTexture(new MCouleur(0xcccc33));
-			setObjet(new MDeplacementClavier(100, 0, scene));
 			this.nom_classe = "MPacman";
+			setObjet(new MDeplacementClavier(100, 0, scene, taille/2));
 			ajouterEcouteur(this);
-		}
-		
-		public override function objetCollision(objet:MIObjet, axe:MAxe):void {
-			super.objetCollision(objet,axe);
 		}
 		
 		public function graphiqueSeDessine(graphique:MIObjetGraphique):void {
@@ -46,9 +46,11 @@ package Decor
 				var m:MDeplacementClavier = getObjet() as MDeplacementClavier;
 				m.annuler();
 			}
-			else if((graphique as Ennemi) != null){
+			else if((graphique as Ennemi) != null && MJeu.getInstance().getEstCommence()){
 				etat.text= "Perdu....";
-			}else if((graphique as Nourriture) != null){
+				MJeu.getInstance().fin();
+				this.setTexture(new MCouleur(0xff0000));
+			}else if((graphique as Nourriture) != null && MJeu.getInstance().getEstCommence()){
 				graphique.mourir();
 				etat.text= "Miammmmmmm";
 				var a:Array = this.scene.getChildren();
@@ -62,13 +64,15 @@ package Decor
 						last = n;
 					}
 				}
-				if(cpt == 0)
+				if(cpt == 0){
 					etat.text= "Victoire";
+					MJeu.getInstance().fin();
+					this.setTexture(new MCouleur(0x00ff00));
+				}
 			}
 		}
 		
 		public function graphiqueSeDeplace(graphique:MIObjetGraphique):void {
-			
 		}
 		
 		public function graphiqueChangeTaille(graphique:MIObjetGraphique):void {
@@ -76,11 +80,10 @@ package Decor
 		}
 		
 		public function debutDuJeuGraphique(graphique:MIObjetGraphique):void {
-			
 		}
 		
 		public function finDuJeuGraphique(graphique:MIObjetGraphique):void {
-			
+			MClavier.getInstance().enleverEcouteur((this.getObjet() as MDeplacementClavier));
 		}
 		
 	}

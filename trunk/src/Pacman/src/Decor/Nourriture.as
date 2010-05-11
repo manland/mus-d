@@ -18,9 +18,9 @@ package Decor
 	{
 		protected var scene:MGraphiqueScene;
 		protected var score:Text;
-		public function Nourriture(scene:MGraphiqueScene, x:Number, y:Number, score:Text)
+		public function Nourriture(scene:MGraphiqueScene, x:Number, y:Number, score:Text, taille:Number)
 		{
-			super(x, y, 5 , 5);
+			super(x, y, taille , taille);
 			this.score = score;
 			this.scene = scene;
 			super.setTexture(new MCouleur(0xcccc33));
@@ -38,7 +38,7 @@ package Decor
 		}
 		
 		public function graphiqueCollision(objet:MIObjetGraphique, axe:MAxe):void {
-			if(objet as MPacman != null){
+			if(objet as MPacman != null && MJeu.getInstance().getEstCommence()){
 				var jeu:MJeu = MJeu.getInstance();
 				jeu.augmenterScore(0, (this.getObjet()as MElementAEtat).getPointVie());
 				score.text = (jeu.getScores()[0] as MScore).getTotal().toString();
@@ -55,7 +55,6 @@ package Decor
 		}
 		
 		public function debutDuJeuGraphique(graphique:MIObjetGraphique):void {
-			
 		}
 		
 		public function finDuJeuGraphique(graphique:MIObjetGraphique):void {
