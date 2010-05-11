@@ -99,12 +99,19 @@ relationcanvas 135835 relation_ref 144795 // <aggregation>
 end
 relationcanvas 135963 relation_ref 144923 // 
   from ref 133915 z 2012 to ref 132182
-  role_a_pos 598 284 3000 role_b_pos 598 256 3000
-  multiplicity_a_pos 651 259 3000 multiplicity_b_pos 589 245 3000
+  role_a_pos 587 259 3000 role_b_pos 598 256 3000
+  multiplicity_a_pos 645 282 3000 multiplicity_b_pos 598 279 3000
 end
 relationcanvas 136347 relation_ref 145051 // <association>
   from ref 135195 z 2006 to ref 148566
   role_a_pos 641 536 3000 no_role_b
   multiplicity_a_pos 677 559 3000 no_multiplicity_b
+end
+relationcanvas 136475 relation_ref 151579 // <realization>
+  decenter_begin 922
+  decenter_end 212
+  from ref 134555 z 2001 to ref 133915
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
 end
 end
