@@ -34,5 +34,9 @@ package Coeur.Elements.ElementsAActions {
 			return element;
 		}
 		
+		public function getNom():String {
+			return nom;
+		}
+		
 	}
 }

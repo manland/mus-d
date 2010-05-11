@@ -1,7 +1,6 @@
 package Coeur.Elements {
 	import Controleur.MMouvementPerpetuel;
 	
-	
 	public class MControleMouvementPerpetuel extends MElementAEtat {
 		private var mouvement:MMouvementPerpetuel;
 		

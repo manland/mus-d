@@ -8,5 +8,6 @@ package Coeur.Elements.ElementsAActions {
 		function desactiverAction(nom:String):void;
 		function action(nom:String):void;
 		function getElementAEtat():MElementAEtat;
+		function getNom():String;
 	}
 }
