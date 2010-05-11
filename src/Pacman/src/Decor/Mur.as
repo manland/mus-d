@@ -1,21 +1,18 @@
 package Decor
 {
-	import Coeur.Elements.MObstacle;
-	
 	import Graphique.MGraphiqueRectangle;
 	import Graphique.MGraphiqueScene;
 	import Graphique.Textures.MCouleur;
 	
 	public class Mur extends MGraphiqueRectangle
 	{
-		
 		protected var scene:MGraphiqueScene;
-		public function Mur(scene:MGraphiqueScene, x:Number, y:Number)
+		public function Mur(scene:MGraphiqueScene, x:Number, y:Number, taille:Number, couleur:Number=0xBD8D46)
 		{
-			super(x,y, 20,20);
+			super(x,y, taille,taille);
 			this.scene = scene;
 			this.nom_classe = "Mur";
-			super.setTexture(new MCouleur(0xff0000));
+			super.setTexture(new MCouleur(couleur));
 		}
 	}
 }

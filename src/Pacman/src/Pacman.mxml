@@ -6,6 +6,7 @@
 	applicationComplete="init()">
 	<mx:Script>
 		<![CDATA[
+			import mx.controls.Alert;
 			import Decor.MPacman;
 			import Utilitaires.MErreur;
 			import Decor.Ennemi;
@@ -23,25 +24,25 @@
 				
 				
 				scene.creerScene(score, etat);
+				score.text = "0";
+				etat.text = "En cours";
+			}
+			
+			public function lancer(event:MouseEvent):void{
 				MJeu.getInstance().ajouterScore(new MScore());
 				MJeu.getInstance().setScene(scene.getObjet() as MScene);
 				MJeu.getInstance().debut();
-				score.text = "0";
-				etat.text = "En cours";
-				
 			}
 		]]>
 	</mx:Script>
 	<mx:Panel>
 		<mx:Text id="score" />
-		<mx:Spacer height="50" width="100"/>
-	</mx:Panel>
-	<mx:Panel>
 		<mx:Text id="etat" />
+		<mx:Button id="demarrer" click="lancer(event);" label="Lancer"  />
 		<mx:Spacer height="50" width="100"/>
 	</mx:Panel>
 	
-	<Pacman:MaGraphiqueScene id="scene" width="120" height="100" nombreEnnemi="2" >
+	<Pacman:MaGraphiqueScene id="scene" width="500" height="500" nombreEnnemi="2" tailleMur="50" >
 	</Pacman:MaGraphiqueScene>
 		
 </mx:WindowedApplication>
