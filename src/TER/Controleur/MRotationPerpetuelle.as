@@ -65,7 +65,6 @@ package Controleur
 		 */	
 		public function appliqueUnite(e:TimerEvent):void
 		{
-			//sysout.text +="\n tourne: "+unite_angle_degre;
 			objet.tourne(centre, unite_angle_degre);
 		}
 		
