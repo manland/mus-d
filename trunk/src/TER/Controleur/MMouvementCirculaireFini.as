@@ -14,7 +14,6 @@ package Controleur
 	 */
 	public class MMouvementCirculaireFini extends MEffet implements MIEffet
 	{
-		public var sysout:Text;
 		/**
 		 * temps en milliseconde que doit durer le mouvement
 		 */

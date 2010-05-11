@@ -13,7 +13,6 @@ package Controleur
 	 */
 	public class MMouvementCirculairePerpetuel extends MEffet implements MIEffet
 	{
-		public var sysout:Text;
 		/**
 		 * vitesse en degre par seconde du mouvement circulaire
 		 */

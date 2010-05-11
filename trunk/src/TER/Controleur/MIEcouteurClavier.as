@@ -45,8 +45,6 @@ package Controleur
 	 *
 	 * </listing>
  	 */
- 	
- 	
 	public interface MIEcouteurClavier
 	{
 		/**
