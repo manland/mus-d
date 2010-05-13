@@ -1,0 +1,15 @@
+window_sizes 1280 744 300 900 533 82
+diagrams
+  classdiagram_ref 134923 // effet
+    963 562 100 4 0 0
+  classdiagram_ref 128011 // proche
+    775 470 100 4 0 0
+  active  classdiagram_ref 128139 // axeCollision
+    974 588 100 4 0 0
+end
+show_stereotypes
+selected classdiagram_ref 128139 // axeCollision
+open
+  classview_ref 128139 // collision
+end
+end
