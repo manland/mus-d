@@ -1,0 +1,73 @@
+\documentclass[12pt]{article}
+\usepackage[top=1.5cm,bottom=1.5cm,right=2.5cm,left=2.5cm]{geometry}
+\usepackage[francais]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[absolute]{textpos} 
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{amsthm}
+
+\title{Annexe}
+
+\begin{document}
+
+\section{Guide pour l'utilisation du créateur de jeux}
+	\subsection{Création d'un premier jeu}
+	Dès l'ouverture du logiciel, il est possible de créer son premier jeu dans l'onglet central qui est en fait la scène du jeu. Néanmoins, on peut également faire \textit{Fichier -> Nouveau} ou cliquer sur la barre d'outil pour créer un nouvel onglet et ainsi créer un nouveau jeu, ou un nouveau niveau. Après avoir cliqué sur \textit{Fichier->Nouveau}, une fenetre s'ouvre demandant à l'utilisateur de choisir un nom pour son jeu, d'entrer le nom de l'auteur et de choisir le type de jeu qu'il désire. En effet, l'utilisateur à la possibilité de choisir si il veut créer un jeu à publier sur Internet, et pour cela il doit cocher la case Flex, ou si il veut créer une application de bureau, et dans ce cas il devra cocher la case Air, l'utilisateur aura à tout moment la possibilité de modifier ce choix. Tous les choix réalisés dans cette fenetre seront utiles dans la génération du code, le titre apparaitra dans l'onglet du navigateur web, ou dans la barre de titre de l'application bureau. Ces différents choix seront modifiables tout au long de la création du jeu, et ce en appuyant sur le bouton : \textit{Options du jeu} ou en cliquant sur la scène de fond. Après avoir validé, un nouvel onglet apparait, et l'utilisateur peut alors créer un autre jeu. Chaque onglet représente un nouveau jeu, ou un nouveau niveau.
+	%% afficher image de fond ac option du jeu
+	
+	\subsection{Ajout des éléments à la scène}
+	Après avoir ouvert un onglet, l'utilisateur peut alors positionner des objets pour créer des éléments pour son jeu. Afin d'ajouter des éléments à la scène, l'utilisateur doit simplement choisir un des objets contenus dans le menu-accordéon situé sur la gauche, puis de le glisser à l'aide de la souris sur la scène à la position de son choix. L'utilisateur peut ajouter autant d'éléments qu'il le souhaite, et ce aux endroits qu'il désire. \\
+\indent L'utilisateur peut également utiliser le copier/coller pour copier un objet qui serait déjà présent sur la scène, pour ce faire, il doit utiliser les raccourcis clavier : \textit{ctrl-c} et \textit{ctrl-v} (seulement dans la version bureau de l'application) ou alors les boutons prévus à cet effet dans la barre d'outil. \\
+\indent Dans le cas où un utilisateur voudrait supprimer un objet de la scène, il peut également le faire, en appuyant sur la touche \textit{suppr} de son clavier.
+	
+	\subsection{Modification des propriétés des objets}
+	L'utilisateur peut modifier autant qu'il le souhaite les objets qui sont présents dans la scène. Tout d'abbord, il doit cliquer sur un objet en particulier afin de lui donner le focus, dès lors, un carré rouge se met autours de l'objet pour signifier qu'il est selectionné, et toutes les informations relatives à cet objet s'inscrivent dans le panel d'options (situé sur la droite). L'utilisateur peut alors modifier tous les champs de ce panel, il a la possibilité de modifier : 
+	\begin{itemize}
+		\item l'identifiant de l'objet,
+		\item sa position en x et en y, l'objet se place en fonction de ce que l'utilisateur entre comme paramètres,
+		\item sa largeur et sa hauteur, il peut choisir de garder le ratio, donc la proportion entre la largeur et la hauteur, ou de ne pas le garder et ainsi, cela pourra par exemple modifier la forme de l'objet (un carré peut ainsi devenir un rectangle),
+		\item sa texture : la couleur grâce à un ColorPicker, le degradé, ou l'image en entrant le chemin vers l'image
+		\item lui ajouter ou enlever une bordure
+		\item lui affecter un ou des mouvements, des controleurs
+	\end{itemize}	
+%%copie décran du panel d'option
+		\subsubsection{Modification du dégradé}
+%% copie d'écran du panel dégradé
+	En cliquant sur \textit{Dégradé}, une fenêtre s'ouvre permettant de créer un nouveau dégradé. Elle propose de régler toutes les options nécessaires à instancier un MDegrade. Malgrès tous les choix dont dispose l'utilisateur, la création d'un nouveau dégradé est assez intuitive. \\
+\indent Le panel d'option \textit{SpreadMethod} permet de choisir le type de diffusion du dégradé : normal, répété, ou en reflet. \\ 
+\indent Le panel \textit{type} permet de choisir si le dégradé sera normal, ou radial. \\
+\indent Le panel \textit{Box} sert à définir le point de fuite du dégradé, dans le cas où il serait radial, et son orientation. La modification de l'orientation permet de créer des dégradés verticaux, obliques, horizontaux, en fonction d'un angle choisit grâce au slider. \\
+\indent La fenêtre de dégradé propose également une MGraphiqueScene dans laquelle on peut voir un aperçu du dégradé, en cliquant sur \textit{objet}, l'utilisateur aura un aperçu de son dégradé appliqué à son objet. Après avoir validé, le dégradé est appliqué à l'objet, et le dégradé créé est ajouté à la liste des dégradés préférés de l'utilisateur.
+		\subsubsection{Ajout d'effets, de contrôleur}
+%% copie écran du panel mouvement
+	En cliquant sur le bouton \textit{Mouvement}, une fenêtre permettant de choisir les différents mouvements et contrôles apparait. L'utilisateur peut tout d'abord choisir le type de mouvement à appliquer à son objet : perpétuel, fini, ou redimensionnement. Dès lors qu'il fait son choix, les différentes options du mouvement s'affichent à l'écran, ainsi, en fonction du mouvement l'utilisateur doit choisir : 
+	\begin{itemize}
+		\item mouvement perpétuel : l'angle de lancement de départ, et la vitesse de l'objet
+		\item mouvement fini : la valeur du x et du y d'arrivée, et le temps pour réaliser cette action, en milliseconde
+		\item redimensionnement : la largeur et la hauteur finale, et le temps pour réaliser cette action.
+	\end{itemize}
+	L'utilisateur peut ajouter autant de mouvements qu'il le souhaite. Il seront ensuite traités dans la génération du code. \\
+	\indent Afin d'ajouter un type de contôleur pour son objet : clavier ou souris, il suffit qu'il coche la ou les cases correspondantes.
+		\subsection{Génération du code}
+%% afficher la génération du code
+	En appuyant sur le bouton \textit{Générer code}, une fenêtre contenant le code de l'application permettant de la lancer est générée. \\ 
+\indent Dans le cas où les objets auraient des mouvements ou des contrôleur, nous générons également le squelette des classes contenant les méthodes des interfaces à réimplémenter. L'utilisateur n'aura alors qu'à completer ces fichiers. Cette fenêtre est composée de plusieurs parties : un éditeur de texte contenu dans un onglet, chaque onglet correspondant à la génération du code de l'application et/ou des classes à réimplémenter, et d'un bouton permettant de copier tout le code de l'onglet dans le presse papier.
+
+		\subsection{Utilisation du code généré}
+	Flex ne permet pas d'enregistrer, de modifier ou d'ouvrir des fichiers qui se trouvent sur l'ordinateur de l'utilisateur, donc pour qu'il puisse utiliser le code généré par l'application, il doit :
+		\begin{itemize}
+			\item Ouvrir Eclipse
+			\item Créer un nouveau projet flex ou air, en fonction du type de jeu qu'il souhaite créer.
+			\item Coller le code de l'application dans le fichier \textit{.mxml}
+			\item Coller le code des classes dans des classes actionScript portant le même nom
+			\item Coller les différentes images qui constituent le jeu
+			\item Implémenter les différentes fonctions du comportement des objets
+			\item Compiler le projet avec Eclipse
+			\item Lancer le jeu
+			\item Jouer !
+		\end{itemize}
+	%% copie écran d'eclipse
+	
+\end{document}

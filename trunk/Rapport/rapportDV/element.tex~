@@ -1,0 +1,154 @@
+\documentclass{article}
+\usepackage[top=1.5cm,bottom=1.5cm,right=2.5cm,left=2.5cm]{geometry}
+\usepackage[francais]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[absolute]{textpos} 
+\usepackage{graphicx}
+\usepackage{caption}
+
+\title{Rapport du TER}
+\begin{document}
+\vspace{10mm}
+\def\blurb{%
+   Université des Sciences de Montpellier \\
+  Master 1 Semestre 2 \\
+  Unité d'Enseignement FMIN205 \\
+	}
+\def\clap#1{\hbox to 0pt{\hss #1\hss}}%
+\def\ligne#1{%
+  \hbox to \hsize{%
+    \vbox{\centering #1}}}%
+\def\haut#1#2#3{%
+  \hbox to \hsize{%
+    \rlap{\vtop{\raggedright #1}}%
+    \hss
+    \clap{\vtop{\centering #2}}%
+    \hss
+    \llap{\vtop{\raggedleft #3}}}}%
+\def\bas#1#2#3{%
+  \hbox to \hsize{%
+    \rlap{\vbox{\raggedright #1}}%
+    \hss
+    \clap{\vbox{\centering #2}}%
+    \hss
+    \llap{\vbox{\raggedleft #3}}}}%
+\begin{document}
+\thispagestyle{empty}\vbox to 1\vsize{%
+  \vss
+  \vbox to 1\vsize{%
+    \haut{}{\blurb}{}
+    \vfill
+    \ligne{\Large \maketitle{}}
+   % \vspace{5mm}
+    \ligne{}
+    \vfill
+    \ligne{%
+     }
+    \vspace{15mm}
+    \ligne{%
+      \begin{tabular}{l}
+        Romain \textsc{Maneschi}\\
+        Audrey \textsc{Novak} \\
+	Jonathan \textsc{Fhal}\\
+	Mélanie \textsc{König} \\
+	Laurent  \textsc{Maillet}
+      \end{tabular}
+      }
+    }%
+  \vss
+  }
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+
+\section{Code métier}
+%petite intro ??
+
+
+	% insertion d'une image : 
+	%  la première ligne permet de positionner l'image dans la page : {largeur de l'image sur la page} (marge entre image et  image,position par rapport au haut de la page)
+	%\begin{textblock*}{19cm}(1cm,3cm)  
+		%\centering		
+		%\includegraphics[width=1.0\textwidth]{casUtilisation.png}  % width=1.0 ~ zoom sur l'image, laisser a 1, toucher seulement à la largeur de l'image sur la page
+		%\caption{Diagramme de cas d'utilisation}	% légende
+		%\label{cas_utilisation}				% pour faire des références mais marche pas
+	%\end{textblock*}
+
+% si l'image arrive en bas de la page faire un \newpage sinon le texte va s'écrire par dessu l'image
+% sinon, entourer le texte a mettre sous l'image par la meme balise
+
+	\subsection{Scène}
+% laurent
+
+	\subsection{Eléments}
+Après avoir réfléchi sur l'élément de base, un élément dont on peut positionner ses coordonnées, sa taille ou encore le fait qu'il puisse mourir, nous nous sommes intéressés à ce que pourrait vouloir faire un programmeur de jeux d'arcade. Avec notre élément de base et nos contrôleurs, il a déjà un large panel de possibilités et il peut quasiment tout faire mais notre but étant de lui faliciter la tâche au maximum, nous avons décidé d'ajouter plusieurs sous-éléments.
+		\subsubsection{Patron de conception Etat}
+Un programmeur pourrait vouloir positionner ses objets en tant qu'objet déplaçable ou non, redimensionnable ou non et enfin et surtout destructible ou pas. Pour faire cela nous avons décidé de mettre en place le patron de conception Etat. Certes tous ces états n'ont que deux possibilités, mais il y a plusieurs raisons à ce choix :
+\begin{itemize}
+	\item le programmeur peut vouloir changer d'état à tout moment
+	\item un simple booléen aurait pu suffir mais les possibilités aurait alors été réduites
+	\item cela permet de soulager la classe principale en déléguant du code à la classe représentant l'état
+\end{itemize}
+
+\indent Pour toutes ces raisons nous avons choisi d'implémenter le patron de conception état. 
+
+%UML éléments
+\\
+\indent La classe qui permettra tout ce processus est la classe MElementAEtat afin de ne pas toucher au code de la classe MElement qui est implémentée par un autre programmeur. De plus elle contient un attribut de chaque type : MIEtatDeplacable, MIEtatDestructible et MIEtatRedimensionnable qui représentent : les états pour le déplacement, la destruction ou encore le redimensionnement. Ainsi le programmeur peut facilement piloter ces éléments et les positionner en fonction de bonus, qui seront, par exemple posés sur la scène.
+\\\\
+\indent Ensuite nous nous sommes demandés quel type d'éléments nous pouvions construire à partir de ces états. Tout naturellement, nous avons immédiatement pensé aux obstacles implémentés par MObstacle qui est un élément indestructible et indéplaçable. Or, comme par définition il est indéplaçable, le programmeur ne pourrait plus le repositionner après l'avoir positionné une première fois sur la scène, afin d'éviter cela, nous le rendons indéplaçable seulement après avant fait appel à la fonction MJeu.getInstance.debut(). Ainsi si le jeu a commencé alors l'obstacle n'est plus déplaçable. 
+
+\\
+\indent Puisque nous avons à notre disposition différents types de contrôles nous avons prévu une implémentation de base de ceux-ci :
+\begin{itemize}
+	\item par le clavier, c'est la première façon à laquelle on pense en tant que joueur. Ainsi nous avons implémenté la classe MControleClavier qui est un MElementAEtat implémentant MIEcouteurClavier avec les touches de base auxquelles tout le monde à l'habitude de jouer : les flèches pour se diriger.
+	\item par la souris, qui sert donc à diriger l'objet.
+	\item enfin un programmeur peut vouloir qu'un élément soit contrôlé par le PC, autrement dit que celui-ci soit un ennemi du joueur. Pour cela nous avons mis en place un MMouvementPerpetuel dans le MElementAEtat. 
+Enfin nous avons pensé aux projectiles, qui sont des éléments déplaçables et destructibles. Mais dès lors il faut pouvoir "tirer" ces projectiles de façon la plus simple possible.
+\end{itemize}
+		\subsubsection{Actions}
+L'étape suivante a été ensuite plus directement ciblée vers les jeux d'arcade de type "shoot". En effet, nous nous sommes rendus compte que nous pouvions facilement accélérer concidérablement le développement d'une telle application en créant associant un MProjectile à un "MTireur". Le problème étant qu'un élément qui est à état, controlé par le clavier, la souris ou encore un mouvement doit pouvoir tirer. Nous nous sommes donc dit que le fait de tirer doit venir "décorer" nos éléments. Ainsi nous avons mis en place le patron de conception "decorateur". Pour ce faire une simple interface pour définir une action est requise, ensuite chaque action prend en paramètre l'élément qu'elle décore. Ce patern nous a ensuite permis d'imaginer ce qu'un développeur pourrait vouloir comme action, l'action de sauter est venue très rapidement ainsi que celle de s'accroupir. Nous aurions pû en implémenter plus mais nous pensons que notre framework pourra être facilement étendu.
+		\subsubsection{Patron de conception Fabrique}
+Puisque le programmeur a à sa disposition tous ces éléments et qu'il peut vouloir les représenter graphiquement par toutes nos formes, nous avons tout naturellement pensé au patron de conception Fabrique.
+
+%UML Fabrique
+
+Comme vous pouvez le voir nous avons mis en place plusieurs fabriques pour que l'utilisateur puisse de façon transparente conjuguer les éléments avec les différentes formes. Grâce aux fabriques l'utilisateur dispose de plusieurs choix pour remplir ses scènes. En effet il peut le faire de manière "traditionnelle" en instanciant un MIObjetGraphique qui, de base créé un MElement (l'élement de plus haut niveau), puis en lui positionnant l'objet modèle qu'il souhaite (en appelant setObjet(objet)). Ou alors il peut faire appel à une de nos fabriques pour créer un MProjectile (qui est un MElementAEtat) rond par exemple. L'interface MIFabrique permet de rendre les classes MFabriqueAbstraite[TypeElement] abstraite, puisque action script 3 ne le permet pas.
+\\
+Comme vous pouvez le voir chaque fabrique à plusieurs fonctions pour créer les objets en question. En effet, il nous a paru nécessaire de pouvoir créer simplement tous types d'éléments mais aussi et surtout de pouvoir en créer avec le plus de détails possible. La plus part du temps nous avons opté pour une fonction de création par défaut qui initialise les objets avec des valeurs de base (surtout utile pour le débuggage), ou détaillant le modèle puis une autre détaillant le graphisme et enfin les deux.
+
+	\subsection{Formes}
+% laurent	
+
+	\subsection{Collision}
+% mélanie
+
+\section{Contrôleur}
+% petite intro
+
+	\subsection{Souris}
+% mélanie
+	
+	\subsection{Clavier}
+% mélanie
+
+	\subsection{Effets}
+% mélanie
+
+\section{Graphique}
+%romain
+
+\section{Créateur de jeu}
+% audrey
+
+\section{Jeux}
+% john
+
+\section{Conclusion}
+\end{document}

@@ -1,0 +1,1487 @@
+format 71
+"uml-proche"
+  revision 5
+  modified_by 11 "Melanie"
+
+
+  
+  // class settings
+  default_attribute_visibility private default_relation_visibility private default_operation_visibility public
+  //class diagram settings
+  draw_all_relations yes hide_attributes no hide_operations no hide_getset_operations no show_members_full_definition no show_members_visibility no show_members_stereotype no show_members_multiplicity no show_members_initialization no show_attribute_modifiers no member_max_width 127 show_parameter_dir yes show_parameter_name yes package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position yes show_relation_modifiers no show_relation_visibility no show_infonote no shadow yes show_stereotype_properties no
+  //use case diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes class_drawing_mode actor shadow yes show_stereotype_properties no
+  //sequence diagram settings
+  show_full_operations_definition no write_horizontally yes class_drawing_mode natural drawing_language uml draw_all_relations yes shadow yes show_stereotype_properties no
+  //collaboration diagram settings
+  show_full_operations_definition no show_hierarchical_rank no write_horizontally yes drawing_language uml package_name_in_tab no show_context no draw_all_relations yes shadow yes show_stereotype_properties no
+  //object diagram settings
+   write_horizontally yes package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes show_stereotype_properties no
+  //component diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no
+  //deployment diagram settings
+  package_name_in_tab no show_context no write_horizontally yes auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no show_stereotype_properties no
+  //state diagram settings
+  package_name_in_tab no show_context no auto_label_position yes write_trans_label_horizontally yes show_trans_definition no draw_all_relations yes shadow yes
+  show_activities yes region_horizontally yes drawing_language uml show_stereotype_properties no
+  //activity diagram settings
+  package_name_in_tab no show_context no show_opaque_action_definition no auto_label_position yes write_flow_label_horizontally no draw_all_relations yes shadow yes
+  show_infonote yes drawing_language uml show_stereotype_properties no
+  
+  class_color yellow duration_color transparent continuation_color gray note_color blue fragment_color transparent subject_color transparent usecase_color yellow package_color transparent component_color green artifact_color green deploymentnode_color gray state_color yellow stateaction_color transparent activity_color transparent activityregion_color transparent activitypartition_color transparent activityaction_color transparent parameterpin_color white 
+  font_size 8
+  diagram_format A4
+
+  mark_for_import
+  
+  classview 128139 "collision"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition yes show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    classdiagram 128011 "proche"
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility yes show_members_stereotype yes show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir yes show_parameter_name yes package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 128011 "MElement"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 136203 // <generalisation>
+	relation 136203 ---|>
+	  a public
+	    classrelation_ref 136203 // <generalisation>
+	  b parent class_ref 135819 // MObjet
+      end
+
+    end
+
+    class 128139 "MIObjet"
+      abstract visibility package stereotype "interface"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}${visibility}interface ${name} {
+${members}}
+"
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 128139 "estProcheDe"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "objet" type class_ref 128139 // MIObjet
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 128267 "MScene"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 128267 "estProcheBord"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "objet" type class_ref 128139 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      classrelation 136075 // <generalisation>
+	relation 136075 ---|>
+	  a public
+	    classrelation_ref 136075 // <generalisation>
+	  b parent class_ref 135819 // MObjet
+      end
+
+    end
+
+    classdiagram 128139 "axeCollision"
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition yes show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 135819 "MObjet"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}${visibility}interface ${name} {
+${members}}
+"
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 138507 "estProcheDe"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "objet" type class_ref 135819 // MObjet
+	
+	
+	
+	
+	
+      end
+
+      classrelation 158475 // <realization>
+	relation 157963 -_-|>
+	  a public
+	    classrelation_ref 158475 // <realization>
+	  b parent class_ref 128139 // MIObjet
+      end
+    end
+
+    class 128395 "MIForme"
+      abstract visibility package stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}${visibility}interface ${name} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 128395 "axeCollision"
+	public explicit_return_type "MAxe"
+	nparams 1
+	  param in name "forme" type class_ref 128395 // MIForme
+	
+	
+	
+	
+	
+      end
+
+      operation 128651 "seProjeteSur"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "axe" explicit_type "MVecteur"
+	
+	
+	
+	
+	
+      end
+
+      operation 128779 "getAxesSeparateurs"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "forme" type class_ref 128395 // MIForme
+	
+	
+	
+	
+	
+      end
+
+      operation 130059 "getPointsProjection"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "axe" explicit_type "MVecteur"
+	
+	
+	
+	
+	
+      end
+
+      operation 137099 "getPointsParticuliers"
+	public explicit_return_type "array"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 128523 "MForme"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 129547 "seProjeteSur"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "axe" explicit_type "MVecteur"
+	
+	
+	
+	
+	
+      end
+
+      operation 128523 "axeCollision"
+	public explicit_return_type "MAxe"
+	nparams 1
+	  param in name "forme" type class_ref 128395 // MIForme
+	
+	
+	
+	
+	
+      end
+
+      classrelation 158859 // <realization>
+	relation 158347 -_-|>
+	  a public
+	    classrelation_ref 158859 // <realization>
+	  b parent class_ref 128395 // MIForme
+      end
+    end
+
+    class 128651 "MFormePolygone"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 128907 "getAxesSeparateurs"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "forme" type class_ref 128395 // MIForme
+	
+	
+	
+	
+	
+      end
+
+      operation 130315 "getPointsProjection"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "axe" explicit_type "MVecteur"
+	
+	
+	
+	
+	
+      end
+
+      operation 137227 "getPointsParticuliers"
+	public explicit_return_type "array"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 158731 // <generalisation>
+	relation 158219 ---|>
+	  a public
+	    classrelation_ref 158731 // <generalisation>
+	  b parent class_ref 128523 // MForme
+      end
+    end
+
+    class 128779 "MFormeEllipse"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128523 // <generalisation>
+	relation 128523 ---|>
+	  a public
+	    classrelation_ref 128523 // <generalisation>
+	  b parent class_ref 128523 // MForme
+      end
+
+      operation 129675 "getAxesSeparateurs"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "forme" type class_ref 128395 // MIForme
+	
+	
+	
+	
+	
+      end
+
+      operation 130443 "getPointsProjection"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "axe" explicit_type "MVecteur"
+	
+	
+	
+	
+	
+      end
+
+      operation 137355 "getPointsParticuliers"
+	public explicit_return_type "array"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 128907 "MFormeRond"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128779 // <generalisation>
+	relation 128779 ---|>
+	  a public
+	    classrelation_ref 128779 // <generalisation>
+	  b parent class_ref 128779 // MFormeEllipse
+      end
+
+      operation 129035 "getAxesSeparateurs"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "forme" type class_ref 128395 // MIForme
+	
+	
+	
+	
+	
+      end
+
+      operation 130571 "getPointsProjection"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "axe" explicit_type "MVecteur"
+	
+	
+	
+	
+	
+      end
+
+      operation 137483 "getPointsParticuliers"
+	public explicit_return_type "array"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 129035 "MFormeCompose"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 129419 "getAxesSeparateurs"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "forme" type class_ref 128395 // MIForme
+	
+	
+	
+	
+	
+      end
+
+      classrelation 128907 // <generalisation>
+	relation 128907 ---|>
+	  a public
+	    classrelation_ref 128907 // <generalisation>
+	  b parent class_ref 128523 // MForme
+      end
+
+      classrelation 129035 // <realization>
+	relation 129035 -_-|>
+	  a public
+	    classrelation_ref 129035 // <realization>
+	  b parent class_ref 128395 // MIForme
+      end
+
+      operation 129931 "axeCollision"
+	public explicit_return_type "MAxe"
+	nparams 1
+	  param in name "forme" type class_ref 128395 // MIForme
+	
+	
+	
+	
+	
+      end
+
+      operation 130187 "getPointsProjection"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "axe" explicit_type "MVecteur"
+	
+	
+	
+	
+	
+      end
+
+      operation 137611 "getPointsParticuliers"
+	public explicit_return_type "array"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 135563 "MFormeSegment"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 137739 "getAxesSeparateurs"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "forme" type class_ref 128395 // MIForme
+	
+	
+	
+	
+	
+      end
+
+      operation 137867 "getPointsProjection"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "axe" explicit_type "MVecteur"
+	
+	
+	
+	
+	
+      end
+
+      operation 137995 "getPointsParticuliers"
+	public explicit_return_type "array"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 158603 // <generalisation>
+	relation 158091 ---|>
+	  a public
+	    classrelation_ref 158603 // <generalisation>
+	  b parent class_ref 128523 // MForme
+      end
+    end
+
+    class 135691 "MFormePoint"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 135819 // <generalisation>
+	relation 135819 ---|>
+	  a public
+	    classrelation_ref 135819 // <generalisation>
+	  b parent class_ref 128523 // MForme
+      end
+
+      operation 138123 "getAxesSeparateurs"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "forme" type class_ref 128395 // MIForme
+	
+	
+	
+	
+	
+      end
+
+      operation 138251 "getPointsProjection"
+	public explicit_return_type "array"
+	nparams 1
+	  param in name "axe" explicit_type "MVecteur"
+	
+	
+	
+	
+	
+      end
+
+      operation 138379 "getPointsParticuliers"
+	public explicit_return_type "array"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+  end
+
+  classview 134667 "Ecouteur"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition yes show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    classdiagram 134667 "souris"
+      draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 142347 "MSouris"
+      visibility package 
+      
+      constraint "classe singleton"cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 143243 // <composition>
+	relation 143243 *---
+	  a role_name "" private
+	    classrelation_ref 143243 // <composition>
+	  b role_name "" private
+	    classrelation_ref 143371 // <composition>
+      end
+
+      operation 145035 "getInstance"
+	public return_type class_ref 142347 // MSouris
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      attribute 128011 "instance"
+	class_attribute unique private type class_ref 142347 // MSouris
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 145163 "ajouterEcouteur"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "ecouteur" type class_ref 142475 // MIEcouteurSouris
+	
+	
+	
+	
+	
+      end
+
+      operation 145291 "enleverEcouteur"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "ecouteur" type class_ref 142475 // MIEcouteurSouris
+	
+	
+	
+	
+	
+      end
+
+      operation 145419 "clic"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "evt" explicit_type "MouseEvent"
+	
+	
+	
+	
+	
+      end
+
+      operation 145547 "bouge"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "evt" explicit_type "MouseEvent"
+	
+	
+	
+	
+	
+      end
+
+      operation 145675 "doubleClic"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "evt" explicit_type "MouseEvent"
+	
+	
+	
+	
+	
+      end
+
+      classrelation 143883 // <composition>
+	relation 143499 *---
+	  a role_name "" private
+	    classrelation_ref 143883 // <composition>
+	  b role_name "" private
+	    classrelation_ref 143755 // <composition>
+      end
+    end
+
+    class 142475 "MIEcouteurSouris"
+      abstract visibility package stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}${visibility}interface ${name} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      classrelation 143371 // <composition>
+	relation_ref 143243 // <composition>
+      end
+
+      operation 145803 "clic"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 146187 "doubleClic"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 145931 "bougeDroite"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 146059 "bougeGauche"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 146315 "bougeHaut"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 146443 "bougeBas"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 143627 // <composition>
+	relation_ref 143371 // <composition>
+      end
+    end
+
+    classdiagram 134795 "clavier"
+      draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 142603 "MClavier"
+      visibility package 
+      
+      constraint "classe singleton"cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 143499 // <composition>
+	relation 143371 *---
+	  a role_name "" private
+	    classrelation_ref 143499 // <composition>
+	  b role_name "" private
+	    classrelation_ref 143627 // <composition>
+      end
+
+      operation 146571 "getInstance"
+	public return_type class_ref 142603 // MClavier
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      attribute 128139 "instance"
+	class_attribute unique private type class_ref 142603 // MClavier
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 146699 "ajouterEcouteur"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "ecouteur" type class_ref 142731 // MIEcouteurClavier
+	
+	
+	
+	
+	
+      end
+
+      operation 146827 "enleverEcouteur"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "ecouteur" type class_ref 142731 // MIEcouteurClavier
+	
+	
+	
+	
+	
+      end
+
+      operation 146955 "appui"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "evt" explicit_type "KeyboardEvent"
+	
+	
+	
+	
+	
+      end
+
+      classrelation 144139 // <composition>
+	relation 143627 *---
+	  a role_name "" private
+	    classrelation_ref 144139 // <composition>
+	  b role_name "" private
+	    classrelation_ref 144011 // <composition>
+      end
+    end
+
+    class 142731 "MIEcouteurClavier"
+      abstract visibility package stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}${visibility}interface ${name} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      classrelation 143755 // <composition>
+	relation_ref 143499 // <composition>
+      end
+
+      operation 147339 "espace"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 147467 "entree"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 147595 "flecheDroite"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 147723 "flecheGauche"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 147851 "flecheHaut"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 147979 "flecheBas"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 148107 "touche"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "code_touche" explicit_type "uint"
+	
+	
+	
+	
+	
+      end
+
+      classrelation 144011 // <composition>
+	relation_ref 143627 // <composition>
+      end
+    end
+  end
+
+  classview 134795 "effet"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition yes show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    classdiagram 134923 "effet"
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 142859 "MIEffet"
+      abstract visibility package stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}interface ${name}${extends} {
+${members}}
+"
+      php_decl "${comment}${visibility}interface ${name} {
+${members}}
+"
+      python_2_2 python_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 148235 "lancer"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 148363 "stopper"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 156683 "setObjet"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "objet" type class_ref 128139 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      operation 156427 "getObjet"
+	public return_type class_ref 128139 // MIObjet
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 163723 "appliqueUnite"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "e" explicit_type "timerEvent"
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 142987 "MMouvementFini"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 163851 "appliqueUnite"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "e" explicit_type "timerEvent"
+	
+	
+	
+	
+	
+      end
+
+      operation 155403 "lancer"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 151051 // <generalisation>
+	relation 150539 ---|>
+	  a public
+	    classrelation_ref 151051 // <generalisation>
+	  b parent class_ref 149771 // MEffet
+      end
+    end
+
+    class 143115 "MMouvementPerpetuel"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 163979 "appliqueUnite"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "e" explicit_type "timerEvent"
+	
+	
+	
+	
+	
+      end
+
+      operation 155531 "lancer"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 151307 // <generalisation>
+	relation 150795 ---|>
+	  a public
+	    classrelation_ref 151307 // <generalisation>
+	  b parent class_ref 149771 // MEffet
+      end
+    end
+
+    class 143243 "MRedimensionnement"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 164107 "appliqueUnite"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "e" explicit_type "timerEvent"
+	
+	
+	
+	
+	
+      end
+
+      operation 155659 "lancer"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 151179 // <generalisation>
+	relation 150667 ---|>
+	  a public
+	    classrelation_ref 151179 // <generalisation>
+	  b parent class_ref 149771 // MEffet
+      end
+    end
+
+    class 149771 "MEffet"
+      abstract visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 134667 "objet"
+	private type class_ref 128139 // MIObjet
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 155019 "setObjet"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "objet" type class_ref 128139 // MIObjet
+	
+	
+	
+	
+	
+      end
+
+      operation 155147 "getTimer"
+	public explicit_return_type "Timer"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      attribute 134795 "timer"
+	private explicit_type "Timer"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 156811 "stopper"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      operation 155275 "setTimer"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "timer" explicit_type "Timer"
+	
+	
+	
+	
+	
+      end
+
+      operation 156171 "getObjet"
+	public return_type class_ref 128139 // MIObjet
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 158347 // <realization>
+	relation 157835 -_-|>
+	  a public
+	    classrelation_ref 158347 // <realization>
+	  b parent class_ref 142859 // MIEffet
+      end
+    end
+
+    class 149899 "MMouvementCirculaireFini"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 164235 "appliqueUnite"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "e" explicit_type "timerEvent"
+	
+	
+	
+	
+	
+      end
+
+      operation 156939 "lancer"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 151563 // <generalisation>
+	relation 151051 ---|>
+	  a public
+	    classrelation_ref 151563 // <generalisation>
+	  b parent class_ref 149771 // MEffet
+      end
+    end
+
+    class 150027 "MMouvementCirculairePerpetuel"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 164363 "appliqueUnite"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "e" explicit_type "timerEvent"
+	
+	
+	
+	
+	
+      end
+
+      operation 157195 "lancer"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 151819 // <generalisation>
+	relation 151307 ---|>
+	  a public
+	    classrelation_ref 151819 // <generalisation>
+	  b parent class_ref 149771 // MEffet
+      end
+    end
+
+    class 156555 "MRotationPerpetuelle"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 164491 "appliqueUnite"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "e" explicit_type "timerEvent"
+	
+	
+	
+	
+	
+      end
+
+      operation 164619 "lancer"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 159243 // <generalisation>
+	relation 158731 ---|>
+	  a public
+	    classrelation_ref 159243 // <generalisation>
+	  b parent class_ref 149771 // MEffet
+      end
+    end
+
+    class 156683 "MRotationFinie"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 164747 "appliqueUnite"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "e" explicit_type "timerEvent"
+	
+	
+	
+	
+	
+      end
+
+      operation 164875 "lancer"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+
+      classrelation 159499 // <generalisation>
+	relation 158987 ---|>
+	  a public
+	    classrelation_ref 159499 // <generalisation>
+	  b parent class_ref 149771 // MEffet
+      end
+    end
+
+    class 156811 "MSaut"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 159627 // <generalisation>
+	relation 159115 ---|>
+	  a public
+	    classrelation_ref 159627 // <generalisation>
+	  b parent class_ref 142987 // MMouvementFini
+      end
+
+      operation 165003 "lancer"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+
+    class 156939 "MAccroupissement"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 159755 // <generalisation>
+	relation 159243 ---|>
+	  a public
+	    classrelation_ref 159755 // <generalisation>
+	  b parent class_ref 143243 // MRedimensionnement
+      end
+
+      operation 165131 "lancer"
+	public explicit_return_type "void"
+	nparams 0
+	
+	
+	
+	
+	
+      end
+    end
+  end
+end
