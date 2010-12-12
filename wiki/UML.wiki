@@ -16,6 +16,10 @@ Pour la suite je n'est remplie que le Navigator en mettant "firefox" et Characte
 
 A vous de voir pour  le reste, mais je pense qu'on ne les utilisera pas.
 
+= Outil de diff =
+
+Sous ubuntu rapidSVN est installé sans outil de différence. Cet outil bien pratique permet de voir les différences entre les anciennes et nouvelles versions. Pour en avoir un il vous suffit d'installer Meld (sudo apt-get install meld) et d'aller dans Affichage->Préférences->outil de diff et de rentrer meld dans le premier input.
+
 = Premier diagramme =
 
 C'est un poil compliqué au début et surtout très reloud :
